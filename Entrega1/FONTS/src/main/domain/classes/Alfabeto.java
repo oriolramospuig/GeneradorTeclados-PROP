@@ -13,7 +13,7 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
 {
     /** Guarda el nombre introducido por el usuario */
     private String nombre;
-    
+
     /**
      * Contenido del afabeto */
     private String contenido;
