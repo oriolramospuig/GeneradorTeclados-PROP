@@ -81,15 +81,19 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
         return false;
     }
 
+    // CREO QUE SON LAS DEL DRIVER
     public void introducirCaracteres()
     {}
 
+    // CREO QUE SON LAS DEL DRIVER
     public void introducirArchivo()
     {}
 
+    // ESTA MEJOR EN CONJ DE ALFABETOS NO?
     public boolean nombreDisponible(String nombre)
     {return false;}
 
+    // ESTA CREO QUE MEJOR EN LA CLASE IN/OUT
     public boolean contenidoValido(ArrayList<Character> contenido)
     {return false;}
 

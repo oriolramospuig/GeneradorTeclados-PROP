@@ -117,7 +117,7 @@ public class DriverDominio {
         System.out.println("(1|AlfabetoPorTerminal) - Añadir Alfabeto");
         System.out.println("(2|AlfabetoPorArchivo) - Añadir Alfabeto");
         System.out.println("(3|ImprimirAlfabetos) - Imprimir Alfabetos");
-        System.out.println("");
+        System.out.println();
         System.out.println("(0|Salir) - Cerrar Driver");
     }
 
