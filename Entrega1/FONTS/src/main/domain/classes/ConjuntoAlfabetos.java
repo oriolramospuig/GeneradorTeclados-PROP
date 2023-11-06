@@ -26,7 +26,7 @@ public class ConjuntoAlfabetos
      * Retorna el conjunto de alfabetos
      * @return alfabetos : Conjunto de alfabetos guardados
      */
-    public Map<String, Alfabeto> getAlfabetos() {
+    public HashMap<String, Alfabeto> getAlfabetos() {
         return alfabetos;
     }
 
@@ -45,7 +45,7 @@ public class ConjuntoAlfabetos
      *  @param alfabetos : El nuevo conjunto de alfabetos
      *
      */
-    public void setAlfabetos(Map<String, Alfabeto> alfabetos) {
+    public void setAlfabetos(HashMap<String, Alfabeto> alfabetos) {
         this.alfabetos = alfabetos;
     }
 

@@ -3,6 +3,7 @@ package main.domain.classes;
 import java.io.*;
 import java.lang.String;
 import java.lang.Comparable;
+import java.util.ArrayList;
 
 
 /**
@@ -24,7 +25,13 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
         contenido = null;
     }
 
-    public Alfabeto(ArrayList<Character> contenido) { this.setContenido(contenido); }
+    public Alfabeto(String nom, ArrayList<Character> contenido)
+    {
+        this.nombre = nom;
+        this.setContenido(contenido);
+    }
+
+    public Alfabeto(ArrayList<Character> contenido) {this.setContenido(contenido);}
 
     // ---------- GETTERS ----------
 

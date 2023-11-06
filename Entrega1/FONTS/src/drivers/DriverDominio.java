@@ -1,10 +1,10 @@
 package drivers;
 
 import main.domain.classes.Alfabeto;
-import main.domain.classes.ConjAlfabeto;
+import main.domain.classes.ConjuntoAlfabetos;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class DriverDominio {
@@ -32,7 +32,7 @@ public class DriverDominio {
                     String entrada = scanner.nextLine();
 
                     String[] caracteres = entrada.split(" ");
-                    List<Character> contenido = new ArrayList<>();
+                    ArrayList<Character> contenido = new ArrayList<>();
 
                     for (String caracter : caracteres) {
                         contenido.add(caracter.charAt(0));
