@@ -59,6 +59,7 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
         nombre = nom;
     }
 
+    // ---------- AUXILIARES ----------
     /**
      * Override del metode equals() de la classe Object
      * @param obj : Object amb el que comparar
@@ -72,6 +73,27 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
 
         return false;
     }
+
+    public void introducirCaracteres()
+    {}
+
+    public void introducirArchivo()
+    {}
+
+    public boolean nombreDisponible(String nombre)
+    {}
+
+    public boolean contenidoValido(ArrayList<Character> contenido)
+    {}
+
+    public boolean formatoValido()
+    {}
+
+    public void vincularTeclado()
+    {}
+
+    public void desvincularTeclado()
+    {}
 
     // ho comento però no ho elimino, serà inetressant fer metode toString
     //@Override
