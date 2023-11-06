@@ -21,6 +21,15 @@ public class ConjuntoAlfabetos
         alfabetos.put(nombre, alfabeto);
     }
 
+    public boolean agregarAlfabetoSiNoExiste(String nombre, Alfabeto alfabeto) {
+        if (!alfabetos.containsKey(nombre)) {
+            alfabetos.put(nombre, alfabeto);
+            return true;
+        }
+        return false;
+    }
+
+
     // ---------- GETTERS ----------
     /**
      * Retorna el conjunto de alfabetos

@@ -22,7 +22,7 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
     public Alfabeto()
     {
         nombre = new String();
-        contenido = null;
+        contenido = new ArrayList<>();
     }
 
     public Alfabeto(String nom, ArrayList<Character> contenido)
@@ -88,13 +88,13 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
     {}
 
     public boolean nombreDisponible(String nombre)
-    {}
+    {return false;}
 
     public boolean contenidoValido(ArrayList<Character> contenido)
-    {}
+    {return false;}
 
     public boolean formatoValido()
-    {}
+    {return false;}
 
     public void vincularTeclado()
     {}

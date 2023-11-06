@@ -2,65 +2,127 @@ package drivers;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
-import java.util.ArrayList;
+import main.domain.classes.functions.InOut;
+
+import java.io.FileNotFoundException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 
+import java.util.ArrayList;
+
 public class DriverDominio {
-    public static void main(String[] args) {
-        DriverDominio driverDominio = new DriverDominio();
-        System.out.println("Driver Principal Dominio");
-        System.out.println("");
-        Scanner scanner = new Scanner(System.in);
-        ConjuntoAlfabetos conjuntoAlfabetos = new ConjuntoAlfabetos();
+    private InOut inOut;
+    private ConjuntoAlfabetos conjuntoAlfabetos;
 
-        while (true) {
-            System.out.println("Seleccione una opción:");
-            System.out.println("1. Crear un nuevo alfabeto");
-            System.out.println("2. Ver alfabetos existentes");
-            System.out.println("3. Salir");
-            int opcion = scanner.nextInt();
-            scanner.nextLine();  // Consumir el salto de línea después de nextInt()
+    public DriverDominio() {
+        inOut = new InOut();
+        conjuntoAlfabetos = new ConjuntoAlfabetos();
+    }
 
-            switch (opcion) {
-                case 1:
-                    System.out.print("Introduce el nombre del alfabeto: ");
-                    String nombreAlfabeto = scanner.nextLine();
+    public void agregarAlfabetoPorTerminal() {
+        System.out.println("Introduce el nombre del alfabeto:");
+        String nombre = inOut.leerString();
+        System.out.println("Introduce los caracteres del alfabeto separados por espacio (ejemplo: a b c ...):");
+        ArrayList<Character> caracteres = inOut.leerCaracteresDeTerminal();
+        Alfabeto alfabeto = new Alfabeto(nombre, caracteres);
+        conjuntoAlfabetos.agregarAlfabeto(nombre, alfabeto);
+    }
 
-                    System.out.print("Introduce los caracteres del alfabeto separados por espacios: ");
-                    String entrada = scanner.nextLine();
-
-                    String[] caracteres = entrada.split(" ");
-                    ArrayList<Character> contenido = new ArrayList<>();
-
-                    for (String caracter : caracteres) {
-                        contenido.add(caracter.charAt(0));
-                    }
-
-                    Alfabeto alfabeto = new Alfabeto(nombreAlfabeto, contenido);
-                    conjuntoAlfabetos.agregarAlfabeto(nombreAlfabeto, alfabeto);
-                    System.out.println("Alfabeto creado: " + nombreAlfabeto);
-                    break;
-
-                case 2:
-                    HashMap<String, Alfabeto> alfabetos = conjuntoAlfabetos.getAlfabetos();
-                    System.out.println("Alfabetos existentes:");
-                    for (HashMap.Entry<String, Alfabeto> entry : alfabetos.entrySet()) {
-                        String nombre = entry.getKey();
-                        Alfabeto alf = entry.getValue();
-                        System.out.println(nombre + ": " + alf.getContenido());
-                    }
-                    break;
-
-                case 3:
-                    System.out.println("Saliendo del programa.");
-                    System.exit(0);
-                    break;
-
-                default:
-                    System.out.println("Opción no válida. Inténtalo de nuevo.");
-            }
+    public void agregarAlfabetoPorArchivo() {
+        System.out.println("Introduce el nombre del archivo:");
+        String nombreArchivo = inOut.leerString();
+        try {
+            ArrayList<Character> caracteres = inOut.leerCaracteresDeArchivo(nombreArchivo);
+            System.out.println("Introduce el nombre del alfabeto:");
+            String nombre = inOut.leerString();
+            Alfabeto alfabeto = new Alfabeto(nombre, caracteres);
+            conjuntoAlfabetos.agregarAlfabeto(nombre, alfabeto);
+            System.out.println("Alfabeto agregado con éxito desde el archivo: " + nombreArchivo);
+        } catch (FileNotFoundException e) {
+            System.out.println("El archivo no se encontró: " + nombreArchivo);
         }
+    }
+
+    public void imprimirAlfabetos() {
+        // Obtén todos los alfabetos en el conjunto
+        HashMap<String, Alfabeto> alfabetos = conjuntoAlfabetos.getAlfabetos();
+
+        // Verifica si hay alfabetos en el conjunto
+        if (alfabetos.isEmpty()) {
+            System.out.println("No hay alfabetos para mostrar.");
+            return;
+        }
+
+        // Itera sobre el conjunto de alfabetos e imprime la información de cada uno
+        for (HashMap.Entry<String, Alfabeto> entry : alfabetos.entrySet()) {
+            // Obtiene el nombre y el alfabeto del conjunto
+            String nombre = entry.getKey();
+            Alfabeto alfabeto = entry.getValue();
+            ArrayList<Character> contenido = alfabeto.getContenido();
+
+            // Imprime el nombre y el contenido del alfabeto
+            System.out.println("Nombre del alfabeto: " + nombre);
+            System.out.print("Contenido del alfabeto: ");
+
+            // Imprime el contenido del alfabeto, si no es nulo y tiene caracteres
+            if (contenido != null && !contenido.isEmpty()) {
+                for (char c : contenido) {
+                    System.out.print(c + " ");
+                }
+            } else {
+                System.out.print("El alfabeto está vacío o no se ha inicializado.");
+            }
+            System.out.println();
+        }
+    }
+
+
+
+    public static void main(String[] args) {
+        DriverDominio driver = new DriverDominio();
+        muestraMetodos();
+        // System.out.println("Selecciona el método para agregar el alfabeto (1 - Terminal, 2 - Archivo):");
+        String metodo = driver.inOut.leerString();
+        while (!metodo.equals("0") && !metodo.equals("Salir")) {
+            switch (metodo) {
+                case "1":
+                case "AlfabetoPorTerminal": {
+                    driver.agregarAlfabetoPorTerminal();
+                    break;
+                }
+                case "2":
+                case "AlfabetoPorArchivo": {
+                    driver.agregarAlfabetoPorArchivo();
+                    break;
+                }
+                case "3":
+                case "ImprimirAlfabetos": {
+                    driver.imprimirAlfabetos();
+                    break;
+                }
+                default: {
+                    System.out.println("Método no reconocido");
+                    break;
+                }
+            }
+            driver.volverMenu();
+            muestraMetodos();
+            metodo = driver.inOut.leerString();
+            // MIRAR DE FER SERVIR SCANNER I NEXT LINE
+        }
+        driver.inOut.cerrarScanner();
+    }
+
+    private static void muestraMetodos() {
+        System.out.println("(1|AlfabetoPorTerminal) - Añadir Alfabeto");
+        System.out.println("(2|AlfabetoPorArchivo) - Añadir Alfabeto");
+        System.out.println("(3|ImprimirAlfabetos) - Imprimir Alfabetos");
+        System.out.println("");
+        System.out.println("(0|Salir) - Cerrar Driver");
+    }
+
+    private void volverMenu() {
+        System.out.println("Pulsa ENTER para volver al menú principal");
+        inOut.leerString();
     }
 }
