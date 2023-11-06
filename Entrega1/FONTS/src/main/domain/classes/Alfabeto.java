@@ -14,9 +14,8 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
     /** Guarda el nombre introducido por el usuario */
     private String nombre;
 
-    /**
-     * Contenido del afabeto */
-    private String contenido;
+    /** Contenido del afabeto */
+    private ArrayList<Character> contenido;
 
     // ---------- CONSTRUCTORES ----------
     public Alfabeto()
@@ -25,7 +24,7 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
         contenido = null;
     }
 
-    public Alfabeto(String contenido) { this.setContenido(contenido); }
+    public Alfabeto(ArrayList<Character> contenido) { this.setContenido(contenido); }
 
     // ---------- GETTERS ----------
 
@@ -39,7 +38,7 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
      * Retorna el contenido del alfabeto
      * @return String : Contenido del alfabeto usado por las funciones
      */
-    public String getContenido()
+    public ArrayList<Character> getContenido()
     {
         return contenido;
     }
@@ -50,7 +49,7 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
      *  @param Contenido : El nuevo contenido del alfabeto
      *
      */
-    public void setContenido(String Contenido)
+    public void setContenido(ArrayList<Character> Contenido)
     {
         contenido = Contenido;
     }
