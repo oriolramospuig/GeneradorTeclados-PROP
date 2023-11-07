@@ -36,4 +36,9 @@ public class ConjuntoTextos {
 
 
     // ---------- AUXILIARES -----------
+
+    public boolean existeAsociaciondeTextos(String nombre){
+
+        return textos.containsKey(nombre);
+    }
 }
