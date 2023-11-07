@@ -8,7 +8,21 @@ public class ConjuntoTextos {
     private HashMap<String, AsociacionTextos> textos;
 
     // ---------- CONSTRUCTORES ----------
+    public ConjuntoTextos() {
+        textos = new HashMap<>();
+    }
 
+    public void agregarTexto(String nombre, Texto texto) {
+        textos.put(nombre, texto);
+    }
+
+    public boolean agregarTextoSiNoExiste(String nombre, Texto texto) {
+        if (!textos.containsKey(nombre)) {
+            textos.put(nombre, texto);
+            return true;
+        }
+        return false;
+    }
 
     // ---------- GETTERS ----------
 
