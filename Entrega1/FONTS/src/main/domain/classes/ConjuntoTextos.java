@@ -40,7 +40,9 @@ public class ConjuntoTextos {
     }
 
     // ---------- SETTERS ----------
-
+    public void setAsociaciondeTextos(HashMap<String, AsociacionTextos> asociaciondeTextos) {
+        this.textos = asociaciondeTextos;
+    }
 
     // ---------- AUXILIARES -----------
 
