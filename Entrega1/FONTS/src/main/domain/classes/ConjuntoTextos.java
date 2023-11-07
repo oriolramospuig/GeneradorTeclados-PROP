@@ -12,11 +12,11 @@ public class ConjuntoTextos {
         textos = new HashMap<>();
     }
 
-    public void agregarTexto(String nombre, Texto texto) {
+    public void agregarAsociacionTexto(String nombre, AsociacionTextos texto) {
         textos.put(nombre, texto);
     }
 
-    public boolean agregarTextoSiNoExiste(String nombre, Texto texto) {
+    public boolean agregarAsociacionTextoSiNoExiste(String nombre, AsociacionTextos texto) {
         if (!textos.containsKey(nombre)) {
             textos.put(nombre, texto);
             return true;
@@ -31,14 +31,16 @@ public class ConjuntoTextos {
         return textos.get(nombre);
     }
 
-    // ---------- SETTERS ----------
-    public HashMap<String, Alfabeto> getAsociaciondeTextos() {
+    public HashMap<String, AsociacionTextos> getAsociaciondeTextos() {
         return textos;
     }
 
     public AsociacionTextos obtenerAsociaciondeTextos(String nombre) {
         return textos.get(nombre);
     }
+
+    // ---------- SETTERS ----------
+
 
     // ---------- AUXILIARES -----------
 
