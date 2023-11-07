@@ -37,7 +37,7 @@ public class InOut {
         return caracteres;
     }
 
-    public ArrayList<Character> leerCaracteresDeArchivo(String nombreArchivo) throws FileNotFoundException {
+    /*public ArrayList<Character> leerCaracteresDeArchivo(String nombreArchivo) throws FileNotFoundException {
         File file = new File(nombreArchivo);
         Scanner fileScanner = new Scanner(file);
         ArrayList<Character> caracteres = new ArrayList<>();
@@ -51,6 +51,58 @@ public class InOut {
 
         fileScanner.close();
         return caracteres;
+    }
+     */
+
+    public ArrayList<Character> leerCaracteresDeArchivo(String nombreArchivo) throws FileNotFoundException {
+        File file = new File(nombreArchivo);
+        Scanner fileScanner = new Scanner(file);
+        ArrayList<Character> caracteres = new ArrayList<>();
+        boolean esPrimeraLinea = true;
+
+        while (fileScanner.hasNextLine()) {
+            String line = fileScanner.nextLine();
+            // Verificar la validez de la primera línea que se espera contenga la definición de caracteres.
+            if (esPrimeraLinea) {
+                if (!contenidoValido(line)) {
+                    fileScanner.close();
+                    throw new IllegalArgumentException("El contenido del archivo no es válido.");
+                }
+                esPrimeraLinea = false;
+            }
+
+            for (char c : line.toCharArray()) {
+                if(c != ' ') { // Asume que los caracteres están separados por espacios, ignora los espacios
+                    caracteres.add(c);
+                }
+            }
+        }
+
+        fileScanner.close();
+        return caracteres;
+    }
+
+
+    /**
+     * Valida si la cadena de entrada representa una secuencia de caracteres válida,
+     * es decir, caracteres individuales separados por espacios.
+     * @param entrada La cadena de entrada a validar.
+     * @return true si la entrada es válida, false de lo contrario.
+     */
+    public boolean contenidoValido(String entrada) {
+        if (entrada == null || entrada.isEmpty()) {
+            return false; // Entrada vacía no es válida.
+        }
+
+        String[] partes = entrada.split(" ");
+        for (String parte : partes) {
+            // Verifica que cada parte sea un solo carácter.
+            if (parte.length() != 1) {
+                return false;
+            }
+        }
+
+        return true; // La entrada es válida si todos los segmentos contienen solo un carácter.
     }
 
     public void cerrarScanner() {

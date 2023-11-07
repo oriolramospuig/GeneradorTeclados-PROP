@@ -19,13 +19,38 @@ public class DriverDominio {
         conjuntoAlfabetos = new ConjuntoAlfabetos();
     }
 
-    public void agregarAlfabetoPorTerminal() {
+    /*public void agregarAlfabetoPorTerminal() {
         System.out.println("Introduce el nombre del alfabeto:");
         String nombre = inOut.leerString();
         System.out.println("Introduce los caracteres del alfabeto separados por espacio (ejemplo: a b c ...):");
         ArrayList<Character> caracteres = inOut.leerCaracteresDeTerminal();
         Alfabeto alfabeto = new Alfabeto(nombre, caracteres);
         conjuntoAlfabetos.agregarAlfabeto(nombre, alfabeto);
+    }
+     */
+
+    public void agregarAlfabetoPorTerminal() {
+        System.out.println("Introduce el nombre del alfabeto:");
+        String nombre = inOut.leerString();
+        System.out.println("Introduce los caracteres del alfabeto separados por espacio (ejemplo: a b c ...):");
+        String entradaCaracteres = inOut.leerString();
+
+        // Verifica que la entrada de caracteres es válida.
+        if (inOut.contenidoValido(entradaCaracteres)) {
+            // Convierte la entrada en un ArrayList de caracteres.
+            ArrayList<Character> caracteres = new ArrayList<>();
+            for (char c : entradaCaracteres.toCharArray()) {
+                // Solo agrega caracteres no espacios.
+                if(c != ' ') {
+                    caracteres.add(c);
+                }
+            }
+            // Agrega el alfabeto al conjunto si es válido.
+            Alfabeto alfabeto = new Alfabeto(nombre, caracteres);
+            conjuntoAlfabetos.agregarAlfabeto(nombre, alfabeto);
+        } else {
+            System.out.println("El contenido introducido no es válido. Asegúrate de que sean caracteres separados por un espacio.");
+        }
     }
 
     public void agregarAlfabetoPorArchivo() {
@@ -40,8 +65,26 @@ public class DriverDominio {
             System.out.println("Alfabeto agregado con éxito desde el archivo: " + nombreArchivo);
         } catch (FileNotFoundException e) {
             System.out.println("El archivo no se encontró: " + nombreArchivo);
+        } catch (IllegalArgumentException e) {
+            System.out.println("El contenido del archivo no es válido: " + e.getMessage());
         }
     }
+
+    /*public void agregarAlfabetoPorArchivo() {
+        System.out.println("Introduce el nombre del archivo:");
+        String nombreArchivo = inOut.leerString();
+        try {
+            ArrayList<Character> caracteres = inOut.leerCaracteresDeArchivo(nombreArchivo);
+            System.out.println("Introduce el nombre del alfabeto:");
+            String nombre = inOut.leerString();
+            Alfabeto alfabeto = new Alfabeto(nombre, caracteres);
+            conjuntoAlfabetos.agregarAlfabeto(nombre, alfabeto);
+            System.out.println("Alfabeto agregado con éxito desde el archivo: " + nombreArchivo);
+        } catch (FileNotFoundException e) {
+            System.out.println("El archivo no se encontró: " + nombreArchivo);
+        }
+    }
+     */
 
     public void imprimirAlfabetos() {
         // Obtén todos los alfabetos en el conjunto
