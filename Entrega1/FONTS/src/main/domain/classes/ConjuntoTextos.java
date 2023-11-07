@@ -25,10 +25,10 @@ public class ConjuntoTextos {
     }
 
     // ---------- GETTERS ----------
-    public HashMap<String, AsociacionTextos> getTextos() { return textos}
+    public HashMap<String, AsociacionTextos> getTextos() { return textos;}
 
     public AsociacionTextos obtenerTextos(String nombre) {
-        return AsociacionTextos.get(nombre);
+        return textos.get(nombre);
     }
 
     // ---------- SETTERS ----------
@@ -36,7 +36,7 @@ public class ConjuntoTextos {
         return textos;
     }
 
-    public Alfabeto obtenerAsociaciondeTextos(String nombre) {
+    public AsociacionTextos obtenerAsociaciondeTextos(String nombre) {
         return textos.get(nombre);
     }
 
