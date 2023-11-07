@@ -9,7 +9,10 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import java.util.ArrayList;
-
+/**
+ * Este driver sirve para ...
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
+ */
 public class DriverDominio {
     private InOut inOut;
     private ConjuntoAlfabetos conjuntoAlfabetos;
