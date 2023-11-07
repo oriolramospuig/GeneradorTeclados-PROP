@@ -69,7 +69,7 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
     // ---------- AUXILIARES ----------
     /**
      * Override del metode equals() de la classe Object
-     * @param obj : Object amb el que comparar
+     * @param obj : Objeto con el que comparar
      * @return Boolean : Retorna true solo si el objeto es el mismo
      */
     @Override

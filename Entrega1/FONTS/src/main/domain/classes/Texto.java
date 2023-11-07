@@ -56,4 +56,69 @@ public class Texto {
     }
 
     // ---------- SETTERS ----------
+    /**
+     *  Modifica el contenido del texto (lista de palabras)
+     *  @param Contenido : El nuevo contenido del texto
+     *
+     */
+    public void setContenidoPalabras(ArrayList<String> Contenido)
+    {
+        contenidoPalabras = Contenido;
+    }
+
+    /**
+     *  Modifica el contenido del texto (lista de frecuencias)
+     *  @param Contenido : El nuevo contenido del texto
+     *
+     */
+    public void setContenidoFrecuencias(HashMap<String, Integer> Contenido)
+    {
+        contenidoFrecuencias = Contenido;
+    }
+
+    public void setNombre(String nom)
+    {
+        nombre = nom;
+    }
+
+    // ---------- AUXILIARES ----------
+    /**
+     * Override del metode equals() de la classe Object
+     * @param obj : Objeto con el que comparar
+     * @return Boolean : Retorna true solo si el objeto es el mismo
+     */
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (!(obj instanceof Alfabeto)) return false;
+        if (obj == this) return true;
+
+        return false;
+    }
+
+    // CREO QUE SON LAS DEL DRIVER
+    public void introducirCaracteres()
+    {}
+
+    // CREO QUE SON LAS DEL DRIVER
+    public void introducirArchivo()
+    {}
+
+    // ESTA MEJOR EN CONJ DE TEXTOS NO?
+    public boolean nombreDisponible(String nombre)
+    {return false;}
+
+    // ESTA CREO QUE MEJOR EN LA CLASE IN/OUT
+    public boolean contenidoPalabrasValido(ArrayList<String> contenidoPalabras)
+    {return false;}
+
+    // ESTA CREO QUE MEJOR EN LA CLASE IN/OUT
+    public boolean contenidoFrecuenciasValido(HashMap<String, Integer> contenidoFrecuencias)
+    {return false;}
+
+    public boolean formatoValido()
+    {return false;}
+
+    public void getAsociacion()
+    {}
 }
