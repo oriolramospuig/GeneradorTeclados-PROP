@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class Alfabeto // implements Comparable<Cela>, Serializable
 {
+    // ---------- ATRIBUTOS ----------
     /** Guarda el nombre introducido por el usuario */
     private String nombre;
 

@@ -9,6 +9,7 @@ import java.util.Map;
  */
 public class ConjuntoAlfabetos
 {
+    // ---------- ATRIBUTOS ----------
     /** Guarda el conjunto de alfabetos introducidos por el usuario */
     private HashMap<String, Alfabeto> alfabetos;
 

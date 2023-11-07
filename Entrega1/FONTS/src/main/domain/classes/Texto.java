@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Texto {
+    // ---------- ATRIBUTOS ----------
     /** Guarda el nombre introducido por el usuario */
     private String nombre;
 
