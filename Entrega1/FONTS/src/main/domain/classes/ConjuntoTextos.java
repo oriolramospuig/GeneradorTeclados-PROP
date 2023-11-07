@@ -12,11 +12,12 @@ public class ConjuntoTextos {
         textos = new HashMap<>();
     }
 
-    public void agregarTexto(String nombre, Texto texto) {
-        textos.put(nombre, texto);
+    public void agregarAsociacionTexto(String nombre, AsociacionTextos asociacionTextos) {
+
+        textos.put(nombre, asociacionTextos);
     }
 
-    public boolean agregarTextoSiNoExiste(String nombre, Texto texto) {
+    public boolean agregarAsociacionTextoSiNoExiste(String nombre, AsociacionTextos texto) {
         if (!textos.containsKey(nombre)) {
             textos.put(nombre, texto);
             return true;
@@ -25,10 +26,10 @@ public class ConjuntoTextos {
     }
 
     // ---------- GETTERS ----------
-    public HashMap<String, AsociacionTextos> getTextos() { return textos}
+    public HashMap<String, AsociacionTextos> getTextos() { return textos; }
 
     public AsociacionTextos obtenerTextos(String nombre) {
-        return AsociacionTextos.get(nombre);
+        return textos.get(nombre);
     }
 
     // ---------- SETTERS ----------
