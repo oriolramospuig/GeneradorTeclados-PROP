@@ -32,7 +32,13 @@ public class ConjuntoTextos {
     }
 
     // ---------- SETTERS ----------
+    public HashMap<String, Alfabeto> getAsociaciondeTextos() {
+        return textos;
+    }
 
+    public Alfabeto obtenerAsociaciondeTextos(String nombre) {
+        return textos.get(nombre);
+    }
 
     // ---------- AUXILIARES -----------
 
