@@ -38,6 +38,12 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
         tecladosVinculados = new ArrayList<>();
     }
 
+    public Alfabeto(String nombre) {
+        this.nombre = nombre;
+        this.letras = new ArrayList<>();
+        this.tecladosVinculados = new ArrayList<>();
+    }
+
 
     // ---------- GETTERS ----------
     /**

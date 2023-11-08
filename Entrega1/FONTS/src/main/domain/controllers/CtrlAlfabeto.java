@@ -12,7 +12,7 @@ public class CtrlAlfabeto {
 
     public Alfabeto getAlfabetoexistente(){
         Alfabetoexistente = null;
-        //hola
+        return Alfabetoexistente;
     }
 
     public void CrearAlfabeto(String nomAlfabeto){
