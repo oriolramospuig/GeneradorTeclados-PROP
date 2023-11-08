@@ -32,6 +32,8 @@ public class ConjuntoAlfabetos
         return null;
     }
 
+    public HashMap<String, Alfabeto> getAlfabetos () {return alfabetos;}
+
     /**
      * Retorna el conjunto de alfabetos
      * @return alfabetos : Conjunto de alfabetos guardados
