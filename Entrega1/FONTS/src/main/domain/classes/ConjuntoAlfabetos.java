@@ -15,7 +15,7 @@ public class ConjuntoAlfabetos
 
     // ---------- CONSTRUCTORES ----------
     public ConjuntoAlfabetos() {
-        alfabetos = new HashMap<(string, Alfabeto)>;
+        alfabetos = new HashMap<(String, Alfabeto)>;
     }
 
     public void agregarAlfabeto(String nombre, Alfabeto alfabeto) {
