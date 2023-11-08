@@ -18,7 +18,7 @@ public class ConjuntoTextos {
 
     // ---------- GETTERS ----------
     public Texto getTexto(String nomT) {
-        return null:
+        return null;
     }
 
     public HashMap<String, Texto> getTextos() {
