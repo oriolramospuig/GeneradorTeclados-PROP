@@ -4,6 +4,7 @@ import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
 import main.domain.classes.functions.InOut;
 import main.domain.classes.functions.QAP;
+import main.domain.classes.types.PairFrequency;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -108,8 +109,29 @@ public class DriverDominio {
         for(char c = 'a'; c <= 'l'; c++) { // Asumiendo un alfabeto de 'a' a 'l'
             teclas.add(c);
         }
+
+        List<PairFrequency> frecuenciasPares = new ArrayList<>();
+        frecuenciasPares.add(new PairFrequency("ab", 20)); // Frecuencia del par AB
+        frecuenciasPares.add(new PairFrequency("bc", 15)); // Frecuencia del par BC
+        frecuenciasPares.add(new PairFrequency("cd", 10)); // y así sucesivamente...
+        frecuenciasPares.add(new PairFrequency("de", 25));
+        frecuenciasPares.add(new PairFrequency("ef", 20));
+        frecuenciasPares.add(new PairFrequency("fg", 30));
+        frecuenciasPares.add(new PairFrequency("gh", 15));
+        frecuenciasPares.add(new PairFrequency("hi", 10));
+        frecuenciasPares.add(new PairFrequency("ia", 5));
+
+        System.out.println("Matriz de frecuencias del ejemplo: ");
+        System.out.println();
+        qap.generarMatrizDeFrecuencias(frecuenciasPares, teclas);
+        qap.imprimirMatrizFrecuencias();
+        System.out.println();
+
+        System.out.println("Asignación de las teclas: ");
+        System.out.println();
         qap.calcularAsignacionAleatoria(teclas);
         qap.imprimirTeclado();
+        System.out.println();
     }
 
 
