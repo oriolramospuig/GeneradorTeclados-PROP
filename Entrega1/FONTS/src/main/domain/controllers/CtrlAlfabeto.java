@@ -5,13 +5,14 @@ import main.domain.classes.Alfabeto;
 public class CtrlAlfabeto {
 
     private Alfabeto Alfabetoexistente;
-    
+
     public CtrlAlfabeto(){
         Alfabetoexistente = null;
     }
 
     public Alfabeto getAlfabetoexistente(){
         Alfabetoexistente = null;
+        //hola
     }
 
     public void CrearAlfabeto(String nomAlfabeto){
