@@ -1,7 +1,8 @@
 package main.domain.classes;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Classe que representa el conjunto de alfabetos
@@ -13,9 +14,10 @@ public class ConjuntoAlfabetos
     /** Guarda el conjunto de alfabetos introducidos por el usuario */
     private HashMap<String, Alfabeto> alfabetos;
 
+
     // ---------- CONSTRUCTORES ----------
     public ConjuntoAlfabetos() {
-        alfabetos = new HashMap<(String, Alfabeto)>;
+        alfabetos = new HashMap<(string, Alfabeto)>;
     }
 
     public void agregarAlfabeto(String nombre, Alfabeto alfabeto) {
@@ -36,37 +38,37 @@ public class ConjuntoAlfabetos
      * Retorna el conjunto de alfabetos
      * @return alfabetos : Conjunto de alfabetos guardados
      */
-    public HashMap<String, Alfabeto> getAlfabetos() {
-        return alfabetos;
+    public ArrayList<String> getNombresAlfabetos() {
+        return null;
     }
 
-    /**
-     * Retorna el alfabeto con clave primaria introducida
-     * @param nombre clave primaria con la que buscar un alfabeto
-     * @return Nombre, Alfabeto : Alfabeto con el nombre introducido
-     */
-    public Alfabeto obtenerAlfabeto(String nombre) {
-        return alfabetos.get(nombre);
-    }
 
     // ---------- SETTERS ----------
-    /**
-     *  Modifica el conjunto de alfabetos
-     *  @param alfabetos : El nuevo conjunto de alfabetos
-     *
-     */
-    public void setAlfabetos(HashMap<String, Alfabeto> alfabetos) {
-        this.alfabetos = alfabetos;
+    public void agregarAlfabeto(String nomA, Alfabeto alfabeto) {
+        /**
+         * public boolean agregarAlfabetoSiNoExiste(String nombre, Alfabeto alfabeto) {
+         *         if (!alfabetos.containsKey(nombre)) {
+         *             alfabetos.put(nombre, alfabeto);
+         *             return true;
+         *         }
+         *         return false;
+         */
     }
+
 
     // ---------- AUXILIARES ----------
     /**
      * Retorna si existe el alfabeto con nombre dado
      * @return boolean : True si existe, false si no existe
      */
-    public boolean existeAlfabeto(String nombre){
-
-        return alfabetos.containsKey(nombre);
+    public boolean existeAlfabeto(String nomA, Alfabeto alfabeto){
+        /** return alfabetos.containsKey(nombre); */
+        return true;
     }
 
+    public void borrarAlfabeto(String nomA) {}
+
+    public boolean disponibilidadNombre(String nomA) {
+        return true;
+    }
 }
