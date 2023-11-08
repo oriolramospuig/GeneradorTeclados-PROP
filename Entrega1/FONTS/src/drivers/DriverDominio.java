@@ -3,9 +3,11 @@ package drivers;
 import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
 import main.domain.classes.functions.InOut;
+import main.domain.classes.functions.QAP;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 import java.util.ArrayList;
@@ -98,6 +100,18 @@ public class DriverDominio {
         }
     }
 
+    void imprimirPruebaQAP() {
+        System.out.println("Se generará un teclado aleatorio de 3*4 con las letras de la A a la L: ");
+        System.out.println();
+        QAP qap = new QAP(3,4);
+        List<Character> teclas = new ArrayList<>();
+        for(char c = 'a'; c <= 'l'; c++) { // Asumiendo un alfabeto de 'a' a 'l'
+            teclas.add(c);
+        }
+        qap.calcularAsignacionAleatoria(teclas);
+        qap.imprimirTeclado();
+    }
+
 
 
     public static void main(String[] args) {
@@ -137,6 +151,21 @@ public class DriverDominio {
                     // driver.imprimirTextos();
                     break;
                 }
+                case "7":
+                case "CrearAsociacionTextos": {
+                    // driver.crearAsociacionTextos();
+                    break;
+                }
+                case "8":
+                case "ImprimirAsociaciones": {
+                    // driver.imprimirAsociaciones();
+                    break;
+                }
+                case "9":
+                case "PruebaQAP": {
+                    driver.imprimirPruebaQAP();
+                    break;
+                }
                 default: {
                     System.out.println("Método no reconocido");
                     break;
@@ -157,6 +186,9 @@ public class DriverDominio {
         System.out.println("(4|TextoPorTerminal) - Añadir Texto");
         System.out.println("(5|TextoPorArchivo) - Añadir Texto");
         System.out.println("(6|ImprimirTextos) - Imprimir Textos");
+        System.out.println("(7|CrearAsociacionTextos) - Crear Asociación Textos");
+        System.out.println("(8|ImprimirAsociaciones) - Imprimir Asociaciones");
+        System.out.println("(9|PruebaQAP) - Prueba QAP");
         System.out.println();
         System.out.println("(0|Salir) - Cerrar Driver");
     }

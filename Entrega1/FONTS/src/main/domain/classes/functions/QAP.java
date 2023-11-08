@@ -32,4 +32,13 @@ public class QAP {
             }
         }
     }
+
+    public void imprimirTeclado() {
+        for(int i = 0; i < filas; i++) {
+            for(int j = 0; j < columnas; j++) {
+                System.out.print(teclado[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 }
