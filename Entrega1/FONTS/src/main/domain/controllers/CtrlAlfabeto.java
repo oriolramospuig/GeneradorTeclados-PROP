@@ -5,9 +5,7 @@ import main.domain.classes.Alfabeto;
 public class CtrlAlfabeto {
 
     private Alfabeto Alfabetoexistente;
-
-
-
+    
     public CtrlAlfabeto(){
         Alfabetoexistente = null;
     }
@@ -16,10 +14,9 @@ public class CtrlAlfabeto {
         Alfabetoexistente = null;
     }
 
-
-    public void CrearAlfabeto(){
+    public void CrearAlfabeto(String nomAlfabeto){
         if(Alfabetoexistente == null){
-            Alfabetoexistente = new Alfabeto();
+            Alfabetoexistente = new Alfabeto(nomAlfabeto);
         }
 
     }
