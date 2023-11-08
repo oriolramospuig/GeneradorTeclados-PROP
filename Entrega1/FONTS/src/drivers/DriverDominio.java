@@ -121,6 +121,21 @@ public class DriverDominio {
                     driver.imprimirAlfabetos();
                     break;
                 }
+                case "4":
+                case "TextoPorTerminal": {
+                    //driver.agregarTextoPorTerminal();
+                    break;
+                }
+                case "5":
+                case "TextoPorArchivo": {
+                    // driver.agregarTextoPorArchivo();
+                    break;
+                }
+                case "6":
+                case "ImprimirTextos": {
+                    // driver.imprimirTextos();
+                    break;
+                }
                 default: {
                     System.out.println("Método no reconocido");
                     break;
@@ -138,6 +153,9 @@ public class DriverDominio {
         System.out.println("(1|AlfabetoPorTerminal) - Añadir Alfabeto");
         System.out.println("(2|AlfabetoPorArchivo) - Añadir Alfabeto");
         System.out.println("(3|ImprimirAlfabetos) - Imprimir Alfabetos");
+        System.out.println("(4|TextoPorTerminal) - Añadir Texto");
+        System.out.println("(5|TextoPorArchivo) - Añadir Texto");
+        System.out.println("(6|ImprimirTextos) - Imprimir Textos");
         System.out.println();
         System.out.println("(0|Salir) - Cerrar Driver");
     }
