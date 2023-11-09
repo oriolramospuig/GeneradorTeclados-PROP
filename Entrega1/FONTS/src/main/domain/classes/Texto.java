@@ -2,17 +2,22 @@ package main.domain.classes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.SplittableRandom;
 
-public class Texto {
-    // ---------- ATRIBUTOS ----------
+/**
+ * Classe que representa un texto
+ * @author
+ */
+public class Texto
+{
+    // ---------- ATRIBUTOS COMUNES ----------
     /** Guarda el nombre introducido por el usuario */
     private String nombre;
 
-    /** Lista de palabras */
-    private ArrayList<String> contenidoPalabras;
+    private HashMap<String, int> frecuenciaLetras; //String: parejaLetras, int: frecuencia
 
-    /** Lista de palabra con frecuencias */
-    private HashMap<String, Integer> contenidoFrecuencias;
+    private ArrayList<pair<String, String>> asociacionVinculo;
+
 
     // ---------- CONSTRUCTORES ----------
     public Texto() {
@@ -122,4 +127,20 @@ public class Texto {
 
     public void getAsociacion()
     {}
+}
+
+public class Frecuencias extends Texto
+{
+    // ---------- ATRIBUTOS ----------
+    /** ... */
+    private String texto;
+
+}
+
+public class Palabras extends Texto
+{
+    // ---------- ATRIBUTOS ----------
+    /** ... */
+    private String texto;
+
 }
