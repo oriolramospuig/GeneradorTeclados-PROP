@@ -2,9 +2,7 @@ package main.domain.classes.functions;
 
 import main.domain.classes.types.PairFrequency;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class QAP {
     private char[][] teclado; // La matriz del teclado
@@ -72,6 +70,77 @@ public class QAP {
             }
         }
     }
+
+    public void calcularAsignacionGreedy(List<PairFrequency> frecuenciasPares, List<Character> teclas) {
+        // Llama a generarMatrizDeFrecuencias antes de generar la solución codiciosa
+        generarMatrizDeFrecuencias(frecuenciasPares, teclas);
+
+        // Genera una lista de índices basada en la frecuencia total de cada tecla
+        List<Integer> indicesPorFrecuencia = new ArrayList<>();
+        for (int i = 0; i < matrizFrecuencias.length; i++) {
+            int frecuenciaTotal = 0;
+            for (int j = 0; j < matrizFrecuencias[i].length; j++) {
+                frecuenciaTotal += matrizFrecuencias[i][j];
+            }
+            indicesPorFrecuencia.add(frecuenciaTotal);
+        }
+
+        // Ordena los caracteres basándose en su frecuencia total
+        teclas.sort(Comparator.comparingInt(letra -> -indicesPorFrecuencia.get(letraAIndice.get(letra))));
+
+        // Asigna las teclas más frecuentes al centro del teclado
+        int centroFila = filas / 2;
+        int centroColumna = columnas / 2;
+        int indiceTecla = 0;
+
+        // Determina el punto de partida para la asignación, cerca del centro
+        int inicioFila = centroFila - filas / 2;
+        int inicioColumna = centroColumna - columnas / 2;
+
+        for (int i = inicioFila; i < inicioFila + filas; i++) {
+            for (int j = inicioColumna; j < inicioColumna + columnas; j++) {
+                // Verifica si el índice está dentro de los límites del array
+                if (i >= 0 && i < filas && j >= 0 && j < columnas) {
+                    // Asigna la tecla a la posición actual del teclado
+                    teclado[i][j] = teclas.get(indiceTecla);
+                    indiceTecla++;
+
+                    // Verifica si ya se han asignado todas las teclas
+                    if (indiceTecla >= teclas.size()) {
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    public int calcularPuntuacionTeclado() {
+        int puntuacion = 0;
+
+        // Itera sobre todos los pares de teclas en el teclado
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                for (int k = 0; k < filas; k++) {
+                    for (int l = 0; l < columnas; l++) {
+                        // Calcula la distancia Manhattan entre las teclas (i, j) y (k, l)
+                        int distancia = calcularDistanciaManhattan(i, j, k, l);
+                        // Encuentra la frecuencia de los caracteres en estas teclas
+                        int frecuencia = matrizFrecuencias[letraAIndice.get(teclado[i][j])][letraAIndice.get(teclado[k][l])];
+                        // Actualiza la puntuación
+                        puntuacion += distancia * frecuencia;
+                    }
+                }
+            }
+        }
+
+        return puntuacion;
+    }
+
+    private int calcularDistanciaManhattan(int fila1, int columna1, int fila2, int columna2) {
+        return Math.abs(fila1 - fila2) + Math.abs(columna1 - columna2);
+    }
+
+
 
     public void imprimirTeclado() {
         for(int i = 0; i < filas; i++) {

@@ -127,10 +127,22 @@ public class DriverDominio {
         qap.imprimirMatrizFrecuencias();
         System.out.println();
 
-        System.out.println("Asignación de las teclas: ");
+        System.out.println("Asignación de las teclas aleatoria: ");
         System.out.println();
         qap.calcularAsignacionAleatoria(teclas);
         qap.imprimirTeclado();
+        System.out.println();
+        int puntuacion = qap.calcularPuntuacionTeclado();
+        System.out.println("La puntuación inicial es: " + puntuacion);
+        System.out.println();
+
+        System.out.println("Asignación de las teclas greedy: ");
+        System.out.println();
+        qap.calcularAsignacionGreedy(frecuenciasPares, teclas);
+        qap.imprimirTeclado();
+        System.out.println();
+        int puntuacionGreedy = qap.calcularPuntuacionTeclado();
+        System.out.println("La puntuación es: " + puntuacionGreedy);
         System.out.println();
     }
 
