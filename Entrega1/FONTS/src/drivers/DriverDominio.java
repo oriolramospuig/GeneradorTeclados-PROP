@@ -111,15 +111,15 @@ public class DriverDominio {
         }
 
         List<PairFrequency> frecuenciasPares = new ArrayList<>();
-        frecuenciasPares.add(new PairFrequency("ab", 20)); // Frecuencia del par AB
-        frecuenciasPares.add(new PairFrequency("bc", 15)); // Frecuencia del par BC
-        frecuenciasPares.add(new PairFrequency("cd", 10)); // y así sucesivamente...
-        frecuenciasPares.add(new PairFrequency("de", 25));
-        frecuenciasPares.add(new PairFrequency("ef", 20));
-        frecuenciasPares.add(new PairFrequency("fg", 30));
-        frecuenciasPares.add(new PairFrequency("gh", 15));
-        frecuenciasPares.add(new PairFrequency("hi", 10));
-        frecuenciasPares.add(new PairFrequency("ia", 5));
+        frecuenciasPares.add(new PairFrequency("ab", 250)); // Frecuencia del par AB
+        frecuenciasPares.add(new PairFrequency("bc", 200)); // Frecuencia del par BC
+        frecuenciasPares.add(new PairFrequency("cd", 150)); // y así sucesivamente...
+        frecuenciasPares.add(new PairFrequency("de", 125));
+        frecuenciasPares.add(new PairFrequency("ef", 120));
+        frecuenciasPares.add(new PairFrequency("fg", 80));
+        frecuenciasPares.add(new PairFrequency("gh", 55));
+        frecuenciasPares.add(new PairFrequency("hi", 60));
+        frecuenciasPares.add(new PairFrequency("ia", 45));
 
         System.out.println("Matriz de frecuencias del ejemplo: ");
         System.out.println();
@@ -127,10 +127,22 @@ public class DriverDominio {
         qap.imprimirMatrizFrecuencias();
         System.out.println();
 
-        System.out.println("Asignación de las teclas: ");
+        System.out.println("Asignación de las teclas aleatoria: ");
         System.out.println();
         qap.calcularAsignacionAleatoria(teclas);
         qap.imprimirTeclado();
+        System.out.println();
+        int puntuacion = qap.calcularPuntuacionTeclado();
+        System.out.println("La puntuación inicial es: " + puntuacion);
+        System.out.println();
+
+        System.out.println("Asignación de las teclas greedy: ");
+        System.out.println();
+        qap.calcularAsignacionGreedy(frecuenciasPares, teclas);
+        qap.imprimirTeclado();
+        System.out.println();
+        int puntuacionGreedy = qap.calcularPuntuacionTeclado();
+        System.out.println("La puntuación es: " + puntuacionGreedy);
         System.out.println();
     }
 
