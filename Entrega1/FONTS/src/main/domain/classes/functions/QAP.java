@@ -12,6 +12,7 @@ public class QAP {
     /**Esto simula las frecuencias que nos entran, nose muy bien que estructura debería ser*/
     private HashMap<Character, Integer> letraAIndice;
     private int[][] matrizFrecuencias;
+    private int[][] matrizDistancias;
 
 
     public QAP(int filas, int columnas) {
@@ -20,6 +21,8 @@ public class QAP {
         teclado = new char[filas][columnas];
         matrizFrecuencias = new int[filas * columnas][filas * columnas];
         letraAIndice = new HashMap<>();
+        this.matrizDistancias = new int[filas * columnas][filas * columnas];
+        generarMatrizDistancias();
     }
 
     // ASSIGNACIÓN ALEATORIA DE M TECLAS A M POSICIONES; DE MOMENTO NECESITAMOS QUE HAYA N*N TELAS (LLENARLO ENTERO)
@@ -114,20 +117,22 @@ public class QAP {
         }
     }
 
+    /**Per millor la eficiencia haurem de mirar de iterar només sobre les frequencies != 0*/
     public int calcularPuntuacionTeclado() {
         int puntuacion = 0;
 
         // Itera sobre todos los pares de teclas en el teclado
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
+                //int indice1 = letraAIndice.get(teclado[i][j]);
                 for (int k = 0; k < filas; k++) {
                     for (int l = 0; l < columnas; l++) {
                         // Calcula la distancia Manhattan entre las teclas (i, j) y (k, l)
-                        int distancia = calcularDistanciaManhattan(i, j, k, l);
-                        // Encuentra la frecuencia de los caracteres en estas teclas
+                        int distancia = Manhattan.calcularDistancia(i, j, k, l);
                         int frecuencia = matrizFrecuencias[letraAIndice.get(teclado[i][j])][letraAIndice.get(teclado[k][l])];
-                        // Actualiza la puntuación
                         puntuacion += distancia * frecuencia;
+                        //int indice2 = letraAIndice.get(teclado[k][l]);
+                        //puntuacion += matrizDistancias[indice1][indice2] * matrizFrecuencias[indice1][indice2];
                     }
                 }
             }
@@ -136,10 +141,19 @@ public class QAP {
         return puntuacion;
     }
 
-    private int calcularDistanciaManhattan(int fila1, int columna1, int fila2, int columna2) {
-        return Math.abs(fila1 - fila2) + Math.abs(columna1 - columna2);
+    private void generarMatrizDistancias() {
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                for (int k = 0; k < filas; k++) {
+                    for (int l = 0; l < columnas; l++) {
+                        int indice1 = i * columnas + j;
+                        int indice2 = k * columnas + l;
+                        matrizDistancias[indice1][indice2] = Manhattan.calcularDistancia(i, j, k, l);
+                    }
+                }
+            }
+        }
     }
-
 
 
     public void imprimirTeclado() {
