@@ -1,8 +1,6 @@
 package main.domain.classes;
 
-import java.io.*;
 import java.lang.String;
-import java.lang.Comparable;
 import java.util.ArrayList;
 
 
@@ -68,16 +66,14 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
 
 
     // ---------- SETTERS ----------
-
-
-
-    // ---------- AUXILIARES ----------
-
     public void sobreEscribirLetras(ArrayList<Character> nuevasLetras) {}
 
     public void agregarTecladoVinculado (String nomT) {}
 
+
+    // ---------- AUXILIARES ----------
     public void borrarTecladoVinculado(String nomT) {}
+
 
 
 

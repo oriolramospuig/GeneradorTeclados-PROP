@@ -3,14 +3,18 @@ package main.domain.classes;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ConjuntoTextos {
-
+/**
+ * Classe que representa el conjunto de textos
+ * @author
+ */
+public class ConjuntoTextos
+{
     // ---------- ATRIBUTOS ----------
     /** Guarda el conjunto de textos  introducidos por el usuario */
     private HashMap<String, Texto> textos;
 
 
-    // ---------- CONSTRUCTORES ----------
+    // ---------- CONSTRUCTORAS ----------
     public ConjuntoTextos() {
         textos = new HashMap<>();
     }
@@ -25,13 +29,13 @@ public class ConjuntoTextos {
         return textos;
     }
 
-    public ArrayList<String> getNombreTextos() {
+    public ArrayList<String> getNombresTextos() {
         return null;
     }
 
 
     // ---------- SETTERS ----------
-    public void agregarTexto(String nomA, Texto texto) {}
+    public void agregarTexto(String nomT, Texto texto) {}
 
 
     // ---------- AUXILIARES -----------

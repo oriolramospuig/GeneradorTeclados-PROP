@@ -1,44 +1,53 @@
 package main.domain.classes;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ConjuntoAsociaciones {
+/**
+ * Classe que representa el conjunto de asociaciones
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
+ */
+public class ConjuntoAsociaciones
+{
     // ---------- ATRIBUTOS ----------
     /** Guarda el conjunto de asociaciones de textos introducidos por el usuario */
     private HashMap<String, AsociacionTextos> asociaciones;
+
 
     // ---------- CONSTRUCTORES ----------
     public ConjuntoAsociaciones() {
         asociaciones = new HashMap<>();
     }
 
-    public void agregarAsociacionTexto(String nombre, AsociacionTextos asociacionTextos) {
-
-        asociaciones.put(nombre, asociacionTextos);
-    }
-
-    public boolean agregarAsociacionTextoSiNoExiste(String nombre, AsociacionTextos texto) {
-        if (!asociaciones.containsKey(nombre)) {
-            asociaciones.put(nombre, texto);
-            return true;
-        }
-        return false;
-    }
 
     // ---------- GETTERS ----------
-    public HashMap<String, AsociacionTextos> getTextos() { return asociaciones; }
+    public AsociacionTextos getAsociacionTextos(String nomAT) {
+        return null;
+    }
 
-    public AsociacionTextos obtenerTextos(String nombre) {
-        return asociaciones.get(nombre);
+    public HashMap<String, AsociacionTextos> getAsociacionesTextos() {
+        return asociaciones;
+    }
+
+    public ArrayList<String> getNombresAsociacionesTextos() {
+        return null;
     }
 
     // ---------- SETTERS ----------
+    public void agregarAsociacionTexto(String nomAT, AsociacionTextos asociacionTextos) {
+        //asociaciones.put(nomA, asociacionTextos);
+    }
 
 
     // ---------- AUXILIARES -----------
+    public boolean existeAsociaciondeTextos(String nomAT) {
+        //return asociaciones.containsKey(nomAT);
+        return true;
+    }
 
-    public boolean existeAsociaciondeTextos(String nombre){
+    public void borrarAsociacionTextos(String nomAT) {}
 
-        return asociaciones.containsKey(nombre);
+    public boolean disponibilidadNombre(String nomAT) {
+        return true;
     }
 }
