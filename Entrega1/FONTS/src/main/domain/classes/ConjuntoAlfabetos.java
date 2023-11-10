@@ -1,6 +1,5 @@
 package main.domain.classes;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,7 +14,7 @@ public class ConjuntoAlfabetos
     private HashMap<String, Alfabeto> alfabetos;
 
 
-    // ---------- CONSTRUCTORES ----------
+    // ---------- CONSTRUCTORAS ----------
     public ConjuntoAlfabetos() {
         alfabetos = new HashMap<>();
     }

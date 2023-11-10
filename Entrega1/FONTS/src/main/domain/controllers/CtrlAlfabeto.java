@@ -64,6 +64,8 @@ public class CtrlAlfabeto {
      */
     public ConjuntoAlfabetos getCjtAlfabetos(){
         return CjtAlfabetos;
+        Alfabetoexistente = null;
+        return Alfabetoexistente;
     }
 
     /**

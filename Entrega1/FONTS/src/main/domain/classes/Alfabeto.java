@@ -1,8 +1,6 @@
 package main.domain.classes;
 
-import java.io.*;
 import java.lang.String;
-import java.lang.Comparable;
 import java.util.ArrayList;
 
 
@@ -38,6 +36,12 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
         tecladosVinculados = new ArrayList<>();
     }
 
+    public Alfabeto(String nombre) {
+        this.nombre = nombre;
+        this.letras = new ArrayList<>();
+        this.tecladosVinculados = new ArrayList<>();
+    }
+
 
     // ---------- GETTERS ----------
     /**
@@ -62,16 +66,14 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
 
 
     // ---------- SETTERS ----------
-
-
-
-    // ---------- AUXILIARES ----------
-
     public void sobreEscribirLetras(ArrayList<Character> nuevasLetras) {}
 
     public void agregarTecladoVinculado (String nomT) {}
 
+
+    // ---------- AUXILIARES ----------
     public void borrarTecladoVinculado(String nomT) {}
+
 
 
 
