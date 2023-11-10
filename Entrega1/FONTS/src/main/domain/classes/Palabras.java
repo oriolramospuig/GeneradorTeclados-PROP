@@ -1,10 +1,8 @@
 package main.domain.classes;
 
-public class Palabras extends Texto {
+public class Palabras extends Texto
+{
     // ---------- ATRIBUTOS ----------
-    /**
-     * ...
-     */
     private String texto;
 
 
@@ -15,6 +13,9 @@ public class Palabras extends Texto {
     }
 
     // ---------- GETTERS ----------
+    public String getTexto() {
+        return texto;
+    }
 
 
     // ---------- SETTERS ----------

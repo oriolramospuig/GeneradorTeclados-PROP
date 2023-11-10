@@ -13,7 +13,6 @@ abstract class Texto
     /** Guarda el nombre introducido por el usuario */
     protected String nombre;
 
-    protected String texto;
     protected HashMap<String, Integer> frecuenciaLetras; //string: parejaLetras, int: frecuencia
 
     protected ArrayList<String> asociacionesVinculadas;
@@ -32,7 +31,9 @@ abstract class Texto
      * Retorna el nombre introducido por el usuario
      * @return String : Nombre introducido por el usuario
      */
-    public String getNombre() { return nombre; }
+    public String getNombre() {
+        return nombre;
+    }
 
     public HashMap<String, Integer> getFrecuenciaLetras()
     {
@@ -48,9 +49,7 @@ abstract class Texto
         return null;
     }
 
-    public String getTexto() {
-        return texto;
-    }
+    abstract String getTexto();
 
 
 
