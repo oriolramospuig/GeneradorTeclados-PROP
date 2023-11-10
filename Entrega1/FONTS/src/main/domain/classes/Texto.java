@@ -15,7 +15,7 @@ public class Texto
     /** Guarda el nombre introducido por el usuario */
     protected String nombre;
 
-    private HashMap<PairString<String, String>, Integer> frecuenciaLetras; //Pair: parejaLetras, int: frecuencia
+    private HashMap<String, Integer> frecuenciaLetras; //string: parejaLetras, int: frecuencia
 
     private ArrayList<String> asociacionesVinculadas;
 
@@ -41,7 +41,7 @@ public class Texto
      */
     public String getNombre() { return nombre; }
 
-    public HashMap<PairString<String, String>, Integer> getFrecuenciaLetras()
+    public HashMap<String, Integer> getFrecuenciaLetras()
     {
         return null;
     }
@@ -64,11 +64,8 @@ public class Texto
     */
     public void agregarAsociacionesVinculadas(String nomAT) {}
 
-    
+
     // ---------- AUXILIARES ----------
     public void borrarAsociacionesVinculadas(String nomAT) {}
-
-
-
 }
 

@@ -15,7 +15,7 @@ public class AsociacionTextos {
 
     private ArrayList<String> tecladosVinculados;
 
-    private HashMap<PairString<String,String>, Integer> frecuenciaLetras;
+    private HashMap<String, Integer> frecuenciaLetras;
 
 
     // ---------- CONSTRUCTORES ----------
@@ -26,7 +26,7 @@ public class AsociacionTextos {
         frecuenciaLetras = new HashMap<>();
     }
 
-    public AsociacionTextos(String nombre, HashMap<PairString<String,String>, Integer> frecuenciaLetras) {
+    public AsociacionTextos(String nombre, HashMap<String, Integer> frecuenciaLetras) {
         this.nombre = nombre;
         this.frecuenciaLetras = frecuenciaLetras;
         textosAsociaciados = new ArrayList<>();
