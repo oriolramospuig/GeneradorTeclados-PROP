@@ -96,18 +96,20 @@ public class CtrlAlfabeto {
      * también borra este objeto de ConjuntoAlfabetos
      */
     public void borrarAlfabeto(String nomA){ // borrar alfabeto sense nom primer
-        CjtAlfabetos.mostrarAlfabetos();
-        String nomA = CjtAlfabetos.borrarAlfabetoconcreto(); // crear funcio a cjt alfabetos
-        if (CjtAlfabetos.existeAlfabeto(nomA, alfabeto)){ // crec que nomes hem de passar nom
+        CjtAlfabetos.getNombresAlfabetos();
+        // no existe
+        // String nomAlf = CjtAlfabetos.borrarAlfabetoconcreto(); // crear funcio a cjt alfabetos
+        if (CjtAlfabetos.existeAlfabeto(nomA)){ // crec que nomes hem de passar nom
             CjtAlfabetos.getAlfabeto(nomA);
             ArrayList<String> tVinculado = Alfabetoexistente.getTecladosVinculados();
             if(tVinculado.size() > 0) {
                 // mostrar mensaje alerta
                 // if usuario continua
                 for (int i = 0; i < tVinculado.size(); ++i){
-                    CjtTeclados.invalidarteclado(tVinculado[i]);
+                    // no existeix encara
+                    // CjtTeclados.invalidarteclado(tVinculado[i]);
                 }
-                CjtAlfabetos.borrarAlfabeto(nomA, Alfabetoexistente);
+                CjtAlfabetos.borrarAlfabeto(nomA);
             }
         }
     }

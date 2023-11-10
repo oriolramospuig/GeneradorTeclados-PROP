@@ -62,9 +62,8 @@ public class ConjuntoAlfabetos
      * Retorna si existe el alfabeto con nombre dado
      * @return boolean : True si existe, false si no existe
      */
-    public boolean existeAlfabeto(String nomA, Alfabeto alfabeto){
-        /** return alfabetos.containsKey(nombre); */
-        return true;
+    public boolean existeAlfabeto(String nomA){
+        return alfabetos.containsKey(nomA);
     }
 
     public void borrarAlfabeto(String nomA) {}
