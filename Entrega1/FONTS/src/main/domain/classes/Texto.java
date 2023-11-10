@@ -67,5 +67,6 @@ abstract class Texto
     public void borrarAsociacionesVinculadas(String nomAT) {}
 
     abstract void tratarEntrada();
+
 }
 
