@@ -109,22 +109,44 @@ public class DriverDominio {
         for(char c = 'a'; c <= 'l'; c++) { // Asumiendo un alfabeto de 'a' a 'l'
             teclas.add(c);
         }
+        /**
+        QAP qap = new QAP(3,4);
+         List<Character> teclas = new ArrayList<>();
+         for(char c = 'a'; c <= 'i'; c++) { // Asumiendo un alfabeto de 'a' a 'l'
+         teclas.add(c);
+         }
+         */
 
         List<PairFrequency> frecuenciasPares = new ArrayList<>();
-        frecuenciasPares.add(new PairFrequency("ab", 250)); // Frecuencia del par AB
-        frecuenciasPares.add(new PairFrequency("bc", 200)); // Frecuencia del par BC
-        frecuenciasPares.add(new PairFrequency("cd", 150)); // y así sucesivamente...
-        frecuenciasPares.add(new PairFrequency("de", 125));
-        frecuenciasPares.add(new PairFrequency("ef", 120));
-        frecuenciasPares.add(new PairFrequency("fg", 80));
-        frecuenciasPares.add(new PairFrequency("gh", 55));
-        frecuenciasPares.add(new PairFrequency("hi", 60));
-        frecuenciasPares.add(new PairFrequency("ia", 45));
+        /**frecuenciasPares.add(new PairFrequency("ab", 40)); // Frecuencia del par AB
+        frecuenciasPares.add(new PairFrequency("bc", 35)); // Frecuencia del par BC
+        frecuenciasPares.add(new PairFrequency("cd", 30));
+        frecuenciasPares.add(new PairFrequency("de", 25));
+        frecuenciasPares.add(new PairFrequency("ef", 20));
+        frecuenciasPares.add(new PairFrequency("fg", 15));
+        frecuenciasPares.add(new PairFrequency("gh", 10));
+        frecuenciasPares.add(new PairFrequency("hi", 5));
+         */
+        frecuenciasPares.add(new PairFrequency("ab", 100)); // Frecuencia del par AB
+        frecuenciasPares.add(new PairFrequency("bc", 80)); // Frecuencia del par BC
+        frecuenciasPares.add(new PairFrequency("cd", 50)); // y así sucesivamente...
+        frecuenciasPares.add(new PairFrequency("de", 25));
+        frecuenciasPares.add(new PairFrequency("ef", 20));
+        frecuenciasPares.add(new PairFrequency("fg", 10));
+        frecuenciasPares.add(new PairFrequency("gh", 5));
+        frecuenciasPares.add(new PairFrequency("hi", 2));
+        frecuenciasPares.add(new PairFrequency("ia", 1));
 
         System.out.println("Matriz de frecuencias del ejemplo: ");
         System.out.println();
         qap.generarMatrizDeFrecuencias(frecuenciasPares, teclas);
         qap.imprimirMatrizFrecuencias();
+        System.out.println();
+
+        System.out.println("Matriz de distancias del ejemplo: ");
+        System.out.println();
+        qap.generarMatrizDistancias();
+        qap.imprimirMatrizDistancias();
         System.out.println();
 
         System.out.println("Asignación de las teclas aleatoria: ");
@@ -143,6 +165,12 @@ public class DriverDominio {
         System.out.println();
         int puntuacionGreedy = qap.calcularPuntuacionTeclado();
         System.out.println("La puntuación es: " + puntuacionGreedy);
+        System.out.println();
+
+        System.out.println("PROBAMOS GILMORE-LAWLER");
+        System.out.println();
+        int cotaFinal = qap.gilmore_lawler(frecuenciasPares, teclas, puntuacion);
+        System.out.println("Cota final = " + cotaFinal);
         System.out.println();
     }
 
