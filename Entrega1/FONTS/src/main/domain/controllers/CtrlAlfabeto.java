@@ -2,6 +2,7 @@ package main.domain.controllers;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
+import main.domain.classes.ConjuntoTeclados;
 
 import java.util.ArrayList;
 
@@ -13,6 +14,7 @@ public class CtrlAlfabeto {
      */
     private Alfabeto Alfabetoexistente;
     private ConjuntoAlfabetos CjtAlfabetos;
+    private ConjuntoTeclados CjtTeclados;
 
     /**
      * Asigna un alfabeto y un cjt de alfabetos vacío
@@ -68,10 +70,14 @@ public class CtrlAlfabeto {
      * No retorna nada, ,crea el nuevo objecto alfabeto
      * también se añade este objeto en ConjuntoAlfabetos
      */
-    public void CrearAlfabeto(String nomAlfabeto){
+    public void CrearAlfabeto(String nomA){
         if(Alfabetoexistente == null){
-            Alfabetoexistente = new Alfabeto(nomAlfabeto);
-            agregarAlfabeto(nomAlfabeto, Alfabetoexistente);
+            //informar formado y contenido
+            if(CjtAlfabetos.disponibilidadNombre(nomA)){
+                Alfabetoexistente = new Alfabeto (nomAlfabeto);
+                agregarAlfabeto(nomAlfabeto, Alfabetoexistente);
+            }
+            //else informar usuario
         }
     }
 
@@ -79,27 +85,28 @@ public class CtrlAlfabeto {
      * No retorna nada, manda a añadir el nuevo teclado a
      */
     public void agregarAlfabeto(String nomA, Alfabeto alfabeto){
-        CjtAlfabetos.agregarAlfabeto(String nomA, Alfabeto alfabeto);
-    }
-
-    // ---------- FALTA MIRAR BIEN ----------
-
-    /**
-     * No retorna nada, ,crea el nuevo objecto alfabeto
-     * también se añade este objeto en ConjuntoAlfabetos
-     */
-    public void BorrarAlfabeto(String nomAlfabeto){
-        //getcjtAlfabetos
-        //getAlfabeto
-        
-        borrarAlfabeto(nomAlfabeto, Alfabetoexistente);
+        CjtAlfabetos.agregarAlfabeto(nomA, alfabeto);
     }
 
     /**
-     * No retorna nada, manda a añadir el nuevo teclado a
+     * No retorna nada, borra el objecto alfabeto
+     * también desvincula los teclados asociados
+     * también borra este objeto de ConjuntoAlfabetos
      */
-    public void borrarAlfabeto(String nomA, Alfabeto alfabeto){
-        CjtAlfabetos.agregarAlfabeto(String nomA, Alfabeto alfabeto);
+    public void borrarAlfabeto(String nomA){ // borrar alfabeto sense nom primer
+        CjtAlfabetos.mostrarAlfabetos();
+        String nomA = CjtAlfabetos.borrarAlfabetoconcreto(); // crear funcio a cjt alfabetos
+        if (CjtAlfabetos.existeAlfabeto(nomA, alfabeto)){ // crec que nomes hem de passar nom
+            CjtAlfabetos.getAlfabeto(nomA);
+            ArrayList<String> tVinculado = Alfabetoexistente.getTecladosVinculados();
+            if(tVinculado.size() > 0) {
+                // mostrar mensaje alerta
+                // if usuario continua
+                for (int i = 0; i < tVinculado.size(); ++i){
+                    CjtTeclados.invalidarteclado(tVinculado[i]);
+                }
+                CjtAlfabetos.borrarAlfabeto(nomA, Alfabetoexistente);
+            }
+        }
     }
-
 }
