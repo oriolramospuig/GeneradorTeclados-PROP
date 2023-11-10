@@ -3,11 +3,13 @@ package main.domain.classes;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 /**
  * Classe que representa un texto
  * @author
  */
-public abstract class Texto
+
+public class Texto
 {
     // ---------- ATRIBUTOS COMUNES ----------
     /** Guarda el nombre introducido por el usuario */
@@ -31,10 +33,11 @@ public abstract class Texto
      * Retorna el nombre introducido por el usuario
      * @return String : Nombre introducido por el usuario
      */
-    public String getNombre() { return nombre; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public HashMap<String, Integer> getFrecuenciaLetras()
-    {
+    public HashMap<String, Integer> getFrecuenciaLetras() {
         return frecuenciaLetras;
     }
 
@@ -42,25 +45,23 @@ public abstract class Texto
      * Retorna el contenido del texto (lista de palabras)
      * @return String : Contenido del texto usado por las funciones
      */
-    public ArrayList<String> getAsociacionesVinculadas()
-    {
+    public ArrayList<String> getAsociacionesVinculadas() {
+        return asociacionesVinculadas;
+    }
+
+    public String getTexto() {
         return null;
     }
 
-    abstract String getTexto();
-
 
     // ---------- SETTERS ----------
-    /* creo que no hace falta
-    public void setNombre(String nom) {
-        nombre = nom;
+    public void agregarAsociacionesVinculadas(String nomAT) {
+        asociacionesVinculadas.add(nomAT);
     }
-    */
-    public void agregarAsociacionesVinculadas(String nomAT) {}
 
 
     // ---------- AUXILIARES ----------
-    public void borrarAsociacionesVinculadas(String nomAT) {}
-
+    public void borrarAsociacionesVinculadas(String nomAT) {
+        asociacionesVinculadas.remove(nomAT);
+    }
 }
-
