@@ -1,5 +1,6 @@
 package main.domain.controllers;
 
+import main.domain.classes.Alfabeto;
 import main.domain.classes.Texto;
 import main.domain.classes.ConjuntoTextos;
 import main.domain.classes.ConjuntoTeclados;
@@ -25,6 +26,29 @@ public class CtrlTexto {
     public CtrlTexto(){
         CjtTextos = null;
         TextoExistente = null;
+    }
+
+    // ---------- FUNCIONES ALFABETO ----------
+    /**
+     * Retorna el objecto alfabeto pedido
+     * @return Alfabeto : Un objeto alfabeto concreto
+     */
+    public Texto getTextoexistente(){
+        return TextoExistente;
+    }
+
+    /**
+     * No retorna nada, manda a añadir el nuevo teclado al cjt de teclados vinculados
+     */
+    public void agregarTecladoVinculado (String nomT){
+        TextoExistente.agregarTecladoVinculado(nomT);
+    }
+    /**
+     * No retorna nada, manda a borrar un teclado al cjt de teclados vinculados
+     * @return true // trendría que ser return bool?
+     */
+    public void borrarTecladoVinculado (String nomT){
+        Alfabetoexistente.borrarTecladoVinculado(nomT);
     }
 
 
