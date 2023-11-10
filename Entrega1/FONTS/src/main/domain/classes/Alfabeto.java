@@ -89,7 +89,6 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
     public void introducirArchivo()
     {}
 
-
      * Override del metode equals() de la classe Object
      * @param obj : Objeto con el que comparar
      * @return Boolean : Retorna true solo si el objeto es el mismo
@@ -103,7 +102,6 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
     }
 
     */
-
 
     /** ho comento però no ho elimino, serà inetressant fer metode toString
     @Override
