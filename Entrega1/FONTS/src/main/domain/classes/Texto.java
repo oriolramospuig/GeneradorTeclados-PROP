@@ -17,20 +17,20 @@ public class Texto
 
     private HashMap<PairString<String, String>, Integer> frecuenciaLetras; //Pair: parejaLetras, int: frecuencia
 
-    private ArrayList<String> asociacionesTextosVinculos;
+    private ArrayList<String> asociacionesVinculadas;
 
 
     // ---------- CONSTRUCTORES ----------
     public Texto() {
         nombre = new String();
         frecuenciaLetras = new HashMap<>();
-        asociacionesTextosVinculos = new ArrayList<>();
+        asociacionesVinculadas = new ArrayList<>();
     }
 
    public Texto(String nombre) {
         this.nombre = nombre;
         frecuenciaLetras = new HashMap<>();
-        asociacionesTextosVinculos = new ArrayList<>();
+        asociacionesVinculadas = new ArrayList<>();
    }
 
 
@@ -50,7 +50,7 @@ public class Texto
      * Retorna el contenido del texto (lista de palabras)
      * @return String : Contenido del texto usado por las funciones
      */
-    public ArrayList<String> getAsociacionesTextosVinculos()
+    public ArrayList<String> getAsociacionesVinculadas()
     {
         return null;
     }
@@ -62,9 +62,11 @@ public class Texto
         nombre = nom;
     }
     */
+    public void agregarAsociacionesVinculadas(String nomAT) {}
 
-
+    
     // ---------- AUXILIARES ----------
+    public void borrarAsociacionesVinculadas(String nomAT) {}
 
 
 
