@@ -2,14 +2,17 @@ package main.domain.classes;
 
 import java.util.HashMap;
 
-public class Frecuencias extends Texto {
+public class Frecuencias extends Texto
+{
     // ---------- ATRIBUTOS ----------
 
 
     // ---------- CONSTRUCTORES ----------
     public Frecuencias(String nombre) {
         this.nombre = nombre;
+        //el controlador llamara a anadirFrecuencia para ir pasando los valores que tocan directamente
     }
+
 
     // ---------- GETTERS ----------
     public String getTexto() {
@@ -23,10 +26,12 @@ public class Frecuencias extends Texto {
         return texto.toString();
     }
 
+
     // ---------- SETTERS ----------
     void anadirFrecuencia(String parejaLetras, Integer frecuencia) {
         frecuenciaLetras.put(parejaLetras, frecuencia);
     }
+
 
     // ---------- AUXILIARES -----------
 }

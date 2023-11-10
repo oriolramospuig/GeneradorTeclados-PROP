@@ -5,6 +5,7 @@ public class Palabras extends Texto
     // ---------- ATRIBUTOS ----------
     private String texto;
 
+
     // ---------- CONSTRUCTORES ----------
     public Palabras(String nombre, String contenido) {
         this.nombre = nombre;
