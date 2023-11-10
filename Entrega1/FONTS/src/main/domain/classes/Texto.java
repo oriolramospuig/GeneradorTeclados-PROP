@@ -42,13 +42,17 @@ public class Texto
     }
 
     /**
-     * Retorna el contenido del texto (lista de palabras)
-     * @return String : Contenido del texto usado por las funciones
+     * Retorna lista de AsociacionTextos que tiene el texto
+     * @return
      */
     public ArrayList<String> getAsociacionesVinculadas() {
         return asociacionesVinculadas;
     }
 
+    /**
+     * Retorna el contenido del texto
+     * @return String : Contenido del texto usado por las funciones, dependiendo del tipo de Texto el formato variará
+     */
     public String getTexto() {
         return null;
     }
