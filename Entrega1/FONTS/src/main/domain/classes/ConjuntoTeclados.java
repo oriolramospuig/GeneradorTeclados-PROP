@@ -40,7 +40,7 @@ public class ConjuntoTeclados
 
 
     // ---------- AUXILIARES -----------
-    public boolean existeTeclado(String nomT, Teclado teclado){
+    public boolean existeTeclado(String nomT){
         return true;
     }
 
