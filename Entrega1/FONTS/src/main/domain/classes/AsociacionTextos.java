@@ -12,11 +12,11 @@ class FrequencyComparator implements Comparator<PairFrequency> {
     public int compare(PairFrequency pf1, PairFrequency pf2)
     {
         if (pf1.getFrequency() > pf2.getFrequency())
-            return 1;
+            return -1;
         if (pf1.getFrequency() < pf2.getFrequency())
-            return 0;
-        else if(pf1.getPair().compareTo(pf2.getPair()) < 0) return 1;
-        return 0;
+            return 1;
+        else if(pf1.getPair().compareTo(pf2.getPair()) < 0) return -1;
+        return 1;
     }
 }
 
