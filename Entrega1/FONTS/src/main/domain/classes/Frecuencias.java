@@ -1,24 +1,32 @@
 package main.domain.classes;
 
+import java.util.HashMap;
+
 public class Frecuencias extends Texto {
     // ---------- ATRIBUTOS ----------
-    /**
-     * ...
-     */
-    private String texto;
 
 
     // ---------- CONSTRUCTORES ----------
-    public Frecuencias(String nombre, String contenido) {
+    public Frecuencias(String nombre) {
         this.nombre = nombre;
-        this.texto = contenido;
     }
 
     // ---------- GETTERS ----------
+    public String getTexto() {
+        StringBuilder texto = new StringBuilder("");
+        for (HashMap.Entry<String, Integer> i : frecuenciaLetras.entrySet()) {
+            String parejaLetras = i.getKey();
+            Integer frecuencia = i.getValue();
+
+            texto.append(parejaLetras).append(" ").append(frecuencia).append("\n");
+        }
+        return texto.toString();
+    }
 
     // ---------- SETTERS ----------
-
+    void anadirFrecuencia(String parejaLetras, Integer frecuencia) {
+        frecuenciaLetras.put(parejaLetras, frecuencia);
+    }
 
     // ---------- AUXILIARES -----------
-    public void tratarEntrada() {}
 }

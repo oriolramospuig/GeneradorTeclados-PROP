@@ -10,16 +10,16 @@ import java.util.Map;
 
 public class DriverProva {
     public static void main(String[] args) {
-        Palabras p = new Palabras("t1", "hola, que tal? visca el barça. hola");
+        Palabras p = new Palabras("t1", "hola hola hola");
         HashMap<String, Integer> f = p.getFrecuenciaLetras();
-        for (HashMap.Entry<String, Integer> e: f.entrySet()) {
+        for (HashMap.Entry<String, Integer> e : f.entrySet()) {
             System.out.println(e.getKey() + " " + e.getValue());
         }
         AsociacionTextos at = new AsociacionTextos("at1");
         at.agregarTexto(p);
         ArrayList<PairFrequency> af = at.getFrecuenciaLetras();
         System.out.println("-----------------");
-        for(PairFrequency pf : af){
+        for (PairFrequency pf : af) {
             System.out.println(pf.getPair() + " " + pf.getFrequency());
         }
     }
