@@ -14,6 +14,8 @@ public class QAP {
     private int[][] matrizFrecuencias;
     private int[][] matrizDistancias;
 
+    private int glBound;
+
 
     public QAP(int filas, int columnas) {
         this.filas = filas;
@@ -146,8 +148,73 @@ public class QAP {
         return puntuacion;
     }
 
+    public int gilmore_lawler(List<PairFrequency> frecuenciasPares, List<Character> teclas, int cotaINI) {
+        // Inicializar la cota con el peor escenario posible
+        glBound = cotaINI;
+        /**Matriz de frecuencias bien matriz de distancias hay que comprobar*/
+        generarMatrizDeFrecuencias(frecuenciasPares, teclas);
+        generarMatrizDistancias();
+
+        // Preparar una lista para mantener un registro de la permutación actual y la visitada
+        List<Integer> permutacionActual = new ArrayList<>();
+        boolean[] visitado = new boolean[filas * columnas];
+
+        // Llamar a DFS para todas las posiciones
+        for (int i = 0; i < filas * columnas; i++) {
+            dfs(i, visitado, permutacionActual);
+            // Restablecer para la siguiente iteración de DFS
+            permutacionActual.clear();
+            Arrays.fill(visitado, false);
+        }
+
+        // Aquí tendrías que comparar el resultado de cada DFS con la cota actual y actualizar la cota
+        // con el menor valor encontrado. Este es un lugar donde se aplicaría la lógica de Gilmore-Lawler.
+        // Por simplicidad, este código no muestra esa comparación directamente.
+        return glBound;
+    }
+
+    private void dfs(int indice, boolean[] visitado, List<Integer> permutacionActual) {
+        // Marcar la posición actual como visitada
+        visitado[indice] = true;
+        permutacionActual.add(indice);
+
+        // Verificar si hemos llegado al final de la permutación
+        if (permutacionActual.size() == filas * columnas) {
+            // Calcular la cota para esta permutación
+            int cotaPermutacion = calcularCotaPermutacion(permutacionActual);
+            if (cotaPermutacion < glBound) glBound = cotaPermutacion;
+        } else {
+            // Continuar la búsqueda en profundidad para la siguiente posición no visitada
+            for (int i = 0; i < filas * columnas; i++) {
+                if (!visitado[i]) {
+                    dfs(i, visitado, permutacionActual);
+                }
+            }
+        }
+
+        // Backtrack: deshacer la última acción antes de la próxima iteración
+        visitado[indice] = false;
+        permutacionActual.remove(permutacionActual.size() - 1);
+    }
+
+    // Método para calcular la cota de una permutación específica
+    // Nota: Este es un pseudocódigo para ilustrar el concepto. La implementación real
+    // puede variar dependiendo de la estructura y los datos de tu problema específico.
+    private int calcularCotaPermutacion(List<Integer> permutacionActual) {
+        // Calcular la cota basada en la permutación actual y las matrices de frecuencia y distancia
+        int cota = 0;
+        for (int i = 0; i < permutacionActual.size(); i++) {
+            for (int j = 0; j < permutacionActual.size(); j++) {
+                // Asumiendo que matrizDistancias y matrizFrecuencias están correctamente pobladas
+                cota += matrizDistancias[permutacionActual.get(i)][permutacionActual.get(j)]
+                        * matrizFrecuencias[i][j];
+            }
+        }
+        return cota;
+    }
+
     /**Genera la matriu de distàncies de Manhattan, de moment no la fem servir perquè donava diferent, cal revisar*/
-    private void generarMatrizDistancias() {
+    public void generarMatrizDistancias() {
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 for (int k = 0; k < filas; k++) {
@@ -175,6 +242,15 @@ public class QAP {
         for (int i = 0; i < matrizFrecuencias.length; i++) {
             for (int j = 0; j < matrizFrecuencias[i].length; j++) {
                 System.out.print(matrizFrecuencias[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public void imprimirMatrizDistancias() {
+        for (int i = 0; i < matrizDistancias.length; i++) {
+            for (int j = 0; j < matrizDistancias[i].length; j++) {
+                System.out.print(matrizDistancias[i][j] + " ");
             }
             System.out.println();
         }

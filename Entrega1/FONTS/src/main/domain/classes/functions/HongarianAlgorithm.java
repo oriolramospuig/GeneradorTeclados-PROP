@@ -3,7 +3,7 @@ package main.domain.classes.functions;
 import java.util.*;
 import java.util.Arrays;
 
-
+/*
 public class HungarianAlgorithm {
 
     public static void main(String[] args) {
@@ -43,7 +43,6 @@ public class HungarianAlgorithm {
                 costMatrix[i][j] -= minColValue;
             }
         }
-
         // Resto de la implementación del algoritmo húngaro...
         public static int[][] hungarianAlgorithm(int[][] costMatrix) {
             // Paso 1 y 2: Restar el mínimo de cada fila y columna.
@@ -91,3 +90,7 @@ public class HungarianAlgorithm {
         return costMatrix;
     }
 }
+
+ */
+
+
