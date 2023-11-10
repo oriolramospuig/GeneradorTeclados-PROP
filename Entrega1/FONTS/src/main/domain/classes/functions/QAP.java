@@ -148,6 +148,28 @@ public class QAP {
         return puntuacion;
     }
 
+    public int calculoPuntuacion() {
+        int puntuacion = 0;
+
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                int indice1 = letraAIndice.get(teclado[i][j]);
+
+                for (int k = 0; k < filas; k++) {
+                    for (int l = 0; l < columnas; l++) {
+                        int indice2 = letraAIndice.get(teclado[k][l]);
+                        int distancia = Manhattan.calcularDistancia(i, j, k, l);
+                        int frecuencia = matrizFrecuencias[indice1][indice2];
+
+                        puntuacion += distancia * frecuencia;
+                    }
+                }
+            }
+        }
+
+        return puntuacion;
+    }
+
     public int gilmore_lawler(List<PairFrequency> frecuenciasPares, List<Character> teclas, int cotaINI) {
         // Inicializar la cota con el peor escenario posible
         glBound = cotaINI;
