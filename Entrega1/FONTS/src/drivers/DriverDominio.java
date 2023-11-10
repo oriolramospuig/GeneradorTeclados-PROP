@@ -3,9 +3,12 @@ package drivers;
 import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
 import main.domain.classes.functions.InOut;
+import main.domain.classes.functions.QAP;
+import main.domain.classes.types.PairFrequency;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 import java.util.ArrayList;
@@ -98,6 +101,51 @@ public class DriverDominio {
         }
     }
 
+    void imprimirPruebaQAP() {
+        System.out.println("Se generará un teclado aleatorio de 3*4 con las letras de la A a la L: ");
+        System.out.println();
+        QAP qap = new QAP(3,4);
+        List<Character> teclas = new ArrayList<>();
+        for(char c = 'a'; c <= 'l'; c++) { // Asumiendo un alfabeto de 'a' a 'l'
+            teclas.add(c);
+        }
+
+        List<PairFrequency> frecuenciasPares = new ArrayList<>();
+        frecuenciasPares.add(new PairFrequency("ab", 250)); // Frecuencia del par AB
+        frecuenciasPares.add(new PairFrequency("bc", 200)); // Frecuencia del par BC
+        frecuenciasPares.add(new PairFrequency("cd", 150)); // y así sucesivamente...
+        frecuenciasPares.add(new PairFrequency("de", 125));
+        frecuenciasPares.add(new PairFrequency("ef", 120));
+        frecuenciasPares.add(new PairFrequency("fg", 80));
+        frecuenciasPares.add(new PairFrequency("gh", 55));
+        frecuenciasPares.add(new PairFrequency("hi", 60));
+        frecuenciasPares.add(new PairFrequency("ia", 45));
+
+        System.out.println("Matriz de frecuencias del ejemplo: ");
+        System.out.println();
+        qap.generarMatrizDeFrecuencias(frecuenciasPares, teclas);
+        qap.imprimirMatrizFrecuencias();
+        System.out.println();
+
+        System.out.println("Asignación de las teclas aleatoria: ");
+        System.out.println();
+        qap.calcularAsignacionAleatoria(teclas);
+        qap.imprimirTeclado();
+        System.out.println();
+        int puntuacion = qap.calcularPuntuacionTeclado();
+        System.out.println("La puntuación inicial es: " + puntuacion);
+        System.out.println();
+
+        System.out.println("Asignación de las teclas greedy: ");
+        System.out.println();
+        qap.calcularAsignacionGreedy(frecuenciasPares, teclas);
+        qap.imprimirTeclado();
+        System.out.println();
+        int puntuacionGreedy = qap.calcularPuntuacionTeclado();
+        System.out.println("La puntuación es: " + puntuacionGreedy);
+        System.out.println();
+    }
+
 
 
     public static void main(String[] args) {
@@ -137,6 +185,21 @@ public class DriverDominio {
                     // driver.imprimirTextos();
                     break;
                 }
+                case "7":
+                case "CrearAsociacionTextos": {
+                    // driver.crearAsociacionTextos();
+                    break;
+                }
+                case "8":
+                case "ImprimirAsociaciones": {
+                    // driver.imprimirAsociaciones();
+                    break;
+                }
+                case "9":
+                case "PruebaQAP": {
+                    driver.imprimirPruebaQAP();
+                    break;
+                }
                 default: {
                     System.out.println("Método no reconocido");
                     break;
@@ -157,6 +220,9 @@ public class DriverDominio {
         System.out.println("(4|TextoPorTerminal) - Añadir Texto");
         System.out.println("(5|TextoPorArchivo) - Añadir Texto");
         System.out.println("(6|ImprimirTextos) - Imprimir Textos");
+        System.out.println("(7|CrearAsociacionTextos) - Crear Asociación Textos");
+        System.out.println("(8|ImprimirAsociaciones) - Imprimir Asociaciones");
+        System.out.println("(9|PruebaQAP) - Prueba QAP");
         System.out.println();
         System.out.println("(0|Salir) - Cerrar Driver");
     }

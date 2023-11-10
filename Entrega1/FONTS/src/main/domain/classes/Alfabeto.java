@@ -36,6 +36,12 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
         tecladosVinculados = new ArrayList<>();
     }
 
+    public Alfabeto(String nombre) {
+        this.nombre = nombre;
+        this.letras = new ArrayList<>();
+        this.tecladosVinculados = new ArrayList<>();
+    }
+
 
     // ---------- GETTERS ----------
     /**
@@ -83,7 +89,6 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
     public void introducirArchivo()
     {}
 
-
      * Override del metode equals() de la classe Object
      * @param obj : Objeto con el que comparar
      * @return Boolean : Retorna true solo si el objeto es el mismo
@@ -97,7 +102,6 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
     }
 
     */
-
 
     /** ho comento però no ho elimino, serà inetressant fer metode toString
     @Override
