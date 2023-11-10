@@ -29,9 +29,9 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
         tecladosVinculados = new ArrayList<>();
     }
 
-    public Alfabeto(String nom, ArrayList<Character> letras)
+    public Alfabeto(String nombre, ArrayList<Character> letras)
     {
-        this.nombre = nom;
+        this.nombre = nombre;
         this.letras = letras;
         tecladosVinculados = new ArrayList<>();
     }

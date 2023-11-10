@@ -9,8 +9,8 @@ public class Palabras extends Texto {
 
 
     // ---------- CONSTRUCTORES ----------
-    public Palabras(String nom, String contenido) {
-        this.nombre = nom;
+    public Palabras(String nombre, String contenido) {
+        this.nombre = nombre;
         this.texto = contenido;
     }
 

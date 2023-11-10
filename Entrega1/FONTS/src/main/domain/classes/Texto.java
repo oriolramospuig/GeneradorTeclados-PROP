@@ -27,6 +27,12 @@ public class Texto
         asociacionesTextosVinculos = new ArrayList<>();
     }
 
+   public Texto(String nombre) {
+        this.nombre = nombre;
+        frecuenciaLetras = new HashMap<>();
+        asociacionesTextosVinculos = new ArrayList<>();
+   }
+
 
     // ---------- GETTERS ----------
     /**
@@ -49,20 +55,17 @@ public class Texto
         return null;
     }
 
-    /**
-     * Retorna el contenido del texto (lista de frecuencias)
-     * @return String : Contenido del texto usado por las funciones
-     */
-
 
     // ---------- SETTERS ----------
-
-    public void setNombre(String nom)
-    {
+    /* creo que no hace falta
+    public void setNombre(String nom) {
         nombre = nom;
     }
+    */
+
 
     // ---------- AUXILIARES ----------
+
 
 
 }
