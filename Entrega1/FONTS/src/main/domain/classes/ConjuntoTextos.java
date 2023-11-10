@@ -39,7 +39,7 @@ public class ConjuntoTextos
 
 
     // ---------- AUXILIARES -----------
-    public boolean existeTexto(String nomT, Texto texto) {
+    public boolean existeTexto(String nomT) {
         return true;
     }
 
