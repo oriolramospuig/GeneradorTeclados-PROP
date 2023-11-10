@@ -13,6 +13,7 @@ public abstract class Texto
     /** Guarda el nombre introducido por el usuario */
     protected String nombre;
 
+
     protected HashMap<String, Integer> frecuenciaLetras; //string: parejaLetras, int: frecuencia
 
     protected ArrayList<String> asociacionesVinculadas;
