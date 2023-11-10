@@ -1,7 +1,5 @@
 package main.domain.classes;
 
-import main.domain.classes.types.PairString;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -9,22 +7,23 @@ import java.util.HashMap;
  * Classe que representa un texto
  * @author
  */
-public class Texto
+abstract class Texto
 {
     // ---------- ATRIBUTOS COMUNES ----------
     /** Guarda el nombre introducido por el usuario */
     protected String nombre;
 
-    private HashMap<PairString<String, String>, Integer> frecuenciaLetras; //Pair: parejaLetras, int: frecuencia
+    protected String texto;
+    protected HashMap<String, Integer> frecuenciaLetras; //string: parejaLetras, int: frecuencia
 
-    private ArrayList<String> asociacionesTextosVinculos;
+    protected ArrayList<String> asociacionesVinculadas;
 
 
     // ---------- CONSTRUCTORES ----------
     public Texto() {
         nombre = new String();
         frecuenciaLetras = new HashMap<>();
-        asociacionesTextosVinculos = new ArrayList<>();
+        asociacionesVinculadas = new ArrayList<>();
     }
 
 
@@ -35,7 +34,7 @@ public class Texto
      */
     public String getNombre() { return nombre; }
 
-    public HashMap<PairString<String, String>, Integer> getFrecuenciaLetras()
+    public HashMap<String, Integer> getFrecuenciaLetras()
     {
         return null;
     }
@@ -44,26 +43,30 @@ public class Texto
      * Retorna el contenido del texto (lista de palabras)
      * @return String : Contenido del texto usado por las funciones
      */
-    public ArrayList<String> getAsociacionesTextosVinculos()
+    public ArrayList<String> getAsociacionesVinculadas()
     {
         return null;
     }
 
-    /**
-     * Retorna el contenido del texto (lista de frecuencias)
-     * @return String : Contenido del texto usado por las funciones
-     */
+    public String getTexto() {
+        return texto;
+    }
+
 
 
     // ---------- SETTERS ----------
-
-    public void setNombre(String nom)
-    {
+    /* creo que no hace falta
+    public void setNombre(String nom) {
         nombre = nom;
     }
+    */
+    public void agregarAsociacionesVinculadas(String nomAT) {}
+
 
     // ---------- AUXILIARES ----------
+    public void borrarAsociacionesVinculadas(String nomAT) {}
 
+    abstract void tratarEntrada();
 
 }
 

@@ -9,19 +9,27 @@ public class Palabras extends Texto {
 
 
     // ---------- CONSTRUCTORES ----------
-    public Palabras(String nom, String contenido) {
-        this.nombre = nom;
+    public Palabras(String nombre, String contenido) {
+        this.nombre = nombre;
         this.texto = contenido;
     }
 
     // ---------- GETTERS ----------
-    public String getTexto() {
-        return texto;
-    }
 
 
     // ---------- SETTERS ----------
 
 
     // ---------- AUXILIARES -----------
+    public void tratarEntrada() {
+        char[] textoChars = texto.toCharArray();
+        for(int i = 1; i < textoChars.length; ++i){
+            String pairLetras = String.valueOf(textoChars[i-1] + textoChars[i]);
+            int frec = 1;
+            if(frecuenciaLetras.containsKey(pairLetras)){
+                frec = frecuenciaLetras.get(pairLetras)+1;
+            }
+            frecuenciaLetras.put(pairLetras,frecuenciaLetras.get(pairLetras)+1);
+        }
+    }
 }

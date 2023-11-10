@@ -9,18 +9,16 @@ public class Frecuencias extends Texto {
 
 
     // ---------- CONSTRUCTORES ----------
-    public Frecuencias(String nom, String contenido) {
-        this.nombre = nom;
+    public Frecuencias(String nombre, String contenido) {
+        this.nombre = nombre;
         this.texto = contenido;
     }
 
     // ---------- GETTERS ----------
-    public String getTexto() {
-        return texto;
-    }
 
     // ---------- SETTERS ----------
 
 
     // ---------- AUXILIARES -----------
+    public void tratarEntrada() {}
 }
