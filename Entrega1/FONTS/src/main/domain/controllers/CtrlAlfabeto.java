@@ -64,8 +64,6 @@ public class CtrlAlfabeto {
      */
     public ConjuntoAlfabetos getCjtAlfabetos(){
         return CjtAlfabetos;
-        Alfabetoexistente = null;
-        return Alfabetoexistente;
     }
 
     /**
@@ -76,8 +74,8 @@ public class CtrlAlfabeto {
         if(Alfabetoexistente == null){
             //informar formado y contenido
             if(CjtAlfabetos.disponibilidadNombre(nomA)){
-                Alfabetoexistente = new Alfabeto (nomAlfabeto);
-                agregarAlfabeto(nomAlfabeto, Alfabetoexistente);
+                Alfabetoexistente = new Alfabeto (nomA);
+                agregarAlfabeto(nomA, Alfabetoexistente);
             }
             //else informar usuario
         }
