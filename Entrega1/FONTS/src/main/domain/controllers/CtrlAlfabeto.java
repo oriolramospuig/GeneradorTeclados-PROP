@@ -5,6 +5,7 @@ import main.domain.classes.ConjuntoAlfabetos;
 import main.domain.classes.ConjuntoTeclados;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CtrlAlfabeto {
 
@@ -36,24 +37,21 @@ public class CtrlAlfabeto {
      * No retorna nada, manda a añadir el nuevo teclado al cjt de teclados vinculados
      * @return true // trendría que ser return bool?
      */
-    /**
-     * @param nuevasLetras
-    public void sobreEscribirLetras (ArrayList<Character> nuevasLetras){
-        Alfabetoexistente.sobreEscribirLetras(nuevasLetras);
-    }*/
-
+    public void sobreEscribirLetras (String nomA,ArrayList<Character> nuevasLetras){
+        CjtAlfabetos.getAlfabeto(nomA).sobreEscribirLetras(nuevasLetras);
+    }
     /**
      * No retorna nada, manda a añadir el nuevo teclado al cjt de teclados vinculados
      */
-    public void agregarTecladoVinculado (String nomT){
-        Alfabetoexistente.agregarTecladoVinculado(nomT);
+    public void agregarTecladoVinculado (String nomA,String nomT){
+        CjtAlfabetos.getAlfabeto(nomA).agregarTecladoVinculado(nomT);
     }
     /**
      * No retorna nada, manda a borrar un teclado al cjt de teclados vinculados
      * @return true // trendría que ser return bool?
      */
-    public void borrarTecladoVinculado (String nomT){
-        Alfabetoexistente.borrarTecladoVinculado(nomT);
+    public void borrarTecladoVinculado (String nomA,String nomT){
+        CjtAlfabetos.getAlfabeto(nomA).agregarTecladoVinculado(nomT);
     }
 
     // ---------- FUNCIONES CONJUNTOALFABETOS ----------
@@ -71,7 +69,8 @@ public class CtrlAlfabeto {
      * también se añade este objeto en ConjuntoAlfabetos
      */
     public void CrearAlfabeto(String nomA){
-        if(Alfabetoexistente == null){
+        HashMap<String, Alfabeto> AlfabetosExistentes = CjtAlfabetos.getNombresAlfabetos();
+        if(!AlfabetosExistentes.containsKey(nomA)){
             //informar formado y contenido
             if(CjtAlfabetos.disponibilidadNombre(nomA)){
                 Alfabetoexistente = new Alfabeto (nomA);
@@ -94,7 +93,7 @@ public class CtrlAlfabeto {
      * también borra este objeto de ConjuntoAlfabetos
      */
     public void borrarAlfabeto(String nomA){ // borrar alfabeto sense nom primer
-        CjtAlfabetos.getNombresAlfabetos();
+        HashMap<String, Alfabeto> AlfabetosExistentes = CjtAlfabetos.getNombresAlfabetos();
         // no existe
         // String nomAlf = CjtAlfabetos.borrarAlfabetoconcreto(); // crear funcio a cjt alfabetos
         if (CjtAlfabetos.existeAlfabeto(nomA)){ // crec que nomes hem de passar nom
