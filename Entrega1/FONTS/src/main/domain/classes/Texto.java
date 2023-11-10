@@ -7,7 +7,7 @@ import java.util.HashMap;
  * Classe que representa un texto
  * @author
  */
-abstract class Texto
+public abstract class Texto
 {
     // ---------- ATRIBUTOS COMUNES ----------
     /** Guarda el nombre introducido por el usuario */
@@ -36,7 +36,7 @@ abstract class Texto
 
     public HashMap<String, Integer> getFrecuenciaLetras()
     {
-        return null;
+        return frecuenciaLetras;
     }
 
     /**

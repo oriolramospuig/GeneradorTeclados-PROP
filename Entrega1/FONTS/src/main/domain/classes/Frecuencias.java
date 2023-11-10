@@ -5,13 +5,12 @@ public class Frecuencias extends Texto {
     /**
      * ...
      */
-    private String texto;
-
 
     // ---------- CONSTRUCTORES ----------
     public Frecuencias(String nombre, String contenido) {
         this.nombre = nombre;
         this.texto = contenido;
+        tratarEntrada();
     }
 
     // ---------- GETTERS ----------
