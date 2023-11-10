@@ -1,7 +1,6 @@
 package main.domain.classes;
 
 import main.domain.classes.types.PairFrequency;
-import main.domain.classes.types.PairString;
 
 import java.util.ArrayList;
 import java.util.HashMap;

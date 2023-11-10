@@ -1,7 +1,5 @@
 package main.domain.classes;
 
-import main.domain.classes.types.PairString;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -9,15 +7,16 @@ import java.util.HashMap;
  * Classe que representa un texto
  * @author
  */
-public class Texto
+abstract class Texto
 {
     // ---------- ATRIBUTOS COMUNES ----------
     /** Guarda el nombre introducido por el usuario */
     protected String nombre;
 
-    private HashMap<String, Integer> frecuenciaLetras; //string: parejaLetras, int: frecuencia
+    protected String texto;
+    protected HashMap<String, Integer> frecuenciaLetras; //string: parejaLetras, int: frecuencia
 
-    private ArrayList<String> asociacionesVinculadas;
+    protected ArrayList<String> asociacionesVinculadas;
 
 
     // ---------- CONSTRUCTORES ----------
@@ -26,12 +25,6 @@ public class Texto
         frecuenciaLetras = new HashMap<>();
         asociacionesVinculadas = new ArrayList<>();
     }
-
-   public Texto(String nombre) {
-        this.nombre = nombre;
-        frecuenciaLetras = new HashMap<>();
-        asociacionesVinculadas = new ArrayList<>();
-   }
 
 
     // ---------- GETTERS ----------
@@ -55,6 +48,11 @@ public class Texto
         return null;
     }
 
+    public String getTexto() {
+        return texto;
+    }
+
+
 
     // ---------- SETTERS ----------
     /* creo que no hace falta
@@ -67,5 +65,7 @@ public class Texto
 
     // ---------- AUXILIARES ----------
     public void borrarAsociacionesVinculadas(String nomAT) {}
+
+    abstract void tratarEntrada();
 }
 

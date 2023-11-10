@@ -15,13 +15,11 @@ public class Palabras extends Texto {
     }
 
     // ---------- GETTERS ----------
-    public String getTexto() {
-        return texto;
-    }
 
 
     // ---------- SETTERS ----------
 
 
     // ---------- AUXILIARES -----------
+    public void tratarEntrada() {}
 }
