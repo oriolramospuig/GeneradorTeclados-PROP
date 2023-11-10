@@ -8,7 +8,9 @@ public class Teclado {
     private String nombre;
 
     /** Puntuación del teclado */
-    private Integer puntuacion;
+    private Float puntuacion;
+
+    private enum algoritmo;
 
 
     // ---------- CONSTRUCTORES ----------
