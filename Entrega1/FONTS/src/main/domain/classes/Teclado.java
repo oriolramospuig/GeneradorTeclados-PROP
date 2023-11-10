@@ -23,7 +23,9 @@ public class Teclado {
 
     private PairInt dimensiones;
 
+    private String alfabetoVinculado;
 
+    private String asociacionTextosVinculado;
 
 
     // ---------- CONSTRUCTORES ----------
@@ -32,6 +34,8 @@ public class Teclado {
         puntuacion = new Float(0);
         algoritmo = Algoritmo.QAP;
         dimensiones = new PairInt(0,0);
+        alfabetoVinculado = new String();
+        asociacionTextosVinculado = new String();
     }
 
     public Teclado(String nombre) {
@@ -39,12 +43,16 @@ public class Teclado {
         puntuacion = new Float(0);
         algoritmo = Algoritmo.QAP;
         dimensiones = new PairInt(0,0);
+        alfabetoVinculado = new String();
+        asociacionTextosVinculado = new String();
     }
 
     public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo, PairInt dimensiones) {
         this.nombre = nombre;
         this.algoritmo = algoritmo;
         this.dimensiones = dimensiones;
+        alfabetoVinculado = alfabeto.getNombre();
+        asociacionTextosVinculado = asociacionTextos.getNombre();
     }
 
 
@@ -58,11 +66,29 @@ public class Teclado {
         else return "Alg2";
     }
 
+    public PairInt getDimensiones() {
+        return dimensiones;
+    }
+
 
     // ---------- SETTERS ----------
+    public void agregarAlfabetoVinculado(String nomA) {
+        alfabetoVinculado = nomA;
+    }
+
+    public void agregarAsociacionTextosVinculados(String nomAT) {
+        asociacionTextosVinculado = nomAT;
+    }
 
 
     // ---------- AUXILIARES -----------
+    public void borrarAlfabetoVinculado(String nomA) {
+        alfabetoVinculado = null;
+    }
+
+    public void borrarAsociacionTextosVinculados(String nomAT) {
+        asociacionTextosVinculado = null;
+    }
 }
 
 

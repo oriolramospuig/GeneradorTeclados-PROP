@@ -3,7 +3,22 @@ package main.domain.classes;
 import main.domain.classes.types.PairFrequency;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+
+class FrequencyComparator implements Comparator<PairFrequency> {
+    // override the compare() method
+    public int compare(PairFrequency pf1, PairFrequency pf2)
+    {
+        if (pf1.getFrequency() > pf2.getFrequency())
+            return 1;
+        if (pf1.getFrequency() < pf2.getFrequency())
+            return 0;
+        else if(pf1.getPair().compareTo(pf2.getPair()) < 0) return 1;
+        return 0;
+    }
+}
 
 public class AsociacionTextos {
     // ---------- ATRIBUTOS ----------
@@ -47,14 +62,29 @@ public class AsociacionTextos {
 
     public ArrayList<String> getTecladosVinculados() { return null;}
 
-    public ArrayList<PairFrequency> getFrecuenciaLetras() { return null;}
+    public ArrayList<PairFrequency> getFrecuenciaLetras() {
+        ArrayList<PairFrequency> freq = new ArrayList<>();
+        for(HashMap.Entry<String, Integer> e : frecuenciaLetras.entrySet()){
+            PairFrequency pf = new PairFrequency(e.getKey(),e.getValue());
+            freq.add(pf);
+        }
+        Collections.sort(freq,new FrequencyComparator());
+        return freq;
+    }
 
 
     // ---------- SETTERS ----------
     public void agregarTecladoVinculado (String nomT) {}
 
-    public void agregarTexto (Texto texto) {}
+    public void agregarTexto (Texto texto) {
+        textosAsociaciados.add(texto.getNombre());
+        HashMap<String,Integer> freqTexto = texto.getFrecuenciaLetras();
 
+        frecuenciaLetras.forEach((key, value) -> freqTexto.merge(key, value, (oldValue, newValue) -> {
+            return oldValue+newValue;
+        }));
+
+    }
 
     // ---------- AUXILIARES -----------
     public void borrarTecladoVinculado (String nomT) {}
