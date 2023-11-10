@@ -3,8 +3,6 @@ package main.domain.classes;
 import main.domain.classes.functions.QAP;
 import main.domain.classes.types.PairInt;
 
-import java.util.ArrayList;
-
 public class Teclado {
 
     public enum Algoritmo {
