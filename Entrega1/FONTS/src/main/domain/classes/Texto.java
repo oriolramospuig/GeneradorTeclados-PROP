@@ -13,7 +13,6 @@ public abstract class Texto
     /** Guarda el nombre introducido por el usuario */
     protected String nombre;
 
-    protected String texto;
     protected HashMap<String, Integer> frecuenciaLetras; //string: parejaLetras, int: frecuencia
 
     protected ArrayList<String> asociacionesVinculadas;
@@ -48,10 +47,7 @@ public abstract class Texto
         return null;
     }
 
-    public String getTexto() {
-        return texto;
-    }
-
+    abstract String getTexto();
 
 
     // ---------- SETTERS ----------
@@ -65,8 +61,6 @@ public abstract class Texto
 
     // ---------- AUXILIARES ----------
     public void borrarAsociacionesVinculadas(String nomAT) {}
-
-    abstract void tratarEntrada();
 
 }
 
