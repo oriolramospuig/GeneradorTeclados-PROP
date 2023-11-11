@@ -19,7 +19,6 @@ public class ConjuntoAlfabetos {
         alfabetos = new HashMap<>();
     }
 
-
     // ---------- GETTERS ----------
     /**
      * Retorna el alfabeto con clave primaria introducida
