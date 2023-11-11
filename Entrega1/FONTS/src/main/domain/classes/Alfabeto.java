@@ -22,26 +22,21 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
 
 
     // ---------- CONSTRUCTORES ----------
-    public Alfabeto()
-    {
+    /*public Alfabeto(){
         nombre = new String();
         letras = new ArrayList<>();
         tecladosVinculados = new ArrayList<>();
     }
-
-    public Alfabeto(String nombre, ArrayList<Character> letras)
-    {
-        this.nombre = nombre;
-        this.letras = letras;
-        tecladosVinculados = new ArrayList<>();
-    }
-
     public Alfabeto(String nombre) {
         this.nombre = nombre;
         this.letras = new ArrayList<>();
         this.tecladosVinculados = new ArrayList<>();
+    }*/
+    public Alfabeto(String nombre, ArrayList<Character> letras) {
+        this.nombre = nombre;
+        this.letras = letras;
+        tecladosVinculados = new ArrayList<>();
     }
-
 
     // ---------- GETTERS ----------
     /**
@@ -51,57 +46,43 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
     public String getNombre() {
         return nombre;
     }
-
     /**
      * Retorna el contenido del alfabeto
-     * @return String : Contenido del alfabeto usado por las funciones
+     * @return ArrayList<Character> : Contenido del alfabeto usado por las funciones
      */
     public ArrayList<Character> getLetras() {
-        return null;
+        return letras;
     }
-
+    /**
+     * Retorna el nombre de los teclados vinculados al alfabeto
+     * @return ArrayList<String> : Lista de nombres de los teclados vinculados
+     */
     public ArrayList<String> getTecladosVinculados() {
-        return null;
+        return tecladosVinculados;
     }
-
 
     // ---------- SETTERS ----------
-    public void sobreEscribirLetras(ArrayList<Character> nuevasLetras) {}
-
-    public void agregarTecladoVinculado (String nomT) {}
-
-
-    // ---------- AUXILIARES ----------
-    public void borrarTecladoVinculado(String nomT) {}
-
-
-
-
-
-
     /**
-     * INFO EXTRA
-    // CREO QUE SON LAS DEL DRIVER
-    public void introducirCaracteres()
-    {}
-
-    // CREO QUE SON LAS DEL DRIVER
-    public void introducirArchivo()
-    {}
-
-     * Override del metode equals() de la classe Object
-     * @param obj : Objeto con el que comparar
-     * @return Boolean : Retorna true solo si el objeto es el mismo
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (!(obj instanceof Alfabeto)) return false;
-        if (obj == this) return true;
-
-        return false;
+     * No retorna.
+     * Añade a la lista de nombres de los teclados asociados el nombre
+     * del nuevo teclado pasado como parámetro
+     */
+    public void agregarTecladoVinculado (String nomT) {
+        tecladosVinculados.add(nomT);
     }
 
-    */
+    // ---------- AUXILIARES ----------
+    /**
+     * No retorna.
+     * Borra de la lista de nombres de los teclados asociados el nombre
+     * del teclado pasado como parámetro
+     */
+    public void borrarTecladoVinculado(String nomT) {
+        tecladosVinculados.remove(nomT);
+    }
+
+
+
 
     /** ho comento però no ho elimino, serà inetressant fer metode toString
     @Override

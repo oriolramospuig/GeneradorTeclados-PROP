@@ -5,10 +5,10 @@ import java.util.HashMap;
 
 /**
  * Classe que representa el conjunto de alfabetos
- * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
+ * @author
  */
-public class ConjuntoAlfabetos
-{
+public class ConjuntoAlfabetos {
+
     // ---------- ATRIBUTOS ----------
     /** Guarda el conjunto de alfabetos introducidos por el usuario */
     private HashMap<String, Alfabeto> alfabetos;
@@ -27,10 +27,13 @@ public class ConjuntoAlfabetos
      * @return Nombre, Alfabeto : Alfabeto con el nombre introducido
      */
     public Alfabeto getAlfabeto(String nomA) {
-        /** return alfabetos.get(nombre); */
-        return null;
+        if (alfabetos.containsKey(nomA)) return alfabetos.get(nomA);
+        else return null;
     }
-
+    /**
+     * Retorna el conjunto de alfabetos existentes
+     * @return HashMap<String, Alfabeto>: Conjunto de alfabetos
+     */
     public HashMap<String, Alfabeto> getAlfabetos () {
         return alfabetos;
     }
@@ -45,15 +48,12 @@ public class ConjuntoAlfabetos
 
 
     // ---------- SETTERS ----------
+    /**
+     * No retorna nada.
+     * Añade un alfabeto en el map de conjunto de alfabetos
+     */
     public void agregarAlfabeto(String nomA, Alfabeto alfabeto) {
-        /**
-         * public boolean agregarAlfabetoSiNoExiste(String nombre, Alfabeto alfabeto) {
-         *         if (!alfabetos.containsKey(nombre)) {
-         *             alfabetos.put(nombre, alfabeto);
-         *             return true;
-         *         }
-         *         return false;
-         */
+        alfabetos.put(nomA, alfabeto);
     }
 
 
@@ -65,10 +65,15 @@ public class ConjuntoAlfabetos
     public boolean existeAlfabeto(String nomA){
         return alfabetos.containsKey(nomA);
     }
-
-    public void borrarAlfabeto(String nomA) {}
-
-    public boolean disponibilidadNombre(String nomA) {
-        return true;
+    /**
+     * No retorna nada.
+     * Borra el alfabeto con nombre dado.
+     */
+    public void borrarAlfabeto(String nomA) {
+        alfabetos.remove(nomA);
     }
+
+    /*public boolean disponibilidadNombre(String nomA) {
+        return true;
+    }*/
 }
