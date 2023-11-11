@@ -22,7 +22,8 @@ public class ConjuntoTeclados
 
     // ---------- GETTERS ----------
     public Teclado getTeclado(String nomT) {
-        return null;
+        if (teclados.containsKey(nomT)) return teclados.get(nomT);
+        else return null;
     }
 
     // tenemos que considerar si queremos/necesitamos esta funcion
@@ -31,22 +32,26 @@ public class ConjuntoTeclados
     }
 
     public ArrayList<String> getNombresTeclados() {
-        return null;
+        ArrayList<String> listaNombres = new ArrayList<>();
+        for (String clave : teclados.keySet()) {
+            listaNombres.add(clave);
+        }
+        return listaNombres;
     }
 
 
     // ---------- SETTERS ----------
-    public void agregarTeclado(String nombre, Teclado teclado) {}
+    public void agregarTeclado(String nomT, Teclado teclado) {
+        teclados.put(nomT, teclado);
+    }
 
 
     // ---------- AUXILIARES -----------
     public boolean existeTeclado(String nomT){
-        return true;
+        return teclados.containsKey(nomT);
     }
 
-    public void borrarTeclado(String nomT) {}
-
-    public boolean disponibilidadNombre(String nomt) {
-        return true;
+    public void borrarTeclado(String nomT) {
+        teclados.remove(nomT);
     }
 }
