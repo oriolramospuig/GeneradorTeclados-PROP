@@ -54,9 +54,9 @@ public class CtrlAlfabeto {
      * Retorna el objecto alfabeto pedido
      * @return Alfabeto : Un objeto alfabeto concreto
      */
-    public Alfabeto getAlfabeto(String nomA){
+    /*public Alfabeto getAlfabeto(String nomA){
         return Alfabetoexistente;
-    }
+    }*/
     /**
      * No retorna nada.
      * Crea el nuevo objecto alfabeto y añade este objeto a ConjuntoAlfabetos
