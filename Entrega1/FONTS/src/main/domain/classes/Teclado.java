@@ -3,13 +3,8 @@ package main.domain.classes;
 import main.domain.classes.functions.QAP;
 import main.domain.classes.types.PairInt;
 
-public class Teclado {
-
-    public enum Algoritmo {
-        QAP,
-        Alg2
-    }
-
+public class Teclado
+{
     // ---------- ATRIBUTOS ----------
     /** Guarda el nombre introducido por el usuario */
     private String nombre;
@@ -19,7 +14,7 @@ public class Teclado {
 
     private Algoritmo algoritmo;
 
-    private PairInt dimensiones;
+    private PairIntEnum dimensiones;
 
     private String alfabetoVinculado;
 
@@ -31,7 +26,7 @@ public class Teclado {
         nombre = new String();
         puntuacion = new Float(0);
         algoritmo = Algoritmo.QAP;
-        dimensiones = new PairInt(0,0);
+        dimensiones = PairIntEnum.EMPTY_PAIR;
         alfabetoVinculado = new String();
         asociacionTextosVinculado = new String();
     }
@@ -40,12 +35,12 @@ public class Teclado {
         this.nombre = nombre;
         puntuacion = new Float(0);
         algoritmo = Algoritmo.QAP;
-        dimensiones = new PairInt(0,0);
+        dimensiones = PairIntEnum.EMPTY_PAIR;
         alfabetoVinculado = new String();
         asociacionTextosVinculado = new String();
     }
 
-    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo, PairInt dimensiones) {
+    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo, PairIntEnum dimensiones) {
         this.nombre = nombre;
         this.algoritmo = algoritmo;
         this.dimensiones = dimensiones;
@@ -55,9 +50,13 @@ public class Teclado {
 
 
     // ---------- GETTERS ----------
-    public String getNombre() {return nombre;}
+    public String getNombre() {
+        return nombre;
+    }
 
-    public Float getPuntuacion() {return puntuacion;}
+    public Float getPuntuacion() {
+        return puntuacion;
+    }
 
     public String getAlgoritmo() {
         if (algoritmo == Algoritmo.QAP) return "QAP";
@@ -65,16 +64,35 @@ public class Teclado {
     }
 
     public PairInt getDimensiones() {
-        return dimensiones;
+        PairInt dim = new PairInt(0,0);
+        dim.setPrimero(dimensiones.getFila());
+        dim.setSegundo(dimensiones.getColumna());
+        return dim;
+    }
+
+    public String getAlfabetoVinculado() {
+        return alfabetoVinculado;
+    }
+
+    public String getAsociacionTextosVinculado() {
+        return asociacionTextosVinculado;
     }
 
 
     // ---------- SETTERS ----------
+    public void setPuntuacion(Float puntuacion) {
+        this.puntuacion = puntuacion;
+    }
+
+    public void setDimensiones(PairIntEnum dimensiones) {
+        this.dimensiones = dimensiones;
+    }
+
     public void agregarAlfabetoVinculado(String nomA) {
         alfabetoVinculado = nomA;
     }
 
-    public void agregarAsociacionTextosVinculados(String nomAT) {
+    public void agregarAsociacionTextosVinculado(String nomAT) {
         asociacionTextosVinculado = nomAT;
     }
 
