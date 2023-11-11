@@ -2,21 +2,18 @@ package main.domain.classes;
 
 import main.domain.classes.types.PairFrequency;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
+import java.util.*;
 
 class FrequencyComparator implements Comparator<PairFrequency> {
     // override the compare() method
     public int compare(PairFrequency pf1, PairFrequency pf2)
     {
         if (pf1.getFrequency() > pf2.getFrequency())
-            return 1;
+            return -1;
         if (pf1.getFrequency() < pf2.getFrequency())
-            return 0;
-        else if(pf1.getPair().compareTo(pf2.getPair()) < 0) return 1;
-        return 0;
+            return 1;
+        else if(pf1.getPair().compareTo(pf2.getPair()) < 0) return -1;
+        return 1;
     }
 }
 
@@ -80,10 +77,13 @@ public class AsociacionTextos {
         textosAsociaciados.add(texto.getNombre());
         HashMap<String,Integer> freqTexto = texto.getFrecuenciaLetras();
 
-        frecuenciaLetras.forEach((key, value) -> freqTexto.merge(key, value, (oldValue, newValue) -> {
-            return oldValue+newValue;
-        }));
-
+        for(Map.Entry<String,Integer> e : freqTexto.entrySet()){
+            Integer frec = e.getValue();
+            if(frecuenciaLetras.containsKey(e.getKey())) {
+                frec = frecuenciaLetras.get(e.getKey()) + e.getValue();
+            }
+            frecuenciaLetras.put(e.getKey(),frec);
+        }
     }
 
     // ---------- AUXILIARES -----------

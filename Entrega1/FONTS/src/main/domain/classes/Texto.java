@@ -3,17 +3,18 @@ package main.domain.classes;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 /**
  * Classe que representa un texto
  * @author
  */
-abstract class Texto
+
+public class Texto
 {
     // ---------- ATRIBUTOS COMUNES ----------
     /** Guarda el nombre introducido por el usuario */
     protected String nombre;
 
-    protected String texto;
     protected HashMap<String, Integer> frecuenciaLetras; //string: parejaLetras, int: frecuencia
 
     protected ArrayList<String> asociacionesVinculadas;
@@ -32,41 +33,39 @@ abstract class Texto
      * Retorna el nombre introducido por el usuario
      * @return String : Nombre introducido por el usuario
      */
-    public String getNombre() { return nombre; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public HashMap<String, Integer> getFrecuenciaLetras()
-    {
-        return null;
+    public HashMap<String, Integer> getFrecuenciaLetras() {
+        return frecuenciaLetras;
     }
 
     /**
-     * Retorna el contenido del texto (lista de palabras)
-     * @return String : Contenido del texto usado por las funciones
+     * Retorna lista de AsociacionTextos que tiene el texto
+     * @return
      */
-    public ArrayList<String> getAsociacionesVinculadas()
-    {
+    public ArrayList<String> getAsociacionesVinculadas() {
+        return asociacionesVinculadas;
+    }
+
+    /**
+     * Retorna el contenido del texto
+     * @return String : Contenido del texto usado por las funciones, dependiendo del tipo de Texto el formato variará
+     */
+    public String getTexto() {
         return null;
     }
 
-    public String getTexto() {
-        return texto;
-    }
-
-
 
     // ---------- SETTERS ----------
-    /* creo que no hace falta
-    public void setNombre(String nom) {
-        nombre = nom;
+    public void agregarAsociacionesVinculadas(String nomAT) {
+        asociacionesVinculadas.add(nomAT);
     }
-    */
-    public void agregarAsociacionesVinculadas(String nomAT) {}
 
 
     // ---------- AUXILIARES ----------
-    public void borrarAsociacionesVinculadas(String nomAT) {}
-
-    abstract void tratarEntrada();
-
+    public void borrarAsociacionesVinculadas(String nomAT) {
+        asociacionesVinculadas.remove(nomAT);
+    }
 }
-

@@ -22,7 +22,11 @@ public class ConjuntoTextos
 
     // ---------- GETTERS ----------
     public Texto getTexto(String nomT) {
-        return null;
+        if (textos.containsKey(nomT)) return textos.get(nomT);
+        else {
+            // podria salir un mensaje: "texto nomT no existe en el sistema"
+            return null;
+        }
     }
 
     public HashMap<String, Texto> getTextos() {
@@ -35,16 +39,24 @@ public class ConjuntoTextos
 
 
     // ---------- SETTERS ----------
-    public void agregarTexto(String nomT, Texto texto) {}
+    public void agregarTexto(String nomT, Texto texto) {
+        textos.put(nomT, texto);
+    }
 
 
     // ---------- AUXILIARES -----------
     public boolean existeTexto(String nomT) {
-        return true;
+        return textos.containsKey(nomT);
     }
 
-    public void borrarTexto(String nomT) {}
+    public void borrarTexto(String nomT) {
+        textos.remove(nomT);
+    }
 
+    /* esta función no me cuadra, en el sentido de que si la clave de
+    cada texto es el nombre de un texto, mirando si existe o no con
+    la otra funcion podemos saber si el nombre estara disponible o no
+    */
     public boolean disponibilidadNombre(String nomT) {
         return true;
     }
