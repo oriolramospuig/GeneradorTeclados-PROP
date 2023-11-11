@@ -67,9 +67,10 @@ public class CtrlAlfabeto {
      * No retorna nada, ,crea el nuevo objecto alfabeto
      * también se añade este objeto en ConjuntoAlfabetos
      */
-    public void CrearAlfabeto(String nomA){
-        HashMap<String, Alfabeto> AlfabetosExistentes = CjtAlfabetos.getNombresAlfabetos();
-        if(!AlfabetosExistentes.containsKey(nomA)){
+    public void CrearAlfabeto(String nomA,String entradaCaracters){
+        if(!CjtAlfabetos.existeAlfabeto(nomA)){
+            ArrayList<Character> caracteres = new ArrayList<>();
+
             Alfabetoexistente = new Alfabeto (nomA);
             agregarAlfabeto(nomA, Alfabetoexistente);
         }

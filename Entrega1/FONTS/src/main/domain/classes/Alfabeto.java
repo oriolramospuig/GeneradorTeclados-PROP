@@ -22,15 +22,13 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
 
 
     // ---------- CONSTRUCTORES ----------
-    public Alfabeto()
-    {
+    public Alfabeto() {
         nombre = new String();
         letras = new ArrayList<>();
         tecladosVinculados = new ArrayList<>();
     }
 
-    public Alfabeto(String nombre, ArrayList<Character> letras)
-    {
+    public Alfabeto(String nombre, ArrayList<Character> letras) {
         this.nombre = nombre;
         this.letras = letras;
         tecladosVinculados = new ArrayList<>();
@@ -59,7 +57,10 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
     public ArrayList<Character> getLetras() {
         return null;
     }
-
+    /**
+     * Retorna el
+     * @return String : Contenido del alfabeto usado por las funciones
+     */
     public ArrayList<String> getTecladosVinculados() {
         return null;
     }
