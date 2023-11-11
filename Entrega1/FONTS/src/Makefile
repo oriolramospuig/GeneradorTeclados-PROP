@@ -26,17 +26,17 @@ TYPE_TESTS = 			./test/types/TestSuiteTipus.java \
 						./test/types/TestHexadecimal.java
 
 INTERPRET_CLASS_INPUT =	./main/domain/classes/functions/*.java \
-						./main/domain/classes/types/Binari.java \
-						./main/domain/classes/types/Hexadecimal.java \
-						./main/domain/classes/types/TType.java \
-						./main/domain/classes/types/Pair.java \
+						./main/domain/classes/types/PairFrequency.java \
+						./main/domain/classes/types/PairInt.java \
 						./main/domain/classes/exceptions/*.java \
 						./main/domain/controllers/CtrlDomini.java \
-						./main/domain/controllers/CtrlDocument.java \
-						./main/domain/controllers/CtrlClipboard.java
+						./main/domain/controllers/CtrlAlfabeto.java \
+						./main/domain/controllers/CtrlAsociacionTexto.java \
+						./main/domain/controllers/CtrlTeclado.java \
+						./main/domain/controllers/CtrlTexto.java
 
-TYPE_CLASS_INPUT =		./main/domain/classes/types/Binari.java \
-						./main/domain/classes/types/Hexadecimal.java
+TYPE_CLASS_INPUT =		./main/domain/classes/types/PairFrequency.java \
+						./main/domain/classes/types/PairInt.java
 
 DOCUMENT_CLASS_INPUT =	./main/domain/controllers/CtrlDocument.java \
 						./main/domain/classes/Document.java \
