@@ -73,10 +73,9 @@ public class CtrlAlfabeto {
   
     public void borrarAlfabeto(String nomA){
         ArrayList<String> tVinculado = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
-        if(tVinculado.size() > 0) {
+        if(!tVinculado.isEmpty()) {
             for (int i = 0; i < tVinculado.size(); ++i){
-                // String nomT = tVinculado[i];
-                // CjtTeclados.borrarTeclado(nomT);
+                CjtTeclados.borrarTeclado(tVinculado.get(i));
             }
             CjtAlfabetos.borrarAlfabeto(nomA);
         }
