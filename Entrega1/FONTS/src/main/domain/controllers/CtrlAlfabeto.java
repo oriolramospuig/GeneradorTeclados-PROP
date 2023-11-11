@@ -27,15 +27,28 @@ public class CtrlAlfabeto {
 
     // ---------- FUNCIONES ALFABETO ----------
     /**
-     * No retorna nada.
-     * Manda a añadir el nuevo teclado a cjt de teclados vinculados
+     * Retorna el objecto alfabeto pedido
+     * @return Alfabeto : Un objeto alfabeto concreto
+     */
+    public Alfabeto getAlfabetoexistente(){
+        return Alfabetoexistente;
+    }
+    /**
+     * No retorna nada, manda a añadir el nuevo teclado al cjt de teclados vinculados
+     * @return true // trendría que ser return bool?
+     */
+    /*public void sobreEscribirLetras (String nomA,ArrayList<Character> nuevasLetras){
+        CjtAlfabetos.getAlfabeto(nomA).sobreEscribirLetras(nuevasLetras);
+    }*/
+    /**
+     * No retorna nada, manda a añadir el nuevo teclado al cjt de teclados vinculados
      */
     public void agregarTecladoVinculado (String nomA,String nomT){
         CjtAlfabetos.getAlfabeto(nomA).agregarTecladoVinculado(nomT);
     }
     /**
-     * No retorna nada.
-     * Manda a borrar el teclado dado del cjt de teclados vinculados
+     * No retorna nada, manda a borrar un teclado al cjt de teclados vinculados
+     * @return true // trendría que ser return bool?
      */
     public void borrarTecladoVinculado (String nomA,String nomT){
         CjtAlfabetos.getAlfabeto(nomA).borrarTecladoVinculado(nomT);
@@ -50,6 +63,7 @@ public class CtrlAlfabeto {
     public ConjuntoAlfabetos getCjtAlfabetos(){
         return CjtAlfabetos;
     }
+
     /**
      * Retorna el objecto alfabeto pedido
      * @return Alfabeto : Un objeto alfabeto concreto
@@ -75,11 +89,13 @@ public class CtrlAlfabeto {
         }
         return false;
     }
+
     /**
      * No retorna nada.
      * Manda borrar el alfabeto dado, desvincula los teclados asociados
      * también borra este alfabeto de la lista de ConjuntoAlfabetos
      */
+  
     public void borrarAlfabeto(String nomA){
         ArrayList<String> tVinculado = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
         if(tVinculado.size() > 0) {
