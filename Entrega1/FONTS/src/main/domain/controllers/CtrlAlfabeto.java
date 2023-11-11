@@ -37,9 +37,9 @@ public class CtrlAlfabeto {
      * No retorna nada, manda a añadir el nuevo teclado al cjt de teclados vinculados
      * @return true // trendría que ser return bool?
      */
-    public void sobreEscribirLetras (String nomA,ArrayList<Character> nuevasLetras){
+    /*public void sobreEscribirLetras (String nomA,ArrayList<Character> nuevasLetras){
         CjtAlfabetos.getAlfabeto(nomA).sobreEscribirLetras(nuevasLetras);
-    }
+    }*/
     /**
      * No retorna nada, manda a añadir el nuevo teclado al cjt de teclados vinculados
      */
@@ -51,7 +51,7 @@ public class CtrlAlfabeto {
      * @return true // trendría que ser return bool?
      */
     public void borrarTecladoVinculado (String nomA,String nomT){
-        CjtAlfabetos.getAlfabeto(nomA).agregarTecladoVinculado(nomT);
+        CjtAlfabetos.getAlfabeto(nomA).borrarTecladoVinculado(nomT);
     }
 
     // ---------- FUNCIONES CONJUNTOALFABETOS ----------
@@ -72,7 +72,7 @@ public class CtrlAlfabeto {
         HashMap<String, Alfabeto> AlfabetosExistentes = CjtAlfabetos.getNombresAlfabetos();
         if(!AlfabetosExistentes.containsKey(nomA)){
             //informar formado y contenido
-            if(CjtAlfabetos.disponibilidadNombre(nomA)){
+            if(CjtAlfabetos.existeAlfabeto(nomA)){
                 Alfabetoexistente = new Alfabeto (nomA);
                 agregarAlfabeto(nomA, Alfabetoexistente);
             }
