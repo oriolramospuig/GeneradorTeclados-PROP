@@ -22,7 +22,8 @@ public class ConjuntoAsociaciones
 
     // ---------- GETTERS ----------
     public AsociacionTextos getAsociacionTextos(String nomAT) {
-        return null;
+        if (asociaciones.containsKey(nomAT)) return asociaciones.get(nomAT);
+        else return null;
     }
 
     public HashMap<String, AsociacionTextos> getAsociacionesTextos() {
@@ -30,24 +31,25 @@ public class ConjuntoAsociaciones
     }
 
     public ArrayList<String> getNombresAsociacionesTextos() {
-        return null;
+        ArrayList<String> listaNombres = new ArrayList<>();
+        for (String clave : asociaciones.keySet()) {
+            listaNombres.add(clave);
+        }
+        return listaNombres;
     }
 
     // ---------- SETTERS ----------
     public void agregarAsociacionTexto(String nomAT, AsociacionTextos asociacionTextos) {
-        //asociaciones.put(nomA, asociacionTextos);
+        asociaciones.put(nomAT, asociacionTextos);
     }
 
 
     // ---------- AUXILIARES -----------
     public boolean existeAsociaciondeTextos(String nomAT) {
-        //return asociaciones.containsKey(nomAT);
-        return true;
+        return asociaciones.containsKey(nomAT);
     }
 
-    public void borrarAsociacionTextos(String nomAT) {}
-
-    public boolean disponibilidadNombre(String nomAT) {
-        return true;
+    public void borrarAsociacionTextos(String nomAT) {
+        asociaciones.remove(nomAT);
     }
 }
