@@ -27,20 +27,6 @@ public class CtrlAlfabeto {
 
     // ---------- FUNCIONES ALFABETO ----------
     /**
-     * Retorna el objecto alfabeto pedido
-     * @return Alfabeto : Un objeto alfabeto concreto
-     */
-    public Alfabeto getAlfabetoexistente(){
-        return Alfabetoexistente;
-    }
-    /**
-     * No retorna nada, manda a añadir el nuevo teclado al cjt de teclados vinculados
-     * @return true // trendría que ser return bool?
-     */
-    /*public void sobreEscribirLetras (String nomA,ArrayList<Character> nuevasLetras){
-        CjtAlfabetos.getAlfabeto(nomA).sobreEscribirLetras(nuevasLetras);
-    }*/
-    /**
      * No retorna nada, manda a añadir el nuevo teclado al cjt de teclados vinculados
      */
     public void agregarTecladoVinculado (String nomA,String nomT){
@@ -55,7 +41,6 @@ public class CtrlAlfabeto {
     }
 
     // ---------- FUNCIONES CONJUNTOALFABETOS ----------
-
     /**
      * Retorna el objecto cjt alfabetos pedido
      * @return ConjuntoAlfabetos : Un objeto cjt alfabetos concreto
