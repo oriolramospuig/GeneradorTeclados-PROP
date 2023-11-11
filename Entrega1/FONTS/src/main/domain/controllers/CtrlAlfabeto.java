@@ -22,7 +22,6 @@ public class CtrlAlfabeto {
      */
     public CtrlAlfabeto(){
         CjtAlfabetos = null;
-        Alfabetoexistente = null;
     }
 
     // ---------- FUNCIONES ALFABETO ----------
@@ -71,12 +70,8 @@ public class CtrlAlfabeto {
     public void CrearAlfabeto(String nomA){
         HashMap<String, Alfabeto> AlfabetosExistentes = CjtAlfabetos.getNombresAlfabetos();
         if(!AlfabetosExistentes.containsKey(nomA)){
-            //informar formado y contenido
-            if(CjtAlfabetos.disponibilidadNombre(nomA)){
-                Alfabetoexistente = new Alfabeto (nomA);
-                agregarAlfabeto(nomA, Alfabetoexistente);
-            }
-            //else informar usuario
+            Alfabetoexistente = new Alfabeto (nomA);
+            agregarAlfabeto(nomA, Alfabetoexistente);
         }
     }
 
