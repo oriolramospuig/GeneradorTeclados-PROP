@@ -34,7 +34,11 @@ public class ConjuntoTextos
     }
 
     public ArrayList<String> getNombresTextos() {
-        return null;
+        ArrayList<String> listaNombres = new ArrayList<>();
+        for (String clave : textos.keySet()) {
+            listaNombres.add(clave);
+        }
+        return listaNombres;
     }
 
 
@@ -51,13 +55,5 @@ public class ConjuntoTextos
 
     public void borrarTexto(String nomT) {
         textos.remove(nomT);
-    }
-
-    /* esta función no me cuadra, en el sentido de que si la clave de
-    cada texto es el nombre de un texto, mirando si existe o no con
-    la otra funcion podemos saber si el nombre estara disponible o no
-    */
-    public boolean disponibilidadNombre(String nomT) {
-        return true;
     }
 }
