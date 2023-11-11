@@ -134,8 +134,10 @@ public class DriverDominio {
 
         int puntuacionGreedy = qap.calcularPuntuacionTeclado();
 
+        List<Character> teclasOrdenadas = qap.getTeclasOrdenadas();
+
         GilmoreLawler gilmoreLawler = new GilmoreLawler(qap.getFilas(), qap.getColumnas(), qap.getGlBound(), qap.getMatrizFrecuencias(), qap.getMatrizDistancias());
-        gilmoreLawler.gilmore_lawler(frecuenciasPares, teclas, puntuacionGreedy);
+        gilmoreLawler.gilmore_lawler(frecuenciasPares, teclasOrdenadas, puntuacionGreedy);
     }
 
 
