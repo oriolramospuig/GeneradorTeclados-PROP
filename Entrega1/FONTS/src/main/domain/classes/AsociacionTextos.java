@@ -53,11 +53,17 @@ public class AsociacionTextos {
 
 
     // ---------- GETTERS ----------
-    public String getNombre() {return nombre;}
+    public String getNombre() {
+        return nombre;
+    }
 
-    public ArrayList<String> getTextosAsociaciados() { return null;}
+    public ArrayList<String> getTextosAsociaciados() {
+        return textosAsociaciados;
+    }
 
-    public ArrayList<String> getTecladosVinculados() { return null;}
+    public ArrayList<String> getTecladosVinculados() {
+        return tecladosVinculados;
+    }
 
     public ArrayList<PairFrequency> getFrecuenciaLetras() {
         ArrayList<PairFrequency> freq = new ArrayList<>();
@@ -71,7 +77,9 @@ public class AsociacionTextos {
 
 
     // ---------- SETTERS ----------
-    public void agregarTecladoVinculado (String nomT) {}
+    public void agregarTecladoVinculado (String nomT) {
+        tecladosVinculados.add(nomT);
+    }
 
     public void agregarTexto (Texto texto) {
         textosAsociaciados.add(texto.getNombre());
@@ -87,8 +95,14 @@ public class AsociacionTextos {
     }
 
     // ---------- AUXILIARES -----------
-    public void borrarTecladoVinculado (String nomT) {}
+    public void borrarTecladoVinculado (String nomT) {
+        tecladosVinculados.remove(nomT);
+    }
 
-    public void borrarTexto (String nomTexto) {}
-
+    public void borrarTexto (String nomT) {
+        textosAsociaciados.remove(nomT);
+        /* al borrar un texto frecuenciaLetras cambiara, entones
+        IMPORTANTE llamar a getFrecuenciaLetras cada vez que se cree un teclado!!!
+         */
+    }
 }
