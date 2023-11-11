@@ -66,6 +66,7 @@ public class CtrlAlfabeto {
             ArrayList<Character> caracteres = new ArrayList<>();
             for (char c:entradaCaracteres.toCharArray()) {
                 // Solo agrega caracteres no espacios.
+                // espacio tambien puede ser caracter
                 if (c != ' ') caracteres.add(c);
             }
             Alfabeto alfabeto = new Alfabeto(nomA, caracteres);
@@ -79,17 +80,14 @@ public class CtrlAlfabeto {
      * Manda borrar el alfabeto dado, desvincula los teclados asociados
      * también borra este alfabeto de la lista de ConjuntoAlfabetos
      */
-
     public void borrarAlfabeto(String nomA){
-        if (CjtAlfabetos.existeAlfabeto(nomA)){ // crec que nomes hem de passar nom
-            CjtAlfabetos.getAlfabeto(nomA);
-            ArrayList<String> tVinculado = Alfabetoexistente.getTecladosVinculados();
-            if(tVinculado.size() > 0) {
-                for (int i = 0; i < tVinculado.size(); ++i){
-                    //CjtTeclados.invalidarteclado(tVinculado[i]);
-                }
-                CjtAlfabetos.borrarAlfabeto(nomA);
+        ArrayList<String> tVinculado = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
+        if(tVinculado.size() > 0) {
+            for (int i = 0; i < tVinculado.size(); ++i){
+                String nomT = tVinculado[i];
+                CjtTeclados.borrarTeclado(nomT);
             }
+            CjtAlfabetos.borrarAlfabeto(nomA);
         }
     }
 }
