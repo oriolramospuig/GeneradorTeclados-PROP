@@ -13,7 +13,6 @@ public class CtrlAlfabeto {
     /**
      * Parámetros de la clase Alfabeto y ConjuntoAlfabetos
      */
-    private Alfabeto Alfabetoexistente;
     private ConjuntoAlfabetos CjtAlfabetos;
     private ConjuntoTeclados CjtTeclados;
 
@@ -22,7 +21,6 @@ public class CtrlAlfabeto {
      */
     public CtrlAlfabeto(){
         CjtAlfabetos = null;
-        Alfabetoexistente = null;
     }
 
     // ---------- FUNCIONES ALFABETO ----------
@@ -48,14 +46,6 @@ public class CtrlAlfabeto {
     public ConjuntoAlfabetos getCjtAlfabetos(){
         return CjtAlfabetos;
     }
-
-    /**
-     * Retorna el objecto alfabeto pedido
-     * @return Alfabeto : Un objeto alfabeto concreto
-     */
-    /*public Alfabeto getAlfabeto(String nomA){
-        return Alfabetoexistente;
-    }*/
     /**
      * No retorna nada.
      * Crea el nuevo objecto alfabeto y añade este objeto a ConjuntoAlfabetos
