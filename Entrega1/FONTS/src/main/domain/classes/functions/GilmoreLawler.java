@@ -2,9 +2,8 @@ package main.domain.classes.functions;
 
 import main.domain.classes.types.PairFrequency;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class GilmoreLawler {
     int filas;
@@ -12,13 +11,15 @@ public class GilmoreLawler {
     int glBound;
     int [][] matrizFrecuencias;
     int [][] matrizDistancias;
+    HashMap<Character, Integer> letraAIndice;
 
-    public GilmoreLawler (int nf, int nc, int bound, int [][] mf, int [][] md) {
+    public GilmoreLawler (int nf, int nc, int bound, int [][] mf, int [][] md, HashMap<Character, Integer> letraAIndice) {
         this.filas = nf;
         this.columnas = nc;
         this.glBound = bound;
         this.matrizDistancias = md;
         this.matrizFrecuencias = mf;
+        this.letraAIndice = letraAIndice;
     }
 
     public int gilmore_lawler(List<PairFrequency> frecuenciasPares, List<Character> teclas, int cotaINI) {
@@ -27,49 +28,47 @@ public class GilmoreLawler {
         // Inicializar la cota con el peor escenario posible
         glBound = cotaINI;
 
-        // Preparar una lista para mantener un registro de la permutación actual y la visitada
-        List<Integer> permutacionActual = new ArrayList<>();
-        boolean[] visitado = new boolean[filas * columnas];
+        // Convertir la lista de teclas a una lista de índices basados en el orden dado por 'teclas'
+        List<Integer> indicesOrdenados = teclas.stream()
+                .map(letraAIndice::get)
+                .collect(Collectors.toList());
 
-        // Llamar a DFS para todas las posiciones
-        for (int i = 0; i < filas * columnas; i++) {
-            dfs(i, visitado, permutacionActual);
-            // Restablecer para la siguiente iteración de DFS
-            permutacionActual.clear();
-            Arrays.fill(visitado, false);
-        }
+        // Inicializar la solución parcial como una lista de índices en lugar de caracteres
+        List<Integer> solucionParcial = new ArrayList<>(Collections.nCopies(filas * columnas, -1));
 
-        // Aquí tendrías que comparar el resultado de cada DFS con la cota actual y actualizar la cota
-        // con el menor valor encontrado. Este es un lugar donde se aplicaría la lógica de Gilmore-Lawler.
-        // Por simplicidad, este código no muestra esa comparación directamente.
+        // Llamar a DFS usando el orden de las teclas ordenadas por frecuencia
+        dfs(0, indicesOrdenados, solucionParcial, 0); // Empezar DFS con profundidad 0 y cota 0
+
+
         System.out.println("GILMORE_LAWLER acabado; Cota final = " + glBound);
         System.out.println();
         return glBound;
     }
 
-    private void dfs(int indice, boolean[] visitado, List<Integer> permutacionActual) {
-        // Marcar la posición actual como visitada
-        visitado[indice] = true;
-        permutacionActual.add(indice);
-
-        // Verificar si hemos llegado al final de la permutación
-        if (permutacionActual.size() == filas * columnas) {
-            // Calcular la cota para esta permutación
-            int cotaPermutacion = calcularCotaPermutacion(permutacionActual);
-            if (cotaPermutacion < glBound) glBound = cotaPermutacion;
+    private void dfs(int profundidad, List<Integer> indicesOrdenados, List<Integer> solucionParcial, int cotaActual) {
+        if (profundidad == filas * columnas) {
+            // Se ha encontrado una solución completa
+            int cotaPermutacion = calcularCotaPermutacion(solucionParcial);
+            if (cotaPermutacion < glBound) {
+                glBound = cotaPermutacion;
+            }
         } else {
-            // Continuar la búsqueda en profundidad para la siguiente posición no visitada
-            for (int i = 0; i < filas * columnas; i++) {
-                if (!visitado[i]) {
-                    dfs(i, visitado, permutacionActual);
+            // Probar colocando la siguiente tecla en la posición correspondiente al orden dado
+            int indiceTeclaActual = indicesOrdenados.get(profundidad);
+            for (int posicion = 0; posicion < filas * columnas; posicion++) {
+                if (solucionParcial.get(posicion) == -1) { // Si la posición está libre
+                    solucionParcial.set(posicion, indiceTeclaActual); // Coloca la tecla en la posición libre
+                    int nuevaCota = cotaActual + calcularContribucionC1C2(solucionParcial, posicion, indiceTeclaActual);
+                    if (nuevaCota < glBound) {
+                        dfs(profundidad + 1, indicesOrdenados, solucionParcial, nuevaCota);
+                        solucionParcial.set(posicion, -1); // Limpia la posición para el próximo intento
+                    }
+
                 }
             }
         }
-
-        // Backtrack: deshacer la última acción antes de la próxima iteración
-        visitado[indice] = false;
-        permutacionActual.remove(permutacionActual.size() - 1);
     }
+
 
     // Método para calcular la cota de una permutación específica
     // Nota: Este es un pseudocódigo para ilustrar el concepto. La implementación real
@@ -79,7 +78,6 @@ public class GilmoreLawler {
         int cota = 0;
         for (int i = 0; i < permutacionActual.size(); i++) {
             for (int j = 0; j < permutacionActual.size(); j++) {
-                // Asumiendo que matrizDistancias y matrizFrecuencias están correctamente pobladas
                 cota += matrizDistancias[permutacionActual.get(i)][permutacionActual.get(j)]
                         * matrizFrecuencias[i][j];
             }
@@ -87,4 +85,56 @@ public class GilmoreLawler {
         return cota;
     }
 
+    private int calcularContribucionC1(int indiceTeclaActual, int posicion, List<Integer> solucionParcial) {
+        int contribucionC1 = 0;
+        for (int j = 0; j < solucionParcial.size(); j++) {
+            if (solucionParcial.get(j) != -1) { // Si la tecla en la solución parcial está emplazada
+                // Calcula el costo de tráfico entre la i-ésima tecla y la tecla en la j-ésima posición emplazada
+                contribucionC1 += matrizDistancias[posicion][j] * matrizFrecuencias[indiceTeclaActual][solucionParcial.get(j)];
+            }
+        }
+        return contribucionC1;
+    }
+
+    private int calcularContribucionC2(int indiceTeclaActual, int posicion, List<Integer> solucionParcial) {
+        int contribucionC2 = 0;
+        // Crear los vectores T y D basados en tráfico y distancia respectivamente
+        List<Integer> traficoNoEmplazado = new ArrayList<>();
+        List<Integer> distanciaNoOcupada = new ArrayList<>();
+
+        for (int i = 0; i < matrizFrecuencias.length; i++) {
+            if (!solucionParcial.contains(i)) { // Si la tecla 'i' no está emplazada
+                traficoNoEmplazado.add(matrizFrecuencias[indiceTeclaActual][i]);
+            }
+        }
+
+        for (int i = 0; i < matrizDistancias.length; i++) {
+            if (!solucionParcial.contains(i)) { // Si la posición 'i' no está ocupada
+                distanciaNoOcupada.add(matrizDistancias[posicion][i]);
+            }
+        }
+
+        // Ordenar T y D para el cálculo del producto escalar
+        Collections.sort(traficoNoEmplazado);
+        Collections.sort(distanciaNoOcupada, Collections.reverseOrder());
+
+        // Calcular el producto escalar de T ordenado y D ordenado inversamente
+        for (int i = 0; i < traficoNoEmplazado.size(); i++) {
+            contribucionC2 += traficoNoEmplazado.get(i) * distanciaNoOcupada.get(i);
+        }
+
+        return contribucionC2;
+    }
+
+    // Función que calcula la contribución de C1 y C2
+    private int calcularContribucionC1C2(List<Integer> solucionParcial, int posicion, int indiceTeclaActual) {
+        int contribucionC1 = calcularContribucionC1(indiceTeclaActual, posicion, solucionParcial);
+        int contribucionC2 = calcularContribucionC2(indiceTeclaActual, posicion, solucionParcial);
+
+        // Sumar las contribuciones de C1 y C2 para obtener la contribución total de la tecla 'i' en la posición 'k'
+        return contribucionC1 + contribucionC2;
+    }
+
 }
+
+
