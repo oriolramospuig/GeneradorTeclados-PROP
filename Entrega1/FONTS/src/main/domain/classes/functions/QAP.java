@@ -36,45 +36,25 @@ public class QAP {
         this.matrizDistancias = new int[filas * columnas][filas * columnas];
         Matrices.generarMatrizDistancias(filas, columnas, matrizDistancias);
 
-        this.teclasOrdenadas = new ArrayList<>();
-        ordenarTeclas(teclas);
+        this.teclasOrdenadas = new ArrayList<>(teclas);
+        ordenarTeclas();
     }
 
     public int getFilas() {
         return this.filas;
     }
-
-    public void setFilas(int filas) {
-        this.filas = filas;
-    }
-
     public int getColumnas() {
         return this.columnas;
     }
-
-    public void setColumnas(int columnas) {
-        this.columnas = columnas;
-    }
-
     public int getGlBound() {
         return this.glBound;
     }
-
-    public void setGlBound(int glBound) {
-        this.glBound = glBound;
-    }
-
     public int[][] getMatrizFrecuencias() {
         // Devuelve una copia para evitar la modificación directa de la matriz
         return Arrays.stream(this.matrizFrecuencias)
                 .map(int[]::clone)
                 .toArray(int[][]::new);
     }
-
-    public void setMatrizFrecuencias(int[][] matrizFrecuencias) {
-        this.matrizFrecuencias = matrizFrecuencias;
-    }
-
     public int[][] getMatrizDistancias() {
         // Devuelve una copia para evitar la modificación directa de la matriz
         return Arrays.stream(this.matrizDistancias)
@@ -82,10 +62,10 @@ public class QAP {
                 .toArray(int[][]::new);
     }
 
-    public void setMatrizDistancias(int[][] matrizDistancias) {
-        this.matrizDistancias = matrizDistancias;
+    public List<Character> getTeclasOrdenadas() {
+        // Devuelve una copia defensiva de teclasOrdenadas para evitar la modificación externa
+        return new ArrayList<>(this.teclasOrdenadas);
     }
-
 
     /**Assignació aleatòria de m tecles a m posicions; de moment l'omplim tot sencer (12 posicions = 12 lletres)*/
     public void calcularAsignacionAleatoria(List<Character> teclas) {
@@ -112,19 +92,6 @@ public class QAP {
         System.out.println("Asignación de las teclas greedy: ");
         System.out.println();
         //generarMatrizDeFrecuencias(frecuenciasPares, teclas); ja es calcula a la creadora
-
-        // Genera una lista de índices basada en la frecuencia total de cada tecla
-        List<Integer> indicesPorFrecuencia = new ArrayList<>();
-        for (int i = 0; i < matrizFrecuencias.length; i++) {
-            int frecuenciaTotal = 0;
-            for (int j = 0; j < matrizFrecuencias[i].length; j++) {
-                frecuenciaTotal += matrizFrecuencias[i][j];
-            }
-            indicesPorFrecuencia.add(frecuenciaTotal);
-        }
-
-        // Ordena los caracteres basándose en su frecuencia total
-        teclas.sort(Comparator.comparingInt(letra -> -indicesPorFrecuencia.get(letraAIndice.get(letra))));
 
         // Asigna las teclas más frecuentes al centro del teclado
         int centroFila = filas / 2;
@@ -236,7 +203,22 @@ public class QAP {
         System.out.println();
     }
 
-    public void ordenarTeclas(List<Character> teclas) {
+    public void ordenarTeclas() {
+        List<Integer> indicesPorFrecuencia = new ArrayList<>();
+        for (int i = 0; i < matrizFrecuencias.length; i++) {
+            int frecuenciaTotal = 0;
+            for (int j = 0; j < matrizFrecuencias[i].length; j++) {
+                frecuenciaTotal += matrizFrecuencias[i][j];
+            }
+            indicesPorFrecuencia.add(frecuenciaTotal);
+        }
 
+        // Ordena los caracteres basándose en su frecuencia total
+        teclasOrdenadas.sort(Comparator.comparingInt(letra -> -indicesPorFrecuencia.get(letraAIndice.get(letra))));
+        System.out.println("Teclas ordenadas: ");
+        System.out.println();
+        for (int i = 0; i < teclasOrdenadas.size(); ++i) {
+            System.out.println(teclasOrdenadas.get(i));
+        }
     }
 }

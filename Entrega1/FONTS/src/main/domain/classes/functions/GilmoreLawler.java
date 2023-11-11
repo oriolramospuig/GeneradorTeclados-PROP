@@ -21,60 +21,11 @@ public class GilmoreLawler {
         this.matrizFrecuencias = mf;
     }
 
-    public int getFilas() {
-        return this.filas;
-    }
-
-    public void setFilas(int filas) {
-        this.filas = filas;
-    }
-
-    public int getColumnas() {
-        return this.columnas;
-    }
-
-    public void setColumnas(int columnas) {
-        this.columnas = columnas;
-    }
-
-    public int getGlBound() {
-        return this.glBound;
-    }
-
-    public void setGlBound(int glBound) {
-        this.glBound = glBound;
-    }
-
-    public int[][] getMatrizFrecuencias() {
-        // Devuelve una copia para evitar la modificación directa de la matriz
-        return Arrays.stream(this.matrizFrecuencias)
-                .map(int[]::clone)
-                .toArray(int[][]::new);
-    }
-
-    public void setMatrizFrecuencias(int[][] matrizFrecuencias) {
-        this.matrizFrecuencias = matrizFrecuencias;
-    }
-
-    public int[][] getMatrizDistancias() {
-        // Devuelve una copia para evitar la modificación directa de la matriz
-        return Arrays.stream(this.matrizDistancias)
-                .map(int[]::clone)
-                .toArray(int[][]::new);
-    }
-
-    public void setMatrizDistancias(int[][] matrizDistancias) {
-        this.matrizDistancias = matrizDistancias;
-    }
-
     public int gilmore_lawler(List<PairFrequency> frecuenciasPares, List<Character> teclas, int cotaINI) {
         System.out.println("GILMORE-LAWLER ejecutándose");
         System.out.println();
         // Inicializar la cota con el peor escenario posible
         glBound = cotaINI;
-        /**Matriz de frecuencias bien matriz de distancias hay que comprobar*/
-        // generarMatrizDeFrecuencias(frecuenciasPares, teclas);
-        // generarMatrizDistancias();
 
         // Preparar una lista para mantener un registro de la permutación actual y la visitada
         List<Integer> permutacionActual = new ArrayList<>();
