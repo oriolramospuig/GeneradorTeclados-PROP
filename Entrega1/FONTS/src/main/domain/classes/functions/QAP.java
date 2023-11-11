@@ -62,6 +62,10 @@ public class QAP {
                 .toArray(int[][]::new);
     }
 
+    public HashMap<Character, Integer> getLetraAIndice() {
+        return new HashMap<>(this.letraAIndice);
+    }
+
     public List<Character> getTeclasOrdenadas() {
         // Devuelve una copia defensiva de teclasOrdenadas para evitar la modificación externa
         return new ArrayList<>(this.teclasOrdenadas);
