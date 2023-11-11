@@ -110,14 +110,14 @@ public class DriverDominio {
             teclas.add(c);
         }
         List<PairFrequency> frecuenciasPares = new ArrayList<>();
-        frecuenciasPares.add(new PairFrequency("ab", 550)); // Frecuencia del par AB
-        frecuenciasPares.add(new PairFrequency("bc", 400)); // Frecuencia del par BC
-        frecuenciasPares.add(new PairFrequency("cd", 280)); // y así sucesivamente...
-        frecuenciasPares.add(new PairFrequency("de", 275));
-        frecuenciasPares.add(new PairFrequency("ef", 260));
-        frecuenciasPares.add(new PairFrequency("fg", 250));
-        frecuenciasPares.add(new PairFrequency("gh", 245));
-        frecuenciasPares.add(new PairFrequency("hi", 230));
+        frecuenciasPares.add(new PairFrequency("ab", 1200)); // Frecuencia del par AB
+        frecuenciasPares.add(new PairFrequency("bc", 900)); // Frecuencia del par BC
+        frecuenciasPares.add(new PairFrequency("cd", 820)); // y así sucesivamente...
+        frecuenciasPares.add(new PairFrequency("de", 710));
+        frecuenciasPares.add(new PairFrequency("ef", 600));
+        frecuenciasPares.add(new PairFrequency("fg", 550));
+        frecuenciasPares.add(new PairFrequency("gh", 445));
+        frecuenciasPares.add(new PairFrequency("hi", 330));
         frecuenciasPares.add(new PairFrequency("ia", 220));
 
         QAP qap = new QAP(3,4, teclas, frecuenciasPares);
