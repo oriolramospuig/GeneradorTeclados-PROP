@@ -1,0 +1,56 @@
+package main.domain.classes.functions;
+
+import main.domain.classes.types.PairFrequency;
+
+import java.util.HashMap;
+import java.util.List;
+
+public class Matrices {
+    /**Genera la matriu de distàncies de Manhattan, de moment no la fem servir perquè donava diferent, cal revisar*/
+    public static void generarMatrizDistancias(int filas, int columnas, int[][] matrizDistancias) {
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                for (int k = 0; k < filas; k++) {
+                    for (int l = 0; l < columnas; l++) {
+                        int indice1 = i * columnas + j;
+                        int indice2 = k * columnas + l;
+                        matrizDistancias[indice1][indice2] = Manhattan.calcularDistancia(i, j, k, l);
+                    }
+                }
+            }
+        }
+    }
+
+    /**Genera matriu de frequències, li passem la llista de parells de lletres amb les frequencies (ordenades?)
+     * i la llista de tecles.*/
+    public static void generarMatrizDeFrecuencias(List<PairFrequency> frecuenciasPares, List<Character> teclas, HashMap<Character, Integer> letraAIndice, int[][] matrizFrecuencias) {
+        // Primero, mapear cada letra a su índice en la matriz del teclado
+        int index = 0;
+        for (Character c : teclas) {
+            letraAIndice.put(c, index++);
+        }
+
+        // Inicializa la matriz de frecuencias a cero
+        for (int i = 0; i < matrizFrecuencias.length; i++) {
+            for (int j = 0; j < matrizFrecuencias[i].length; j++) {
+                matrizFrecuencias[i][j] = 0;
+            }
+        }
+
+        // Llena la matriz de frecuencias usando la lista de frecuencias de pares
+        for (PairFrequency pf : frecuenciasPares) {
+            char letra1 = pf.getPair().charAt(0);
+            char letra2 = pf.getPair().charAt(1);
+            int frecuencia = pf.getFrequency();
+
+            Integer indice1 = letraAIndice.get(letra1);
+            Integer indice2 = letraAIndice.get(letra2);
+
+            if (indice1 != null && indice2 != null) {
+                matrizFrecuencias[indice1][indice2] = frecuencia;
+                matrizFrecuencias[indice2][indice1] = frecuencia;
+            }
+        }
+    }
+
+}

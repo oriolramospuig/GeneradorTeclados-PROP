@@ -68,7 +68,7 @@ public class CtrlAlfabeto {
      * No retorna nada, ,crea el nuevo objecto alfabeto
      * también se añade este objeto en ConjuntoAlfabetos
      */
-    public void CrearAlfabeto(String nomA){
+    /**public void CrearAlfabeto(String nomA){
         HashMap<String, Alfabeto> AlfabetosExistentes = CjtAlfabetos.getNombresAlfabetos();
         if(!AlfabetosExistentes.containsKey(nomA)){
             //informar formado y contenido
@@ -78,7 +78,7 @@ public class CtrlAlfabeto {
             }
             //else informar usuario
         }
-    }
+    }*/
 
     /**
      * No retorna nada, manda a añadir el nuevo teclado a
@@ -92,7 +92,7 @@ public class CtrlAlfabeto {
      * también desvincula los teclados asociados
      * también borra este objeto de ConjuntoAlfabetos
      */
-    public void borrarAlfabeto(String nomA){ // borrar alfabeto sense nom primer
+    /*public void borrarAlfabeto(String nomA){ // borrar alfabeto sense nom primer
         HashMap<String, Alfabeto> AlfabetosExistentes = CjtAlfabetos.getNombresAlfabetos();
         // no existe
         // String nomAlf = CjtAlfabetos.borrarAlfabetoconcreto(); // crear funcio a cjt alfabetos
@@ -110,4 +110,5 @@ public class CtrlAlfabeto {
             }
         }
     }
+     */
 }

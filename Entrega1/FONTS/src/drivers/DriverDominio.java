@@ -2,6 +2,7 @@ package drivers;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
+import main.domain.classes.functions.GilmoreLawler;
 import main.domain.classes.functions.InOut;
 import main.domain.classes.functions.QAP;
 import main.domain.classes.types.PairFrequency;
@@ -104,32 +105,14 @@ public class DriverDominio {
     void imprimirPruebaQAP() {
         System.out.println("Se generará un teclado aleatorio de 3*4 con las letras de la A a la L: ");
         System.out.println();
-        QAP qap = new QAP(3,4);
         List<Character> teclas = new ArrayList<>();
         for(char c = 'a'; c <= 'l'; c++) { // Asumiendo un alfabeto de 'a' a 'l'
             teclas.add(c);
         }
-        /**
-        QAP qap = new QAP(3,4);
-         List<Character> teclas = new ArrayList<>();
-         for(char c = 'a'; c <= 'i'; c++) { // Asumiendo un alfabeto de 'a' a 'l'
-         teclas.add(c);
-         }
-         */
-
         List<PairFrequency> frecuenciasPares = new ArrayList<>();
-        /**frecuenciasPares.add(new PairFrequency("ab", 40)); // Frecuencia del par AB
-        frecuenciasPares.add(new PairFrequency("bc", 35)); // Frecuencia del par BC
-        frecuenciasPares.add(new PairFrequency("cd", 30));
-        frecuenciasPares.add(new PairFrequency("de", 25));
-        frecuenciasPares.add(new PairFrequency("ef", 20));
-        frecuenciasPares.add(new PairFrequency("fg", 15));
-        frecuenciasPares.add(new PairFrequency("gh", 10));
-        frecuenciasPares.add(new PairFrequency("hi", 5));
-         */
-        frecuenciasPares.add(new PairFrequency("ab", 100)); // Frecuencia del par AB
-        frecuenciasPares.add(new PairFrequency("bc", 80)); // Frecuencia del par BC
-        frecuenciasPares.add(new PairFrequency("cd", 50)); // y así sucesivamente...
+        frecuenciasPares.add(new PairFrequency("ab", 50)); // Frecuencia del par AB
+        frecuenciasPares.add(new PairFrequency("bc", 40)); // Frecuencia del par BC
+        frecuenciasPares.add(new PairFrequency("cd", 30)); // y así sucesivamente...
         frecuenciasPares.add(new PairFrequency("de", 25));
         frecuenciasPares.add(new PairFrequency("ef", 20));
         frecuenciasPares.add(new PairFrequency("fg", 10));
@@ -137,41 +120,22 @@ public class DriverDominio {
         frecuenciasPares.add(new PairFrequency("hi", 2));
         frecuenciasPares.add(new PairFrequency("ia", 1));
 
-        System.out.println("Matriz de frecuencias del ejemplo: ");
-        System.out.println();
-        qap.generarMatrizDeFrecuencias(frecuenciasPares, teclas);
-        qap.imprimirMatrizFrecuencias();
-        System.out.println();
+        QAP qap = new QAP(3,4, teclas, frecuenciasPares);
 
-        System.out.println("Matriz de distancias del ejemplo: ");
-        System.out.println();
-        qap.generarMatrizDistancias();
-        qap.imprimirMatrizDistancias();
-        System.out.println();
+        qap.imprimirMatrices();
 
-        System.out.println("Asignación de las teclas aleatoria: ");
-        System.out.println();
         qap.calcularAsignacionAleatoria(teclas);
         qap.imprimirTeclado();
-        System.out.println();
-        int puntuacion = qap.calcularPuntuacionTeclado();
-        System.out.println("La puntuación inicial es: " + puntuacion);
-        System.out.println();
 
-        System.out.println("Asignación de las teclas greedy: ");
-        System.out.println();
+        int puntuacion = qap.calcularPuntuacionTeclado();
+
         qap.calcularAsignacionGreedy(frecuenciasPares, teclas);
         qap.imprimirTeclado();
-        System.out.println();
-        int puntuacionGreedy = qap.calcularPuntuacionTeclado();
-        System.out.println("La puntuación es: " + puntuacionGreedy);
-        System.out.println();
 
-        System.out.println("PROBAMOS GILMORE-LAWLER");
-        System.out.println();
-        int cotaFinal = qap.gilmore_lawler(frecuenciasPares, teclas, puntuacion);
-        System.out.println("Cota final = " + cotaFinal);
-        System.out.println();
+        int puntuacionGreedy = qap.calcularPuntuacionTeclado();
+
+        GilmoreLawler gilmoreLawler = new GilmoreLawler(qap.getFilas(), qap.getColumnas(), qap.getGlBound(), qap.getMatrizFrecuencias(), qap.getMatrizDistancias());
+        gilmoreLawler.gilmore_lawler(frecuenciasPares, teclas, puntuacionGreedy);
     }
 
 
