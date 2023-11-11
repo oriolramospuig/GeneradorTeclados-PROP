@@ -32,18 +32,21 @@ public class ConjuntoAlfabetos {
     }
     /**
      * Retorna el conjunto de alfabetos existentes
-     * @return HashMap<String, Alfabeto>: Conjunto de alfabetos
+     * @return alfabetos: Conjunto de alfabetos
      */
     public HashMap<String, Alfabeto> getAlfabetos () {
         return alfabetos;
     }
-
     /**
-     * Retorna el conjunto de alfabetos
-     * @return alfabetos : Conjunto de alfabetos guardados
+     * Retorna el nombre de los alfabetos del conjunto
+     * @return listaNombresA: Lista de nombres de los alfabetos del conjuntos
      */
     public ArrayList<String> getNombresAlfabetos() {
-        return null;
+        ArrayList<String> listaNombresA = new ArrayList<>();
+        for (String clave : alfabetos.keySet()) {
+            listaNombresA.add(clave);
+        }
+        return listaNombresA;
     }
 
 
@@ -72,8 +75,4 @@ public class ConjuntoAlfabetos {
     public void borrarAlfabeto(String nomA) {
         alfabetos.remove(nomA);
     }
-
-    /*public boolean disponibilidadNombre(String nomA) {
-        return true;
-    }*/
 }
