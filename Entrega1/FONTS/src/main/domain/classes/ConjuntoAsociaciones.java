@@ -45,7 +45,7 @@ public class ConjuntoAsociaciones
 
 
     // ---------- AUXILIARES -----------
-    public boolean existeAsociaciondeTextos(String nomAT) {
+    public boolean existeAsociacionTextos(String nomAT) {
         return asociaciones.containsKey(nomAT);
     }
 
