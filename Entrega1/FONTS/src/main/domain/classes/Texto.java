@@ -27,7 +27,6 @@ public class Texto
         asociacionesVinculadas = new ArrayList<>();
     }
 
-
     // ---------- GETTERS ----------
     /**
      * Retorna el nombre introducido por el usuario
