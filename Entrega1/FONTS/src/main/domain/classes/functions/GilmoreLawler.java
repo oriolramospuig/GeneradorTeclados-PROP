@@ -12,6 +12,8 @@ public class GilmoreLawler {
     int [][] matrizFrecuencias;
     int [][] matrizDistancias;
     HashMap<Character, Integer> letraAIndice;
+    private List<Integer> mejorSolucionParcial;
+
 
     public GilmoreLawler (int nf, int nc, int bound, int [][] mf, int [][] md, HashMap<Character, Integer> letraAIndice) {
         this.filas = nf;
@@ -20,6 +22,12 @@ public class GilmoreLawler {
         this.matrizDistancias = md;
         this.matrizFrecuencias = mf;
         this.letraAIndice = letraAIndice;
+        this.mejorSolucionParcial = new ArrayList<>();
+    }
+
+    // Método para obtener la mejor solución parcial como lista de índices
+    public List<Integer> getMejorSolucionParcial() {
+        return new ArrayList<>(mejorSolucionParcial); // Devuelve una copia defensiva
     }
 
     public int gilmore_lawler(List<PairFrequency> frecuenciasPares, List<Character> teclas, int cotaINI) {
@@ -42,6 +50,7 @@ public class GilmoreLawler {
 
         System.out.println("GILMORE_LAWLER acabado; Cota final = " + glBound);
         System.out.println();
+        imprimirMejorSolucionParcial();
         return glBound;
     }
 
@@ -51,6 +60,7 @@ public class GilmoreLawler {
             int cotaPermutacion = calcularCotaPermutacion(solucionParcial);
             if (cotaPermutacion < glBound) {
                 glBound = cotaPermutacion;
+                mejorSolucionParcial = new ArrayList<>(solucionParcial);
             }
         } else {
             // Probar colocando la siguiente tecla en la posición correspondiente al orden dado
@@ -60,8 +70,11 @@ public class GilmoreLawler {
                     solucionParcial.set(posicion, indiceTeclaActual); // Coloca la tecla en la posición libre
                     int nuevaCota = cotaActual + calcularContribucionC1C2(solucionParcial, posicion, indiceTeclaActual);
                     if (nuevaCota < glBound) {
+                        //int cotaAnt = cotaActual;
+                        //cotaActual = calcularCotaPermutacionAct(solucionParcial);
                         dfs(profundidad + 1, indicesOrdenados, solucionParcial, nuevaCota);
                         solucionParcial.set(posicion, -1); // Limpia la posición para el próximo intento
+                        //cotaActual = cotaAnt;
                     }
 
                 }
@@ -71,8 +84,6 @@ public class GilmoreLawler {
 
 
     // Método para calcular la cota de una permutación específica
-    // Nota: Este es un pseudocódigo para ilustrar el concepto. La implementación real
-    // puede variar dependiendo de la estructura y los datos de tu problema específico.
     private int calcularCotaPermutacion(List<Integer> permutacionActual) {
         // Calcular la cota basada en la permutación actual y las matrices de frecuencia y distancia
         int cota = 0;
@@ -84,6 +95,21 @@ public class GilmoreLawler {
         }
         return cota;
     }
+
+    private int calcularCotaPermutacionAct(List<Integer> permutacionActual) {
+        // Calcular la cota basada en la permutación actual y las matrices de frecuencia y distancia
+        int cota = 0;
+        for (int i = 0; i < filas * columnas; i++) {
+            for (int j = 0; j < filas * columnas; j++) {
+                // Comprueba si ambos índices son no negativos antes de acceder a los arrays
+                if (permutacionActual.get(i) >= 0 && permutacionActual.get(j) >= 0) {
+                    cota += matrizDistancias[permutacionActual.get(i)][permutacionActual.get(j)] * matrizFrecuencias[i][j];
+                }
+            }
+        }
+        return cota;
+    }
+
 
     private int calcularContribucionC1(int indiceTeclaActual, int posicion, List<Integer> solucionParcial) {
         int contribucionC1 = 0;
@@ -134,6 +160,27 @@ public class GilmoreLawler {
         // Sumar las contribuciones de C1 y C2 para obtener la contribución total de la tecla 'i' en la posición 'k'
         return contribucionC1 + contribucionC2;
     }
+
+    public void imprimirMejorSolucionParcial() {
+        // Suponiendo que 'mejorSolucionParcial' es una lista de índices que representa la mejor solución actual
+        System.out.print("La mejor solución parcial es: ");
+        for (int posicion = 0; posicion < mejorSolucionParcial.size(); posicion++) {
+            char tecla = getTeclaPorIndice(mejorSolucionParcial.get(posicion));
+            System.out.print("Posición " + posicion + ": Tecla " + tecla + " | ");
+        }
+        System.out.println(); // Finalizar con una nueva línea
+    }
+
+    private char getTeclaPorIndice(int indiceTecla) {
+        for (Map.Entry<Character, Integer> entry : letraAIndice.entrySet()) {
+            if (entry.getValue().equals(indiceTecla)) {
+                return entry.getKey();
+            }
+        }
+        throw new IllegalArgumentException("Índice de tecla no encontrado: " + indiceTecla);
+    }
+
+
 
 }
 
