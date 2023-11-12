@@ -79,7 +79,7 @@ public class CtrlAsociacionTexto {
             for (int i = 0; i < tVinculado.size(); ++i){
                 conjuntoTeclados.borrarTeclado(tVinculado.get(i));
             }
-            AsociacionesTextos.borrarAsociacionTextos(nomAT);
         }
+        AsociacionesTextos.borrarAsociacionTextos(nomAT);
     }
 }

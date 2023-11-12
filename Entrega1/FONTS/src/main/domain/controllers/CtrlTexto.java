@@ -77,7 +77,7 @@ public class CtrlTexto {
             for (int i = 0; i < AVinculadas.size(); ++i){
                 CjtAsociaciones.borrarAsociacionTextos(AVinculadas.get(i));
             }
-            CjtTextos.borrarTexto(nomT);
         }
+        CjtTextos.borrarTexto(nomT);
     }
 }

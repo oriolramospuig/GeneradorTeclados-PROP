@@ -2,10 +2,13 @@ package drivers;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
+import main.domain.classes.ConjuntoTeclados;
+import main.domain.classes.ConjuntoTextos;
 import main.domain.classes.functions.GilmoreLawler;
 import main.domain.classes.functions.InOut;
 import main.domain.classes.functions.QAP;
 import main.domain.classes.types.PairFrequency;
+import main.domain.controllers.CtrlDominio;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -20,31 +23,33 @@ import java.util.ArrayList;
 public class DriverDominio {
     private InOut inOut;
     private ConjuntoAlfabetos conjuntoAlfabetos;
+    private ConjuntoTextos conjuntoTextos;
+    private ConjuntoTeclados conjuntoTeclados;
+    private CtrlDominio ctrlDominio;
 
     public DriverDominio() {
         inOut = new InOut();
         conjuntoAlfabetos = new ConjuntoAlfabetos();
     }
 
+    // ---------- FUNCIONES ALFABETO ----------
+
+    /**
+     * No retorna nada.
+     * Muestra al usuario como debe ser la entrada
+     * Manda a comprobar que la entrada sea válida
+     * Manda añadir el nuevo alfabeto con los atributos asignados
+     * Envía mensaje de contenido no válido si no lo es
+     */
     public void agregarAlfabetoPorTerminal() {
         System.out.println("Introduce el nombre del alfabeto:");
         String nombre = inOut.leerString();
         System.out.println("Introduce los caracteres del alfabeto separados por espacio (ejemplo: a b c ...):");
         String entradaCaracteres = inOut.leerString();
-
-        // Verifica que la entrada de caracteres es válida.
         if (inOut.contenidoValido(entradaCaracteres)) {
-            // Convierte la entrada en un ArrayList de caracteres.
-            ArrayList<Character> caracteres = new ArrayList<>();
-            for (char c : entradaCaracteres.toCharArray()) {
-                // Solo agrega caracteres no espacios.
-                if(c != ' ') {
-                    caracteres.add(c);
-                }
-            }
-            // Agrega el alfabeto al conjunto si es válido.
-            Alfabeto alfabeto = new Alfabeto(nombre, caracteres);
-            conjuntoAlfabetos.agregarAlfabeto(nombre, alfabeto);
+            boolean agregado = ctrlDominio.agregarAlfabeto(nombre, entradaCaracteres);
+            if (!agregado) System.out.println("Ya existe el alfabeto " + nombre);
+            else System.out.println("AGREGADO CON EXITO!");
         } else {
             System.out.println("El contenido introducido no es válido. Asegúrate de que sean caracteres separados por un espacio.");
         }
@@ -57,7 +62,7 @@ public class DriverDominio {
             ArrayList<Character> caracteres = inOut.leerCaracteresDeArchivo(nombreArchivo);
             System.out.println("Introduce el nombre del alfabeto:");
             String nombre = inOut.leerString();
-            Alfabeto alfabeto = new Alfabeto(nombre, caracteres);
+            Alfabeto alfabeto = new Alfabeto(nombre, caracteres); // aixo no ho hauria de fer el ctrlDominio i ctrlAlfabeto?
             conjuntoAlfabetos.agregarAlfabeto(nombre, alfabeto);
             System.out.println("Alfabeto agregado con éxito desde el archivo: " + nombreArchivo);
         } catch (FileNotFoundException e) {
@@ -65,6 +70,43 @@ public class DriverDominio {
         } catch (IllegalArgumentException e) {
             System.out.println("El contenido del archivo no es válido: " + e.getMessage());
         }
+    }
+    public void borrarAlfabeto() {
+        //listar alfabetos
+        String nombre = inOut.leerString();
+        boolean borrado = ctrlDominio.borrarAlfabeto(nombre);
+        if (!borrado) System.out.println("No se ha borrado el alfabeto " + nombre);
+        else System.out.println("BORRADO CON EXITO!");
+    }
+
+
+    // ---------- FUNCIONES TEXTO ----------
+    /**
+     * No retorna nada.
+     * Muestra al usuario como debe ser la entrada
+     * Manda a comprobar que la entrada sea válida
+     * Manda añadir el nuevo texto con los atributos asignados
+     * Envía mensaje de contenido no válido si no lo es
+     */
+    public void agregarTextoPorTerminal() {
+        System.out.println("Introduce el nombre del texto:");
+        String nombre = inOut.leerString();
+        System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
+        String frecuenciasLetras = inOut.leerString(); // canviar perq ara es texto
+        if (inOut.contenidoValido(frecuenciasLetras)) {
+            boolean agregado = ctrlDominio.agregarTexto(nombre, frecuenciasLetras);
+            if (!agregado) System.out.println("Ya existe el texto " + nombre);
+            else System.out.println("AGREGADO CON EXITO!");
+        } else {
+            System.out.println("El contenido introducido no es válido. Asegúrate de que sean palabras separadas por un espacio.");
+        }
+    }
+
+    public void borrarTexto() {
+        //listar alfabetos
+        String nombre = inOut.leerString();
+        conjuntoAlfabetos.borrarTexto(nombre);
+
     }
 
 
