@@ -110,15 +110,15 @@ public class DriverDominio {
             teclas.add(c);
         }
         List<PairFrequency> frecuenciasPares = new ArrayList<>();
-        frecuenciasPares.add(new PairFrequency("ab", 50)); // Frecuencia del par AB
-        frecuenciasPares.add(new PairFrequency("bc", 40)); // Frecuencia del par BC
-        frecuenciasPares.add(new PairFrequency("cd", 30)); // y así sucesivamente...
-        frecuenciasPares.add(new PairFrequency("de", 25));
-        frecuenciasPares.add(new PairFrequency("ef", 20));
-        frecuenciasPares.add(new PairFrequency("fg", 10));
-        frecuenciasPares.add(new PairFrequency("gh", 5));
-        frecuenciasPares.add(new PairFrequency("hi", 2));
-        frecuenciasPares.add(new PairFrequency("ia", 1));
+        frecuenciasPares.add(new PairFrequency("ab", 1200)); // Frecuencia del par AB
+        frecuenciasPares.add(new PairFrequency("bc", 900)); // Frecuencia del par BC
+        frecuenciasPares.add(new PairFrequency("cd", 820)); // y así sucesivamente...
+        frecuenciasPares.add(new PairFrequency("de", 710));
+        frecuenciasPares.add(new PairFrequency("ef", 600));
+        frecuenciasPares.add(new PairFrequency("fg", 550));
+        frecuenciasPares.add(new PairFrequency("gh", 445));
+        frecuenciasPares.add(new PairFrequency("hi", 330));
+        frecuenciasPares.add(new PairFrequency("ia", 220));
 
         QAP qap = new QAP(3,4, teclas, frecuenciasPares);
 
@@ -129,13 +129,17 @@ public class DriverDominio {
 
         int puntuacion = qap.calcularPuntuacionTeclado();
 
-        qap.calcularAsignacionGreedy(frecuenciasPares, teclas);
+
+        List<Character> teclasOrdenadas = qap.getTeclasOrdenadas();
+
+        qap.calcularAsignacionGreedy(frecuenciasPares, teclasOrdenadas);
         qap.imprimirTeclado();
 
         int puntuacionGreedy = qap.calcularPuntuacionTeclado();
 
-        GilmoreLawler gilmoreLawler = new GilmoreLawler(qap.getFilas(), qap.getColumnas(), qap.getGlBound(), qap.getMatrizFrecuencias(), qap.getMatrizDistancias());
-        gilmoreLawler.gilmore_lawler(frecuenciasPares, teclas, puntuacionGreedy);
+
+        GilmoreLawler gilmoreLawler = new GilmoreLawler(qap.getFilas(), qap.getColumnas(), qap.getGlBound(), qap.getMatrizFrecuencias(), qap.getMatrizDistancias(), qap.getLetraAIndice());
+        gilmoreLawler.gilmore_lawler(frecuenciasPares, teclasOrdenadas, puntuacionGreedy);
     }
 
 
