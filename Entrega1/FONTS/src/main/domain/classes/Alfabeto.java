@@ -72,6 +72,7 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
     }
 
 
+
     /** ho comento però no ho elimino, serà inetressant fer metode toString
     @Override
     public String toString() {return _valorUsuari;}
