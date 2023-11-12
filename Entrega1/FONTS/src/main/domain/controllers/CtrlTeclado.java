@@ -50,10 +50,6 @@ public class CtrlTeclado {
 
 
     // ---------- FUNCIONES CONJUNTOTECLADOS ----------
-    public void agregarTeclado(String nomT, Teclado teclado) {
-        teclados.put(nomT, teclado);
-    }
-
     public ConjuntoTeclados getCjtTeclados() {
         return teclados;
     }
