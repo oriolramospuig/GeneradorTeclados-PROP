@@ -10,41 +10,71 @@ public class CtrlAsociacionTexto {
 
     // ---------- PARÁMETROS ----------
     private ConjuntoAsociaciones AsociacionesTextos;
-
     private ConjuntoTeclados conjuntoTeclados;
-
-    public CtrlAsociacionTexto(){ AsociacionesTextos = null;}
-
-    public void agregarAsociacionTextoVinculada (String nomAT,String nomT) {
-        AsociacionesTextos.getAsociacionTextos(nomAT).agregarTecladoVinculado(nomT);
+    public CtrlAsociacionTexto(){
+        AsociacionesTextos = null;
     }
 
-    public void borrarAsociacionTextoVinculada(String nomAT, String nomT) {
-        AsociacionesTextos.getAsociacionTextos(nomAT).borrarTecladoVinculado(nomT);
+    // ---------- FUNCIONES ASOCIACION ----------
+    /**
+     * No retorna nada.
+     * Manda añadir el nuevo teclado al cjt de teclados vinculados
+     */
+    public void agregarTecladoVinculado (String nomA, String nomT){
+        AsociacionesTextos.getAsociacionTextos(nomA).agregarTecladoVinculado(nomT);
+    }
+    /**
+     * No retorna nada.
+     * Manda borrar un teclado al cjt de teclados vinculados
+     */
+    public void borrarTecladoVinculado (String nomA, String nomT){
+        AsociacionesTextos.getAsociacionTextos(nomA).borrarTecladoVinculado(nomT);
+    }
+    /**
+     * No retorna nada.
+     * Manda añadir un texto a la asociacion de textos pasada como parámetro
+     */
+    public void agregarTextoAsociacion (String nomA, Texto texto){
+        AsociacionesTextos.getAsociacionTextos(nomA).agregarTexto(texto);
+    }
+    /**
+     * No retorna nada.
+     * Manda borrar un texto de la asociacion de textos pasada como parámetro
+     */
+    public void borrarTextoAsociacion (String nomA, String nomT){
+        AsociacionesTextos.getAsociacionTextos(nomA).borrarTexto(nomT);
     }
 
-    public ConjuntoAsociaciones getCjtAsociaciones() {return AsociacionesTextos;}
 
-    /**Potser està malament, revisar*/
+    // ---------- FUNCIONES CONJUNTOASOCIACIONES ----------
+    public ConjuntoAsociaciones getCjtAsociaciones() {
+        return AsociacionesTextos;
+    }
+    /**
+     * No retorna nada.
+     * Crea el nuevo objecto Asociación y añade este objeto a ConjuntoAsociaciones
+     */
     public boolean CrearAsociacionTextos(String nomAT, HashMap<String, Integer> frecuenciaLetras) {
         if(!AsociacionesTextos.existeAsociaciondeTextos(nomAT)){
+            HashMap<String, Integer> frecLetras = new HashMap<>();
+
+            //for (char c:entradaCaracteres.toCharArray()) {
+            //agregar frecLetras
+
             AsociacionTextos AT = new AsociacionTextos(nomAT, frecuenciaLetras);
             AsociacionesTextos.agregarAsociacionTexto(nomAT,AT);
             return true;
         }
         return false;
     }
-
     /**
      * No retorna nada.
-     * Manda borrar el alfabeto dado, desvincula los teclados asociados
-     * también borra este alfabeto de la lista de ConjuntoAlfabetos
+     * Manda borrar la asociación dada, desvincula los teclados asociados
+     * también borra esta asociación de la lista de ConjuntoAlfabetos
      */
-
-    /* FUNCIO COMENTADA PQ DONA UN ERROR
     public void borrarAsociacionTextos(String nomAT){
         // mirar error d'aquesta linia, diu algo de static
-        ArrayList<String> tVinculado = ConjuntoAsociaciones.getAsociacionTextos(nomAT).getTecladosVinculados();
+        ArrayList<String> tVinculado = AsociacionesTextos.getAsociacionTextos(nomAT).getTecladosVinculados();
         if(!tVinculado.isEmpty()) {
             for (int i = 0; i < tVinculado.size(); ++i){
                 conjuntoTeclados.borrarTeclado(tVinculado.get(i));
@@ -52,5 +82,4 @@ public class CtrlAsociacionTexto {
             AsociacionesTextos.borrarAsociacionTextos(nomAT);
         }
     }
-     */
 }
