@@ -79,5 +79,6 @@ public class CtrlAlfabeto {
             }
         }
         CjtAlfabetos.borrarAlfabeto(nomA);
+        return true;
     }
 }

@@ -102,11 +102,29 @@ public class DriverDominio {
         }
     }
 
-    public void borrarTexto() {
-        //listar alfabetos
-        String nombre = inOut.leerString();
-        conjuntoAlfabetos.borrarTexto(nombre);
+    public void agregarTextoPorArchivo() {
+        System.out.println("Introduce el nombre del archivo:");
+        String nombreArchivo = inOut.leerString();
+        try {
+            //ArrayList<Character> caracteres = inOut.leerCaracteresDeArchivo(nombreArchivo);
+            //System.out.println("Introduce el nombre del alfabeto:"); // cambiar esto porque no son caracteres son palabras de un texto
+            String nombre = inOut.leerString();
+            Alfabeto alfabeto = new Alfabeto(nombre, caracteres); // aixo no ho hauria de fer el ctrlDominio i ctrlAlfabeto?
+            conjuntoAlfabetos.agregarAlfabeto(nombre, alfabeto);
+            System.out.println("Alfabeto agregado con éxito desde el archivo: " + nombreArchivo);
+        } catch (FileNotFoundException e) {
+            System.out.println("El archivo no se encontró: " + nombreArchivo);
+        } catch (IllegalArgumentException e) {
+            System.out.println("El contenido del archivo no es válido: " + e.getMessage());
+        }
+    }
 
+    public void borrarTexto() {
+        //listar textos
+        String nombre = inOut.leerString();
+        boolean borrado = ctrlDominio.borrarTexto(nombre);
+        if (!borrado) System.out.println("No se ha borrado el texto " + nombre);
+        else System.out.println("BORRADO CON EXITO!");
     }
 
 
