@@ -5,16 +5,236 @@ import java.util.Arrays;
 
 public class HungarianAlgorithm {
     int[][] costMatrix;
-    //QAP qapInstance = new QAP();
-    //Això ho descomentarem quan tinguem la classe QAP ja feta i la matriu de costos reduits com a parametre de sortida
-    //int[][] reducedCostMatrix = qapInstance.getReducedCostMatrix();
 
-    //HungarianAlgorithm hungarianAlgorithm = new HungarianAlgorithm(reducedCostMatrix);
-    int[][] result = HungarianAlgorithm(costMatrix);
-    // Imprime la asignación óptima
-        /*for(int i = 0; i < result.length; i++) {
-            System.out.println("Asignar caracter " + i + " a tecla " + result[i][1]);
-        }*/
+    public static int Hungarian(int[][] c1c2) {
+        int[][] copiaC1C2 = copiarMatriz(c1c2); // Crear una copia de la matriz de costos
+        System.out.println("C1C2");
+        for (int i = 0; i < c1c2.length; ++i) {
+            for (int j = 0; j < c1c2.length; ++j) {
+                System.out.println(c1c2[i][j]);
+            }
+            System.out.println();
+        }
+        System.out.println("Copia C1C2");
+        for (int i = 0; i < copiaC1C2.length; ++i) {
+            for (int j = 0; j < copiaC1C2.length; ++j) {
+                System.out.println(c1c2[i][j]);
+            }
+            System.out.println();
+        }
+        reducirFilas(copiaC1C2); // Reducir cada fila sustrayendo el mínimo de la fila
+        reducirColumnas(copiaC1C2); // Reducir cada columna sustrayendo el mínimo de la columna
+
+        boolean[] filasCubiertas = new boolean[c1c2.length];
+        boolean[] columnasCubiertas = new boolean[c1c2[0].length];
+
+        while (!cadaFilaYColumnaTieneCero(copiaC1C2)) {
+            // Recubrir los ceros con el mínimo número de líneas.
+            int nlineas = recubrirCeros(copiaC1C2);
+            if (nlineas == copiaC1C2.length) {
+                // Tenemos una línea para cada fila y columna, por lo que se ha terminado.
+                break;
+            }
+            // Añadir y sustraer valores según las reglas del algoritmo.
+            ajustarMatrizSegunHungaro(copiaC1C2, filasCubiertas, columnasCubiertas);
+
+            Arrays.fill(filasCubiertas, false);
+            Arrays.fill(columnasCubiertas, false);
+        }
+        return calcularCostoAsignacion(copiaC1C2, c1c2);
+    }
+
+    public static int[][] copiarMatriz(int[][] original) {
+        int[][] copia = new int[original.length][];
+        for (int i = 0; i < original.length; i++) {
+            copia[i] = Arrays.copyOf(original[i], original[i].length);
+        }
+        return copia;
+    }
+
+
+    public static void reducirFilas(int[][] c1c2) {
+        for (int i = 0; i < c1c2.length; i++) {
+            // Encuentra el valor mínimo en la fila i
+            int minValor = Arrays.stream(c1c2[i]).min().getAsInt();
+            // Resta ese mínimo de cada elemento de la fila i
+            for (int j = 0; j < c1c2[i].length; j++) {
+                c1c2[i][j] -= minValor;
+            }
+        }
+    }
+
+    public static void reducirColumnas(int[][] c1c2) {
+        for (int j = 0; j < c1c2[0].length; j++) {
+            // Encuentra el valor mínimo en la columna j
+            int minValor = Integer.MAX_VALUE;
+            for (int[] ints : c1c2) {
+                if (ints[j] < minValor) {
+                    minValor = ints[j];
+                }
+            }
+            // Resta ese mínimo de cada elemento de la columna j
+            for (int[] ints : c1c2) {
+                ints[j] -= minValor;
+            }
+        }
+    }
+
+    public static boolean cadaFilaYColumnaTieneCero(int[][] matriz) {
+        boolean[] filaTieneCero = new boolean[matriz.length];
+        boolean[] columnaTieneCero = new boolean[matriz[0].length];
+
+        // Buscar ceros en las filas
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                if (matriz[i][j] == 0) {
+                    filaTieneCero[i] = true;
+                    break; // Un cero por fila es suficiente, no es necesario buscar más.
+                }
+            }
+        }
+
+        // Buscar ceros en las columnas
+        for (int j = 0; j < matriz[0].length; j++) {
+            for (int i = 0; i < matriz.length; i++) {
+                if (matriz[i][j] == 0) {
+                    columnaTieneCero[j] = true;
+                    break; // Un cero por columna es suficiente, no es necesario buscar más.
+                }
+            }
+        }
+
+        // Verificar que todas las filas y columnas tienen al menos un cero
+        for (boolean tieneCero : filaTieneCero) {
+            if (!tieneCero) {
+                return false; // Si alguna fila no tiene un cero, devuelve falso
+            }
+        }
+        for (boolean tieneCero : columnaTieneCero) {
+            if (!tieneCero) {
+                return false; // Si alguna columna no tiene un cero, devuelve falso
+            }
+        }
+
+        return true; // Si todas las filas y columnas tienen al menos un cero, devuelve verdadero
+    }
+
+    public static int recubrirCeros(int[][] matriz) {
+        // Variables para mantener el seguimiento de las filas y columnas cubiertas
+        boolean[] filasCubiertas = new boolean[matriz.length];
+        boolean[] columnasCubiertas = new boolean[matriz[0].length];
+
+        // Inicializar las asignaciones para filas y columnas.
+        int[] asignacionFilas = new int[matriz.length];
+        int[] asignacionColumnas = new int[matriz[0].length];
+        Arrays.fill(asignacionFilas, -1);
+        Arrays.fill(asignacionColumnas, -1);
+
+        // Paso 1: Asignación inicial basada en ceros.
+        for (int fila = 0; fila < matriz.length; fila++) {
+            for (int columna = 0; columna < matriz[0].length; columna++) {
+                if (matriz[fila][columna] == 0 && asignacionFilas[fila] == -1 && asignacionColumnas[columna] == -1) {
+                    asignacionFilas[fila] = columna; // Asigna esta columna a esta fila.
+                    asignacionColumnas[columna] = fila; // Asigna esta fila a esta columna.
+                    break;
+                }
+            }
+        }
+
+        // Marcar filas que no tienen asignaciones
+        for (int fila = 0; fila < asignacionFilas.length; fila++) {
+            if (asignacionFilas[fila] == -1) {
+                filasCubiertas[fila] = true;
+            }
+        }
+
+        boolean cambios;
+        do {
+            cambios = false;
+            // Marcar columnas que tienen ceros en filas marcadas
+            for (int fila = 0; fila < matriz.length; fila++) {
+                if (filasCubiertas[fila]) {
+                    for (int columna = 0; columna < matriz[0].length; columna++) {
+                        if (matriz[fila][columna] == 0 && !columnasCubiertas[columna]) {
+                            columnasCubiertas[columna] = true;
+                            cambios = true;
+                        }
+                    }
+                }
+            }
+
+            // Marcar filas que tienen asignaciones en columnas marcadas
+            for (int columna = 0; columna < matriz[0].length; columna++) {
+                if (columnasCubiertas[columna] && asignacionColumnas[columna] != -1) {
+                    int filaAsignada = asignacionColumnas[columna];
+                    if (!filasCubiertas[filaAsignada]) {
+                        filasCubiertas[filaAsignada] = true;
+                        cambios = true;
+                    }
+                }
+            }
+        } while (cambios); // Repetir hasta que no haya más cambios.
+
+        // Contar el número de líneas necesarias para cubrir todos los ceros.
+        int numLineas = 0;
+        for (boolean filaCubierta : filasCubiertas) {
+            if (filaCubierta) numLineas++;
+        }
+        for (boolean columnaCubierta : columnasCubiertas) {
+            if (columnaCubierta) numLineas++;
+        }
+
+        return numLineas; // Retorna el número de líneas usadas.
+    }
+
+
+    public static void ajustarMatrizSegunHungaro(int[][] matriz, boolean[] filasCubiertas, boolean[] columnasCubiertas) {
+        // Encuentra el valor mínimo no cubierto por ninguna línea.
+        int minValorNoCubierto = Integer.MAX_VALUE;
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                if (!filasCubiertas[i] && !columnasCubiertas[j] && matriz[i][j] < minValorNoCubierto) {
+                    minValorNoCubierto = matriz[i][j];
+                }
+            }
+        }
+
+        // Añade el valor mínimo a cada elemento cubierto por dos líneas y resta de los no cubiertos.
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                if (filasCubiertas[i] && columnasCubiertas[j]) {
+                    // El elemento está cubierto por dos líneas.
+                    matriz[i][j] += minValorNoCubierto;
+                } else if (!filasCubiertas[i] && !columnasCubiertas[j]) {
+                    // El elemento no está cubierto por ninguna línea.
+                    matriz[i][j] -= minValorNoCubierto;
+                }
+                // Si el elemento está cubierto solo por una línea, no se cambia.
+            }
+        }
+    }
+
+    public static int calcularCostoAsignacion(int[][] asignacion, int[][] costesOriginales) {
+        int costoTotal = 0;
+        boolean[] asignacionRealizada = new boolean[asignacion.length]; // Rastrea si la asignación ya se ha realizado para una fila.
+
+        for (int i = 0; i < asignacion.length; i++) {
+            for (int j = 0; j < asignacion[0].length; j++) {
+                // Encuentra un cero en la matriz reducida y ajustada para el cual no se ha hecho una asignación.
+                if (asignacion[i][j] == 0 && !asignacionRealizada[j]) {
+                    costoTotal += costesOriginales[i][j]; // Suma el costo original correspondiente a este cero.
+                    asignacionRealizada[j] = true;
+                    break;
+                }
+            }
+        }
+
+        return costoTotal;
+    }
+
+
+
+
     public static int[][] HungarianAlgorithm(int[][] costMatrix) {
         // Paso 1 y 2: Restar el mínimo de cada fila y columna.
         reduceMatrix(costMatrix);
