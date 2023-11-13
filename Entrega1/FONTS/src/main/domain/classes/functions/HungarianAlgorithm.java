@@ -8,7 +8,7 @@ public class HungarianAlgorithm {
 
     public static int Hungarian(int[][] c1c2) {
         int[][] copiaC1C2 = copiarMatriz(c1c2); // Crear una copia de la matriz de costos
-        System.out.println("C1C2");
+        /*System.out.println("C1C2");
         for (int i = 0; i < c1c2.length; ++i) {
             for (int j = 0; j < c1c2.length; ++j) {
                 System.out.println(c1c2[i][j]);
@@ -22,6 +22,7 @@ public class HungarianAlgorithm {
             }
             System.out.println();
         }
+         */
         reducirFilas(copiaC1C2); // Reducir cada fila sustrayendo el mínimo de la fila
         reducirColumnas(copiaC1C2); // Reducir cada columna sustrayendo el mínimo de la columna
 
@@ -55,27 +56,25 @@ public class HungarianAlgorithm {
 
     public static void reducirFilas(int[][] c1c2) {
         for (int i = 0; i < c1c2.length; i++) {
-            // Encuentra el valor mínimo en la fila i
-            int minValor = Arrays.stream(c1c2[i]).min().getAsInt();
-            // Resta ese mínimo de cada elemento de la fila i
+            // min en fila i
+            int minFila = Arrays.stream(c1c2[i]).min().getAsInt();
+            // Resta min en cada fila
             for (int j = 0; j < c1c2[i].length; j++) {
-                c1c2[i][j] -= minValor;
+                c1c2[i][j] -= minFila;
             }
         }
     }
 
     public static void reducirColumnas(int[][] c1c2) {
         for (int j = 0; j < c1c2[0].length; j++) {
-            // Encuentra el valor mínimo en la columna j
-            int minValor = Integer.MAX_VALUE;
+            int minColumna = Integer.MAX_VALUE;
             for (int[] ints : c1c2) {
-                if (ints[j] < minValor) {
-                    minValor = ints[j];
+                if (ints[j] < minColumna) {
+                    minColumna = ints[j];
                 }
             }
-            // Resta ese mínimo de cada elemento de la columna j
             for (int[] ints : c1c2) {
-                ints[j] -= minValor;
+                ints[j] -= minColumna;
             }
         }
     }
@@ -84,12 +83,12 @@ public class HungarianAlgorithm {
         boolean[] filaTieneCero = new boolean[matriz.length];
         boolean[] columnaTieneCero = new boolean[matriz[0].length];
 
-        // Buscar ceros en las filas
+        // busca ceros en las filas
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 if (matriz[i][j] == 0) {
                     filaTieneCero[i] = true;
-                    break; // Un cero por fila es suficiente, no es necesario buscar más.
+                    break;
                 }
             }
         }
