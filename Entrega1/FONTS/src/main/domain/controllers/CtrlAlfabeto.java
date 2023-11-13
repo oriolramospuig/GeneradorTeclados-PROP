@@ -71,13 +71,14 @@ public class CtrlAlfabeto {
      * también borra este alfabeto de la lista de ConjuntoAlfabetos
      */
   
-    public void borrarAlfabeto(String nomA){
+    public boolean borrarAlfabeto(String nomA){
         ArrayList<String> tVinculado = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
         if(!tVinculado.isEmpty()) {
             for (int i = 0; i < tVinculado.size(); ++i){
                 CjtTeclados.borrarTeclado(tVinculado.get(i));
             }
-            CjtAlfabetos.borrarAlfabeto(nomA);
         }
+        CjtAlfabetos.borrarAlfabeto(nomA);
+        return true;
     }
 }
