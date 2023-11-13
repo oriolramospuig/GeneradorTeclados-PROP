@@ -186,6 +186,7 @@ public class GilmoreLawler {
         int [][] c1 = calcularContribucionC1(indiceTeclaActual, posicion, solucionParcial, posNO, letNO);
         int [][] c2 = calcularContribucionC2(indiceTeclaActual, posicion, solucionParcial, posNO, letNO);
         int [][] c1c2 = Matrices.sumaMatrices(c1,c2);
+        if (c1c2.length != 0) return HungarianAlgorithm.Hungarian(c1c2);
         return minimos(c1c2);
         // Sumar las contribuciones de C1 y C2 para obtener la contribución total de la tecla 'i' en la posición 'k'
     }
@@ -220,9 +221,6 @@ public class GilmoreLawler {
         }
         return suma;
     }
-
-
-
 }
 
 
