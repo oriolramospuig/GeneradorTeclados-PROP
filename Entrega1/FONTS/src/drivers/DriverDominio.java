@@ -106,7 +106,7 @@ public class DriverDominio {
         System.out.println("Introduce el nombre del archivo:");
         String nombreArchivo = inOut.leerString();
         try {
-            //ArrayList<Character> caracteres = inOut.leerCaracteresDeArchivo(nombreArchivo);
+            ArrayList<Character> caracteres = inOut.leerCaracteresDeArchivo(nombreArchivo);
             //System.out.println("Introduce el nombre del alfabeto:"); // cambiar esto porque no son caracteres son palabras de un texto
             String nombre = inOut.leerString();
             Alfabeto alfabeto = new Alfabeto(nombre, caracteres); // aixo no ho hauria de fer el ctrlDominio i ctrlAlfabeto?
