@@ -58,8 +58,8 @@ public class CtrlTexto {
                 // espacio tambien puede ser caracter
                 if (c != ' ') caracteres.add(c);
             }*/
-            Texto texto = new Texto(nomT, frecLetras);
-            CjtTextos.agregarTexto(nomT, texto); // no hay constructor para pasar eso
+            //Texto texto = new Texto(nomT, frecLetras);
+            //CjtTextos.agregarTexto(nomT, texto); // no hay constructor para pasar eso
             return true;
         }
         return false;

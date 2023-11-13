@@ -111,10 +111,15 @@ public class DriverProvaUri {
         }
         List<PairFrequency> frecuenciasPares = new ArrayList<>();
         frecuenciasPares.add(new PairFrequency("ab", 400)); // Frecuencia del par AB
-        frecuenciasPares.add(new PairFrequency("bc", 375)); // Frecuencia del par BC
-        frecuenciasPares.add(new PairFrequency("cd", 50)); // y así sucesivamente...
-        frecuenciasPares.add(new PairFrequency("de", 20));
-        frecuenciasPares.add(new PairFrequency("ef", 0));
+        frecuenciasPares.add(new PairFrequency("bc", 300)); // Frecuencia del par BC
+        frecuenciasPares.add(new PairFrequency("ac", 1));
+        frecuenciasPares.add(new PairFrequency("ad", 1));
+        frecuenciasPares.add(new PairFrequency("bd", 1));
+        frecuenciasPares.add(new PairFrequency("be", 1)); // y así sucesivamente...
+        frecuenciasPares.add(new PairFrequency("cd", 1));
+        frecuenciasPares.add(new PairFrequency("de", 1));
+        frecuenciasPares.add(new PairFrequency("df", 1));
+        frecuenciasPares.add(new PairFrequency("ef", 1));
         //frecuenciasPares.add(new PairFrequency("fg", 550));
         //frecuenciasPares.add(new PairFrequency("gh", 445));
         //frecuenciasPares.add(new PairFrequency("hi", 330));

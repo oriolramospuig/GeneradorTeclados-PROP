@@ -154,16 +154,25 @@ public class QAP {
     public int calculoPuntuacion() {
         int puntuacion = 0;
 
+        // Recorrer todas las combinaciones de pares de teclas.
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
+                // Obtener el índice de la tecla en la posición [i][j]
                 int indice1 = letraAIndice.get(teclado[i][j]);
 
-                for (int k = 0; k < filas; k++) {
-                    for (int l = 0; l < columnas; l++) {
+                for (int k = i; k < filas; k++) { // Comienza con 'k = i' para evitar duplicados.
+                    for (int l = (k == i) ? j + 1 : 0; l < columnas; l++) { // Si 'k == i', empieza desde 'j + 1' para evitar calcular dos veces la misma combinación
+                        // Obtener el índice de la tecla en la posición [k][l]
                         int indice2 = letraAIndice.get(teclado[k][l]);
+
+                        // Calcular la distancia Manhattan entre las dos posiciones de teclas.
                         int distancia = Manhattan.calcularDistancia(i, j, k, l);
+
+                        // Obtener la frecuencia del par de teclas desde la matriz de frecuencias.
                         int frecuencia = matrizFrecuencias[indice1][indice2];
 
+                        // Actualizar la puntuación sumando el producto de la distancia por la frecuencia del par de teclas.
+                        // Si 'i == k' y 'j == l', es la misma tecla, por lo que la frecuencia es cero y no contribuye a la puntuación.
                         puntuacion += distancia * frecuencia;
                     }
                 }
@@ -174,6 +183,7 @@ public class QAP {
 
         return puntuacion;
     }
+
 
     public void imprimirTeclado() {
         for(int i = 0; i < filas; i++) {
