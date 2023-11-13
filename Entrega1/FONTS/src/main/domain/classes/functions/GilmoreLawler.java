@@ -74,13 +74,12 @@ public class GilmoreLawler {
             for (int posicion = 0; posicion < filas * columnas; posicion++) {
                 if (solucionParcial.get(posicion) == -1) { // Si la posición está libre
                     solucionParcial.set(posicion, indiceTeclaActual); // Coloca la tecla en la posición libre
-                     System.out.println(indiceTeclaActual + " Indice actual");
-                     System.out.println(posicion + " posicion actual");
+                     // System.out.println(indiceTeclaActual + " Indice actual");
+                     // System.out.println(posicion + " posicion actual");
                      Integer x = indiceTeclaActual;
                      letNO.remove(x);
                      Integer y = posicion;
-                    posNO.remove(y);
-                    //posNO.remove(posicion);
+                     posNO.remove(y);
                     int nuevaCota = cotaActual + calcularContribucionC1C2(solucionParcial, posicion, indiceTeclaActual, posNO, letNO);
                     if (nuevaCota < glBound) {
                         int cotaAnt = cotaActual;
@@ -108,62 +107,32 @@ public class GilmoreLawler {
                 int distanciaIJ = matrizDistancias[permutacionActual.get(i)][permutacionActual.get(j)];
                 int frecuenciaIJ = matrizFrecuencias[i][j]; // La frecuencia de i a j es la misma que de j a i
 
-                // Sumar el costo de la distancia multiplicado por la frecuencia de i a j y de j a i,
-                // debido a que la matriz es simétrica y solo necesitamos calcular una de las direcciones.
+                // Sumar el costo de la distancia multiplicado por la frecuencia de i a j
                 cota += (distanciaIJ * frecuenciaIJ);
             }
         }
-        // Además, debemos considerar los costos donde i == j, que deberían ser cero porque la distancia es cero
-        // para una tecla a sí misma, por lo que no hay necesidad de agregar un bucle separado.
-
         return cota;
     }
 
 
     private int calcularCotaPermutacionAct(List<Integer> permutacionActual) {
         int cota = 0;
-        // Suponiendo que permutacionActual.size() == filas * columnas
         for (int i = 0; i < permutacionActual.size(); i++) {
             for (int j = i + 1; j < permutacionActual.size(); j++) { // Comenzar con j = i + 1 para evitar duplicados
                 if (permutacionActual.get(i) >= 0 && permutacionActual.get(j) >= 0) {// Aquí se considera cada par de índices solo una vez, i con j, donde i < j
                     int distanciaIJ = matrizDistancias[permutacionActual.get(i)][permutacionActual.get(j)];
                     int frecuenciaIJ = matrizFrecuencias[i][j]; // La frecuencia de i a j es la misma que de j a i
 
-                    // Sumar el costo de la distancia multiplicado por la frecuencia de i a j y de j a i,
-                    // debido a que la matriz es simétrica y solo necesitamos calcular una de las direcciones.
+                    // Sumar el costo de la distancia multiplicado por la frecuencia de i a j
                     cota += (distanciaIJ * frecuenciaIJ);
                 }
             }
         }
-        // Además, debemos considerar los costos donde i == j, que deberían ser cero porque la distancia es cero
-        // para una tecla a sí misma, por lo que no hay necesidad de agregar un bucle separado.
-
         return cota;
     }
 
 
     private int [][] calcularContribucionC1(int indiceTeclaActual, int posicion, List<Integer> solucionParcial, List<Integer> posNO, List<Integer> letNO) {
-        /*int contribucionC1 = 0;
-        for (int j = 0; j < solucionParcial.size(); j++) {
-            if (solucionParcial.get(j) != -1) { // Si la tecla en la solución parcial está emplazada
-                // Calcula el costo de tráfico entre la i-ésima tecla y la tecla en la j-ésima posición emplazada
-                contribucionC1 += matrizDistancias[posicion][j] * matrizFrecuencias[indiceTeclaActual][solucionParcial.get(j)];
-            }
-        }
-        return contribucionC1;
-
-         */
-        for (int i = 0; i < letNO.size(); i++) {
-            System.out.print(letNO.get(i) + " ");
-        }
-        System.out.println(); // Nueva línea al final de cada fila de la matriz
-
-
-        for (int i = 0; i < posNO.size(); i++) {
-            System.out.print(posNO.get(i) + " ");
-        }
-        System.out.println(); // Nueva línea al final de cada fila de la matriz
-
         int [][] c1 = new int[posNO.size()][posNO.size()];
         for (int i = 0; i < letNO.size(); ++i) {
             for (int j = 0; j < posNO.size(); ++j) {
