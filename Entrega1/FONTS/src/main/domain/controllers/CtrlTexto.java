@@ -58,8 +58,8 @@ public class CtrlTexto {
                 // espacio tambien puede ser caracter
                 if (c != ' ') caracteres.add(c);
             }*/
-            Texto texto = new Texto(nomT, frecLetras); // no hay constructor para pasar eso
-            CjtTextos.agregarTexto(nomT, texto);
+            //Texto texto = new Texto(nomT, frecLetras);
+            //CjtTextos.agregarTexto(nomT, texto); // no hay constructor para pasar eso
             return true;
         }
         return false;
@@ -71,14 +71,13 @@ public class CtrlTexto {
      * también borra este texto de la lista de ConjuntoTextos
      */
 
-    public boolean borrarTexto(String nomT){
+    public void borrarTexto(String nomT){
         ArrayList<String> AVinculadas = CjtTextos.getTexto(nomT).getAsociacionesVinculadas();
         if(!AVinculadas.isEmpty()) {
             for (int i = 0; i < AVinculadas.size(); ++i){
                 CjtAsociaciones.borrarAsociacionTextos(AVinculadas.get(i));
             }
+            CjtTextos.borrarTexto(nomT);
         }
-        CjtTextos.borrarTexto(nomT);
-        return true;
     }
 }
