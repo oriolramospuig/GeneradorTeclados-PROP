@@ -12,6 +12,7 @@ import java.util.HashMap;
 public class CtrlDominio {
 
     private CtrlAlfabeto ctrlAlfabeto;
+    private CtrlAsociacionTexto ctrlAsociacionTexto;
     private CtrlTexto ctrlTexto;
     private CtrlTeclado ctrlTeclado;
 
@@ -23,21 +24,20 @@ public class CtrlDominio {
 
     // ---------- FUNCIONES ALFABETO ----------
     public boolean agregarAlfabeto(String nomA, ArrayList<Character> entradaCaracteres){
-        //Verifica que la entrada de caracteres es válida.
         return ctrlAlfabeto.CrearAlfabeto(nomA,entradaCaracteres);
     }
     public boolean alfabetoTieneTecladosVinculados(String nomA){
         return ctrlAlfabeto.alfabetoTieneTecladosVinculados(nomA);
     }
-
     public void borrarAlfabeto(String nomA){
         ArrayList<String> tVinculados = ctrlAlfabeto.getTecladosVinculadosAlfabeto(nomA);
         if(!tVinculados.isEmpty()) {
             for (int i = 0; i < tVinculados.size(); ++i){
+                String atvinculada = ctrlTeclado.TecladoTieneAsociacionVinculada(tVinculados.get(i));
+                ctrlAsociacionTexto.borrarTecladoVinculado(atvinculada,tVinculados.get(i));
                 ctrlTeclado.borrarTeclado(tVinculados.get(i));
             }
         }
-        //Verifica que la entrada de caracteres es válida.
         ctrlAlfabeto.borrarAlfabeto(nomA);
     }
     public HashMap<String, Alfabeto> getListaAlfabetos(){
@@ -46,7 +46,6 @@ public class CtrlDominio {
 
     // ---------- FUNCIONES TEXTO ----------
     public boolean agregarTexto(String nomT, String frecuenciasLetras){
-        //Verifica que la entrada de caracteres es válida.
         return ctrlTexto.agregarTexto(nomT,frecuenciasLetras);
     }
 
@@ -55,6 +54,7 @@ public class CtrlDominio {
         //return ctrlTexto.borrarTexto(nomT);
         return false;
     }
+    //String avinculado = ctrlTeclado.TecladoTieneAlfabetoVinculado(tVinculados.get(i));
 
     // ---------- FUNCIONES TECLADO ----------
 }

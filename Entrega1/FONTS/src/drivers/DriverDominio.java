@@ -101,7 +101,7 @@ public class DriverDominio {
     }
 
 
-    public void imprimirAlfabetos() {
+    public void imprimirTexto() {
         // Obtén todos los alfabetos en el conjunto
         HashMap<String, Alfabeto> alfabetos = conjuntoAlfabetos.getAlfabetos();
         //ArrayList<String> alfabetos = conjuntoAlfabetos.getNombresAlfabetos();

@@ -28,8 +28,7 @@ public class InOut {
         }
     }
 
-    public ArrayList<Character> leerCaracteresDeTerminal() {
-        String line = leerString();
+    public ArrayList<Character> leerCaracteresDeTerminal(String line) {
         ArrayList<Character> caracteres = new ArrayList<>();
         for (char c : line.toCharArray()) {
             caracteres.add(c);

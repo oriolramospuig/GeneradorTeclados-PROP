@@ -44,8 +44,7 @@ public class TestAlfabeto
         letras.add('U');
         Alfabeto a = new Alfabeto(nombre, letras);
 
-        assertEquals("Vocales", a.getNombre());
-        //seria lo mismo: assertEquals(nombre, a.getNombre()); ????
+        assertEquals(nombre, a.getNombre());
         assertEquals(letras, a.getLetras());
         assertNull(a.getTecladosVinculados());
     }
@@ -83,13 +82,6 @@ public class TestAlfabeto
 
     // ---------- AUXILIARES ----------
     /**
-     * Objecte de la prova: Test del mètode EliminarFull(id) de la classe Document
-     * Fitxers de dades necessaris: Dades introduïdes manualment. Necessitem la classe Full.
-     * Valors estudiats: Estratègia caixa gris. Mètode saber Eliminar el Full amb clau primaria id.
-     * Operativa: En aquest test es comprova si el mètode EliminarFull(id) elimina del Document el Full amb clau id.
-     * Primer es crea un objecte Document, es crida al mètode crearFull() i al EliminarFull(id) i es comprova que ExisteixFull(id) retorni false.
-     */
-    /**
      * Objeto de la prueba: Test del método borrarTecladoVinculado(String nomT) de la clase Alfabeto.
      * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
      * Valores estudiados: Estrategia de caja gris. Se crea un alfabeto y un nombre de un teclado, se añade a la lista tecladosVinculades y se comprueba que se puede borrar un nombre de un teclado correctamente.
@@ -117,4 +109,3 @@ public class TestAlfabeto
 }
 
 //IMPORTANTE: escoger que opcion es mejor: crear teclado y luego .getnombre() o crear String nombre sin crear teclado --> unificar formato escogido en agregar y borrar
-//Se podria detallar más el apartado de Operativa
