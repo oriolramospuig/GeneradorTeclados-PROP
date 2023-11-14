@@ -22,6 +22,17 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
 
 
     // ---------- CONSTRUCTORES ----------
+    public Alfabeto()
+    {
+        nombre = new String();
+        letras = new ArrayList<>();
+        tecladosVinculados = new ArrayList<>();
+    }
+    public Alfabeto(String nombre) {
+        this.nombre = nombre;
+        this.letras = new ArrayList<>();
+        this.tecladosVinculados = new ArrayList<>();
+    }
     public Alfabeto(String nombre, ArrayList<Character> letras) {
         this.nombre = nombre;
         this.letras = letras;

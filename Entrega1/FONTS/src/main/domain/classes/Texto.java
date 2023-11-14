@@ -65,6 +65,6 @@ public class Texto
 
     // ---------- AUXILIARES ----------
     public void borrarAsociacionesVinculadas(String nomAT) {
-        asociacionesVinculadas.remove(nomAT);
-    }
+    asociacionesVinculadas.remove(nomAT);
+}
 }
