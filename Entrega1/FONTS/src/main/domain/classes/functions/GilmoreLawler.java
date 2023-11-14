@@ -64,6 +64,7 @@ public class GilmoreLawler {
         if (profundidad == filas * columnas) {
             // Se ha encontrado una solución completa
             int cotaPermutacion = calcularCotaPermutacion(solucionParcial);
+            System.out.println(cotaPermutacion + " = Cota permutacion");
             if (cotaPermutacion < glBound) {
                 glBound = cotaPermutacion;
                 mejorSolucionParcial = new ArrayList<>(solucionParcial);
@@ -81,6 +82,9 @@ public class GilmoreLawler {
                      Integer y = posicion;
                      posNO.remove(y);
                     int nuevaCota = cotaActual + calcularContribucionC1C2(solucionParcial, posicion, indiceTeclaActual, posNO, letNO);
+                    //System.out.println("Nueva cota = " + nuevaCota);
+                    //System.out.println("Contribución C1C2 = " + (nuevaCota-cotaActual));
+                    //System.out.println("Solucion parcial = " + solucionParcial);
                     if (nuevaCota < glBound) {
                         int cotaAnt = cotaActual;
                         cotaActual = calcularCotaPermutacionAct(solucionParcial);
@@ -186,9 +190,8 @@ public class GilmoreLawler {
         int [][] c1 = calcularContribucionC1(indiceTeclaActual, posicion, solucionParcial, posNO, letNO);
         int [][] c2 = calcularContribucionC2(indiceTeclaActual, posicion, solucionParcial, posNO, letNO);
         int [][] c1c2 = Matrices.sumaMatrices(c1,c2);
-        if (c1c2.length != 0) return HungarianAlgorithm.Hungarian(c1c2);
+        //if (c1c2.length != 0) return HungarianAlgorithm.Hungarian(c1c2);
         return minimos(c1c2);
-        // Sumar las contribuciones de C1 y C2 para obtener la contribución total de la tecla 'i' en la posición 'k'
     }
 
     public void imprimirMejorSolucionParcial() {
