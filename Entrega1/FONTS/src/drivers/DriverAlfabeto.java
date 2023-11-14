@@ -2,6 +2,7 @@ package drivers;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.functions.InOut;
+import main.domain.controllers.CtrlAlfabeto;
 import main.domain.controllers.CtrlDominio;
 
 import java.io.FileNotFoundException;
@@ -17,11 +18,11 @@ public class DriverAlfabeto {
         inOut = new InOut();
         ctrlDominio = new CtrlDominio();
     }
-
     public boolean contenidoValido(String entrada) {
         if (entrada == null || entrada.isEmpty()) {
             return false; // Entrada vacía no es válida.
         }
+
         String[] partes = entrada.split(" ");
         for (String parte : partes) {
             // Verifica que cada parte sea un solo carácter.
@@ -29,6 +30,7 @@ public class DriverAlfabeto {
                 return false;
             }
         }
+
         return true; // La entrada es válida si todos los segmentos contienen solo un carácter.
     }
 
@@ -98,6 +100,7 @@ public class DriverAlfabeto {
             System.out.println("No hay alfabetos para mostrar.");
             return;
         }
+
         // Itera sobre el conjunto de alfabetos e imprime la información de cada uno
         for (HashMap.Entry<String, Alfabeto> entry : alfabetos.entrySet()) {
             // Obtiene el nombre y el alfabeto del conjunto
@@ -116,6 +119,7 @@ public class DriverAlfabeto {
             System.out.println("No hay alfabetos para mostrar.");
             return;
         }
+
         // Itera sobre el conjunto de alfabetos e imprime la información de cada uno
         for (HashMap.Entry<String, Alfabeto> entry : alfabetos.entrySet()) {
             // Obtiene el nombre y el alfabeto del conjunto
@@ -136,6 +140,7 @@ public class DriverAlfabeto {
             if(respuesta.equals("si") || respuesta.equals("SI") || respuesta.equals("Si")){
                 ctrlDominio.borrarAlfabeto(nombre);
                 System.out.println("BORRADO CON EXITO!");
+
             }
             else System.out.println("No se ha borrado el alfabeto " + nombre);
         }
