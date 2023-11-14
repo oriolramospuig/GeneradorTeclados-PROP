@@ -27,15 +27,23 @@ public class InOut {
             return -1; // O puedes lanzar una excepción si prefieres manejarlo de esa manera
         }
     }
-
-    public ArrayList<Character> leerCaracteresDeTerminal() {
-        String line = leerString();
+    //no cal que llegeixi des d'aquí podem llegir des del controlador i ara nomes li passem el string
+    public ArrayList<Character> leerCaracteresDeTerminal(String line) {
         ArrayList<Character> caracteres = new ArrayList<>();
         for (char c : line.toCharArray()) {
             caracteres.add(c);
         }
         return caracteres;
     }
+
+    public ArrayList<Character> leerParabrasDeTerminal(String line) {
+        ArrayList<Character> freqletras = new ArrayList<>();
+        for (char c : line.toCharArray()) { // NO HAY QUE HACER ESTO, HAY QUE LEER FRECUENCIAS
+            freqletras.add(c);
+        }
+        return freqletras;
+    }
+
 
     /*public ArrayList<Character> leerCaracteresDeArchivo(String nombreArchivo) throws FileNotFoundException {
         File file = new File(nombreArchivo);

@@ -30,7 +30,6 @@ public class DriverAlfabeto {
                 return false;
             }
         }
-
         return true; // La entrada es válida si todos los segmentos contienen solo un carácter.
     }
 
@@ -40,7 +39,8 @@ public class DriverAlfabeto {
         System.out.println("Introduce los caracteres del alfabeto separados por espacio (ejemplo: a b c ...):");
         String entradaCaracteres = inOut.leerString();
         if (contenidoValido(entradaCaracteres)) {
-            boolean agregado = ctrlDominio.agregarAlfabeto(nombre, entradaCaracteres);
+            ArrayList<Character> caracteres = inOut.leerCaracteresDeTerminal(entradaCaracteres);
+            boolean agregado = ctrlDominio.agregarAlfabeto(nombre, caracteres);
             if (!agregado) System.out.println("Ya existe el alfabeto " + nombre);
             else System.out.println("AGREGADO CON EXITO!");
         } else {

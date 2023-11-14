@@ -23,7 +23,6 @@ public class CtrlDominio {
 
     // ---------- FUNCIONES ALFABETO ----------
     public boolean agregarAlfabeto(String nomA, ArrayList<Character> entradaCaracteres){
-        //Verifica que la entrada de caracteres es válida.
         return ctrlAlfabeto.CrearAlfabeto(nomA,entradaCaracteres);
     }
     public boolean alfabetoTieneTecladosVinculados(String nomA){
@@ -45,7 +44,7 @@ public class CtrlDominio {
     }
 
     // ---------- FUNCIONES TEXTO ----------
-    public boolean agregarTexto(String nomT, String frecuenciasLetras){
+    public boolean agregarTexto(String nomT, ArrayList<Character> frecuenciasLetras){
         //Verifica que la entrada de caracteres es válida.
         return ctrlTexto.agregarTexto(nomT,frecuenciasLetras);
     }

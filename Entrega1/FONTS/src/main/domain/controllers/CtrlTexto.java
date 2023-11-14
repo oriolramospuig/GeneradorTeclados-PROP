@@ -1,8 +1,11 @@
 package main.domain.controllers;
 
+import main.domain.classes.Alfabeto;
 import main.domain.classes.Texto;
 import main.domain.classes.ConjuntoTextos;
 import main.domain.classes.ConjuntoTeclados;
+
+import java.util.ArrayList;
 
 /**
  * Este controlador se encarga de gestionar los métodos de añadir, modificar i borrar alfabetos
@@ -36,16 +39,10 @@ public class CtrlTexto {
      * No retorna nada.
      * Crea el nuevo objecto texto y añade este objeto a ConjuntoTextos
      */
-    public boolean agregarTexto(String nomT, String frecuenciasLetras) {
+    public boolean agregarTexto(String nomT, ArrayList<Character> frecuenciasLetras) {
         if(!CjtTextos.existeTexto(nomT)){
-            HashMap<String, Integer> frecLetras = new HashMap<>();
-            /*for (char c:entradaCaracteres.toCharArray()) {
-                // Solo agrega caracteres no espacios.
-                // espacio tambien puede ser caracter
-                if (c != ' ') caracteres.add(c);
-            }*/
-            //Texto texto = new Texto(nomT, frecLetras);
-            //CjtTextos.agregarTexto(nomT, texto); // no hay constructor para pasar eso
+            Texto texto = new Texto(nomT, frecuenciasLetras); // no hay constructor para pasar eso
+            CjtTextos.agregarTexto(nomT, texto);
             return true;
         }
         return false;
