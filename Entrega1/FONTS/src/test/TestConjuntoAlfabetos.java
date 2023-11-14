@@ -46,6 +46,8 @@ public class TestConjuntoAlfabetos {
 
     @Test
     public void TestGetNombresAlfabetos() {
+        System.out.println("Test getNombreAlfabetos");
+
         alfabetos.agregarAlfabeto("Alfabeto1", alfabeto1);
         alfabetos.agregarAlfabeto("Alfabeto2", alfabeto2);
 
@@ -60,6 +62,8 @@ public class TestConjuntoAlfabetos {
     // ---------- SETTERS ----------
     @Test
     public void TestAgregarAlfabeto(){
+        System.out.println("Test agregarAlfabeto");
+
         alfabetos.agregarAlfabeto("Alfabeto1", alfabeto1);
         alfabetos.agregarAlfabeto("Alfabeto2", alfabeto2);
 
@@ -72,6 +76,8 @@ public class TestConjuntoAlfabetos {
     // ---------- AUXILIARES ----------
     @Test
     public void TestExisteAlfabeto() {
+        System.out.println("Test existeAlfabeto");
+
         alfabetos.agregarAlfabeto("Alfabeto1", alfabeto1);
 
         assertTrue(alfabetos.existeAlfabeto("Alfabeto1"));
@@ -80,6 +86,8 @@ public class TestConjuntoAlfabetos {
 
     @Test
     public void TestBorrarAlfabeto() {
+        System.out.println("Test borrarAlfabeto");
+
         alfabetos.agregarAlfabeto("Alfabeto1", alfabeto1);
         alfabetos.agregarAlfabeto("Alfabeto2", alfabeto2);
 
