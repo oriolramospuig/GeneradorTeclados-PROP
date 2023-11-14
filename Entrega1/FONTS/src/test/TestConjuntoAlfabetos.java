@@ -20,8 +20,8 @@ public class TestConjuntoAlfabetos {
     @Before
     public void setUp() {
         alfabetos = new ConjuntoAlfabetos();
-        alfabeto1 = new Alfabeto("ABC");
-        alfabeto2 = new Alfabeto("XYZ");
+        alfabeto1 = new Alfabeto("nombreA1");
+        alfabeto2 = new Alfabeto("nombreA2");
     }
 
 
@@ -38,24 +38,24 @@ public class TestConjuntoAlfabetos {
     public void TestGetAlfabeto() {
         System.out.println("Test getAlfabeto");
 
-        alfabetos.agregarAlfabeto("Alfabeto1", alfabeto1);
-        Alfabeto resultado = alfabetos.getAlfabeto("Alfabeto1");
+        alfabetos.agregarAlfabeto("nombreA1", alfabeto1);
+        Alfabeto resultado = alfabetos.getAlfabeto("nombreA1");
         assertNotNull(resultado);
-        assertEquals("ABC", resultado.getNombre());
+        assertEquals("nombreA1", resultado.getNombre());
     }
 
     @Test
     public void TestGetNombresAlfabetos() {
         System.out.println("Test getNombreAlfabetos");
 
-        alfabetos.agregarAlfabeto("Alfabeto1", alfabeto1);
-        alfabetos.agregarAlfabeto("Alfabeto2", alfabeto2);
+        alfabetos.agregarAlfabeto("nombreA1", alfabeto1);
+        alfabetos.agregarAlfabeto("nombreA2", alfabeto2);
 
         ArrayList<String> nombres = alfabetos.getNombresAlfabetos();
 
         assertEquals(2, nombres.size());
-        assertTrue(nombres.contains("Alfabeto1"));
-        assertTrue(nombres.contains("Alfabeto2"));
+        assertTrue(nombres.contains("nombreA1"));
+        assertTrue(nombres.contains("nombreA2"));
     }
 
 
@@ -64,12 +64,12 @@ public class TestConjuntoAlfabetos {
     public void TestAgregarAlfabeto(){
         System.out.println("Test agregarAlfabeto");
 
-        alfabetos.agregarAlfabeto("Alfabeto1", alfabeto1);
-        alfabetos.agregarAlfabeto("Alfabeto2", alfabeto2);
+        alfabetos.agregarAlfabeto("nombreA1", alfabeto1);
+        alfabetos.agregarAlfabeto("nombreA2", alfabeto2);
 
         assertEquals(2, alfabetos.getAlfabetos().size());
-        assertTrue(alfabetos.getAlfabetos().containsKey("Alfabeto1"));
-        assertTrue(alfabetos.getAlfabetos().containsKey("Alfabeto2"));
+        assertTrue(alfabetos.getAlfabetos().containsKey("nombreA1"));
+        assertTrue(alfabetos.getAlfabetos().containsKey("nombreA2"));
     }
 
 
@@ -78,23 +78,23 @@ public class TestConjuntoAlfabetos {
     public void TestExisteAlfabeto() {
         System.out.println("Test existeAlfabeto");
 
-        alfabetos.agregarAlfabeto("Alfabeto1", alfabeto1);
+        alfabetos.agregarAlfabeto("nombreA1", alfabeto1);
 
-        assertTrue(alfabetos.existeAlfabeto("Alfabeto1"));
-        assertFalse(alfabetos.existeAlfabeto("Alfabeto2"));
+        assertTrue(alfabetos.existeAlfabeto("nombreA1"));
+        assertFalse(alfabetos.existeAlfabeto("nombreA2"));
     }
 
     @Test
     public void TestBorrarAlfabeto() {
         System.out.println("Test borrarAlfabeto");
 
-        alfabetos.agregarAlfabeto("Alfabeto1", alfabeto1);
-        alfabetos.agregarAlfabeto("Alfabeto2", alfabeto2);
+        alfabetos.agregarAlfabeto("nombreA1", alfabeto1);
+        alfabetos.agregarAlfabeto("nombreA2", alfabeto2);
 
-        alfabetos.borrarAlfabeto("Alfabeto1");
+        alfabetos.borrarAlfabeto("nombreA1");
 
         assertEquals(1, alfabetos.getAlfabetos().size());
-        assertFalse(alfabetos.existeAlfabeto("Alfabeto1"));
-        assertTrue(alfabetos.existeAlfabeto("Alfabeto2"));
+        assertFalse(alfabetos.existeAlfabeto("nombreA1"));
+        assertTrue(alfabetos.existeAlfabeto("nombreA2"));
     }
 }
