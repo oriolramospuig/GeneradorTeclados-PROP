@@ -1,11 +1,13 @@
 package main.domain.controllers;
 
+import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
 import main.domain.classes.ConjuntoTeclados;
 import main.domain.classes.ConjuntoTextos;
 import main.domain.classes.functions.InOut;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CtrlDominio {
 
@@ -37,6 +39,9 @@ public class CtrlDominio {
         }
         //Verifica que la entrada de caracteres es válida.
         ctrlAlfabeto.borrarAlfabeto(nomA);
+    }
+    public HashMap<String, Alfabeto> getListaAlfabetos(){
+        return ctrlAlfabeto.getCjtAlfabetos().getAlfabetos();
     }
 
     // ---------- FUNCIONES TEXTO ----------
