@@ -60,8 +60,6 @@ public class TestConjuntoAlfabetos {
     // ---------- SETTERS ----------
     @Test
     public void TestAgregarAlfabeto(){
-        //alfabetos.put(nomA, alfabeto);
-
         alfabetos.agregarAlfabeto("Alfabeto1", alfabeto1);
         alfabetos.agregarAlfabeto("Alfabeto2", alfabeto2);
 
@@ -82,7 +80,6 @@ public class TestConjuntoAlfabetos {
 
     @Test
     public void TestBorrarAlfabeto() {
-        //alfabetos.remove(nomA);
         alfabetos.agregarAlfabeto("Alfabeto1", alfabeto1);
         alfabetos.agregarAlfabeto("Alfabeto2", alfabeto2);
 
