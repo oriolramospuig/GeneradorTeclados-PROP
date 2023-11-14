@@ -44,7 +44,9 @@ public class ConjuntoTeclados
         return true;
     }
 
-    public void borrarTeclado(String nomT) {}
+    public void borrarTeclado(String nomT) {
+        teclados.remove(nomT);
+    }
 
     public boolean disponibilidadNombre(String nomt) {
         return true;

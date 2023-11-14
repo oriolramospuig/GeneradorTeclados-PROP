@@ -40,7 +40,8 @@ public class DriverAlfabeto {
         System.out.println("Introduce los caracteres del alfabeto separados por espacio (ejemplo: a b c ...):");
         String entradaCaracteres = inOut.leerString();
         if (contenidoValido(entradaCaracteres)) {
-            boolean agregado = ctrlDominio.agregarAlfabeto(nombre, entradaCaracteres);
+            ArrayList<Character> caracteres = inOut.leerCaracteresDeTerminal(entradaCaracteres);
+            boolean agregado = ctrlDominio.agregarAlfabeto(nombre, caracteres);
             if (!agregado) System.out.println("Ya existe el alfabeto " + nombre);
             else System.out.println("AGREGADO CON EXITO!");
         } else {
@@ -133,16 +134,19 @@ public class DriverAlfabeto {
         System.out.println("Alfabetos actuales:");
         imprimirNombresAlfabetos();
         System.out.println("Introduce el nombre del alfabeto que quieres borrar:");
-        String nombre = inOut.leerString();
-        if(ctrlDominio.alfabetoTieneTecladosVinculados(nombre)){
+        String nombre = inOut.leerString(); // hay que comprobar que el nombre esta bien?
+        if (ctrlDominio.alfabetoTieneTecladosVinculados(nombre)) {
             System.out.println("Este alfabeto tiene teclados vinculados. Estas seguro/a de que quieres borrarlo y tambien borrar sus teclados asociados?");
             String respuesta = inOut.leerString();
-            if(respuesta.equals("si") || respuesta.equals("SI") || respuesta.equals("Si")){
+            if (respuesta.equals("si") || respuesta.equals("SI") || respuesta.equals("Si")) {
                 ctrlDominio.borrarAlfabeto(nombre);
                 System.out.println("BORRADO CON EXITO!");
 
-            }
-            else System.out.println("No se ha borrado el alfabeto " + nombre);
+            } else System.out.println("No se ha borrado el alfabeto " + nombre);
         }
+        //else{
+        //ctrlDominio.borrarAlfabeto(nombre);
+        //System.out.println("BORRADO CON EXITO!");
+        //}
     }
 }

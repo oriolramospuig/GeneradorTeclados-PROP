@@ -1,5 +1,6 @@
 package main.domain.controllers;
 
+import main.domain.classes.ConjuntoAsociaciones;
 import main.domain.classes.Texto;
 import main.domain.classes.ConjuntoTextos;
 import main.domain.classes.ConjuntoTeclados;
@@ -18,6 +19,8 @@ public class CtrlTexto {
     private Texto TextoExistente;
     private ConjuntoTextos CjtTextos;
     private ConjuntoTeclados CjtTeclados;
+    private ConjuntoAsociaciones CjtAsociaciones;
+
 
     /**
      * Asigna un alfabeto y un cjt de alfabetos vacío
