@@ -21,11 +21,12 @@ import java.util.ArrayList;
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class DriverDominio {
-    private InOut inOut;
+    private DriverAlfabeto driverAfabeto;
     private ConjuntoAlfabetos conjuntoAlfabetos;
     private ConjuntoTextos conjuntoTextos;
     private ConjuntoTeclados conjuntoTeclados;
     private CtrlDominio ctrlDominio;
+
 
     public DriverDominio() {
         inOut = new InOut();
@@ -36,11 +37,20 @@ public class DriverDominio {
 
     /**
      * No retorna nada.
-     * Muestra al usuario como debe ser la entrada
-     * Manda a comprobar que la entrada sea válida
-     * Manda añadir el nuevo alfabeto con los atributos asignados
-     * Envía mensaje de contenido no válido si no lo es
      */
+    public void agregarAlfabetoPorArchivo() {
+        driverAfabeto.agregarAlfabetoPorArchivo();
+    }
+    public void agregarAlfabetoPorTerminal() {
+        driverAfabeto.agregarAlfabetoPorTerminal();
+    }
+    public void borrarAlfabeto() {
+        driverAfabeto.borrarAlfabeto();
+    }
+    public void imprimirAlfabetos() {
+        driverAfabeto.imprimirAlfabetos();
+    }
+
     public void agregarAlfabetoPorTerminal() {
         System.out.println("Introduce el nombre del alfabeto:");
         String nombre = inOut.leerString();

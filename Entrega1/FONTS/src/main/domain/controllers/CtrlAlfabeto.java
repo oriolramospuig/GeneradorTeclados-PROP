@@ -10,12 +10,8 @@ import java.util.HashMap;
 public class CtrlAlfabeto {
 
     // ---------- PARÁMETROS ----------
-    /**
-     * Parámetros de la clase Alfabeto y ConjuntoAlfabetos
-     */
-    private ConjuntoAlfabetos CjtAlfabetos;
-    private ConjuntoTeclados CjtTeclados;
 
+    private ConjuntoAlfabetos CjtAlfabetos;
     /**
      * Asigna un alfabeto y un cjt de alfabetos vacío
      */
@@ -50,15 +46,9 @@ public class CtrlAlfabeto {
      * No retorna nada.
      * Crea el nuevo objecto alfabeto y añade este objeto a ConjuntoAlfabetos
      */
-    public boolean CrearAlfabeto(String nomA, String entradaCaracteres) {
+    public boolean CrearAlfabeto(String nomA, ArrayList<Character> entradaCaracteres) {
         if(!CjtAlfabetos.existeAlfabeto(nomA)){
-            ArrayList<Character> caracteres = new ArrayList<>();
-            for (char c:entradaCaracteres.toCharArray()) {
-                // Solo agrega caracteres no espacios.
-                // espacio tambien puede ser caracter
-                if (c != ' ') caracteres.add(c);
-            }
-            Alfabeto alfabeto = new Alfabeto(nomA, caracteres);
+            Alfabeto alfabeto = new Alfabeto(nomA, entradaCaracteres);
             CjtAlfabetos.agregarAlfabeto(nomA, alfabeto);
             return true;
         }
@@ -70,15 +60,17 @@ public class CtrlAlfabeto {
      * Manda borrar el alfabeto dado, desvincula los teclados asociados
      * también borra este alfabeto de la lista de ConjuntoAlfabetos
      */
-  
-    public boolean borrarAlfabeto(String nomA){
-        ArrayList<String> tVinculado = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
-        if(!tVinculado.isEmpty()) {
-            for (int i = 0; i < tVinculado.size(); ++i){
-                CjtTeclados.borrarTeclado(tVinculado.get(i));
-            }
-        }
+    public void borrarAlfabeto(String nomA){
         CjtAlfabetos.borrarAlfabeto(nomA);
-        return true;
+    }
+    public boolean alfabetoTieneTecladosVinculados(String nomA){
+        ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
+        return !tVinculados.isEmpty();
+
+    }
+    public ArrayList<String> getTecladosVinculadosAlfabeto(String nomA){
+        ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
+        return tVinculados;
+
     }
 }
