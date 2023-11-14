@@ -28,5 +28,42 @@ public class CtrlTexto {
     }
 
 
+    // ---------- FUNCIONES CONJUNTOTEXTOS ----------
+    public ConjuntoTextos getTextos(){
+        return CjtTextos;
+    }
+    /**
+     * No retorna nada.
+     * Crea el nuevo objecto texto y añade este objeto a ConjuntoTextos
+     */
+    public boolean agregarTexto(String nomT, String frecuenciasLetras) {
+        if(!CjtTextos.existeTexto(nomT)){
+            HashMap<String, Integer> frecLetras = new HashMap<>();
+            /*for (char c:entradaCaracteres.toCharArray()) {
+                // Solo agrega caracteres no espacios.
+                // espacio tambien puede ser caracter
+                if (c != ' ') caracteres.add(c);
+            }*/
+            //Texto texto = new Texto(nomT, frecLetras);
+            //CjtTextos.agregarTexto(nomT, texto); // no hay constructor para pasar eso
+            return true;
+        }
+        return false;
+    }
 
+    /**
+     * No retorna nada.
+     * Manda borrar el texto dado, desvincula las asociaciones vinculadas
+     * también borra este texto de la lista de ConjuntoTextos
+     */
+
+    public void borrarTexto(String nomT){
+        ArrayList<String> AVinculadas = CjtTextos.getTexto(nomT).getAsociacionesVinculadas();
+        if(!AVinculadas.isEmpty()) {
+            for (int i = 0; i < AVinculadas.size(); ++i){
+                CjtAsociaciones.borrarAsociacionTextos(AVinculadas.get(i));
+            }
+            CjtTextos.borrarTexto(nomT);
+        }
+    }
 }

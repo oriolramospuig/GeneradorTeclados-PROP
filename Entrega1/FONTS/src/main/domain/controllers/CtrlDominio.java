@@ -38,6 +38,7 @@ public class CtrlDominio {
 
     public boolean borrarTexto(String nomT){
         //Verifica que la entrada de caracteres es válida.
-        return ctrlTexto.borrarTexto(nomT);
+        //return ctrlTexto.borrarTexto(nomT);
+        return false;
     }
 }
