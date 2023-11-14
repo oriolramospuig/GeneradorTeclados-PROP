@@ -63,13 +63,19 @@ public class CtrlTeclado {
         return false;
     }
 
-    public void borrarTeclado(String nomT) {
-        String alfabetoVinculado = teclados.getTeclado(nomT).getAlfabetoVinculado();
-        if (!alfabetoVinculado.isEmpty()) alfabetos.borrarAlfabeto(alfabetoVinculado);
-        teclados.borrarTeclado(alfabetoVinculado);
+    public String TecladoTieneAlfabetoVinculado(String nomT){
+        return teclados.getTeclado(nomT).getAlfabetoVinculado();
+    }
+    public String TecladoTieneAsociacionVinculada(String nomA){
+        return teclados.getTeclado(nomA).getAsociacionTextosVinculado();
+    }
 
-        String asociacionTextosVinculado = teclados.getTeclado(nomT).getAsociacionTextosVinculado();
-        if (!asociacionTextosVinculado.isEmpty()) asociacionesTextos.borrarAsociacionTextos(asociacionTextosVinculado);
-        teclados.borrarTeclado(asociacionTextosVinculado);
+    public void borrarTeclado(String nomT) {
+        //String alfabetoVinculado = teclados.getTeclado(nomT).getAlfabetoVinculado();
+        //if (!alfabetoVinculado.isEmpty()) alfabetos.borrarAlfabeto(alfabetoVinculado);
+        teclados.borrarTeclado(nomT);
+
+        //String asociacionTextosVinculado = teclados.getTeclado(nomT).getAsociacionTextosVinculado();
+        //if (!asociacionTextosVinculado.isEmpty()) asociacionesTextos.borrarAsociacionTextos(asociacionTextosVinculado);
     }
 }

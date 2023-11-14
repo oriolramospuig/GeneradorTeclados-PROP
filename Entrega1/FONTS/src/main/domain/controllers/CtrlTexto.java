@@ -1,9 +1,9 @@
 package main.domain.controllers;
 
-import main.domain.classes.*;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import main.domain.classes.ConjuntoAsociaciones;
+import main.domain.classes.Texto;
+import main.domain.classes.ConjuntoTextos;
+import main.domain.classes.ConjuntoTeclados;
 
 /**
  * Este controlador se encarga de gestionar los métodos de añadir, modificar i borrar alfabetos
@@ -16,31 +16,20 @@ public class CtrlTexto {
     /**
      * Parámetros de la clase Alfabeto y ConjuntoAlfabetos
      */
+    private Texto TextoExistente;
     private ConjuntoTextos CjtTextos;
+    private ConjuntoTeclados CjtTeclados;
     private ConjuntoAsociaciones CjtAsociaciones;
+
 
     /**
      * Asigna un alfabeto y un cjt de alfabetos vacío
      */
     public CtrlTexto(){
         CjtTextos = null;
+        TextoExistente = null;
     }
 
-    // ---------- FUNCIONES TEXTO ----------
-    /**
-     * No retorna nada.
-     * Manda a añadir el nuevo teclado al cjt de teclados vinculados
-     */
-    public void agregarAsociacionTextoVinculada (String nomTxt,String nomAT) {
-        CjtTextos.getTexto(nomTxt).agregarAsociacionesVinculadas(nomAT);
-    }
-    /**
-     * No retorna nada.
-     * Manda a borrar un teclado al cjt de teclados vinculados
-     */
-    public void borrarAsociacionTextoVinculada(String nomTxt, String nomAT) {
-        CjtTextos.getTexto(nomTxt).borrarAsociacionesVinculadas(nomAT);
-    }
 
     // ---------- FUNCIONES CONJUNTOTEXTOS ----------
     public ConjuntoTextos getTextos(){

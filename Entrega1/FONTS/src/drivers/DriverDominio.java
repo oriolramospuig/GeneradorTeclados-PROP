@@ -1,3 +1,4 @@
+
 package drivers;
 
 import main.domain.classes.Alfabeto;
@@ -21,11 +22,12 @@ import java.util.ArrayList;
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class DriverDominio {
-    private InOut inOut;
+    private DriverAlfabeto driverAfabeto;
     private ConjuntoAlfabetos conjuntoAlfabetos;
     private ConjuntoTextos conjuntoTextos;
     private ConjuntoTeclados conjuntoTeclados;
     private CtrlDominio ctrlDominio;
+
 
     public DriverDominio() {
         inOut = new InOut();
@@ -36,47 +38,18 @@ public class DriverDominio {
 
     /**
      * No retorna nada.
-     * Muestra al usuario como debe ser la entrada
-     * Manda a comprobar que la entrada sea válida
-     * Manda añadir el nuevo alfabeto con los atributos asignados
-     * Envía mensaje de contenido no válido si no lo es
      */
-    public void agregarAlfabetoPorTerminal() {
-        System.out.println("Introduce el nombre del alfabeto:");
-        String nombre = inOut.leerString();
-        System.out.println("Introduce los caracteres del alfabeto separados por espacio (ejemplo: a b c ...):");
-        String entradaCaracteres = inOut.leerString();
-        if (inOut.contenidoValido(entradaCaracteres)) {
-            boolean agregado = ctrlDominio.agregarAlfabeto(nombre, entradaCaracteres);
-            if (!agregado) System.out.println("Ya existe el alfabeto " + nombre);
-            else System.out.println("AGREGADO CON EXITO!");
-        } else {
-            System.out.println("El contenido introducido no es válido. Asegúrate de que sean caracteres separados por un espacio.");
-        }
-    }
-
     public void agregarAlfabetoPorArchivo() {
-        System.out.println("Introduce el nombre del archivo:");
-        String nombreArchivo = inOut.leerString();
-        try {
-            ArrayList<Character> caracteres = inOut.leerCaracteresDeArchivo(nombreArchivo);
-            System.out.println("Introduce el nombre del alfabeto:");
-            String nombre = inOut.leerString();
-            Alfabeto alfabeto = new Alfabeto(nombre, caracteres); // aixo no ho hauria de fer el ctrlDominio i ctrlAlfabeto?
-            conjuntoAlfabetos.agregarAlfabeto(nombre, alfabeto);
-            System.out.println("Alfabeto agregado con éxito desde el archivo: " + nombreArchivo);
-        } catch (FileNotFoundException e) {
-            System.out.println("El archivo no se encontró: " + nombreArchivo);
-        } catch (IllegalArgumentException e) {
-            System.out.println("El contenido del archivo no es válido: " + e.getMessage());
-        }
+        driverAfabeto.agregarAlfabetoPorArchivo();
+    }
+    public void agregarAlfabetoPorTerminal() {
+        driverAfabeto.agregarAlfabetoPorTerminal();
     }
     public void borrarAlfabeto() {
-        //listar alfabetos
-        String nombre = inOut.leerString();
-        boolean borrado = ctrlDominio.borrarAlfabeto(nombre);
-        if (!borrado) System.out.println("No se ha borrado el alfabeto " + nombre);
-        else System.out.println("BORRADO CON EXITO!");
+        driverAfabeto.borrarAlfabeto();
+    }
+    public void imprimirAlfabetos() {
+        driverAfabeto.imprimirAlfabetos();
     }
 
 
@@ -128,7 +101,7 @@ public class DriverDominio {
     }
 
 
-    public void imprimirAlfabetos() {
+    public void imprimirTexto() {
         // Obtén todos los alfabetos en el conjunto
         HashMap<String, Alfabeto> alfabetos = conjuntoAlfabetos.getAlfabetos();
         //ArrayList<String> alfabetos = conjuntoAlfabetos.getNombresAlfabetos();
