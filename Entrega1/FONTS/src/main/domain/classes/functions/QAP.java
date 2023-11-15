@@ -45,6 +45,26 @@ public class QAP {
         calculo();
     }
 
+    public QAP(int n, int[][] matrizFrecuencias, int [][] matrizDistancias) {
+        double raiz = (Math.sqrt(n));
+        this.filas = (int) Math.round(raiz);
+        this.columnas = (int) Math.round(raiz);
+
+        this.teclado = new char[filas][columnas];
+
+        // this.teclas = tecles;
+        // this.frecuenciasPares = paresFrecuencias;
+        //this.letraAIndice = new HashMap<>();
+        //for (int i = 0; i < n; i++) {
+        //    letraAIndice.put(matrizFrecuencias[get(i)], i);
+        //}
+
+        //this.teclasOrdenadas = new ArrayList<>(teclas);
+        // ordenarTeclas();
+
+        calculo();
+    }
+
     public int getFilas() {
         return this.filas;
     }

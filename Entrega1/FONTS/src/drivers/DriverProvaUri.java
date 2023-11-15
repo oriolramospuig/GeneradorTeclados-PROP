@@ -126,7 +126,20 @@ public class DriverProvaUri {
         frecuenciasPares.add(new PairFrequency("hi", 10));
         frecuenciasPares.add(new PairFrequency("ia", 5));
 
-        QAP qap = new QAP(3,3, teclas, frecuenciasPares);
+        int nf = 3;
+        int nc = 3;
+
+        HashMap<Character, Integer> letraAIndice = new HashMap<>();
+        for (int i = 0; i < teclas.size(); i++) {
+            letraAIndice.put(teclas.get(i), i);
+        }
+        int[][] matrizFrecuencias = new int[nf*nc][nf*nc];
+        Matrices.generarMatrizDeFrecuencias(frecuenciasPares, teclas, letraAIndice, matrizFrecuencias);
+
+        int [][] matrizDistancias = new int[nf*nc][nf*nc];
+        Matrices.generarMatrizDistancias(nf,nc,matrizDistancias);
+
+        QAP qap = new QAP(nf*nc, matrizFrecuencias, matrizFrecuencias);
     }
 
 
