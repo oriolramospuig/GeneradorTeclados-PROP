@@ -28,7 +28,7 @@ public class Frecuencias extends Texto
 
 
     // ---------- SETTERS ----------
-    void anadirFrecuencia(String parejaLetras, Integer frecuencia) {
+    public void anadirFrecuencia(String parejaLetras, Integer frecuencia) {
         frecuenciaLetras.put(parejaLetras, frecuencia);
     }
 
