@@ -28,6 +28,7 @@ public class DriverDominio {
     private ConjuntoTextos conjuntoTextos;
     private ConjuntoTeclados conjuntoTeclados;
     private CtrlDominio ctrlDominio;
+    private final InOut inOut;
 
 
     public DriverDominio() {
@@ -145,7 +146,7 @@ public class DriverDominio {
         driverTeclado.borrarTeclado();
     }
     public void imprimirTeclado() {
-        driverTeclado.imprimirTeclado();
+       // driverTeclado.imprimirTeclado();
     }
 
 

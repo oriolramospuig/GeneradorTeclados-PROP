@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class DriverTeclado {
     private static final Object QAP = ;
     private InOut inOut;
@@ -36,15 +37,15 @@ public class DriverTeclado {
             System.out.println("Escoge el algoritmo:");
             Integer numAlg = inOut.leerEntero();
             Algoritmo algoritmo;
-            if (numAlg==1) algoritmo = QAP; //?
-            else algoritmo = Alg2;  ///?
+          //  if (numAlg==1) algoritmo = QAP; //?
+          //  else algoritmo = Alg2;  ///?
 
             //funcion para mostrar dimensiones - tiene que salir nombre que hay en enum , fila, columna
             System.out.println("Escoge las dimensiones del teclado:");
             String dimensiones = inOut.leerString();
             //passar de string a pairIntEnum
 
-            ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, QAP, dimensiones);
+         //   ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, QAP, dimensiones);
             System.out.println("Teclado agregado con éxito: " + nombreT);
         } catch (IllegalArgumentException e) {
             System.out.println("Existe un teclado con el mismo nombre " + nombreT); //?? que tipo de excepcion tendria que pasar?
