@@ -4,9 +4,6 @@ CLASS_INPUT =	./main/domain/classes/*.java \
 				./main/domain/classes/types/*.java \
 				./main/domain/controllers/*.java
 
-CLASS_INPUT_PRESENTACIO = ./main/presentation/controllers/*.java \
-						  ./main/presentation/views/*.java
-
 CLASS_OUTPUT =	../../EXE/out/
 
 JAR_OUTPUT =	../../EXE/
@@ -17,31 +14,24 @@ JUNIT_TESTS = ./test/*.java \
 			  ./test/types/*.java \
 			  ./test/functions/*.java
 
-INTERPRET_TESTS =		./test/functions/TestInterpret.java
-
 FUNCIONS_TESTS =		./test/functions/*.java
 
-TYPE_TESTS = 			./test/types/TestSuiteTipus.java \
-						./test/types/TestBinari.java \
-						./test/types/TestHexadecimal.java
+TYPE_TESTS =			./test/types/*.java
 
 INTERPRET_CLASS_INPUT =	./main/domain/classes/functions/*.java \
-						./main/domain/classes/types/Binari.java \
-						./main/domain/classes/types/Hexadecimal.java \
-						./main/domain/classes/types/TType.java \
-						./main/domain/classes/types/Pair.java \
+						./main/domain/classes/types/*.java \
 						./main/domain/classes/exceptions/*.java \
-						./main/domain/controllers/CtrlDomini.java \
-						./main/domain/controllers/CtrlDocument.java \
-						./main/domain/controllers/CtrlClipboard.java
+						./main/domain/controllers/CtrlAlfabeto.java \
+						./main/domain/controllers/CtrlAsociacionTexto.java \
+						./main/domain/controllers/CtrlDominio.java \
+						./main/domain/controllers/CtrlTeclado.java \
+						./main/domain/controllers/CtrlTexto.java \
 
-TYPE_CLASS_INPUT =		./main/domain/classes/types/Binari.java \
-						./main/domain/classes/types/Hexadecimal.java
+TYPE_CLASS_INPUT =		./main/domain/classes/types/PairFrequency.java \
+						./main/domain/classes/types/PairInt.java
 
-DOCUMENT_CLASS_INPUT =	./main/domain/controllers/CtrlDocument.java \
-						./main/domain/classes/Document.java \
-						./main/domain/classes/Full.java \
-						./main/domain/classes/Cela.java
+ALPHABET_CLASS_INPUT =	./main/domain/controllers/CtrlAlfabeto.java \
+						./main/domain/classes/Alfabeto.java
 
 CLASS_SOURCES =			$(CLASS_OUTPUT)drivers/*.class \
 						$(CLASS_OUTPUT)main/domain/classes/*.class \
@@ -54,57 +44,46 @@ all:
 	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT)
 	javac -cp $(JUNIT_JARS) -d $(CLASS_OUTPUT) $(CLASS_INPUT) $(JUNIT_TESTS)
 
-jarDocument:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverDocument.java
-	jar cmvf ./drivers/Document.mf $(JAR_OUTPUT)DriverDocument.jar -C $(CLASS_OUTPUT) .
-	java -jar $(JAR_OUTPUT)DriverDocument.jar
+jarAlfabeto:
+	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverAlfabeto.java
+	jar cmvf ./drivers/Alfabeto.mf $(JAR_OUTPUT)DriverAlfabeto.jar -C $(CLASS_OUTPUT) .
+	java -jar $(JAR_OUTPUT)DriverAlfabeto.jar
 
-jarClipboard:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverClipboard.java
-	jar cmvf ./drivers/Clipboard.mf $(JAR_OUTPUT)DriverClipboard.jar -C $(CLASS_OUTPUT) .
-	java -jar $(JAR_OUTPUT)DriverClipboard.jar
+jarTexto:
+	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverTexto.java
+	jar cmvf ./drivers/Texto.mf $(JAR_OUTPUT)DriverTexto.jar -C $(CLASS_OUTPUT) .
+	java -jar $(JAR_OUTPUT)DriverTexto.jar
 
-jarCelaSeleccionada:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverCelaSeleccionada.java
-	jar cmvf ./drivers/CelaSeleccionada.mf $(JAR_OUTPUT)DriverCelaSeleccionada.jar -C $(CLASS_OUTPUT) .
-	java -jar $(JAR_OUTPUT)DriverCelaSeleccionada.jar
+jarTeclado:
+	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverTeclado.java
+	jar cmvf ./drivers/Teclado.mf $(JAR_OUTPUT)DriverTeclado.jar -C $(CLASS_OUTPUT) .
+	java -jar $(JAR_OUTPUT)DriverTeclado.jar
 
-jarDomini:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverDomini.java
-	jar cmvf ./drivers/Domini.mf $(JAR_OUTPUT)DriverDomini.jar -C $(CLASS_OUTPUT) .
-	java -jar $(JAR_OUTPUT)DriverDomini.jar
-
-jarPresentacio:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT_PRESENTACIO) ./drivers/DriverPresentacio.java
-	jar cmvf ./drivers/Presentacio.mf $(JAR_OUTPUT)DriverPresentacio.jar -C $(CLASS_OUTPUT) .
-	java -jar $(JAR_OUTPUT)DriverPresentacio.jar
-
+jarDominio:
+	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverDominio.java
+	jar cmvf ./drivers/Dominio.mf $(JAR_OUTPUT)DriverDominio.jar -C $(CLASS_OUTPUT) .
+	java -jar $(JAR_OUTPUT)DriverDominio.jar
 jars:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverDocument.java ./drivers/DriverClipboard.java ./drivers/DriverDomini.java ./drivers/DriverCelaSeleccionada.java
-	jar cmvf ./drivers/Document.mf $(JAR_OUTPUT)DriverDocument.jar -C $(CLASS_OUTPUT) .
-	jar cmvf ./drivers/Clipboard.mf $(JAR_OUTPUT)DriverClipboard.jar -C $(CLASS_OUTPUT) .
-	jar cmvf ./drivers/Domini.mf $(JAR_OUTPUT)DriverDomini.jar -C $(CLASS_OUTPUT) .
-	jar cmvf ./drivers/CelaSeleccionada.mf $(JAR_OUTPUT)DriverCelaSeleccionada.jar -C $(CLASS_OUTPUT) .
+	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverAlfabeto.java ./drivers/DriverTexto.java ./drivers/DriverDominio.java ./drivers/DriverTeclado.java
+	jar cmvf ./drivers/Alfabeto.mf $(JAR_OUTPUT)DriverAlfabeto.jar -C $(CLASS_OUTPUT) .
+	jar cmvf ./drivers/Texto.mf $(JAR_OUTPUT)DriverTexto.jar -C $(CLASS_OUTPUT) .
+	jar cmvf ./drivers/Dominio.mf $(JAR_OUTPUT)DriverDominio.jar -C $(CLASS_OUTPUT) .
+	jar cmvf ./drivers/Teclado.mf $(JAR_OUTPUT)DriverTeclado.jar -C $(CLASS_OUTPUT) .
 
 executaDriverDomini:
-	java -jar $(JAR_OUTPUT)DriverDomini.jar
+	java -jar $(JAR_OUTPUT)DriverDominio.jar
 
 executaDriverDocument:
-	java -jar $(JAR_OUTPUT)DriverDocument.jar
+	java -jar $(JAR_OUTPUT)DriverAlfabeto.jar
 
 executaDriverClipboard:
-	java -jar $(JAR_OUTPUT)DriverClipboard.jar
+	java -jar $(JAR_OUTPUT)DriverTexto.jar
 
 executaDriverCelaSeleccionada:
-	java -jar $(JAR_OUTPUT)DriverCelaSeleccionada.jar
+	java -jar $(JAR_OUTPUT)DriverTeclado.jar
 
 executaDriverPresentacio:
 	java -jar $(JAR_OUTPUT)DriverPresentacio.jar
-
-buildinterpret:
-	javac -d $(CLASS_OUTPUT) $(INTERPRET_CLASS_INPUT)
-	javac -cp $(JUNIT_JARS) -d $(CLASS_OUTPUT) $(INTERPRET_CLASS_INPUT) $(INTERPRET_TESTS)
-
 buildfuncions:
 	javac -d $(CLASS_OUTPUT) $(INTERPRET_CLASS_INPUT)
 	javac -cp $(JUNIT_JARS) -d $(CLASS_OUTPUT) $(INTERPRET_CLASS_INPUT) $(FUNCIONS_TESTS)
@@ -125,14 +104,20 @@ TestSuiteTipus: all
 TestInterpret: all
 	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.functions.TestInterpret
 
-TestCela: all
-	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestCela
+TestAlfabeto: all
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestAlfabetp
 
-TestFull: all
-	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestFull
+TestConjuntoAlfabetos: all
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestConjuntoAlfabetos
 
-TestDocument: all
-	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestDocument
+TestConjuntoAsociaciones: all
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestConjuntoAsociaciones
+
+TestConjuntoTeclados: all
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestConjuntoTeclados
+
+TestTexto: all
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestTexto
 
 clean:
 	rm -r ../../EXE/out/*
