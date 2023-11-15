@@ -67,7 +67,4 @@ public class TestTexto {
             assertTrue(texto.getAsociacionesVinculadas().isEmpty());
         }
     }
-
-
-
 }
