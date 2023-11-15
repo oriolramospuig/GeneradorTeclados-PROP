@@ -119,6 +119,9 @@ TestConjuntoTeclados: all
 TestTexto: all
 	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestTexto
 
+TestConjuntoTextos: all
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestConjuntoTextos
+
 clean:
 	rm -r ../../EXE/out/*
 
