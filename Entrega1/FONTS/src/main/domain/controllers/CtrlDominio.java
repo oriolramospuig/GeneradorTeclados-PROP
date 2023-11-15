@@ -1,9 +1,6 @@
 package main.domain.controllers;
 
-import main.domain.classes.Alfabeto;
-import main.domain.classes.ConjuntoAlfabetos;
-import main.domain.classes.ConjuntoTeclados;
-import main.domain.classes.ConjuntoTextos;
+import main.domain.classes.*;
 import main.domain.classes.functions.InOut;
 
 import java.util.ArrayList;
@@ -57,4 +54,24 @@ public class CtrlDominio {
     //String avinculado = ctrlTeclado.TecladoTieneAlfabetoVinculado(tVinculados.get(i));
 
     // ---------- FUNCIONES TECLADO ----------
+    public boolean agregarTeclado(String nomT, String nomA, String nomAT, Algoritmo algoritmo, PairIntEnum dimensiones){
+        ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
+        ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
+        Alfabeto alfabeto = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA);
+        AsociacionTextos asociacionTextos = ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionTextos(nomAT);
+        return ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, algoritmo, dimensiones);
+    }
+
+    public ArrayList<String> getListaTeclados(){
+        return ctrlTeclado.getCjtTeclados().getNombresTeclados();
+    }
+
+    public void borrarTeclado(String nomT) {
+        String atvinculada = ctrlTeclado.TecladoTieneAsociacionVinculada(nomT);
+        String aVinculado = ctrlTeclado.TecladoTieneAlfabetoVinculado(nomT);
+
+        ctrlAsociacionTexto.borrarTecladoVinculado(atvinculada, nomT);
+        ctrlAlfabeto.borrarTecladoVinculado(aVinculado, nomT);
+        ctrlTeclado.borrarTeclado(nomT);
+    }
 }

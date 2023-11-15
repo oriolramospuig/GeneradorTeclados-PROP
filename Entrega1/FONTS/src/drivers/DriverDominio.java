@@ -23,10 +23,12 @@ import java.util.ArrayList;
  */
 public class DriverDominio {
     private DriverAlfabeto driverAfabeto;
+    private DriverTeclado driverTeclado;
     private ConjuntoAlfabetos conjuntoAlfabetos;
     private ConjuntoTextos conjuntoTextos;
     private ConjuntoTeclados conjuntoTeclados;
     private CtrlDominio ctrlDominio;
+    private final InOut inOut;
 
     private InOut inOut;
 
@@ -135,6 +137,21 @@ public class DriverDominio {
             System.out.println();
         }
     }
+
+
+    // ---------- FUNCIONES TECLADO ----------
+    public void agregarTeclado() {
+        driverTeclado.agregarTeclado();
+    }
+    public void borrarTeclado() {
+        driverTeclado.borrarTeclado();
+    }
+    public void imprimirTeclado() {
+       // driverTeclado.imprimirTeclado();
+    }
+
+
+    // ---------- FUNCIONES QAP ----------
 
     void imprimirPruebaQAP() {
         System.out.println("Se generará un teclado aleatorio de 3*4 con las letras de la A a la L: ");

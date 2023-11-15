@@ -9,7 +9,7 @@ import java.util.HashMap;
  * @author
  */
 
-public class Texto
+public abstract class Texto
 {
     // ---------- ATRIBUTOS COMUNES ----------
     /** Guarda el nombre introducido por el usuario */
@@ -21,11 +21,11 @@ public class Texto
 
 
     // ---------- CONSTRUCTORES ----------
-    public Texto() {
+   /* public Texto() {
         nombre = new String();
         frecuenciaLetras = new HashMap<>();
         asociacionesVinculadas = new ArrayList<>();
-    }
+    }*/
 
     // ---------- GETTERS ----------
     /**
@@ -52,9 +52,7 @@ public class Texto
      * Retorna el contenido del texto
      * @return String : Contenido del texto usado por las funciones, dependiendo del tipo de Texto el formato variará
      */
-    public String getTexto() {
-        return null;
-    }
+    public abstract String getTexto();
 
 
     // ---------- SETTERS ----------
