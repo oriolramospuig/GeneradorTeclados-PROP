@@ -51,7 +51,6 @@ public class AsociacionTextos {
         tecladosVinculados = new ArrayList<>();
     }
 
-
     // ---------- GETTERS ----------
     public String getNombre() {
         return nombre;
