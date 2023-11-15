@@ -104,12 +104,15 @@ public class DriverProvaUri {
     }
 
     void imprimirPruebaQAP() {
-        System.out.println("Se generará un teclado aleatorio de 3*4 con las letras de la A a la L: ");
+        System.out.println("Se generará un teclado aleatorio de 3*3 con las letras de la A a la I: ");
         System.out.println();
+
+        /* llista de caracters de l'alfabet = "tecles"*/
         List<Character> teclas = new ArrayList<>();
         for(char c = 'a'; c <= 'i'; c++) { // Asumiendo un alfabeto de 'a' a 'l'
             teclas.add(c);
         }
+        /*llista de freuencies ordenades decreixentment*/
         List<PairFrequency> frecuenciasPares = new ArrayList<>();
         frecuenciasPares.add(new PairFrequency("ab", 400)); // Frecuencia del par AB
         frecuenciasPares.add(new PairFrequency("bc", 300)); // Frecuencia del par BC
@@ -126,20 +129,26 @@ public class DriverProvaUri {
         frecuenciasPares.add(new PairFrequency("hi", 10));
         frecuenciasPares.add(new PairFrequency("ia", 5));
 
+        /*numero de files i de columnes*/
         int nf = 3;
         int nc = 3;
 
+        /*aixo serveix per enlloc de tractar lletres a, b, c ... tractar números 1, 2, 3... a la tornada de l'algoritme
+        * ho tornem a lletres. No se si es necessari tenir-ho, diria que no*/
         HashMap<Character, Integer> letraAIndice = new HashMap<>();
         for (int i = 0; i < teclas.size(); i++) {
             letraAIndice.put(teclas.get(i), i);
         }
+        /*les dues matrius que s'han de generar, una a partir de frecuencies, l'altre a partir del teclat seleccionat(mides)*/
         int[][] matrizFrecuencias = new int[nf*nc][nf*nc];
         Matrices.generarMatrizDeFrecuencias(frecuenciasPares, teclas, letraAIndice, matrizFrecuencias);
 
         int [][] matrizDistancias = new int[nf*nc][nf*nc];
         Matrices.generarMatrizDistancias(nf,nc,matrizDistancias);
-
+        /*creadora de la classe qap nova, per que poguem provar amb lo que ha dit a classe*/
         QAP qap = new QAP(nf*nc, matrizFrecuencias, matrizFrecuencias);
+        /*creadora antiga, amb això anava i donava resultat, la canviem per a canviar l'estrcutura del qap*/
+        // QAP qap = new QAP(nf, nc, teclas, frecuenciasPares);
     }
 
 

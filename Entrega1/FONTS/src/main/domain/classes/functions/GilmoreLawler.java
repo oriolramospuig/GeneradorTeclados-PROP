@@ -30,14 +30,15 @@ public class GilmoreLawler {
         return new ArrayList<>(mejorSolucionParcial); // Devuelve una copia defensiva
     }
 
-    public int gilmore_lawler(List<PairFrequency> frecuenciasPares, List<Character> teclas, int cotaINI) {
+    public int gilmore_lawler(List<Integer> indices, int cotaINI) {
         System.out.println("GILMORE-LAWLER ejecutándose");
         System.out.println();
         // Inicializar la cota con el peor escenario posible
         glBound = cotaINI;
 
         // Convertir la lista de teclas a una lista de índices basados en el orden dado por 'teclas'
-        List<Integer> indicesOrdenados = teclas.stream()
+        // crec que no caldra
+        List<Integer> indicesOrdenados = indices.stream()
                 .map(letraAIndice::get)
                 .collect(Collectors.toList());
 
@@ -45,7 +46,7 @@ public class GilmoreLawler {
         List<Integer> solucionParcial = new ArrayList<>(Collections.nCopies(filas * columnas, -1));
         List<Integer> posicionesNoUsadas = new ArrayList<>();
         List<Integer> letrasNO = new ArrayList<>();
-        for (int i = 0; i < teclas.size(); ++i) {
+        for (int i = 0; i < indices.size(); ++i) {
             posicionesNoUsadas.add(i);
             letrasNO.add(i);
         }

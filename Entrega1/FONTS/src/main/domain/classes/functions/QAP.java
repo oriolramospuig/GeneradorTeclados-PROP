@@ -8,23 +8,21 @@ public class QAP {
     private char[][] teclado; // La matriz del teclado
     private int filas;
     private int columnas;
-
     private int n;
-
-    /**Esto simula las frecuencias que nos entran, nose muy bien que estructura debería ser*/
     private HashMap<Character, Integer> letraAIndice;
     private int[][] matrizFrecuencias;
     private int[][] matrizDistancias;
     private ArrayList<Character> teclasOrdenadas;
     private List<Character> teclas;
     private List<PairFrequency> frecuenciasPares;
-
     private int glBound;
 
 
+    /*Creadora antiga*/
     public QAP(int filas, int columnas, List<Character> tecles, List<PairFrequency> paresFrecuencias) {
         this.filas = filas;
         this.columnas = columnas;
+        this.n = filas*columnas;
 
         this.teclado = new char[filas][columnas];
 
@@ -46,12 +44,23 @@ public class QAP {
 
         calculo();
     }
-
+    /*Creadora nova, la que volem fer servir*/
     public QAP(int n, int[][] matrizFrecuencias, int [][] matrizDistancias) {
         this.n = n;
+
+        double raizCuadradaDouble = Math.sqrt(n);
+        this.filas = (int) Math.round(raizCuadradaDouble);
+        this.columnas = (int) Math.round(raizCuadradaDouble);
+
+        this.matrizFrecuencias = matrizFrecuencias;
+        this.matrizDistancias = matrizDistancias;
+
+        int [][] indices = calcularAsignacionAleatoriaIndices();
+        this.glBound = calculoPuntuacionIndices(indices);
+
         calculo();
     }
-
+    /*getter que potser no calen pero abans els feia servir*/
     public int getFilas() {
         return this.filas;
     }
@@ -73,7 +82,6 @@ public class QAP {
                 .map(int[]::clone)
                 .toArray(int[][]::new);
     }
-
     public HashMap<Character, Integer> getLetraAIndice() {
         return new HashMap<>(this.letraAIndice);
     }
@@ -82,7 +90,7 @@ public class QAP {
         return new ArrayList<>(this.teclasOrdenadas);
     }
 
-    /**Assignació aleatòria de m tecles a m posicions; de moment l'omplim tot sencer (12 posicions = 12 lletres)*/
+    /*Assignació aleatòria de m tecles a m posicions; de moment l'omplim tot sencer (12 posicions = 12 lletres)*/
     public void calcularAsignacionAleatoria(List<Character> teclas) {
         System.out.println("Asignación de las teclas aleatoria: ");
         System.out.println();
@@ -102,20 +110,35 @@ public class QAP {
             }
         }
     }
-    /**Assignació aleatòria de m tecles a m posicions; de moment l'omplim tot sencer (12 posicions = 12 lletres)*/
-    public void calcularAsignacionAleatoria2(List<Integer> numeros) {
-        System.out.println("Asignación de las teclas aleatoria: ");
+
+    public int[][] calcularAsignacionAleatoriaIndices() {
+        System.out.println("Asignación aleatoria: ");
         System.out.println();
-        if(numeros.size() != n) {
-            throw new IllegalArgumentException("El número de teclas debe coincidir con el número de posiciones en el teclado.");
+
+        List<Integer> indices = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            indices.add(i); // Añadir índices del 0 al n-1.
         }
 
-        // Mezcla la lista de teclas
-        Collections.shuffle(numeros);
+        // Mezcla la lista de índices
+        Collections.shuffle(indices);
 
-        // ja tenim els "index" aleatoris, ara només cal
+        // Asigna los índices aleatorizados a la matriz del teclado
+        int[][] tecladoIndices = new int[filas][columnas]; // Usando índices en lugar de caracteres.
+        int index = 0;
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                tecladoIndices[i][j] = indices.get(index);
+                index++;
+            }
+        }
+
+        // Imprime la matriz del teclado con los índices asignados
+        imprimirTeclado(tecladoIndices);
+        return tecladoIndices;
     }
-    /**Algoritme greedy per la sol ini*/
+
+    /*Algoritme per la sol ini. Aquest el canviarem segur, pero de moment funciona*/
     public void calcularAsignacionGreedy(List<PairFrequency> frecuenciasPares, List<Character> teclas) {
         System.out.println("Asignación de las teclas greedy: ");
         System.out.println();
@@ -179,12 +202,54 @@ public class QAP {
 
         return puntuacion;
     }
+    /*la mateixa que la de sobre pero adaptada a la estructura nova*/
+    public int calculoPuntuacionIndices(int[][] tecladoIndices) {
+        int puntuacion = 0;
+
+        // Recorrer todas las combinaciones de pares de índices.
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                int indice1 = tecladoIndices[i][j]; // Índice en la posición [i][j]
+
+                for (int k = i; k < filas; k++) {
+                    for (int l = (k == i) ? j + 1 : 0; l < columnas; l++) {
+                        int indice2 = tecladoIndices[k][l]; // Índice en la posición [k][l]
+
+                        // Calcular la distancia Manhattan entre las dos posiciones de teclas.
+                        int distancia = Manhattan.calcularDistancia(i, j, k, l);
+
+                        // Obtener la frecuencia del par de teclas desde la matriz de frecuencias.
+                        int frecuencia = matrizFrecuencias[indice1][indice2];
+
+                        // Actualizar la puntuación sumando el producto de la distancia por la frecuencia del par de teclas.
+                        puntuacion += distancia * frecuencia;
+                    }
+                }
+            }
+        }
+
+        System.out.println("La puntuación es: " + puntuacion);
+        System.out.println();
+
+        return puntuacion;
+    }
+
 
 
     public void imprimirTeclado() {
         for(int i = 0; i < filas; i++) {
             for(int j = 0; j < columnas; j++) {
                 System.out.print(teclado[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    private void imprimirTeclado(int[][] tecladoIndices) {
+        for (int i = 0; i < tecladoIndices.length; i++) {
+            for (int j = 0; j < tecladoIndices[i].length; j++) {
+                System.out.print(tecladoIndices[i][j] + " ");
             }
             System.out.println();
         }
@@ -235,21 +300,29 @@ public class QAP {
     public void calculo() {
         imprimirMatrices();
 
-        calcularAsignacionAleatoria(teclas);
-        imprimirTeclado();
+        //calcularAsignacionAleatoria(teclas);
+        //imprimirTeclado();
 
-        int puntuacion = calculoPuntuacion();
+        //int puntuacion = calculoPuntuacion();
 
 
-        List<Character> teclasOrdenadas = getTeclasOrdenadas();
+        // List<Character> teclasOrdenadas = getTeclasOrdenadas();
 
-        calcularAsignacionGreedy(frecuenciasPares, teclasOrdenadas);
-        imprimirTeclado();
+        //calcularAsignacionGreedy(frecuenciasPares, teclasOrdenadas);
+        //imprimirTeclado();
 
-        int puntuacionGreedy = calculoPuntuacion();
+        // int puntuacionGreedy = calculoPuntuacion();
 
+
+        //GilmoreLawler gilmoreLawler = new GilmoreLawler(filas, columnas, glBound, matrizFrecuencias, matrizDistancias, letraAIndice);
+        //gilmoreLawler.gilmore_lawler(teclasOrdenadas, puntuacionGreedy);
+
+        List<Integer> indices = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            indices.add(i);
+        }
 
         GilmoreLawler gilmoreLawler = new GilmoreLawler(filas, columnas, glBound, matrizFrecuencias, matrizDistancias, letraAIndice);
-        gilmoreLawler.gilmore_lawler(frecuenciasPares, teclasOrdenadas, puntuacionGreedy);
+        gilmoreLawler.gilmore_lawler(indices, glBound);
     }
 }
