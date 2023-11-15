@@ -64,7 +64,7 @@ public class GilmoreLawler {
         if (profundidad == filas * columnas) {
             // Se ha encontrado una solución completa
             int cotaPermutacion = calcularCotaPermutacion(solucionParcial);
-            System.out.println(cotaPermutacion + " = Cota permutacion");
+            // System.out.println(cotaPermutacion + " = Cota permutacion");
             if (cotaPermutacion < glBound) {
                 glBound = cotaPermutacion;
                 mejorSolucionParcial = new ArrayList<>(solucionParcial);

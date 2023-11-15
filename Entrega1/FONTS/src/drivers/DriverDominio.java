@@ -28,9 +28,10 @@ public class DriverDominio {
     private ConjuntoTeclados conjuntoTeclados;
     private CtrlDominio ctrlDominio;
 
+    private InOut inOut;
 
     public DriverDominio() {
-        inOut = new InOut();
+        InOut inOut = new InOut();
         conjuntoAlfabetos = new ConjuntoAlfabetos();
     }
 
@@ -160,7 +161,7 @@ public class DriverDominio {
         qap.calcularAsignacionAleatoria(teclas);
         qap.imprimirTeclado();
 
-        int puntuacion = qap.calcularPuntuacionTeclado();
+        int puntuacion = qap.calculoPuntuacion();
 
 
         List<Character> teclasOrdenadas = qap.getTeclasOrdenadas();
@@ -168,7 +169,7 @@ public class DriverDominio {
         qap.calcularAsignacionGreedy(frecuenciasPares, teclasOrdenadas);
         qap.imprimirTeclado();
 
-        int puntuacionGreedy = qap.calcularPuntuacionTeclado();
+        int puntuacionGreedy = qap.calculoPuntuacion();
 
 
         GilmoreLawler gilmoreLawler = new GilmoreLawler(qap.getFilas(), qap.getColumnas(), qap.getGlBound(), qap.getMatrizFrecuencias(), qap.getMatrizDistancias(), qap.getLetraAIndice());

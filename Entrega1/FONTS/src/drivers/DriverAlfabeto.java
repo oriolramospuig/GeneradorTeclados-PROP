@@ -2,7 +2,6 @@ package drivers;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.functions.InOut;
-import main.domain.controllers.CtrlAlfabeto;
 import main.domain.controllers.CtrlDominio;
 
 import java.io.FileNotFoundException;
@@ -14,7 +13,7 @@ public class DriverAlfabeto {
     private InOut inOut;
     private CtrlDominio ctrlDominio;
 
-    public DriverAfabeto() {
+    public void DriverAfabeto() {
         inOut = new InOut();
         ctrlDominio = new CtrlDominio();
     }

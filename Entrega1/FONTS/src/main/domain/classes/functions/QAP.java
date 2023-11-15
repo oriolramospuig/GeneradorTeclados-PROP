@@ -29,6 +29,9 @@ public class QAP {
         this.teclas = tecles;
         this.frecuenciasPares = paresFrecuencias;
         this.letraAIndice = new HashMap<>();
+        for (int i = 0; i < teclas.size(); i++) {
+            letraAIndice.put(teclas.get(i), i);
+        }
 
         this.matrizFrecuencias = new int[filas * columnas][filas * columnas];
         Matrices.generarMatrizDeFrecuencias(frecuenciasPares, teclas, letraAIndice, matrizFrecuencias);
@@ -38,6 +41,8 @@ public class QAP {
 
         this.teclasOrdenadas = new ArrayList<>(teclas);
         ordenarTeclas();
+
+        calculo();
     }
 
     public int getFilas() {
@@ -205,5 +210,26 @@ public class QAP {
         for (int i = 0; i < teclasOrdenadas.size(); ++i) {
             System.out.println(teclasOrdenadas.get(i));
         }
+    }
+
+    public void calculo() {
+        imprimirMatrices();
+
+        calcularAsignacionAleatoria(teclas);
+        imprimirTeclado();
+
+        int puntuacion = calculoPuntuacion();
+
+
+        List<Character> teclasOrdenadas = getTeclasOrdenadas();
+
+        calcularAsignacionGreedy(frecuenciasPares, teclasOrdenadas);
+        imprimirTeclado();
+
+        int puntuacionGreedy = calculoPuntuacion();
+
+
+        GilmoreLawler gilmoreLawler = new GilmoreLawler(filas, columnas, glBound, matrizFrecuencias, matrizDistancias, letraAIndice);
+        gilmoreLawler.gilmore_lawler(frecuenciasPares, teclasOrdenadas, puntuacionGreedy);
     }
 }

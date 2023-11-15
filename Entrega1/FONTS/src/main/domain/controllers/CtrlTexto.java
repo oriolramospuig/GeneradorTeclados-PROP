@@ -5,6 +5,9 @@ import main.domain.classes.Texto;
 import main.domain.classes.ConjuntoTextos;
 import main.domain.classes.ConjuntoTeclados;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Este controlador se encarga de gestionar los métodos de añadir, modificar i borrar alfabetos
  * Los alfabetos existentes quedarán dentro de un ...

@@ -4,6 +4,7 @@ import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
 import main.domain.classes.functions.GilmoreLawler;
 import main.domain.classes.functions.InOut;
+import main.domain.classes.functions.Matrices;
 import main.domain.classes.functions.QAP;
 import main.domain.classes.types.PairFrequency;
 
@@ -106,45 +107,26 @@ public class DriverProvaUri {
         System.out.println("Se generará un teclado aleatorio de 3*4 con las letras de la A a la L: ");
         System.out.println();
         List<Character> teclas = new ArrayList<>();
-        for(char c = 'a'; c <= 'f'; c++) { // Asumiendo un alfabeto de 'a' a 'l'
+        for(char c = 'a'; c <= 'i'; c++) { // Asumiendo un alfabeto de 'a' a 'l'
             teclas.add(c);
         }
         List<PairFrequency> frecuenciasPares = new ArrayList<>();
         frecuenciasPares.add(new PairFrequency("ab", 400)); // Frecuencia del par AB
         frecuenciasPares.add(new PairFrequency("bc", 300)); // Frecuencia del par BC
-        frecuenciasPares.add(new PairFrequency("ac", 1));
-        frecuenciasPares.add(new PairFrequency("ad", 1));
-        frecuenciasPares.add(new PairFrequency("bd", 1));
-        frecuenciasPares.add(new PairFrequency("be", 1)); // y así sucesivamente...
-        frecuenciasPares.add(new PairFrequency("cd", 1));
-        frecuenciasPares.add(new PairFrequency("de", 1));
-        frecuenciasPares.add(new PairFrequency("df", 1));
-        frecuenciasPares.add(new PairFrequency("ef", 1));
-        //frecuenciasPares.add(new PairFrequency("fg", 550));
-        //frecuenciasPares.add(new PairFrequency("gh", 445));
-        //frecuenciasPares.add(new PairFrequency("hi", 330));
-        //frecuenciasPares.add(new PairFrequency("ia", 220));
+        frecuenciasPares.add(new PairFrequency("ac", 200));
+        frecuenciasPares.add(new PairFrequency("ad", 150));
+        frecuenciasPares.add(new PairFrequency("bd", 125));
+        frecuenciasPares.add(new PairFrequency("be", 100)); // y así sucesivamente...
+        frecuenciasPares.add(new PairFrequency("cd", 75));
+        frecuenciasPares.add(new PairFrequency("de", 50));
+        frecuenciasPares.add(new PairFrequency("df", 40));
+        frecuenciasPares.add(new PairFrequency("ef", 30));
+        frecuenciasPares.add(new PairFrequency("fg", 20));
+        frecuenciasPares.add(new PairFrequency("gh", 15));
+        frecuenciasPares.add(new PairFrequency("hi", 10));
+        frecuenciasPares.add(new PairFrequency("ia", 5));
 
-        QAP qap = new QAP(2,3, teclas, frecuenciasPares);
-
-        qap.imprimirMatrices();
-
-        qap.calcularAsignacionAleatoria(teclas);
-        qap.imprimirTeclado();
-
-        int puntuacion = qap.calculoPuntuacion();
-
-
-        List<Character> teclasOrdenadas = qap.getTeclasOrdenadas();
-
-        qap.calcularAsignacionGreedy(frecuenciasPares, teclasOrdenadas);
-        qap.imprimirTeclado();
-
-        int puntuacionGreedy = qap.calculoPuntuacion();
-
-
-        GilmoreLawler gilmoreLawler = new GilmoreLawler(qap.getFilas(), qap.getColumnas(), qap.getGlBound(), qap.getMatrizFrecuencias(), qap.getMatrizDistancias(), qap.getLetraAIndice());
-        gilmoreLawler.gilmore_lawler(frecuenciasPares, teclasOrdenadas, puntuacionGreedy);
+        QAP qap = new QAP(3,3, teclas, frecuenciasPares);
     }
 
 
