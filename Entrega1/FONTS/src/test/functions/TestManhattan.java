@@ -22,7 +22,7 @@ import java.lang.NegativeArraySizeException;
 
 public class TestManhattan {
     public void testcalcularDistancia() {
-
+        System.out.println("Test Calcular Distancia");
         int distancia = Manhattan.calcularDistancia(1, 2, 4, 6);
 
         assertEquals(7, distancia);
