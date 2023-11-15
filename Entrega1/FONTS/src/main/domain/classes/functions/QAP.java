@@ -67,7 +67,6 @@ public class QAP {
     }
 
     public List<Character> getTeclasOrdenadas() {
-        // Devuelve una copia defensiva de teclasOrdenadas para evitar la modificación externa
         return new ArrayList<>(this.teclasOrdenadas);
     }
 
@@ -121,34 +120,6 @@ public class QAP {
                 }
             }
         }
-    }
-
-    /**Per millor la eficiencia haurem de mirar de iterar només sobre les frequencies != 0*/
-    public int calcularPuntuacionTeclado() {
-        int puntuacion = 0;
-
-        // Itera sobre todos los pares de teclas en el teclado
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                /** Índex 1 és per si fem servir la funció de matriuDistancies. */
-                //int indice1 = letraAIndice.get(teclado[i][j]);
-                for (int k = 0; k < filas; k++) {
-                    for (int l = 0; l < columnas; l++) {
-                        // Calcula la distancia Manhattan entre las teclas (i, j) y (k, l)
-                        int distancia = Manhattan.calcularDistancia(i, j, k, l);
-                        int frecuencia = matrizFrecuencias[letraAIndice.get(teclado[i][j])][letraAIndice.get(teclado[k][l])];
-                        puntuacion += distancia * frecuencia;
-                        /** Índex 2 i puntuació igual, per si fem servir la funció, ja ho mirarem. */
-                        //int indice2 = letraAIndice.get(teclado[k][l]);
-                        //puntuacion += matrizDistancias[indice1][indice2] * matrizFrecuencias[indice1][indice2];
-                    }
-                }
-            }
-        }
-        System.out.println("La puntuación es: " + puntuacion);
-        System.out.println();
-
-        return puntuacion;
     }
 
     public int calculoPuntuacion() {

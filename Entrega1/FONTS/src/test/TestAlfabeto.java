@@ -22,6 +22,12 @@ import java.lang.NegativeArraySizeException;
 
 public class TestAlfabeto
 {
+    private Alfabeto alfabeto;
+
+    @Before
+    public void setUp() {
+        alfabeto = new Alfabeto();
+    }
     // ---------- CONSTRUCTORAS ----------
     /**
      * Objeto de la prueba: Test de la constructora de Alfabeto
@@ -30,9 +36,13 @@ public class TestAlfabeto
      * Operativa: Creamos un nuevo Alfabeto con los parámetros "Vocales" y una lista de las vocales y comprobamos que los valores
      * obtenidos de nombre y letras con los getters sean los mismos que los introducidos.
      **/
+    
     @Test
     public void TestConstructora() {
-        System.out.println("Test Constructoras");
+        System.out.println("Test Constructora Default");
+        assertEquals("", alfabeto.getNombre());
+        assertTrue(alfabeto.getLetras().isEmpty());
+        assertTrue(alfabeto.getTecladosVinculados().isEmpty());
 
         String nombre = "Vocales";
         ArrayList<Character> letras = new ArrayList<>();
@@ -42,11 +52,18 @@ public class TestAlfabeto
         letras.add('I');
         letras.add('O');
         letras.add('U');
-        Alfabeto a = new Alfabeto(nombre, letras);
 
+        System.out.println("Test Constructora con Nombre");
+        Alfabeto aNombre = new Alfabeto(nombre);
+        assertEquals(nombre, aNombre.getNombre());
+        assertTrue(aNombre.getLetras().isEmpty());
+        assertTrue(aNombre.getTecladosVinculados().isEmpty());
+
+        System.out.println("Test Constructora con Nombre y Letras");
+        Alfabeto a = new Alfabeto(nombre, letras);
         assertEquals(nombre, a.getNombre());
         assertEquals(letras, a.getLetras());
-        assertNull(a.getTecladosVinculados());
+        assertTrue(a.getTecladosVinculados().isEmpty());
     }
 
 
@@ -62,20 +79,15 @@ public class TestAlfabeto
     @Test
     public void TestAgregarTecladoVinculado() {
         System.out.println("Test agregarTecladoVinculado");
+        String nombreT1 = "Teclado1";
+        String nombreT2 = "Teclado2";
 
-        String nombre = "Vocales";
-        ArrayList<Character> letras = new ArrayList<>();
-        // Agregar caracteres al ArrayList
-        letras.add('A');
-        letras.add('E');
-        letras.add('I');
-        letras.add('O');
-        letras.add('U');
-        Alfabeto a = new Alfabeto(nombre, letras);
-        String nombreTeclado = "teclado1";
-        a.agregarTecladoVinculado(nombreTeclado);
+        alfabeto.agregarTecladoVinculado(nombreT1);
+        alfabeto.agregarTecladoVinculado(nombreT2);
 
-        assertTrue(a.getTecladosVinculados().contains(nombreTeclado));
+        assertEquals(2, alfabeto.getTecladosVinculados().size());
+        assertTrue(alfabeto.getTecladosVinculados().contains(nombreT1));
+        assertTrue(alfabeto.getTecladosVinculados().contains(nombreT2));
     }
 
 
@@ -90,21 +102,15 @@ public class TestAlfabeto
     public void TestBorrarTecladoVinculado() {
         System.out.println("Test borrarTecladoVinculado");
 
-        String nombre = "Vocales";
-        ArrayList<Character> letras = new ArrayList<>();
-        // Agregar caracteres al ArrayList
-        letras.add('A');
-        letras.add('E');
-        letras.add('I');
-        letras.add('O');
-        letras.add('U');
-        Alfabeto a = new Alfabeto(nombre, letras);
-        Teclado t = new Teclado("teclado1");
-        a.agregarTecladoVinculado(t.getNombre());   //no se si aqui habria que hacer esto de otra manera, porque si esta funcion ya no va bien podemos confundirnos y pensarnos que la que esta mal es borrar y no agregar
-        a.borrarTecladoVinculado(t.getNombre());
+        String nombreT1 = "Teclado1";
+        String nombreT2 = "Teclado2";
 
-        assertFalse(a.getTecladosVinculados().contains("teclado1"));
+        alfabeto.agregarTecladoVinculado(nombreT1);
+        alfabeto.agregarTecladoVinculado(nombreT2);
+        alfabeto.borrarTecladoVinculado(nombreT1);
+
+        assertEquals(1, alfabeto.getTecladosVinculados().size());
+        assertFalse(alfabeto.getTecladosVinculados().contains(nombreT1));
+        assertTrue(alfabeto.getTecladosVinculados().contains(nombreT2));
     }
 }
-
-//IMPORTANTE: escoger que opcion es mejor: crear teclado y luego .getnombre() o crear String nombre sin crear teclado --> unificar formato escogido en agregar y borrar
