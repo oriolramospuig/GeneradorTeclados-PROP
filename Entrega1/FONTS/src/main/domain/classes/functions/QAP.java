@@ -9,6 +9,8 @@ public class QAP {
     private int filas;
     private int columnas;
 
+    private int n;
+
     /**Esto simula las frecuencias que nos entran, nose muy bien que estructura debería ser*/
     private HashMap<Character, Integer> letraAIndice;
     private int[][] matrizFrecuencias;
@@ -46,22 +48,7 @@ public class QAP {
     }
 
     public QAP(int n, int[][] matrizFrecuencias, int [][] matrizDistancias) {
-        double raiz = (Math.sqrt(n));
-        this.filas = (int) Math.round(raiz);
-        this.columnas = (int) Math.round(raiz);
-
-        this.teclado = new char[filas][columnas];
-
-        // this.teclas = tecles;
-        // this.frecuenciasPares = paresFrecuencias;
-        //this.letraAIndice = new HashMap<>();
-        //for (int i = 0; i < n; i++) {
-        //    letraAIndice.put(matrizFrecuencias[get(i)], i);
-        //}
-
-        //this.teclasOrdenadas = new ArrayList<>(teclas);
-        // ordenarTeclas();
-
+        this.n = n;
         calculo();
     }
 
@@ -99,7 +86,7 @@ public class QAP {
     public void calcularAsignacionAleatoria(List<Character> teclas) {
         System.out.println("Asignación de las teclas aleatoria: ");
         System.out.println();
-        if(teclas.size() != filas * columnas) {
+        if(teclas.size() != n) {
             throw new IllegalArgumentException("El número de teclas debe coincidir con el número de posiciones en el teclado.");
         }
 
@@ -114,6 +101,19 @@ public class QAP {
                 index++;
             }
         }
+    }
+    /**Assignació aleatòria de m tecles a m posicions; de moment l'omplim tot sencer (12 posicions = 12 lletres)*/
+    public void calcularAsignacionAleatoria2(List<Integer> numeros) {
+        System.out.println("Asignación de las teclas aleatoria: ");
+        System.out.println();
+        if(numeros.size() != n) {
+            throw new IllegalArgumentException("El número de teclas debe coincidir con el número de posiciones en el teclado.");
+        }
+
+        // Mezcla la lista de teclas
+        Collections.shuffle(numeros);
+
+        // ja tenim els "index" aleatoris, ara només cal
     }
     /**Algoritme greedy per la sol ini*/
     public void calcularAsignacionGreedy(List<PairFrequency> frecuenciasPares, List<Character> teclas) {
