@@ -69,7 +69,6 @@ public class TestAlfabeto
 
     // ---------- GETTERS ----------
 
-
     // ---------- SETTERS ----------
     /**
      * Objeto de la prueba: Test del método agregarTecladoVinculado(String nomT) de la clase Alfabeto.
