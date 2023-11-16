@@ -1,4 +1,3 @@
-
 package drivers;
 
 import main.domain.classes.Alfabeto;
@@ -17,22 +16,24 @@ import java.util.List;
 import java.util.Scanner;
 
 import java.util.ArrayList;
+
 /**
- * Este driver sirve para ...
- * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
+ * Driver para probar el sistema en general usando las funcionalidades de CtrlDominio
+ * @author X (X@estudiantat.upc.edu)
  */
 public class DriverDominio {
-    private final InOut inOut;
     private DriverAlfabeto driverAfabeto;
-    private DriverTexto driverTexto;
+    private DriverTeclado driverTeclado;
     private ConjuntoAlfabetos conjuntoAlfabetos;
     private ConjuntoTextos conjuntoTextos;
     private ConjuntoTeclados conjuntoTeclados;
     private CtrlDominio ctrlDominio;
+    private final InOut inOut;
 
+    private InOut inOut;
 
     public DriverDominio() {
-        inOut = new InOut();
+        InOut inOut = new InOut();
         conjuntoAlfabetos = new ConjuntoAlfabetos();
     }
 
@@ -63,7 +64,7 @@ public class DriverDominio {
      * Manda añadir el nuevo texto con los atributos asignados
      * Envía mensaje de contenido no válido si no lo es
      */
-
+  
     public void agregarTextoPorArchivo() {
         driverTexto.agregarTextoPorTerminal();
     }
@@ -76,7 +77,7 @@ public class DriverDominio {
     public void imprimirTexto() {
         driverTexto.imprimirTextos();
     }
-
+  
     /*public void agregarTextoPorTerminal() {
         System.out.println("Introduce el nombre del texto:");
         String nombre = inOut.leerString();
@@ -151,6 +152,21 @@ public class DriverDominio {
         }
     }*/
 
+
+    // ---------- FUNCIONES TECLADO ----------
+    public void agregarTeclado() {
+        driverTeclado.agregarTeclado();
+    }
+    public void borrarTeclado() {
+        driverTeclado.borrarTeclado();
+    }
+    public void imprimirTeclado() {
+       // driverTeclado.imprimirTeclado();
+    }
+
+
+    // ---------- FUNCIONES QAP ----------
+
     void imprimirPruebaQAP() {
         System.out.println("Se generará un teclado aleatorio de 3*4 con las letras de la A a la L: ");
         System.out.println();
@@ -176,7 +192,7 @@ public class DriverDominio {
         qap.calcularAsignacionAleatoria(teclas);
         qap.imprimirTeclado();
 
-        int puntuacion = qap.calcularPuntuacionTeclado();
+        int puntuacion = qap.calculoPuntuacion();
 
 
         List<Character> teclasOrdenadas = qap.getTeclasOrdenadas();
@@ -184,11 +200,15 @@ public class DriverDominio {
         qap.calcularAsignacionGreedy(frecuenciasPares, teclasOrdenadas);
         qap.imprimirTeclado();
 
-        int puntuacionGreedy = qap.calcularPuntuacionTeclado();
+        int puntuacionGreedy = qap.calculoPuntuacion();
 
+        List<Integer> indices = new ArrayList<>();
+        for (int i = 0; i < qap.getFilas()* qap.getColumnas(); i++) {
+            indices.add(i);
+        }
 
         GilmoreLawler gilmoreLawler = new GilmoreLawler(qap.getFilas(), qap.getColumnas(), qap.getGlBound(), qap.getMatrizFrecuencias(), qap.getMatrizDistancias(), qap.getLetraAIndice());
-        gilmoreLawler.gilmore_lawler(frecuenciasPares, teclasOrdenadas, puntuacionGreedy);
+        gilmoreLawler.gilmore_lawler(indices, puntuacionGreedy);
     }
 
 
