@@ -8,6 +8,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Driver para testear las funcionalidades de CtrlAlfabeto
+ * @author X (X@estudiantat.upc.edu)
+ */
 public class DriverAlfabeto {
 
     private InOut inOut;

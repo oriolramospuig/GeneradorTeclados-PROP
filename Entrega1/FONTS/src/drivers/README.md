@@ -1,18 +1,18 @@
-# Directori drivers
+# Directorio drivers
 
-> Path absolut: /FONTS/src/drivers
+> Path absoluto: /FONTS/src/drivers
 
-## Descripció del directori
-Aquest directori conté el codi dels Drivers dels controladors que proporcionen alguna funcionalitat principal del sistema
+## Descripción del directorio
+Este directorio contiene el código de los Drivers de los controladores que proporcionan alguna funcionalidad principal del sistema
 
-## Elements del directori
+## Elementos del directorio
 
-- **DriverDomini.java:**
-  Conté el codi del driver del CtrlDomini (Proporciona totes les funcionalitats actuals del sistema)
+- **DriverDominio.java:**
+  Contiene el código del driver del CtrlDominio (Proporciona todas las funcionalidades actuales del sistema)
 
-Al ser executat es mostra un menu amb les possibles opcions a executar. Es pot entrar el nombre o titol del metode a provar.
+Al ser ejecutado se muestra un menú con las posibles opciones a ejecutar. Se puede entrar el nombre o el título del método a probar.
 
-Us:
+Uso:
 
     0. Tancar el Driver
         Finalitza la execucio del Driver

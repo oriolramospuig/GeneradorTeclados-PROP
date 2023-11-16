@@ -13,7 +13,11 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
+/**
+ * Este Driver sirve para comprobar que funciona la creación de un teclado asignando un alfabeto y una asociación de textos
+ * para la creación de este. Incluye una constructora ...
+ * @author X (X@estudiantat.upc.edu)
+ */
 public class DriverTeclado {
     private static final Object QAP = ;
     private InOut inOut;

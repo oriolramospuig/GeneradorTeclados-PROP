@@ -17,9 +17,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import java.util.ArrayList;
+
 /**
- * Este driver sirve para ...
- * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
+ * Driver para probar el sistema en general usando las funcionalidades de CtrlDominio
+ * @author X (X@estudiantat.upc.edu)
  */
 public class DriverDominio {
     private DriverAlfabeto driverAfabeto;
