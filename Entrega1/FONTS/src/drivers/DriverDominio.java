@@ -1,4 +1,3 @@
-
 package drivers;
 
 import main.domain.classes.Alfabeto;
@@ -65,7 +64,21 @@ public class DriverDominio {
      * Manda añadir el nuevo texto con los atributos asignados
      * Envía mensaje de contenido no válido si no lo es
      */
+  
+    public void agregarTextoPorArchivo() {
+        driverTexto.agregarTextoPorTerminal();
+    }
     public void agregarTextoPorTerminal() {
+        driverTexto.agregarTextoPorArchivo();
+    }
+    public void borrarTexto() {
+        driverTexto.borrarTexto();
+    }
+    public void imprimirTexto() {
+        driverTexto.imprimirTextos();
+    }
+  
+    /*public void agregarTextoPorTerminal() {
         System.out.println("Introduce el nombre del texto:");
         String nombre = inOut.leerString();
         System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
@@ -137,7 +150,7 @@ public class DriverDominio {
             }
             System.out.println();
         }
-    }
+    }*/
 
 
     // ---------- FUNCIONES TECLADO ----------
