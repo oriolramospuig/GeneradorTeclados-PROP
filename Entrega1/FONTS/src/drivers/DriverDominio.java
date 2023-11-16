@@ -22,7 +22,9 @@ import java.util.ArrayList;
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class DriverDominio {
+    private final InOut inOut;
     private DriverAlfabeto driverAfabeto;
+    private DriverTexto driverTexto;
     private ConjuntoAlfabetos conjuntoAlfabetos;
     private ConjuntoTextos conjuntoTextos;
     private ConjuntoTeclados conjuntoTeclados;
@@ -61,7 +63,21 @@ public class DriverDominio {
      * Manda añadir el nuevo texto con los atributos asignados
      * Envía mensaje de contenido no válido si no lo es
      */
+
+    public void agregarTextoPorArchivo() {
+        driverTexto.agregarTextoPorTerminal();
+    }
     public void agregarTextoPorTerminal() {
+        driverTexto.agregarTextoPorArchivo();
+    }
+    public void borrarTexto() {
+        driverTexto.borrarTexto();
+    }
+    public void imprimirTexto() {
+        driverTexto.imprimirTextos();
+    }
+
+    /*public void agregarTextoPorTerminal() {
         System.out.println("Introduce el nombre del texto:");
         String nombre = inOut.leerString();
         System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
@@ -133,7 +149,7 @@ public class DriverDominio {
             }
             System.out.println();
         }
-    }
+    }*/
 
     void imprimirPruebaQAP() {
         System.out.println("Se generará un teclado aleatorio de 3*4 con las letras de la A a la L: ");

@@ -45,7 +45,7 @@ public class CtrlDominio {
     }
 
     // ---------- FUNCIONES TEXTO ----------
-    public boolean agregarTexto(String nomT, String frecuenciasLetras){
+    public boolean agregarTexto(String nomT, HashMap<String, Integer> frecuenciasLetras){
         return ctrlTexto.agregarTexto(nomT,frecuenciasLetras);
     }
 

@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class InOut {
 
@@ -75,6 +76,16 @@ public class InOut {
                     caracteres.add(c);
                 }
             }
+        }
+
+        public HashMap<String, Integer> leerPalabrasDeArchivo(String frecuenciasLetras){
+            HashMap<String, Integer> frecLetras = new HashMap<>();
+            for (char c:frecuenciasLetras.toCharArray()) {
+                // Solo agrega caracteres no espacios.
+                // espacio tambien puede ser caracter
+                if (c != ' ') frecLetras.add(c);
+            }
+
         }
 
         fileScanner.close();
