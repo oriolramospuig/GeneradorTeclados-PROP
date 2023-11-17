@@ -12,6 +12,7 @@ import main.domain.controllers.CtrlDominio;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class DriverTeclado {
@@ -52,20 +53,16 @@ public class DriverTeclado {
         }
     }
 
-    public void imprimirTeclado(String nombre, Alfabeto a){
-        ArrayList<Character> contenido = a.getLetras();
+    public void imprimirTeclado(String nombre, Teclado t){
+        ArrayList<Character> contenido = t.getLetras();
 
-        // Imprime el nombre y el contenido del alfabeto
-        System.out.println("Nombre del alfabeto: " + nombre);
-        System.out.print("Contenido del alfabeto: ");
+        // Imprime el nombre y el contenido del teclado
+        System.out.println("Nombre del teclado: " + nombre);
+        System.out.print("Contenido del teclado: ");
 
-        // Imprime el contenido del alfabeto, si no es nulo y tiene caracteres
-        if (contenido != null && !contenido.isEmpty()) {
-            for (char c : contenido) {
-                System.out.print(c + " ");
-            }
-        } else {
-            System.out.print("El alfabeto está vacío o no se ha inicializado.");
+        // Imprime el contenido del teclado
+        for (char c : contenido) {
+            System.out.print(c + " ");
         }
         System.out.println();
     }
@@ -81,7 +78,7 @@ public class DriverTeclado {
         }
 
         // Itera sobre el conjunto de teclados e imprime la información de cada uno
-        for (ArrayList<String> entry : teclados.()) {
+        for (HashMap.Entry<String, Teclado> entry : teclados.entrySet()) {
             // Obtiene el nombre y el teclado del conjunto
             String nombre = entry.getKey();
             System.out.println(nombre);
@@ -89,22 +86,21 @@ public class DriverTeclado {
     }
 
     public void imprimirTeclados() {
-        // Obtén todos los alfabetos en el conjunto
-        HashMap<String, Alfabeto> alfabetos = ctrlDominio.getListaAlfabetos();
-        //ArrayList<String> alfabetos = conjuntoAlfabetos.getNombresAlfabetos();
+        // Obtén todos los teclados en el conjunto
+        ArrayList<String> teclados = ctrlDominio.getListaTeclados();
 
-        // Verifica si hay alfabetos en el conjunto
-        if (alfabetos.isEmpty()) {
-            System.out.println("No hay alfabetos para mostrar.");
+        // Verifica si hay teclados en el conjunto
+        if (teclados.isEmpty()) {
+            System.out.println("No hay teclados para mostrar.");
             return;
         }
 
-        // Itera sobre el conjunto de alfabetos e imprime la información de cada uno
-        for (HashMap.Entry<String, Alfabeto> entry : alfabetos.entrySet()) {
+        // Itera sobre el conjunto de teclados e imprime la información de cada uno
+        for (HashMap.Entry<String, Teclado> entry : teclados.entrySet()) {
             // Obtiene el nombre y el alfabeto del conjunto
             String nombre = entry.getKey();
-            Alfabeto alfabeto = entry.getValue();
-            imprimirAlfabeto(nombre,alfabeto);
+            Teclado teclado = entry.getValue();
+            imprimirTeclado(nombre,teclado);
         }
     }
 
