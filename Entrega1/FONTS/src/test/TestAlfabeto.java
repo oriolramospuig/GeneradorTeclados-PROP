@@ -28,6 +28,8 @@ public class TestAlfabeto
     public void setUp() {
         alfabeto = new Alfabeto();
     }
+
+
     // ---------- CONSTRUCTORAS ----------
     /**
      * Objeto de la prueba: Test de la constructora de Alfabeto
@@ -36,7 +38,6 @@ public class TestAlfabeto
      * Operativa: Creamos un nuevo Alfabeto con los parámetros "Vocales" y una lista de las vocales y comprobamos que los valores
      * obtenidos de nombre y letras con los getters sean los mismos que los introducidos.
      **/
-    
     @Test
     public void TestConstructora() {
         System.out.println("Test Constructora Default");

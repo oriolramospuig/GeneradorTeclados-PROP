@@ -1,5 +1,6 @@
 package main.domain.classes;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -12,8 +13,16 @@ public class Frecuencias extends Texto
 
 
     // ---------- CONSTRUCTORES ----------
+    /*public Frecuencias() {
+        nombre = new String();
+        frecuenciaLetras = new HashMap<>();
+        asociacionesVinculadas = new ArrayList<>();
+    }*/
+
     public Frecuencias(String nombre) {
         this.nombre = nombre;
+        frecuenciaLetras = new HashMap<>();
+        asociacionesVinculadas = new ArrayList<>();
         //el controlador llamara a anadirFrecuencia para ir pasando los valores que tocan directamente
     }
 
