@@ -14,7 +14,7 @@ public class Teclado
     private String nombre;
 
     /** Puntuación del teclado */
-    private Float puntuacion;
+    private float puntuacion;
 
     /** Algoritmo usado para el teclado */
     private Algoritmo algoritmo;
@@ -32,7 +32,7 @@ public class Teclado
     // ---------- CONSTRUCTORES ----------
     public Teclado() {
         nombre = new String();
-        puntuacion = new Float(0);
+        puntuacion = 0;
         algoritmo = Algoritmo.QAP;
         dimensiones = PairIntEnum.EMPTY_PAIR;
         alfabetoVinculado = new String();
@@ -41,7 +41,7 @@ public class Teclado
 
     public Teclado(String nombre) {
         this.nombre = nombre;
-        puntuacion = new Float(0);
+        puntuacion = 0;
         algoritmo = Algoritmo.QAP;
         dimensiones = PairIntEnum.EMPTY_PAIR;
         alfabetoVinculado = new String();
@@ -70,7 +70,7 @@ public class Teclado
      * Retorna la puntuación del teclado
      * @return Float : Puntuación del teclado calculada mediante el algoritmo de generación
      */
-    public Float getPuntuacion() {
+    public float getPuntuacion() {
         return puntuacion;
     }
 
@@ -117,7 +117,7 @@ public class Teclado
      * @param puntuacion nueva puntuación del teclado
      * Setea la puntuación con el valor pasado por parámetro puntuación
      */
-    public void setPuntuacion(Float puntuacion) {
+    public void setPuntuacion(float puntuacion) {
         this.puntuacion = puntuacion;
     }
 

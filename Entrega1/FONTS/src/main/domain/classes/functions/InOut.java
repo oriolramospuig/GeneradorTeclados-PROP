@@ -1,8 +1,7 @@
 package main.domain.classes.functions;
 
+import java.io.*;
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -39,87 +38,57 @@ public class InOut {
         return caracteres;
     }
 
-    /*public ArrayList<Character> leerCaracteresDeArchivo(String nombreArchivo) throws FileNotFoundException {
-        File file = new File(nombreArchivo);
-        Scanner fileScanner = new Scanner(file);
+    public ArrayList<Character> leerCaracteresDeArchivo(String nombreArchivo) throws IOException {
+        String currentDirectory = System.getProperty("user.dir");
+        // Ruta absoluta del archivo
+        String rutaArchivo = currentDirectory+"\\Entrega1\\INPUT_FILES\\"+nombreArchivo;
         ArrayList<Character> caracteres = new ArrayList<>();
 
-        while (fileScanner.hasNextLine()) {
-            String line = fileScanner.nextLine();
+        BufferedReader br = new BufferedReader(new FileReader(rutaArchivo));
+        String line = br.readLine();
+        if(line != null){
+            if (!contenidoValido(line)) {
+                throw new IllegalArgumentException("El contenido del archivo no es válido.");
+            }
             for (char c : line.toCharArray()) {
-                caracteres.add(c);
-            }
-        }
-        /REVISAR SI FA FALTA, DEPENENT DE COM ES LLEGEIXI UN ARXIU A JAVA
-            ArrayList<Character> caracteres = new ArrayList<>();
-            for (char c: entradaCaracteres.toCharArray()) {
-                // Solo agrega caracteres no espacios.
-                // espacio tambien puede ser caracter
-                if (c != ' ') caracteres.add(c);
-            }
-
-        fileScanner.close();
-        return caracteres;
-    }
-     */
-
-    public ArrayList<Character> leerCaracteresDeArchivo(String nombreArchivo) throws FileNotFoundException {
-        File file = new File(nombreArchivo);
-        Scanner fileScanner = new Scanner(file);
-        ArrayList<Character> caracteres = new ArrayList<>();
-        boolean esPrimeraLinea = true;
-
-        while (fileScanner.hasNextLine()) {
-            String line = fileScanner.nextLine();
-            // Verificar la validez de la primera línea que se espera contenga la definición de caracteres.
-            if (esPrimeraLinea) {
-                if (!contenidoValido(line)) {
-                    fileScanner.close();
-                    throw new IllegalArgumentException("El contenido del archivo no es válido.");
-                }
-                esPrimeraLinea = false;
-            }
-
-            for (char c : line.toCharArray()) {
-                if(c != ' ') { // Asume que los caracteres están separados por espacios, ignora los espacios
+                if (c != ' ') { // Asume que los caracteres están separados por espacios, ignora los espacios
                     caracteres.add(c);
                 }
             }
         }
-        public HashMap<String, Integer> leerPalabrasDeTerminal(String line) {
-            HashMap<String, Integer> palabras = new HashMap<>();
-            for (char c : line.toCharArray()) {
-                //palabras.add(c);
-            }
-            return palabras;
-        }
-
-        /*public HashMap<String, Integer> leerPalabrasDeArchivo(String frecuenciasLetras){
-            HashMap<String, Integer> frecLetras = new HashMap<>();
-            for (char c:frecuenciasLetras.toCharArray()) {
-                // Solo agrega caracteres no espacios.
-                // espacio tambien puede ser caracter
-                if (c != ' ') frecLetras.add(c);
-            }
-
-        }*/
-
-        fileScanner.close();
         return caracteres;
     }
 
-    public HashMap<String, Integer> leerPalabrasDeArchivo(String frecuenciasLetras) {
-        HashMap<String, Integer> frecLetras = new HashMap<>();
-        for (char c : frecuenciasLetras.toCharArray()) {
-            // Convertir el carácter a String.
-            String caracter = String.valueOf(c);
-
-            // Solo agrega caracteres no espacios, aunque los espacios también pueden ser considerados si así se desea.
-            // if (c != ' ') { // Descomentar si quieres excluir espacios
-            frecLetras.put(caracter, frecLetras.getOrDefault(caracter, 0) + 1);
-            // }
+/*
+per acabar
+    public String leerPalabrasDeTerminal(String line) {
+        HashMap<String, Integer> palabras = new HashMap<>();
+        String texto = "";
+        String linea = "";
+        while ((line = scanner.nextLine()) != null) {
+            texto
         }
-        return frecLetras;
+        for (char c : line.toCharArray()) {
+            palabras.add(c);
+        }
+        return palabras;
+    }
+
+ */
+
+    public String leerPalabrasDeArchivo(String nombreArchivo) throws IOException {
+        String currentDirectory = System.getProperty("user.dir");
+        // Ruta absoluta del archivo
+        String rutaArchivo = currentDirectory+"\\Entrega1\\INPUT_FILES\\"+nombreArchivo;
+        ArrayList<Character> caracteres = new ArrayList<>();
+
+        BufferedReader br = new BufferedReader(new FileReader(rutaArchivo));
+        String line = br.readLine();
+        String texto = "";
+        while ((line = br.readLine()) != null) {
+            texto += line;
+        }
+        return texto;
     }
 
 
