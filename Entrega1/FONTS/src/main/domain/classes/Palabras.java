@@ -54,6 +54,7 @@ public class Palabras extends Texto
         for(int i = 1; i < textoChars.length; ++i){
             String pairLetras = "" + textoChars[i-1] + textoChars[i];
             int frec = 1;
+            if (textoChars[i-1] > textoChars[i]) pairLetras = "" + textoChars[i] + textoChars[i-1];
             if(frecuenciaLetras.containsKey(pairLetras)){
                 frec = frecuenciaLetras.get(pairLetras)+1;
             }
