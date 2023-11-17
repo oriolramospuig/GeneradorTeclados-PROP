@@ -27,8 +27,9 @@ public class TestAlfabeto {
     public void setUp() {
         alfabeto = new Alfabeto();
     }
-    // ---------- CONSTRUCTORAS ----------
 
+
+    // ---------- CONSTRUCTORAS ----------
     /**
      * Objeto de la prueba: Test de la constructora de Alfabeto
      * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
@@ -70,7 +71,6 @@ public class TestAlfabeto {
 
 
     // ---------- SETTERS ----------
-
     /**
      * Objeto de la prueba: Test del método agregarTecladoVinculado(String nomT) de la clase Alfabeto.
      * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
@@ -93,7 +93,6 @@ public class TestAlfabeto {
 
 
     // ---------- AUXILIARES ----------
-
     /**
      * Objeto de la prueba: Test del método borrarTecladoVinculado(String nomT) de la clase Alfabeto.
      * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
