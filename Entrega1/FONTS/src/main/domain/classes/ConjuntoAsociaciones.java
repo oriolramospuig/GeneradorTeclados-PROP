@@ -50,16 +50,31 @@ public class ConjuntoAsociaciones
     }
 
     // ---------- SETTERS ----------
+    /**
+     * No retorna nada.
+     * @param asociacionTextos asociación a agregar al conjunto de asociaciones
+     * @param nomAT nombre de la asociacion a agregaral conjunto
+     * Añade una asociación de textos al conjunto de asociaciones de textos
+     */
     public void agregarAsociacionTexto(String nomAT, AsociacionTextos asociacionTextos) {
         asociaciones.put(nomAT, asociacionTextos);
     }
 
 
     // ---------- AUXILIARES -----------
+    /**
+     * Retorna si existe la asociación de textos con nombre dado
+     * @param nomAT nombre de la asociación de textos a comprobar
+     * @return boolean : True si el la asociación de textos con nombre nomAT existe, false si no existe
+     */
     public boolean existeAsociaciondeTextos(String nomAT) {
         return asociaciones.containsKey(nomAT);
     }
-
+    /**
+     * No retorna nada.
+     * @param nomAT nombre de la asociación de textos a borrar
+     * Borra la asociación de textos con nombre nomAT del conjunto de asociaciones.
+     */
     public void borrarAsociacionTextos(String nomAT) {
         asociaciones.remove(nomAT);
     }
