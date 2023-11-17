@@ -115,6 +115,38 @@ public class QAP {
         }
     }
 
+    public void calcularMejorAsignacionAleatoria(List<Character> teclas, int N) {
+        System.out.println("La mejor de N asignaciones de las teclas aleatorias: ");
+        System.out.println();
+        if (teclas.size() != filas * columnas) {
+            throw new IllegalArgumentException("El número de teclas debe coincidir con el número de posiciones en el teclado.");
+        }
+
+        char[][] mejorTeclado = new char[filas][columnas];
+        int mejorPuntuacion = Integer.MAX_VALUE;
+
+        for (int n = 0; n < N; n++) {
+            Collections.shuffle(teclas);
+            char[][] tecladoTemporal = new char[filas][columnas];
+            int index = 0;
+            for (int i = 0; i < filas; i++) {
+                for (int j = 0; j < columnas; j++) {
+                    tecladoTemporal[i][j] = teclas.get(index++);
+                }
+            }
+
+            int puntuacionActual = calculoPuntuacion(tecladoTemporal);
+            if (puntuacionActual < mejorPuntuacion) {
+                mejorPuntuacion = puntuacionActual;
+                mejorTeclado = tecladoTemporal; // Aquí se guarda la mejor asignación
+            }
+        }
+
+        // Al final del bucle, mejorTeclado contiene la asignación con la mejor puntuación
+        teclado = mejorTeclado; // Asignar la mejor asignación al teclado principal
+    }
+
+
     public int[][] calcularAsignacionAleatoriaIndices() {
         System.out.println("Asignación aleatoria: ");
         System.out.println();
@@ -206,6 +238,29 @@ public class QAP {
 
         return puntuacion;
     }
+    public int calculoPuntuacion(char[][] teclado) {
+        int puntuacion = 0;
+
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                int indice1 = letraAIndice.get(teclado[i][j]);
+
+                for (int k = i; k < filas; k++) {
+                    for (int l = (k == i) ? j + 1 : 0; l < columnas; l++) {
+                        int indice2 = letraAIndice.get(teclado[k][l]);
+
+                        int distancia = Manhattan.calcularDistancia(i, j, k, l);
+
+                        int frecuencia = matrizFrecuencias[indice1][indice2];
+
+                        puntuacion += distancia * frecuencia;
+                    }
+                }
+            }
+        }
+        return puntuacion;
+    }
+
     /*la mateixa que la de sobre pero adaptada a la estructura nova*/
     public int calculoPuntuacionIndices(int[][] tecladoIndices) {
         int puntuacion = 0;
@@ -304,29 +359,31 @@ public class QAP {
     public void calculo() {
         imprimirMatrices();
 
-        //calcularAsignacionAleatoria(teclas);
-        //imprimirTeclado();
-
-        //int puntuacion = calculoPuntuacion();
-
-
-        // List<Character> teclasOrdenadas = getTeclasOrdenadas();
-
-        //calcularAsignacionGreedy(frecuenciasPares, teclasOrdenadas);
-        //imprimirTeclado();
-
-        // int puntuacionGreedy = calculoPuntuacion();
+        calcularAsignacionAleatoria(teclas);
+        imprimirTeclado();
+        int puntuacion = calculoPuntuacion();
 
 
-        //GilmoreLawler gilmoreLawler = new GilmoreLawler(filas, columnas, glBound, matrizFrecuencias, matrizDistancias, letraAIndice);
-        //gilmoreLawler.gilmore_lawler(teclasOrdenadas, puntuacionGreedy);
+        calcularMejorAsignacionAleatoria(teclas, 100);
+        imprimirTeclado();
+        int puntuacionNRandom = calculoPuntuacion();
 
-        List<Integer> indices = new ArrayList<>();
+        List<Character> teclasOrdenadas = getTeclasOrdenadas();
+
+        calcularAsignacionGreedy(frecuenciasPares, teclasOrdenadas);
+        imprimirTeclado();
+        int puntuacionGreedy = calculoPuntuacion();
+
+
+        GilmoreLawler gilmoreLawler = new GilmoreLawler(filas, columnas, glBound, matrizFrecuencias, matrizDistancias, letraAIndice);
+        gilmoreLawler.gilmore_lawler(teclasOrdenadas, puntuacionNRandom);
+
+        /*List<Integer> indices = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             indices.add(i);
         }
 
         GilmoreLawler gilmoreLawler = new GilmoreLawler(filas, columnas, glBound, matrizFrecuencias, matrizDistancias, letraAIndice);
-        gilmoreLawler.gilmore_lawler(indices, glBound);
+        gilmoreLawler.gilmore_lawler(indices, glBound);*/
     }
 }

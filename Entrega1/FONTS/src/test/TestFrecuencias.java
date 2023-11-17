@@ -9,15 +9,10 @@ import org.junit.*;
 import java.io.*;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertNotNull;
-
 import java.lang.IndexOutOfBoundsException;
 import java.lang.NegativeArraySizeException;
+
+import static org.junit.Assert.*;
 
 public class TestFrecuencias
 {
@@ -52,10 +47,10 @@ public class TestFrecuencias
     public void TestGetTexto() {
         System.out.println("Test GetTexto");
 
-        frecuencias.getFrecuenciaLetras().put("AB", 3);
-        frecuencias.getFrecuenciaLetras().put("CD", 7);
+        frecuencias.anadirFrecuencia("AB", 3);
+        frecuencias.anadirFrecuencia("CD", 7);
 
-        String textoEjemplo = "AB 3\n CD 7\n";
+        String textoEjemplo = "AB 3\nCD 7\n";
         assertEquals(textoEjemplo, frecuencias.getTexto());
 
     }
@@ -70,8 +65,9 @@ public class TestFrecuencias
 
         assertEquals(2, frecuencias.getFrecuenciaLetras().size());
         assertTrue(frecuencias.getFrecuenciaLetras().containsKey("AB"));
-        assertTrue(frecuencias.getFrecuenciaLetras().containsValue(3));
+        assertEquals(3, (int) frecuencias.getFrecuenciaLetras().get("AB"));
+        assertNotEquals(2, (int) frecuencias.getFrecuenciaLetras().get("AB"));
         assertTrue(frecuencias.getFrecuenciaLetras().containsKey("CD"));
-        assertTrue(frecuencias.getFrecuenciaLetras().containsValue(1));
+        assertEquals(1, (int) frecuencias.getFrecuenciaLetras().get("CD"));
     }
 }

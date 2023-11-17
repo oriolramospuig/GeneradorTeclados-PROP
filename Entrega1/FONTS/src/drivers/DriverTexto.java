@@ -1,6 +1,8 @@
 package drivers;
 
 import main.domain.classes.Alfabeto;
+import main.domain.classes.AsociacionTextos;
+import main.domain.classes.Texto;
 import main.domain.classes.functions.InOut;
 import main.domain.controllers.CtrlDominio;
 
@@ -37,37 +39,37 @@ public class DriverTexto {
 
     public void agregarTextoPorTerminal() {
         System.out.println("Introduce el nombre del texto:");
-        String nombre = inOut.leerString();
+        String nombreTxt = inOut.leerString();
         System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
-        String frecuenciasLetras = inOut.leerString(); // canviar perq ara es texto
+        String frecuenciasLetras = inOut.leerString();
         if (contenidoValido(frecuenciasLetras)) {
-            HashMap<String, Integer> frecletras = inOut.leerPalabrasDeArchivo(frecuenciasLetras);
-            boolean agregado = ctrlDominio.agregarTexto(nombre, frecletras);
-            if (!agregado) System.out.println("Ya existe el texto " + nombre);
+            HashMap<String, Integer> frecletras = inOut.leerPalabrasDeTerminal(frecuenciasLetras);
+            boolean agregado = ctrlDominio.agregarTexto(nombreTxt, frecletras);
+            if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
             else System.out.println("AGREGADO CON EXITO!");
         } else {
             System.out.println("El contenido introducido no es válido. Asegúrate de que sean palabras separadas por un espacio.");
         }
     }
 
-    /*public void agregarTextoPorArchivo() {
+    public void agregarTextoPorArchivo() {
         System.out.println("Introduce el nombre del archivo:");
         String nombreArchivo = inOut.leerString();
         try {
             HashMap<String, Integer> frecletras = inOut.leerPalabrasDeArchivo(frecuenciasLetras);
-            //System.out.println("Introduce el nombre del alfabeto:"); // cambiar esto porque no son caracteres son palabras de un texto
-            String nombre = inOut.leerString();
-            Alfabeto alfabeto = new Alfabeto(nombre, caracteres); // aixo no ho hauria de fer el ctrlDominio i ctrlAlfabeto?
-            ctrlDominio.agregarTexto(nombre, alfabeto);
-            System.out.println("Alfabeto agregado con éxito desde el archivo: " + nombreArchivo);
+            System.out.println("Introduce el nombre del texto:");
+            String nombreTxt = inOut.leerString();
+            Texto texto = new Texto(nombreTxt, frecletras);
+            ctrlDominio.agregarTexto(nombreTxt, texto);
+            System.out.println("Texto agregado con éxito desde el archivo: " + nombreArchivo);
         } catch (FileNotFoundException e) {
             System.out.println("El archivo no se encontró: " + nombreArchivo);
         } catch (IllegalArgumentException e) {
             System.out.println("El contenido del archivo no es válido: " + e.getMessage());
         }
-    }*/
+    }
 
-    public void imprimirTexto(String nombre, Alfabeto a){
+    /*public void imprimirTexto(String nombre, Alfabeto a){
         ArrayList<Character> contenido = a.getLetras();
 
         // Imprime el nombre y el contenido del alfabeto
@@ -83,11 +85,21 @@ public class DriverTexto {
             System.out.print("El alfabeto está vacío o no se ha inicializado.");
         }
         System.out.println();
+    }*/
+    public void imprimirNombresAsociaciones() {
+        HashMap<String, AsociacionTextos> asociaciones = ctrlDominio.getListaAsociaciones();
+        if (asociaciones.isEmpty()) {
+            System.out.println("No hay asociaciones para mostrar.");
+            return;
+        }
+        for (HashMap.Entry<String, AsociacionTextos> entry : asociaciones.entrySet()) {
+            String nombre = entry.getKey();
+            System.out.println(nombre);
+        }
     }
 
     public void imprimirNombresTextos() {
-        // Obtén todos los alfabetos en el conjunto
-        HashMap<String, Alfabeto> alfabetos = ctrlDominio.getListaAlfabetos();
+        HashMap<String, Texto> alfabetos = ctrlDominio.getListaAlfabetos();
         //ArrayList<String> alfabetos = conjuntoAlfabetos.getNombresAlfabetos();
 
         // Verifica si hay alfabetos en el conjunto
@@ -95,7 +107,6 @@ public class DriverTexto {
             System.out.println("No hay alfabetos para mostrar.");
             return;
         }
-
         // Itera sobre el conjunto de alfabetos e imprime la información de cada uno
         for (HashMap.Entry<String, Alfabeto> entry : alfabetos.entrySet()) {
             // Obtiene el nombre y el alfabeto del conjunto
@@ -104,7 +115,7 @@ public class DriverTexto {
         }
     }
 
-    public void imprimirTextos() {
+    /*public void imprimirTextos() {
         // Obtén todos los alfabetos en el conjunto
         HashMap<String, Alfabeto> alfabetos = ctrlDominio.getListaAlfabetos();
         //ArrayList<String> alfabetos = conjuntoAlfabetos.getNombresAlfabetos();
@@ -122,7 +133,7 @@ public class DriverTexto {
             Alfabeto alfabeto = entry.getValue();
             imprimirTexto(nombre,alfabeto);
         }
-    }
+    }*/
 
     public void borrarTexto() {
         System.out.println("Alfabetos actuales:");

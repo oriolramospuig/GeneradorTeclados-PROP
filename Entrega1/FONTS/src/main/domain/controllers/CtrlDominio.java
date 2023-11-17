@@ -45,6 +45,9 @@ public class CtrlDominio {
         return ctrlTexto.agregarTexto(nomT,frecuenciasLetras);
     }
 
+    public HashMap<String, AsociacionTextos> getListaAsociaciones(){
+        return ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionesTextos();
+    }
     public boolean borrarTexto(String nomT){
         //Verifica que la entrada de caracteres es válida.
         //return ctrlTexto.borrarTexto(nomT);

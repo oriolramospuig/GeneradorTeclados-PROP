@@ -20,7 +20,6 @@ public class InOut {
     public String leerString() {
         return scanner.nextLine();
     }
-
     public int leerEntero() {
         if (scanner.hasNextInt()) {
             int numero = scanner.nextInt();
@@ -86,6 +85,13 @@ public class InOut {
                     caracteres.add(c);
                 }
             }
+        }
+        public HashMap<String, Integer> leerPalabrasDeTerminal(String line) {
+            HashMap<String, Integer> palabras = new HashMap<>();
+            for (char c : line.toCharArray()) {
+                //palabras.add(c);
+            }
+            return palabras;
         }
 
         /*public HashMap<String, Integer> leerPalabrasDeArchivo(String frecuenciasLetras){

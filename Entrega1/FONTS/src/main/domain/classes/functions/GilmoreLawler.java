@@ -35,7 +35,7 @@ public class GilmoreLawler {
         return new ArrayList<>(mejorSolucionParcial); // Devuelve una copia defensiva
     }
 
-    public int gilmore_lawler(List<Integer> indices, int cotaINI) {
+    public int gilmore_lawler(List<Character> indices, int cotaINI) {
         System.out.println("GILMORE-LAWLER ejecutándose");
         System.out.println();
         // Inicializar la cota con el peor escenario posible
@@ -58,7 +58,6 @@ public class GilmoreLawler {
 
         // Llamar a DFS usando el orden de las teclas ordenadas por frecuencia
         dfs(0, indicesOrdenados, solucionParcial, 0, posicionesNoUsadas, letrasNO); // Empezar DFS con profundidad 0 y cota 0
-
 
         System.out.println("GILMORE_LAWLER acabado; Cota final = " + glBound);
         System.out.println();

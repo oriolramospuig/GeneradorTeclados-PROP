@@ -146,9 +146,9 @@ public class DriverProvaUri {
         int [][] matrizDistancias = new int[nf*nc][nf*nc];
         Matrices.generarMatrizDistancias(nf,nc,matrizDistancias);
         /*creadora de la classe qap nova, per que poguem provar amb lo que ha dit a classe*/
-        QAP qap = new QAP(nf*nc, matrizFrecuencias, matrizFrecuencias);
+        //QAP qap = new QAP(nf*nc, matrizFrecuencias, matrizFrecuencias);
         /*creadora antiga, amb això anava i donava resultat, la canviem per a canviar l'estrcutura del qap*/
-        // QAP qap = new QAP(nf, nc, teclas, frecuenciasPares);
+        QAP qap = new QAP(nf, nc, teclas, frecuenciasPares);
     }
 
 
