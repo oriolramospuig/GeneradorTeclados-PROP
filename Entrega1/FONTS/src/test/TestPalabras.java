@@ -1,14 +1,17 @@
 package test;
 
+import main.domain.classes.AsociacionTextos;
 import main.domain.classes.Palabras;
 
 import java.util.ArrayList;
 
 import main.domain.classes.Frecuencias;
 import main.domain.classes.Texto;
+import main.domain.classes.types.PairFrequency;
 import org.junit.*;
 
 import java.io.*;
+import java.util.HashMap;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
@@ -48,13 +51,10 @@ public class TestPalabras
 
         palabras.tratarEntrada();
 
-        //System.out.println("Test 1");
-        assertEquals(2, palabras.getFrecuenciaLetras().get("ai").compareTo(2));
-        //System.out.println("Test 2");
-        assertEquals(2, palabras.getFrecuenciaLetras().get("ia").intValue());
-        //System.out.println("Test 3");
-        assertEquals(1, palabras.getFrecuenciaLetras().get("ac").intValue());
-        //System.out.println("Test 4");
-        assertEquals(1, palabras.getFrecuenciaLetras().get("ca").intValue());
+        assertEquals(4, palabras.getFrecuenciaLetras().size());
+        assertEquals(2, (int) palabras.getFrecuenciaLetras().get("ai"));
+        assertEquals(2, (int) palabras.getFrecuenciaLetras().get("ia"));
+        assertEquals(1, (int) palabras.getFrecuenciaLetras().get("ac"));
+        assertEquals(1, (int) palabras.getFrecuenciaLetras().get("ca"));
     }
 }

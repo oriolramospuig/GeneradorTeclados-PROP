@@ -9,15 +9,10 @@ import org.junit.*;
 import java.io.*;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertNotNull;
-
 import java.lang.IndexOutOfBoundsException;
 import java.lang.NegativeArraySizeException;
+
+import static org.junit.Assert.*;
 
 public class TestFrecuencias
 {
@@ -70,8 +65,9 @@ public class TestFrecuencias
 
         assertEquals(2, frecuencias.getFrecuenciaLetras().size());
         assertTrue(frecuencias.getFrecuenciaLetras().containsKey("AB"));
-        assertTrue(frecuencias.getFrecuenciaLetras().containsValue(3));
+        assertEquals(3, (int) frecuencias.getFrecuenciaLetras().get("AB"));
+        assertNotEquals(2, (int) frecuencias.getFrecuenciaLetras().get("AB"));
         assertTrue(frecuencias.getFrecuenciaLetras().containsKey("CD"));
-        assertTrue(frecuencias.getFrecuenciaLetras().containsValue(1));
+        assertEquals(1, (int) frecuencias.getFrecuenciaLetras().get("CD"));
     }
 }
