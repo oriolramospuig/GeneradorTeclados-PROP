@@ -3,6 +3,7 @@ package drivers;
 import main.domain.classes.Alfabeto;
 import main.domain.classes.Algoritmo;
 import main.domain.classes.AsociacionTextos;
+import main.domain.classes.Texto;
 import main.domain.classes.functions.InOut;
 import main.domain.controllers.CtrlDominio;
 
@@ -53,7 +54,7 @@ public class DriverFP {
         }
     }
     public void agregarAlfabetoPorArchivo() {
-        System.out.println("Introduce el nombre del archivo:");
+        System.out.println("Introduce el nombre del archivo, el archivo debe estar en la carpeta INPUT_FILES:");
         String nombreArchivo = inOut.leerString();
         try {
             ArrayList<Character> caracteres = inOut.leerCaracteresDeArchivo(nombreArchivo);
@@ -68,6 +69,7 @@ public class DriverFP {
             System.out.println("El contenido del archivo no es válido: " + e.getMessage());
         }
     }
+
     public void imprimirNombresAlfabetos() {
         HashMap<String, Alfabeto> alfabetos = ctrlDominio.getListaAlfabetos();
         if (alfabetos.isEmpty()) {
@@ -82,7 +84,36 @@ public class DriverFP {
 
     // ---------- FUNCIONES ASOCIACIONES TEXTOS ----------
 
-
+    public void agregarTextoPorTerminal() {
+        System.out.println("Introduce el nombre del texto:");
+        String nombreTxt = inOut.leerString();
+        System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
+        String frecuenciasLetras = inOut.leerString();
+        if (contenidoValido(frecuenciasLetras)) {
+            HashMap<String, Integer> frecletras = inOut.leerPalabrasDeTerminal(frecuenciasLetras);
+            boolean agregado = ctrlDominio.agregarTexto(nombreTxt, frecletras);
+            if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
+            else System.out.println("AGREGADO CON EXITO!");
+        } else {
+            System.out.println("El contenido introducido no es válido. Asegúrate de que sean palabras separadas por un espacio.");
+        }
+    }
+    public void agregarTextoPorArchivo() {
+        System.out.println("Introduce el nombre del archivo:");
+        String nombreArchivo = inOut.leerString();
+        try {
+            HashMap<String, Integer> frecletras = inOut.leerPalabrasDeArchivo(frecuenciasLetras);
+            System.out.println("Introduce el nombre del texto:");
+            String nombreTxt = inOut.leerString();
+            boolean agregado = ctrlDominio.agregarAlfabeto(nombreTxt, frecletras);
+            if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
+            else System.out.println("AGREGADO CON EXITO!");
+        } catch (FileNotFoundException e) {
+            System.out.println("El archivo no se encontró: " + nombreArchivo);
+        } catch (IllegalArgumentException e) {
+            System.out.println("El contenido del archivo no es válido: " + e.getMessage());
+        }
+    }
     public void imprimirNombresAsociaciones() {
         HashMap<String, AsociacionTextos> asociaciones = ctrlDominio.getListaAsociaciones();
         if (asociaciones.isEmpty()) {
@@ -155,12 +186,12 @@ public class DriverFP {
                 }
                 case "3":
                 case "TextoPorTerminal": {
-                    //driver.agregarTextoPorTerminal();
+                    driver.agregarTextoPorTerminal();
                     break;
                 }
                 case "4":
                 case "TextoPorArchivo": {
-                    //driver.agregarTextoPorArchivo();
+                    driver.agregarTextoPorArchivo();
                     break;
                 }
                 case "5":
