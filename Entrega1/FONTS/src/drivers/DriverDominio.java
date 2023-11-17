@@ -52,7 +52,7 @@ public class DriverDominio {
         driverAfabeto.borrarAlfabeto();
     }
     public void imprimirAlfabetos() {
-        driverAfabeto.imprimirAlfabetos();
+     //   driverAfabeto.imprimirAlfabetos();
     }
 
 
@@ -73,7 +73,7 @@ public class DriverDominio {
         driverTexto.borrarTexto();
     }
     public void imprimirTexto() {
-        driverTexto.imprimirTextos();
+     //   driverTexto.imprimirTextos();
     }
   
     /*public void agregarTextoPorTerminal() {
@@ -206,7 +206,7 @@ public class DriverDominio {
         }
 
         GilmoreLawler gilmoreLawler = new GilmoreLawler(qap.getFilas(), qap.getColumnas(), qap.getGlBound(), qap.getMatrizFrecuencias(), qap.getMatrizDistancias(), qap.getLetraAIndice());
-        gilmoreLawler.gilmore_lawler(indices, puntuacionGreedy);
+      //  gilmoreLawler.gilmore_lawler(indices, puntuacionGreedy);
     }
 
 

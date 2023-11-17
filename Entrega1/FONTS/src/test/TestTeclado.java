@@ -62,8 +62,5 @@ public class TestTeclado {
         assertEquals(asociacionTextos.getNombre(), teclado.getAsociacionTextosVinculado());
 */
 
-    }
-
-
 }
 

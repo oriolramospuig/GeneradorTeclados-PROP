@@ -5,6 +5,7 @@ import main.domain.classes.functions.InOut;
 import main.domain.controllers.CtrlDominio;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -60,10 +61,11 @@ public class DriverAlfabeto {
             boolean agregado = ctrlDominio.agregarAlfabeto(nombreA, caracteres);
             if (!agregado) System.out.println("Ya existe el alfabeto " + nombreA);
             else System.out.println("AGREGADO CON EXITO!");
-        } catch (FileNotFoundException e) {
-            System.out.println("El archivo no se encontró: " + nombreArchivo);
-        } catch (IllegalArgumentException e) {
+        }
+        catch (IllegalArgumentException e) {
             System.out.println("El contenido del archivo no es válido: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("El archivo no se encontró: " + nombreArchivo);
         }
     }
 

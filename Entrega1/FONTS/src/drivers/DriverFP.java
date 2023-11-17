@@ -3,10 +3,12 @@ package drivers;
 import main.domain.classes.Alfabeto;
 import main.domain.classes.Algoritmo;
 import main.domain.classes.AsociacionTextos;
+import main.domain.classes.PairIntEnum;
 import main.domain.classes.functions.InOut;
 import main.domain.controllers.CtrlDominio;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -62,10 +64,10 @@ public class DriverFP {
             boolean agregado = ctrlDominio.agregarAlfabeto(nombreA, caracteres);
             if (!agregado) System.out.println("Ya existe el alfabeto " + nombreA);
             else System.out.println("AGREGADO CON EXITO!");
-        } catch (FileNotFoundException e) {
-            System.out.println("El archivo no se encontró: " + nombreArchivo);
         } catch (IllegalArgumentException e) {
             System.out.println("El contenido del archivo no es válido: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("El archivo no se encontró: " + nombreArchivo);
         }
     }
     public void imprimirNombresAlfabetos() {
@@ -121,12 +123,12 @@ public class DriverFP {
 
             //funcion para mostrar dimensiones - tiene que salir nombre que hay en enum , fila, columna
             System.out.println("Posibles Dimensiones a escoger:");
-            imprimirPosiblesDimensiones();
+          //  imprimirPosiblesDimensiones();
             System.out.println("Escoge las dimensiones del teclado:");
             String dimensiones = inOut.leerString();
             //passar de string a pairIntEnum
 
-            boolean agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, QAP, dimensiones);
+            boolean agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP, PairIntEnum.EMPTY_PAIR);
             if (!agregado) System.out.println("Ya existe el teclado " + nombreT);
             else System.out.println("AGREGADO CON EXITO!");
             System.out.println("Teclado agregado con éxito: " + nombreT);
@@ -195,7 +197,7 @@ public class DriverFP {
                 }
                 case "11":
                 case "PruebaQAP": {
-                    driver.imprimirPruebaQAP();
+                    //   driver.imprimirPruebaQAP();
                     break;
                 }
                 default: {

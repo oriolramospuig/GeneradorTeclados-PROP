@@ -51,7 +51,7 @@ public class DriverTexto {
             System.out.println("El contenido introducido no es válido. Asegúrate de que sean palabras separadas por un espacio.");
         }
     }
-
+/*
     public void agregarTextoPorArchivo() {
         System.out.println("Introduce el nombre del archivo:");
         String nombreArchivo = inOut.leerString();
@@ -68,6 +68,8 @@ public class DriverTexto {
             System.out.println("El contenido del archivo no es válido: " + e.getMessage());
         }
     }
+
+ */
 
     /*public void imprimirTexto(String nombre, Alfabeto a){
         ArrayList<Character> contenido = a.getLetras();
@@ -98,8 +100,8 @@ public class DriverTexto {
         }
     }
 
-    public void imprimirNombresTextos() {
-        HashMap<String, Texto> alfabetos = ctrlDominio.getListaAlfabetos();
+  /*  public void imprimirNombresTextos() {
+        HashMap<String, Texto> textos = ctrlDominio.getListaAlfabetos();
         //ArrayList<String> alfabetos = conjuntoAlfabetos.getNombresAlfabetos();
 
         // Verifica si hay alfabetos en el conjunto
@@ -114,6 +116,8 @@ public class DriverTexto {
             System.out.println(nombre);
         }
     }
+
+   */
 
     /*public void imprimirTextos() {
         // Obtén todos los alfabetos en el conjunto
@@ -137,7 +141,7 @@ public class DriverTexto {
 
     public void borrarTexto() {
         System.out.println("Alfabetos actuales:");
-        imprimirNombresTextos();
+  //      imprimirNombresTextos();
         System.out.println("Introduce el nombre del alfabeto que quieres borrar:");
         String nombre = inOut.leerString(); // hay que comprobar que el nombre esta bien?
         if (ctrlDominio.alfabetoTieneTecladosVinculados(nombre)) {
