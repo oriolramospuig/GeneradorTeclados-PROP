@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 /**
- * Classe que representa un alfabeto
+ * Clase que representa un alfabeto
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class Alfabeto // implements Comparable<Cela>, Serializable
@@ -65,8 +65,9 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
     // ---------- SETTERS ----------
     /**
      * No retorna.
+     * @param nomT nombre del teclado a vincular
      * Añade a la lista de nombres de los teclados asociados el nombre
-     * del nuevo teclado pasado como parámetro
+     * del nuevo teclado nomT
      */
     public void agregarTecladoVinculado (String nomT) {
         tecladosVinculados.add(nomT);
@@ -75,17 +76,12 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
     // ---------- AUXILIARES ----------
     /**
      * No retorna.
+     * @param nomT nombre del teclado a desvincular
      * Borra de la lista de nombres de los teclados asociados el nombre
-     * del teclado pasado como parámetro
+     * del nuevo teclado nomT
      */
     public void borrarTecladoVinculado(String nomT) {
         tecladosVinculados.remove(nomT);
     }
 
-
-
-    /** ho comento però no ho elimino, serà inetressant fer metode toString
-    @Override
-    public String toString() {return _valorUsuari;}
-    */
 }
