@@ -48,9 +48,13 @@ public class TestPalabras
 
         palabras.tratarEntrada();
 
-        assertEquals(2, palabras.getFrecuenciaLetras().get("ai").intValue());
+        //System.out.println("Test 1");
+        assertEquals(2, palabras.getFrecuenciaLetras().get("ai").compareTo(2));
+        //System.out.println("Test 2");
         assertEquals(2, palabras.getFrecuenciaLetras().get("ia").intValue());
+        //System.out.println("Test 3");
         assertEquals(1, palabras.getFrecuenciaLetras().get("ac").intValue());
+        //System.out.println("Test 4");
         assertEquals(1, palabras.getFrecuenciaLetras().get("ca").intValue());
     }
 }

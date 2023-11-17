@@ -52,10 +52,10 @@ public class TestFrecuencias
     public void TestGetTexto() {
         System.out.println("Test GetTexto");
 
-        frecuencias.getFrecuenciaLetras().put("AB", 3);
-        frecuencias.getFrecuenciaLetras().put("CD", 7);
+        frecuencias.anadirFrecuencia("AB", 3);
+        frecuencias.anadirFrecuencia("CD", 7);
 
-        String textoEjemplo = "AB 3\n CD 7\n";
+        String textoEjemplo = "AB 3\nCD 7\n";
         assertEquals(textoEjemplo, frecuencias.getTexto());
 
     }
