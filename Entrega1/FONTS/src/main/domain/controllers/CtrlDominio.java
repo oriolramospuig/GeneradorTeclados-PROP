@@ -26,6 +26,9 @@ public class CtrlDominio {
     public boolean alfabetoTieneTecladosVinculados(String nomA){
         return ctrlAlfabeto.alfabetoTieneTecladosVinculados(nomA);
     }
+    public HashMap<String, Alfabeto> getListaAlfabetos(){
+        return ctrlAlfabeto.getCjtAlfabetos().getAlfabetos();
+    }
     public void borrarAlfabeto(String nomA){
         ArrayList<String> tVinculados = ctrlAlfabeto.getTecladosVinculadosAlfabeto(nomA);
         if(!tVinculados.isEmpty()) {
@@ -37,10 +40,6 @@ public class CtrlDominio {
         }
         ctrlAlfabeto.borrarAlfabeto(nomA);
     }
-    public HashMap<String, Alfabeto> getListaAlfabetos(){
-        return ctrlAlfabeto.getCjtAlfabetos().getAlfabetos();
-    }
-
     // ---------- FUNCIONES TEXTO ----------
     public boolean agregarTexto(String nomT, HashMap<String, Integer> frecuenciasLetras){
         return ctrlTexto.agregarTexto(nomT,frecuenciasLetras);

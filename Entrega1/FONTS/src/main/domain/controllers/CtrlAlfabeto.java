@@ -54,15 +54,6 @@ public class CtrlAlfabeto {
         }
         return false;
     }
-
-    /**
-     * No retorna nada.
-     * Manda borrar el alfabeto dado, desvincula los teclados asociados
-     * también borra este alfabeto de la lista de ConjuntoAlfabetos
-     */
-    public void borrarAlfabeto(String nomA){
-        CjtAlfabetos.borrarAlfabeto(nomA);
-    }
     public boolean alfabetoTieneTecladosVinculados(String nomA){
         ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
         return !tVinculados.isEmpty();
@@ -72,5 +63,13 @@ public class CtrlAlfabeto {
         ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
         return tVinculados;
 
+    }
+    /**
+     * No retorna nada.
+     * Manda borrar el alfabeto dado, desvincula los teclados asociados
+     * también borra este alfabeto de la lista de ConjuntoAlfabetos
+     */
+    public void borrarAlfabeto(String nomA){
+        CjtAlfabetos.borrarAlfabeto(nomA);
     }
 }
