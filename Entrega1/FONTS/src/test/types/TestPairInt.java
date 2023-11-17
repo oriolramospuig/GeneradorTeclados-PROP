@@ -19,7 +19,6 @@ public class TestPairInt {
         assertEquals(Integer.valueOf(2), pair.getSegundo());
     }
 
-
     @Test
     public void TestSetPrimero() {
         System.out.println("Test setPrimero");
