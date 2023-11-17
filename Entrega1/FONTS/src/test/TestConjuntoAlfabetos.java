@@ -10,6 +10,10 @@ import java.util.HashMap;
 
 import static org.junit.Assert.*;
 
+/**
+ * Classe de testeo de Alfabeto.java
+ * @author X (X@estudiantat.upc.edu)
+ */
 public class TestConjuntoAlfabetos {
     private ConjuntoAlfabetos alfabetos;
 

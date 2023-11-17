@@ -20,6 +20,10 @@ import static org.junit.Assert.assertNotNull;
 import java.lang.IndexOutOfBoundsException;
 import java.lang.NegativeArraySizeException;
 
+/**
+ * Classe de testeo de Alfabeto.java
+ * @author X (X@estudiantat.upc.edu)
+ */
 public class TestAlfabeto {
     private Alfabeto alfabeto;
 
