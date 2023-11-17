@@ -1,5 +1,8 @@
 package main.domain.classes.types;
 
+/** Clase que implementa un pair de String, Int
+ * @author X (X@estudiantat.upc.edu)
+ */
 public class PairFrequency {
     String pair;
     int frequency;

@@ -24,12 +24,12 @@ import java.util.ArrayList;
 public class DriverDominio {
     private DriverAlfabeto driverAfabeto;
     private DriverTeclado driverTeclado;
+    private DriverTexto driverTexto;
     private ConjuntoAlfabetos conjuntoAlfabetos;
     private ConjuntoTextos conjuntoTextos;
     private ConjuntoTeclados conjuntoTeclados;
     private CtrlDominio ctrlDominio;
-    private final InOut inOut;
-
+    // private final InOut inOut;
     private InOut inOut;
 
     public DriverDominio() {
@@ -68,9 +68,7 @@ public class DriverDominio {
     public void agregarTextoPorArchivo() {
         driverTexto.agregarTextoPorTerminal();
     }
-    public void agregarTextoPorTerminal() {
-        driverTexto.agregarTextoPorArchivo();
-    }
+    /*public void agregarTextoPorTerminal() { driverTexto.agregarTextoPorArchivo();}*/
     public void borrarTexto() {
         driverTexto.borrarTexto();
     }

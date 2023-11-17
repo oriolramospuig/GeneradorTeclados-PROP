@@ -19,7 +19,7 @@ import java.util.HashMap;
  * @author X (X@estudiantat.upc.edu)
  */
 public class DriverTeclado {
-    private static final Object QAP = ;
+    // private static final Object QAP = ;
     private InOut inOut;
     private CtrlDominio ctrlDominio;
 
@@ -85,9 +85,12 @@ public class DriverTeclado {
         }
 
         // Itera sobre el conjunto de teclados e imprime la información de cada uno
-        for (ArrayList<String> entry : teclados.()) {
+        /*for (ArrayList<String> entry : teclados.()) {
             // Obtiene el nombre y el teclado del conjunto
             String nombre = entry.getKey();
+            System.out.println(nombre);
+        }*/
+        for (String nombre : teclados) {
             System.out.println(nombre);
         }
     }
@@ -108,7 +111,8 @@ public class DriverTeclado {
             // Obtiene el nombre y el alfabeto del conjunto
             String nombre = entry.getKey();
             Alfabeto alfabeto = entry.getValue();
-            imprimirAlfabeto(nombre,alfabeto);
+            // aquesta funcio o la fem aqui o la cridem a un altre driver
+            //imprimirAlfabeto(nombre,alfabeto);
         }
     }
 

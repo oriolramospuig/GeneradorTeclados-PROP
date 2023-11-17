@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/** Clase
+ * @author X (X@estudiantat.upc.edu)
+ */
 public class InOut {
 
     private Scanner scanner;
@@ -78,7 +81,7 @@ public class InOut {
             }
         }
 
-        public HashMap<String, Integer> leerPalabrasDeArchivo(String frecuenciasLetras){
+        /*public HashMap<String, Integer> leerPalabrasDeArchivo(String frecuenciasLetras){
             HashMap<String, Integer> frecLetras = new HashMap<>();
             for (char c:frecuenciasLetras.toCharArray()) {
                 // Solo agrega caracteres no espacios.
@@ -86,11 +89,26 @@ public class InOut {
                 if (c != ' ') frecLetras.add(c);
             }
 
-        }
+        }*/
 
         fileScanner.close();
         return caracteres;
     }
+
+    public HashMap<String, Integer> leerPalabrasDeArchivo(String frecuenciasLetras) {
+        HashMap<String, Integer> frecLetras = new HashMap<>();
+        for (char c : frecuenciasLetras.toCharArray()) {
+            // Convertir el carácter a String.
+            String caracter = String.valueOf(c);
+
+            // Solo agrega caracteres no espacios, aunque los espacios también pueden ser considerados si así se desea.
+            // if (c != ' ') { // Descomentar si quieres excluir espacios
+            frecLetras.put(caracter, frecLetras.getOrDefault(caracter, 0) + 1);
+            // }
+        }
+        return frecLetras;
+    }
+
 
 
     /**
@@ -120,4 +138,5 @@ public class InOut {
             scanner.close();
         }
     }
+
 }

@@ -3,10 +3,13 @@ package drivers;
 import main.domain.classes.ConjuntoAlfabetos;
 import main.domain.classes.functions.InOut;
 
+/**
+ * Driver para probar ...
+ * @author X (X@estudiantat.upc.edu)
+ */
 public class DriverFP {
 
     private InOut inOut;
-
     public DriverFP() {
         inOut = new InOut();
     }
@@ -68,7 +71,8 @@ public class DriverFP {
                     break;
                 }
             }
-            driver.volverMenu();
+            /*cal canviar el driver perquè faci servir driverFP i no driverprovauri*/
+            // driver.volverMenu();
             muestraMetodos();
             metodo = driver.inOut.leerString();
             // MIRAR DE FER SERVIR SCANNER I NEXT LINE

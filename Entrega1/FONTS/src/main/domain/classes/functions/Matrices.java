@@ -5,8 +5,11 @@ import main.domain.classes.types.PairFrequency;
 import java.util.HashMap;
 import java.util.List;
 
+/** Clase que calcula las diferentes matrices y operaciones (suma) necesarias para el algoritmo
+ * @author X (X@estudiantat.upc.edu)
+ */
 public class Matrices {
-    /**Genera la matriu de distàncies de Manhattan, de moment no la fem servir perquè donava diferent, cal revisar*/
+    /**Genera la matriz de distancias de Manhattan*/
     public static void generarMatrizDistancias(int filas, int columnas, int[][] matrizDistancias) {
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
@@ -21,8 +24,8 @@ public class Matrices {
         }
     }
 
-    /**Genera matriu de frequències, li passem la llista de parells de lletres amb les frequencies (ordenades?)
-     * i la llista de tecles.*/
+    /**Genera matriz de frecuencias, le pasamos la lista de pares de letras con las frecuencias ordenadas
+     * y la lista de teclas.*/
     public static void generarMatrizDeFrecuencias(List<PairFrequency> frecuenciasPares, List<Character> teclas, HashMap<Character, Integer> letraAIndice, int[][] matrizFrecuencias) {
         // Primero, mapear cada letra a su índice en la matriz del teclado
         int index = 0;
@@ -53,6 +56,7 @@ public class Matrices {
         }
     }
 
+    /**Función que suma el contenido de dos matrices*/
     public static int [][] sumaMatrices(int [][] m1, int [][] m2) {
         int [][] m3 = new int[m1.length][m1.length];
         for (int i = 0; i < m1.length; ++i) {

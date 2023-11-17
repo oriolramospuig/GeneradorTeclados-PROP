@@ -8,6 +8,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Driver para testear las funcionalidades de CtrlTexto
+ * @author X (X@estudiantat.upc.edu)
+ */
 public class DriverTexto {
 
     private final InOut inOut;
@@ -46,7 +50,7 @@ public class DriverTexto {
         }
     }
 
-    public void agregarTextoPorArchivo() {
+    /*public void agregarTextoPorArchivo() {
         System.out.println("Introduce el nombre del archivo:");
         String nombreArchivo = inOut.leerString();
         try {
@@ -61,7 +65,7 @@ public class DriverTexto {
         } catch (IllegalArgumentException e) {
             System.out.println("El contenido del archivo no es válido: " + e.getMessage());
         }
-    }
+    }*/
 
     public void imprimirTexto(String nombre, Alfabeto a){
         ArrayList<Character> contenido = a.getLetras();
