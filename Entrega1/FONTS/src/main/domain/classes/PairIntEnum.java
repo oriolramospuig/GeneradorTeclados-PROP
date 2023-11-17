@@ -1,5 +1,9 @@
 package main.domain.classes;
 
+/**
+ * Enum que contiene las diferentes opciones de tamaño del teclado a generar
+ * @author X (X@estudiantat.upc.edu)
+ */
 public enum PairIntEnum {
     EMPTY_PAIR(0,0),
     PAIR_2_2(2, 2),

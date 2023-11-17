@@ -6,78 +6,7 @@ import java.util.HashMap;
 
 /**
  * Classe que representa un texto
- * @author
- */
-
-public class Texto
-{
-    // ---------- ATRIBUTOS COMUNES ----------
-    /** Guarda el nombre introducido por el usuario */
-    protected String nombre;
-
-    protected HashMap<String, Integer> frecuenciaLetras; //string: parejaLetras, int: frecuencia
-
-    protected ArrayList<String> asociacionesVinculadas;
-
-
-    // ---------- CONSTRUCTORES ----------
-    public Texto() {
-        nombre = new String();
-        frecuenciaLetras = new HashMap<>();
-        asociacionesVinculadas = new ArrayList<>();
-    }
-
-    // ---------- GETTERS ----------
-    /**
-     * Retorna el nombre introducido por el usuario
-     * @return String : Nombre introducido por el usuario
-     */
-    public String getNombre() {
-        return nombre;
-    }
-
-    public HashMap<String, Integer> getFrecuenciaLetras() {
-        return frecuenciaLetras;
-    }
-
-    /**
-     * Retorna lista de AsociacionTextos que tiene el texto
-     * @return
-     */
-    public ArrayList<String> getAsociacionesVinculadas() {
-        return asociacionesVinculadas;
-    }
-
-    /**
-     * Retorna el contenido del texto
-     * @return String : Contenido del texto usado por las funciones, dependiendo del tipo de Texto el formato variará
-     */
-    public String getTexto() {
-        return null;
-    }
-
-
-    // ---------- SETTERS ----------
-    public void agregarAsociacionesVinculadas(String nomAT) {
-        asociacionesVinculadas.add(nomAT);
-    }
-
-
-    // ---------- AUXILIARES ----------
-    public void borrarAsociacionesVinculadas(String nomAT) {
-    asociacionesVinculadas.remove(nomAT);
-}
-}
-=======
-package main.domain.classes;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
-
-/**
- * Classe que representa un texto
- * @author
+ * @author X (X@estudiantat.upc.edu)
  */
 
 public abstract class Texto
@@ -86,8 +15,10 @@ public abstract class Texto
     /** Guarda el nombre introducido por el usuario */
     protected String nombre;
 
-    protected HashMap<String, Integer> frecuenciaLetras; //string: parejaLetras, int: frecuencia
+    /** Guarda la lista de pares de carácteres y su frecuencia ("ab", 5) */
+    protected HashMap<String, Integer> frecuenciaLetras;
 
+    /** Guarda las asociaciones que tiene este texto en su asociación */
     protected ArrayList<String> asociacionesVinculadas;
 
 
@@ -112,8 +43,8 @@ public abstract class Texto
     }
 
     /**
-     * Retorna lista de AsociacionTextos que tiene el texto
-     * @return
+     * Retorna lista de nombres de las asociaciones de textos que tienen el texto
+     * @return ArrayList<String> : Lista de los nombres de las asociaciones vinculadas al texto
      */
     public ArrayList<String> getAsociacionesVinculadas() {
         return asociacionesVinculadas;
@@ -127,12 +58,24 @@ public abstract class Texto
 
 
     // ---------- SETTERS ----------
+    /**
+     * No retorna.
+     * @param nomAT nombre de la  asocación de textos a vincular
+     * Añade a la lista de asociaciones vinculadas el nombre de la asociación de textos
+     * pasada por parámetro nomAT
+     */
     public void agregarAsociacionesVinculadas(String nomAT) {
         asociacionesVinculadas.add(nomAT);
     }
 
 
     // ---------- AUXILIARES ----------
+    /**
+     * No retorna.
+     * @param nomAT nombre de la asociación de textos a desvincular
+     * Borra de la lista de asociaciones de textos vinculadas el nombre de la
+     * asociación pasada por parámetro nomAT
+     */
     public void borrarAsociacionesVinculadas(String nomAT) {
     asociacionesVinculadas.remove(nomAT);
 }

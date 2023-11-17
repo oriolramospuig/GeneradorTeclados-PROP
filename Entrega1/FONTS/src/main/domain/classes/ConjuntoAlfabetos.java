@@ -38,7 +38,7 @@ public class ConjuntoAlfabetos {
     }
     /**
      * Retorna el nombre de los alfabetos del conjunto
-     * @return ArrayList<String>: Lista de nombres de los alfabetos del conjuntos
+     * @return ArrayList<String>: Lista de nombres de los alfabetos del conjunto
      */
     public ArrayList<String> getNombresAlfabetos() {
         ArrayList<String> listaNombresA = new ArrayList<>();
