@@ -20,8 +20,7 @@ import static org.junit.Assert.assertNotNull;
 import java.lang.IndexOutOfBoundsException;
 import java.lang.NegativeArraySizeException;
 
-public class TestAlfabeto
-{
+public class TestAlfabeto {
     private Alfabeto alfabeto;
 
     @Before
