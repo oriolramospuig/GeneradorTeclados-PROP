@@ -42,6 +42,7 @@ public class TestPalabras
     }
 
     // ---------- AUXILIARES -----------
+    @Test
     public void TestTratarEntrada() {
         System.out.println("Test TratarEntrada");
 

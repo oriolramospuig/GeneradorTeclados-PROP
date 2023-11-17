@@ -51,7 +51,7 @@ public class TestConjuntoTextos {
         Texto resultadoPalabras = textos.getTexto("nombreP1");
 
         assertNotNull(resultadoFrecuencia);
-        assertEquals("nombreT1", resultadoFrecuencia.getNombre());
+        assertEquals("nombreF1", resultadoFrecuencia.getNombre());
         assertNotNull(resultadoPalabras);
         assertEquals("nombreP1", resultadoPalabras.getNombre());
     }
@@ -85,7 +85,7 @@ public class TestConjuntoTextos {
         textos.agregarTexto("nombreP1", tpalabras1);
         textos.agregarTexto("nombreP2", tpalabras2);
 
-        assertEquals(2, textos.getTextos().size());
+        assertEquals(4, textos.getTextos().size());
         assertTrue(textos.getTextos().containsKey("nombreF1"));
         assertTrue(textos.getTextos().containsKey("nombreF2"));
         assertTrue(textos.getTextos().containsKey("nombreP1"));

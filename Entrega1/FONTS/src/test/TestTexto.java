@@ -41,6 +41,7 @@ public class TestTexto {
     }
 
     // ---------- SETTERS ----------
+    @Test
     public void TestAgregarAsociacionesVinculadas() {
         System.out.println("Test Agregar Asociaciones Vinculadas");
 
@@ -58,6 +59,7 @@ public class TestTexto {
 
 
     // ---------- AUXILIARES ----------
+    @Test
     public void TestBorrarAsociacionesVinculadas() {
         System.out.println("Test Borrar Asociaciones Vinculadas");
 

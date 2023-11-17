@@ -30,6 +30,7 @@ public class TestFrecuencias
 
 
     // ---------- CONSTRUCTORAS ----------
+    @Test
     public void TestConstructora() {
      /*   System.out.println("Test Constructora Default");
         assertEquals("", frecuencias.getNombre());
@@ -47,7 +48,7 @@ public class TestFrecuencias
 
 
     // ---------- GETTERS ----------
-
+    @Test
     public void TestGetTexto() {
         System.out.println("Test GetTexto");
 
@@ -60,7 +61,7 @@ public class TestFrecuencias
     }
 
     // ---------- SETTERS -----------
-
+    @Test
     public void TestAnadirFrecuencia() {
         System.out.println("Test AñadirFrecuencia");
 
