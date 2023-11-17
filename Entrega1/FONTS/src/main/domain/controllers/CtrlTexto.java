@@ -44,8 +44,9 @@ public class CtrlTexto {
      */
     public boolean agregarTexto(String nomT, HashMap<String, Integer> frecuenciasLetras) {
         if(!CjtTextos.existeTexto(nomT)){
-            Texto texto = new Texto(nomT, frecuenciasLetras); // no hay constructor para pasar eso
-            CjtTextos.agregarTexto(nomT, texto);
+            // ho deixo comentat perque s'ha de canviar lo de TEXTO i no hi ha creadora comptabile ara mateix
+            //Texto texto = new Texto(nomT, frecuenciasLetras); // no hay constructor para pasar eso
+            //CjtTextos.agregarTexto(nomT, texto);
             return true;
         }
         return false;
