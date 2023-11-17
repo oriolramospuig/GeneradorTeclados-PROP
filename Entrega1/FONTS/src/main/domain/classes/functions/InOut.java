@@ -51,6 +51,13 @@ public class InOut {
                 caracteres.add(c);
             }
         }
+        /REVISAR SI FA FALTA, DEPENENT DE COM ES LLEGEIXI UN ARXIU A JAVA
+            ArrayList<Character> caracteres = new ArrayList<>();
+            for (char c: entradaCaracteres.toCharArray()) {
+                // Solo agrega caracteres no espacios.
+                // espacio tambien puede ser caracter
+                if (c != ' ') caracteres.add(c);
+            }
 
         fileScanner.close();
         return caracteres;
