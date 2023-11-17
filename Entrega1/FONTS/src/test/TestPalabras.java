@@ -48,7 +48,7 @@ public class TestPalabras
     @Test
     public void TestTratarEntrada() {
         System.out.println("Test TratarEntrada");
-
+        
         palabras.tratarEntrada();
 
         assertEquals(4, palabras.getFrecuenciaLetras().size());
