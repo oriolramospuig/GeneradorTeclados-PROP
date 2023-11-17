@@ -1,5 +1,8 @@
 package main.domain.classes;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Clase que representa un texto en formato lista de palabras
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
@@ -12,9 +15,19 @@ public class Palabras extends Texto
 
 
     // ---------- CONSTRUCTORES ----------
+ /*   public Palabras() {
+        nombre = new String();
+        frecuenciaLetras = new HashMap<>();
+        asociacionesVinculadas = new ArrayList<>();
+        texto = new String();
+    }
+  */
+
     public Palabras(String nombre, String contenido) {
         this.nombre = nombre;
         this.texto = contenido;
+        frecuenciaLetras = new HashMap<>();
+        asociacionesVinculadas = new ArrayList<>();
         tratarEntrada();
     }
 

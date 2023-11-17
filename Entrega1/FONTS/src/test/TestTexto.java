@@ -1,6 +1,8 @@
 package test;
 
 
+import main.domain.classes.Frecuencias;
+import main.domain.classes.Palabras;
 import main.domain.classes.Texto;
 
 import java.util.ArrayList;
@@ -23,49 +25,56 @@ import java.lang.NegativeArraySizeException;
 
 
 public class TestTexto {
-    public void TestConstructora() {
-        System.out.println("Test Constructoras");
+    private Palabras palabras;
+    private Frecuencias frecuencias;
 
-        Texto texto = new Texto();
-        // Verificar que los campos se inicializan correctamente
+    private String nombreAT1;
+    private String nombreAT2;
 
-        assertNotNull(texto.getNombre());
-        assertNotNull(texto.getFrecuenciaLetras());
-        assertNotNull(texto.getAsociacionesVinculadas());
-        assertEquals(0, texto.getFrecuenciaLetras().size());
-        assertEquals(0,texto.getAsociacionesVinculadas());
+    @Before
+    public void setUp() {
+        nombreAT1 = "nombreAT1";
+        nombreAT2 = "nombreAT2";
+
+        palabras = new Palabras("nombreP1", "hola");
+        frecuencias = new Frecuencias("nombreF1");
     }
 
-    public class TextoTest {
+    // ---------- SETTERS ----------
+    public void TestAgregarAsociacionesVinculadas() {
+        System.out.println("Test Agregar Asociaciones Vinculadas");
 
-        public void TestagregarAsociacionesVinculadas() {
-            System.out.println("Test Agregar Asociaciones Vinculadas");
+        palabras.agregarAsociacionesVinculadas(nombreAT1);
+        frecuencias.agregarAsociacionesVinculadas(nombreAT2);
 
-            Texto texto = new Texto();
+        //Verificamos que la asociación se ha agregado
+        assertFalse(palabras.getAsociacionesVinculadas().isEmpty());
+        assertFalse(frecuencias.getAsociacionesVinculadas().isEmpty());
+        assertTrue(palabras.getAsociacionesVinculadas().contains(nombreAT1));
+        assertFalse(palabras.getAsociacionesVinculadas().contains(nombreAT2));
+        assertFalse(frecuencias.getAsociacionesVinculadas().contains(nombreAT1));
+        assertTrue(frecuencias.getAsociacionesVinculadas().contains(nombreAT2));
+    }
 
-            //verificamos que la lista de asociaciones está vacía al principio
-            assertTrue(texto.getAsociacionesVinculadas().isEmpty());
 
-            //Llamamos a la función
-            texto.agregarAsociacionesVinculadas("Nombre Asociacion");
+    // ---------- AUXILIARES ----------
+    public void TestBorrarAsociacionesVinculadas() {
+        System.out.println("Test Borrar Asociaciones Vinculadas");
 
-            //Verificamos que la asociación se ha agregado
-            assertFalse(texto.getAsociacionesVinculadas().isEmpty());
-            assertEquals(1, texto.getAsociacionesVinculadas().size());
-            assertEquals("Nombre Asociacion", texto.getAsociacionesVinculadas().get(0));
-        }
-        
-        public void TestborrarAsociacionesVinculadas() {
-            System.out.println("Test Borrar Asociaciones Vinculadas");
-            Texto texto = new Texto();
-            texto.agregarAsociacionesVinculadas("Nombre Asociacion");
-            assertFalse(texto.getAsociacionesVinculadas().isEmpty());
-            assertEquals(1, texto.getAsociacionesVinculadas().size());
-            assertEquals("Nombre Asociacion", texto.getAsociacionesVinculadas().get(0));
+       palabras.agregarAsociacionesVinculadas(nombreAT1);
+       palabras.agregarAsociacionesVinculadas(nombreAT2);
+       frecuencias.agregarAsociacionesVinculadas((nombreAT1));
+       frecuencias.agregarAsociacionesVinculadas(nombreAT2);
 
-            texto.borrarAsociacionesVinculadas("NombreAsociacion");
-            assertTrue(texto.getAsociacionesVinculadas().isEmpty());
-        }
+       palabras.borrarAsociacionesVinculadas(nombreAT1);
+       frecuencias.borrarAsociacionesVinculadas(nombreAT2);
+
+       assertEquals(1, palabras.getAsociacionesVinculadas().size());
+       assertFalse(palabras.getAsociacionesVinculadas().contains(nombreAT1));
+       assertTrue(palabras.getAsociacionesVinculadas().contains(nombreAT2));
+
+       assertEquals(1, frecuencias.getAsociacionesVinculadas().size());
+       assertTrue(frecuencias.getAsociacionesVinculadas().contains(nombreAT1));
+       assertFalse(frecuencias.getAsociacionesVinculadas().contains(nombreAT2));
     }
 }
-

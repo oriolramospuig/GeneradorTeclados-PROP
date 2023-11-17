@@ -1,12 +1,9 @@
 package test;
 
-import main.domain.classes.Alfabeto;
+import main.domain.classes.*;
 
 import java.util.ArrayList;
 
-import main.domain.classes.Frecuencias;
-import main.domain.classes.Teclado;
-import main.domain.classes.Texto;
 import org.junit.*;
 
 import java.io.*;
@@ -22,38 +19,58 @@ import static org.junit.Assert.assertNotNull;
 import java.lang.IndexOutOfBoundsException;
 import java.lang.NegativeArraySizeException;
 
-// ---------- CONSTRUCTORAS ----------
-public class TestFrecuencias {
-    public void TestConstructora() {
-        System.out.println("Test Constructora");
-        String nombre = "NombreEjemplo";
-        Frecuencias frecuencias = new Frecuencias(nombre);
+public class TestFrecuencias
+{
+    private Frecuencias frecuencias;
 
-        assertEquals(nombre, frecuencias.getNombre());
+    @Before
+    public void setUp() {
+        frecuencias = new Frecuencias("nombreF");
     }
+
+
+    // ---------- CONSTRUCTORAS ----------
+    public void TestConstructora() {
+     /*   System.out.println("Test Constructora Default");
+        assertEquals("", frecuencias.getNombre());
+        assertTrue(frecuencias.getTexto().isEmpty());
+        assertTrue(frecuencias.getFrecuenciaLetras().isEmpty());
+        assertTrue(frecuencias.getAsociacionesVinculadas().isEmpty());
+        */
+
+        System.out.println("Test Constructora con Nombre");
+        assertEquals("nombreF", frecuencias.getNombre());
+        assertTrue(frecuencias.getTexto().isEmpty());
+        assertTrue(frecuencias.getFrecuenciaLetras().isEmpty());
+        assertTrue(frecuencias.getAsociacionesVinculadas().isEmpty());
+    }
+
+
     // ---------- GETTERS ----------
 
     public void TestGetTexto() {
         System.out.println("Test GetTexto");
-        Texto texto = new Texto();
 
-        texto.getFrecuenciaLetras().put("AB", 3);
-        texto.getFrecuenciaLetras().put("CD", 7);
+        frecuencias.getFrecuenciaLetras().put("AB", 3);
+        frecuencias.getFrecuenciaLetras().put("CD", 7);
 
         String textoEjemplo = "AB 3\n CD 7\n";
-        assertEquals(textoEjemplo, texto.getTexto());
+        assertEquals(textoEjemplo, frecuencias.getTexto());
 
     }
 
-    public void TestanadirFrecuencia() {
+    // ---------- SETTERS -----------
+
+    public void TestAnadirFrecuencia() {
         System.out.println("Test AñadirFrecuencia");
 
-        String nombre = "Nombre";
-        Frecuencias frecuencias = new Frecuencias(nombre);
-
         frecuencias.anadirFrecuencia("AB", 3);
+        frecuencias.anadirFrecuencia("CD", 1);
 
-        assertEquals(3, frecuencias.getFrecuenciaLetras());
-
+        assertEquals(2, frecuencias.getFrecuenciaLetras().size());
+        assertTrue(frecuencias.getFrecuenciaLetras().containsKey("AB"));
+        assertTrue(frecuencias.getFrecuenciaLetras().containsValue(3));
+        assertTrue(frecuencias.getFrecuenciaLetras().containsKey("CD"));
+        assertTrue(frecuencias.getFrecuenciaLetras().containsValue(1));
     }
 }

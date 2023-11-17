@@ -21,21 +21,30 @@ import static org.junit.Assert.assertNotNull;
 import java.lang.IndexOutOfBoundsException;
 import java.lang.NegativeArraySizeException;
 
-public class TestPalabras {
-    public void TestConstructora() {
-        System.out.println("Test Constructora");
-        String nombre = "Nombre";
-        String contenido = "Contenido";
-        Palabras palabras = new Palabras(nombre, contenido);
+public class TestPalabras
+{
+    private Palabras palabras;
 
-        assertEquals(nombre, palabras.getNombre());
-        assertEquals(contenido, palabras.getTexto());
+    @Before
+    public void setUp() {
+        palabras = new Palabras("nombreP", "aiacaia");
     }
 
+    // ---------- CONSTRUCTORAS ----------
+    public void TestConstructora () {
+        System.out.println("Test Constructora");
+
+        assertEquals("nombreP", palabras.getNombre());
+        assertEquals("aiacaia", palabras.getTexto());
+        assertTrue(palabras.getTexto().isEmpty());
+        assertTrue(palabras.getFrecuenciaLetras().isEmpty());
+        assertTrue(palabras.getAsociacionesVinculadas().isEmpty());
+    }
+
+    // ---------- AUXILIARES -----------
     public void TestTratarEntrada() {
         System.out.println("Test TratarEntrada");
 
-        Palabras palabras = new Palabras("Nombre", "aiacaia");
         palabras.tratarEntrada();
 
         assertEquals(2, palabras.getFrecuenciaLetras().get("ai").intValue());
