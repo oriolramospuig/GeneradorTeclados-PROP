@@ -2,6 +2,7 @@ package main.domain.controllers;
 
 import main.domain.classes.*;
 import main.domain.classes.functions.InOut;
+import main.domain.classes.types.PairInt;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,6 +41,12 @@ public class CtrlDominio {
         }
         ctrlAlfabeto.borrarAlfabeto(nomA);
     }
+
+    public int numeroCaracteres(String nomA) {
+        return ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA).getLetras().size();
+    }
+
+
     // ---------- FUNCIONES TEXTO ----------
     public boolean agregarTexto(String nomT, HashMap<String, Integer> frecuenciasLetras){
         return ctrlTexto.agregarTexto(nomT,frecuenciasLetras);
@@ -55,8 +62,9 @@ public class CtrlDominio {
     }
     //String avinculado = ctrlTeclado.TecladoTieneAlfabetoVinculado(tVinculados.get(i));
 
+
     // ---------- FUNCIONES TECLADO ----------
-    public boolean agregarTeclado(String nomT, String nomA, String nomAT, Algoritmo algoritmo, PairIntEnum dimensiones){
+    public boolean agregarTeclado(String nomT, String nomA, String nomAT, Algoritmo algoritmo, PairInt dimensiones){
         ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
         ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
         Alfabeto alfabeto = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA);

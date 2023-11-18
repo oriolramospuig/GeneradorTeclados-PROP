@@ -66,7 +66,7 @@ public class DriverDominio {
      */
   
     public void agregarTextoPorArchivo() {
-        driverTexto.agregarTextoPorTerminal();
+     //   driverTexto.agregarTextoPorTerminal();
     }
     /*public void agregarTextoPorTerminal() { driverTexto.agregarTextoPorArchivo();}*/
     public void borrarTexto() {
