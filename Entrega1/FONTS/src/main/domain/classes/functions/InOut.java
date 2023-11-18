@@ -15,7 +15,6 @@ public class InOut {
     public InOut() {
         this.scanner = new Scanner(System.in);
     }
-
     public String leerString() {
         return scanner.nextLine();
     }
@@ -59,22 +58,21 @@ public class InOut {
         return caracteres;
     }
 
-/*
-per acabar
-    public String leerPalabrasDeTerminal(String line) {
+
+    /*public String leerPalabrasDeTerminal(String line) {
         HashMap<String, Integer> palabras = new HashMap<>();
         String texto = "";
         String linea = "";
+        Integer frec = 0;
         while ((line = scanner.nextLine()) != null) {
             texto
         }
         for (char c : line.toCharArray()) {
-            palabras.add(c);
+            palabras.put(c,);
         }
         return palabras;
-    }
+    }*/
 
- */
 
     public String leerPalabrasDeArchivo(String nombreArchivo) throws IOException {
         String currentDirectory = System.getProperty("user.dir");

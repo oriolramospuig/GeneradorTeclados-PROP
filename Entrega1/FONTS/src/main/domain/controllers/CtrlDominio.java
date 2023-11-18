@@ -44,7 +44,27 @@ public class CtrlDominio {
     public boolean agregarTexto(String nomT, HashMap<String, Integer> frecuenciasLetras){
         return ctrlTexto.agregarTexto(nomT,frecuenciasLetras);
     }
+    public HashMap<String, Texto> getListaTextos(){
+        return ctrlTexto.getTextos().getTextos();
+    }
+    public Texto getTexto(String nombreT){
+        return ctrlTexto.getTexto(nombreT);
+    }
 
+    // ---------- FUNCIONES ASOCIACION TEXTOS ----------
+    public boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar){
+        if(ctrlAsociacionTexto.agregarAsociacion(nomAT)){
+            agregarTextoAsociacion(nomAT,textosagregar);
+            return true;
+        }
+        else return false;
+    }
+    public void agregarTextoAsociacion (String nomAT, ArrayList<String> textosagregar){
+        for (String nomT : textosagregar) {
+            Texto texto = ctrlTexto.getTexto(nomT);
+            ctrlAsociacionTexto.agregarTextoAsociacion(nomAT, texto);
+        }
+    }
     public HashMap<String, AsociacionTextos> getListaAsociaciones(){
         return ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionesTextos();
     }

@@ -1,9 +1,6 @@
 package drivers;
 
-import main.domain.classes.Alfabeto;
-import main.domain.classes.Algoritmo;
-import main.domain.classes.AsociacionTextos;
-import main.domain.classes.PairIntEnum;
+import main.domain.classes.*;
 import main.domain.classes.functions.InOut;
 import main.domain.controllers.CtrlDominio;
 
@@ -83,8 +80,47 @@ public class DriverFP {
     }
 
     // ---------- FUNCIONES ASOCIACIONES TEXTOS ----------
-
-
+    public void agregarTextoPorTerminal() {
+        System.out.println("Introduce el nombre del texto:");
+        String nombreTxt = inOut.leerString();
+        System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
+        String frecuenciasLetras = inOut.leerString();
+        if (contenidoValido(frecuenciasLetras)) {
+            HashMap<String, Integer> frecletras = inOut.leerPalabrasDeTerminal(frecuenciasLetras);
+            boolean agregado = ctrlDominio.agregarTexto(nombreTxt, frecletras);
+            if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
+            else System.out.println("AGREGADO CON EXITO!");
+        } else {
+            System.out.println("El contenido introducido no es válido. Asegúrate de que sean palabras separadas por un espacio.");
+        }
+    }
+    public void agregarTextoPorArchivo() {
+        System.out.println("Introduce el nombre del archivo:");
+        String nombreArchivo = inOut.leerString();
+        try {
+            HashMap<String, Integer> frecletras = inOut.leerPalabrasDeArchivo(nombreArchivo);
+            System.out.println("Introduce el nombre del texto:");
+            String nombreTxt = inOut.leerString();
+            boolean agregado = ctrlDominio.agregarTexto(nombreTxt, frecletras);
+            if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
+            else System.out.println("AGREGADO CON EXITO!");
+        } catch (FileNotFoundException e) {
+            System.out.println("El archivo no se encontró: " + nombreArchivo);
+        } catch (IllegalArgumentException e) {
+            System.out.println("El contenido del archivo no es válido: " + e.getMessage());
+        }
+    }
+    public void imprimirNombresTextos() {
+        HashMap<String, Texto> listaTextos = ctrlDominio.getListaTextos();
+        if (listaTextos.isEmpty()) {
+            System.out.println("No hay textos para mostrar.");
+            return;
+        }
+        for (HashMap.Entry<String, Texto> entry : listaTextos.entrySet()) {
+            String nombre = entry.getKey();
+            System.out.println(nombre);
+        }
+    }
     public void imprimirNombresAsociaciones() {
         HashMap<String, AsociacionTextos> asociaciones = ctrlDominio.getListaAsociaciones();
         if (asociaciones.isEmpty()) {
@@ -95,6 +131,23 @@ public class DriverFP {
             String nombre = entry.getKey();
             System.out.println(nombre);
         }
+    }
+    public void crearAsociacion(){
+        System.out.println("Textos actuales:");
+        imprimirNombresTextos();
+        System.out.println("Introduce el numero de textos que quieres añadir a la nueva ascociacion:");
+        Integer n = inOut.leerEntero();
+        System.out.println("Introduce el nombre de la asociacion:");
+        String nombreAT = inOut.leerString();
+        ArrayList<String> textosagregar = new ArrayList<>();
+        for(int i = 0; i < n; ++i){
+            System.out.println("Introduce el nombre del texto que quieres añadir a la nueva ascociacion:");
+            String nombreT = inOut.leerString();
+            textosagregar.add(nombreT);
+        }
+        boolean agregada = ctrlDominio.agregarAsociacion(nombreAT,textosagregar);
+        if (!agregada) System.out.println("Ya existe el texto " + nombreAT);
+        else System.out.println("AGREGADO CON EXITO!");
     }
 
     // ---------- FUNCIONES TECLADO ----------
@@ -136,6 +189,16 @@ public class DriverFP {
             System.out.println("Existe un teclado con el mismo nombre " + nombreT); //?? que tipo de excepcion tendria que pasar?
         }
     }
+    public void imprimirNombresTeclados() {
+        ArrayList<String> teclados = ctrlDominio.getListaTeclados();
+        if (teclados.isEmpty()) {
+            System.out.println("No hay teclados para mostrar.");
+            return;
+        }
+        for (String nombre : teclados) {
+            System.out.println(nombre);
+        }
+    }
 
     // ---------- FUNCIONES MAIN ----------
     public static void main(String[] args) {
@@ -157,17 +220,17 @@ public class DriverFP {
                 }
                 case "3":
                 case "TextoPorTerminal": {
-                    //driver.agregarTextoPorTerminal();
+                    driver.agregarTextoPorTerminal();
                     break;
                 }
                 case "4":
                 case "TextoPorArchivo": {
-                    //driver.agregarTextoPorArchivo();
+                    driver.agregarTextoPorArchivo();
                     break;
                 }
                 case "5":
                 case "CrearAsociacionTextos": {
-                    // driver.crearAsociacionTextos();
+                    driver.crearAsociacion();
                     break;
                 }
                 case "6":
@@ -176,6 +239,26 @@ public class DriverFP {
                     break;
                 }
                 case "7":
+                case "ConsultarlistaAlfabetos": {
+                    driver.imprimirNombresAlfabetos();
+                    break;
+                }
+                case "8":
+                case "ConsultarlistaAsociaciones": {
+                    driver.imprimirNombresAsociaciones();
+                    break;
+                }
+                case "9":
+                case "ConsultarlistaTextos": {
+                    driver.imprimirNombresTextos();
+                    break;
+                }
+                case "10":
+                case "ConsultarlistaTeclados": {
+                    driver.imprimirNombresTeclados();
+                    break;
+                }
+                /*case "7":
                 case "BorrarAlfabeto": {
                     // driver.borrarAlfabeto();
                     break;
@@ -194,7 +277,7 @@ public class DriverFP {
                 case "BorrarTeclado": {
                     //driver.borrarTeclado();
                     break;
-                }
+                }*/
                 case "11":
                 case "PruebaQAP": {
                     //   driver.imprimirPruebaQAP();
@@ -220,10 +303,16 @@ public class DriverFP {
         System.out.println("(4|TextoPorArchivo) - Añadir Texto");
         System.out.println("(5|CrearAsociacionTextos) - Crear Asociación Textos");
         System.out.println("(6|CrearTeclado) - Crear Teclado");
-        System.out.println("(7|BorrarAlfabeto) - Borrar Alfabeto");
-        System.out.println("(8|BorrarTexto) - Borrar Texto");
-        System.out.println("(9|BorrarAsociacionTextos) - Borrar Asociacion Textos");
-        System.out.println("(10|BorrarTeclado) - Borrar Teclado");
+
+        System.out.println("(7|ConsultarlistaAlfabetos) - Consultar Lista Alfabetos");
+        System.out.println("(8|ConsultarlistaAsociaciones) - Consultar Lista Asociaciones");
+        System.out.println("(9|ConsultarlistaTextos) - Consultar Lista Textos");
+        System.out.println("(10|ConsultarlistaTeclados) - Consultar Lista Teclados");
+
+        //System.out.println("(11|BorrarAlfabeto) - Borrar Alfabeto");
+        //System.out.println("(12|BorrarTexto) - Borrar Texto");
+        //System.out.println("(13|BorrarAsociacionTextos) - Borrar Asociacion Textos");
+        //System.out.println("(14|BorrarTeclado) - Borrar Teclado");
         System.out.println("(11|PruebaQAP) - Prueba QAP");
         System.out.println();
         System.out.println("(0|Salir) - Cerrar Driver");
