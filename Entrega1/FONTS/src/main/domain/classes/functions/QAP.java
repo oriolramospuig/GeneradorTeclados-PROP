@@ -71,6 +71,10 @@ public class QAP {
     public int getColumnas() {
         return this.columnas;
     }
+
+    public int getN() {
+        return this.n;
+    }
     public int getGlBound() {
         return this.glBound;
     }
@@ -95,7 +99,7 @@ public class QAP {
     }
 
     /*Assignació aleatòria de m tecles a m posicions; de moment l'omplim tot sencer (12 posicions = 12 lletres)*/
-    public void calcularAsignacionAleatoria(List<Character> teclas) {
+    private void calcularAsignacionAleatoria(List<Character> teclas) {
         System.out.println("Asignación de las teclas aleatoria: ");
         System.out.println();
         if(teclas.size() != n) {
@@ -115,7 +119,7 @@ public class QAP {
         }
     }
 
-    public void calcularMejorAsignacionAleatoria(List<Character> teclas, int N) {
+    private void calcularMejorAsignacionAleatoria(List<Character> teclas, int N) {
         System.out.println("La mejor de N asignaciones de las teclas aleatorias: ");
         System.out.println();
         if (teclas.size() != filas * columnas) {
@@ -147,7 +151,7 @@ public class QAP {
     }
 
 
-    public int[][] calcularAsignacionAleatoriaIndices() {
+    private int[][] calcularAsignacionAleatoriaIndices() {
         System.out.println("Asignación aleatoria: ");
         System.out.println();
 
@@ -175,7 +179,7 @@ public class QAP {
     }
 
     /*Algoritme per la sol ini. Aquest el canviarem segur, pero de moment funciona*/
-    public void calcularAsignacionGreedy(List<PairFrequency> frecuenciasPares, List<Character> teclas) {
+    private void calcularAsignacionGreedy(List<PairFrequency> frecuenciasPares, List<Character> teclas) {
         System.out.println("Asignación de las teclas greedy: ");
         System.out.println();
         //generarMatrizDeFrecuencias(frecuenciasPares, teclas); ja es calcula a la creadora
@@ -206,7 +210,7 @@ public class QAP {
         }
     }
 
-    public int calculoPuntuacion() {
+    private int calculoPuntuacion() {
         int puntuacion = 0;
 
         // Recorrer todas las combinaciones de pares de teclas.
@@ -238,7 +242,7 @@ public class QAP {
 
         return puntuacion;
     }
-    public int calculoPuntuacion(char[][] teclado) {
+    private int calculoPuntuacion(char[][] teclado) {
         int puntuacion = 0;
 
         for (int i = 0; i < filas; i++) {
@@ -262,7 +266,7 @@ public class QAP {
     }
 
     /*la mateixa que la de sobre pero adaptada a la estructura nova*/
-    public int calculoPuntuacionIndices(int[][] tecladoIndices) {
+    private int calculoPuntuacionIndices(int[][] tecladoIndices) {
         int puntuacion = 0;
 
         // Recorrer todas las combinaciones de pares de índices.
@@ -295,7 +299,7 @@ public class QAP {
 
 
 
-    public void imprimirTeclado() {
+    private void imprimirTeclado() {
         for(int i = 0; i < filas; i++) {
             for(int j = 0; j < columnas; j++) {
                 System.out.print(teclado[i][j] + " ");
@@ -315,7 +319,7 @@ public class QAP {
         System.out.println();
     }
 
-    public void imprimirMatrices() {
+    private void imprimirMatrices() {
         System.out.println("Imprimiendo matriz frecuencias: ");
         System.out.println();
         for (int i = 0; i < matrizFrecuencias.length; i++) {
@@ -356,7 +360,7 @@ public class QAP {
         }
     }
 
-    public void calculo() {
+    private void calculo() {
         imprimirMatrices();
 
         calcularAsignacionAleatoria(teclas);
