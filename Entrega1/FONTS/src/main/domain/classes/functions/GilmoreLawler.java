@@ -19,7 +19,17 @@ public class GilmoreLawler {
     HashMap<Character, Integer> letraAIndice;
     private List<Integer> mejorSolucionParcial;
 
+    ///// CONSTRUCTORA
 
+    public GilmoreLawler() {
+        this.filas = 0;
+        this.columnas = 0;
+        this.glBound = 0;
+        this.matrizDistancias = new int[0][0];
+        this.matrizFrecuencias = new int[0][0];
+        this.letraAIndice = new HashMap<Character, Integer>();
+        this.mejorSolucionParcial = new ArrayList<>();
+    }
     public GilmoreLawler (int nf, int nc, int bound, int [][] mf, int [][] md, HashMap<Character, Integer> letraAIndice) {
         this.filas = nf;
         this.columnas = nc;
@@ -30,11 +40,31 @@ public class GilmoreLawler {
         this.mejorSolucionParcial = new ArrayList<>();
     }
 
+    /// GETTERS
+
+    public int getFilas() {return filas;}
+
+    public int getColumnas() {return columnas;}
+
+    public int getGlBound() {return glBound;}
+
+    public int[][] getMatrizFrecuencias() { return matrizFrecuencias;}
+
+    public int[][] getMatrizDistancias() { return matrizDistancias;}
+
+    public HashMap<Character,Integer> getLetraAIndice() {return letraAIndice;}
+
     // Método para obtener la mejor solución parcial como lista de índices
     public List<Integer> getMejorSolucionParcial() {
         return new ArrayList<>(mejorSolucionParcial); // Devuelve una copia defensiva
     }
+    /// GETTERS
 
+    public void setMejorSolucionParcial(List<Integer> mejorSolucionParcial) {
+        this.mejorSolucionParcial = mejorSolucionParcial;
+    }
+
+    /// FUNCIONES PRINCIPALES
     public int gilmore_lawler(List<Character> indices, int cotaINI) {
         System.out.println("GILMORE-LAWLER ejecutándose");
         System.out.println();
@@ -74,7 +104,8 @@ public class GilmoreLawler {
                 glBound = cotaPermutacion;
                 mejorSolucionParcial = new ArrayList<>(solucionParcial);
             }
-        } else {
+        }
+        else {
             // Probar colocando la siguiente tecla en la posición correspondiente al orden dado
             int indiceTeclaActual = indicesOrdenados.get(profundidad);
             for (int posicion = 0; posicion < filas * columnas; posicion++) {
