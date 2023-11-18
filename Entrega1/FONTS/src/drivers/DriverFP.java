@@ -129,6 +129,8 @@ public class DriverFP {
             System.out.println("Selecciona las dimensiones del teclado:");
             Integer numDim = driver.inOut.leerEntero();
             PairInt dimensiones = escogerDimensiones(combinacionesDimensiones, numDim);
+            System.out.println("El teclado tendrá " + dimensiones.getPrimero() + " filas y " + dimensiones.getSegundo() + " columnas.");
+
 
             //boolean agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP, PairIntEnum.EMPTY_PAIR);
             boolean agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP, dimensiones);
@@ -143,7 +145,6 @@ public class DriverFP {
     private PairInt escogerDimensiones(HashMap<Integer, PairInt> combinacionesDimensiones, Integer numDim) {
         Integer filas = combinacionesDimensiones.get(numDim).getPrimero();
         Integer columans = combinacionesDimensiones.get(numDim).getSegundo();
-        System.out.println("El teclado tendrá " + filas + " filas y " + columans + " columnas.");
         return new PairInt(filas, columans);
     }
 
@@ -156,8 +157,8 @@ public class DriverFP {
             if (numCaracteres%filas == 0) {
                 int columnas = numCaracteres/filas;
                 System.out.println(x + ": " + filas + "filas, " + columnas + "columnas");
-                x++;
                 combinacionesDimensiones.put(x, new PairInt(filas,columnas));
+                x++;
             }
         }
         return combinacionesDimensiones;
