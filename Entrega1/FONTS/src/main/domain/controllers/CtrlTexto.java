@@ -38,6 +38,11 @@ public class CtrlTexto {
     public ConjuntoTextos getTextos(){
         return CjtTextos;
     }
+
+    public Texto getTexto(String nomT){
+        return CjtTextos.getTexto(nomT);
+    }
+
     /**
      * No retorna nada.
      * Crea el nuevo objecto texto y añade este objeto a ConjuntoTextos

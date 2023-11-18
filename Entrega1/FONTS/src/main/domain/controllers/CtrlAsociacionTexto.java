@@ -10,6 +10,7 @@ public class CtrlAsociacionTexto {
 
     // ---------- PARÁMETROS ----------
     private ConjuntoAsociaciones AsociacionesTextos;
+    private AsociacionTextos AsociacionExistente;
     private ConjuntoTeclados conjuntoTeclados;
     public CtrlAsociacionTexto(){
         AsociacionesTextos = null;
@@ -34,7 +35,7 @@ public class CtrlAsociacionTexto {
      * No retorna nada.
      * Manda añadir un texto a la asociacion de textos pasada como parámetro
      */
-    public void agregarTextoAsociacion (String nomA, Texto texto){
+    public void agregarTextoAsociacion (String nomA, Texto texto){ //
         AsociacionesTextos.getAsociacionTextos(nomA).agregarTexto(texto);
     }
     /**
@@ -54,7 +55,7 @@ public class CtrlAsociacionTexto {
      * No retorna nada.
      * Crea el nuevo objecto Asociación y añade este objeto a ConjuntoAsociaciones
      */
-    public boolean CrearAsociacionTextos(String nomAT, HashMap<String, Integer> frecuenciaLetras) {
+    /*public boolean CrearAsociacionTextos(String nomAT, HashMap<String, Integer> frecuenciaLetras) {
         if(!AsociacionesTextos.existeAsociaciondeTextos(nomAT)){
             HashMap<String, Integer> frecLetras = new HashMap<>();
 
@@ -63,6 +64,15 @@ public class CtrlAsociacionTexto {
 
             AsociacionTextos AT = new AsociacionTextos(nomAT, frecuenciaLetras);
             AsociacionesTextos.agregarAsociacionTexto(nomAT,AT);
+            return true;
+        }
+        return false;
+    }*/
+
+    public boolean agregarAsociacion(String nomAT){
+        if(!AsociacionesTextos.existeAsociaciondeTextos(nomAT)){
+            AsociacionTextos asociacionTextos = new AsociacionTextos(nomAT);
+            AsociacionesTextos.agregarAsociacionTexto(nomAT, asociacionTextos);
             return true;
         }
         return false;
