@@ -62,6 +62,7 @@ public class CtrlDominio {
     }
     //String avinculado = ctrlTeclado.TecladoTieneAlfabetoVinculado(tVinculados.get(i));
 
+
     // ---------- FUNCIONES TECLADO ----------
     public boolean agregarTeclado(String nomT, String nomA, String nomAT, Algoritmo algoritmo, PairInt dimensiones){
         ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);

@@ -115,12 +115,12 @@ public class DriverFP {
             System.out.println("Introduce el nombre de la asociacion de textos:");
             String nombreAT = inOut.leerString();
 
-            //funcion para mostrar algoritmos
-            System.out.println("Escoge el algoritmo:");
-            Integer numAlg = inOut.leerEntero();
-            Algoritmo algoritmo;
-            //  if (numAlg==1) algoritmo = QAP; //?
-            //  else algoritmo = Alg2;  ///?
+            //Siguiente entrega: funcion para mostrar algoritmos
+            //System.out.println("Escoge el algoritmo:");
+            //Integer numAlg = inOut.leerEntero();
+            //Algoritmo algoritmo;
+            //  if (numAlg==1) algoritmo = algoritmo.QAP;
+            //  else algoritmo = algoritmo.Alg2;
 
             //Seleccionar dimensiones del teclado
             System.out.println("Posibles Dimensiones a escoger para el alfabeto " + nombreA + ":");
