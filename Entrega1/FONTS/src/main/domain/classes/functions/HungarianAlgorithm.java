@@ -9,6 +9,9 @@ import java.util.Arrays;
  */
 public class HungarianAlgorithm {
     int[][] costMatrix;
+    public HungarianAlgorithm () {
+        this.costMatrix = costMatrix;
+    }
 
     public static int Hungarian(int[][] c1c2) {
         int[][] copiaC1C2 = copiarMatriz(c1c2); // Crear una copia de la matriz de costos
@@ -49,7 +52,8 @@ public class HungarianAlgorithm {
         return calcularCostoAsignacion(copiaC1C2, c1c2);
     }
 
-    public static int[][] copiarMatriz(int[][] original) {
+    private static int[][] copiarMatriz(int[]
+                                               [] original) {
         int[][] copia = new int[original.length][];
         for (int i = 0; i < original.length; i++) {
             copia[i] = Arrays.copyOf(original[i], original[i].length);
@@ -58,7 +62,7 @@ public class HungarianAlgorithm {
     }
 
 
-    public static void reducirFilas(int[][] c1c2) {
+    private static void reducirFilas(int[][] c1c2) {
         for (int i = 0; i < c1c2.length; i++) {
             // min en fila i
             int minFila = Arrays.stream(c1c2[i]).min().getAsInt();
@@ -69,7 +73,7 @@ public class HungarianAlgorithm {
         }
     }
 
-    public static void reducirColumnas(int[][] c1c2) {
+    private static void reducirColumnas(int[][] c1c2) {
         for (int j = 0; j < c1c2[0].length; j++) {
             int minColumna = Integer.MAX_VALUE;
             for (int[] ints : c1c2) {
@@ -83,7 +87,7 @@ public class HungarianAlgorithm {
         }
     }
 
-    public static boolean cadaFilaYColumnaTieneCero(int[][] matriz) {
+    private static boolean cadaFilaYColumnaTieneCero(int[][] matriz) {
         boolean[] filaTieneCero = new boolean[matriz.length];
         boolean[] columnaTieneCero = new boolean[matriz[0].length];
 
@@ -122,7 +126,7 @@ public class HungarianAlgorithm {
         return true; // Si todas las filas y columnas tienen al menos un cero, devuelve verdadero
     }
 
-    public static int recubrirCeros(int[][] matriz) {
+    private static int recubrirCeros(int[][] matriz) {
         // Variables para mantener el seguimiento de las filas y columnas cubiertas
         boolean[] filasCubiertas = new boolean[matriz.length];
         boolean[] columnasCubiertas = new boolean[matriz[0].length];
@@ -191,7 +195,7 @@ public class HungarianAlgorithm {
     }
 
 
-    public static void ajustarMatrizSegunHungaro(int[][] matriz, boolean[] filasCubiertas, boolean[] columnasCubiertas) {
+    private static void ajustarMatrizSegunHungaro(int[][] matriz, boolean[] filasCubiertas, boolean[] columnasCubiertas) {
         // Encuentra el valor mínimo no cubierto por ninguna línea.
         int minValorNoCubierto = Integer.MAX_VALUE;
         for (int i = 0; i < matriz.length; i++) {
@@ -217,7 +221,7 @@ public class HungarianAlgorithm {
         }
     }
 
-    public static int calcularCostoAsignacion(int[][] asignacion, int[][] costesOriginales) {
+    private static int calcularCostoAsignacion(int[][] asignacion, int[][] costesOriginales) {
         int costoTotal = 0;
         boolean[] asignacionRealizada = new boolean[asignacion.length]; // Rastrea si la asignación ya se ha realizado para una fila.
 
@@ -238,7 +242,7 @@ public class HungarianAlgorithm {
 
 
 
-    public static int[][] HungarianAlgorithm(int[][] costMatrix) {
+    /*public static int[][] HungarianAlgorithm(int[][] costMatrix) {
         // Paso 1 y 2: Restar el mínimo de cada fila y columna.
         reduceMatrix(costMatrix);
 
@@ -350,5 +354,5 @@ public class HungarianAlgorithm {
                 }
             }
         }
-    }
+    }*/
 }

@@ -13,7 +13,7 @@ public class TestGilmoreLawler {
         System.out.println("TestConstructoraVacia");
 
         GilmoreLawler gilmoreLawler = new GilmoreLawler();
-        
+
         assertEquals(0, gilmoreLawler.getFilas());
         assertEquals(0, gilmoreLawler.getColumnas());
         assertEquals(0, gilmoreLawler.getGlBound());
