@@ -30,7 +30,7 @@ public class TestMatrices {
         // Llamar a la función para generar la matriz de distancias
         Matrices.generarMatrizDistancias(filas, columnas, matrizDistancias);
 
-        // Verificar que la matriz de distancias se haya generado correctamente
+        // Verificar que la matriz de distancias se haya generado correctamenteyou
         for (int i = 0; i < filas * columnas; i++) {
             for (int j = 0; j < filas * columnas; j++) {
                 // Verificar que la distancia sea la calculada por la función Manhattan
