@@ -20,7 +20,7 @@ public class Teclado
     private Algoritmo algoritmo;
 
     /** Dimensiones del teclado */
-    private PairIntEnum dimensiones;
+    private PairInt dimensiones;
 
     /** Alfabeto vinculado al teclado */
     private String alfabetoVinculado;
@@ -31,24 +31,24 @@ public class Teclado
 
     // ---------- CONSTRUCTORES ----------
     public Teclado() {
-        nombre = new String();
-        puntuacion = 0;
+        nombre = "";
+        puntuacion = 0 ;        //hay que poner valor nulo?
         algoritmo = Algoritmo.QAP;
-        dimensiones = PairIntEnum.EMPTY_PAIR;
-        alfabetoVinculado = new String();
-        asociacionTextosVinculado = new String();
+        dimensiones = new PairInt(0,0);
+        alfabetoVinculado = "";
+        asociacionTextosVinculado = "";
     }
 
     public Teclado(String nombre) {
         this.nombre = nombre;
         puntuacion = 0;
         algoritmo = Algoritmo.QAP;
-        dimensiones = PairIntEnum.EMPTY_PAIR;
-        alfabetoVinculado = new String();
-        asociacionTextosVinculado = new String();
+        dimensiones =  new PairInt(0,0);
+        alfabetoVinculado = "";
+        asociacionTextosVinculado = "";
     }
 
-    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo, PairIntEnum dimensiones) {
+    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo, PairInt dimensiones) {
         this.nombre = nombre;
         this.algoritmo = algoritmo;
         this.dimensiones = dimensiones;
@@ -89,8 +89,8 @@ public class Teclado
      */
     public PairInt getDimensiones() {
         PairInt dim = new PairInt(0,0);
-        dim.setPrimero(dimensiones.getFila());
-        dim.setSegundo(dimensiones.getColumna());
+        dim.setPrimero(dimensiones.getPrimero());
+        dim.setSegundo(dimensiones.getSegundo());
         return dim;
     }
 
@@ -126,7 +126,7 @@ public class Teclado
      * @param dimensiones dimensiones del teclado
      * Pone las dimensiones pasadas por parámetro dimensiones al teclado
      */
-    public void setDimensiones(PairIntEnum dimensiones) {
+    public void setDimensiones(PairInt dimensiones) {
         this.dimensiones = dimensiones;
     }
 

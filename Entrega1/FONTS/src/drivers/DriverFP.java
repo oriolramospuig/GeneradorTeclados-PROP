@@ -5,6 +5,7 @@ import main.domain.classes.Algoritmo;
 import main.domain.classes.AsociacionTextos;
 import main.domain.classes.PairIntEnum;
 import main.domain.classes.functions.InOut;
+import main.domain.classes.types.PairInt;
 import main.domain.controllers.CtrlDominio;
 
 import java.io.FileNotFoundException;
@@ -121,14 +122,16 @@ public class DriverFP {
             //  if (numAlg==1) algoritmo = QAP; //?
             //  else algoritmo = Alg2;  ///?
 
-            //funcion para mostrar dimensiones - tiene que salir nombre que hay en enum , fila, columna
-            System.out.println("Posibles Dimensiones a escoger:");
-          //  imprimirPosiblesDimensiones();
-            System.out.println("Escoge las dimensiones del teclado:");
-            String dimensiones = inOut.leerString();
-            //passar de string a pairIntEnum
+            //Seleccionar dimensiones del teclado
+            System.out.println("Posibles Dimensiones a escoger para el alfabeto " + nombreA + ":");
+            HashMap<Integer, PairInt> combinacionesDimensiones = imprimirPosiblesDimensiones(nombreA);
+            DriverFP driver = new DriverFP();
+            System.out.println("Selecciona las dimensiones del teclado:");
+            Integer numDim = driver.inOut.leerEntero();
+            PairInt dimensiones = escogerDimensiones(combinacionesDimensiones, numDim);
 
-            boolean agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP, PairIntEnum.EMPTY_PAIR);
+            //boolean agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP, PairIntEnum.EMPTY_PAIR);
+            boolean agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP, dimensiones);
             if (!agregado) System.out.println("Ya existe el teclado " + nombreT);
             else System.out.println("AGREGADO CON EXITO!");
             System.out.println("Teclado agregado con éxito: " + nombreT);
@@ -136,6 +139,30 @@ public class DriverFP {
             System.out.println("Existe un teclado con el mismo nombre " + nombreT); //?? que tipo de excepcion tendria que pasar?
         }
     }
+
+    private PairInt escogerDimensiones(HashMap<Integer, PairInt> combinacionesDimensiones, Integer numDim) {
+        Integer filas = combinacionesDimensiones.get(numDim).getPrimero();
+        Integer columans = combinacionesDimensiones.get(numDim).getSegundo();
+        System.out.println("El teclado tendrá " + filas + " filas y " + columans + " columnas.");
+        return new PairInt(filas, columans);
+    }
+
+    private HashMap<Integer, PairInt> imprimirPosiblesDimensiones(String nomA) {
+        int numCaracteres = ctrlDominio.numeroCaracteres(nomA);       // func saber num caracteres del alfabeto
+
+        HashMap<Integer, PairInt> combinacionesDimensiones = new HashMap<>();
+        Integer x = 1;
+        for (int filas = 1; filas <= numCaracteres; filas++) {
+            if (numCaracteres%filas == 0) {
+                int columnas = numCaracteres/filas;
+                System.out.println(x + ": " + filas + "filas, " + columnas + "columnas");
+                x++;
+                combinacionesDimensiones.put(x, new PairInt(filas,columnas));
+            }
+        }
+        return combinacionesDimensiones;
+    }
+
 
     // ---------- FUNCIONES MAIN ----------
     public static void main(String[] args) {

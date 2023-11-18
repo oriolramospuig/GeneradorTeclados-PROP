@@ -37,7 +37,7 @@ public class DriverTexto {
         return true; // La entrada es válida si todos los segmentos contienen solo un carácter.
     }
 
-    public void agregarTextoPorTerminal() {
+  /*  public void agregarTextoPorTerminal() {
         System.out.println("Introduce el nombre del texto:");
         String nombreTxt = inOut.leerString();
         System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
@@ -51,6 +51,8 @@ public class DriverTexto {
             System.out.println("El contenido introducido no es válido. Asegúrate de que sean palabras separadas por un espacio.");
         }
     }
+
+   */
 /*
     public void agregarTextoPorArchivo() {
         System.out.println("Introduce el nombre del archivo:");

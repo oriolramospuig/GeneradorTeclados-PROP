@@ -2,6 +2,8 @@ package main.domain.controllers;
 
 
 import main.domain.classes.*;
+import main.domain.classes.types.PairInt;
+
 import java.util.ArrayList;
 
 public class CtrlTeclado {
@@ -28,7 +30,7 @@ public class CtrlTeclado {
         teclados.getTeclado(nomT).setPuntuacion(puntuacion);
     }
 
-    public void setDimensiones(String nomT, PairIntEnum dimensiones) {
+    public void setDimensiones(String nomT, PairInt dimensiones) {
         teclados.getTeclado(nomT).setDimensiones(dimensiones);
     }
 
@@ -54,7 +56,7 @@ public class CtrlTeclado {
         return teclados;
     }
 
-    public boolean CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo, PairIntEnum dimensiones) {
+    public boolean CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo, PairInt dimensiones) {
         if (!teclados.existeTeclado(nomT)) {
             Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto, algoritmo, dimensiones);
             teclados.agregarTeclado(nomT, teclado);
