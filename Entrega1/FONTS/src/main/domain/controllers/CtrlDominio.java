@@ -10,13 +10,14 @@ import java.util.HashMap;
 public class CtrlDominio {
 
     private CtrlAlfabeto ctrlAlfabeto;
-    private CtrlAsociacionTexto ctrlAsociacionTexto;
     private CtrlTexto ctrlTexto;
+    private CtrlAsociacionTexto ctrlAsociacionTexto;
     private CtrlTeclado ctrlTeclado;
 
     public CtrlDominio() {
         ctrlAlfabeto = new CtrlAlfabeto();
         ctrlTexto = new CtrlTexto();
+        ctrlAsociacionTexto = new CtrlAsociacionTexto();
         ctrlTeclado = new CtrlTeclado();
     }
 
@@ -30,7 +31,15 @@ public class CtrlDominio {
     public HashMap<String, Alfabeto> getListaAlfabetos(){
         return ctrlAlfabeto.getCjtAlfabetos().getAlfabetos();
     }
-    public void borrarAlfabeto(String nomA){
+    public ArrayList<Character> consultarContenidoAlfabeto(String nomA){
+        return ctrlAlfabeto.getContenido(nomA);
+    }
+    public int numeroCaracteres(String nomA) {
+        return ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA).getLetras().size();
+    }
+
+    //Para la segunda entrega
+    /*public void borrarAlfabeto(String nomA){
         ArrayList<String> tVinculados = ctrlAlfabeto.getTecladosVinculadosAlfabeto(nomA);
         if(!tVinculados.isEmpty()) {
             for (int i = 0; i < tVinculados.size(); ++i){
@@ -40,11 +49,7 @@ public class CtrlDominio {
             }
         }
         ctrlAlfabeto.borrarAlfabeto(nomA);
-    }
-
-    public int numeroCaracteres(String nomA) {
-        return ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA).getLetras().size();
-    }
+    }*/
 
 
     // ---------- FUNCIONES TEXTO ----------
@@ -54,9 +59,11 @@ public class CtrlDominio {
     public HashMap<String, Texto> getListaTextos(){
         return ctrlTexto.getTextos().getTextos();
     }
-    public Texto getTexto(String nombreT){
-        return ctrlTexto.getTexto(nombreT);
+    public HashMap<String, Integer> consultarContenidoTexto(String nomT){
+        return ctrlTexto.getContenido(nomT);
     }
+
+
 
     // ---------- FUNCIONES ASOCIACION TEXTOS ----------
     public boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar){
@@ -68,6 +75,7 @@ public class CtrlDominio {
     }
     public void agregarTextoAsociacion (String nomAT, ArrayList<String> textosagregar){
         for (String nomT : textosagregar) {
+            ctrlTexto.agregarAsociacionVinculada(nomT,nomAT);
             Texto texto = ctrlTexto.getTexto(nomT);
             ctrlAsociacionTexto.agregarTextoAsociacion(nomAT, texto);
         }
@@ -75,12 +83,12 @@ public class CtrlDominio {
     public HashMap<String, AsociacionTextos> getListaAsociaciones(){
         return ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionesTextos();
     }
-    public boolean borrarTexto(String nomT){
-        //Verifica que la entrada de caracteres es válida.
-        //return ctrlTexto.borrarTexto(nomT);
-        return false;
-    }
-    //String avinculado = ctrlTeclado.TecladoTieneAlfabetoVinculado(tVinculados.get(i));
+
+    //Para la segunda entrega
+    /*public boolean borrarTexto(String nomT){
+        String avinculado = ctrlTeclado.TecladoTieneAlfabetoVinculado(tVinculados.get(i));
+        return ctrlTexto.borrarTexto(nomT);
+    }*/
 
 
     // ---------- FUNCIONES TECLADO ----------
@@ -89,6 +97,8 @@ public class CtrlDominio {
         ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
         Alfabeto alfabeto = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA);
         AsociacionTextos asociacionTextos = ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionTextos(nomAT);
+        ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
+        ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
         return ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, algoritmo, dimensiones);
     }
 
@@ -96,12 +106,13 @@ public class CtrlDominio {
         return ctrlTeclado.getCjtTeclados().getNombresTeclados();
     }
 
-    public void borrarTeclado(String nomT) {
+    //Para la segunda entrega
+    /*public void borrarTeclado(String nomT) {
         String atvinculada = ctrlTeclado.TecladoTieneAsociacionVinculada(nomT);
         String aVinculado = ctrlTeclado.TecladoTieneAlfabetoVinculado(nomT);
 
         ctrlAsociacionTexto.borrarTecladoVinculado(atvinculada, nomT);
         ctrlAlfabeto.borrarTecladoVinculado(aVinculado, nomT);
         ctrlTeclado.borrarTeclado(nomT);
-    }
+    }*/
 }

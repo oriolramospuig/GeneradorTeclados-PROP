@@ -89,8 +89,6 @@ public class InOut {
         return texto;
     }
 
-
-
     /**
      * Valida si la cadena de entrada representa una secuencia de caracteres válida,
      * es decir, caracteres individuales separados por espacios.
@@ -101,7 +99,6 @@ public class InOut {
         if (entrada == null || entrada.isEmpty()) {
             return false; // Entrada vacía no es válida.
         }
-
         String[] partes = entrada.split(" ");
         for (String parte : partes) {
             // Verifica que cada parte sea un solo carácter.
@@ -109,7 +106,6 @@ public class InOut {
                 return false;
             }
         }
-
         return true; // La entrada es válida si todos los segmentos contienen solo un carácter.
     }
 

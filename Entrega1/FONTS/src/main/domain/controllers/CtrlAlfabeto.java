@@ -12,14 +12,15 @@ public class CtrlAlfabeto {
     // ---------- PARÁMETROS ----------
 
     private ConjuntoAlfabetos CjtAlfabetos;
-    /**
-     * Asigna un alfabeto y un cjt de alfabetos vacío
-     */
+
     public CtrlAlfabeto(){
         CjtAlfabetos = null;
     }
 
     // ---------- FUNCIONES ALFABETO ----------
+    public ArrayList<Character> getContenido(String nomA){
+        return CjtAlfabetos.getAlfabeto(nomA).getLetras();
+    }
     /**
      * No retorna nada, manda a añadir el nuevo teclado al cjt de teclados vinculados
      */
@@ -28,11 +29,11 @@ public class CtrlAlfabeto {
     }
     /**
      * No retorna nada, manda a borrar un teclado al cjt de teclados vinculados
-     * @return true // trendría que ser return bool?
      */
-    public void borrarTecladoVinculado (String nomA,String nomT){
+    //Para la segunda entrega
+    /*public void borrarTecladoVinculado (String nomA,String nomT){
         CjtAlfabetos.getAlfabeto(nomA).borrarTecladoVinculado(nomT);
-    }
+    }*/
 
     // ---------- FUNCIONES CONJUNTOALFABETOS ----------
     /**
@@ -59,17 +60,25 @@ public class CtrlAlfabeto {
         return !tVinculados.isEmpty();
 
     }
-    public ArrayList<String> getTecladosVinculadosAlfabeto(String nomA){
-        ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
-        return tVinculados;
-
-    }
+    /**
+     * Retorna el objecto alfabeto pedido
+     * @return Alfabeto : Un objeto alfabeto concreto
+     */
+    /*public Alfabeto getAlfabeto(String nomA){
+        return CjtAlfabetos.getAlfabeto(nomA);
+    }NO NECESSARI CREC*/
     /**
      * No retorna nada.
      * Manda borrar el alfabeto dado, desvincula los teclados asociados
      * también borra este alfabeto de la lista de ConjuntoAlfabetos
      */
+    //Para la segunda entrega
+    /*public ArrayList<String> getTecladosVinculadosAlfabeto(String nomA){
+        ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
+        return tVinculados;
+
+    }
     public void borrarAlfabeto(String nomA){
         CjtAlfabetos.borrarAlfabeto(nomA);
-    }
+    }*/
 }

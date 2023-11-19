@@ -23,27 +23,13 @@ public class DriverFP {
         ctrlDominio = new CtrlDominio();
     }
 
-    public boolean contenidoValido(String entrada) {
-        if (entrada == null || entrada.isEmpty()) {
-            return false; // Entrada vacía no es válida.
-        }
-        String[] partes = entrada.split(" ");
-        for (String parte : partes) {
-            // Verifica que cada parte sea un solo carácter.
-            if (parte.length() != 1) {
-                return false;
-            }
-        }
-        return true; // La entrada es válida si todos los segmentos contienen solo un carácter.
-    }
-
     // ---------- FUNCIONES ALFABETO ----------
     public void agregarAlfabetoPorTerminal() {
         System.out.println("Introduce el nombre del alfabeto:");
         String nombreA = inOut.leerString();
         System.out.println("Introduce los caracteres del alfabeto separados por espacio (ejemplo: a b c ...):");
         String entradaCaracteres = inOut.leerString();
-        if (contenidoValido(entradaCaracteres)) {
+        if (inOut.contenidoValido(entradaCaracteres)) {
             ArrayList<Character> caracteres = inOut.leerCaracteresDeTerminal(entradaCaracteres);
             boolean agregado = ctrlDominio.agregarAlfabeto(nombreA, caracteres);
             if (!agregado) System.out.println("Ya existe el alfabeto " + nombreA);
@@ -79,6 +65,18 @@ public class DriverFP {
             System.out.println(nombre);
         }
     }
+    public void consultarContenidoAlfabeto(){
+        System.out.println("Alfabetos actuales:");
+        imprimirNombresAlfabetos();
+        System.out.println("Introduce el nombre del alfabeto que quieres consultar:");
+        String nombreA = inOut.leerString(); //suponemos que lo escribe bien porque lo copia de la lista
+        System.out.println(nombreA);
+        ArrayList<Character> Letras = ctrlDominio.consultarContenidoAlfabeto(nombreA);
+        for (Character letra : Letras) {
+            System.out.println(letra);
+        }
+    }
+
 
     // ---------- FUNCIONES ASOCIACIONES TEXTOS ----------
     public void agregarTextoPorTerminal() {
@@ -86,7 +84,7 @@ public class DriverFP {
         String nombreTxt = inOut.leerString();
         System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
         String frecuenciasLetras = inOut.leerString();
-        if (contenidoValido(frecuenciasLetras)) {
+        if (inOut.contenidoValido(frecuenciasLetras)) {
             HashMap<String, Integer> frecletras = inOut.leerPalabrasDeTerminal(frecuenciasLetras);
             boolean agregado = ctrlDominio.agregarTexto(nombreTxt, frecletras);
             if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
@@ -133,6 +131,15 @@ public class DriverFP {
             System.out.println(nombre);
         }
     }
+    public void consultarContenidoTexto(){
+        System.out.println("Textos actuales:");
+        imprimirNombresTextos();
+        System.out.println("Introduce el nombre del texto que quieres consultar:");
+        String nombreT = inOut.leerString(); //suponemos que lo escribe bien porque lo copia de la lista
+        System.out.println(nombreT);
+        HashMap<String, Integer> Palabras = ctrlDominio.consultarContenidoTexto(nombreT);
+        for (int i = 0; i < Palabras.size(); ++i) System.out.println(Palabras.entrySet());
+    }
     public void crearAsociacion(){
         System.out.println("Textos actuales:");
         imprimirNombresTextos();
@@ -150,6 +157,8 @@ public class DriverFP {
         if (!agregada) System.out.println("Ya existe el texto " + nombreAT);
         else System.out.println("AGREGADO CON EXITO!");
     }
+
+
 
     // ---------- FUNCIONES TECLADO ----------
     public void agregarTeclado() {
@@ -204,13 +213,11 @@ public class DriverFP {
             System.out.println(nombre);
         }
     }
-
     private PairInt escogerDimensiones(HashMap<Integer, PairInt> combinacionesDimensiones, Integer numDim) {
         Integer filas = combinacionesDimensiones.get(numDim).getPrimero();
         Integer columans = combinacionesDimensiones.get(numDim).getSegundo();
         return new PairInt(filas, columans);
     }
-
     private HashMap<Integer, PairInt> imprimirPosiblesDimensiones(String nomA) {
         int numCaracteres = ctrlDominio.numeroCaracteres(nomA);       // func saber num caracteres del alfabeto
 
@@ -286,6 +293,16 @@ public class DriverFP {
                     driver.imprimirNombresTeclados();
                     break;
                 }
+                case "11":
+                case "ConsultarAlfabeto": {
+                    driver.consultarContenidoAlfabeto();
+                    break;
+                }
+                case "12":
+                case "ConsultarTexto": {
+                    driver.consultarContenidoTexto();
+                    break;
+                }
                 /*case "7":
                 case "BorrarAlfabeto": {
                     // driver.borrarAlfabeto();
@@ -306,7 +323,7 @@ public class DriverFP {
                     //driver.borrarTeclado();
                     break;
                 }*/
-                case "11":
+                case "13":
                 case "PruebaQAP": {
                     //   driver.imprimirPruebaQAP();
                     break;
@@ -325,23 +342,28 @@ public class DriverFP {
     }
 
     private static void muestraMetodos() {
+        //Agregar
         System.out.println("(1|AlfabetoPorTerminal) - Añadir Alfabeto");
         System.out.println("(2|AlfabetoPorArchivo) - Añadir Alfabeto");
         System.out.println("(3|TextoPorTerminal) - Añadir Texto");
         System.out.println("(4|TextoPorArchivo) - Añadir Texto");
+        //Crear
         System.out.println("(5|CrearAsociacionTextos) - Crear Asociación Textos");
         System.out.println("(6|CrearTeclado) - Crear Teclado");
-
+        //Consultar
         System.out.println("(7|ConsultarlistaAlfabetos) - Consultar Lista Alfabetos");
         System.out.println("(8|ConsultarlistaAsociaciones) - Consultar Lista Asociaciones");
         System.out.println("(9|ConsultarlistaTextos) - Consultar Lista Textos");
         System.out.println("(10|ConsultarlistaTeclados) - Consultar Lista Teclados");
-
+        System.out.println("(11|ConsultarAlfabeto) - Consultar Alfabeto");
+        System.out.println("(12|ConsultarTexto) - Consultar Texto");
+        //Borrar
         //System.out.println("(11|BorrarAlfabeto) - Borrar Alfabeto");
         //System.out.println("(12|BorrarTexto) - Borrar Texto");
         //System.out.println("(13|BorrarAsociacionTextos) - Borrar Asociacion Textos");
         //System.out.println("(14|BorrarTeclado) - Borrar Teclado");
-        System.out.println("(11|PruebaQAP) - Prueba QAP");
+        //QAP
+        System.out.println("(13|PruebaQAP) - Prueba QAP");
         System.out.println();
         System.out.println("(0|Salir) - Cerrar Driver");
     }
