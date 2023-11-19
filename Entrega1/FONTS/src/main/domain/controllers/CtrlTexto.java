@@ -19,7 +19,6 @@ public class CtrlTexto {
     /**
      * Parámetros de la clase Alfabeto y ConjuntoAlfabetos
      */
-    private Texto TextoExistente;
     private ConjuntoTextos CjtTextos;
     private ConjuntoTeclados CjtTeclados;
     private ConjuntoAsociaciones CjtAsociaciones;
@@ -30,19 +29,23 @@ public class CtrlTexto {
      */
     public CtrlTexto(){
         CjtTextos = null;
-        TextoExistente = null;
     }
+    // ---------- FUNCIONES TEXTO ----------
 
+    public HashMap<String, Integer> getContenido(String nomT){
+        return CjtTextos.getTexto(nomT).getFrecuenciaPalabras();
+    }
+    public void agregarAsociacionVinculada(String nomT, String nomAT){
+        CjtTextos.getTexto(nomT).agregarAsociacionesVinculadas(nomAT);
+    }
 
     // ---------- FUNCIONES CONJUNTOTEXTOS ----------
-    public ConjuntoTextos getTextos(){
-        return CjtTextos;
-    }
-
     public Texto getTexto(String nomT){
         return CjtTextos.getTexto(nomT);
     }
-
+    public ConjuntoTextos getTextos(){
+        return CjtTextos;
+    }
     /**
      * No retorna nada.
      * Crea el nuevo objecto texto y añade este objeto a ConjuntoTextos
@@ -57,13 +60,8 @@ public class CtrlTexto {
         return false;
     }
 
-    /**
-     * No retorna nada.
-     * Manda borrar el texto dado, desvincula las asociaciones vinculadas
-     * también borra este texto de la lista de ConjuntoTextos
-     */
-
-    public void borrarTexto(String nomT){
+    //Para la segunda entrega
+    /*public void borrarTexto(String nomT){
         ArrayList<String> AVinculadas = CjtTextos.getTexto(nomT).getAsociacionesVinculadas();
         if(!AVinculadas.isEmpty()) {
             for (int i = 0; i < AVinculadas.size(); ++i){
@@ -71,5 +69,5 @@ public class CtrlTexto {
             }
             CjtTextos.borrarTexto(nomT);
         }
-    }
+    }*/
 }
