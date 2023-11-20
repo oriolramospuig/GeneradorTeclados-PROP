@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
@@ -23,8 +24,12 @@ public class TestConjuntoTextos {
     @Before
     public void setUp() {
         textos = new ConjuntoTextos();
-        tfrecuancias1 = new Frecuencias("nombreF1");
-        tfrecuencias2 = new Frecuencias("nombreF2");
+        HashMap<String, Integer> contenidoFrec = new HashMap<>();
+        contenidoFrec.put("hola", 2);
+        tfrecuancias1 = new Frecuencias("nombreF1", contenidoFrec);         //tfrecuencias1 tiene: hola-2
+        contenidoFrec.remove("hola", 2);
+        contenidoFrec.put("ai", 1);
+        tfrecuencias2 = new Frecuencias("nombreF2", contenidoFrec);         //tfrecuencias2 tiene ai-1
         tpalabras1 = new Palabras("nombreP1", "abc");
         tpalabras2 = new Palabras("nombreP2", "cde");
     }
