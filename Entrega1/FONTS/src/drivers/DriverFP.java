@@ -82,6 +82,24 @@ public class DriverFP {
     public void agregarTextoPorTerminal() {
         System.out.println("Introduce el nombre del texto:");
         String nombreTxt = inOut.leerString();
+        System.out.println("Si desea entrar un texto escriba 1. En caso de querer entrar palabars con frecuencias escriba 2.");
+        Integer tipoTexto = inOut.leerEntero();
+        if (tipoTexto == 1) {
+            System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
+            String texto = inOut.leerString();
+            if (inOut.contenidoValido(texto)) {
+
+            }
+        }
+        else if (tipoTexto == 2) {
+
+        }
+        else {
+
+        }
+
+        /*
+        ANTIC
         System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
         String frecuenciasLetras = inOut.leerString();
         if (inOut.contenidoValido(frecuenciasLetras)) {
@@ -92,6 +110,8 @@ public class DriverFP {
         } else {
             System.out.println("El contenido introducido no es válido. Asegúrate de que sean palabras separadas por un espacio.");
         }
+
+         */
     }
     public void agregarTextoPorArchivo() {
         System.out.println("Introduce el nombre del archivo:");

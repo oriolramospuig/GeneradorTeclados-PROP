@@ -71,7 +71,9 @@ public class InOut {
             palabras.put(c,);
         }
         return palabras;
-    }*/
+    }
+     */
+
 
 
     public String leerPalabrasDeArchivo(String nombreArchivo) throws IOException {

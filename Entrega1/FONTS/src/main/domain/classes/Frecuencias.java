@@ -10,6 +10,8 @@ import java.util.HashMap;
 public class Frecuencias extends Texto
 {
     // ---------- ATRIBUTOS ----------
+    /** Guarda la lista de palabras que contienen el texto y su frecuencia ("hola", 5) */
+    protected HashMap<String, Integer> frecuenciaPalabras;
 
 
     // ---------- CONSTRUCTORES ----------
@@ -19,8 +21,9 @@ public class Frecuencias extends Texto
         asociacionesVinculadas = new ArrayList<>();
     }*/
 
-    public Frecuencias(String nombre) {
+    public Frecuencias(String nombre, HashMap<String, Integer> contenido) {
         this.nombre = nombre;
+        frecuenciaPalabras = contenido;
         frecuenciaLetras = new HashMap<>();
         asociacionesVinculadas = new ArrayList<>();
         //el controlador llamara a anadirFrecuencia para ir pasando los valores que tocan directamente
@@ -42,6 +45,10 @@ public class Frecuencias extends Texto
             texto.append(parejaLetras).append(" ").append(frecuencia).append("\n");
         }
         return texto.toString();
+    }
+
+    public HashMap<String, Integer> getFrecuenciaPalabras() {
+        return frecuenciaPalabras;
     }
 
 
