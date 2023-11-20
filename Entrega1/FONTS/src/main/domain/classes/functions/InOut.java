@@ -75,7 +75,6 @@ public class InOut {
      */
 
 
-
     public String leerPalabrasDeArchivo(String nombreArchivo) throws IOException {
         String currentDirectory = System.getProperty("user.dir");
         // Ruta absoluta del archivo

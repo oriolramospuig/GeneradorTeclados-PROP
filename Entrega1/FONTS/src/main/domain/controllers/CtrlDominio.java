@@ -53,8 +53,11 @@ public class CtrlDominio {
 
 
     // ---------- FUNCIONES TEXTO ----------
-    public boolean agregarTexto(String nomT, HashMap<String, Integer> frecuenciasLetras){
-        return ctrlTexto.agregarTexto(nomT,frecuenciasLetras);
+    public boolean agregarTextoPalabras(String nomT, String texto, HashMap<String, Integer> frecuenciasLetras){
+        return ctrlTexto.agregarTextoPalabras(nomT, texto, frecuenciasLetras);
+    }
+    public boolean agregarTextoFrecuencias(String nomT, HashMap<String,Integer> frecuenciaPalabras, HashMap<String, Integer> frecuenciasLetras){
+        return ctrlTexto.agregarTextoFrecuencias(nomT, frecuenciaPalabras, frecuenciasLetras);
     }
     public HashMap<String, Texto> getListaTextos(){
         return ctrlTexto.getTextos().getTextos();
