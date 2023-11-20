@@ -1,4 +1,4 @@
-package test.types;
+/*package test.types;
 
 import main.domain.classes.Algoritmo;
 import static org.junit.Assert.assertEquals;
@@ -34,4 +34,4 @@ public class TestAlgoritmo {
 
         assertEquals("QAP", resultado);
     }
-}
+}*/

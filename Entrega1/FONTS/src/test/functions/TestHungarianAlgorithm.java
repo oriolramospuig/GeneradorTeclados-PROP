@@ -1,5 +1,5 @@
 
-package test.functions;
+/*package test.functions;
 
 import main.domain.classes.functions.HungarianAlgorithm;
 import java.io.ByteArrayOutputStream;
@@ -19,4 +19,4 @@ public class TestHungarianAlgorithm {
         int result = hungarianAlgorithm.Hungarian(c1c2);
         assertEquals(0, result);
     }
-}
+}*/

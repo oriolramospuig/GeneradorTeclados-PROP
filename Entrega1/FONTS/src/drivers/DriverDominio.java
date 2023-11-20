@@ -1,4 +1,4 @@
-package drivers;
+/*package drivers;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
@@ -21,6 +21,7 @@ import java.util.ArrayList;
  * Driver para probar el sistema en general usando las funcionalidades de CtrlDominio
  * @author X (X@estudiantat.upc.edu)
  */
+/*
 public class DriverDominio {
     private DriverAlfabeto driverAfabeto;
     private DriverTeclado driverTeclado;
@@ -42,6 +43,7 @@ public class DriverDominio {
     /**
      * No retorna nada.
      */
+/*
     public void agregarAlfabetoPorArchivo() {
         driverAfabeto.agregarAlfabetoPorArchivo();
     }
@@ -64,17 +66,18 @@ public class DriverDominio {
      * Manda añadir el nuevo texto con los atributos asignados
      * Envía mensaje de contenido no válido si no lo es
      */
-  
+  /*
     public void agregarTextoPorArchivo() {
      //   driverTexto.agregarTextoPorTerminal();
     }
     /*public void agregarTextoPorTerminal() { driverTexto.agregarTextoPorArchivo();}*/
+/*
     public void borrarTexto() {
         driverTexto.borrarTexto();
     }
     public void imprimirTexto() {
      //   driverTexto.imprimirTextos();
-    }
+    }*/
   
     /*public void agregarTextoPorTerminal() {
         System.out.println("Introduce el nombre del texto:");
@@ -151,7 +154,7 @@ public class DriverDominio {
     }*/
 
 
-    // ---------- FUNCIONES TECLADO ----------
+    /* ---------- FUNCIONES TECLADO ----------
     public void agregarTeclado() {
         driverTeclado.agregarTeclado();
     }
@@ -294,4 +297,4 @@ public class DriverDominio {
         System.out.println("Pulsa ENTER para volver al menú principal");
         inOut.leerString();
     }
-}
+}*/

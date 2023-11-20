@@ -32,7 +32,11 @@ public class CtrlDominio {
         return ctrlAlfabeto.getCjtAlfabetos().getAlfabetos();
     }
     public ArrayList<Character> consultarContenidoAlfabeto(String nomA){
-        return ctrlAlfabeto.getContenido(nomA);
+        if(ctrlAlfabeto.getCjtAlfabetos().existeAlfabeto(nomA)) {
+            return ctrlAlfabeto.getContenido(nomA);
+        }
+        return null;
+        //return ctrlAlfabeto.getContenido(nomA);
     }
     public int numeroCaracteres(String nomA) {
         return ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA).getLetras().size();

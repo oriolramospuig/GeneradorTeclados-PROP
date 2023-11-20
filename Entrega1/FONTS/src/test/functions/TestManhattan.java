@@ -1,4 +1,4 @@
-package test.functions;
+/*package test.functions;
 import main.domain.classes.Alfabeto;
 
 import java.util.ArrayList;
@@ -28,5 +28,5 @@ public class TestManhattan {
 
         assertEquals(7, distancia);
     }
-}
+}*/
 

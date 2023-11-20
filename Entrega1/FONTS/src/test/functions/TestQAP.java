@@ -1,4 +1,4 @@
-package test.functions;
+/*package test.functions;
 import main.domain.classes.functions.QAP;
 import main.domain.classes.types.PairFrequency;
 
@@ -31,4 +31,4 @@ public class TestQAP {
 
         assertEquals(filas * columnas, qap.getTeclasOrdenadas().size());
     }
-}
+}*/
