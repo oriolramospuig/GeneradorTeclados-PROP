@@ -1,6 +1,7 @@
 package main.domain.controllers;
 
 import main.domain.classes.*;
+import main.domain.classes.Algoritmo;
 import main.domain.classes.functions.InOut;
 import main.domain.classes.types.PairInt;
 
