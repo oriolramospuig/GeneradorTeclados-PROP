@@ -16,12 +16,14 @@ import java.util.HashMap;
  */
 public class DriverFP {
     private final InOut inOut;
+
     private CtrlDominio ctrlDominio;
 
     public DriverFP() {
         inOut = new InOut();
         ctrlDominio = new CtrlDominio();
     }
+
 
     // ---------- FUNCIONES ALFABETO ----------
     public void agregarAlfabetoPorTerminal() {
@@ -32,12 +34,13 @@ public class DriverFP {
         if (inOut.contenidoValido(entradaCaracteres)) {
             ArrayList<Character> caracteres = inOut.leerCaracteresDeTerminal(entradaCaracteres);
             boolean agregado = ctrlDominio.agregarAlfabeto(nombreA, caracteres);
-            if (!agregado) System.out.println("Ya existe el alfabeto " + nombreA);
+            if (!agregado) System.out.println("Ya existe el alfabeto " + nombreA + "introduce un nombre nuevo");
             else System.out.println("AGREGADO CON EXITO!");
         } else {
             System.out.println("El contenido introducido no es válido. Asegúrate de que sean caracteres separados por un espacio.");
         }
     }
+
     public void agregarAlfabetoPorArchivo() {
         System.out.println("Introduce el nombre del archivo:");
         String nombreArchivo = inOut.leerString();
@@ -54,26 +57,34 @@ public class DriverFP {
             System.out.println("El archivo no se encontró: " + nombreArchivo);
         }
     }
+
     public void imprimirNombresAlfabetos() {
         HashMap<String, Alfabeto> alfabetos = ctrlDominio.getListaAlfabetos();
         if (alfabetos.isEmpty()) {
             System.out.println("No hay alfabetos para mostrar.");
             return;
         }
+        System.out.println("Alfabetos actuales:");
         for (HashMap.Entry<String, Alfabeto> entry : alfabetos.entrySet()) {
             String nombre = entry.getKey();
             System.out.println(nombre);
         }
     }
+
     public void consultarContenidoAlfabeto(){
-        System.out.println("Alfabetos actuales:");
         imprimirNombresAlfabetos();
         System.out.println("Introduce el nombre del alfabeto que quieres consultar:");
         String nombreA = inOut.leerString(); //suponemos que lo escribe bien porque lo copia de la lista
-        System.out.println(nombreA);
         ArrayList<Character> Letras = ctrlDominio.consultarContenidoAlfabeto(nombreA);
-        for (Character letra : Letras) {
-            System.out.println(letra);
+        if(Letras == null) {
+            System.out.println("Este nombre de alfabeto no existe, debes entrar un alfabeto de la lista");
+            consultarContenidoAlfabeto();
+        }
+        else {
+            System.out.println(nombreA);
+            for (Character letra : Letras) {
+                System.out.println(letra);
+            }
         }
     }
 
@@ -82,35 +93,85 @@ public class DriverFP {
     public void agregarTextoPorTerminal() {
         System.out.println("Introduce el nombre del texto:");
         String nombreTxt = inOut.leerString();
-        System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
-        String frecuenciasLetras = inOut.leerString();
-        if (inOut.contenidoValido(frecuenciasLetras)) {
-            //HashMap<String, Integer> frecletras = inOut.leerPalabrasDeTerminal(frecuenciasLetras);
-            HashMap<String, Integer> frecletras = new HashMap<>();
-            boolean agregado = ctrlDominio.agregarTexto(nombreTxt, frecletras);
-            if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
-            else System.out.println("AGREGADO CON EXITO!");
+        System.out.println("Si desea entrar un texto escriba 1. En caso de querer entrar palabras con frecuencias escriba otro numero.");
+        Integer tipoTexto = inOut.leerEntero();
+        if (tipoTexto == 1) {
+            System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
+            String texto = inOut.leerString();
+            if (inOut.contenidoValido(texto)) {
+                HashMap<String, Integer> frecletras = tratarEntradaPalabras(texto);     //falta implementar
+                boolean agregado = ctrlDominio.agregarTextoPalabras(nombreTxt, texto, frecletras);      //falta implementar
+                if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
+                else System.out.println("AGREGADO CON EXITO!");
+            }
+            else
+                System.out.println("El contenido introducido no es válido. Asegúrate de que sean palabras separadas por un espacio.");
         } else {
-            System.out.println("El contenido introducido no es válido. Asegúrate de que sean palabras separadas por un espacio.");
+            System.out.println("Introduce palabras y sus frecuencias. El formato debe ser palabra, espacio, numero de frecuencia, espacio,  siguiente palabra. (ejemplo: hola 5 mesa 3):");
+            String texto = inOut.leerString();
+            if (inOut.contenidoValido(texto)) {
+                HashMap<String,Integer> frecPalabras = convertirEntrada(texto);   //esto pasa texto a hasmap frecpalabras
+                HashMap<String, Integer> frecLetras = tratarEntradaFrecuencias(frecPalabras);    // pasa frecpalabras a frecletras
+                boolean agregado = ctrlDominio.agregarTextoFrecuencias(nombreTxt, frecPalabras, frecLetras);
+                if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
+                else System.out.println("AGREGADO CON EXITO!");
+            }
+            else
+                System.out.println("El contenido introducido no es válido. Asegúrate de que sean palabras separadas por un espacio.");
         }
     }
-    public void agregarTextoPorArchivo() {
+
+    
+    public HashMap<String, Integer> tratarEntradaPalabras(String texto) {
+        HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
+        char[] textoChars = texto.toCharArray();
+        for(int i = 1; i < textoChars.length; ++i){
+            String pairLetras = "" + textoChars[i-1] + textoChars[i];
+            int frec = 1;
+            if (textoChars[i-1] > textoChars[i]) pairLetras = "" + textoChars[i] + textoChars[i-1];
+            if(frecuenciaLetras.containsKey(pairLetras)){
+                frec = frecuenciaLetras.get(pairLetras)+1;
+            }
+            frecuenciaLetras.put(pairLetras,frec);
+        }
+        return frecuenciaLetras;
+    }
+
+    public HashMap<String,Integer> convertirEntrada(String texto) {
+        HashMap<String, Integer> frecuenciaPalabras = new HashMap<>();
+
+        //esto pasa string texto a hasmap frecpalabras
+
+        return frecuenciaPalabras;
+    }
+
+    public HashMap<String, Integer> tratarEntradaFrecuencias(HashMap<String,Integer> frecPalabras) {
+        HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
+
+        //pasa frecpalabras a frecletras
+
+        return frecuenciaLetras;
+    }
+
+    public void agregarTextoPorArchivo() {              //MISMA ESTRUCTURA QUE POR ARCHIVO
         System.out.println("Introduce el nombre del archivo:");
         String nombreArchivo = inOut.leerString();
         try {
-            //HashMap<String, Integer> frecletras = inOut.leerPalabrasDeArchivo(nombreArchivo);
-            HashMap<String, Integer> frecletras = new HashMap<>();
+            HashMap<String, Integer> frecletras = inOut.leerPalabrasDeArchivo(nombreArchivo);
             System.out.println("Introduce el nombre del texto:");
             String nombreTxt = inOut.leerString();
             boolean agregado = ctrlDominio.agregarTexto(nombreTxt, frecletras);
             if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
             else System.out.println("AGREGADO CON EXITO!");
-        //} catch (FileNotFoundException e) {
-        //    System.out.println("El archivo no se encontró: " + nombreArchivo);
+        } catch (FileNotFoundException e) {
+            System.out.println("El archivo no se encontró: " + nombreArchivo);
         } catch (IllegalArgumentException e) {
             System.out.println("El contenido del archivo no es válido: " + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
+
     public void imprimirNombresTextos() {
         HashMap<String, Texto> listaTextos = ctrlDominio.getListaTextos();
         if (listaTextos.isEmpty()) {
@@ -122,6 +183,7 @@ public class DriverFP {
             System.out.println(nombre);
         }
     }
+
     public void imprimirNombresAsociaciones() {
         HashMap<String, AsociacionTextos> asociaciones = ctrlDominio.getListaAsociaciones();
         if (asociaciones.isEmpty()) {
@@ -133,15 +195,17 @@ public class DriverFP {
             System.out.println(nombre);
         }
     }
+
     public void consultarContenidoTexto(){
         System.out.println("Textos actuales:");
         imprimirNombresTextos();
         System.out.println("Introduce el nombre del texto que quieres consultar:");
         String nombreT = inOut.leerString(); //suponemos que lo escribe bien porque lo copia de la lista
         System.out.println(nombreT);
-        HashMap<String, Integer> Palabras = ctrlDominio.consultarContenidoTexto(nombreT);
-        for (int i = 0; i < Palabras.size(); ++i) System.out.println(Palabras.entrySet());
+        String Palabras = ctrlDominio.consultarContenidoTexto(nombreT);
+        System.out.println(Palabras);
     }
+
     public void crearAsociacion(){
         System.out.println("Textos actuales:");
         imprimirNombresTextos();
@@ -159,7 +223,6 @@ public class DriverFP {
         if (!agregada) System.out.println("Ya existe el texto " + nombreAT);
         else System.out.println("AGREGADO CON EXITO!");
     }
-
 
 
     // ---------- FUNCIONES TECLADO ----------
@@ -205,6 +268,7 @@ public class DriverFP {
             System.out.println("Existe un teclado con el mismo nombre " + nombreT); //?? que tipo de excepcion tendria que pasar?
         }
     }
+
     public void imprimirNombresTeclados() {
         ArrayList<String> teclados = ctrlDominio.getListaTeclados();
         if (teclados.isEmpty()) {
@@ -215,11 +279,13 @@ public class DriverFP {
             System.out.println(nombre);
         }
     }
+
     private PairInt escogerDimensiones(HashMap<Integer, PairInt> combinacionesDimensiones, Integer numDim) {
         Integer filas = combinacionesDimensiones.get(numDim).getPrimero();
         Integer columans = combinacionesDimensiones.get(numDim).getSegundo();
         return new PairInt(filas, columans);
     }
+
     private HashMap<Integer, PairInt> imprimirPosiblesDimensiones(String nomA) {
         int numCaracteres = ctrlDominio.numeroCaracteres(nomA);       // func saber num caracteres del alfabeto
 
@@ -255,7 +321,7 @@ public class DriverFP {
                     driver.agregarAlfabetoPorArchivo();
                     break;
                 }
-                case "3":
+                /*case "3":
                 case "TextoPorTerminal": {
                     driver.agregarTextoPorTerminal();
                     break;
@@ -264,7 +330,7 @@ public class DriverFP {
                 case "TextoPorArchivo": {
                     driver.agregarTextoPorArchivo();
                     break;
-                }
+                }*/
                 case "5":
                 case "CrearAsociacionTextos": {
                     driver.crearAsociacion();
@@ -369,9 +435,9 @@ public class DriverFP {
         System.out.println();
         System.out.println("(0|Salir) - Cerrar Driver");
     }
+
     private void volverMenu() {
         System.out.println("Pulsa ENTER para volver al menú principal");
         inOut.leerString();
     }
-
 }

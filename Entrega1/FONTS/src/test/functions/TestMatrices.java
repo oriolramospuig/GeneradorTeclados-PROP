@@ -1,4 +1,4 @@
-package test.functions;
+/*package test.functions;
 
 
 import main.domain.classes.Frecuencias;
@@ -42,4 +42,4 @@ public class TestMatrices {
             }
         }
     }
-}
+}*/

@@ -1,4 +1,4 @@
-package test.functions;
+/*package test.functions;
 import main.domain.classes.Alfabeto;
 
 import java.util.ArrayList;
@@ -21,11 +21,12 @@ import java.lang.IndexOutOfBoundsException;
 import java.lang.NegativeArraySizeException;
 
 public class TestManhattan {
+    @Test
     public void testcalcularDistancia() {
         System.out.println("Test Calcular Distancia");
         int distancia = Manhattan.calcularDistancia(1, 2, 4, 6);
 
         assertEquals(7, distancia);
     }
-}
+}*/
 

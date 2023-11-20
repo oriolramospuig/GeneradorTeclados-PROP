@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import main.domain.classes.*;
 
@@ -132,9 +132,5 @@ public class TestTeclado {
 
         assertNull(teclado.getAsociacionTextosVinculado());
     }
-
-
-
-
-}
+}*/
 

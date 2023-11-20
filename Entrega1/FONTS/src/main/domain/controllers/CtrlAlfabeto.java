@@ -14,7 +14,7 @@ public class CtrlAlfabeto {
     private ConjuntoAlfabetos CjtAlfabetos;
 
     public CtrlAlfabeto(){
-        CjtAlfabetos = null;
+        CjtAlfabetos = new ConjuntoAlfabetos();
     }
 
     // ---------- FUNCIONES ALFABETO ----------
@@ -48,11 +48,13 @@ public class CtrlAlfabeto {
      * Crea el nuevo objecto alfabeto y añade este objeto a ConjuntoAlfabetos
      */
     public boolean CrearAlfabeto(String nomA, ArrayList<Character> entradaCaracteres) {
-        if(!CjtAlfabetos.existeAlfabeto(nomA)){
-            Alfabeto alfabeto = new Alfabeto(nomA, entradaCaracteres);
-            CjtAlfabetos.agregarAlfabeto(nomA, alfabeto);
-            return true;
-        }
+        //if (!CjtAlfabetos.getAlfabetos().isEmpty()) {
+            if (!CjtAlfabetos.existeAlfabeto(nomA)) {
+                Alfabeto alfabeto = new Alfabeto(nomA, entradaCaracteres);
+                CjtAlfabetos.agregarAlfabeto(nomA, alfabeto);
+                return true;
+            }
+
         return false;
     }
     public boolean alfabetoTieneTecladosVinculados(String nomA){

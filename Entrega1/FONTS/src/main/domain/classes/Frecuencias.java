@@ -10,6 +10,8 @@ import java.util.HashMap;
 public class Frecuencias extends Texto
 {
     // ---------- ATRIBUTOS ----------
+    /** Guarda la lista de palabras que contienen el texto y su frecuencia ("hola", 5) */
+    protected HashMap<String, Integer> frecuenciaPalabras;
 
 
     // ---------- CONSTRUCTORES ----------
@@ -19,11 +21,11 @@ public class Frecuencias extends Texto
         asociacionesVinculadas = new ArrayList<>();
     }*/
 
-    public Frecuencias(String nombre) {
+    public Frecuencias(String nombre, HashMap<String, Integer> frecuenciaPalabras, HashMap<String, Integer> frecuenciaLetras) {
         this.nombre = nombre;
-        frecuenciaLetras = new HashMap<>();
+        this.frecuenciaPalabras = frecuenciaPalabras;
+        this.frecuenciaLetras = frecuenciaLetras;
         asociacionesVinculadas = new ArrayList<>();
-        //el controlador llamara a anadirFrecuencia para ir pasando los valores que tocan directamente
     }
 
 
@@ -33,7 +35,7 @@ public class Frecuencias extends Texto
      * @return String : Contenido del texto compuesto por pares de letras con sus frecuencias
      * ("ab", 5)
      */
-    public String getTexto() {
+    /*public String getTexto() {
         StringBuilder texto = new StringBuilder("");
         for (HashMap.Entry<String, Integer> i : frecuenciaLetras.entrySet()) {
             String parejaLetras = i.getKey();
@@ -42,6 +44,21 @@ public class Frecuencias extends Texto
             texto.append(parejaLetras).append(" ").append(frecuencia).append("\n");
         }
         return texto.toString();
+    }
+     */
+    public String getTexto() {
+        StringBuilder texto = new StringBuilder("");
+        for (HashMap.Entry<String, Integer> i : frecuenciaPalabras.entrySet()) {
+            String palabra = i.getKey();
+            Integer frecuencia = i.getValue();
+
+            texto.append(palabra).append(" ").append(frecuencia).append("\n");
+        }
+        return texto.toString();
+    }
+
+    public HashMap<String, Integer> getFrecuenciaPalabras() {
+        return frecuenciaPalabras;
     }
 
 

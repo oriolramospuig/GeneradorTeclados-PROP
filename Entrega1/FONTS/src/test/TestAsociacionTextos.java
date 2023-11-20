@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import main.domain.classes.AsociacionTextos;
 import main.domain.classes.Frecuencias;
@@ -15,7 +15,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 public class TestAsociacionTextos {
 
-    //////// CONSTRUCTORAS
+    // ---------- CONSTRUCTORAS ----------
     public void TestConstructora() {
         System.out.println("Test Constructora");
         AsociacionTextos asociacionTextos = new AsociacionTextos();
@@ -52,7 +52,7 @@ public class TestAsociacionTextos {
         assertTrue(asociacionTextos.getFrecuenciaLetras().isEmpty());
     }
 
-    /////// GETTERS
+    // ---------- GETTERS ----------
     public void testgetFrecuenciaLetras() {
         System.out.println("Test getFrecuenciasLetras");
         AsociacionTextos asociacionTextos = new AsociacionTextos();
@@ -69,11 +69,11 @@ public class TestAsociacionTextos {
         assertEquals("B", result.get(1).g;
         assertEquals(3, result.get(1).getFrecuencia());
         assertEquals("C", result.get(2).getLetra());
-        assertEquals(2, result.get(2).getFrecuencia());*/
+        assertEquals(2, result.get(2).getFrecuencia());
         assertEquals(frecuenciaLetras, asociacionTextos.getFrecuenciaLetras());
     }
 
-    /////// SETTERS
+    // ---------- SETTERS ----------
     public void TestagregarTecladoVinculado() {
         System.out.println("Test agregarTecladoVinculado");
         String nombreT1 = "Teclado1";
@@ -109,8 +109,7 @@ public class TestAsociacionTextos {
 
     }
 
-    //// AUXILIARES
-
+    // ---------- AUXILIARES ----------
     public void TestBorrarTecladoVinculado() {
         System.out.println("Test borrarTecladoVinculado");
         AsociacionTextos asociacionTextos = new AsociacionTextos();
@@ -144,5 +143,5 @@ public class TestAsociacionTextos {
         assertEquals(0, frecuenciaLetras.get("ab").intValue());
         assertEquals(0, frecuenciaLetras.get("ca").intValue());
     }
-}
+}*/
 

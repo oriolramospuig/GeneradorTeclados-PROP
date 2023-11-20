@@ -18,26 +18,18 @@ public abstract class Texto
     /** Guarda la lista de pares de carácteres y su frecuencia ("ab", 5) */
     protected HashMap<String, Integer> frecuenciaLetras;
 
-    /** Guarda la lista de palabras que contienen el texto y su frecuencia ("hola", 5) */
-    protected HashMap<String, Integer> frecuenciaPalabras;
-
     /** Guarda las asociaciones que tiene este texto en su asociación */
     protected ArrayList<String> asociacionesVinculadas;
 
 
     // ---------- CONSTRUCTORES ----------
-   public Texto(String nombreT,HashMap<String, Integer> frecP, HashMap<String, Integer> frecL ) {
+   /*public Texto(String nombreT,HashMap<String, Integer> frecP, HashMap<String, Integer> frecL ) {
         nombre = nombreT;
         frecuenciaPalabras = frecP;
         frecuenciaLetras = frecL;
         asociacionesVinculadas = new ArrayList<>();
     }
-    public Texto(){
-       nombre = new String();
-       frecuenciaPalabras = new HashMap<>();
-       frecuenciaLetras = new HashMap<>();
-       asociacionesVinculadas = new ArrayList<>();
-    }
+    */
 
     // ---------- GETTERS ----------
     /**
@@ -52,9 +44,6 @@ public abstract class Texto
         return frecuenciaLetras;
     }
 
-    public HashMap<String, Integer> getFrecuenciaPalabras() {
-        return frecuenciaPalabras;
-    }
 
     /**
      * Retorna lista de nombres de las asociaciones de textos que tienen el texto

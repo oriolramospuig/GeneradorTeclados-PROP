@@ -31,6 +31,7 @@ public class ConjuntoTextos
             // podria salir un mensaje: "texto nomT no existe en el sistema"
             return null;
         }
+        //????????
     }
     /**
      * Retorna el conjunto de textos existentes

@@ -23,12 +23,12 @@ public class Palabras extends Texto
     }
   */
 
-    public Palabras(String nombre, String contenido) {
+    public Palabras(String nombre, String contenido, HashMap<String, Integer> frecuenciaLetras) {
         this.nombre = nombre;
         this.texto = contenido;
-        frecuenciaLetras = new HashMap<>();
+        this.frecuenciaLetras = frecuenciaLetras;
         asociacionesVinculadas = new ArrayList<>();
-        tratarEntrada();
+        // tratarEntrada();
     }
 
     // ---------- GETTERS ----------
@@ -49,7 +49,7 @@ public class Palabras extends Texto
      * No retorna.
      * Convierte las palabras de la entrada en frecuencias del estilo par de letras, frecuencia ("ab", 5)
      */
-    public void tratarEntrada() {
+   /* public void tratarEntrada() {
         char[] textoChars = texto.toCharArray();
         for(int i = 1; i < textoChars.length; ++i){
             String pairLetras = "" + textoChars[i-1] + textoChars[i];
@@ -61,4 +61,5 @@ public class Palabras extends Texto
             frecuenciaLetras.put(pairLetras,frec);
         }
     }
+    */
 }

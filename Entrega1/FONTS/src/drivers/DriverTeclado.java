@@ -1,4 +1,4 @@
-package drivers;
+/*package drivers;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.Algoritmo;
@@ -18,6 +18,7 @@ import java.util.HashMap;
  * para la creación de este. Incluye una constructora ...
  * @author X (X@estudiantat.upc.edu)
  */
+/*
 public class DriverTeclado {
     // private static final Object QAP = ;
     private InOut inOut;
@@ -90,6 +91,7 @@ public class DriverTeclado {
             String nombre = entry.getKey();
             System.out.println(nombre);
         }*/
+/*
         for (String nombre : teclados) {
             System.out.println(nombre);
         }
@@ -125,4 +127,4 @@ public class DriverTeclado {
         //ctrlDominio.borrarAlfabeto(nombre);
         System.out.println("BORRADO CON EXITO!");
     }
-}
+}*/

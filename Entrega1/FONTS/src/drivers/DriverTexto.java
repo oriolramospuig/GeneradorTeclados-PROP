@@ -1,4 +1,4 @@
-package drivers;
+/*package drivers;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.AsociacionTextos;
@@ -14,6 +14,7 @@ import java.util.HashMap;
  * Driver para testear las funcionalidades de CtrlTexto
  * @author X (X@estudiantat.upc.edu)
  */
+/*
 public class DriverTexto {
 
     private final InOut inOut;
@@ -90,6 +91,7 @@ public class DriverTexto {
         }
         System.out.println();
     }*/
+/*
     public void imprimirNombresAsociaciones() {
         HashMap<String, AsociacionTextos> asociaciones = ctrlDominio.getListaAsociaciones();
         if (asociaciones.isEmpty()) {
@@ -140,7 +142,7 @@ public class DriverTexto {
             imprimirTexto(nombre,alfabeto);
         }
     }*/
-
+/*
     public void borrarTexto() {
         System.out.println("Alfabetos actuales:");
   //      imprimirNombresTextos();
@@ -203,5 +205,5 @@ public class DriverTexto {
             }
             System.out.println();
         }
-    }*/
-}
+    }
+}*/

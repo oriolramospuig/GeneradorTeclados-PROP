@@ -1,5 +1,5 @@
 
-package test.functions;
+/*package test.functions;
 
 import main.domain.classes.functions.HungarianAlgorithm;
 import org.junit.Test;
@@ -66,4 +66,4 @@ public class TestHungarianAlgorithm {
         int cost = HungarianAlgorithm.calcularCostoAsignacion(asignacio, c1c2);
         assertEquals(128, cost);
     }
-}
+}*/

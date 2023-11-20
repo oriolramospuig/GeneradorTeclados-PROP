@@ -32,9 +32,11 @@ public class CtrlTexto {
     }
     // ---------- FUNCIONES TEXTO ----------
 
-    public HashMap<String, Integer> getContenido(String nomT){
-        return CjtTextos.getTexto(nomT).getFrecuenciaPalabras();
+    public String getContenido(String nomT){
+        //return CjtTextos.getTexto(nomT).getFrecuenciaPalabras();
+        return CjtTextos.getTexto(nomT).getTexto();
     }
+
     public void agregarAsociacionVinculada(String nomT, String nomAT){
         CjtTextos.getTexto(nomT).agregarAsociacionesVinculadas(nomAT);
     }
@@ -50,11 +52,19 @@ public class CtrlTexto {
      * No retorna nada.
      * Crea el nuevo objecto texto y añade este objeto a ConjuntoTextos
      */
-    public boolean agregarTexto(String nomT, HashMap<String, Integer> frecuenciasLetras) {
+    public boolean agregarTextoPalabras(String nomT, String texto, HashMap<String, Integer> frecuenciasLetras) {
+        if(!CjtTextos.existeTexto(nomT)) {
+            Palabras palabras = new Palabras(nomT, texto, frecuenciasLetras);
+            CjtTextos.agregarTexto(nomT, palabras);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean agregarTextoFrecuencias(String nomT, HashMap<String,Integer> frecuenciaPalabras, HashMap<String, Integer> frecuenciasLetras) {
         if(!CjtTextos.existeTexto(nomT)){
-            // ho deixo comentat perque s'ha de canviar lo de TEXTO i no hi ha creadora comptabile ara mateix
-            //Texto texto = new Texto(nomT, frecuenciasLetras); // no hay constructor para pasar eso
-            //CjtTextos.agregarTexto(nomT, texto);
+            Frecuencias frecuencias = new Frecuencias(nomT, frecuenciaPalabras, frecuenciasLetras);
+            CjtTextos.agregarTexto(nomT, frecuencias);
             return true;
         }
         return false;

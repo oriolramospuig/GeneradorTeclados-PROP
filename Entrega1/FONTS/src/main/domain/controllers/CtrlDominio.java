@@ -32,7 +32,11 @@ public class CtrlDominio {
         return ctrlAlfabeto.getCjtAlfabetos().getAlfabetos();
     }
     public ArrayList<Character> consultarContenidoAlfabeto(String nomA){
-        return ctrlAlfabeto.getContenido(nomA);
+        if(ctrlAlfabeto.getCjtAlfabetos().existeAlfabeto(nomA)) {
+            return ctrlAlfabeto.getContenido(nomA);
+        }
+        return null;
+        //return ctrlAlfabeto.getContenido(nomA);
     }
     public int numeroCaracteres(String nomA) {
         return ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA).getLetras().size();
@@ -53,13 +57,17 @@ public class CtrlDominio {
 
 
     // ---------- FUNCIONES TEXTO ----------
-    public boolean agregarTexto(String nomT, HashMap<String, Integer> frecuenciasLetras){
-        return ctrlTexto.agregarTexto(nomT,frecuenciasLetras);
+    public boolean agregarTextoPalabras(String nomT, String texto, HashMap<String, Integer> frecuenciasLetras){
+        return ctrlTexto.agregarTextoPalabras(nomT, texto, frecuenciasLetras);
+    }
+    public boolean agregarTextoFrecuencias(String nomT, HashMap<String,Integer> frecuenciaPalabras, HashMap<String, Integer> frecuenciasLetras){
+        return ctrlTexto.agregarTextoFrecuencias(nomT, frecuenciaPalabras, frecuenciasLetras);
     }
     public HashMap<String, Texto> getListaTextos(){
         return ctrlTexto.getTextos().getTextos();
     }
-    public HashMap<String, Integer> consultarContenidoTexto(String nomT){
+
+    public String consultarContenidoTexto(String nomT){
         return ctrlTexto.getContenido(nomT);
     }
 

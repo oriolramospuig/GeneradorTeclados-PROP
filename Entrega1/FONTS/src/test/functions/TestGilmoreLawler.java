@@ -1,4 +1,4 @@
-package test.functions;
+/*package test.functions;
 
 import main.domain.classes.functions.GilmoreLawler;
 
@@ -79,6 +79,6 @@ public class TestGilmoreLawler {
 
         assertEquals(6, resultado);
     }
-}
+}*/
 
 

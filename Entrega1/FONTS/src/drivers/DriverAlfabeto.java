@@ -1,4 +1,4 @@
-package drivers;
+/*package drivers;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.functions.InOut;
@@ -13,6 +13,7 @@ import java.util.HashMap;
  * Driver para testear las funcionalidades de CtrlAlfabeto
  * @author X (X@estudiantat.upc.edu)
  */
+/*
 public class DriverAlfabeto {
 
     private InOut inOut;
@@ -86,7 +87,7 @@ public class DriverAlfabeto {
         }
         System.out.println();
     }*/
-
+/*
     public void imprimirNombresAlfabetos() {
         HashMap<String, Alfabeto> alfabetos = ctrlDominio.getListaAlfabetos();
         if (alfabetos.isEmpty()) {
@@ -117,7 +118,7 @@ public class DriverAlfabeto {
             Alfabeto alfabeto = entry.getValue();
             imprimirAlfabeto(nombre,alfabeto);
         }
-    }*/
+    }
 
     public void borrarAlfabeto() {
         System.out.println("Alfabetos actuales:");
@@ -138,4 +139,4 @@ public class DriverAlfabeto {
             System.out.println("BORRADO CON EXITO!");
         }
     }
-}
+}*/
