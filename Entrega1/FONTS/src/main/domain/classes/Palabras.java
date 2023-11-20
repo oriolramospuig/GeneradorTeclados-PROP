@@ -16,20 +16,12 @@ public class Palabras extends Texto
 
 
     // ---------- CONSTRUCTORES ----------
- /*   public Palabras() {
-        nombre = new String();
-        frecuenciaLetras = new HashMap<>();
-        asociacionesVinculadas = new ArrayList<>();
-        texto = new String();
-    }
-  */
 
     public Palabras(String nombre, String contenido, HashMap<String, Integer> frecuenciaLetras) {
         this.nombre = nombre;
         this.texto = contenido;
         this.frecuenciaLetras = frecuenciaLetras;
         asociacionesVinculadas = new ArrayList<>();
-        // tratarEntrada();
     }
 
     // ---------- GETTERS ----------

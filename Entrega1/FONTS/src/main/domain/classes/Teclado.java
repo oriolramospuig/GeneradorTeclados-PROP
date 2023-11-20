@@ -30,25 +30,9 @@ public class Teclado
 
 
     // ---------- CONSTRUCTORES ----------
-    public Teclado() {
-        nombre = "";
-        puntuacion = 0 ;        //hay que poner valor nulo?
-        //algoritmo = Algoritmo.QAP;
-        dimensiones = new PairInt(0,0);
-        alfabetoVinculado = "";
-        asociacionTextosVinculado = "";
-    }
 
-    public Teclado(String nombre) {
-        this.nombre = nombre;
-        puntuacion = 0;
-        //algoritmo = Algoritmo.QAP;
-        dimensiones =  new PairInt(0,0);
-        alfabetoVinculado = "";
-        asociacionTextosVinculado = "";
-    }
 
-    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo) {
+    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo, PairInt dimensiones) {
         this.nombre = nombre;
         this.algoritmo = algoritmo;
         this.dimensiones = dimensiones;

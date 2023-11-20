@@ -87,7 +87,7 @@ public class AsociacionTextos {
      * Retorna los pares String, Integer de los pares de letras con sus frecuencias ordenados
      * @return ArrayList<PairFrequency> : Lista de pares de letras y frecuencias ordenados
      */
-    public ArrayList<PairFrequency> getFrecuenciaLetras() {
+    public ArrayList<PairFrequency> getFrecuenciaLetrasArray() {
         ArrayList<PairFrequency> freq = new ArrayList<>();
         for(HashMap.Entry<String, Integer> e : frecuenciaLetras.entrySet()){
             PairFrequency pf = new PairFrequency(e.getKey(),e.getValue());
@@ -96,8 +96,11 @@ public class AsociacionTextos {
         Collections.sort(freq,new FrequencyComparator());
         return freq;
     }
+    public HashMap<String,Integer> getFrecuenciaLetras() { return frecuenciaLetras;}
 
-    // ---------- SETTERS ----------
+
+
+        // ---------- SETTERS ----------
     /**
      * No retorna.
      * @param nomT nombre del teclado a vincular

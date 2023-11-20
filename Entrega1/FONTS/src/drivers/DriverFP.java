@@ -272,6 +272,7 @@ public class DriverFP {
                             //boolean agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP, PairIntEnum.EMPTY_PAIR);
                             int agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP);
                             if (agregado == -1) System.out.println("Ya existe el teclado " + nombreT);
+                            else if(agregado == -2) System.out.println("El alfabeto y la asociación de textos no son compatibles");
                             else System.out.println("AGREGADO CON EXITO!");
                         }
                         else System.out.println("No existe ninguna asociacion con ese nombre. Hay que seleccionar una asociacion de la lista");
