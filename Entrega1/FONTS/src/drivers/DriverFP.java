@@ -85,7 +85,8 @@ public class DriverFP {
         System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
         String frecuenciasLetras = inOut.leerString();
         if (inOut.contenidoValido(frecuenciasLetras)) {
-            HashMap<String, Integer> frecletras = inOut.leerPalabrasDeTerminal(frecuenciasLetras);
+            //HashMap<String, Integer> frecletras = inOut.leerPalabrasDeTerminal(frecuenciasLetras);
+            HashMap<String, Integer> frecletras = new HashMap<>();
             boolean agregado = ctrlDominio.agregarTexto(nombreTxt, frecletras);
             if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
             else System.out.println("AGREGADO CON EXITO!");
@@ -97,14 +98,15 @@ public class DriverFP {
         System.out.println("Introduce el nombre del archivo:");
         String nombreArchivo = inOut.leerString();
         try {
-            HashMap<String, Integer> frecletras = inOut.leerPalabrasDeArchivo(nombreArchivo);
+            //HashMap<String, Integer> frecletras = inOut.leerPalabrasDeArchivo(nombreArchivo);
+            HashMap<String, Integer> frecletras = new HashMap<>();
             System.out.println("Introduce el nombre del texto:");
             String nombreTxt = inOut.leerString();
             boolean agregado = ctrlDominio.agregarTexto(nombreTxt, frecletras);
             if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
             else System.out.println("AGREGADO CON EXITO!");
-        } catch (FileNotFoundException e) {
-            System.out.println("El archivo no se encontró: " + nombreArchivo);
+        //} catch (FileNotFoundException e) {
+        //    System.out.println("El archivo no se encontró: " + nombreArchivo);
         } catch (IllegalArgumentException e) {
             System.out.println("El contenido del archivo no es válido: " + e.getMessage());
         }

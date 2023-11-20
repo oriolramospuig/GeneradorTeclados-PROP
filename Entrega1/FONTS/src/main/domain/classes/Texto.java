@@ -32,6 +32,12 @@ public abstract class Texto
         frecuenciaLetras = frecL;
         asociacionesVinculadas = new ArrayList<>();
     }
+    public Texto(){
+       nombre = new String();
+       frecuenciaPalabras = new HashMap<>();
+       frecuenciaLetras = new HashMap<>();
+       asociacionesVinculadas = new ArrayList<>();
+    }
 
     // ---------- GETTERS ----------
     /**

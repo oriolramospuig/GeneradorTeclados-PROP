@@ -50,7 +50,7 @@ public class TestGilmoreLawler {
         GilmoreLawler gilmoreLawler = new GilmoreLawler();
         List<Character> indices = Arrays.asList('a','b','c');
         int cotaInicial = 0;
-        int result = gilmoreLawler.gilmore_lawler(indices, cotaInicial);
+        int result = gilmoreLawler.gilmore_lawler();
 
         assertEquals(0, result);
 

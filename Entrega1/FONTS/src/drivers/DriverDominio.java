@@ -185,7 +185,7 @@ public class DriverDominio {
 
         QAP qap = new QAP(3,4, teclas, frecuenciasPares);
 
-        qap.imprimirMatrices();
+        /*qap.imprimirMatrices();
 
         qap.calcularAsignacionAleatoria(teclas);
         qap.imprimirTeclado();
@@ -199,6 +199,8 @@ public class DriverDominio {
         qap.imprimirTeclado();
 
         int puntuacionGreedy = qap.calculoPuntuacion();
+
+         */
 
         List<Integer> indices = new ArrayList<>();
         for (int i = 0; i < qap.getFilas()* qap.getColumnas(); i++) {

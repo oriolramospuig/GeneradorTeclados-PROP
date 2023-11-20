@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class DriverProvaUri {
-    /*
+
     InOut inOut;
     private ConjuntoAlfabetos conjuntoAlfabetos;
 
@@ -52,7 +52,7 @@ public class DriverProvaUri {
         }
     }
 
-    public void agregarAlfabetoPorArchivo() {
+    /*public void agregarAlfabetoPorArchivo() {
         System.out.println("Introduce el nombre del archivo:");
         String nombreArchivo = inOut.leerString();
         try {
@@ -68,6 +68,8 @@ public class DriverProvaUri {
             System.out.println("El contenido del archivo no es válido: " + e.getMessage());
         }
     }
+
+     */
 
 
     public void imprimirAlfabetos() {
@@ -109,50 +111,50 @@ public class DriverProvaUri {
         System.out.println();
 
         /* llista de caracters de l'alfabet = "tecles"*/
-    /*
+
         List<Character> teclas = new ArrayList<>();
-        for(char c = 'a'; c <= 'i'; c++) { // Asumiendo un alfabeto de 'a' a 'l'
+        for(char c = 'a'; c <= 'l'; c++) { // Asumiendo un alfabeto de 'a' a 'l'
             teclas.add(c);
         }
         /*llista de freuencies ordenades decreixentment*/
- /*       List<PairFrequency> frecuenciasPares = new ArrayList<>();
+        List<PairFrequency> frecuenciasPares = new ArrayList<>();
+        frecuenciasPares.add(new PairFrequency("ia", 10000));
         frecuenciasPares.add(new PairFrequency("ab", 400)); // Frecuencia del par AB
         frecuenciasPares.add(new PairFrequency("bc", 300)); // Frecuencia del par BC
         frecuenciasPares.add(new PairFrequency("ac", 200));
         frecuenciasPares.add(new PairFrequency("ad", 150));
-        frecuenciasPares.add(new PairFrequency("bd", 125));
-        frecuenciasPares.add(new PairFrequency("be", 100)); // y así sucesivamente...
-        frecuenciasPares.add(new PairFrequency("cd", 75));
+        frecuenciasPares.add(new PairFrequency("bd", 100));
+        frecuenciasPares.add(new PairFrequency("be", 75)); // y así sucesivamente...
+        frecuenciasPares.add(new PairFrequency("cd", 60));
         frecuenciasPares.add(new PairFrequency("de", 50));
         frecuenciasPares.add(new PairFrequency("df", 40));
         frecuenciasPares.add(new PairFrequency("ef", 30));
         frecuenciasPares.add(new PairFrequency("fg", 20));
-        frecuenciasPares.add(new PairFrequency("gh", 15));
-        frecuenciasPares.add(new PairFrequency("hi", 10));
-        frecuenciasPares.add(new PairFrequency("ia", 5));
+        frecuenciasPares.add(new PairFrequency("gh", 10));
+        frecuenciasPares.add(new PairFrequency("hi", 5));
 
         /*numero de files i de columnes*/
-   /*     int nf = 3;
-        int nc = 3;
+        int nf = 3;
+        int nc = 4;
 
         /*aixo serveix per enlloc de tractar lletres a, b, c ... tractar números 1, 2, 3... a la tornada de l'algoritme
         * ho tornem a lletres. No se si es necessari tenir-ho, diria que no*/
-   /*     HashMap<Character, Integer> letraAIndice = new HashMap<>();
+        HashMap<Character, Integer> letraAIndice = new HashMap<>();
         for (int i = 0; i < teclas.size(); i++) {
             letraAIndice.put(teclas.get(i), i);
         }
         /*les dues matrius que s'han de generar, una a partir de frecuencies, l'altre a partir del teclat seleccionat(mides)*/
-   /*     int[][] matrizFrecuencias = new int[nf*nc][nf*nc];
+        int[][] matrizFrecuencias = new int[nf*nc][nf*nc];
         Matrices.generarMatrizDeFrecuencias(frecuenciasPares, teclas, letraAIndice, matrizFrecuencias);
 
         int [][] matrizDistancias = new int[nf*nc][nf*nc];
         Matrices.generarMatrizDistancias(nf,nc,matrizDistancias);
         /*creadora de la classe qap nova, per que poguem provar amb lo que ha dit a classe*/
-        //QAP qap = new QAP(nf*nc, matrizFrecuencias, matrizFrecuencias);
+        QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias);
         /*creadora antiga, amb això anava i donava resultat, la canviem per a canviar l'estrcutura del qap*/
-     /*   QAP qap = new QAP(nf, nc, teclas, frecuenciasPares);
+         //QAP qap = new QAP(nf, nc, teclas, frecuenciasPares);
     }
-/*
+
 
 
     public static void main(String[] args) {
@@ -169,7 +171,7 @@ public class DriverProvaUri {
                 }
                 case "2":
                 case "AlfabetoPorArchivo": {
-                    driver.agregarAlfabetoPorArchivo();
+                    //driver.agregarAlfabetoPorArchivo();
                     break;
                 }
                 case "3":
@@ -187,6 +189,7 @@ public class DriverProvaUri {
                     // driver.agregarTextoPorArchivo();
                     break;
                 }
+
                 case "6":
                 case "ImprimirTextos": {
                     // driver.imprimirTextos();
@@ -238,6 +241,4 @@ public class DriverProvaUri {
         System.out.println("Pulsa ENTER para volver al menú principal");
         inOut.leerString();
     }
-}
-*/
 }
