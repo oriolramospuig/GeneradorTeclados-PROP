@@ -28,7 +28,7 @@ public class Palabras extends Texto
         this.texto = contenido;
         frecuenciaLetras = new HashMap<>();
         asociacionesVinculadas = new ArrayList<>();
-        tratarEntrada();
+        // tratarEntrada();
     }
 
     // ---------- GETTERS ----------

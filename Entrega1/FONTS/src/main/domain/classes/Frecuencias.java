@@ -36,13 +36,24 @@ public class Frecuencias extends Texto
      * @return String : Contenido del texto compuesto por pares de letras con sus frecuencias
      * ("ab", 5)
      */
-    public String getTexto() {
+    /*public String getTexto() {
         StringBuilder texto = new StringBuilder("");
         for (HashMap.Entry<String, Integer> i : frecuenciaLetras.entrySet()) {
             String parejaLetras = i.getKey();
             Integer frecuencia = i.getValue();
 
             texto.append(parejaLetras).append(" ").append(frecuencia).append("\n");
+        }
+        return texto.toString();
+    }
+     */
+    public String getTexto() {
+        StringBuilder texto = new StringBuilder("");
+        for (HashMap.Entry<String, Integer> i : frecuenciaPalabras.entrySet()) {
+            String palabra = i.getKey();
+            Integer frecuencia = i.getValue();
+
+            texto.append(palabra).append(" ").append(frecuencia).append("\n");
         }
         return texto.toString();
     }
