@@ -106,8 +106,7 @@ public class HungarianAlgorithm {
                 }
 
             }
-            // cadaFilaYColumnaTieneCero(matriz, fila + 1, solfilas, colusadas);
-            return false;
+            return cadaFilaYColumnaTieneCero(matriz, fila + 1, solfilas, colusadas);
         }
         return false;
     }
