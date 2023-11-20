@@ -49,14 +49,12 @@ public class CtrlTeclado {
         return teclados;
     }
 
-    public int CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo) {
-        if (!teclados.existeTeclado(nomT)) {
-            ctrlAlgoritmo.crearTeclado(nomT, asociacionTextos, alfabeto, algoritmo);
-            Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto, algoritmo);
-            teclados.agregarTeclado(nomT, teclado);
-            return 0;
-        }
-        return -1;
+    public boolean existeTeclado(String nomT){
+        return teclados.existeTeclado(nomT);
+    }
+    public void CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo) {
+        Teclado teclado = ctrlAlgoritmo.crearTeclado(nomT, asociacionTextos, alfabeto, algoritmo);
+        teclados.agregarTeclado(nomT, teclado);
     }
 
     //Para la segunda entrega

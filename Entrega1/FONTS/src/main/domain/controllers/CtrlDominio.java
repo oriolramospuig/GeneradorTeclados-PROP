@@ -6,6 +6,7 @@ import main.domain.classes.types.PairInt;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class CtrlDominio {
     private CtrlAlfabeto ctrlAlfabeto;
@@ -108,14 +109,30 @@ public class CtrlDominio {
 
 
     // ---------- FUNCIONES TECLADO ----------
+    public boolean compatibles(Alfabeto alfabeto,AsociacionTextos asociacionTextos){
+        HashMap<String,Integer> f = asociacionTextos.getFrecuenciaLetras();
+        ArrayList<Character> a = alfabeto.getLetras();
+        for(HashMap.Entry<String,Integer> e : f.entrySet()){
+            Character c1 = e.getKey().charAt(0);
+            Character c2 = e.getKey().charAt(1);
+            if(!a.contains(c1) || !a.contains(c2)) return false;
+        }
+        return true;
+    }
     public int agregarTeclado(String nomT, String nomA, String nomAT, Algoritmo algoritmo){
-        ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
-        ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
+        if(ctrlTeclado.existeTeclado(nomT)) return -1;
+        
         Alfabeto alfabeto = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA);
         AsociacionTextos asociacionTextos = ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionTextos(nomAT);
-        ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
-        ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
-        return ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, algoritmo);
+        if(compatibles(alfabeto,asociacionTextos)) {
+            ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
+            ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
+            ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
+            ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
+            ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, algoritmo);
+            return 0;
+        }
+        else return -2;
     }
 
     public ArrayList<String> getListaTeclados(){
