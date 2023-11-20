@@ -303,6 +303,7 @@ public class DriverFP {
         return new PairInt(filas, columans);
     }
 
+    /*Entrega 2*/
     private HashMap<Integer, PairInt> imprimirPosiblesDimensiones(String nomA) {
         int numCaracteres = ctrlDominio.numeroCaracteres(nomA);       // func saber num caracteres del alfabeto
 
