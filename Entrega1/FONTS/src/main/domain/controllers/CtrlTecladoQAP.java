@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class CtrlTecladoQAP {
     public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo) {
-        PairInt dimensiones;
+        PairInt dimensiones = new PairInt(0,0);
         //calcular dim
         Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto, algoritmo,dimensiones);
 
