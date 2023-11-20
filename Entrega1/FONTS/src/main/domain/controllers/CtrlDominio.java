@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CtrlDominio {
-
     private CtrlAlfabeto ctrlAlfabeto;
     private CtrlTexto ctrlTexto;
     private CtrlAsociacionTexto ctrlAsociacionTexto;
@@ -25,19 +24,19 @@ public class CtrlDominio {
     public boolean agregarAlfabeto(String nomA, ArrayList<Character> entradaCaracteres){
         return ctrlAlfabeto.CrearAlfabeto(nomA,entradaCaracteres);
     }
-    public boolean alfabetoTieneTecladosVinculados(String nomA){
-        return ctrlAlfabeto.alfabetoTieneTecladosVinculados(nomA);
-    }
     public HashMap<String, Alfabeto> getListaAlfabetos(){
         return ctrlAlfabeto.getCjtAlfabetos().getAlfabetos();
     }
+    public boolean existealfabeto(String nomA){
+        return ctrlAlfabeto.getCjtAlfabetos().existeAlfabeto(nomA);
+    }
     public ArrayList<Character> consultarContenidoAlfabeto(String nomA){
-        if(ctrlAlfabeto.getCjtAlfabetos().existeAlfabeto(nomA)) {
+        if(existealfabeto(nomA)) {
             return ctrlAlfabeto.getContenido(nomA);
         }
         return null;
-        //return ctrlAlfabeto.getContenido(nomA);
     }
+
     public int numeroCaracteres(String nomA) {
         return ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA).getLetras().size();
     }
@@ -53,24 +52,30 @@ public class CtrlDominio {
             }
         }
         ctrlAlfabeto.borrarAlfabeto(nomA);
-    }*/
+    }
+
+    public boolean alfabetoTieneTecladosVinculados(String nomA){
+        return ctrlAlfabeto.alfabetoTieneTecladosVinculados(nomA);
+    }
+    */
 
 
     // ---------- FUNCIONES TEXTO ----------
-    public boolean agregarTextoPalabras(String nomT, String texto, HashMap<String, Integer> frecuenciasLetras){
-        return ctrlTexto.agregarTextoPalabras(nomT, texto, frecuenciasLetras);
+    public boolean agregarTextoPalabras(String nomT, String texto){
+        return ctrlTexto.agregarTextoPalabras(nomT,texto);
     }
-    public boolean agregarTextoFrecuencias(String nomT, HashMap<String,Integer> frecuenciaPalabras, HashMap<String, Integer> frecuenciasLetras){
-        return ctrlTexto.agregarTextoFrecuencias(nomT, frecuenciaPalabras, frecuenciasLetras);
+    public boolean agregarTextoFrecuencias(String nomT, HashMap<String,Integer> frecuenciaPalabras){
+        return ctrlTexto.agregarTextoFrecuencias(nomT,frecuenciaPalabras);
     }
     public HashMap<String, Texto> getListaTextos(){
         return ctrlTexto.getTextos().getTextos();
     }
-
     public String consultarContenidoTexto(String nomT){
         return ctrlTexto.getContenido(nomT);
     }
-
+    public boolean existetexto(String nomT){
+        return ctrlTexto.getTextos().existeTexto(nomT);
+    }
 
 
     // ---------- FUNCIONES ASOCIACION TEXTOS ----------
@@ -91,6 +96,9 @@ public class CtrlDominio {
     public HashMap<String, AsociacionTextos> getListaAsociaciones(){
         return ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionesTextos();
     }
+    public boolean existeasociacion(String nomAT){
+        return ctrlAsociacionTexto.getCjtAsociaciones().existeAsociaciondeTextos(nomAT);
+    }
 
     //Para la segunda entrega
     /*public boolean borrarTexto(String nomT){
@@ -100,7 +108,7 @@ public class CtrlDominio {
 
 
     // ---------- FUNCIONES TECLADO ----------
-    public boolean agregarTeclado(String nomT, String nomA, String nomAT, Algoritmo algoritmo, PairInt dimensiones){
+    /*public boolean agregarTeclado(String nomT, String nomA, String nomAT, Algoritmo algoritmo, PairInt dimensiones){
         ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
         ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
         Alfabeto alfabeto = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA);
@@ -108,7 +116,7 @@ public class CtrlDominio {
         ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
         ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
         return ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, algoritmo, dimensiones);
-    }
+    }*/
 
     public ArrayList<String> getListaTeclados(){
         return ctrlTeclado.getCjtTeclados().getNombresTeclados();

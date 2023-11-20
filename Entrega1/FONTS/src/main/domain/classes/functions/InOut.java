@@ -1,6 +1,7 @@
 package main.domain.classes.functions;
 
 import java.io.*;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,14 +10,20 @@ import java.util.HashMap;
  * @author X (X@estudiantat.upc.edu)
  */
 public class InOut {
-
     private Scanner scanner;
 
     public InOut() {
         this.scanner = new Scanner(System.in);
     }
     public String leerString() {
-        return scanner.nextLine();
+        String linea;
+        try{
+            linea = scanner.nextLine();
+            return linea;
+        }
+        catch (NoSuchElementException e){
+            return null;
+        }
     }
     public int leerEntero() {
         if (scanner.hasNextInt()) {
@@ -46,7 +53,7 @@ public class InOut {
         BufferedReader br = new BufferedReader(new FileReader(rutaArchivo));
         String line = br.readLine();
         if(line != null){
-            if (!contenidoValido(line)) {
+            if (!alfabetoValido(line)) {
                 throw new IllegalArgumentException("El contenido del archivo no es válido.");
             }
             for (char c : line.toCharArray()) {
@@ -58,22 +65,24 @@ public class InOut {
         return caracteres;
     }
 
-
-    /*public String leerPalabrasDeTerminal(String line) {
-        HashMap<String, Integer> palabras = new HashMap<>();
-        String texto = "";
-        String linea = "";
-        Integer frec = 0;
-        while ((line = scanner.nextLine()) != null) {
-            texto
+    public HashMap<String,Integer> leerTextoFrecuenciasPalabras(int n) {
+        HashMap<String, Integer> frecuenciaPalabras = new HashMap<>();
+        String linea;
+        for(int i = 0; i < n; i++){
+            linea = leerString();
+            if(linea == null) return null;
+            String[] partes = linea.split(" ");
+            if(partes.length != 2) return null;
+            try{
+                Integer f = Integer.valueOf(partes[1]);
+                frecuenciaPalabras.put(partes[0],f);
+            }
+            catch (NumberFormatException e){
+                return null;
+            }
         }
-        for (char c : line.toCharArray()) {
-            palabras.put(c,);
-        }
-        return palabras;
+        return frecuenciaPalabras;
     }
-     */
-
 
     public String leerPalabrasDeArchivo(String nombreArchivo) throws IOException {
         String currentDirectory = System.getProperty("user.dir");
@@ -90,13 +99,14 @@ public class InOut {
         return texto;
     }
 
+
     /**
      * Valida si la cadena de entrada representa una secuencia de caracteres válida,
      * es decir, caracteres individuales separados por espacios.
      * @param entrada La cadena de entrada a validar.
      * @return true si la entrada es válida, false de lo contrario.
      */
-    public boolean contenidoValido(String entrada) {
+    public boolean alfabetoValido(String entrada) {
         if (entrada == null || entrada.isEmpty()) {
             return false; // Entrada vacía no es válida.
         }

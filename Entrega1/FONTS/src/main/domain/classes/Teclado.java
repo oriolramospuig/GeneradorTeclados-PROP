@@ -17,7 +17,7 @@ public class Teclado
     private float puntuacion;
 
     /** Algoritmo usado para el teclado */
-    private Algoritmo algoritmo;
+    //private Algoritmo algoritmo;
 
     /** Dimensiones del teclado */
     private PairInt dimensiones;
@@ -33,7 +33,7 @@ public class Teclado
     public Teclado() {
         nombre = "";
         puntuacion = 0 ;        //hay que poner valor nulo?
-        algoritmo = Algoritmo.QAP;
+        //algoritmo = Algoritmo.QAP;
         dimensiones = new PairInt(0,0);
         alfabetoVinculado = "";
         asociacionTextosVinculado = "";
@@ -42,15 +42,15 @@ public class Teclado
     public Teclado(String nombre) {
         this.nombre = nombre;
         puntuacion = 0;
-        algoritmo = Algoritmo.QAP;
+        //algoritmo = Algoritmo.QAP;
         dimensiones =  new PairInt(0,0);
         alfabetoVinculado = "";
         asociacionTextosVinculado = "";
     }
 
-    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo, PairInt dimensiones) {
+    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto/*Algoritmo algoritmo*/, PairInt dimensiones) {
         this.nombre = nombre;
-        this.algoritmo = algoritmo;
+        //this.algoritmo = algoritmo;
         this.dimensiones = dimensiones;
         alfabetoVinculado = alfabeto.getNombre();
         asociacionTextosVinculado = asociacionTextos.getNombre();
@@ -78,10 +78,10 @@ public class Teclado
      * Retorna el nombre del algoritmo usado para generar el teclado
      * @return String : Nombre del algoritmo usado para generar el teclado
      */
-    public String getAlgoritmo() {
+    /*public String getAlgoritmo() {
         if (algoritmo == Algoritmo.QAP) return "QAP";
         else return "Alg2";
-    }
+    }*/
 
     /**
      * Retorna las dimensiones del teclado generado

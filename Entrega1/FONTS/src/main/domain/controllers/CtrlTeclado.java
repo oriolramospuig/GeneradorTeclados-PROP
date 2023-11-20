@@ -14,7 +14,7 @@ public class CtrlTeclado {
      * Asigna un cjt de alfabetos vacío
      */
     public CtrlTeclado(){
-        teclados = null;
+        teclados = new ConjuntoTeclados();
     }
 
     // ---------- FUNCIONES TECLADO ----------
@@ -45,14 +45,14 @@ public class CtrlTeclado {
         return teclados;
     }
 
-    public boolean CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo, PairInt dimensiones) {
+    /*public boolean CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo, PairInt dimensiones) {
         if (!teclados.existeTeclado(nomT)) {
             Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto, algoritmo, dimensiones);
             teclados.agregarTeclado(nomT, teclado);
             return true;
         }
         return false;
-    }
+    }*/
 
     //Para la segunda entrega
     /*public String TecladoTieneAlfabetoVinculado(String nomT){
