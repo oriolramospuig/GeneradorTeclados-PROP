@@ -151,15 +151,17 @@ public class DriverFP {
             System.out.println(nombre);
         }
     }
+
     public void consultarContenidoTexto(){
         System.out.println("Textos actuales:");
         imprimirNombresTextos();
         System.out.println("Introduce el nombre del texto que quieres consultar:");
         String nombreT = inOut.leerString(); //suponemos que lo escribe bien porque lo copia de la lista
         System.out.println(nombreT);
-        HashMap<String, Integer> Palabras = ctrlDominio.consultarContenidoTexto(nombreT);
-        for (int i = 0; i < Palabras.size(); ++i) System.out.println(Palabras.entrySet());
+        String Palabras = ctrlDominio.consultarContenidoTexto(nombreT);
+        System.out.println(Palabras);
     }
+
     public void crearAsociacion(){
         System.out.println("Textos actuales:");
         imprimirNombresTextos();

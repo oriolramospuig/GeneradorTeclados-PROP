@@ -32,9 +32,11 @@ public class CtrlTexto {
     }
     // ---------- FUNCIONES TEXTO ----------
 
-    public HashMap<String, Integer> getContenido(String nomT){
-        return CjtTextos.getTexto(nomT).getFrecuenciaPalabras();
+    public String getContenido(String nomT){
+        //return CjtTextos.getTexto(nomT).getFrecuenciaPalabras();
+        return CjtTextos.getTexto(nomT).getTexto();
     }
+
     public void agregarAsociacionVinculada(String nomT, String nomAT){
         CjtTextos.getTexto(nomT).agregarAsociacionesVinculadas(nomAT);
     }

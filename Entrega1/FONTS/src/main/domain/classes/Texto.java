@@ -44,11 +44,7 @@ public abstract class Texto
         return frecuenciaLetras;
     }
 
-   /* public HashMap<String, Integer> getFrecuenciaPalabras() {
-        return frecuenciaPalabras;
-    }
-
-    */
+    // public HashMap<String, Integer> getFrecuenciaPalabras() { return frecuenciaPalabras;}
 
     /**
      * Retorna lista de nombres de las asociaciones de textos que tienen el texto

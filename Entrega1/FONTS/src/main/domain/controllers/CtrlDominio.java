@@ -59,7 +59,8 @@ public class CtrlDominio {
     public HashMap<String, Texto> getListaTextos(){
         return ctrlTexto.getTextos().getTextos();
     }
-    public HashMap<String, Integer> consultarContenidoTexto(String nomT){
+
+    public String consultarContenidoTexto(String nomT){
         return ctrlTexto.getContenido(nomT);
     }
 
