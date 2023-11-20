@@ -23,10 +23,10 @@ public class Palabras extends Texto
     }
   */
 
-    public Palabras(String nombre, String contenido) {
+    public Palabras(String nombre, String contenido, HashMap<String, Integer> frecuenciaLetras) {
         this.nombre = nombre;
         this.texto = contenido;
-        frecuenciaLetras = new HashMap<>();
+        this.frecuenciaLetras = frecuenciaLetras;
         asociacionesVinculadas = new ArrayList<>();
         // tratarEntrada();
     }

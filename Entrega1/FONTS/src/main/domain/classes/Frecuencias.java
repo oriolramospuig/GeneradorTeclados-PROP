@@ -21,12 +21,11 @@ public class Frecuencias extends Texto
         asociacionesVinculadas = new ArrayList<>();
     }*/
 
-    public Frecuencias(String nombre, HashMap<String, Integer> contenido) {
+    public Frecuencias(String nombre, HashMap<String, Integer> frecuenciaPalabras, HashMap<String, Integer> frecuenciaLetras) {
         this.nombre = nombre;
-        frecuenciaPalabras = contenido;
-        frecuenciaLetras = new HashMap<>();
+        this.frecuenciaPalabras = frecuenciaPalabras;
+        this.frecuenciaLetras = frecuenciaLetras;
         asociacionesVinculadas = new ArrayList<>();
-        //el controlador llamara a anadirFrecuencia para ir pasando los valores que tocan directamente
     }
 
 
