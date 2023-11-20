@@ -21,6 +21,7 @@ import java.lang.IndexOutOfBoundsException;
 import java.lang.NegativeArraySizeException;
 
 public class TestManhattan {
+    @Test
     public void testcalcularDistancia() {
         System.out.println("Test Calcular Distancia");
         int distancia = Manhattan.calcularDistancia(1, 2, 4, 6);
