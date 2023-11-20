@@ -2,6 +2,7 @@ package main.domain.classes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Clase que representa un texto en formato pares de letras con sus frecuencias
@@ -26,6 +27,17 @@ public class Frecuencias extends Texto
         this.frecuenciaPalabras = frecuenciaPalabras;
         this.frecuenciaLetras = frecuenciaLetras;
         asociacionesVinculadas = new ArrayList<>();
+    }
+
+    public void imprimirFrecuencias(){
+        System.out.println("PALABRAS:");
+        for(Map.Entry<String,Integer> e : frecuenciaPalabras.entrySet()){
+            System.out.println(e.getKey() + " " + e.getValue());
+        }
+        System.out.println("LETRAS:");
+        for(Map.Entry<String,Integer> e : frecuenciaLetras.entrySet()){
+            System.out.println(e.getKey() + " " + e.getValue());
+        }
     }
 
 

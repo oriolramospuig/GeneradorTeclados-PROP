@@ -1,4 +1,4 @@
-package drivers;
+/*package drivers;
 
 import main.domain.classes.AsociacionTextos;
 import main.domain.classes.Palabras;
@@ -23,4 +23,4 @@ public class DriverProva {
             System.out.println(pf.getPair() + " " + pf.getFrequency());
         }
     }
-}
+}*/

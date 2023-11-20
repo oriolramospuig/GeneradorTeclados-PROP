@@ -12,7 +12,7 @@ public class CtrlAsociacionTexto {
     private ConjuntoAsociaciones AsociacionesTextos;
 
     public CtrlAsociacionTexto(){
-        AsociacionesTextos = null;
+        AsociacionesTextos = new ConjuntoAsociaciones();
     }
 
     // ---------- FUNCIONES ASOCIACION ----------

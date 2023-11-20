@@ -44,7 +44,6 @@ public abstract class Texto
         return frecuenciaLetras;
     }
 
-
     /**
      * Retorna lista de nombres de las asociaciones de textos que tienen el texto
      * @return ArrayList<String> : Lista de los nombres de las asociaciones vinculadas al texto
@@ -52,7 +51,6 @@ public abstract class Texto
     public ArrayList<String> getAsociacionesVinculadas() {
         return asociacionesVinculadas;
     }
-
     /**
      * Retorna el contenido del texto
      * @return String : Contenido del texto usado por las funciones, dependiendo del tipo de Texto el formato variará

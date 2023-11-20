@@ -2,6 +2,7 @@ package main.domain.classes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Clase que representa un texto en formato lista de palabras
@@ -39,27 +40,15 @@ public class Palabras extends Texto
     public String getTexto() {
         return texto;
     }
-
+    public void imprimirFrecuencias(){
+        for(Map.Entry<String,Integer> e : frecuenciaLetras.entrySet()){
+            System.out.println(e.getKey() + " " + e.getValue());
+        }
+    }
 
     // ---------- SETTERS ----------
 
 
     // ---------- AUXILIARES -----------
-    /**
-     * No retorna.
-     * Convierte las palabras de la entrada en frecuencias del estilo par de letras, frecuencia ("ab", 5)
-     */
-   /* public void tratarEntrada() {
-        char[] textoChars = texto.toCharArray();
-        for(int i = 1; i < textoChars.length; ++i){
-            String pairLetras = "" + textoChars[i-1] + textoChars[i];
-            int frec = 1;
-            if (textoChars[i-1] > textoChars[i]) pairLetras = "" + textoChars[i] + textoChars[i-1];
-            if(frecuenciaLetras.containsKey(pairLetras)){
-                frec = frecuenciaLetras.get(pairLetras)+1;
-            }
-            frecuenciaLetras.put(pairLetras,frec);
-        }
-    }
-    */
+
 }
