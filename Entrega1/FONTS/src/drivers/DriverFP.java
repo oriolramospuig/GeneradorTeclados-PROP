@@ -32,7 +32,7 @@ public class DriverFP {
         if (inOut.contenidoValido(entradaCaracteres)) {
             ArrayList<Character> caracteres = inOut.leerCaracteresDeTerminal(entradaCaracteres);
             boolean agregado = ctrlDominio.agregarAlfabeto(nombreA, caracteres);
-            if (!agregado) System.out.println("Ya existe el alfabeto " + nombreA);
+            if (!agregado) System.out.println("Ya existe el alfabeto " + nombreA + "introduce un nombre nuevo");
             else System.out.println("AGREGADO CON EXITO!");
         } else {
             System.out.println("El contenido introducido no es válido. Asegúrate de que sean caracteres separados por un espacio.");
@@ -60,26 +60,32 @@ public class DriverFP {
             System.out.println("No hay alfabetos para mostrar.");
             return;
         }
+        System.out.println("Alfabetos actuales:");
         for (HashMap.Entry<String, Alfabeto> entry : alfabetos.entrySet()) {
             String nombre = entry.getKey();
             System.out.println(nombre);
         }
     }
     public void consultarContenidoAlfabeto(){
-        System.out.println("Alfabetos actuales:");
         imprimirNombresAlfabetos();
         System.out.println("Introduce el nombre del alfabeto que quieres consultar:");
         String nombreA = inOut.leerString(); //suponemos que lo escribe bien porque lo copia de la lista
-        System.out.println(nombreA);
         ArrayList<Character> Letras = ctrlDominio.consultarContenidoAlfabeto(nombreA);
-        for (Character letra : Letras) {
-            System.out.println(letra);
+        if(Letras == null) {
+            System.out.println("Este nombre de alfabeto no existe, debes entrar un alfabeto de la lista");
+            consultarContenidoAlfabeto();
+        }
+        else {
+            System.out.println(nombreA);
+            for (Character letra : Letras) {
+                System.out.println(letra);
+            }
         }
     }
 
 
     // ---------- FUNCIONES ASOCIACIONES TEXTOS ----------
-    public void agregarTextoPorTerminal() {
+    /*public void agregarTextoPorTerminal() {
         System.out.println("Introduce el nombre del texto:");
         String nombreTxt = inOut.leerString();
         System.out.println("Si desea entrar un texto escriba 1. En caso de querer entrar palabras con frecuencias escriba otro numero.");
@@ -123,8 +129,10 @@ public class DriverFP {
             System.out.println("El archivo no se encontró: " + nombreArchivo);
         } catch (IllegalArgumentException e) {
             System.out.println("El contenido del archivo no es válido: " + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-    }
+    }*/
     public void imprimirNombresTextos() {
         HashMap<String, Texto> listaTextos = ctrlDominio.getListaTextos();
         if (listaTextos.isEmpty()) {
@@ -271,7 +279,7 @@ public class DriverFP {
                     driver.agregarAlfabetoPorArchivo();
                     break;
                 }
-                case "3":
+                /*case "3":
                 case "TextoPorTerminal": {
                     driver.agregarTextoPorTerminal();
                     break;
@@ -280,7 +288,7 @@ public class DriverFP {
                 case "TextoPorArchivo": {
                     driver.agregarTextoPorArchivo();
                     break;
-                }
+                }*/
                 case "5":
                 case "CrearAsociacionTextos": {
                     driver.crearAsociacion();
