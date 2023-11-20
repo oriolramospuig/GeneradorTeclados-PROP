@@ -82,37 +82,33 @@ public class DriverFP {
     public void agregarTextoPorTerminal() {
         System.out.println("Introduce el nombre del texto:");
         String nombreTxt = inOut.leerString();
-        System.out.println("Si desea entrar un texto escriba 1. En caso de querer entrar palabars con frecuencias escriba 2.");
+        System.out.println("Si desea entrar un texto escriba 1. En caso de querer entrar palabras con frecuencias escriba otro numero.");
         Integer tipoTexto = inOut.leerEntero();
         if (tipoTexto == 1) {
             System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
             String texto = inOut.leerString();
             if (inOut.contenidoValido(texto)) {
-
+                HashMap<String, Integer> frecletras = inOut.leerPalabrasDeTerminal(texto);
+                boolean agregado = ctrlDominio.agregarTexto(nombreTxt, frecletras);
+                if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
+                else System.out.println("AGREGADO CON EXITO!");
             }
-        }
-        else if (tipoTexto == 2) {
-
-        }
-        else {
-
-        }
-
-        /*
-        ANTIC
-        System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
-        String frecuenciasLetras = inOut.leerString();
-        if (inOut.contenidoValido(frecuenciasLetras)) {
-            HashMap<String, Integer> frecletras = inOut.leerPalabrasDeTerminal(frecuenciasLetras);
-            boolean agregado = ctrlDominio.agregarTexto(nombreTxt, frecletras);
-            if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
-            else System.out.println("AGREGADO CON EXITO!");
+            else
+                System.out.println("El contenido introducido no es válido. Asegúrate de que sean palabras separadas por un espacio.");
         } else {
-            System.out.println("El contenido introducido no es válido. Asegúrate de que sean palabras separadas por un espacio.");
+            System.out.println("Introduce palabras y sus frecuencias. El formato debe ser palabra, espacio, numero de frecuencia, espacio,  siguiente palabra. (ejemplo: hola 5 mesa 3):");
+            String palabras = inOut.leerString();
+            if (inOut.contenidoValido(palabras)) {
+                HashMap<String, Integer> frecletras = inOut.leerPalabrasDeTerminal(palabras);
+                boolean agregado = ctrlDominio.agregarTexto(nombreTxt, frecletras);
+                if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
+                else System.out.println("AGREGADO CON EXITO!");
+            }
+            else
+                System.out.println("El contenido introducido no es válido. Asegúrate de que sean palabras separadas por un espacio.");
         }
-
-         */
     }
+    
     public void agregarTextoPorArchivo() {
         System.out.println("Introduce el nombre del archivo:");
         String nombreArchivo = inOut.leerString();
