@@ -10,12 +10,16 @@ public class CtrlTeclado {
 
     // ---------- PARÁMETROS ----------
     private ConjuntoTeclados teclados;
+
+    private CtrlTecladoQAP ctrlAlgoritmo;
     /**
      * Asigna un cjt de alfabetos vacío
      */
     public CtrlTeclado(){
         teclados = new ConjuntoTeclados();
+        ctrlAlgoritmo = new CtrlTecladoQAP();
     }
+
 
     // ---------- FUNCIONES TECLADO ----------
     public void setPuntuacion(String nomT, Float puntuacion) {
@@ -45,14 +49,15 @@ public class CtrlTeclado {
         return teclados;
     }
 
-    /*public boolean CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo, PairInt dimensiones) {
+    public int CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo) {
         if (!teclados.existeTeclado(nomT)) {
-            Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto, algoritmo, dimensiones);
+            ctrlAlgoritmo.crearTeclado(nomT, asociacionTextos, alfabeto, algoritmo);
+            Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto, algoritmo);
             teclados.agregarTeclado(nomT, teclado);
-            return true;
+            return 0;
         }
-        return false;
-    }*/
+        return -1;
+    }
 
     //Para la segunda entrega
     /*public String TecladoTieneAlfabetoVinculado(String nomT){

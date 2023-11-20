@@ -108,15 +108,15 @@ public class CtrlDominio {
 
 
     // ---------- FUNCIONES TECLADO ----------
-    /*public boolean agregarTeclado(String nomT, String nomA, String nomAT, Algoritmo algoritmo, PairInt dimensiones){
+    public int agregarTeclado(String nomT, String nomA, String nomAT, Algoritmo algoritmo){
         ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
         ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
         Alfabeto alfabeto = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA);
         AsociacionTextos asociacionTextos = ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionTextos(nomAT);
         ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
         ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
-        return ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, algoritmo, dimensiones);
-    }*/
+        return ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, algoritmo);
+    }
 
     public ArrayList<String> getListaTeclados(){
         return ctrlTeclado.getCjtTeclados().getNombresTeclados();

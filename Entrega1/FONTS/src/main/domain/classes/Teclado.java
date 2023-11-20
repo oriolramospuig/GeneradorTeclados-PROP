@@ -17,7 +17,7 @@ public class Teclado
     private float puntuacion;
 
     /** Algoritmo usado para el teclado */
-    //private Algoritmo algoritmo;
+    private Algoritmo algoritmo;
 
     /** Dimensiones del teclado */
     private PairInt dimensiones;
@@ -48,9 +48,9 @@ public class Teclado
         asociacionTextosVinculado = "";
     }
 
-    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto/*Algoritmo algoritmo*/, PairInt dimensiones) {
+    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo) {
         this.nombre = nombre;
-        //this.algoritmo = algoritmo;
+        this.algoritmo = algoritmo;
         this.dimensiones = dimensiones;
         alfabetoVinculado = alfabeto.getNombre();
         asociacionTextosVinculado = asociacionTextos.getNombre();

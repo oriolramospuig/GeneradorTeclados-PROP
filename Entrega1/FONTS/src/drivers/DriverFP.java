@@ -260,20 +260,19 @@ public class DriverFP {
                             //  else algoritmo = algoritmo.Alg2;
 
                             //Seleccionar dimensiones del teclado
-                            System.out.println("Posibles Dimensiones a escoger para el alfabeto " + nombreA + ":");
+                            /*System.out.println("Posibles Dimensiones a escoger para el alfabeto " + nombreA + ":");
                             HashMap<Integer, PairInt> combinacionesDimensiones = imprimirPosiblesDimensiones(nombreA);
                             DriverFP driver = new DriverFP();
                             System.out.println("Selecciona las dimensiones del teclado:");
                             Integer numDim = driver.inOut.leerEntero();
                             PairInt dimensiones = escogerDimensiones(combinacionesDimensiones, numDim);
-                            System.out.println("El teclado tendrá " + dimensiones.getPrimero() + " filas y " + dimensiones.getSegundo() + " columnas.");
+                            System.out.println("El teclado tendrá " + dimensiones.getPrimero() + " filas y " + dimensiones.getSegundo() + " columnas.");*/
 
 
                             //boolean agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP, PairIntEnum.EMPTY_PAIR);
-                            /*boolean agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP, dimensiones);
-                            if (!agregado) System.out.println("Ya existe el teclado " + nombreT);
+                            int agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP);
+                            if (agregado == -1) System.out.println("Ya existe el teclado " + nombreT);
                             else System.out.println("AGREGADO CON EXITO!");
-                            System.out.println("Teclado agregado con éxito: " + nombreT);*/
                         }
                         else System.out.println("No existe ninguna asociacion con ese nombre. Hay que seleccionar una asociacion de la lista");
                     }
@@ -410,7 +409,7 @@ public class DriverFP {
                 }*/
                 case "13":
                 case "PruebaQAP": {
-                    //   driver.imprimirPruebaQAP();
+                    // driver.agregarTeclado();
                     break;
                 }
                 default: {
