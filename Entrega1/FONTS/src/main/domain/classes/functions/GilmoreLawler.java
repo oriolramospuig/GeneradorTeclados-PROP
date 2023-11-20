@@ -17,7 +17,6 @@ public class GilmoreLawler {
     int glBound;
     int [][] matrizFrecuencias;
     int [][] matrizDistancias;
-    HashMap<Character, Integer> letraAIndice;
     private List<Integer> mejorSolucionParcial;
 
     ///// CONSTRUCTORA
@@ -28,16 +27,14 @@ public class GilmoreLawler {
         this.glBound = 0;
         this.matrizDistancias = new int[0][0];
         this.matrizFrecuencias = new int[0][0];
-        this.letraAIndice = new HashMap<Character, Integer>();
         this.mejorSolucionParcial = new ArrayList<>();
     }
-    public GilmoreLawler (int nf, int nc, int bound, int [][] mf, int [][] md, HashMap<Character, Integer> letraAIndice) {
+    public GilmoreLawler (int nf, int nc, int bound, int [][] mf, int [][] md) {
         this.filas = nf;
         this.columnas = nc;
         this.glBound = bound;
         this.matrizDistancias = md;
         this.matrizFrecuencias = mf;
-        this.letraAIndice = letraAIndice;
         this.mejorSolucionParcial = new ArrayList<>();
     }
 
@@ -53,7 +50,6 @@ public class GilmoreLawler {
 
     public int[][] getMatrizDistancias() { return matrizDistancias;}
 
-    public HashMap<Character,Integer> getLetraAIndice() {return letraAIndice;}
 
     // Método para obtener la mejor solución parcial como lista de índices
     public List<Integer> getMejorSolucionParcial() {
@@ -69,8 +65,7 @@ public class GilmoreLawler {
     public int gilmore_lawler() {
         System.out.println("GILMORE-LAWLER ejecutándose");
         System.out.println();
-        // Inicializar la cota con el peor escenario posible
-        //glBound = cotaINI;
+
         List<Integer> ind = new ArrayList<>();
         for (int i = 0; i < matrizFrecuencias.length; ++i) {
             ind.add(i);
@@ -84,7 +79,6 @@ public class GilmoreLawler {
             letrasNO.add(i);
         }
         boolean[] vis = new boolean[ind.size()];
-        // Llamar a DFS usando el orden de las teclas ordenadas por frecuencia
         dfs(0, ind, solucionParcial, 0, posicionesNoUsadas, letrasNO, vis); // Empezar DFS con profundidad 0 y cota 0
 
         System.out.println("GILMORE_LAWLER acabado; Cota final = " + glBound);
@@ -104,11 +98,9 @@ public class GilmoreLawler {
             }
         }
         else {
-            //System.out.println(profundidad + " posicion actual**********************************************************");
             for (int letra = 0; letra < filas*columnas; ++letra) {
                 if (solucionParcial.get(letra) == -1) {
                     solucionParcial.set(letra, profundidad); // Coloca la tecla en la posición libre
-                    //System.out.println(letra + " Letra actual************************************");
 
                     Integer x = letra;
                     letNO.remove(x);
@@ -129,62 +121,20 @@ public class GilmoreLawler {
                 }
 
             }
-
-
-
-            // Probar colocando la siguiente tecla en la posición correspondiente al orden dado
-            //int indiceTeclaActual = ind.get(profundidad);
-            /*for (int posicion = 0; posicion < filas * columnas; posicion++) {
-                if (solucionParcial.get(posicion) == -1) { // Si la posición está libre
-                    solucionParcial.set(posicion, indiceTeclaActual); // Coloca la tecla en la posición libre
-                      System.out.println(indiceTeclaActual + " Indice actual******************************************************");
-                      System.out.println(posicion + " posicion actual*************************************************************");
-                     Integer x = indiceTeclaActual;
-                     letNO.remove(x);
-                     Integer y = posicion;
-                     posNO.remove(y);
-                     /*System.out.println("LETNO");
-                     for (int i = 0; i < letNO.size(); ++i) {
-                         System.out.print(letNO.get(i) + " ");
-                     }
-                     System.out.println();
-                    System.out.println("POSNO");
-                    for (int i = 0; i < posNO.size(); ++i) {
-                        System.out.print(posNO.get(i) + " ");
-                    }
-                    System.out.println();
-
-                    int nuevaCota = cotaActual + calcularContribucionC1C2(solucionParcial, posicion, indiceTeclaActual, posNO, letNO);
-                    //System.out.println("Nueva cota = " + nuevaCota);
-                    //System.out.println("Contribución C1C2 = " + (nuevaCota-cotaActual));
-                    //System.out.println("Solucion parcial = " + solucionParcial);
-                    if (nuevaCota < glBound) {
-                        int cotaAnt = cotaActual;
-                        cotaActual = calcularCotaPermutacionAct(solucionParcial);
-                        dfs(profundidad + 1, ind, solucionParcial, cotaActual, posNO, letNO);
-                        solucionParcial.set(posicion, -1); // Limpia la posición para el próximo intento
-                        cotaActual = cotaAnt;
-                    }
-                    letNO.add(indiceTeclaActual);
-                    posNO.add(posicion);
-
-                }
-            }*/
         }
     }
 
 
     // Método para calcular la cota de una permutación específica
-    private int calcularCotaPermutacion(List<Integer> permutacionActual) {
+    private int calcularCotaPermutacion(List<Integer> permutacion) {
         int cota = 0;
         // Suponiendo que permutacionActual.size() == filas * columnas
-        for (int i = 0; i < permutacionActual.size(); i++) {
-            for (int j = i + 1; j < permutacionActual.size(); j++) { // Comenzar con j = i + 1 para evitar duplicados
+        for (int i = 0; i < permutacion.size(); i++) {
+            for (int j = i + 1; j < permutacion.size(); j++) { // Comenzar con j = i + 1 para evitar duplicados
                 // Aquí se considera cada par de índices solo una vez, i con j, donde i < j
-                int distanciaIJ = matrizDistancias[permutacionActual.get(i)][permutacionActual.get(j)];
+                int distanciaIJ = matrizDistancias[permutacion.get(i)][permutacion.get(j)];
                 int frecuenciaIJ = matrizFrecuencias[i][j]; // La frecuencia de i a j es la misma que de j a i
 
-                // Sumar el costo de la distancia multiplicado por la frecuencia de i a j
                 cota += (distanciaIJ * frecuenciaIJ);
             }
         }
@@ -209,7 +159,7 @@ public class GilmoreLawler {
     }
 
 
-    private int [][] calcularContribucionC1(int indiceTeclaActual, int posicion, List<Integer> solucionParcial, List<Integer> posNO, List<Integer> letNO) {
+    private int [][] calcularContribucionC1(List<Integer> solucionParcial, List<Integer> posNO, List<Integer> letNO) {
         int [][] c1 = new int[posNO.size()][posNO.size()];
         for (int i = 0; i < letNO.size(); ++i) {
             for (int j = 0; j < posNO.size(); ++j) {
@@ -224,7 +174,7 @@ public class GilmoreLawler {
 
     }
 
-    private int[][] calcularContribucionC2(int indiceTeclaActual, int posicion, List<Integer> solucionParcial, List<Integer> posNO, List<Integer> letNO) {
+    private int[][] calcularContribucionC2(List<Integer> posNO, List<Integer> letNO) {
 
         int [][] c2 = new int[posNO.size()][posNO.size()];
 
@@ -253,44 +203,17 @@ public class GilmoreLawler {
                     contribucionC2 += traficoNoEmplazado.get(k) * distanciaNoOcupada.get(k);
                 }
                 c2[i][j] = contribucionC2;
-                //if (i == 3 && j == 5) {
-                /*    System.out.println("T = ");
-                    System.out.println();
-                    for (int k = 0; k < traficoNoEmplazado.size(); ++k) {
-                        System.out.println(traficoNoEmplazado.get(k));
-                    }
-                    System.out.println();
-                    System.out.println("D = ");
-                    System.out.println();
-                    for (int k = 0; k < distanciaNoOcupada.size(); ++k) {
-                        System.out.println(distanciaNoOcupada.get(k));
-                    }
-                    System.out.println("Contribucion i = "+ i + " j = " + j + " = " + contribucionC2);
-                //}*/
-
             }
         }
-        /*System.out.println("Matriz C2 = ");
-        System.out.println();
-        for (int i = 0; i < c2.length; ++i) {
-            for (int j = 0; j < c2.length; ++j) {
-                System.out.println(c2[i][j]);
-            }
-            System.out.println();
-        }
-
-         */
-
-
         return c2;
     }
 
     // Función que calcula la contribución de C1 y C2
     private int calcularContribucionC1C2(List<Integer> solucionParcial, int posicion, int indiceTeclaActual, List<Integer> posNO, List<Integer> letNO) {
-        int [][] c1 = calcularContribucionC1(indiceTeclaActual, posicion, solucionParcial, posNO, letNO);
-        int [][] c2 = calcularContribucionC2(indiceTeclaActual, posicion, solucionParcial, posNO, letNO);
+        int [][] c1 = calcularContribucionC1(solucionParcial, posNO, letNO);
+        int [][] c2 = calcularContribucionC2(posNO, letNO);
         int [][] c1c2 = Matrices.sumaMatrices(c1,c2);
-        //if (c1c2.length != 0) return HungarianAlgorithm.Hungarian(c1c2);
+        //return HungarianAlgorithm.Hungarian(c1c2);
         return minimos(c1c2);
     }
 
@@ -301,16 +224,7 @@ public class GilmoreLawler {
             int posicion = mejorSolucionParcial.get(tecla);
             System.out.println("Posición " + posicion + ": Elemento " + tecla + " | ");
         }
-        System.out.println(); // Finalizar con una nueva línea
-    }
-
-    private char getTeclaPorIndice(int indiceTecla) {
-        for (Map.Entry<Character, Integer> entry : letraAIndice.entrySet()) {
-            if (entry.getValue().equals(indiceTecla)) {
-                return entry.getKey();
-            }
-        }
-        throw new IllegalArgumentException("Índice de tecla no encontrado: " + indiceTecla);
+        System.out.println();
     }
 
     public int minimos(int [][] c1c2) {
