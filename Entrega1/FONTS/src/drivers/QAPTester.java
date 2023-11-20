@@ -58,7 +58,8 @@ public class QAPTester {
                     ncolumnas = nfilas + 1;
                 }*/
                 System.out.println("NFILAS: " + nfilas + " NCOLS: " + ncolumnas);
-                QAP qap = new QAP(nfilas,ncolumnas,matrizFrecuencias,matrizDistancias);
+                List<Integer> sol = new ArrayList<>();
+                QAP qap = new QAP(nfilas,ncolumnas,matrizFrecuencias,matrizDistancias, sol);
 
 
             } catch (FileNotFoundException e) {
@@ -110,7 +111,8 @@ public class QAPTester {
                     ncolumnas = nfilas + 1;
                 }
                 System.out.println("NFILAS: " + nfilas + " NCOLS: " + ncolumnas);
-                QAP qap = new QAP(nfilas,ncolumnas,matrizFrecuencias,matrizDistancias);
+                List<Integer> sol = new ArrayList<>();
+                QAP qap = new QAP(nfilas,ncolumnas,matrizFrecuencias,matrizDistancias, sol);
             }
         }
 }

@@ -15,11 +15,12 @@ public class QAP {
     private int n;
     private int[][] matrizFrecuencias;
     private int[][] matrizDistancias;
+    private List<Integer> sol;
     private int glBound;
 
 
     /*Creadora nova, la que volem fer servir*/
-    public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias) {
+    public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias, List<Integer> sol) {
         this.filas = nf;
         this.columnas = nc;
         this.n = nf*nc;
@@ -34,6 +35,7 @@ public class QAP {
 
         int [][] indices = calcularMejorAsignacionAleatoria(ind, 100);
         this.teclado = indices;
+        this.sol = sol;
         this.glBound = calculoPuntuacion(indices);
         imprimirTeclado();
         System.out.println("Puntuacion inicial = " + glBound);
@@ -172,6 +174,7 @@ public class QAP {
 
         GilmoreLawler gilmoreLawler = new GilmoreLawler(filas, columnas, glBound, matrizFrecuencias, matrizDistancias);
         gilmoreLawler.gilmore_lawler();
+        sol = gilmoreLawler.getMejorSolucionParcial();
 
     }
 }
