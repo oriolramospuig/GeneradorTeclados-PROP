@@ -66,61 +66,6 @@ public class QAPTester {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-/*
-
-            File file = new File(pathInput);
-
-            if(!file.exists()) System.out.println("Carpeta no existe");
-            else{
-                System.out.println("BIEN");
-                if(file.isFile()){
-                    System.out.println("es fichero");
-                    try {
-                        System.out.println("FICHERO:" + file.getName());
-                        cargarDatos(file.getPath());
-                    } catch (IOException e) {
-                        System.out.println("Error al leer el archivo: " + file.getPath());
-                        e.printStackTrace();
-                    }
-                }
-                System.out.println("fin");
-
-                /*File[] listOfFiles = folder.listFiles();
-                if(listOfFiles == null) System.out.println("nooooo");
-
-                for (File file : listOfFiles) {
-                    if (file.isFile()) {
-                        try {
-                            System.out.println("FICHERO:" + file.getName());
-                            cargarDatos(file.getPath());
-                        } catch (IOException e) {
-                            System.out.println("Error al leer el archivo: " + file.getPath());
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }*/
-
-
-
-
-            /*String pathToFicheros = "lala.txt"; // Asegúrate de establecer la ruta correcta.
-            try {
-                File folder = new File(pathToFicheros);
-                File[] listOfFiles = folder.listFiles();
-
-                for (File file : listOfFiles) {
-                    if (file.isFile()) {
-                        try {
-                            cargarDatos(file.getPath());
-                        } catch (IOException e) {
-                            System.out.println("Error al leer el archivo: " + file.getPath());
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }*/
-
         }
 
         public static void cargarDatos(String filePath) throws IOException {
@@ -166,14 +111,6 @@ public class QAPTester {
                 }
                 System.out.println("NFILAS: " + nfilas + " NCOLS: " + ncolumnas);
                 QAP qap = new QAP(nfilas,ncolumnas,matrizFrecuencias,matrizDistancias);
-                // Aquí puedes llamar a tu algoritmo con las matrices cargadas
-                // Por ejemplo: resolverQAP(matrizFrecuencias, matrizDistancias);
             }
         }
-
-        // Implementa tu algoritmo aquí
-        public static void resolverQAP(int[][] matrizFrecuencias, int[][] matrizDistancias) {
-            // ...
-        }
-
 }

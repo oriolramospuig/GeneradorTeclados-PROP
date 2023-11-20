@@ -30,23 +30,7 @@ public class Teclado
 
 
     // ---------- CONSTRUCTORES ----------
-    public Teclado() {
-        nombre = "";
-        puntuacion = 0 ;        //hay que poner valor nulo?
-        algoritmo = Algoritmo.QAP;
-        dimensiones = new PairInt(0,0);
-        alfabetoVinculado = "";
-        asociacionTextosVinculado = "";
-    }
 
-    public Teclado(String nombre) {
-        this.nombre = nombre;
-        puntuacion = 0;
-        algoritmo = Algoritmo.QAP;
-        dimensiones =  new PairInt(0,0);
-        alfabetoVinculado = "";
-        asociacionTextosVinculado = "";
-    }
 
     public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo, PairInt dimensiones) {
         this.nombre = nombre;
@@ -78,10 +62,10 @@ public class Teclado
      * Retorna el nombre del algoritmo usado para generar el teclado
      * @return String : Nombre del algoritmo usado para generar el teclado
      */
-    public String getAlgoritmo() {
+    /*public String getAlgoritmo() {
         if (algoritmo == Algoritmo.QAP) return "QAP";
         else return "Alg2";
-    }
+    }*/
 
     /**
      * Retorna las dimensiones del teclado generado
