@@ -91,7 +91,7 @@ public class InOut {
         ArrayList<Character> caracteres = new ArrayList<>();
 
         BufferedReader br = new BufferedReader(new FileReader(rutaArchivo));
-        String line = br.readLine();
+        String line;
         String texto = "";
         while ((line = br.readLine()) != null) {
             texto += line;
