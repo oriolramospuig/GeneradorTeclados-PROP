@@ -2,6 +2,7 @@ package main.domain.classes.functions;
 
 import main.domain.classes.types.PairFrequency;
 
+import javax.sound.midi.SysexMessage;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -65,29 +66,26 @@ public class GilmoreLawler {
     }
 
     /// FUNCIONES PRINCIPALES
-    public int gilmore_lawler(List<Character> indices, int cotaINI) {
+    public int gilmore_lawler() {
         System.out.println("GILMORE-LAWLER ejecutándose");
         System.out.println();
         // Inicializar la cota con el peor escenario posible
-        glBound = cotaINI;
-
-        // Convertir la lista de teclas a una lista de índices basados en el orden dado por 'teclas'
-        // crec que no caldra
-        List<Integer> indicesOrdenados = indices.stream()
-                .map(letraAIndice::get)
-                .collect(Collectors.toList());
-
+        //glBound = cotaINI;
+        List<Integer> ind = new ArrayList<>();
+        for (int i = 0; i < matrizFrecuencias.length; ++i) {
+            ind.add(i);
+        }
         // Inicializar la solución parcial como una lista de índices en lugar de caracteres
         List<Integer> solucionParcial = new ArrayList<>(Collections.nCopies(filas * columnas, -1));
         List<Integer> posicionesNoUsadas = new ArrayList<>();
         List<Integer> letrasNO = new ArrayList<>();
-        for (int i = 0; i < indices.size(); ++i) {
+        for (int i = 0; i < ind.size(); ++i) {
             posicionesNoUsadas.add(i);
             letrasNO.add(i);
         }
-
+        boolean[] vis = new boolean[ind.size()];
         // Llamar a DFS usando el orden de las teclas ordenadas por frecuencia
-        dfs(0, indicesOrdenados, solucionParcial, 0, posicionesNoUsadas, letrasNO); // Empezar DFS con profundidad 0 y cota 0
+        dfs(0, ind, solucionParcial, 0, posicionesNoUsadas, letrasNO, vis); // Empezar DFS con profundidad 0 y cota 0
 
         System.out.println("GILMORE_LAWLER acabado; Cota final = " + glBound);
         System.out.println();
@@ -95,7 +93,7 @@ public class GilmoreLawler {
         return glBound;
     }
 
-    private void dfs(int profundidad, List<Integer> indicesOrdenados, List<Integer> solucionParcial, int cotaActual, List<Integer> posNO, List<Integer> letNO) {
+    private void dfs(int profundidad, List<Integer> ind, List<Integer> solucionParcial, int cotaActual, List<Integer> posNO, List<Integer> letNO, boolean[] vis) {
         if (profundidad == filas * columnas) {
             // Se ha encontrado una solución completa
             int cotaPermutacion = calcularCotaPermutacion(solucionParcial);
@@ -106,17 +104,56 @@ public class GilmoreLawler {
             }
         }
         else {
+            //System.out.println(profundidad + " posicion actual**********************************************************");
+            for (int letra = 0; letra < filas*columnas; ++letra) {
+                if (solucionParcial.get(letra) == -1) {
+                    solucionParcial.set(letra, profundidad); // Coloca la tecla en la posición libre
+                    //System.out.println(letra + " Letra actual************************************");
+
+                    Integer x = letra;
+                    letNO.remove(x);
+                    Integer y = profundidad;
+                    posNO.remove(y);
+
+                    int nuevaCota = cotaActual + calcularContribucionC1C2(solucionParcial, profundidad, letra, posNO, letNO);
+
+                    if (nuevaCota < glBound) {
+                        int cotaAnt = cotaActual;
+                        cotaActual = calcularCotaPermutacionAct(solucionParcial);
+                        dfs(profundidad + 1, ind, solucionParcial, cotaActual, posNO, letNO, vis);
+                        cotaActual = cotaAnt;
+                    }
+                    solucionParcial.set(letra, -1); // Limpia la posición para el próximo intento
+                    letNO.add(letra);
+                    posNO.add(profundidad);
+                }
+
+            }
+
+
+
             // Probar colocando la siguiente tecla en la posición correspondiente al orden dado
-            int indiceTeclaActual = indicesOrdenados.get(profundidad);
-            for (int posicion = 0; posicion < filas * columnas; posicion++) {
+            //int indiceTeclaActual = ind.get(profundidad);
+            /*for (int posicion = 0; posicion < filas * columnas; posicion++) {
                 if (solucionParcial.get(posicion) == -1) { // Si la posición está libre
                     solucionParcial.set(posicion, indiceTeclaActual); // Coloca la tecla en la posición libre
-                     // System.out.println(indiceTeclaActual + " Indice actual");
-                     // System.out.println(posicion + " posicion actual");
+                      System.out.println(indiceTeclaActual + " Indice actual******************************************************");
+                      System.out.println(posicion + " posicion actual*************************************************************");
                      Integer x = indiceTeclaActual;
                      letNO.remove(x);
                      Integer y = posicion;
                      posNO.remove(y);
+                     /*System.out.println("LETNO");
+                     for (int i = 0; i < letNO.size(); ++i) {
+                         System.out.print(letNO.get(i) + " ");
+                     }
+                     System.out.println();
+                    System.out.println("POSNO");
+                    for (int i = 0; i < posNO.size(); ++i) {
+                        System.out.print(posNO.get(i) + " ");
+                    }
+                    System.out.println();
+
                     int nuevaCota = cotaActual + calcularContribucionC1C2(solucionParcial, posicion, indiceTeclaActual, posNO, letNO);
                     //System.out.println("Nueva cota = " + nuevaCota);
                     //System.out.println("Contribución C1C2 = " + (nuevaCota-cotaActual));
@@ -124,7 +161,7 @@ public class GilmoreLawler {
                     if (nuevaCota < glBound) {
                         int cotaAnt = cotaActual;
                         cotaActual = calcularCotaPermutacionAct(solucionParcial);
-                        dfs(profundidad + 1, indicesOrdenados, solucionParcial, cotaActual, posNO, letNO);
+                        dfs(profundidad + 1, ind, solucionParcial, cotaActual, posNO, letNO);
                         solucionParcial.set(posicion, -1); // Limpia la posición para el próximo intento
                         cotaActual = cotaAnt;
                     }
@@ -132,7 +169,7 @@ public class GilmoreLawler {
                     posNO.add(posicion);
 
                 }
-            }
+            }*/
         }
     }
 
@@ -192,7 +229,9 @@ public class GilmoreLawler {
         int [][] c2 = new int[posNO.size()][posNO.size()];
 
         for (int i = 0; i < letNO.size(); ++i) {
+            //System.out.println("letra " + letNO.get(i));
             for (int j = 0; j < posNO.size(); ++j) {
+                //System.out.println("posicion " + posNO.get(j));
                 //calculamos T
                 List<Integer> traficoNoEmplazado = new ArrayList<>();
                 for (int k = 0; k < letNO.size(); ++k) {
@@ -201,6 +240,7 @@ public class GilmoreLawler {
                 //calculamos d
                 List<Integer> distanciaNoOcupada = new ArrayList<>();
                 for (int k = 0; k < posNO.size(); ++k) {
+                  //  System.out.println("posicion k " + posNO.get(k));
                     if (!posNO.get(k).equals(posNO.get(j))) distanciaNoOcupada.add(matrizDistancias[posNO.get(j)][posNO.get(k)]);
                 }
 
@@ -213,9 +253,33 @@ public class GilmoreLawler {
                     contribucionC2 += traficoNoEmplazado.get(k) * distanciaNoOcupada.get(k);
                 }
                 c2[i][j] = contribucionC2;
+                //if (i == 3 && j == 5) {
+                /*    System.out.println("T = ");
+                    System.out.println();
+                    for (int k = 0; k < traficoNoEmplazado.size(); ++k) {
+                        System.out.println(traficoNoEmplazado.get(k));
+                    }
+                    System.out.println();
+                    System.out.println("D = ");
+                    System.out.println();
+                    for (int k = 0; k < distanciaNoOcupada.size(); ++k) {
+                        System.out.println(distanciaNoOcupada.get(k));
+                    }
+                    System.out.println("Contribucion i = "+ i + " j = " + j + " = " + contribucionC2);
+                //}*/
+
             }
         }
+        /*System.out.println("Matriz C2 = ");
+        System.out.println();
+        for (int i = 0; i < c2.length; ++i) {
+            for (int j = 0; j < c2.length; ++j) {
+                System.out.println(c2[i][j]);
+            }
+            System.out.println();
+        }
 
+         */
 
 
         return c2;
@@ -233,9 +297,9 @@ public class GilmoreLawler {
     public void imprimirMejorSolucionParcial() {
         // Suponiendo que 'mejorSolucionParcial' es una lista de índices que representa la mejor solución actual
         System.out.print("La mejor solución parcial es: ");
-        for (int posicion = 0; posicion < mejorSolucionParcial.size(); posicion++) {
-            char tecla = getTeclaPorIndice(mejorSolucionParcial.get(posicion));
-            System.out.print("Posición " + posicion + ": Tecla " + tecla + " | ");
+        for (int tecla = 0; tecla < mejorSolucionParcial.size(); tecla++) {
+            int posicion = mejorSolucionParcial.get(tecla);
+            System.out.println("Posición " + posicion + ": Elemento " + tecla + " | ");
         }
         System.out.println(); // Finalizar con una nueva línea
     }
