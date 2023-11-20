@@ -99,8 +99,8 @@ public class DriverFP {
             System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
             String texto = inOut.leerString();
             if (inOut.contenidoValido(texto)) {
-                HashMap<String, Integer> frecletras = inOut.leerPalabrasDeTerminal(texto);
-                boolean agregado = ctrlDominio.agregarTexto(nombreTxt, frecletras);
+                HashMap<String, Integer> frecletras = tratarEntradaPalabras(texto);     //falta implementar
+                boolean agregado = ctrlDominio.agregarTextoPalabras(nombreTxt, texto, frecletras);      //falta implementar
                 if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
                 else System.out.println("AGREGADO CON EXITO!");
             }
