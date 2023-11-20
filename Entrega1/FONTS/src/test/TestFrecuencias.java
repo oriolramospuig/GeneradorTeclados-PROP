@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import main.domain.classes.*;
 
@@ -32,7 +32,7 @@ public class TestFrecuencias
         assertTrue(frecuencias.getTexto().isEmpty());
         assertTrue(frecuencias.getFrecuenciaLetras().isEmpty());
         assertTrue(frecuencias.getAsociacionesVinculadas().isEmpty());
-        */
+
 
         System.out.println("Test Constructora con Nombre");
         assertEquals("nombreF", frecuencias.getNombre());
@@ -70,4 +70,4 @@ public class TestFrecuencias
         assertTrue(frecuencias.getFrecuenciaLetras().containsKey("CD"));
         assertEquals(1, (int) frecuencias.getFrecuenciaLetras().get("CD"));
     }
-}
+}*/

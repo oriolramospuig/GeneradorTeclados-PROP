@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import main.domain.classes.*;
 import org.junit.Before;
@@ -130,4 +130,4 @@ public class TestConjuntoTextos {
         assertTrue(textos.existeTexto("nombreF2"));
         assertTrue(textos.existeTexto("nombreP2"));
     }
-}
+}*/

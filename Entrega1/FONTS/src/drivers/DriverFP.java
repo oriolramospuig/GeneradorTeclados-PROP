@@ -34,7 +34,7 @@ public class DriverFP {
         if (inOut.contenidoValido(entradaCaracteres)) {
             ArrayList<Character> caracteres = inOut.leerCaracteresDeTerminal(entradaCaracteres);
             boolean agregado = ctrlDominio.agregarAlfabeto(nombreA, caracteres);
-            if (!agregado) System.out.println("Ya existe el alfabeto " + nombreA);
+            if (!agregado) System.out.println("Ya existe el alfabeto " + nombreA + "introduce un nombre nuevo");
             else System.out.println("AGREGADO CON EXITO!");
         } else {
             System.out.println("El contenido introducido no es válido. Asegúrate de que sean caracteres separados por un espacio.");
@@ -64,6 +64,7 @@ public class DriverFP {
             System.out.println("No hay alfabetos para mostrar.");
             return;
         }
+        System.out.println("Alfabetos actuales:");
         for (HashMap.Entry<String, Alfabeto> entry : alfabetos.entrySet()) {
             String nombre = entry.getKey();
             System.out.println(nombre);
@@ -71,14 +72,19 @@ public class DriverFP {
     }
 
     public void consultarContenidoAlfabeto(){
-        System.out.println("Alfabetos actuales:");
         imprimirNombresAlfabetos();
         System.out.println("Introduce el nombre del alfabeto que quieres consultar:");
         String nombreA = inOut.leerString(); //suponemos que lo escribe bien porque lo copia de la lista
-        System.out.println(nombreA);
         ArrayList<Character> Letras = ctrlDominio.consultarContenidoAlfabeto(nombreA);
-        for (Character letra : Letras) {
-            System.out.println(letra);
+        if(Letras == null) {
+            System.out.println("Este nombre de alfabeto no existe, debes entrar un alfabeto de la lista");
+            consultarContenidoAlfabeto();
+        }
+        else {
+            System.out.println(nombreA);
+            for (Character letra : Letras) {
+                System.out.println(letra);
+            }
         }
     }
 
@@ -93,8 +99,8 @@ public class DriverFP {
             System.out.println("Introduce las palabras del texto separadas por espacio (ejemplo: hola que tal...):");
             String texto = inOut.leerString();
             if (inOut.contenidoValido(texto)) {
-                HashMap<String, Integer> frecletras = tratarEntradaPalabras(texto);
-                boolean agregado = ctrlDominio.agregarTextoPalabras(nombreTxt, texto, frecletras);
+                HashMap<String, Integer> frecletras = inOut.leerPalabrasDeTerminal(texto);
+                boolean agregado = ctrlDominio.agregarTexto(nombreTxt, frecletras);
                 if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
                 else System.out.println("AGREGADO CON EXITO!");
             }
@@ -145,7 +151,7 @@ public class DriverFP {
 
         return frecuenciaLetras;
     }
-    
+
     public void agregarTextoPorArchivo() {              //MISMA ESTRUCTURA QUE POR ARCHIVO
         System.out.println("Introduce el nombre del archivo:");
         String nombreArchivo = inOut.leerString();
@@ -314,7 +320,7 @@ public class DriverFP {
                     driver.agregarAlfabetoPorArchivo();
                     break;
                 }
-                case "3":
+                /*case "3":
                 case "TextoPorTerminal": {
                     driver.agregarTextoPorTerminal();
                     break;
@@ -323,7 +329,7 @@ public class DriverFP {
                 case "TextoPorArchivo": {
                     driver.agregarTextoPorArchivo();
                     break;
-                }
+                }*/
                 case "5":
                 case "CrearAsociacionTextos": {
                     driver.crearAsociacion();

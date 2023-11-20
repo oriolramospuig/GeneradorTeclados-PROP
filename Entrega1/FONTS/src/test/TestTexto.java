@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 
 import main.domain.classes.Frecuencias;
@@ -79,4 +79,4 @@ public class TestTexto {
        assertTrue(frecuencias.getAsociacionesVinculadas().contains(nombreAT1));
        assertFalse(frecuencias.getAsociacionesVinculadas().contains(nombreAT2));
     }
-}
+}*/

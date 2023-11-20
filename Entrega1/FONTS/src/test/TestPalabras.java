@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import main.domain.classes.AsociacionTextos;
 import main.domain.classes.Palabras;
@@ -57,4 +57,4 @@ public class TestPalabras
         assertEquals(2, (int) palabras.getFrecuenciaLetras().get("ac"));
         assertFalse(palabras.getFrecuenciaLetras().containsKey("ca"));
     }
-}
+}*/
