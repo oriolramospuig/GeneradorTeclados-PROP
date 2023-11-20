@@ -152,7 +152,7 @@ public class DriverTexto {
             System.out.println("Este alfabeto tiene teclados vinculados. Estas seguro/a de que quieres borrarlo y tambien borrar sus teclados asociados?");
             String respuesta = inOut.leerString();
             if (respuesta.equals("si") || respuesta.equals("SI") || respuesta.equals("Si")) {
-                ctrlDominio.borrarAlfabeto(nombre);
+                //ctrlDominio.borrarAlfabeto(nombre);
                 System.out.println("BORRADO CON EXITO!");
 
             } else System.out.println("No se ha borrado el alfabeto " + nombre);

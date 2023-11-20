@@ -124,7 +124,7 @@ public class DriverTeclado {
         System.out.println("Introduce el nombre del teclado que quieres borrar:");
         String nombre = inOut.leerString(); // hay que comprobar que el nombre esta bien?
 
-        ctrlDominio.borrarAlfabeto(nombre);
+        //ctrlDominio.borrarAlfabeto(nombre);
         System.out.println("BORRADO CON EXITO!");
     }
 }*/
