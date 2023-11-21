@@ -12,9 +12,17 @@ import java.util.HashMap;
 public class InOut {
     private Scanner scanner;
 
+    /**
+     * Constructor de la clase InOut. Inicializa un objeto Scanner para la entrada estándar.
+     */
     public InOut() {
         this.scanner = new Scanner(System.in);
     }
+
+    /**
+     * Lee una línea de texto desde la entrada estándar.
+     * @return La línea de texto leída o null si no hay más elementos para leer.
+     */
     public String leerString() {
         String linea;
         try{
@@ -25,6 +33,11 @@ public class InOut {
             return null;
         }
     }
+
+    /**
+     * Lee un número entero desde la entrada estándar.
+     * @return El número entero leído o -1 si la entrada no es válida como entero.
+     */
     public int leerEntero() {
         if (scanner.hasNextInt()) {
             int numero = scanner.nextInt();
@@ -36,6 +49,12 @@ public class InOut {
         }
     }
 
+    /**
+     * Convierte una cadena de texto en una lista de caracteres.
+     *
+     * @param line La cadena de texto que se convertirá.
+     * @return Una lista de caracteres que representa la cadena de texto.
+     */
     public ArrayList<Character> leerCaracteresDeTerminal(String line) {
         ArrayList<Character> caracteres = new ArrayList<>();
         for (char c : line.toCharArray()) {
@@ -44,6 +63,14 @@ public class InOut {
         return caracteres;
     }
 
+    /**
+     * Lee caracteres de un archivo y los almacena en una lista.
+     *
+     * @param nombreArchivo El nombre del archivo que se va a leer.
+     * @return Una lista de caracteres leídos desde el archivo.
+     * @throws IOException Si ocurre un error al leer el archivo.
+     * @throws IllegalArgumentException Si el contenido del archivo no es válido.
+     */
     public ArrayList<Character> leerCaracteresDeArchivo(String nombreArchivo) throws IOException {
         String currentDirectory = System.getProperty("user.dir");
         // Ruta absoluta del archivo
@@ -65,6 +92,13 @@ public class InOut {
         return caracteres;
     }
 
+    /**
+     * Lee líneas de texto que contienen palabras y sus frecuencias y almacena la información en un HashMap.
+     *
+     * @param n Número de líneas a leer.
+     * @return Un HashMap que mapea palabras a sus frecuencias.
+     * @throws NumberFormatException Si la frecuencia no es un número válido.
+     */
     public HashMap<String,Integer> leerTextoFrecuenciasPalabras(int n) {
         HashMap<String, Integer> frecuenciaPalabras = new HashMap<>();
         String linea;
@@ -84,6 +118,13 @@ public class InOut {
         return frecuenciaPalabras;
     }
 
+    /**
+     * Lee todas las líneas de un archivo y concatena el contenido en un solo String.
+     *
+     * @param nombreArchivo El nombre del archivo que se va a leer.
+     * @return Un String que contiene todas las líneas del archivo concatenadas.
+     * @throws IOException Si ocurre un error al leer el archivo.
+     */
     public String leerPalabrasDeArchivo(String nombreArchivo) throws IOException {
         String currentDirectory = System.getProperty("user.dir");
         // Ruta absoluta del archivo
@@ -120,6 +161,9 @@ public class InOut {
         return true; // La entrada es válida si todos los segmentos contienen solo un carácter.
     }
 
+    /**
+     * Cierra el objeto Scanner utilizado para la entrada estándar si aún no ha sido cerrado.
+     */
     public void cerrarScanner() {
         if (scanner != null) {
             scanner.close();
