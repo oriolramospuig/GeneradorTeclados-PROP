@@ -4,9 +4,9 @@ import main.domain.classes.types.PairFrequency;
 
 import java.util.*;
 
-/** Clase que a partir de las matrices de frecuencias y de distancias calcula una solución inicial y
+/**
+ * Clase que a partir de las matrices de frecuencias y de distancias calcula una solución inicial y
  * llama al algoritmo de gilmore-lawler con una cota inicial
- * @author X (X@estudiantat.upc.edu)
  */
 public class QAP {
     private int[][] teclado; // La matriz del teclado
@@ -19,7 +19,15 @@ public class QAP {
     private int glBound;
 
 
-    /*Creadora nova, la que volem fer servir*/
+    /**
+     * Constructor de la clase QAP (Quadratic Assignment Problem).
+     *
+     * @param nf                Número de filas.
+     * @param nc                Número de columnas.
+     * @param matrizFrecuencias Matriz de frecuencias.
+     * @param matrizDistancias  Matriz de distancias.
+     * @param sol               Lista de enteros que representa una solución inicial.
+     */
     public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias, List<Integer> sol) {
         this.filas = nf;
         this.columnas = nc;
@@ -42,26 +50,60 @@ public class QAP {
 
         calculo();
     }
-    /*getter que potser no calen pero abans els feia servir*/
+
+    /**
+     * Obtiene el número de filas de la instancia actual.
+     *
+     * @return El número de filas.
+     */
     public int getFilas() {
         return this.filas;
     }
+
+    /**
+     * Obtiene el número de columna de la instancia actual.
+     *
+     * @return El número de columnas.
+     */
     public int getColumnas() {
         return this.columnas;
     }
 
+    /**
+     * Obtiene el número de filas*columnas de la instancia actual.
+     *
+     * @return El número de filas*columnas.
+     */
     public int getN() {
         return this.n;
     }
+
+    /**
+     * Obtiene la cota mínima de la instancia actual.
+     *
+     * @return La cota mínima.
+     */
     public int getGlBound() {
         return this.glBound;
     }
+
+    /**
+     * Obtiene una copia de la matriz de frecuencias de la instancia actual.
+     *
+     * @return Una copia de la matriz de frecuencias.
+     */
     public int[][] getMatrizFrecuencias() {
         // Devuelve una copia para evitar la modificación directa de la matriz
         return Arrays.stream(this.matrizFrecuencias)
                 .map(int[]::clone)
                 .toArray(int[][]::new);
     }
+
+    /**
+     * Obtiene una copia de la matriz de distancias de la instancia actual.
+     *
+     * @return Una copia de la matriz de distancias.
+     */
     public int[][] getMatrizDistancias() {
         // Devuelve una copia para evitar la modificación directa de la matriz
         return Arrays.stream(this.matrizDistancias)
@@ -69,6 +111,14 @@ public class QAP {
                 .toArray(int[][]::new);
     }
 
+    /**
+     * Calcula la mejor asignación aleatoria de teclas entre las N generadas.
+     *
+     * @param teclas Lista de teclas a asignar aleatoriamente.
+     * @param N Número de asignaciones aleatorias a generar y evaluar.
+     * @return La mejor asignación aleatoria de teclas.
+     * @throws IllegalArgumentException Si el número de teclas no coincide con el tamaño del teclado.
+     */
     private int[][] calcularMejorAsignacionAleatoria(List<Integer> teclas, int N) {
         System.out.println("La mejor de N asignaciones de las teclas aleatorias: ");
         System.out.println();
@@ -101,6 +151,12 @@ public class QAP {
         return mejorTeclado;
     }
 
+    /**
+     * Calcula la puntuación de un teclado según distancias y frecuencias.
+     *
+     * @param teclado Matriz que representa el teclado con asignaciones de teclas.
+     * @return Puntuación del teclado.
+     */
     private int calculoPuntuacion(int[][] teclado) {
         int puntuacion = 0;
 
@@ -127,6 +183,9 @@ public class QAP {
         return puntuacion;
     }
 
+    /**
+     * Imprime en la consola la disposición actual de las teclas en el teclado.
+     */
     private void imprimirTeclado() {
         for(int i = 0; i < filas; i++) {
             for(int j = 0; j < columnas; j++) {
@@ -137,6 +196,11 @@ public class QAP {
         System.out.println();
     }
 
+    /**
+     * Imprime en la consola la disposición de índices de teclas proporcionada.
+     *
+     * @param tecladoIndices Matriz de índices de teclas a imprimir.
+     */
     private void imprimirTeclado(int[][] tecladoIndices) {
         for (int i = 0; i < tecladoIndices.length; i++) {
             for (int j = 0; j < tecladoIndices[i].length; j++) {
@@ -147,6 +211,9 @@ public class QAP {
         System.out.println();
     }
 
+    /**
+     * Imprime en la consola las matrices de frecuencias y distancias.
+     */
     private void imprimirMatrices() {
         System.out.println("Imprimiendo matriz frecuencias: ");
         System.out.println();
@@ -169,6 +236,11 @@ public class QAP {
         System.out.println();
     }
 
+    /**
+     * Realiza el cálculo utilizando el algoritmo de Gilmore-Lawler.
+     * Imprime las matrices de frecuencias y distancias, y luego utiliza el algoritmo
+     * para encontrar la mejor asignación de teclas en el teclado.
+     */
     private void calculo() {
         imprimirMatrices();
 

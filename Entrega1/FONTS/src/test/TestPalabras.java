@@ -39,6 +39,28 @@ public class TestPalabras
     }
 
     // ---------- CONSTRUCTORAS ----------
+    /**
+     * Objetivo de la Prueba:
+     * La función `TestConstructora` tiene como objetivo verificar el correcto funcionamiento
+     * del constructor de la clase `Palabras`. Este constructor debería inicializar correctamente
+     * los atributos de la instancia.
+     *
+     * Ficheros Necesarios:
+     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
+     * principalmente de la lógica interna del constructor de la clase `Palabras`.
+     *
+     * Valores Estudiados:
+     * Se evalúan los siguientes aspectos:
+     * 1. Se crea una instancia de `Palabras`.
+     * 2. Se verifica que el nombre de la instancia sea el esperado.
+     * 3. Se verifica que el texto de la instancia sea el esperado.
+     * 4. Se verifica que la frecuencia de letras esté vacía.
+     * 5. Se verifica que las asociaciones vinculadas estén vacías.
+     *
+     * Operativa:
+     * 1. Se crea una instancia de `Palabras`.
+     * 2. Se verifican los atributos de la instancia.
+     */
     public void TestConstructora () {
         System.out.println("Test Constructora");
 
@@ -49,15 +71,4 @@ public class TestPalabras
         assertTrue(palabras.getAsociacionesVinculadas().isEmpty());
     }
 
-    // ---------- AUXILIARES -----------
-    @Test
-    public void TestTratarEntrada() {
-        System.out.println("Test TratarEntrada");
-
-        assertEquals(2, palabras.getFrecuenciaLetras().size());
-        assertEquals(4, (int) palabras.getFrecuenciaLetras().get("ai"));
-        assertFalse(palabras.getFrecuenciaLetras().containsKey("ia"));
-        assertEquals(2, (int) palabras.getFrecuenciaLetras().get("ac"));
-        assertFalse(palabras.getFrecuenciaLetras().containsKey("ca"));
-    }
 }

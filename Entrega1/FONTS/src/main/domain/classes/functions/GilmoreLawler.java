@@ -112,6 +112,11 @@ public class GilmoreLawler
     }
 
     // ---------- FUNCIONES PRINCIPALES ----------
+
+    /**
+     * Resuelve utilizando Gilmore-Lawler mediante una búsqueda en profundidad (dfs)
+     * @return La cota inferior gracias al algoritmo
+     */
     public int gilmore_lawler() {
         System.out.println("GILMORE-LAWLER ejecutándose");
         System.out.println();
@@ -137,6 +142,16 @@ public class GilmoreLawler
         return glBound;
     }
 
+    /**
+     * Realiza una búsqueda en profundidad (DFS) para poder encontrar una solución parcial
+     * @param profundidad           Profundidad actual en la búsqueda
+     * @param ind                   Lista de índices a tratar
+     * @param solucionParcial       Lista que representa la solución parcial actual
+     * @param cotaActual            Cota actual en la búsqueda
+     * @param posNO                 Posiciones no usadas
+     * @param letNO                 Letras no usadas
+     * @param vis                   Elementos visitados
+     */
     private void dfs(int profundidad, List<Integer> ind, List<Integer> solucionParcial, int cotaActual, List<Integer> posNO, List<Integer> letNO, boolean[] vis) {
         if (profundidad == filas * columnas) {
             // Se ha encontrado una solución completa
@@ -176,6 +191,12 @@ public class GilmoreLawler
 
 
     // Método para calcular la cota de una permutación específica
+
+    /**
+     * Calcula la cota de una permutación utilizando la fórmula de evaluación de Gilmore-Lawler.
+     * @param permutacion   La permutación para la cual se calculará la cota.
+     * @return              Cota de la permutación
+     */
     private int calcularCotaPermutacion(List<Integer> permutacion) {
         int cota = 0;
         // Suponiendo que permutacionActual.size() == filas * columnas
@@ -191,7 +212,12 @@ public class GilmoreLawler
         return cota;
     }
 
-
+    /**
+     * Calcula la cota de una permutación tratando solo los elementos marcados como "usados".
+     *
+     * @param permutacionActual Permutación para la cual se calculará la cota.
+     * @return                  La cota de la permutación tratando solo los elementos "usados".
+     */
     private int calcularCotaPermutacionAct(List<Integer> permutacionActual) {
         int cota = 0;
         for (int i = 0; i < permutacionActual.size(); i++) {
@@ -208,7 +234,13 @@ public class GilmoreLawler
         return cota;
     }
 
-
+    /**
+     * Calcula la contribución C1 de una solución parcial, considerando posiciones y letras no usadas.
+     * @param solucionParcial   Solución Parcial actual
+     * @param posNO             Posiciones no usadas
+     * @param letNO             Letras no usadas
+     * @return Matriz que representa la contribucion C1
+     */
     private int [][] calcularContribucionC1(List<Integer> solucionParcial, List<Integer> posNO, List<Integer> letNO) {
         int [][] c1 = new int[posNO.size()][posNO.size()];
         for (int i = 0; i < letNO.size(); ++i) {
@@ -224,6 +256,12 @@ public class GilmoreLawler
 
     }
 
+    /**
+     * Calcula la contribución C2 considerando posiciones y letras no usadas.
+     * @param posNO             Posiciones no usadas
+     * @param letNO             Letras no usadas
+     * @return Matriz que representa la contribucion C2
+     */
     private int[][] calcularContribucionC2(List<Integer> posNO, List<Integer> letNO) {
 
         int [][] c2 = new int[posNO.size()][posNO.size()];
@@ -258,7 +296,16 @@ public class GilmoreLawler
         return c2;
     }
 
-    // Función que calcula la contribución de C1 y C2
+    /**
+     * Calcula la contribución la contribución de C1 y C2 para una solución parcial específica.
+     *
+     * @param solucionParcial    La solución parcial actual.
+     * @param posicion           La posición actual en la solución parcial.
+     * @param indiceTeclaActual  El índice de la tecla actual.
+     * @param posNO              Lista de posiciones no usadas.
+     * @param letNO              Lista de letras no usadas.
+     * @return La contribución combinada de C1 y C2.
+     */
     private int calcularContribucionC1C2(List<Integer> solucionParcial, int posicion, int indiceTeclaActual, List<Integer> posNO, List<Integer> letNO) {
         int [][] c1 = calcularContribucionC1(solucionParcial, posNO, letNO);
         int [][] c2 = calcularContribucionC2(posNO, letNO);
@@ -267,6 +314,9 @@ public class GilmoreLawler
         return minimos(c1c2);
     }
 
+    /**
+     * Imprime por terminal la Mejor Solucion Parcial
+     */
     public void imprimirMejorSolucionParcial() {
         // Suponiendo que 'mejorSolucionParcial' es una lista de índices que representa la mejor solución actual
         System.out.print("La mejor solución parcial es: ");
@@ -277,6 +327,12 @@ public class GilmoreLawler
         System.out.println();
     }
 
+    /**
+     * Calcula la suma de los valores mínimos en cada fila de una matriz bidimensional.
+     *
+     * @param c1c2 La matriz bidimensional para la cual se calculará la suma de los valores mínimos por fila.
+     * @return La suma de los valores mínimos en cada fila.
+     */
     public int minimos(int [][] c1c2) {
         int suma = 0;
         for (int i = 0; i < c1c2.length; ++i) {

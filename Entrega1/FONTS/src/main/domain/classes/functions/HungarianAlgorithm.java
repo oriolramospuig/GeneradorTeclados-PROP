@@ -15,6 +15,12 @@ public class HungarianAlgorithm {
     int max;
     HashMap maxsol;
 
+    /**
+     * Implementa el algoritmo de asignación húngaro para encontrar la asignación óptima en un problema de asignación.
+     *
+     * @param c1c2 La matriz bidimensional de costos.
+     * @return El costo total de la asignación óptima.
+     */
     public int Hungarian(int[][] c1c2) {
         int[][] copiaC1C2 = copiarMatriz(c1c2); // Crear una copia de la matriz de costos
 
@@ -46,6 +52,12 @@ public class HungarianAlgorithm {
         return calcularCostoAsignacion(filassol, c1c2);
     }
 
+    /**
+     * Realiza una copia profunda de una matriz bidimensional de enteros.
+     *
+     * @param original La matriz original que se va a copiar.
+     * @return Una nueva matriz que es una copia profunda de la matriz original.
+     */
     public static int[][] copiarMatriz(int[][] original) {
         int[][] copia = new int[original.length][];
         for (int i = 0; i < original.length; i++) {
@@ -55,6 +67,11 @@ public class HungarianAlgorithm {
     }
 
 
+    /**
+     * Realiza la reducción en cada fila de una matriz bidimensional de enteros.
+     *
+     * @param c1c2 La matriz bidimensional en la cual se realizará la reducción.
+     */
     public static void reducirFilas(int[][] c1c2) {
         //int min = Integer.MAX_VALUE;
         for (int i = 0; i < c1c2.length; i++) {
@@ -67,6 +84,11 @@ public class HungarianAlgorithm {
         }
     }
 
+    /**
+     * Realiza la reducción en cada columna de una matriz bidimensional de enteros.
+     *
+     * @param c1c2 La matriz bidimensional en la cual se realizará la reducción.
+     */
     public static void reducirColumnas(int[][] c1c2) {
         for (int j = 0; j < c1c2[0].length; j++) {
             int minColumna = Integer.MAX_VALUE;
@@ -81,6 +103,15 @@ public class HungarianAlgorithm {
         }
     }
 
+    /**
+     * Verifica recursivamente si es posible cubrir todas las filas y columnas de una matriz con ceros.
+     *
+     * @param matriz      La matriz bidimensional en la cual se realiza la verificación.
+     * @param fila        La fila actual en la verificación.
+     * @param solfilas    Un HashMap que almacena las asignaciones de filas y columnas.
+     * @param colusadas   Un array que indica qué columnas han sido cubiertas.
+     * @return true si es posible cubrir todas las filas y columnas, false de lo contrario.
+     */
     public boolean cadaFilaYColumnaTieneCero(int[][] matriz, int fila, HashMap solfilas, boolean[] colusadas) {
         if (fila == matriz.length) {
             if (solfilas.size() == matriz.length) {
@@ -111,6 +142,16 @@ public class HungarianAlgorithm {
         return false;
     }
 
+    /**
+     * Calcula el número de líneas necesarias para cubrir todos los ceros de una matriz,
+     * excluyendo las filas y columnas ya cubiertas por una solución dada.
+     *
+     * @param matriz            La matriz bidimensional en la cual se realiza el cálculo.
+     * @param sol               Un HashMap que contiene las asignaciones de filas y columnas.
+     * @param filasCubiertas    Un array que indica qué filas están cubiertas por una solución.
+     * @param columnasCubiertas Un array que indica qué columnas están cubiertas por una solución.
+     * @return El número de líneas necesarias para cubrir todos los ceros excluyendo las filas y columnas ya cubiertas.
+     */
     public static int calcularlineas(int[][] matriz, HashMap<Integer, Integer> sol, boolean[] filasCubiertas, boolean[] columnasCubiertas) {
         // Variables para mantener el seguimiento de las filas y columnas cubiertas
         Arrays.fill(filasCubiertas, true);
@@ -163,7 +204,13 @@ public class HungarianAlgorithm {
         return numLineas; // Retorna el número de líneas usadas.
     }
 
-
+    /**
+     * Ajusta la matriz según el algoritmo húngaro para facilitar la identificación de asignaciones óptimas.
+     *
+     * @param matriz            La matriz bidimensional que se ajustará.
+     * @param filasCubiertas    Un array que indica qué filas están cubiertas por una solución.
+     * @param columnasCubiertas Un array que indica qué columnas están cubiertas por una solución.
+     */
     public static void ajustarMatrizSegunHungaro(int[][] matriz, boolean[] filasCubiertas, boolean[] columnasCubiertas) {
         // Encuentra el valor mínimo no cubierto por ninguna línea.
         int minValorNoCubierto = Integer.MAX_VALUE;
@@ -186,6 +233,13 @@ public class HungarianAlgorithm {
         }
     }
 
+    /**
+     * Calcula el costo total de una asignación dada en una matriz de costos originales.
+     *
+     * @param asignacion      Un HashMap que contiene las asignaciones de filas y columnas.
+     * @param costesOriginales La matriz bidimensional de costos originales.
+     * @return El costo total de la asignación.
+     */
     public static int calcularCostoAsignacion(HashMap<Integer,Integer> asignacion, int[][] costesOriginales) {
         int costoTotal = 0;
         for (Map.Entry<Integer, Integer> entry : asignacion.entrySet())  {
