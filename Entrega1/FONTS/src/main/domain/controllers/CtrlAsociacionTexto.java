@@ -6,18 +6,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-/** Este controlador se encarga de gestionar los métodos de añadir, modificar y borrar asociaciones de textos*/
+/**
+ * Este controlador se encarga de gestionar los métodos de añadir, modificar y borrar de asociaciones de textos
+ * @author
+ */
 public class CtrlAsociacionTexto
 {
     // ---------- PARÁMETROS ----------
     /** Representa conjunto de asociaciones de textos dentro del controlador para gestioanr y manipular los textos */
     private ConjuntoAsociaciones AsociacionesTextos;
 
+
     // ---------- CONSTRUCTORA ----------
     /** Inicializa el conjunto de asociaciones de textos */
     public CtrlAsociacionTexto(){
         AsociacionesTextos = new ConjuntoAsociaciones();
     }
+
 
     // ---------- FUNCIONES ASOCIACION ----------
     /**
@@ -28,12 +33,13 @@ public class CtrlAsociacionTexto
     public void agregarTecladoVinculado (String nomA, String nomT) {
         AsociacionesTextos.getAsociacionTextos(nomA).agregarTecladoVinculado(nomT);
     }
+
     /**
      * No devuelve nada. Manda añadir un texto a la asociacion de textos pasada como parámetro
      * @param nomA nombre de la asociación de textos
      * @param texto objeto Texto a agregar
      */
-    public void agregarTextoAsociacion (String nomA, Texto texto){ //
+    public void agregarTextoAsociacion (String nomA, Texto texto){
         AsociacionesTextos.getAsociacionTextos(nomA).agregarTexto(texto);
     }
 

@@ -7,29 +7,36 @@ import main.domain.classes.ConjuntoTeclados;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CtrlAlfabeto {
-
+/**
+ * Este controlador se encarga de gestionar los métodos de añadir, modificar y borrar de conjunto alfabetos y alfabeto
+ * @author
+ */
+public class CtrlAlfabeto
+{
     // ---------- PARÁMETROS ----------
-
     /** Crea una instancia del conjunto de alfabetos*/
     private ConjuntoAlfabetos CjtAlfabetos;
 
+
+    // ---------- CONSTRUCTORAS ----------
     /** Inicialización de la instancia conjunto de alfabetos.*/
     public CtrlAlfabeto(){
         CjtAlfabetos = new ConjuntoAlfabetos();
     }
 
+
     // ---------- FUNCIONES ALFABETO ----------
     /**
-     * Retorna el contenido del alfabeto con nombre nomA
+     * Devuelve el contenido del alfabeto con nombre nomA
      * @param nomA clave primaria con la que buscar un alfabeto
      * @return ArrayList : Lista de caracteres del contenido del alfabeto nomA
      */
     public ArrayList<Character> getContenido(String nomA){
         return CjtAlfabetos.getAlfabeto(nomA).getLetras();
     }
+
     /**
-     * No retorna.
+     * No devuelve nada.
      * @param nomT clave primaria del teclado
      * @param nomA clave primaria del alfabeto
      * Añade el nombre del teclado nomT a la lista de teclados vinculados del alfabeto nomA
@@ -44,16 +51,18 @@ public class CtrlAlfabeto {
         CjtAlfabetos.getAlfabeto(nomA).borrarTecladoVinculado(nomT);
     }*/
 
+
     // ---------- FUNCIONES CONJUNTOALFABETOS ----------
     /**
-     * Retorna el objecto cjt alfabetos
+     * Devuelve el objecto cjt alfabetos
      * @return ConjuntoAlfabetos : Un objeto cjt alfabetos concreto
      */
     public ConjuntoAlfabetos getCjtAlfabetos(){
         return CjtAlfabetos;
     }
+
     /**
-     * Retorna si se ha creado bien el alfabeto con el nombre nomA
+     * Devuelve si se ha creado bien el alfabeto con el nombre nomA
      * @param entradaCaracteres lista de caracteres del contenido del alfabeto nomA
      * @param nomA nombre (clave única) del alfabeto a agregar
      * @return boolean : True si el alfabeto ha sido creado correctamente, false si no se ha creado bien
@@ -68,7 +77,6 @@ public class CtrlAlfabeto {
     }
 
     //PARA LA SEGUNDA ENTREGA
-
     /*public ArrayList<String> getTecladosVinculadosAlfabeto(String nomA){
         ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
         return tVinculados;

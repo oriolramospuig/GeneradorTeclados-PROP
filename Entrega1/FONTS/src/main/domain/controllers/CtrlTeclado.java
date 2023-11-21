@@ -6,15 +6,22 @@ import main.domain.classes.types.PairInt;
 
 import java.util.ArrayList;
 
-public class CtrlTeclado {
-
+/**
+ * Este controlador se encarga de gestionar los métodos de añadir, modificar y borrar de conjunto teclados, teclado y el controlador del algoritmo
+ * @author
+ */
+public class CtrlTeclado
+{
     // ---------- PARÁMETROS ----------
+    /** Crea una instancia del conjunto de teclados*/
     private ConjuntoTeclados teclados;
 
+    /** Crea una instancia del conjunto de alfabetos*/
     private CtrlTecladoQAP ctrlAlgoritmo;
-    /**
-     * Asigna un cjt de alfabetos vacío
-     */
+
+
+    // ---------- CONSTRUCTURAS ----------
+    /** Inicialización de la instancia conjunto de teclados vacío.*/
     public CtrlTeclado(){
         teclados = new ConjuntoTeclados();
         ctrlAlgoritmo = new CtrlTecladoQAP();
@@ -23,26 +30,28 @@ public class CtrlTeclado {
 
     // ---------- FUNCIONES TECLADO ----------
     /**
-     * No retorna nada, manda a introducir la puntuación escrita en un Teclado (también pedido)
+     * No devuelve nada, manda a introducir la puntuación escrita en un Teclado (también pedido)
      */
     public void setPuntuacion(String nomT, Float puntuacion) {
         teclados.getTeclado(nomT).setPuntuacion(puntuacion);
     }
+
     /**
-     * No retorna nada, manda a introducir las dimensiones escritas en un Teclado (también pedido)
+     * No devuelve nada, manda a introducir las dimensiones escritas en un Teclado (también pedido)
      */
     public void setDimensiones(String nomT, PairInt dimensiones) {
         teclados.getTeclado(nomT).setDimensiones(dimensiones);
     }
 
     /**
-     * No retorna nada, manda a vincular un Alfabeto a un Teclado
+     * No devuelve nada, manda a vincular un Alfabeto a un Teclado
      */
     public void agregarAlfabetoVinculado(String nomT, String nomA) {
         teclados.getTeclado(nomT).agregarAlfabetoVinculado(nomA);
     }
+
     /**
-     * No retorna nada, manda a vincular una Asociacion de Textos a un Teclado
+     * No devuelve nada, manda a vincular una Asociacion de Textos a un Teclado
      */
     public void agregarAsociacionTextosVinculado(String nomT, String nomAT) {
         teclados.getTeclado(nomT).agregarAsociacionTextosVinculado(nomAT);
@@ -59,7 +68,7 @@ public class CtrlTeclado {
 
     // ---------- FUNCIONES CONJUNTOTECLADOS ----------
     /**
-     * Retorna el objecto cjt de Teclados pedido
+     * Devuelve el objecto cjt de Teclados pedido
      * @return ConjuntoTeclados : Un objeto cjt de Teclados concreto
      */
     public ConjuntoTeclados getCjtTeclados() {
@@ -67,14 +76,15 @@ public class CtrlTeclado {
     }
 
     /**
-     * Retorna booleano de si que existe el teclado pedido en el cjt de teclados
+     * Devuelve booleano de si que existe el teclado pedido en el cjt de teclados
      * @return ConjuntoTeclados : Un objeto cjt de Teclados concreto
      */
     public boolean existeTeclado(String nomT){
         return teclados.existeTeclado(nomT);
     }
+
     /**
-     * No retorna nada.
+     * No devuelve nada.
      * Crea el nuevo objecto Teclado y añade este objeto a ConjuntoTeclados
      */
     public void CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto) {
