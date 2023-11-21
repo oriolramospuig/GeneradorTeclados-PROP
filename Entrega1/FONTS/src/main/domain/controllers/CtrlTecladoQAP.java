@@ -1,7 +1,6 @@
 package main.domain.controllers;
 
 import main.domain.classes.Alfabeto;
-import main.domain.classes.Algoritmo;
 import main.domain.classes.AsociacionTextos;
 import main.domain.classes.Teclado;
 import main.domain.classes.functions.GilmoreLawler;
@@ -17,7 +16,7 @@ import java.util.List;
 import static java.lang.Math.sqrt;
 
 public class CtrlTecladoQAP {
-    public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo) {
+    public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto) {
         //calcular dim
 
         ArrayList<Character> letras = alfabeto.getLetras();
@@ -41,14 +40,18 @@ public class CtrlTecladoQAP {
 
         List<Integer> sol = new ArrayList<>();
         QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias, sol);
+        for (int i = 0; i < sol.size(); ++i) {
+            int posicion = sol.get(i);
+            System.out.println("Posición " + posicion + ": Elemento " + i + " | ");
+        }
 
-        Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto, algoritmo,dimensiones);
+        Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto,dimensiones);
 
-        //cridarem qap
         //reconstruir solució (números a lletres)
         return teclado;
     }
 
+    /*esta malament, genera 3*4 per 10 tecles i volem que generi 2*5*/
     public PairInt calculaDimensiones(int n) {
         double raiz = sqrt(n);
         int r = (int)raiz;
@@ -63,9 +66,5 @@ public class CtrlTecladoQAP {
         }
         PairInt dim = new PairInt(nf,nc);
         return dim;
-    }
-
-    public HashMap<String,Integer> ordenarFrecuencias(HashMap<String,Integer> frecLetras) {
-        return frecLetras;
     }
 }

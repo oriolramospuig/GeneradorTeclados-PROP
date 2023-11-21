@@ -18,6 +18,7 @@ public class CtrlAlfabeto {
     }
 
     // ---------- FUNCIONES ALFABETO ----------
+
     public ArrayList<Character> getContenido(String nomA){
         return CjtAlfabetos.getAlfabeto(nomA).getLetras();
     }
@@ -27,9 +28,8 @@ public class CtrlAlfabeto {
     public void agregarTecladoVinculado (String nomA,String nomT){
         CjtAlfabetos.getAlfabeto(nomA).agregarTecladoVinculado(nomT);
     }
-    /**
-     * No retorna nada, manda a borrar un teclado al cjt de teclados vinculados
-     */
+
+
     //Para la segunda entrega
     /*public void borrarTecladoVinculado (String nomA,String nomT){
         CjtAlfabetos.getAlfabeto(nomA).borrarTecladoVinculado(nomT);
@@ -48,38 +48,27 @@ public class CtrlAlfabeto {
      * Crea el nuevo objecto alfabeto y añade este objeto a ConjuntoAlfabetos
      */
     public boolean CrearAlfabeto(String nomA, ArrayList<Character> entradaCaracteres) {
-        //if (!CjtAlfabetos.getAlfabetos().isEmpty()) {
-            if (!CjtAlfabetos.existeAlfabeto(nomA)) {
-                Alfabeto alfabeto = new Alfabeto(nomA, entradaCaracteres);
-                CjtAlfabetos.agregarAlfabeto(nomA, alfabeto);
-                return true;
-            }
-
+        if (!CjtAlfabetos.existeAlfabeto(nomA)) {
+            Alfabeto alfabeto = new Alfabeto(nomA, entradaCaracteres);
+            CjtAlfabetos.agregarAlfabeto(nomA, alfabeto);
+            return true;
+        }
         return false;
     }
+
+    //PARA LA SEGUNDA ENTREGA
+
+    /*public ArrayList<String> getTecladosVinculadosAlfabeto(String nomA){
+        ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
+        return tVinculados;
+    }
+
     public boolean alfabetoTieneTecladosVinculados(String nomA){
         ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
         return !tVinculados.isEmpty();
 
     }
-    /**
-     * Retorna el objecto alfabeto pedido
-     * @return Alfabeto : Un objeto alfabeto concreto
-     */
-    /*public Alfabeto getAlfabeto(String nomA){
-        return CjtAlfabetos.getAlfabeto(nomA);
-    }NO NECESSARI CREC*/
-    /**
-     * No retorna nada.
-     * Manda borrar el alfabeto dado, desvincula los teclados asociados
-     * también borra este alfabeto de la lista de ConjuntoAlfabetos
-     */
-    //Para la segunda entrega
-    /*public ArrayList<String> getTecladosVinculadosAlfabeto(String nomA){
-        ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
-        return tVinculados;
 
-    }
     public void borrarAlfabeto(String nomA){
         CjtAlfabetos.borrarAlfabeto(nomA);
     }*/

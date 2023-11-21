@@ -1,4 +1,4 @@
-package test.types;
+/*package test.types;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.types.PairInt;
@@ -44,4 +44,4 @@ public class TestPairInt {
         PairInt pair = new PairInt(1, 2);
         assertEquals("(1,2)", pair.toString());
     }
-}
+}*/

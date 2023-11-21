@@ -8,46 +8,67 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Este controlador se encarga de gestionar los métodos de añadir, modificar i borrar alfabetos
- * Los alfabetos existentes quedarán dentro de un ...
- *
- */
-public class CtrlTexto {
-
+/** Este controlador se encarga de gestionar los métodos de añadir, modificar y borrar textos */
+public class CtrlTexto
+{
     // ---------- PARÁMETROS ----------
-    /**
-     * Parámetros de la clase Alfabeto y ConjuntoAlfabetos
-     */
+    /** Representa conjunto de textos dentro del controlador para gestioanr y manipular los textos */
     private ConjuntoTextos CjtTextos;
-    private ConjuntoTeclados CjtTeclados;
-    private ConjuntoAsociaciones CjtAsociaciones;
 
-    /**
-     * Asigna un alfabeto y un cjt de alfabetos vacío
-     */
+    //se usa?
+    private ConjuntoTeclados CjtTeclados;
+    // private ConjuntoAsociaciones CjtAsociaciones;
+
+
+    // ---------- CONSTRUCTORA ----------
+    /** Inicializa el conjunto de textos */
     public CtrlTexto(){
         CjtTextos = new ConjuntoTextos();
     }
+
+
     // ---------- FUNCIONES TEXTO ----------
+    /**
+     * Obtiene el contenido de un texto dado su nombre
+     * @param nomT Nombre del texto
+     * @return Contenido del texto
+     */
     public String getContenido(String nomT){
         //return CjtTextos.getTexto(nomT).getFrecuenciaPalabras();
         return CjtTextos.getTexto(nomT).getTexto();
     }
+
+    /**
+     * No devuelve nada. Agrega una asociación vinculada a un texto dado su nombre
+     * @param nomT Nombre del texto
+     * @param nomAT Nombre de la asociación de textos
+     */
     public void agregarAsociacionVinculada(String nomT, String nomAT){
         CjtTextos.getTexto(nomT).agregarAsociacionesVinculadas(nomAT);
     }
 
     // ---------- FUNCIONES CONJUNTOTEXTOS ----------
+    /**
+     * Obtiene un objeto Texto dado su nombre
+     * @param nomT Nombre del texto
+     * @return Objeto Texto
+     */
     public Texto getTexto(String nomT){
         return CjtTextos.getTexto(nomT);
     }
+
+    /**
+     * Obtiene el conjunto de textos
+     * @return Conjunto de textos
+     */
     public ConjuntoTextos getTextos(){
         return CjtTextos;
     }
-    /**
-     * No retorna nada.
-     * Crea el nuevo objecto texto y añade este objeto a ConjuntoTextos
+
+    /** Convierte el texto de entarda a frecuencias de letras y agrega un nuevo texto del tipo Palabras
+     * @param nomT Nombre del texto a añadir
+     * @param texto Contenido del nuevo texto
+     * @return True si el texto de tipo Palabras se ha agregado con éxito y false en caso contrario
      */
     public boolean agregarTextoPalabras(String nomT, String texto) {
         if(!CjtTextos.existeTexto(nomT)) {
@@ -59,9 +80,11 @@ public class CtrlTexto {
         }
         return false;
     }
+
     /**
-     * No retorna.
-     * Convierte las palabras de la entrada en frecuencias del estilo par de letras, frecuencia ("ab", 5)
+     * Convierte el texto de entrada en frencuencia de letars (pareja letras con frecuencia respectiva)
+     * @param texto Contenido del texto
+     * @return HashMap de frecuencia de letras
      */
     public HashMap<String,Integer> convertirTextoAFrecuencias(String texto) {
         HashMap<String,Integer> frecuenciaLetras = new HashMap<String,Integer>();
@@ -78,6 +101,11 @@ public class CtrlTexto {
         return frecuenciaLetras;
     }
 
+    /**
+     * Convierte las frecuencias de palabars en frecuencias de letras
+     * @param frecPalabras Frecuencias de palabras a convertir
+     * @return HashMap de frecuencias de letras resultante
+     */
     public HashMap<String, Integer> convertirFrecuenciasPalabrasAFrecuenciasLetras(HashMap<String,Integer> frecPalabras) {
         HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
 
@@ -93,6 +121,13 @@ public class CtrlTexto {
 
         return frecuenciaLetras;
     }
+
+    /**
+     * Convierte las frecuencias de palabras a frecuencias de letras y agrega un nuevo texto del tipo Frecuencias
+     * @param nomT Nombre del texto a añadir
+     * @param frecuenciaPalabras Frecuencias de palabras del texto a añadir
+     * @return True si el texto de tipo Frecuencia se ha agregado con éxito y false en caso contrario
+     */
     public boolean agregarTextoFrecuencias(String nomT, HashMap<String,Integer> frecuenciaPalabras) {
         if(!CjtTextos.existeTexto(nomT)){
             HashMap<String,Integer> frecuenciasLetras = convertirFrecuenciasPalabrasAFrecuenciasLetras(frecuenciaPalabras);

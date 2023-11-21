@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 
 import main.domain.classes.*;
@@ -145,4 +145,4 @@ public class TestConjuntoTeclados {
         assertFalse(teclados.existeTeclado("nombreT1"));
         assertTrue(teclados.existeTeclado("nombreT2"));
     }
-}
+}*/

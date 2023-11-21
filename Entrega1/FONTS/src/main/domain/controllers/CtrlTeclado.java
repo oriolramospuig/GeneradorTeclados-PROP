@@ -52,8 +52,8 @@ public class CtrlTeclado {
     public boolean existeTeclado(String nomT){
         return teclados.existeTeclado(nomT);
     }
-    public void CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, Algoritmo algoritmo) {
-        Teclado teclado = ctrlAlgoritmo.crearTeclado(nomT, asociacionTextos, alfabeto, algoritmo);
+    public void CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto) {
+        Teclado teclado = ctrlAlgoritmo.crearTeclado(nomT, asociacionTextos, alfabeto);
         teclados.agregarTeclado(nomT, teclado);
     }
 

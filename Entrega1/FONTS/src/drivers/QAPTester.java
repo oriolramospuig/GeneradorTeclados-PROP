@@ -10,7 +10,7 @@ import static java.lang.Math.sqrt;
 public class QAPTester {
 
         public static void main(String[] args) {
-            String nombreTest = "scr12.dat";
+            String nombreTest = "rou15.dat";
             //String path = "C:\\Users\\34696\\OneDrive\\Descargas\\VARIS\\";
             //String pathInput = path + "qapdata\\rou12.dat";
             //String pathSolutions = path + "qapsoln";
@@ -49,7 +49,7 @@ public class QAPTester {
 
                 double raiz = sqrt(n);
                 int r = (int)raiz;
-                int nfilas = 1, ncolumnas = 12;
+                int nfilas = 1, ncolumnas = 15;
                 /*if(raiz == r) {
                     nfilas = ncolumnas = r;
                 }
