@@ -10,16 +10,12 @@ import java.util.HashMap;
 public class ConjuntoAsociaciones
 {
     // ---------- ATRIBUTOS ----------
-    /**
-     * Guarda el conjunto de asociaciones de textos introducidas por el usuario
-     */
+    /** Guarda el conjunto de asociaciones de textos introducidas por el usuario */
     private HashMap<String, AsociacionTextos> asociaciones;
 
 
     // ---------- CONSTRUCTORES ----------
-    /**
-     * Crea una instancia de la clase ConjuntoAsociaciones e inicializa la variable asociaciones como un nuevo HashMap
-     */
+    /** Crea una instancia de la clase ConjuntoAsociaciones e inicializa la variable asociaciones como un nuevo HashMap */
     public ConjuntoAsociaciones() {
         asociaciones = new HashMap<>();
     }
