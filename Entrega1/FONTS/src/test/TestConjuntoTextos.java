@@ -41,6 +41,27 @@ public class TestConjuntoTextos {
 
 
     // ---------- CONSTRUCTORAS ----------
+    /**
+     * Objetivo de la Prueba:
+     * La función `TestExisteAsociaciondeTextos` tiene como objetivo verificar el correcto funcionamiento
+     * del método `existeAsociaciondeTextos` de la clase `Asociaciones`. Este método debería devolver
+     * `true` si la asociación de textos con el nombre dado está presente en la colección y `false` en caso contrario.
+     *
+     * Ficheros Necesarios:
+     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
+     * principalmente de las estructuras de datos internas de la clase `Asociaciones`.
+     *
+     * Valores Estudiados:
+     * Se evalúan los siguientes aspectos:
+     * 1. Se crea una instancia de `Asociaciones`.
+     * 2. Se agrega una asociación de textos mediante el método `agregarAsociacionTexto`.
+     * 3. Se verifica que el método `existeAsociaciondeTextos` devuelva `true` para el nombre de la asociación agregada y `false` para un nombre que no está presente.
+     *
+     * Operativa:
+     * 1. Se crea una instancia de `Asociaciones`.
+     * 2. Se agrega una asociación de textos mediante el método `agregarAsociacionTexto`.
+     * 3. Se verifica que el método `existeAsociaciondeTextos` devuelva `true` para el nombre de la asociación agregada y `false` para un nombre que no está presente.
+     */
     @Test
     public void TestConstructora() {
         System.out.println("Test Constructora");
@@ -50,6 +71,31 @@ public class TestConjuntoTextos {
 
 
     // ---------- GETTERS ----------
+    /**
+     * Objetivo de la Prueba:
+     * La función `TestGetTexto` tiene como objetivo verificar el correcto funcionamiento
+     * del método `getTexto` de la clase `Textos`. Este método debería devolver un objeto
+     * `Texto` específico según el nombre proporcionado.
+     *
+     * Ficheros Necesarios:
+     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
+     * principalmente de las estructuras de datos internas de la clase `Textos`.
+     *
+     * Valores Estudiados:
+     * Se evalúan los siguientes aspectos:
+     * 1. Se agrega un texto de frecuencias a la colección mediante el método `agregarTexto`.
+     * 2. Se obtiene el texto de frecuencias por su nombre usando el método `getTexto`.
+     * 3. Se agrega un texto de palabras a la colección mediante el método `agregarTexto`.
+     * 4. Se obtiene el texto de palabras por su nombre usando el método `getTexto`.
+     * 5. Se verifica que los objetos `Texto` devueltos no sean nulos y que tengan los nombres esperados.
+     *
+     * Operativa:
+     * 1. Se agrega un texto de frecuencias a la colección mediante el método `agregarTexto`.
+     * 2. Se obtiene el texto de frecuencias por su nombre usando el método `getTexto`.
+     * 3. Se agrega un texto de palabras a la colección mediante el método `agregarTexto`.
+     * 4. Se obtiene el texto de palabras por su nombre usando el método `getTexto`.
+     * 5. Se verifica que los objetos `Texto` devueltos no sean nulos y que tengan los nombres esperados.
+     */
     @Test
     public void TestGetTexto() {
         System.out.println("Test getTexto");
@@ -66,6 +112,27 @@ public class TestConjuntoTextos {
         assertEquals("nombreP1", resultadoPalabras.getNombre());
     }
 
+    /**
+     * Objetivo de la Prueba:
+     * La función `TestGetNombresTextos` tiene como objetivo verificar el correcto funcionamiento
+     * del método `getNombresTextos` de la clase `Textos`. Este método debería devolver una lista
+     * de nombres de textos presentes en la colección.
+     *
+     * Ficheros Necesarios:
+     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
+     * principalmente de las estructuras de datos internas de la clase `Textos`.
+     *
+     * Valores Estudiados:
+     * Se evalúan los siguientes aspectos:
+     * 1. Se agregan cuatro textos a la colección mediante el método `agregarTexto`.
+     * 2. Se obtiene la lista de nombres de textos mediante el método `getNombresTextos`.
+     * 3. Se verifica que la lista tenga el tamaño esperado y contenga los nombres de los textos agregados.
+     *
+     * Operativa:
+     * 1. Se agregan cuatro textos a la colección mediante el método `agregarTexto`.
+     * 2. Se obtiene la lista de nombres de textos mediante el método `getNombresTextos`.
+     * 3. Se verifica que la lista tenga el tamaño esperado y contenga los nombres de los textos agregados.
+     */
     @Test
     public void TestGetNombresTextos() {
         System.out.println("Test getNombresTextos");
@@ -86,6 +153,24 @@ public class TestConjuntoTextos {
 
 
     // ---------- SETTERS ----------
+    /**
+     * Objetivo de la Prueba:
+     * La función `TestAgregarTexto` tiene como objetivo verificar el correcto funcionamiento
+     * del método `agregarTexto` de la clase `Textos`. Este método debería agregar un texto a la colección.
+     *
+     * Ficheros Necesarios:
+     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
+     * principalmente de las estructuras de datos internas de la clase `Textos`.
+     *
+     * Valores Estudiados:
+     * Se evalúan los siguientes aspectos:
+     * 1. Se agrega un total de cuatro textos a la colección mediante el método `agregarTexto`.
+     * 2. Se verifica que la colección tenga el tamaño esperado y contenga los textos agregados.
+     *
+     * Operativa:
+     * 1. Se agrega un total de cuatro textos a la colección mediante el método `agregarTexto`.
+     * 2. Se verifica que la colección tenga el tamaño esperado y contenga los textos agregados.
+     */
     @Test
     public void TestAgregarTexto(){
         System.out.println("Test agregarTexto");
@@ -104,6 +189,25 @@ public class TestConjuntoTextos {
 
 
     // ---------- AUXILIARES ----------
+    /**
+     * Objetivo de la Prueba:
+     * La función `TestExisteTexto` tiene como objetivo verificar el correcto funcionamiento
+     * del método `existeTexto` de la clase `Textos`. Este método debería indicar si un texto
+     * específico existe en la colección.
+     *
+     * Ficheros Necesarios:
+     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
+     * principalmente de las estructuras de datos internas de la clase `Textos`.
+     *
+     * Valores Estudiados:
+     * Se evalúan los siguientes aspectos:
+     * 1. Se agrega un total de dos textos a la colección mediante el método `agregarTexto`.
+     * 2. Se verifica la existencia de los textos agregados y la no existencia de textos no agregados.
+     *
+     * Operativa:
+     * 1. Se agrega un total de dos textos a la colección mediante el método `agregarTexto`.
+     * 2. Se verifica la existencia de los textos agregados y la no existencia de textos no agregados.
+     */
     @Test
     public void TestExisteTexto() {
         System.out.println("Test existeTexto");
@@ -117,6 +221,29 @@ public class TestConjuntoTextos {
         assertFalse(textos.existeTexto("nombreP2"));
     }
 
+    /**
+     * Objetivo de la Prueba:
+     * La función `TestBorrarTexto` tiene como objetivo verificar el correcto funcionamiento
+     * del método `borrarTexto` de la clase `Textos`. Este método debería eliminar un texto
+     * específico de la colección.
+     *
+     * Ficheros Necesarios:
+     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
+     * principalmente de las estructuras de datos internas de la clase `Textos`.
+     *
+     * Valores Estudiados:
+     * Se evalúan los siguientes aspectos:
+     * 1. Se agregan un total de cuatro textos a la colección mediante el método `agregarTexto`.
+     * 2. Se eliminan dos textos específicos mediante el método `borrarTexto`.
+     * 3. Se verifica que la colección tenga el tamaño esperado después de la eliminación.
+     * 4. Se verifica la no existencia de los textos eliminados y la existencia de los no eliminados.
+     *
+     * Operativa:
+     * 1. Se agregan un total de cuatro textos a la colección mediante el método `agregarTexto`.
+     * 2. Se eliminan dos textos específicos mediante el método `borrarTexto`.
+     * 3. Se verifica que la colección tenga el tamaño esperado después de la eliminación.
+     * 4. Se verifica la no existencia de los textos eliminados y la existencia de los no eliminados.
+     */
     @Test
     public void TestBorrarTexto() {
         System.out.println("Test borrarTexto");
