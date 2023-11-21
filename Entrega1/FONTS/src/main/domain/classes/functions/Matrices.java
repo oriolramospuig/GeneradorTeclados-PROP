@@ -5,8 +5,13 @@ import main.domain.classes.types.PairFrequency;
 import java.util.HashMap;
 import java.util.List;
 
+<<<<<<< Entrega1/FONTS/src/main/domain/classes/functions/Matrices.java
+/** Clase que calcula las diferentes matrices y operaciones (suma) necesarias para el algoritmo
+ * @author Oriol i Victor
+=======
 /**
  * Clase que calcula las diferentes matrices y operaciones (suma) necesarias para el algoritmo
+>>>>>>> Entrega1/FONTS/src/main/domain/classes/functions/Matrices.java
  */
 public class Matrices {
     /**Genera la matriz de distancias de Manhattan*/
