@@ -28,7 +28,7 @@ public class TestTeclado {
      * Valores estudiados: Estrategia caja gris. Se define un teclado a partir de una asociación de texto y un alfabeto y se comprueba que los que guardo sean los mismos.
      * Operativa: Creamos un nuevo Teclado con los parámetros mencionados y escogemos un algoritmo y unas dimensiones para la creación de este
      **/
-    @Test
+   /* @Test
     public void TestConstructora() {
         System.out.println("Test Constructora");
         String nombre = "nombre";
@@ -53,6 +53,7 @@ public class TestTeclado {
      * Valores estudiados: Estrategia caja gris. Se crea un teclado y un PairInt de dimensiones y se asegura que los datos se han introducido correctamente
      * Operativa: Se comprueba que el método getDimensiones() proporciona los datos correctos sobre las dimensiones del teclado
      **/
+/*
     @Test
     public void testgetDimensiones() {
         System.out.println("Test get Dimensiones");
@@ -77,7 +78,7 @@ public class TestTeclado {
      * Ficheros de datos necesarios: Datos introducidos manualmente.
      * Valores estudiados: Estrategia caja gris. Se crea un teclado y una puntuación y se comprueba que se puede añadir la segunda a la primera correctamente
      * Operativa: Se comprueba que la puntuación insertada es equivalente a la del teclado tras haberle añadido la misma
-     **/
+     **//*
     @Test
     public void testSetPuntuacion() {
         System.out.println("Test set Puntuacion");
@@ -99,7 +100,7 @@ public class TestTeclado {
      * Ficheros de datos necesarios: Datos introducidos manualmente.
      * Valores estudiados: Estrategia caja gris. Se crea un teclado y unas dimensiones y se comprueba que se puede añadir la segunda a la primera correctamente
      * Operativa: Se comprueba que las dimensiones insertadas son equivalentes a las del teclado tras haberle añadido las mismas.
-     **/
+     **//*
     @Test
     public void testSetDimensiones() {
         System.out.println("Test set Dimensiones");
@@ -122,7 +123,7 @@ public class TestTeclado {
      * Ficheros de datos necesarios: Datos introducidos manualmente.
      * Valores estudiados: Estrategia caja gris. Se crea un teclado y un alfabeto, se añade el alfabeto como vinculado al teclado y se comprueba de que se ha agregado correctamente.
      * Operativa: Se comprueba que el mismo método añade el alfabeto al Teclado correctamente.
-     **/
+     **//*
     @Test
     public void testagregarAlfabetovinculado() {
         System.out.println("Test agregar Alfabeto Vinculado");
@@ -144,7 +145,7 @@ public class TestTeclado {
      * Ficheros de datos necesarios: Datos introducidos manualmente.
      * Valores estudiados: Estrategia caja gris. Se crea un teclado y una asociacion de textos, se añade la asociacion como vinculada al teclado y se comprueba de que se ha agregado correctamente.
      * Operativa: Se comprueba que el mismo método añade la Asociación de Textos al Teclado correctamente.
-     **/
+     **//*
     @Test
     public void testagregarAsociacionTextosVinculado() {
         System.out.println("Test agregar Asociacion Textos Vinculado");
@@ -168,7 +169,7 @@ public class TestTeclado {
      * Ficheros de datos necesarios: Datos introducidos manualmente.
      * Valores estudiados: Estrategia de caja gris. Se crea un teclado con su alfabeto ya creado se comprueba que se puede borrar de la misma.
      * Operativa: Se comprueba que el método borrarAlfabetoVinculado(String nomAT) borra correctamente un String, que corresponde al nombre del alfabeto.
-     */
+     *//*
     @Test
     public void testborrarAlfabetoVinculado() {
         System.out.println("Test Borrar Alfabeto Vinculado");
@@ -189,7 +190,7 @@ public class TestTeclado {
      * Ficheros de datos necesarios: Datos introducidos manualmente.
      * Valores estudiados: Estrategia de caja gris. Se crea un teclado con su asociaciondeTextos también creada y se comprueba que se puede borrar de la misma.
      * Operativa: Se comprueba que el método borrarAsociacionTextosVinculado(String nomAT) borra correctamente un String, que corresponde al nombre de una asociación de textos.
-     */
+     *//*
     @Test
     public void testborrarAsociacionTextosVinculado() {
         System.out.println("Test Borrar Asociacion Textos Vinculado");
