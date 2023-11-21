@@ -73,7 +73,8 @@ public class DriverProvaUri {
         Matrices.generarMatrizDistancias(nf,nc,matrizDistancias);
         /*creadora de la classe qap nova, per que poguem provar amb lo que ha dit a classe*/
         List<Integer> sol = new ArrayList<>();
-        QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias, sol);
+        int [][] tec = new int[nf][nc];
+        QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias, sol, tec);
     }
 
 

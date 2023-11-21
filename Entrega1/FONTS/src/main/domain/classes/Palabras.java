@@ -21,12 +21,13 @@ public class Palabras extends Texto
      * @param texto String que contiene las palabras que forman el texto creado
      * @param frecuenciaLetras HashMap que contiene los pares de letras y sus respectivas frecuencias del Texto del Tipo Palabras creado
      */
-    public Palabras(String nombre, String texto, HashMap<String, Integer> frecuenciaLetras) {
+     public Palabras(String nombre, String texto, HashMap<String, Integer> frecuenciaLetras) {
         this.nombre = nombre;
         this.texto = texto;
         this.frecuenciaLetras = frecuenciaLetras;
         asociacionesVinculadas = new ArrayList<>();
-    }
+     }
+
 
     // ---------- GETTERS ----------
     /**

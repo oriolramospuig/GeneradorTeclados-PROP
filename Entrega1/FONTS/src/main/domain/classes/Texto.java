@@ -21,14 +21,7 @@ public abstract class Texto
     protected ArrayList<String> asociacionesVinculadas;
 
 
-    // ---------- CONSTRUCTORES ----------
-   /*public Texto(String nombreT,HashMap<String, Integer> frecP, HashMap<String, Integer> frecL ) {
-        nombre = nombreT;
-        frecuenciaPalabras = frecP;
-        frecuenciaLetras = frecL;
-        asociacionesVinculadas = new ArrayList<>();
-    }
-    */
+    // ---------- CONSTRUCTORAS ----------
 
     // ---------- GETTERS ----------
     /**
@@ -79,6 +72,6 @@ public abstract class Texto
      * @param nomAT nombre de la asociación de textos a desvincular
      */
     public void borrarAsociacionesVinculadas(String nomAT) {
-    asociacionesVinculadas.remove(nomAT);
-}
+        asociacionesVinculadas.remove(nomAT);
+    }
 }
