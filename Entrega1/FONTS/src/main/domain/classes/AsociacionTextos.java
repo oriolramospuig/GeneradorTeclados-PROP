@@ -82,7 +82,7 @@ public class AsociacionTextos
 
     /**
      * Devuelve el nombre de los textos asociados
-     * @return ArrayList<String>: lista de nombres de los textos asociados
+     * @return ArrayList<String>: Lista de nombres de los textos asociados
      */
     public ArrayList<String> getTextosAsociaciados() {
         return textosAsociaciados;
@@ -90,7 +90,7 @@ public class AsociacionTextos
 
     /**
      * Devuelve el nombre de los teclados vinculados a la asocciación de textos
-     * @return ArrayList<String>: lista de nombres de los teclados vinculados
+     * @return ArrayList<String>: Lista de nombres de los teclados vinculados
      */
     public ArrayList<String> getTecladosVinculados() {
         return tecladosVinculados;
@@ -98,7 +98,7 @@ public class AsociacionTextos
 
     /**
      * Devuelve el map de pares de letras con sus frecuencias
-     * @return HashMap<String,Integer>: map de frecuenciaLetras
+     * @return HashMap<String,Integer>: Map de frecuenciaLetras
      */
     public HashMap<String,Integer> getFrecuenciaLetras() {
         return frecuenciaLetras;
@@ -106,7 +106,7 @@ public class AsociacionTextos
 
     /**
      * Devuelve los pares String, Integer de los pares de letras con sus frecuencias ordenados
-     * @return ArrayList<PairFrequency>: lista de pares de letras y frecuencias ordenados
+     * @return ArrayList<PairFrequency>: Lista de pares de letras y frecuencias ordenados
      */
     public ArrayList<PairFrequency> getFrecuenciaLetrasArray() {
         ArrayList<PairFrequency> freq = new ArrayList<>();
