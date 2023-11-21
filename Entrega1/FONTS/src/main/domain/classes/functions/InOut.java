@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /** Clase
- * @author X (X@estudiantat.upc.edu)
+ * @author Oriol
  */
 public class InOut {
     private Scanner scanner;

@@ -8,7 +8,7 @@ import java.util.Map;
 
 /** Clase que implementa el algoritmo Húngaro, para calcular de manera más exacta la cota de Gilmore-Lawler
  * y tener una asignación óptima. Recibe la matriz de contribución C1+C2
- * @author X (X@estudiantat.upc.edu)
+ * @author Oriol i Victor
  */
 public class HungarianAlgorithm {
     int[][] costMatrix;

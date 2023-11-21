@@ -5,7 +5,7 @@ import main.domain.classes.types.PairInt;
 
 /**
  * Classe que representa un teclado
- * @author X (X@estudiantat.upc.edu)
+ * @author Júlia
  */
 public class Teclado
 {

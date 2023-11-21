@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /** Este controlador se encarga de gestionar los métodos de añadir, modificar y borrar de textos */
+
+/**
+ * @author Júlia
+ */
 public class CtrlTexto
 {
     // ---------- PARÁMETROS ----------

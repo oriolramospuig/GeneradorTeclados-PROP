@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 /** Clase que implementa el algoritmo de gilmore-lawler. Recibe las matrices de frecuencias
  * y de distancias y calcula una asignación mediante la cota de gilmore lawler, llamando
  * al algortimo Húngaro
- * @author X (X@estudiantat.upc.edu)
+ * @author Oriol i Victor
  */
 public class GilmoreLawler
 {

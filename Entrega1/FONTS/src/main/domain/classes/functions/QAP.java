@@ -6,7 +6,7 @@ import java.util.*;
 
 /** Clase que a partir de las matrices de frecuencias y de distancias calcula una solución inicial y
  * llama al algoritmo de gilmore-lawler con una cota inicial
- * @author X (X@estudiantat.upc.edu)
+ * @author Oriol i Victor
  */
 public class QAP {
     private int[][] teclado; // La matriz del teclado

@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * Clase que representa un Texto del tipo Frecuencias
- * @author ...
+ * @author Júlia
  */
 public class Frecuencias extends Texto
 {
