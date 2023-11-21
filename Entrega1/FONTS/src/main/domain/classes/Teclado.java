@@ -10,7 +10,7 @@ import main.domain.classes.types.PairInt;
 public class Teclado
 {
     // ---------- ATRIBUTOS ----------
-    /** Guarda el nombre introducido por el usuario */
+    /** Guarda el nombre introducido por el usuario*/
     private String nombre;
 
     /** Puntuación del teclado */
@@ -29,8 +29,11 @@ public class Teclado
     private String asociacionTextosVinculado;
 
 
-    // ---------- CONSTRUCTORES ----------
+    /* ---------- CONSTRUCTORES ---------- */
 
+    /**
+     * Constructora de la clase Teclado
+     */
 
     public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dimensiones) {
         this.nombre = nombre;
@@ -41,26 +44,26 @@ public class Teclado
     }
 
 
-    // ---------- GETTERS ----------
+    // ---------- GETTERS --------------
     /**
-     * Retorna el nombre introducido por el usuario
-     * @return String : Nombre introducido por el usuario
+     * Devuelve el nombre introducido por el usuario
+     * @return String: nombre introducido por el usuario
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * Retorna la puntuación del teclado
-     * @return Float : Puntuación del teclado calculada mediante el algoritmo de generación
+     * Devuelve la puntuación del teclado
+     * @return float: Puntuación del teclado calculada debido al algoritmo
      */
     public float getPuntuacion() {
         return puntuacion;
     }
 
     /**
-     * Retorna el nombre del algoritmo usado para generar el teclado
-     * @return String : Nombre del algoritmo usado para generar el teclado
+     * Devuelve el nombre del algoritmo usado para generar el teclado
+     * @return String: Nombre  Algoritmo usado para generar el teclado
      */
     /*public String getAlgoritmo() {
         if (algoritmo == Algoritmo.QAP) return "QAP";

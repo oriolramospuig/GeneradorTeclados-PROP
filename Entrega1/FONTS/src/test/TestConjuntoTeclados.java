@@ -2,6 +2,7 @@
 
 
 import main.domain.classes.*;
+import main.domain.classes.types.PairInt;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,12 +21,28 @@ public class TestConjuntoTeclados {
     @Before
     public void setUp() {
         teclados = new ConjuntoTeclados();
-        teclado1 = new Teclado("nombreT1");
-        teclado2 = new Teclado("nombreT2");
+        String nombre = "nombre";
+        AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
+        Alfabeto alfabeto = new Alfabeto("Alfabeto");
+        Algoritmo algoritmo = Algoritmo.QAP;
+        PairInt dimensiones = new PairInt(5, 10);
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, algoritmo, dimensiones);
+        String nombre1 = "nombre";
+        AsociacionTextos asociacionTextos1 = new AsociacionTextos("Asociaciondetextos");
+        Alfabeto alfabeto1 = new Alfabeto("Alfabeto");
+        Algoritmo algoritmo1 = Algoritmo.QAP;
+        PairInt dimensiones1 = new PairInt(5, 10);
+        Teclado teclado1 = new Teclado(nombre, asociacionTextos, alfabeto, algoritmo, dimensiones);
     }
 
 
     // ---------- CONSTRUCTORAS ----------
+    /**
+     * Objeto de la prueba: Test de la constructora de ConjuntoTeclados
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
+     * Valores estudiados: Estrategia caja gris. Se crea un nuevo objeto Conjunto de Teclados y se comprueba que no tiene ningun teclado dentro del conjunto.
+     * Operativa: Creamos un nuevo Conjunto de Teclados vacío
+     **/
     @Test
     public void TestConstructora() {
         System.out.println("Test Constructora");
@@ -35,6 +52,12 @@ public class TestConjuntoTeclados {
 
 
     // ---------- GETTERS ----------
+    /**
+     * Objeto de la prueba: Test del método getTeclado(String nomT) de la clase Conjunto de Teclados.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
+     * Valores estudiados: Estrategia de caja gris. Se crea un teclado, se agrega a un conjunto ya creado y se comprueba que se puede acceder a el
+     * Operativa: Se comprueba que el resultado sacado pertenece al conjunto de Teclados.
+     */
     @Test
     public void TestGetTeclado() {
         System.out.println("Test getTeclado");
@@ -45,6 +68,12 @@ public class TestConjuntoTeclados {
         assertEquals("nombreT1", resultado.getNombre());
     }
 
+    /**
+     * Objeto de la prueba: Test del método getNombresTeclado(String nomT) de la clase conjuntoTeclados
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
+     * Valores estudiados: Estrategia de caja gris. Se crea un listado de teclados, se añaden a conjuntodeTextos y se comprueba que se puede acceder al nombre de ellos
+     * Operativa: Se comprueba que el resultado sacado pertenece al conjunto de Teclados.
+     */
     @Test
     public void TestGetNombresTeclados() {
         System.out.println("Test getNombresTeclados");
@@ -61,6 +90,12 @@ public class TestConjuntoTeclados {
 
 
     // ---------- SETTERS ----------
+    /**
+     * Objeto de la prueba: Test del método AgregarTeclado(String nomT, Teclado teclado) de la clase conjuntoTeclados
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
+     * Valores estudiados: Estrategia de caja gris. Se crean teclados, se añaden al conjunto y se comprueban que estos teclados existen
+     * Operativa: Se comprueba que los teclados pertenecen al conjunto de Teclados.
+     */
     @Test
     public void TestAgregarTeclado(){
         System.out.println("Test agregarTeclado");
@@ -75,6 +110,12 @@ public class TestConjuntoTeclados {
 
 
     // ---------- AUXILIARES ----------
+    /**
+     * Objeto de la prueba: Test del método ExisteTeclado(String nomT) de la clase conjuntoTeclados
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
+     * Valores estudiados: Estrategia de caja gris. Se crea un Teclado, se agrega al conjunto y se comprueba que se ha agregado correctamente.
+     * Operativa: Se comprueba que el teclado añadido existe en el conjunto.
+     */
     @Test
     public void TestExisteTeclado() {
         System.out.println("Test existeTeclado");
@@ -85,6 +126,12 @@ public class TestConjuntoTeclados {
         assertFalse(teclados.existeTeclado("nombreT2"));
     }
 
+    /**
+     * Objeto de la prueba: Test del método BorrarTeclado(String nomT) de la clase conjuntoTeclados
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
+     * Valores estudiados: Estrategia de caja gris. Se crean unos Teclados, se agregan al conjunto, se borran y se comprueba que se ha borrado correctamente.
+     * Operativa: Se comprueba que el teclado borrado no existe en el conjunto.
+     */
     @Test
     public void TestBorrarTeclado() {
         System.out.println("Test borrarTeclado");
