@@ -219,7 +219,7 @@ public class GilmoreLawler {
 
     public void imprimirMejorSolucionParcial() {
         // Suponiendo que 'mejorSolucionParcial' es una lista de índices que representa la mejor solución actual
-        System.out.print("La mejor solución parcial es: ");
+        System.out.print("La mejor solución es: ");
         for (int tecla = 0; tecla < mejorSolucionParcial.size(); tecla++) {
             int posicion = mejorSolucionParcial.get(tecla);
             System.out.println("Posición " + posicion + ": Elemento " + tecla + " | ");
