@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Clase que representa un texto en formato pares de letras con sus frecuencias
- * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
+ * Clase que representa un Texto del tipo Frecuencias
+ * @author ...
  */
 public class Frecuencias extends Texto
 {
@@ -22,6 +22,11 @@ public class Frecuencias extends Texto
         asociacionesVinculadas = new ArrayList<>();
     }*/
 
+    /** Crea una instancia de la clase Frecuencias e inicializa los atributos de esta clase con los valores correspondientes
+     * @param nombre nombre que adquiere el Texto de Tipo Frecuencia creada
+     * @param frecuenciaPalabras HashMap que contiene las palabras con sus frecuencias
+     * @param frecuenciaLetras HashMap que contiene los pares de letras y sus respectivas frecuencias del Texto del Tipo Frecuencias creado
+     */
     public Frecuencias(String nombre, HashMap<String, Integer> frecuenciaPalabras, HashMap<String, Integer> frecuenciaLetras) {
         this.nombre = nombre;
         this.frecuenciaPalabras = frecuenciaPalabras;
@@ -29,6 +34,7 @@ public class Frecuencias extends Texto
         asociacionesVinculadas = new ArrayList<>();
     }
 
+    /** No devuelve nada. Imprime los valores de los atributos frecuenciaPalabras y frecuenciaLetras */
     public void imprimirFrecuencias(){
         System.out.println("PALABRAS:");
         for(Map.Entry<String,Integer> e : frecuenciaPalabras.entrySet()){
@@ -43,9 +49,8 @@ public class Frecuencias extends Texto
 
     // ---------- GETTERS ----------
     /**
-     * Retorna el contenido del texto
-     * @return String : Contenido del texto compuesto por pares de letras con sus frecuencias
-     * ("ab", 5)
+     * Devuelve el contenido, es decir, frecuenciaPalabras, del Texto de Tipo Frecuencias
+     * @return String: Contenido del texto compuesto por pares de palabras con sus frecuencias ("ab", 5)
      */
     /*public String getTexto() {
         StringBuilder texto = new StringBuilder("");
@@ -69,22 +74,28 @@ public class Frecuencias extends Texto
         return texto.toString();
     }
 
+    /**
+     * Devuelve el map de pares de palabras con sus frecuencias
+     * @return HashMap<String,Integer>: Map de frecuenciaPalabras
+     */
     public HashMap<String, Integer> getFrecuenciaPalabras() {
         return frecuenciaPalabras;
     }
 
 
     // ---------- SETTERS ----------
+
     /**
-     * No retorna.
+     * No devuelve nada. Añade el par de letras con su frecuencia (parejaLetras, frecuencia) a frecuenciasLetras, estructura donde las guardamos
      * @param parejaLetras pareja de caracteres del texto
      * @param frecuencia frecuencia del par de palabras parejaLetras
-     * Añade el par de letras con su frecuencia (parejaLetras, frecuencia)
-     * a frecuenciasLetras, estructura donde las guardamos
+     *
      */
+    /* REVISAR ESTA FUNCION!
     public void anadirFrecuencia(String parejaLetras, Integer frecuencia) {
         frecuenciaLetras.put(parejaLetras, frecuencia);
     }
+    */
 
 
     // ---------- AUXILIARES -----------
