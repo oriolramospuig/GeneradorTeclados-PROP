@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class CtrlAsociacionTexto {
-
+/** Este controlador se encarga de gestionar los métodos de añadir, modificar y borrar asociaciones de textos*/
+public class CtrlAsociacionTexto
+{
     // ---------- PARÁMETROS ----------
-    /** Guarda el conjunto de asociaciones de textos introducidas por el usuario */
+    /** Representa conjunto de asociaciones de textos dentro del controlador para gestioanr y manipular los textos */
     private ConjuntoAsociaciones AsociacionesTextos;
 
     // ---------- CONSTRUCTORA ----------
