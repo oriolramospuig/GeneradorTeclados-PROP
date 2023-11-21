@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 import main.domain.classes.AsociacionTextos;
 import main.domain.classes.ConjuntoAsociaciones;
@@ -98,4 +98,4 @@ public class TestConjuntoAsociaciones
         assertFalse(asociaciones.existeAsociaciondeTextos("nombreAT1"));
         assertTrue(asociaciones.existeAsociaciondeTextos("nombreAT2"));
     }
-}*/
+}
