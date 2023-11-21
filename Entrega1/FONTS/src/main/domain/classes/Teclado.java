@@ -16,9 +16,6 @@ public class Teclado
     /** Puntuación del teclado */
     private float puntuacion;
 
-    /** Algoritmo usado para el teclado */
-    // private Algoritmo algoritmo;
-
     /** Dimensiones del teclado */
     private PairInt dimensiones;
 
@@ -29,12 +26,10 @@ public class Teclado
     private String asociacionTextosVinculado;
 
 
-    /* ---------- CONSTRUCTORES ---------- */
-
+    // ---------- CONSTRUCTORAS ----------
     /**
      * Constructora de la clase Teclado
      */
-
     public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dimensiones) {
         this.nombre = nombre;
         // this.algoritmo = algoritmo;
@@ -62,16 +57,7 @@ public class Teclado
     }
 
     /**
-     * Devuelve el nombre del algoritmo usado para generar el teclado
-     * @return String: Nombre  Algoritmo usado para generar el teclado
-     */
-    /*public String getAlgoritmo() {
-        if (algoritmo == Algoritmo.QAP) return "QAP";
-        else return "Alg2";
-    }*/
-
-    /**
-     * Retorna las dimensiones del teclado generado
+     * Devuelve las dimensiones del teclado generado
      * @return PairInt : Dimensiones del teclado generado (filas, columnas)
      */
     public PairInt getDimensiones() {
@@ -82,7 +68,7 @@ public class Teclado
     }
 
     /**
-     * Retorna el alfabeto usado para generar el teclado
+     * Devuelve el alfabeto usado para generar el teclado
      * @return String : Nombre del alfabeto vinculado al teclado
      */
     public String getAlfabetoVinculado() {
@@ -90,7 +76,7 @@ public class Teclado
     }
 
     /**
-     * Retorna el la asociación de textos usada para generar el teclado
+     * Devuelve el la asociación de textos usada para generar el teclado
      * @return String : Nombre de la asociación de textos vinculado al teclado
      */
     public String getAsociacionTextosVinculado() {
@@ -100,7 +86,7 @@ public class Teclado
 
     // ---------- SETTERS ----------
     /**
-     * No retorna.
+     * No devuelve nada.
      * @param puntuacion nueva puntuación del teclado
      * Setea la puntuación con el valor pasado por parámetro puntuación
      */
@@ -109,7 +95,7 @@ public class Teclado
     }
 
     /**
-     * No retorna.
+     * No devuelve nada.
      * @param dimensiones dimensiones del teclado
      * Pone las dimensiones pasadas por parámetro dimensiones al teclado
      */
@@ -118,7 +104,7 @@ public class Teclado
     }
 
     /**
-     * No retorna.
+     * No devuelve nada.
      * @param nomA nombre del alfabeto a vincular
      * Setea el valor de alfabetoVinculado al nombre del alfabeto pasado por parámetro nomA
      */
@@ -127,7 +113,7 @@ public class Teclado
     }
 
     /**
-     * No retorna.
+     * No devuelve nada.
      * @param nomAT nombre de la asociación de textos a vincular
      * Setea el valor de asociacionTextosVinculado al nombre de la asociación de textos
      * pasada por parámetro nomAT
@@ -139,23 +125,22 @@ public class Teclado
 
     // ---------- AUXILIARES -----------
     /**
-     * No retorna.
+     * No devuelve nada.
      * @param nomA nombre del alfabeto anterior
      * Desvincula el alfabetoVinculado dejandolo a null
      */
+    //Segunda entrega
     public void borrarAlfabetoVinculado(String nomA) {
         alfabetoVinculado = null;
     }
 
     /**
-     * No retorna.
+     * No devuelve nada.
      * @param nomAT nombre de la asociación de textos anterior
      * Desvincula la asociacionTextosVinculado dejandola a null
      */
+    //Segunda entrega
     public void borrarAsociacionTextosVinculados(String nomAT) {
         asociacionTextosVinculado = null;
     }
 }
-
-
-

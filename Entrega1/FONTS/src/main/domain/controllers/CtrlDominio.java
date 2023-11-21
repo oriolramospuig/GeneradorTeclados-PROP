@@ -8,12 +8,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CtrlDominio {
+/**
+ * Este controlador se encarga de gestionar todos los métodos y distribuir las funciones a los respectivos controladores
+ * @author
+ */
+public class CtrlDominio
+{
+    /** Crea una instancia del controlador alfabeto */
     private CtrlAlfabeto ctrlAlfabeto;
+
+    /** Crea una instancia del controlador texto */
     private CtrlTexto ctrlTexto;
+
+    /** Crea una instancia del controlador asociación de texto */
     private CtrlAsociacionTexto ctrlAsociacionTexto;
+
+    /** Crea una instancia del controlador teclado */
     private CtrlTeclado ctrlTeclado;
 
+
+    // ---------- CONSTRUCTORAS ----------
+    /** Inicialización de la instancia controlador dominio */
     public CtrlDominio() {
         ctrlAlfabeto = new CtrlAlfabeto();
         ctrlTexto = new CtrlTexto();
@@ -21,16 +36,41 @@ public class CtrlDominio {
         ctrlTeclado = new CtrlTeclado();
     }
 
+
     // ---------- FUNCIONES ALFABETO ----------
+
+    /**
+     *
+     * @param nomA
+     * @param entradaCaracteres
+     * @return
+     */
     public boolean agregarAlfabeto(String nomA, ArrayList<Character> entradaCaracteres){
         return ctrlAlfabeto.CrearAlfabeto(nomA,entradaCaracteres);
     }
+
+    /**
+     *
+     * @return
+     */
     public HashMap<String, Alfabeto> getListaAlfabetos(){
         return ctrlAlfabeto.getCjtAlfabetos().getAlfabetos();
     }
+
+    /**
+     *
+     * @param nomA
+     * @return
+     */
     public boolean existealfabeto(String nomA){
         return ctrlAlfabeto.getCjtAlfabetos().existeAlfabeto(nomA);
     }
+
+    /**
+     *
+     * @param nomA
+     * @return
+     */
     public ArrayList<Character> consultarContenidoAlfabeto(String nomA){
         if(existealfabeto(nomA)) {
             return ctrlAlfabeto.getContenido(nomA);
@@ -38,6 +78,11 @@ public class CtrlDominio {
         return null;
     }
 
+    /**
+     *
+     * @param nomA
+     * @return
+     */
     public int numeroCaracteres(String nomA) {
         return ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA).getLetras().size();
     }
@@ -62,24 +107,62 @@ public class CtrlDominio {
 
 
     // ---------- FUNCIONES TEXTO ----------
+
+    /**
+     *
+     * @param nomT
+     * @param texto
+     * @return
+     */
     public boolean agregarTextoPalabras(String nomT, String texto){
         return ctrlTexto.agregarTextoPalabras(nomT,texto);
     }
+
+    /**
+     *
+     * @param nomT
+     * @param frecuenciaPalabras
+     * @return
+     */
     public boolean agregarTextoFrecuencias(String nomT, HashMap<String,Integer> frecuenciaPalabras){
         return ctrlTexto.agregarTextoFrecuencias(nomT,frecuenciaPalabras);
     }
+
+    /**
+     *
+     * @return
+     */
     public HashMap<String, Texto> getListaTextos(){
         return ctrlTexto.getTextos().getTextos();
     }
+
+    /**
+     *
+     * @param nomT
+     * @return
+     */
     public String consultarContenidoTexto(String nomT){
         return ctrlTexto.getContenido(nomT);
     }
+
+    /**
+     *
+     * @param nomT
+     * @return
+     */
     public boolean existetexto(String nomT){
         return ctrlTexto.getTextos().existeTexto(nomT);
     }
 
 
     // ---------- FUNCIONES ASOCIACION TEXTOS ----------
+
+    /**
+     *
+     * @param nomAT
+     * @param textosagregar
+     * @return
+     */
     public boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar){
         if(ctrlAsociacionTexto.agregarAsociacion(nomAT)){
             agregarTextoAsociacion(nomAT,textosagregar);
@@ -87,6 +170,12 @@ public class CtrlDominio {
         }
         else return false;
     }
+
+    /**
+     *
+     * @param nomAT
+     * @param textosagregar
+     */
     public void agregarTextoAsociacion (String nomAT, ArrayList<String> textosagregar){
         for (String nomT : textosagregar) {
             ctrlTexto.agregarAsociacionVinculada(nomT,nomAT);
@@ -94,9 +183,20 @@ public class CtrlDominio {
             ctrlAsociacionTexto.agregarTextoAsociacion(nomAT, texto);
         }
     }
+
+    /**
+     *
+     * @return
+     */
     public HashMap<String, AsociacionTextos> getListaAsociaciones(){
         return ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionesTextos();
     }
+
+    /**
+     *
+     * @param nomAT
+     * @return
+     */
     public boolean existeasociacion(String nomAT){
         return ctrlAsociacionTexto.getCjtAsociaciones().existeAsociaciondeTextos(nomAT);
     }
@@ -109,6 +209,13 @@ public class CtrlDominio {
 
 
     // ---------- FUNCIONES TECLADO ----------
+
+    /**
+     *
+     * @param alfabeto
+     * @param asociacionTextos
+     * @return
+     */
     public boolean compatibles(Alfabeto alfabeto,AsociacionTextos asociacionTextos){
         HashMap<String,Integer> f = asociacionTextos.getFrecuenciaLetras();
         ArrayList<Character> a = alfabeto.getLetras();
@@ -119,6 +226,14 @@ public class CtrlDominio {
         }
         return true;
     }
+
+    /**
+     *
+     * @param nomT
+     * @param nomA
+     * @param nomAT
+     * @return
+     */
     public int agregarTeclado(String nomT, String nomA, String nomAT){
         if(ctrlTeclado.existeTeclado(nomT)) return -1;
         
@@ -135,6 +250,10 @@ public class CtrlDominio {
         else return -2;
     }
 
+    /**
+     * 
+     * @return
+     */
     public ArrayList<String> getListaTeclados(){
         return ctrlTeclado.getCjtTeclados().getNombresTeclados();
     }

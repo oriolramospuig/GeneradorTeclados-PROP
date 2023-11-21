@@ -7,8 +7,8 @@ import java.util.HashMap;
  * Clase que representa el conjunto de alfabetos
  * @author
  */
-public class ConjuntoAlfabetos {
-
+public class ConjuntoAlfabetos
+{
     // ---------- ATRIBUTOS ----------
     /** Guarda el conjunto de alfabetos introducidos por el usuario */
     private HashMap<String, Alfabeto> alfabetos;
@@ -23,6 +23,7 @@ public class ConjuntoAlfabetos {
         alfabetos = new HashMap<>();
     }
 
+
     // ---------- GETTERS ----------
     /**
      * Retorna el alfabeto con clave primaria introducida
@@ -33,6 +34,7 @@ public class ConjuntoAlfabetos {
         if (alfabetos.containsKey(nomA)) return alfabetos.get(nomA);
         else return null;
     }
+
     /**
      * Retorna el conjunto de alfabetos existentes
      * @return HashMap<String, Alfabeto>: Conjunto de alfabetos
@@ -40,6 +42,7 @@ public class ConjuntoAlfabetos {
     public HashMap<String, Alfabeto> getAlfabetos () {
         return alfabetos;
     }
+
     /**
      * Retorna el nombre de los alfabetos del conjunto
      * @return ArrayList<String>: Lista de nombres de los alfabetos del conjunto
@@ -74,6 +77,7 @@ public class ConjuntoAlfabetos {
     public boolean existeAlfabeto(String nomA){
         return alfabetos.containsKey(nomA);
     }
+
     /**
      * No retorna nada.
      * @param nomA nombre del alfabeto a borrar

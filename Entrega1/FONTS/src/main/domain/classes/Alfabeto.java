@@ -8,10 +8,9 @@ import java.util.ArrayList;
  * Clase que representa un alfabeto
  * @author
  */
-public class Alfabeto {
-
+public class Alfabeto
+{
     // ---------- ATRIBUTOS ----------
-
     /** Nombre del alfabeto (clave única) */
     private String nombre;
 
@@ -23,6 +22,10 @@ public class Alfabeto {
 
 
     // ---------- CONSTRUCTORES ----------
+
+    /**
+     * Constructora de alfabeto vacío
+     */
     public Alfabeto() {
         this.nombre = new String();
         this.letras = new ArrayList<>();
@@ -39,32 +42,36 @@ public class Alfabeto {
         tecladosVinculados = new ArrayList<>();
     }
 
+
     // ---------- GETTERS ----------
     /**
-     * Retorna el nombre del alfabeto
+     * Devuelve el nombre del alfabeto
      * @return String : Nombre alfabeto
      */
     public String getNombre() {
         return nombre;
     }
+
     /**
-     * Retorna el contenido del alfabeto
+     * Devuelve el contenido del alfabeto
      * @return ArrayList<Character> : Contenido del alfabeto usado por las funciones
      */
     public ArrayList<Character> getLetras() {
         return letras;
     }
+
     /**
-     * Retorna la lista de nombres de los teclados vinculados al alfabeto
+     * Devuelve la lista de nombres de los teclados vinculados al alfabeto
      * @return ArrayList<String> : Lista de nombres de los teclados vinculados
      */
     public ArrayList<String> getTecladosVinculados() {
         return tecladosVinculados;
     }
 
+
     // ---------- SETTERS ----------
     /**
-     * No retorna.
+     * No devuelve nada.
      * @param nomT nombre del teclado a vincular
      * Añade a la lista de nombres de los teclados vinculados el nombre del nuevo teclado nomT
      */
@@ -72,14 +79,14 @@ public class Alfabeto {
         tecladosVinculados.add(nomT);
     }
 
+
     // ---------- AUXILIARES ----------
     /**
-     * No retorna.
+     * No devuelve nada.
      * @param nomT nombre del teclado a desvincular
      * Borra de la lista de nombres de los teclados vinculados el nombre del teclado nomT
      */
     public void borrarTecladoVinculado(String nomT) {
         tecladosVinculados.remove(nomT);
     }
-
 }

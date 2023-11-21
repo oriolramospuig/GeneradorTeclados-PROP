@@ -30,6 +30,7 @@ public class ConjuntoTeclados
         if (teclados.containsKey(nomT)) return teclados.get(nomT);
         else return null;
     }
+
     /**
      * Retorna el conjunto de teclados existentes
      * @return HashMap<String, Teclado>: Conjunto de teclados
@@ -37,6 +38,7 @@ public class ConjuntoTeclados
     public HashMap<String, Teclado> getTeclados() {
         return teclados;
     }
+
     /**
      * Retorna el nombre de los teclados del conjunto
      * @return ArrayList<String>: Lista de nombres de los teclados del conjunto
@@ -71,6 +73,7 @@ public class ConjuntoTeclados
     public boolean existeTeclado(String nomT){
         return teclados.containsKey(nomT);
     }
+
     /**
      * No retorna nada.
      * @param nomT nombre del teclado a borrar

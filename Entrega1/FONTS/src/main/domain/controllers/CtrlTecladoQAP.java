@@ -15,6 +15,10 @@ import java.util.List;
 
 import static java.lang.Math.sqrt;
 
+/**
+ * Este controlador se encarga de crear un teclado
+ * @author
+ */
 public class CtrlTecladoQAP {
     public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto) {
         //calcular dim

@@ -1,4 +1,3 @@
-
 package main.domain.classes;
 
 import main.domain.classes.types.PairFrequency;
