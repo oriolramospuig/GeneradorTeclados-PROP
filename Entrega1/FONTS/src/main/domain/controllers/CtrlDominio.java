@@ -119,7 +119,7 @@ public class CtrlDominio {
         }
         return true;
     }
-    public int agregarTeclado(String nomT, String nomA, String nomAT, Algoritmo algoritmo){
+    public int agregarTeclado(String nomT, String nomA, String nomAT){
         if(ctrlTeclado.existeTeclado(nomT)) return -1;
         
         Alfabeto alfabeto = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA);
@@ -129,7 +129,7 @@ public class CtrlDominio {
             ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
             ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
             ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
-            ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, algoritmo);
+            ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto);
             return 0;
         }
         else return -2;

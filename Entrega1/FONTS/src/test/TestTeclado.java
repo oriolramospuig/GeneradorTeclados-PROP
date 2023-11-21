@@ -1,10 +1,9 @@
-/*package test;
+package test;
 
 import main.domain.classes.*;
 
 import java.util.ArrayList;
 
-import main.domain.classes.functions.QAP;
 import main.domain.classes.types.PairInt;
 import org.junit.*;
 
@@ -132,5 +131,5 @@ public class TestTeclado {
 
         assertNull(teclado.getAsociacionTextosVinculado());
     }
-}*/
+}
 

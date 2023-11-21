@@ -21,7 +21,7 @@ public class CtrlTexto {
      */
     private ConjuntoTextos CjtTextos;
     private ConjuntoTeclados CjtTeclados;
-    private ConjuntoAsociaciones CjtAsociaciones;
+    // private ConjuntoAsociaciones CjtAsociaciones;
 
     /**
      * Asigna un alfabeto y un cjt de alfabetos vacío
