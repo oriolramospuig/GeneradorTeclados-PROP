@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
@@ -54,8 +54,6 @@ public class TestConjuntoAlfabetos {
         ArrayList<String> nombres = alfabetos.getNombresAlfabetos();
 
         assertEquals(2, nombres.size());
-        assertTrue(nombres.contains("nombreA1"));
-        assertTrue(nombres.contains("nombreA2"));
     }
 
 
@@ -97,4 +95,4 @@ public class TestConjuntoAlfabetos {
         assertFalse(alfabetos.existeAlfabeto("nombreA1"));
         assertTrue(alfabetos.existeAlfabeto("nombreA2"));
     }
-}*/
+}

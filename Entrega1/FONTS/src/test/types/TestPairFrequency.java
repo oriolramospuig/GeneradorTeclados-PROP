@@ -1,4 +1,4 @@
-/*package test.types;
+package test.types;
 
 import main.domain.classes.types.PairFrequency;
 import org.junit.Test;
@@ -17,4 +17,4 @@ public class TestPairFrequency {
         assertEquals("ae", pairFrequency.getPair());
         assertEquals(4, pairFrequency.getFrequency());
     }
-}*/
+}
