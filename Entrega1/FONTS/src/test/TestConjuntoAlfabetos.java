@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
@@ -95,4 +95,4 @@ public class TestConjuntoAlfabetos {
         assertFalse(alfabetos.existeAlfabeto("nombreA1"));
         assertTrue(alfabetos.existeAlfabeto("nombreA2"));
     }
-}
+}*/

@@ -6,22 +6,27 @@ import java.util.ArrayList;
 
 /**
  * Clase que representa un alfabeto
- * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
+ * @author
  */
 public class Alfabeto {
 
     // ---------- ATRIBUTOS ----------
-    /** Guarda el nombre introducido por el usuario */
+
+    /** Nombre del alfabeto (clave única) */
     private String nombre;
 
     /** Contenido del afabeto */
     private ArrayList<Character> letras;
 
-    /** Guarda lista de teclados vinculados */
+    /** Lista de nombres de teclados vinculados a ese alfabeto*/
     private ArrayList<String> tecladosVinculados;
 
 
     // ---------- CONSTRUCTORES ----------
+    /**
+     * Constructora alfabeto con nombre y contenido asignados.
+     * La lista de nombres de teclados vinculados esta vacía inicialmente.
+     */
     public Alfabeto(String nombre, ArrayList<Character> letras) {
         this.nombre = nombre;
         this.letras = letras;
@@ -30,8 +35,8 @@ public class Alfabeto {
 
     // ---------- GETTERS ----------
     /**
-     * Retorna el nombre introducido por el usuario
-     * @return String : Nombre introducido por el usuario
+     * Retorna el nombre del alfabeto
+     * @return String : Nombre alfabeto
      */
     public String getNombre() {
         return nombre;
@@ -44,7 +49,7 @@ public class Alfabeto {
         return letras;
     }
     /**
-     * Retorna el nombre de los teclados vinculados al alfabeto
+     * Retorna la lista de nombres de los teclados vinculados al alfabeto
      * @return ArrayList<String> : Lista de nombres de los teclados vinculados
      */
     public ArrayList<String> getTecladosVinculados() {
@@ -55,8 +60,7 @@ public class Alfabeto {
     /**
      * No retorna.
      * @param nomT nombre del teclado a vincular
-     * Añade a la lista de nombres de los teclados asociados el nombre
-     * del nuevo teclado nomT
+     * Añade a la lista de nombres de los teclados vinculados el nombre del nuevo teclado nomT
      */
     public void agregarTecladoVinculado (String nomT) {
         tecladosVinculados.add(nomT);
@@ -66,8 +70,7 @@ public class Alfabeto {
     /**
      * No retorna.
      * @param nomT nombre del teclado a desvincular
-     * Borra de la lista de nombres de los teclados asociados el nombre
-     * del nuevo teclado nomT
+     * Borra de la lista de nombres de los teclados vinculados el nombre del teclado nomT
      */
     public void borrarTecladoVinculado(String nomT) {
         tecladosVinculados.remove(nomT);

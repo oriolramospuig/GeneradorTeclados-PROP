@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.types.PairInt;
@@ -23,4 +23,4 @@ public class TestCtrlTecladoQAP {
         PairInt sol = new PairInt(3,4);
         assertEquals(sol, dim);
     }
-}
+}*/

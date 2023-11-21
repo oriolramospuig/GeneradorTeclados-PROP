@@ -18,6 +18,7 @@ public class CtrlAlfabeto {
     }
 
     // ---------- FUNCIONES ALFABETO ----------
+
     public ArrayList<Character> getContenido(String nomA){
         return CjtAlfabetos.getAlfabeto(nomA).getLetras();
     }
@@ -54,18 +55,20 @@ public class CtrlAlfabeto {
         }
         return false;
     }
+
+    //PARA LA SEGUNDA ENTREGA
+
+    /*public ArrayList<String> getTecladosVinculadosAlfabeto(String nomA){
+        ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
+        return tVinculados;
+    }
+
     public boolean alfabetoTieneTecladosVinculados(String nomA){
         ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
         return !tVinculados.isEmpty();
 
     }
 
-    //Para la segunda entrega
-    /*public ArrayList<String> getTecladosVinculadosAlfabeto(String nomA){
-        ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
-        return tVinculados;
-
-    }
     public void borrarAlfabeto(String nomA){
         CjtAlfabetos.borrarAlfabeto(nomA);
     }*/
