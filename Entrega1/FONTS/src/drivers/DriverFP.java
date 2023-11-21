@@ -220,10 +220,15 @@ public class DriverFP {
         imprimirNombresTextos();
         System.out.println("Introduce el nombre del texto que quieres consultar:");
         String nombreT = inOut.leerString(); //suponemos que lo escribe bien porque lo copia de la lista
-        //existente!!?
-        System.out.println(nombreT);
-        String Palabras = ctrlDominio.consultarContenidoTexto(nombreT);
-        System.out.println(Palabras);
+        String contenido = ctrlDominio.consultarContenidoTexto(nombreT);
+        if(contenido == null) {
+            System.out.println("Este nombre de texto no existe, debes entrar un texto de la lista");
+        }
+        else {
+            System.out.println(nombreT);
+            String Palabras = ctrlDominio.consultarContenidoTexto(nombreT);
+            System.out.println(Palabras);
+        }
     }
 
     /**
@@ -241,15 +246,23 @@ public class DriverFP {
                 System.out.println("Introduce el nombre de la asociacion:");
                 String nombreAT = inOut.leerString();
                 ArrayList<String> textosagregar = new ArrayList<>();
-                for (int i = 0; i < n; ++i) {
+                boolean crear = true;
+                int i = 0;
+                while (i < n && crear) {
                     System.out.println("Introduce el nombre del texto que quieres añadir a la nueva ascociacion:");
                     String nombreT = inOut.leerString();
                     if (ctrlDominio.existetexto(nombreT)) textosagregar.add(nombreT);
-                    else System.out.println("No existe un texto con ese nombre. Vuelve a crear la asociacion.");
+                    else {
+                        System.out.println("No existe un texto con ese nombre. Vuelve a crear la asociacion.");
+                        crear = false;
+                    }
+                    ++i;
                 }
-                boolean agregada = ctrlDominio.agregarAsociacion(nombreAT, textosagregar);
-                if (!agregada) System.out.println("Ya existe el texto " + nombreAT);
-                else System.out.println("AGREGADO CON EXITO!");
+                if(crear){
+                    boolean agregada = ctrlDominio.agregarAsociacion(nombreAT, textosagregar);
+                    if (!agregada) System.out.println("Ya existe el texto " + nombreAT);
+                    else System.out.println("AGREGADO CON EXITO!");
+                }
             }
             else System.out.println("No hay tantos textos creados. Debes crear más textos.");
         }
