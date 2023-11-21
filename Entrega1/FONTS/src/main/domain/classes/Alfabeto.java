@@ -25,7 +25,7 @@ public class Alfabeto {
     // ---------- CONSTRUCTORES ----------
     /**
      * Constructora alfabeto con nombre y contenido asignados.
-     * La lista de nombres de teclados vinculados esta vacía inicialmente.
+     * La lista de nombres de teclados vinculados está vacía inicialmente.
      */
     public Alfabeto(String nombre, ArrayList<Character> letras) {
         this.nombre = nombre;

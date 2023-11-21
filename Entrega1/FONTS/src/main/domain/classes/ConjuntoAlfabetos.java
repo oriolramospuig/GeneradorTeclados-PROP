@@ -10,20 +10,25 @@ import java.util.HashMap;
 public class ConjuntoAlfabetos {
 
     // ---------- ATRIBUTOS ----------
-    /** Guarda el conjunto de alfabetos introducidos por el usuario */
+
+    /** Guarda el conjunto de alfabetos existentes */
     private HashMap<String, Alfabeto> alfabetos;
 
 
     // ---------- CONSTRUCTORAS ----------
+    /**
+     * Constructora Conjunto de alfabetos.
+     * La lista de alfabetos existentes está vacía inicialmente.
+     */
     public ConjuntoAlfabetos() {
         alfabetos = new HashMap<>();
     }
 
     // ---------- GETTERS ----------
     /**
-     * Retorna el alfabeto con clave primaria introducida
+     * Retorna el alfabeto con el nombre nomA como clave primaria
      * @param nomA clave primaria con la que buscar un alfabeto
-     * @return Alfabeto : Alfabeto con el nombre introducido
+     * @return Alfabeto : Alfabeto con el nombre nomA
      */
     public Alfabeto getAlfabeto(String nomA) {
         if (alfabetos.containsKey(nomA)) return alfabetos.get(nomA);
@@ -37,7 +42,7 @@ public class ConjuntoAlfabetos {
         return alfabetos;
     }
     /**
-     * Retorna el nombre de los alfabetos del conjunto
+     * Retorna una lista con el nombre de los alfabetos del conjunto
      * @return ArrayList<String>: Lista de nombres de los alfabetos del conjunto
      */
     public ArrayList<String> getNombresAlfabetos() {
@@ -52,9 +57,9 @@ public class ConjuntoAlfabetos {
     // ---------- SETTERS ----------
     /**
      * No retorna nada.
-     * @param alfabeto alfabeto a agregar
-     * @param nomA nombre del alfabeto a agregar
-     * Añade un alfabeto al conjunto de alfabetos
+     * @param alfabeto objecto alfabeto a agregar al conjunto
+     * @param nomA nombre del alfabeto a agregar (clave primaria del alfabeto)
+     * Añade un alfabeto al conjunto de alfabetos existentes
      */
     public void agregarAlfabeto(String nomA, Alfabeto alfabeto) {
         alfabetos.put(nomA, alfabeto);
@@ -63,7 +68,7 @@ public class ConjuntoAlfabetos {
 
     // ---------- AUXILIARES ----------
     /**
-     * Retorna si existe el alfabeto con nombre dado
+     * Retorna un bool de si existe el alfabeto con nombre nomA
      * @param nomA nombre del alfabeto a comprobar
      * @return boolean : True si el alfabeto con nombre nomA existe, false si no existe
      */
