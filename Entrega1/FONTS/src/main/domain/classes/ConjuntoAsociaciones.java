@@ -4,17 +4,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Classe que representa el conjunto de asociaciones
- * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
+ * Clase que representa el conjunto de asociaciones
+ * @author ...
  */
 public class ConjuntoAsociaciones
 {
     // ---------- ATRIBUTOS ----------
-    /** Guarda el conjunto de asociaciones de textos introducidos por el usuario */
+    /** Guarda el conjunto de asociaciones de textos introducidas por el usuario */
     private HashMap<String, AsociacionTextos> asociaciones;
 
 
     // ---------- CONSTRUCTORES ----------
+    /** Crea una instancia de la clase ConjuntoAsociaciones e inicializa la variable asociaciones como un nuevo HashMap */
     public ConjuntoAsociaciones() {
         asociaciones = new HashMap<>();
     }
@@ -22,24 +23,26 @@ public class ConjuntoAsociaciones
 
     // ---------- GETTERS ----------
     /**
-     * Retorna el alfabeto con clave primaria introducida
+     * Devuelve la asociacion de textos nomAT introducida
      * @param nomAT clave primaria con la que buscar una asociacion de textos
-     * @return Asociacion Textos : Asociación de textos con el nombre introducido
+     * @return AsociacionTextos: Asociación de textos con el nombre introducido
      */
     public AsociacionTextos getAsociacionTextos(String nomAT) {
         if (asociaciones.containsKey(nomAT)) return asociaciones.get(nomAT);
         else return null;
     }
+
     /**
-     * Retorna el conjunto de asociaciones de textos existentes
+     * Devuelve el conjunto de asociaciones de textos existentes
      * @return HashMap<String, AsociacionTextos>: Conjunto de asociaciones de textos
      */
     public HashMap<String, AsociacionTextos> getAsociacionesTextos() {
         return asociaciones;
     }
+
     /**
-     * Retorna el nombre de las asociaciones del conjunto
-     * @return ArrayList<String>: Lista de nombres de las asociaciones del conjunto
+     * Devuelve el nombre de las asociaciones del conjunto
+     * @return ArrayList<String>: Lista de nombres de las asociaciones de textos del conjunto
      */
     public ArrayList<String> getNombresAsociacionesTextos() {
         ArrayList<String> listaNombres = new ArrayList<>();
@@ -49,12 +52,12 @@ public class ConjuntoAsociaciones
         return listaNombres;
     }
 
+
     // ---------- SETTERS ----------
     /**
-     * No retorna nada.
+     * No devuelve nada. Añade una asociación de textos al conjunto de asociaciones de textos
      * @param asociacionTextos asociación a agregar al conjunto de asociaciones
      * @param nomAT nombre de la asociacion a agregaral conjunto
-     * Añade una asociación de textos al conjunto de asociaciones de textos
      */
     public void agregarAsociacionTexto(String nomAT, AsociacionTextos asociacionTextos) {
         asociaciones.put(nomAT, asociacionTextos);
@@ -63,17 +66,17 @@ public class ConjuntoAsociaciones
 
     // ---------- AUXILIARES -----------
     /**
-     * Retorna si existe la asociación de textos con nombre dado
+     * Devuelve si existe la asociación de textos con el nombre dado
      * @param nomAT nombre de la asociación de textos a comprobar
-     * @return boolean : True si el la asociación de textos con nombre nomAT existe, false si no existe
+     * @return boolean: True si el la asociación de textos con nombre nomAT existe en el conjunto, false si no existe
      */
     public boolean existeAsociaciondeTextos(String nomAT) {
         return asociaciones.containsKey(nomAT);
     }
+
     /**
-     * No retorna nada.
+     * No devuelve nada. Borra la asociación de textos con nombre nomAT del conjunto de asociaciones
      * @param nomAT nombre de la asociación de textos a borrar
-     * Borra la asociación de textos con nombre nomAT del conjunto de asociaciones.
      */
     public void borrarAsociacionTextos(String nomAT) {
         asociaciones.remove(nomAT);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Classe que representa el conjunto de alfabetos
+ * Clase que representa el conjunto de alfabetos
  * @author
  */
 public class ConjuntoAlfabetos {
