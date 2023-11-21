@@ -23,13 +23,13 @@ public class ConjuntoAsociaciones
 
     // ---------- GETTERS ----------
     /**
-     * Devuelve la asociacion de textos nomAT introducida
+     * Devuelve la asociacion de textos nomAT introducida si existe
      * @param nomAT clave primaria con la que buscar una asociacion de textos
      * @return AsociacionTextos: Asociación de textos con el nombre introducido
      */
     public AsociacionTextos getAsociacionTextos(String nomAT) {
         if (asociaciones.containsKey(nomAT)) return asociaciones.get(nomAT);
-        else return null;
+        return null;
     }
 
     /**
@@ -74,6 +74,7 @@ public class ConjuntoAsociaciones
         return asociaciones.containsKey(nomAT);
     }
 
+    //Segunda entrega
     /**
      * No devuelve nada. Borra la asociación de textos con nombre nomAT del conjunto de asociaciones
      * @param nomAT nombre de la asociación de textos a borrar

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Classe que representa el conjunto de textos
- * @author
+ * Clase que representa el conjunto de textos
+ * @author ...
  */
 public class ConjuntoTextos
 {
@@ -15,33 +15,33 @@ public class ConjuntoTextos
 
 
     // ---------- CONSTRUCTORAS ----------
+    /** Crea una instancia de la clase ConjuntoTextos e inicializa la variable textos como un nuevo HashMap */
     public ConjuntoTextos() {
         textos = new HashMap<>();
     }
 
-    /**
-     * Retorna el texto con clave primaria introducida
-     * @param nomT clave primaria con la que buscar un texto
-     * @return Texto : Texto con el nombre introducido
-     */
+
     // ---------- GETTERS ----------
+    /**
+     * Devuelve el texto con clave primaria introducida si existe
+     * @param nomT clave primaria con la que buscar un texto
+     * @return Texto: Texto con el nombre introducido
+     */
     public Texto getTexto(String nomT) {
         if (textos.containsKey(nomT)) return textos.get(nomT);
-        else {
-            // podria salir un mensaje: "texto nomT no existe en el sistema"
-            return null;
-        }
-        //????????
+        return null;
     }
+
     /**
-     * Retorna el conjunto de textos existentes
-     * @return HashMap<String, Texto>: Conjunto de texto
+     * Devuelve el conjunto de textos existentes
+     * @return HashMap<String, Texto>: Conjunto de textos
      */
     public HashMap<String, Texto> getTextos() {
         return textos;
     }
+
     /**
-     * Retorna el nombre de los textos del conjunto
+     * Devuelve el nombre de los textos del conjunto textos
      * @return ArrayList<String>: Lista de nombres de los textos del conjunto
      */
     public ArrayList<String> getNombresTextos() {
@@ -55,10 +55,9 @@ public class ConjuntoTextos
 
     // ---------- SETTERS ----------
     /**
-     * No retorna nada.
-     * @param texto texto a agregar
+     * No devuelve nada. Añade un texto al conjunto de texto
      * @param nomT nombre del texto a agregar
-     * Añade un texto al conjunto de texto
+     * @param texto texto a agregar
      */
     public void agregarTexto(String nomT, Texto texto) {
         textos.put(nomT, texto);
@@ -67,17 +66,18 @@ public class ConjuntoTextos
 
     // ---------- AUXILIARES -----------
     /**
-     * Retorna si existe el texto con nombre dado
+     * Devuelve si existe el texto con el nombre dado
      * @param nomT nombre del texto a comprobar
-     * @return boolean : True si el texto con nombre nomT existe, false si no existe
+     * @return boolean: True si el texto con nombre nomT existe, false si no existe
      */
     public boolean existeTexto(String nomT) {
         return textos.containsKey(nomT);
     }
+
+    //Segunda entrega
     /**
-     * No retorna nada.
+     * No devuelve nada. Borra el texto con nombre nomT del conjunto de textos.
      * @param nomT nombre del texto a borrar
-     * Borra el texto con nombre nomT del conjunto de textos.
      */
     public void borrarTexto(String nomT) {
         textos.remove(nomT);
