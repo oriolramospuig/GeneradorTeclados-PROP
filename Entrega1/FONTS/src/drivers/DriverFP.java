@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 /**
  * Driver para probar las funcionalidades de la entrega
- * @author X (X@estudiantat.upc.edu)
+ * @author Alexia
  */
 public class DriverFP {
 

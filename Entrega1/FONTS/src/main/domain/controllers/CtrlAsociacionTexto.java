@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 /**
  * Este controlador se encarga de gestionar los métodos de añadir, modificar y borrar de asociaciones de textos
- * @author
+ * @author Alexia
  */
 public class CtrlAsociacionTexto
 {
