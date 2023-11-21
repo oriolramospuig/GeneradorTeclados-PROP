@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 import main.domain.classes.*;
 import org.junit.Before;
@@ -24,14 +24,19 @@ public class TestConjuntoTextos {
     @Before
     public void setUp() {
         textos = new ConjuntoTextos();
-        HashMap<String, Integer> contenidoFrec = new HashMap<>();
+        HashMap<String, Integer> frecuenciaLetras = new HashMap<String,Integer>();
+        HashMap<String, Integer> contenidoFrec = new HashMap<String, Integer>();
+        frecuenciaLetras.put("ho", 1);
+        frecuenciaLetras.put("la", 1);
         contenidoFrec.put("hola", 2);
-        tfrecuancias1 = new Frecuencias("nombreF1", contenidoFrec);         //tfrecuencias1 tiene: hola-2
+        tfrecuancias1 = new Frecuencias("nombreF1", contenidoFrec, frecuenciaLetras);         //tfrecuencias1 tiene: hola-2
+        frecuenciaLetras.remove("ho", 1);
+        frecuenciaLetras.remove("la", 1);
         contenidoFrec.remove("hola", 2);
         contenidoFrec.put("ai", 1);
-        tfrecuencias2 = new Frecuencias("nombreF2", contenidoFrec);         //tfrecuencias2 tiene ai-1
-        tpalabras1 = new Palabras("nombreP1", "abc");
-        tpalabras2 = new Palabras("nombreP2", "cde");
+        tfrecuencias2 = new Frecuencias("nombreF2", contenidoFrec, frecuenciaLetras);         //tfrecuencias2 tiene ai-1
+        tpalabras1 = new Palabras("nombreP1", "abc", frecuenciaLetras);
+        tpalabras2 = new Palabras("nombreP2", "cde", frecuenciaLetras);
     }
 
 
@@ -130,4 +135,4 @@ public class TestConjuntoTextos {
         assertTrue(textos.existeTexto("nombreF2"));
         assertTrue(textos.existeTexto("nombreP2"));
     }
-}*/
+}

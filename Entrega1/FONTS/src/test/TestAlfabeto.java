@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 import main.domain.classes.Alfabeto;
 
@@ -28,8 +28,7 @@ public class TestAlfabeto {
         alfabeto = new Alfabeto();
     }
 
-
-    // ---------- CONSTRUCTORAS ----------
+    // --------- CONSTRUCTORAS ----------
     /**
      * Objeto de la prueba: Test de la constructora de Alfabeto
      * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
@@ -37,7 +36,7 @@ public class TestAlfabeto {
      * Operativa: Creamos un nuevo Alfabeto con los parámetros "Vocales" y una lista de las vocales y comprobamos que los valores
      * obtenidos de nombre y letras con los getters sean los mismos que los introducidos.
      **/
-/*
+
     @Test
     public void TestConstructora() {
         System.out.println("Test Constructora Default");
@@ -77,7 +76,6 @@ public class TestAlfabeto {
      * Valores estudiados: Estrategia de caja gris. Se crea un alfabeto y un nombre de un teclado y se comprueba que se puede añadir correctamente un nombre de un teclado a tecladosVinculados.
      * Operativa: Se comprueba que el método agregarTecladoVinculado añade correctamente en su lista un nuevo String, que corresponde al nombre de un teclado.
      */
-/*
     @Test
     public void TestAgregarTecladoVinculado() {
         System.out.println("Test agregarTecladoVinculado");
@@ -100,7 +98,6 @@ public class TestAlfabeto {
      * Valores estudiados: Estrategia de caja gris. Se crea un alfabeto y un nombre de un teclado, se añade a la lista tecladosVinculades y se comprueba que se puede borrar un nombre de un teclado correctamente.
      * Operativa: Se comprueba que el método borrarTecladoVinculado borra correctamente de su lista un String, que corresponde al nombre de un teclado.
      */
-/*
     @Test
     public void TestBorrarTecladoVinculado() {
         System.out.println("Test borrarTecladoVinculado");
@@ -116,4 +113,5 @@ public class TestAlfabeto {
         assertFalse(alfabeto.getTecladosVinculados().contains(nombreT1));
         assertTrue(alfabeto.getTecladosVinculados().contains(nombreT2));
     }
-}*/
+}
+     */

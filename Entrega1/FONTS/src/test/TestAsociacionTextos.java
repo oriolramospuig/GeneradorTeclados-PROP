@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 import main.domain.classes.AsociacionTextos;
 import main.domain.classes.Frecuencias;
@@ -17,34 +17,34 @@ public class TestAsociacionTextos {
 
     // ---------- CONSTRUCTORAS ----------
     public void TestConstructora() {
-        System.out.println("Test Constructora");
+        System.out.println("Test Constructora Vacia");
         AsociacionTextos asociacionTextos = new AsociacionTextos();
 
         assertEquals("", asociacionTextos.getNombre());
         assertTrue(asociacionTextos.getTextosAsociaciados().isEmpty());
         assertTrue(asociacionTextos.getTecladosVinculados().isEmpty());
         assertTrue(asociacionTextos.getFrecuenciaLetras().isEmpty());
-    }
 
-    public void TestConstructora1() {
-        System.out.println("Test Constructora1");
+        System.out.println("Test Constructora con nombre y frecuencias");
         String nombre = "Asociacion";
         HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
-        frecuenciaLetras.put("ab", 2);
-        frecuenciaLetras.put("ca", 3);
+        frecuenciaLetras.put("a", 2);
+        frecuenciaLetras.put("b", 1);
+        frecuenciaLetras.put("c", 2);
 
-        AsociacionTextos asociacionTextos = new AsociacionTextos(nombre, frecuenciaLetras);
+        AsociacionTextos asociacionTextos2 = new AsociacionTextos(nombre, frecuenciaLetras);
 
         assertEquals(nombre, asociacionTextos.getNombre());
         assertEquals(frecuenciaLetras, asociacionTextos.getFrecuenciaLetras());
         assertTrue(asociacionTextos.getTextosAsociaciados().isEmpty());
         assertTrue(asociacionTextos.getTecladosVinculados().isEmpty());
-    }
 
-    public void TestConstructora2() {
-        System.out.println("Test Constructora2");
-        String nombre = "Asociacion";
-        AsociacionTextos asociacionTextos = new AsociacionTextos(nombre);
+        assertEquals("a", asociacionTextos2.getFrecuenciaLetras().get(0));
+        assertEquals("b", asociacionTextos2.getFrecuenciaLetras().get(1));
+        assertEquals("c", asociacionTextos2.getFrecuenciaLetras().get(2));
+
+        System.out.println("Test Constructora con nombre");
+        AsociacionTextos asociacionTextos3 = new AsociacionTextos(nombre);
 
         assertEquals(nombre, asociacionTextos.getNombre());
         assertTrue(asociacionTextos.getTextosAsociaciados().isEmpty());
@@ -55,22 +55,41 @@ public class TestAsociacionTextos {
     // ---------- GETTERS ----------
     public void testgetFrecuenciaLetras() {
         System.out.println("Test getFrecuenciasLetras");
-        AsociacionTextos asociacionTextos = new AsociacionTextos();
+        /*AsociacionTextos asociacionTextos = new AsociacionTextos();
         HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
-        frecuenciaLetras.put("ab", 5);
-        frecuenciaLetras.put("bc", 3);
-        frecuenciaLetras.put("ca", 2);
+        frecuenciaLetras.put("A", 5);
+        frecuenciaLetras.put("B", 3);
+        frecuenciaLetras.put("C", 2);
         List<PairFrequency> result = asociacionTextos.getFrecuenciaLetras();
 
         assertEquals(3, result.size());
-        /*assertEquals("A", result.get(0).getLetra());
+        assertEquals("A", result.get(0).ge);
         assertEquals(5, result.get(0).getFrecuencia());
 
         assertEquals("B", result.get(1).g;
         assertEquals(3, result.get(1).getFrecuencia());
         assertEquals("C", result.get(2).getLetra());
         assertEquals(2, result.get(2).getFrecuencia());
-        assertEquals(frecuenciaLetras, asociacionTextos.getFrecuenciaLetras());
+        assertEquals(frecuenciaLetras, asociacionTextos.getFrecuenciaLetras());*/
+        String nombre = "nombre";
+        HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
+        frecuenciaLetras.put("a", 1);
+        frecuenciaLetras.put("b", 2);
+        frecuenciaLetras.put("c", 1);
+
+        AsociacionTextos asociacionTextos = new AsociacionTextos(nombre, frecuenciaLetras);
+
+        ArrayList<PairFrequency> frecuenciaLetrasResult = asociacionTextos.getFrecuenciaLetras();
+
+        assertEquals(3, frecuenciaLetrasResult.size());
+        assertEquals("b", frecuenciaLetrasResult.get(0).getPair());
+        assertEquals(2, frecuenciaLetrasResult.get(0).getFrequency());
+
+        assertEquals("a", frecuenciaLetrasResult.get(1).getPair());
+        assertEquals(1, frecuenciaLetrasResult.get(1).getFrequency());
+
+        assertEquals("c", frecuenciaLetrasResult.get(2).getPair());
+        assertEquals(1, frecuenciaLetrasResult.get(2).getFrequency());
     }
 
     // ---------- SETTERS ----------
@@ -91,22 +110,23 @@ public class TestAsociacionTextos {
     public void TestagregarTexto(){
         System.out.println("Test agregarTexto");
         String nombre = "Asociacion";
-        HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
+        HashMap<String, Integer> frecuenciaPalabras = new HashMap<String, Integer>();
+        frecuenciaPalabras.put("aba", 2);
+        frecuenciaPalabras.put("cbc", 4);
+        HashMap<String, Integer> frecuenciaLetras = new HashMap<String, Integer>();
         frecuenciaLetras.put("ab", 2);
-        frecuenciaLetras.put("ca", 3);
+        frecuenciaLetras.put("bc", 2);
         AsociacionTextos asociacionTextos = new AsociacionTextos(nombre, frecuenciaLetras);
 
-        Frecuencias texto = new Frecuencias("nombre");
+        Frecuencias texto = new Frecuencias("nombre", frecuenciaPalabras, frecuenciaLetras);
         asociacionTextos.agregarTexto(texto);
         List<String> textoAsociados = asociacionTextos.getTextosAsociaciados();
-        ArrayList<PairFrequency> frecuenciasLetras = asociacionTextos.getFrecuenciaLetras();
 
         assertEquals(1, textoAsociados.size());
         assertEquals("nombre", textoAsociados.get(0));
         assertEquals(2, frecuenciaLetras.size());
-        assertEquals(3, frecuenciaLetras.get("ca").intValue());
-        assertEquals(2, frecuenciaLetras.get("ab").intValue());
-
+        assertEquals(4, frecuenciaLetras.get("ab").intValue());
+        assertEquals(8, frecuenciaLetras.get("bc").intValue());
     }
 
     // ---------- AUXILIARES ----------
@@ -128,12 +148,15 @@ public class TestAsociacionTextos {
     public void TestborrarTexto() {
         System.out.println("Test borrar Texto");
         String nombre = "Asociacion";
-        HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
+        HashMap<String, Integer> frecuenciaPalabras = new HashMap<String, Integer>();
+        frecuenciaPalabras.put("aba", 4);
+        frecuenciaPalabras.put("cbc", 8);
+        HashMap<String, Integer> frecuenciaLetras = new HashMap<String, Integer>();
         frecuenciaLetras.put("ab", 2);
-        frecuenciaLetras.put("ca", 3);
+        frecuenciaLetras.put("bc", 3);
         AsociacionTextos asociacionTextos = new AsociacionTextos(nombre, frecuenciaLetras);
 
-        Frecuencias texto = new Frecuencias("nombre");
+        Frecuencias texto = new Frecuencias("nombre", frecuenciaPalabras, frecuenciaLetras);
         asociacionTextos.borrarTexto("nombre");
         List<String> textoAsociados = asociacionTextos.getTextosAsociaciados();
         ArrayList<PairFrequency> frecuenciasLetras = asociacionTextos.getFrecuenciaLetras();
@@ -143,5 +166,5 @@ public class TestAsociacionTextos {
         assertEquals(0, frecuenciaLetras.get("ab").intValue());
         assertEquals(0, frecuenciaLetras.get("ca").intValue());
     }
-}*/
+}
 
