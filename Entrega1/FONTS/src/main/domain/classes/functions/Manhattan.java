@@ -1,7 +1,7 @@
 package main.domain.classes.functions;
 
-/** Calcula la distancia Manhattan entre dos puntos (x,y) y (x', y')
- * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
+/**
+ * Calcula la distancia Manhattan entre dos puntos (x,y) y (x', y')
  */
 public class Manhattan {
     public static int calcularDistancia(int fila1, int columna1, int fila2, int columna2) {

@@ -23,7 +23,13 @@ public class CtrlTecladoQAP {
     public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto) {
         //calcular dim
 
-        ArrayList<Character> letras = alfabeto.getLetras();
+        ArrayList<Character> letrasaux = alfabeto.getLetras();
+        ArrayList<Character> letras  =new ArrayList<>();
+        for (int i = 0; i < letrasaux.size(); ++i) {
+            if (letrasaux.get(i) != ' ') {
+                letras.add(letrasaux.get(i));
+            }
+        }
         int n = letras.size();
         PairInt dimensiones = calculaDimensiones(n);
         int nf = dimensiones.getPrimero();
@@ -43,12 +49,13 @@ public class CtrlTecladoQAP {
         Matrices.generarMatrizDistancias(nf,nc,matrizDistancias);
 
         List<Integer> sol = new ArrayList<>();
-        QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias, sol);
+        int [][] tec = new int[nf][nc];
+        QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias, sol, tec);
         for (int i = 0; i < sol.size(); ++i) {
             int posicion = sol.get(i);
             System.out.println("Posición " + posicion + ": Elemento " + i + " | ");
         }
-
+        tec = qap.getTec();
         Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto,dimensiones);
 
         //reconstruir solució (números a lletres)
@@ -57,18 +64,10 @@ public class CtrlTecladoQAP {
 
     /*esta malament, genera 3*4 per 10 tecles i volem que generi 2*5*/
     public PairInt calculaDimensiones(int n) {
-        double raiz = sqrt(n);
-        int r = (int)raiz;
-        int nf;
-        int nc;
-        if(raiz == r) {
-            nf = nc = r;
-        }
-        else {
-            nf = r;
-            nc = nf + 1;
-        }
-        PairInt dim = new PairInt(nf,nc);
+        int nf = n/2;
+        int nc = n/2;
+        if (n%2 == 1) nc = nc + 1;
+        PairInt dim = new PairInt(nf, nc);
         return dim;
     }
 }

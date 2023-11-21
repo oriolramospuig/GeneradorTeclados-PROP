@@ -241,9 +241,9 @@ public class CtrlDominio
         if(compatibles(alfabeto,asociacionTextos)) {
             ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
             ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
+            ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto);
             ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
             ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
-            ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto);
             return 0;
         }
         else return -2;
