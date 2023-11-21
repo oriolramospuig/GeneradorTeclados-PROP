@@ -15,6 +15,10 @@ public class ConjuntoAlfabetos {
 
 
     // ---------- CONSTRUCTORAS ----------
+    /**
+     * Constructora conjunto de alfabetos.
+     * Inicialmente el conjunto de alfabetos existentes está vacío.
+     */
     public ConjuntoAlfabetos() {
         alfabetos = new HashMap<>();
     }

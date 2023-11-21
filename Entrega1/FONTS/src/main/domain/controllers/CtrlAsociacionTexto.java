@@ -64,7 +64,6 @@ public class CtrlAsociacionTexto
         if(!AsociacionesTextos.existeAsociaciondeTextos(nomAT)){
             AsociacionTextos asociacionTextos = new AsociacionTextos(nomAT);
             AsociacionesTextos.agregarAsociacionTexto(nomAT, asociacionTextos);
-            //crear las frec de palabras?
             return true;
         }
         return false;

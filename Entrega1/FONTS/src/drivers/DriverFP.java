@@ -15,8 +15,12 @@ import java.util.HashMap;
  * @author X (X@estudiantat.upc.edu)
  */
 public class DriverFP {
+
+    // ---------- PARÁMETROS ----------
     private final InOut inOut;
     private CtrlDominio ctrlDominio;
+
+    /** Constructora del driver de la funcionalidad principal*/
     public DriverFP() {
         inOut = new InOut();
         ctrlDominio = new CtrlDominio();
@@ -24,6 +28,12 @@ public class DriverFP {
 
 
     // ---------- FUNCIONES ALFABETO ----------
+    /**
+     * No retorna.
+     * Muestra por pantalla mensajes para introducir información por terminal del alfabeto que se quiere crear.
+     * Llama a la función de ctrlDominio para agregar el alfabeto.
+     * Muestra por pantalla mensajes de error o de éxito.
+     */
     public void agregarAlfabetoPorTerminal() {
         System.out.println("Introduce el nombre del alfabeto:");
         String nombreA = inOut.leerString();
@@ -38,7 +48,12 @@ public class DriverFP {
             System.out.println("El contenido introducido no es válido. Asegúrate de que sean caracteres separados por un espacio.");
         }
     }
-
+    /**
+     * No retorna.
+     * Muestra por pantalla mensajes para introducir información por archivo del alfabeto que se quiere crear.
+     * Llama a la función de ctrlDominio para agregar el alfabeto.
+     * Muestra por pantalla mensajes de error o de éxito.
+     */
     public void agregarAlfabetoPorArchivo() {
         System.out.println("Introduce el nombre del archivo:");
         String nombreArchivo = inOut.leerString();
@@ -86,6 +101,13 @@ public class DriverFP {
 
 
     // ---------- FUNCIONES ASOCIACIONES TEXTOS ----------
+    /**
+     * No retorna.
+     * Muestra por pantalla mensajes para introducir información por terminal del texto que se quiere crear.
+     * Pide al usuario si quiere introducir frases o palabras con frecuencias.
+     * Llama a la función de ctrlDominio para agregar el texto.
+     * Muestra por pantalla mensajes de error o de éxito.
+     */
     public void agregarTextoPorTerminal() {
         System.out.println("Introduce el nombre del texto:");
         String nombreTxt = inOut.leerString();
@@ -120,38 +142,13 @@ public class DriverFP {
             }
         }
     }
-
-    /*public HashMap<String, Integer> tratarEntradaPalabras(String texto) {
-        HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
-        char[] textoChars = texto.toCharArray();
-        for(int i = 1; i < textoChars.length; ++i){
-            String pairLetras = "" + textoChars[i-1] + textoChars[i];
-            int frec = 1;
-            if (textoChars[i-1] > textoChars[i]) pairLetras = "" + textoChars[i] + textoChars[i-1];
-            if(frecuenciaLetras.containsKey(pairLetras)){
-                frec = frecuenciaLetras.get(pairLetras)+1;
-            }
-            frecuenciaLetras.put(pairLetras,frec);
-        }
-        return frecuenciaLetras;
-    }
-
-    public HashMap<String,Integer> convertirEntrada(String texto) {
-        HashMap<String, Integer> frecuenciaPalabras = new HashMap<>();
-
-        //esto pasa string texto a hasmap frecpalabras
-
-        return frecuenciaPalabras;
-    }
-
-    public HashMap<String, Integer> tratarEntradaFrecuencias(HashMap<String,Integer> frecPalabras) {
-        HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
-
-        //pasa frecpalabras a frecletras
-
-        return frecuenciaLetras;
-    }*/
-
+    /**
+     * No retorna.
+     * Muestra por pantalla mensajes para introducir información por archivo del texto que se quiere crear.
+     * Pide al usuario si quiere introducir frases o palabras con frecuencias.
+     * Llama a la función de ctrlDominio para agregar el texto.
+     * Muestra por pantalla mensajes de error o de éxito.
+     */
     public void agregarTextoPorArchivo() {
         System.out.println("Introduce el nombre del archivo:");
         String nombreArchivo = inOut.leerString();
@@ -234,6 +231,12 @@ public class DriverFP {
 
 
     // ---------- FUNCIONES TECLADO ----------
+    /**
+     * No retorna.
+     * Muestra por pantalla mensajes para introducir información por terminal del teclado que se quiere crear.
+     * Llama a la función de ctrlDominio para agregar el teclado.
+     * Muestra por pantalla mensajes de error o de éxito.
+     */
     public void agregarTeclado() {
         System.out.println("Introduce el nombre del teclado:");
         String nombreT = inOut.leerString();
@@ -298,11 +301,12 @@ public class DriverFP {
         }
     }
 
+    /* 
     private PairInt escogerDimensiones(HashMap<Integer, PairInt> combinacionesDimensiones, Integer numDim) {
         Integer filas = combinacionesDimensiones.get(numDim).getPrimero();
         Integer columans = combinacionesDimensiones.get(numDim).getSegundo();
         return new PairInt(filas, columans);
-    }
+    }*/
 
     /*Entrega 2*/
     private HashMap<Integer, PairInt> imprimirPosiblesDimensiones(String nomA) {

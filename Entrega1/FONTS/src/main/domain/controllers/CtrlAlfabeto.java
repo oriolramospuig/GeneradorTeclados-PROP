@@ -11,41 +11,52 @@ public class CtrlAlfabeto {
 
     // ---------- PARÁMETROS ----------
 
+    /** Crea una instancia del conjunto de alfabetos*/
     private ConjuntoAlfabetos CjtAlfabetos;
 
+    /** Inicialización de la instancia conjunto de alfabetos.*/
     public CtrlAlfabeto(){
         CjtAlfabetos = new ConjuntoAlfabetos();
     }
 
     // ---------- FUNCIONES ALFABETO ----------
-
+    /**
+     * Retorna el contenido del alfabeto con nombre nomA
+     * @param nomA clave primaria con la que buscar un alfabeto
+     * @return ArrayList : Lista de caracteres del contenido del alfabeto nomA
+     */
     public ArrayList<Character> getContenido(String nomA){
         return CjtAlfabetos.getAlfabeto(nomA).getLetras();
     }
     /**
-     * No retorna nada, manda a añadir el nuevo teclado al cjt de teclados vinculados
+     * No retorna.
+     * @param nomT clave primaria del teclado
+     * @param nomA clave primaria del alfabeto
+     * Añade el nombre del teclado nomT a la lista de teclados vinculados del alfabeto nomA
      */
     public void agregarTecladoVinculado (String nomA,String nomT){
         CjtAlfabetos.getAlfabeto(nomA).agregarTecladoVinculado(nomT);
     }
 
 
-    //Para la segunda entrega
+    //PARA LA SEGUNDA ENTREGA
     /*public void borrarTecladoVinculado (String nomA,String nomT){
         CjtAlfabetos.getAlfabeto(nomA).borrarTecladoVinculado(nomT);
     }*/
 
     // ---------- FUNCIONES CONJUNTOALFABETOS ----------
     /**
-     * Retorna el objecto cjt alfabetos pedido
+     * Retorna el objecto cjt alfabetos
      * @return ConjuntoAlfabetos : Un objeto cjt alfabetos concreto
      */
     public ConjuntoAlfabetos getCjtAlfabetos(){
         return CjtAlfabetos;
     }
     /**
-     * No retorna nada.
-     * Crea el nuevo objecto alfabeto y añade este objeto a ConjuntoAlfabetos
+     * Retorna si se ha creado bien el alfabeto con el nombre nomA
+     * @param entradaCaracteres lista de caracteres del contenido del alfabeto nomA
+     * @param nomA nombre (clave única) del alfabeto a agregar
+     * @return boolean : True si el alfabeto ha sido creado correctamente, false si no se ha creado bien
      */
     public boolean CrearAlfabeto(String nomA, ArrayList<Character> entradaCaracteres) {
         if (!CjtAlfabetos.existeAlfabeto(nomA)) {
@@ -62,13 +73,10 @@ public class CtrlAlfabeto {
         ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
         return tVinculados;
     }
-
     public boolean alfabetoTieneTecladosVinculados(String nomA){
         ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
         return !tVinculados.isEmpty();
-
     }
-
     public void borrarAlfabeto(String nomA){
         CjtAlfabetos.borrarAlfabeto(nomA);
     }*/
