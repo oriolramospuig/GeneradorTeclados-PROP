@@ -1,129 +1,67 @@
-CLASS_INPUT =	./main/domain/classes/*.java \
-				./main/domain/classes/functions/*.java \
-				./main/domain/classes/exceptions/*.java \
-				./main/domain/classes/types/*.java \
-				./main/domain/controllers/*.java
+# Rutas de los archivos fuente y de salida
+CLASS_INPUT_MAIN = ./main/*.java
+CLASS_INPUT_DRIVER = ./drivers/*.java
+CLASS_INPUT_TESTS = ./test/*.java
+CLASS_OUTPUT = ../../EXE/
+JAR_OUTPUT = ../../EXE/
 
-CLASS_OUTPUT =	../../EXE/out/
+# Rutas de las bibliotecas de JUnit
+JUNIT_JARS = ../../lib/junit-4.12.jar:../../lib/hamcrest-core-1.3.jar:../../lib/mockito-core-4.9.0.jar
 
-JAR_OUTPUT =	../../EXE/
+# Regla principal para compilar todo
+all: compile_main compile_driver compile_tests
 
-JUNIT_JARS = ../../lib/junit-4.12.jar:../../lib/hamcrest-core-1.3.jar
+# Regla para compilar las clases del modelo (Main)
+compile_main:
+	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT_MAIN)
 
-JUNIT_TESTS = ./test/*.java \
-			  ./test/types/*.java \
-			  ./test/functions/*.java
+# Regla para compilar los drivers
+compile_driver:
+	javac -cp $(CLASS_OUTPUT):$(JUNIT_JARS) -d $(CLASS_OUTPUT) $(CLASS_INPUT_DRIVER)
 
-FUNCIONS_TESTS =		./test/functions/*.java
 
-TYPE_TESTS =			./test/types/*.java
+# Regla para compilar los tests con JUnit
+compile_tests:
+	javac -cp $(CLASS_OUTPUT):$(JUNIT_JARS) -d $(CLASS_OUTPUT) $(CLASS_INPUT_TESTS)
 
-INTERPRET_CLASS_INPUT =	./main/domain/classes/functions/*.java \
-						./main/domain/classes/types/*.java \
-						./main/domain/classes/exceptions/*.java \
-						./main/domain/controllers/CtrlAlfabeto.java \
-						./main/domain/controllers/CtrlAsociacionTexto.java \
-						./main/domain/controllers/CtrlDominio.java \
-						./main/domain/controllers/CtrlTeclado.java \
-						./main/domain/controllers/CtrlTexto.java \
-
-TYPE_CLASS_INPUT =		./main/domain/classes/types/PairFrequency.java \
-						./main/domain/classes/types/PairInt.java
-
-ALPHABET_CLASS_INPUT =	./main/domain/controllers/CtrlAlfabeto.java \
-						./main/domain/classes/Alfabeto.java
-
-CLASS_SOURCES =			$(CLASS_OUTPUT)drivers/*.class \
-						$(CLASS_OUTPUT)main/domain/classes/*.class \
-						$(CLASS_OUTPUT)main/domain/classes/exceptions/*.class \
-						$(CLASS_OUTPUT)main/domain/classes/functions/*.class \
-						$(CLASS_OUTPUT)main/domain/classes/types/*.class \
-						$(CLASS_OUTPUT)main/domain/controllers/*.class
-
-all:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT)
-	javac -cp $(JUNIT_JARS) -d $(CLASS_OUTPUT) $(CLASS_INPUT) $(JUNIT_TESTS)
-
-jarAlfabeto:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverAlfabeto.java
-	jar cmvf ./drivers/Alfabeto.mf $(JAR_OUTPUT)DriverAlfabeto.jar -C $(CLASS_OUTPUT) .
-	java -jar $(JAR_OUTPUT)DriverAlfabeto.jar
-
-jarTexto:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverTexto.java
-	jar cmvf ./drivers/Texto.mf $(JAR_OUTPUT)DriverTexto.jar -C $(CLASS_OUTPUT) .
-	java -jar $(JAR_OUTPUT)DriverTexto.jar
-
-jarTeclado:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverTeclado.java
-	jar cmvf ./drivers/Teclado.mf $(JAR_OUTPUT)DriverTeclado.jar -C $(CLASS_OUTPUT) .
-	java -jar $(JAR_OUTPUT)DriverTeclado.jar
-
-jarDominio:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverDominio.java
-	jar cmvf ./drivers/Dominio.mf $(JAR_OUTPUT)DriverDominio.jar -C $(CLASS_OUTPUT) .
-	java -jar $(JAR_OUTPUT)DriverDominio.jar
-jars:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverAlfabeto.java ./drivers/DriverTexto.java ./drivers/DriverDominio.java ./drivers/DriverTeclado.java
-	jar cmvf ./drivers/Alfabeto.mf $(JAR_OUTPUT)DriverAlfabeto.jar -C $(CLASS_OUTPUT) .
-	jar cmvf ./drivers/Texto.mf $(JAR_OUTPUT)DriverTexto.jar -C $(CLASS_OUTPUT) .
-	jar cmvf ./drivers/Dominio.mf $(JAR_OUTPUT)DriverDominio.jar -C $(CLASS_OUTPUT) .
-	jar cmvf ./drivers/Teclado.mf $(JAR_OUTPUT)DriverTeclado.jar -C $(CLASS_OUTPUT) .
-
-executaDriverDomini:
-	java -jar $(JAR_OUTPUT)DriverDominio.jar
-
-executaDriverDocument:
-	java -jar $(JAR_OUTPUT)DriverAlfabeto.jar
-
-executaDriverClipboard:
-	java -jar $(JAR_OUTPUT)DriverTexto.jar
-
-executaDriverCelaSeleccionada:
-	java -jar $(JAR_OUTPUT)DriverTeclado.jar
-
-executaDriverPresentacio:
-	java -jar $(JAR_OUTPUT)DriverPresentacio.jar
-buildfuncions:
-	javac -d $(CLASS_OUTPUT) $(INTERPRET_CLASS_INPUT)
-	javac -cp $(JUNIT_JARS) -d $(CLASS_OUTPUT) $(INTERPRET_CLASS_INPUT) $(FUNCIONS_TESTS)
-
-buildtypes:
-	javac -d $(CLASS_OUTPUT) $(TYPE_CLASS_INPUT)
-	javac -cp $(JUNIT_JARS) -d $(CLASS_OUTPUT) $(TYPE_CLASS_INPUT) $(TYPE_TESTS)
-
-fulltest: all
-	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.MasterTestSuite
-
-TestSuiteFuncions: all
-	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.functions.TestSuiteFuncions
-
-TestSuiteTipus: all
-	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.types.TestSuiteTipus
-
-TestInterpret: all
-	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.functions.TestInterpret
-
-TestAlfabeto: all
-	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestAlfabetp
-
-TestConjuntoAlfabetos: all
-	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestConjuntoAlfabetos
-
-TestConjuntoAsociaciones: all
-	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestConjuntoAsociaciones
+TestTeclado: all
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore Tests.TestTeclado
 
 TestConjuntoTeclados: all
-	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestConjuntoTeclados
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore Tests.TestConjuntoTeclados
 
 TestTexto: all
-	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestTexto
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore Tests.TestTexto
+
+TestPalabras: all
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore Tests.TestPalabras
+
+TestFrecuencias: all
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore Tests.TestFrecuencias
 
 TestConjuntoTextos: all
-	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestConjuntoTextos
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore Tests.TestConjuntoTextos
 
+TestConjuntoAsociaciones: all
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore Tests.TestConjuntoAsociaciones
+
+TestConjuntoAlfabetos: all
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore Tests.TestConjuntoAlfabetos
+
+TestAsociacionTextos: all
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore Tests.TestAsociacionTextos
+
+TestAlfabeto: all
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore Tests.TestAlfabeto
+
+
+DriverFP: all
+	java -cp $(CLASS_OUTPUT) Driver.DriverFP
+
+# Regla para limpiar los archivos generados
 clean:
-	rm -r ../../EXE/out/*
+	rm -rf $(CLASS_OUTPUT)*
 
-distclean:
-	rm -r ../../EXE/*
+# Regla para limpiar todo (también elimina EXE)
+distclean: clean
+	rm -rf ../EXE
