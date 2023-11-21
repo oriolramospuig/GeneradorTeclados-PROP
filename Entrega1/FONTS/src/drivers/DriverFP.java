@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Driver para probar ...
+ * Driver para probar las funcionalidades de la entrega
  * @author X (X@estudiantat.upc.edu)
  */
 public class DriverFP {
@@ -20,7 +20,7 @@ public class DriverFP {
     private final InOut inOut;
     private CtrlDominio ctrlDominio;
 
-    /** Constructora del driver de la funcionalidad principal*/
+    /** Constructora del driver de la funcionalidad principal */
     public DriverFP() {
         inOut = new InOut();
         ctrlDominio = new CtrlDominio();
@@ -29,7 +29,7 @@ public class DriverFP {
 
     // ---------- FUNCIONES ALFABETO ----------
     /**
-     * No retorna.
+     * No devuelve nada.
      * Muestra por pantalla mensajes para introducir información por terminal del alfabeto que se quiere crear.
      * Llama a la función de ctrlDominio para agregar el alfabeto.
      * Muestra por pantalla mensajes de error o de éxito.
@@ -48,8 +48,9 @@ public class DriverFP {
             System.out.println("El contenido introducido no es válido. Asegúrate de que sean caracteres separados por un espacio.");
         }
     }
+
     /**
-     * No retorna.
+     * No devuelve nada.
      * Muestra por pantalla mensajes para introducir información por archivo del alfabeto que se quiere crear.
      * Llama a la función de ctrlDominio para agregar el alfabeto.
      * Muestra por pantalla mensajes de error o de éxito.
@@ -71,6 +72,10 @@ public class DriverFP {
         }
     }
 
+    /**
+     * No devuelve nada.
+     * Imprime por pantalla una lista de los alfabetos que hay en el sistema
+     */
     public void imprimirNombresAlfabetos() {
         HashMap<String, Alfabeto> alfabetos = ctrlDominio.getListaAlfabetos();
         if (alfabetos.isEmpty()) {
@@ -84,6 +89,10 @@ public class DriverFP {
         }
     }
 
+    /**
+     * No devuelve nada.
+     * Imprime por pantalla el contenido del teclado que se desea consultar, si existe
+     */
     public void consultarContenidoAlfabeto(){
         imprimirNombresAlfabetos();
         System.out.println("Introduce el nombre del alfabeto que quieres consultar:");
@@ -102,7 +111,7 @@ public class DriverFP {
 
     // ---------- FUNCIONES ASOCIACIONES TEXTOS ----------
     /**
-     * No retorna.
+     * No devuelve nada.
      * Muestra por pantalla mensajes para introducir información por terminal del texto que se quiere crear.
      * Pide al usuario si quiere introducir frases o palabras con frecuencias.
      * Llama a la función de ctrlDominio para agregar el texto.
@@ -142,8 +151,9 @@ public class DriverFP {
             }
         }
     }
+
     /**
-     * No retorna.
+     * No devuelve nada.
      * Muestra por pantalla mensajes para introducir información por archivo del texto que se quiere crear.
      * Pide al usuario si quiere introducir frases o palabras con frecuencias.
      * Llama a la función de ctrlDominio para agregar el texto.
@@ -168,6 +178,10 @@ public class DriverFP {
         }
     }
 
+    /**
+     * No devuelve nada.
+     * Imprime por pantalla una lista de los textos que hay en el sistema
+     */
     public void imprimirNombresTextos() {
 
         HashMap<String, Texto> listaTextos = ctrlDominio.getListaTextos();
@@ -182,6 +196,10 @@ public class DriverFP {
         }
     }
 
+    /**
+     * No devuelve nada.
+     * Imprime por pantalla una lista de las asociaciones de textos que hay en el sistema
+     */
     public void imprimirNombresAsociaciones() {
         HashMap<String, AsociacionTextos> asociaciones = ctrlDominio.getListaAsociaciones();
         if (asociaciones.isEmpty()) {
@@ -194,6 +212,10 @@ public class DriverFP {
         }
     }
 
+    /**
+     * No devuelve nada.
+     * Imprime por pantalla el contenido del texto que se desea consultar, si existe
+     */
     public void consultarContenidoTexto(){
         imprimirNombresTextos();
         System.out.println("Introduce el nombre del texto que quieres consultar:");
@@ -204,6 +226,10 @@ public class DriverFP {
         System.out.println(Palabras);
     }
 
+    /**
+     * No devuelve nada.
+     * Se crea una asociación nueva con textos existentes que haya en el sistema
+     */
     public void crearAsociacion(){
         imprimirNombresTextos();
         HashMap<String, Texto> textos = ctrlDominio.getListaTextos();
@@ -232,7 +258,7 @@ public class DriverFP {
 
     // ---------- FUNCIONES TECLADO ----------
     /**
-     * No retorna.
+     * No devuelve nada.
      * Muestra por pantalla mensajes para introducir información por terminal del teclado que se quiere crear.
      * Llama a la función de ctrlDominio para agregar el teclado.
      * Muestra por pantalla mensajes de error o de éxito.
@@ -290,6 +316,10 @@ public class DriverFP {
         }
     }
 
+    /**
+     * No devuelve nada.
+     * Imprime por pantalla una lista de los teclados que hay en el sistema
+     */
     public void imprimirNombresTeclados() {
         ArrayList<String> teclados = ctrlDominio.getListaTeclados();
         if (teclados.isEmpty()) {
@@ -432,6 +462,10 @@ public class DriverFP {
         driver.inOut.cerrarScanner();
     }
 
+    /**
+     * No devueleve nada.
+     * Imprime por pantalla todos los métodos que el usuario es capaz de realizar
+     */
     private static void muestraMetodos() {
         //Agregar
         System.out.println("(1|AlfabetoPorTerminal) - Añadir Alfabeto");
@@ -454,11 +488,14 @@ public class DriverFP {
         //System.out.println("(13|BorrarAsociacionTextos) - Borrar Asociacion Textos");
         //System.out.println("(14|BorrarTeclado) - Borrar Teclado");
         //QAP
-        System.out.println("(13|PruebaQAP) - Prueba QAP");
         System.out.println();
         System.out.println("(0|Salir) - Cerrar Driver");
     }
 
+    /**
+     * No devuelve nada.
+     * Imprime la acción que el usuario debe realizar para volver al menú principal
+     */
     private void volverMenu() {
         System.out.println("Pulsa ENTER para volver al menú principal");
         inOut.leerString();

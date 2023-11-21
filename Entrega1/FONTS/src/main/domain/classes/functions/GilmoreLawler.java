@@ -11,7 +11,9 @@ import java.util.stream.Collectors;
  * al algortimo Húngaro
  * @author X (X@estudiantat.upc.edu)
  */
-public class GilmoreLawler {
+public class GilmoreLawler
+{
+    // ---------- ATRIBUTOS ----------
     int filas;
     int columnas;
     int glBound;
@@ -19,8 +21,10 @@ public class GilmoreLawler {
     int [][] matrizDistancias;
     private List<Integer> mejorSolucionParcial;
 
-    ///// CONSTRUCTORA
 
+    // ---------- CONSTRUCTORAS ----------
+
+    /** Crea una instancia de la clase GilmoreLawler e inicializa las variables como vacías */
     public GilmoreLawler() {
         this.filas = 0;
         this.columnas = 0;
@@ -29,6 +33,15 @@ public class GilmoreLawler {
         this.matrizFrecuencias = new int[0][0];
         this.mejorSolucionParcial = new ArrayList<>();
     }
+
+    /**
+     * Crea una instancia de la clase GilmoreLawler e inicializa las variables con los parámetros de entrada
+     * @param nf Número de filas
+     * @param nc Número de columans
+     * @param bound Cota
+     * @param mf Matriz de frecuencias
+     * @param md Matriz de distancias
+     */
     public GilmoreLawler (int nf, int nc, int bound, int [][] mf, int [][] md) {
         this.filas = nf;
         this.columnas = nc;
@@ -38,30 +51,67 @@ public class GilmoreLawler {
         this.mejorSolucionParcial = new ArrayList<>();
     }
 
-    /// GETTERS
 
-    public int getFilas() {return filas;}
+    // ---------- GETTERS ----------
 
-    public int getColumnas() {return columnas;}
+    /**
+     * Devuelve el número de filas
+     * @return Integer: número de filas
+     */
+    public int getFilas() {
+        return filas;
+    }
 
-    public int getGlBound() {return glBound;}
+    /**
+     * Devuelve el número de columas
+     * @return Integer: número de columnas
+     */
+    public int getColumnas() {
+        return columnas;
+    }
 
-    public int[][] getMatrizFrecuencias() { return matrizFrecuencias;}
+    /**
+     * Devuelve la cota que usamos para hacer la poda del algoritmo en cada momento
+     * @return Integer glBound
+     */
+    public int getGlBound() {
+        return glBound;
+    }
 
-    public int[][] getMatrizDistancias() { return matrizDistancias;}
+    /**
+     * Devuelva la matriz de frecuencias
+     * @return int[][] matrizFrecuencias
+     */
+    public int[][] getMatrizFrecuencias() {
+        return matrizFrecuencias;
+    }
+
+    /**
+     * Devuelve la matriz de distancias
+     * @return int[][] matrizDistancias
+     */
+    public int[][] getMatrizDistancias() {
+        return matrizDistancias;
+    }
 
 
-    // Método para obtener la mejor solución parcial como lista de índices
+    /**
+     * Método para obtener la mejor solución parcial como lista de índices
+     * @return List<Integer> de índices que corresponden a la mejor solución
+     */
     public List<Integer> getMejorSolucionParcial() {
         return new ArrayList<>(mejorSolucionParcial); // Devuelve una copia defensiva
     }
-    /// GETTERS
 
+    /**
+     *
+     * @param mejorSolucionParcial
+     */
     public void setMejorSolucionParcial(List<Integer> mejorSolucionParcial) {
         this.mejorSolucionParcial = mejorSolucionParcial;
     }
 
-    /// FUNCIONES PRINCIPALES
+    // ---------- FUNCIONES PRINCIPALES ----------
     public int gilmore_lawler() {
         System.out.println("GILMORE-LAWLER ejecutándose");
         System.out.println();
@@ -239,5 +289,3 @@ public class GilmoreLawler {
         return suma;
     }
 }
-
-
