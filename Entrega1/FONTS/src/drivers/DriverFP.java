@@ -32,7 +32,7 @@ public class DriverFP {
         if (inOut.alfabetoValido(entradaCaracteres)) {
             ArrayList<Character> caracteres = inOut.leerCaracteresDeTerminal(entradaCaracteres);
             boolean agregado = ctrlDominio.agregarAlfabeto(nombreA, caracteres);
-            if (!agregado) System.out.println("Ya existe el alfabeto " + nombreA + "introduce un nombre nuevo");
+            if (!agregado) System.out.println("Ya existe el alfabeto " + nombreA + ". Introduce un nombre nuevo");
             else System.out.println("AGREGADO CON EXITO!");
         } else {
             System.out.println("El contenido introducido no es válido. Asegúrate de que sean caracteres separados por un espacio.");
@@ -103,7 +103,7 @@ public class DriverFP {
                 else System.out.println("AGREGADO CON EXITO!");
             }
         } else {
-            System.out.println("Introduce cuantas palabras (con su respectiva frecuencia) quieres indicar:");
+            System.out.println("Introduce cuantas palabras quieres indicar:");
             int n = inOut.leerEntero();
             System.out.println("Introduce palabras y sus frecuencias. El formato debe ser palabra, espacio, numero de frecuencia, salto de linea,  siguiente palabra.");
             System.out.println("Ejemplo:");
