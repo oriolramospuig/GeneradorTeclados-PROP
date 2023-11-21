@@ -1,4 +1,4 @@
-/*package test.functions;
+package test.functions;
 import main.domain.classes.Alfabeto;
 
 import java.util.ArrayList;
@@ -11,14 +11,6 @@ import java.io.*;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertNotNull;
-
-import java.lang.IndexOutOfBoundsException;
-import java.lang.NegativeArraySizeException;
 
 public class TestManhattan {
     @Test
@@ -28,5 +20,5 @@ public class TestManhattan {
 
         assertEquals(7, distancia);
     }
-}*/
+}
 

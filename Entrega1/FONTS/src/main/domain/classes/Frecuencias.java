@@ -91,7 +91,7 @@ public class Frecuencias extends Texto
      * @param frecuencia frecuencia del par de palabras parejaLetras
      *
      */
-    /* REVISAR ESTA FUNCION!
+    /* PARA LA SEGUNDA ENTREGA
     public void anadirFrecuencia(String parejaLetras, Integer frecuencia) {
         frecuenciaLetras.put(parejaLetras, frecuencia);
     }

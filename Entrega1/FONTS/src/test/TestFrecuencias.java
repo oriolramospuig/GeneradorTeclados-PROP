@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 import main.domain.classes.*;
 
@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.*;
 
 import java.io.*;
+import java.util.HashMap;
 import java.util.Set;
 
 import java.lang.IndexOutOfBoundsException;
@@ -20,14 +21,16 @@ public class TestFrecuencias
 
     @Before
     public void setUp() {
-        frecuencias = new Frecuencias("nombreF");
+        HashMap<String, Integer> frecuenciaPalabras = new HashMap<>();
+        HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
+        frecuencias = new Frecuencias("nombreF", frecuenciaPalabras, frecuenciaLetras);
     }
 
 
     // ---------- CONSTRUCTORAS ----------
     @Test
     public void TestConstructora() {
-     /*   System.out.println("Test Constructora Default");
+        System.out.println("Test Constructora Default");
         assertEquals("", frecuencias.getNombre());
         assertTrue(frecuencias.getTexto().isEmpty());
         assertTrue(frecuencias.getFrecuenciaLetras().isEmpty());
@@ -43,7 +46,7 @@ public class TestFrecuencias
 
 
     // ---------- GETTERS ----------
-    @Test
+    /*@Test
     public void TestGetTexto() {
         System.out.println("Test GetTexto");
 
@@ -53,10 +56,10 @@ public class TestFrecuencias
         String textoEjemplo = "AB 3\nCD 7\n";
         assertEquals(textoEjemplo, frecuencias.getTexto());
 
-    }
+    }*/
 
     // ---------- SETTERS -----------
-    @Test
+    /*@Test
     public void TestAnadirFrecuencia() {
         System.out.println("Test AñadirFrecuencia");
 
@@ -69,5 +72,5 @@ public class TestFrecuencias
         assertNotEquals(2, (int) frecuencias.getFrecuenciaLetras().get("AB"));
         assertTrue(frecuencias.getFrecuenciaLetras().containsKey("CD"));
         assertEquals(1, (int) frecuencias.getFrecuenciaLetras().get("CD"));
-    }
-}*/
+    }*/
+}

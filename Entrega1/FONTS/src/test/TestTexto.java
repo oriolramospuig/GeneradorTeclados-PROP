@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 
 import main.domain.classes.Frecuencias;
@@ -31,14 +31,14 @@ public class TestTexto {
     private String nombreAT1;
     private String nombreAT2;
 
-    @Before
+    /*@Before
     public void setUp() {
         nombreAT1 = "nombreAT1";
         nombreAT2 = "nombreAT2";
 
         palabras = new Palabras("nombreP1", "hola");
         frecuencias = new Frecuencias("nombreF1");
-    }
+    }*/
 
     // ---------- SETTERS ----------
     @Test
@@ -79,4 +79,4 @@ public class TestTexto {
        assertTrue(frecuencias.getAsociacionesVinculadas().contains(nombreAT1));
        assertFalse(frecuencias.getAsociacionesVinculadas().contains(nombreAT2));
     }
-}*/
+}

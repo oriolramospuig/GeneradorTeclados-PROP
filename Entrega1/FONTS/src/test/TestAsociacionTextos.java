@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 import main.domain.classes.AsociacionTextos;
 import main.domain.classes.Frecuencias;
@@ -53,9 +53,9 @@ public class TestAsociacionTextos {
     }
 
     // ---------- GETTERS ----------
-    public void testgetFrecuenciaLetras() {
+    /*public void testgetFrecuenciaLetras() {
         System.out.println("Test getFrecuenciasLetras");
-        /*AsociacionTextos asociacionTextos = new AsociacionTextos();
+        AsociacionTextos asociacionTextos = new AsociacionTextos();
         HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
         frecuenciaLetras.put("A", 5);
         frecuenciaLetras.put("B", 3);
@@ -70,8 +70,8 @@ public class TestAsociacionTextos {
         assertEquals(3, result.get(1).getFrecuencia());
         assertEquals("C", result.get(2).getLetra());
         assertEquals(2, result.get(2).getFrecuencia());
-        assertEquals(frecuenciaLetras, asociacionTextos.getFrecuenciaLetras());*/
-/*
+        assertEquals(frecuenciaLetras, asociacionTextos.getFrecuenciaLetras());
+
         String nombre = "nombre";
         HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
         frecuenciaLetras.put("a", 1);
@@ -91,7 +91,7 @@ public class TestAsociacionTextos {
 
         assertEquals("c", frecuenciaLetrasResult.get(2).getPair());
         assertEquals(1, frecuenciaLetrasResult.get(2).getFrequency());
-    }
+    }*/
 
     // ---------- SETTERS ----------
     public void TestagregarTecladoVinculado() {
@@ -160,12 +160,12 @@ public class TestAsociacionTextos {
         Frecuencias texto = new Frecuencias("nombre", frecuenciaPalabras, frecuenciaLetras);
         asociacionTextos.borrarTexto("nombre");
         List<String> textoAsociados = asociacionTextos.getTextosAsociaciados();
-        ArrayList<PairFrequency> frecuenciasLetras = asociacionTextos.getFrecuenciaLetras();
+        HashMap<String, Integer> frecuenciasLetras = asociacionTextos.getFrecuenciaLetras();
 
         assertEquals(0, textoAsociados.size());
         assertEquals(0, frecuenciaLetras.size());
         assertEquals(0, frecuenciaLetras.get("ab").intValue());
         assertEquals(0, frecuenciaLetras.get("ca").intValue());
     }
-}*/
+}
 

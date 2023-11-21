@@ -74,7 +74,6 @@ public class CtrlTexto
         if(!CjtTextos.existeTexto(nomT)) {
             HashMap<String,Integer> frecuenciaLetras = convertirTextoAFrecuencias(texto);
             Palabras palabras = new Palabras(nomT, texto,frecuenciaLetras);
-            //palabras.imprimirFrecuencias();
             CjtTextos.agregarTexto(nomT, palabras);
             return true;
         }
@@ -132,7 +131,6 @@ public class CtrlTexto
         if(!CjtTextos.existeTexto(nomT)){
             HashMap<String,Integer> frecuenciasLetras = convertirFrecuenciasPalabrasAFrecuenciasLetras(frecuenciaPalabras);
             Frecuencias frecuencias = new Frecuencias(nomT, frecuenciaPalabras, frecuenciasLetras);
-            frecuencias.imprimirFrecuencias();
             CjtTextos.agregarTexto(nomT, frecuencias);
             return true;
         }

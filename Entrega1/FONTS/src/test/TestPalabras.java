@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 import main.domain.classes.AsociacionTextos;
 import main.domain.classes.Palabras;
@@ -32,7 +32,10 @@ public class TestPalabras
 
     @Before
     public void setUp() {
-        palabras = new Palabras("nombreP", "aiacaia");
+        HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
+        frecuenciaLetras.put("ai", 4);
+        frecuenciaLetras.put("ac", 2);
+        palabras = new Palabras("nombreP", "aiacaia", frecuenciaLetras);
     }
 
     // ---------- CONSTRUCTORAS ----------
@@ -57,4 +60,4 @@ public class TestPalabras
         assertEquals(2, (int) palabras.getFrecuenciaLetras().get("ac"));
         assertFalse(palabras.getFrecuenciaLetras().containsKey("ca"));
     }
-}*/
+}

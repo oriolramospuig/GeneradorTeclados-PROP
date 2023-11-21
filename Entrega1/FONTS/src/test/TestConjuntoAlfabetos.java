@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
@@ -20,8 +20,9 @@ public class TestConjuntoAlfabetos {
     @Before
     public void setUp() {
         alfabetos = new ConjuntoAlfabetos();
-        alfabeto1 = new Alfabeto("nombreA1");
-        alfabeto2 = new Alfabeto("nombreA2");
+        ArrayList<Character> letras = new ArrayList<>();
+        alfabeto1 = new Alfabeto("nombreA1", letras);
+        alfabeto2 = new Alfabeto("nombreA2", letras);
     }
 
 
@@ -95,4 +96,4 @@ public class TestConjuntoAlfabetos {
         assertFalse(alfabetos.existeAlfabeto("nombreA1"));
         assertTrue(alfabetos.existeAlfabeto("nombreA2"));
     }
-}*/
+}

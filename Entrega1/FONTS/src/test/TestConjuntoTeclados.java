@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 
 import main.domain.classes.*;
@@ -17,7 +17,7 @@ public class TestConjuntoTeclados {
     private Teclado teclado1;
 
     private Teclado teclado2;
-
+    /*
     @Before
     public void setUp() {
         teclados = new ConjuntoTeclados();
@@ -34,6 +34,7 @@ public class TestConjuntoTeclados {
         PairInt dimensiones1 = new PairInt(5, 10);
         Teclado teclado1 = new Teclado(nombre, asociacionTextos, alfabeto, algoritmo, dimensiones);
     }
+     */
 
 
     // ---------- CONSTRUCTORAS ----------
@@ -145,4 +146,4 @@ public class TestConjuntoTeclados {
         assertFalse(teclados.existeTeclado("nombreT1"));
         assertTrue(teclados.existeTeclado("nombreT2"));
     }
-}*/
+}

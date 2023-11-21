@@ -1,4 +1,4 @@
-/*package test.types;
+package test.types;
 
 import main.domain.classes.types.PairFrequency;
 import org.junit.Test;
@@ -13,6 +13,7 @@ public class TestPairFrequency {
      * Valores estudiados: Estrategia de caja gris. Se escribe un PairFrequency con la clave (string) y una frecuencia (int)
      * Operativa: Se comprueba que los valores insertados al Pair se han añadido correctamente
      */
+
     @Test
     public void TestConstructora() {
         System.out.println("Test Constructora");
@@ -23,4 +24,4 @@ public class TestPairFrequency {
         assertEquals("ae", pairFrequency.getPair());
         assertEquals(4, pairFrequency.getFrequency());
     }
-}*/
+}

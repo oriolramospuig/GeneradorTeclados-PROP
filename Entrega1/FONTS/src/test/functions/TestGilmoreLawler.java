@@ -1,4 +1,4 @@
-/*package test.functions;
+package test.functions;
 
 import main.domain.classes.functions.GilmoreLawler;
 
@@ -19,7 +19,6 @@ public class TestGilmoreLawler {
         assertEquals(0, gilmoreLawler.getGlBound());
         assertEquals(0, gilmoreLawler.getMatrizDistancias().length);
         assertEquals(0, gilmoreLawler.getMatrizFrecuencias().length);
-        assertEquals(new HashMap<Character, Integer>(), gilmoreLawler.getLetraAIndice());
         assertEquals(new ArrayList<>(), gilmoreLawler.getMejorSolucionParcial());
     }
     public void TestConstructora() {
@@ -34,13 +33,12 @@ public class TestGilmoreLawler {
         letraAIndice.put('B', 2);
         letraAIndice.put('C', 3);
 
-        GilmoreLawler gl = new GilmoreLawler(nf, nc, bound, mf, md, letraAIndice);
+        GilmoreLawler gl = new GilmoreLawler(nf, nc, bound, mf, md);
 
         assertEquals(nf, gl.getFilas());
         assertEquals(nc, gl.getColumnas());
         assertArrayEquals(md, gl.getMatrizDistancias());
         assertArrayEquals(mf, gl.getMatrizFrecuencias());
-        assertEquals(letraAIndice, gl.getLetraAIndice());
         assertTrue(gl.getMejorSolucionParcial().isEmpty());
 
     }
@@ -79,6 +77,6 @@ public class TestGilmoreLawler {
 
         assertEquals(6, resultado);
     }
-}*/
+}
 
 

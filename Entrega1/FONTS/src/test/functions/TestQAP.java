@@ -1,4 +1,5 @@
-/*package test.functions;
+package test.functions;
+import main.domain.classes.functions.Matrices;
 import main.domain.classes.functions.QAP;
 import main.domain.classes.types.PairFrequency;
 
@@ -19,16 +20,21 @@ public class TestQAP {
                 new PairFrequency("bc", 2),
                 new PairFrequency("ca", 1)
         );
-        QAP qap = new QAP(filas, columnas, teclas, paresFrecuencias);
+        HashMap<Character, Integer> letraAIndice = new HashMap<>();
+        for (int i = 0; i < teclas.size(); i++) {
+            letraAIndice.put(teclas.get(i), i);
+        }
+        int [][] mf = new int[3][3];
+        Matrices.generarMatrizDeFrecuencias(paresFrecuencias, teclas, letraAIndice, mf);
+        int [][] md = new int [3][3];
+        Matrices.generarMatrizDistancias(1,3,md);
+        List<Integer> sol = new ArrayList<>();
+        QAP qap = new QAP(filas, columnas, mf, md, sol);
 
         assertEquals(filas, qap.getFilas());
         assertEquals(columnas, qap.getColumnas());
         assertEquals(filas * columnas, qap.getN());
         assertNotNull(qap.getMatrizDistancias());
         assertNotNull(qap.getMatrizFrecuencias());
-        assertNotNull(qap.getTeclasOrdenadas());
-        assertNotNull(qap.getLetraAIndice());
-
-        assertEquals(filas * columnas, qap.getTeclasOrdenadas().size());
     }
-}*/
+}

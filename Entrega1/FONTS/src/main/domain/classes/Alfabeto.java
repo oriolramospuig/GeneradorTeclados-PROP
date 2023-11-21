@@ -23,6 +23,12 @@ public class Alfabeto {
 
 
     // ---------- CONSTRUCTORES ----------
+    public Alfabeto() {
+        this.nombre = new String();
+        this.letras = new ArrayList<>();
+        this.tecladosVinculados = new ArrayList<>();
+    }
+
     /**
      * Constructora alfabeto con nombre y contenido asignados.
      * La lista de nombres de teclados vinculados esta vacía inicialmente.
