@@ -8,8 +8,8 @@ import java.util.ArrayList;
  * Clase que representa un alfabeto
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
-public class Alfabeto // implements Comparable<Cela>, Serializable
-{
+public class Alfabeto {
+
     // ---------- ATRIBUTOS ----------
     /** Guarda el nombre introducido por el usuario */
     private String nombre;
@@ -22,17 +22,6 @@ public class Alfabeto // implements Comparable<Cela>, Serializable
 
 
     // ---------- CONSTRUCTORES ----------
-    public Alfabeto()
-    {
-        nombre = new String();
-        letras = new ArrayList<>();
-        tecladosVinculados = new ArrayList<>();
-    }
-    public Alfabeto(String nombre) {
-        this.nombre = nombre;
-        this.letras = new ArrayList<>();
-        this.tecladosVinculados = new ArrayList<>();
-    }
     public Alfabeto(String nombre, ArrayList<Character> letras) {
         this.nombre = nombre;
         this.letras = letras;
