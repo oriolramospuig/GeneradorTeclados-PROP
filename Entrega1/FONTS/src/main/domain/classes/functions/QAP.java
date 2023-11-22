@@ -184,8 +184,8 @@ public class QAP {
                 int indice1 = teclado[i][j];
                 int i1 = i*columnas+j;
 
-                for (int k = i; k < filas; k++) {
-                    for (int l = (k == i) ? j + 1 : 0; l < columnas; l++) {
+                for (int k = 0; k < filas; k++) {
+                    for (int l = 0; l < columnas; l++) {
                         int indice2 = teclado[k][l];
                         int i2 = k*columnas+l;
 

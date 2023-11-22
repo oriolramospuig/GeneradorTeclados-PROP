@@ -10,13 +10,13 @@ import static java.lang.Math.sqrt;
 public class QAPTester {
 
         public static void main(String[] args) {
-            String nombreTest = "rou15.dat";
+            String nombreTest = "scr12.dat";
             //String path = "C:\\Users\\34696\\OneDrive\\Descargas\\VARIS\\";
             //String pathInput = path + "qapdata\\rou12.dat";
             //String pathSolutions = path + "qapsoln";
             String currentDirectory = System.getProperty("user.dir");
             // Ruta absoluta del archivo
-            String filePath = currentDirectory+"\\Entrega1\\FONTS\\src\\test\\QAP_tests\\"+nombreTest;
+            String filePath = currentDirectory+"\\subgrup-prop14.3\\Entrega1\\FONTS\\src\\test\\QAP_tests\\"+nombreTest;
 
 
             System.out.println("PATH: " + filePath);
@@ -49,7 +49,7 @@ public class QAPTester {
 
                 double raiz = sqrt(n);
                 int r = (int)raiz;
-                int nfilas = 1, ncolumnas = 15;
+                int nfilas = 1, ncolumnas = 12;
                 /*if(raiz == r) {
                     nfilas = ncolumnas = r;
                 }
