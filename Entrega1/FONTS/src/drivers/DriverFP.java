@@ -344,6 +344,25 @@ public class DriverFP {
         }
     }
 
+    public void consultarContenidoTeclado(){
+        imprimirNombresTeclados();
+        System.out.println("Introduce el nombre del teclado que quieres consultar:");
+        String nombreT = inOut.leerString();
+        int[][] contenido = ctrlDominio.consultarContenidoTeclado(nombreT);
+        if(contenido == null) {
+            System.out.println("Este nombre de teclado no existe, debes entrar un teclado de la lista");
+        }
+        else {
+            System.out.println(nombreT);
+            for (int i = 0; i < contenido.length; ++i) {
+                for (int j = 0; j < contenido[i].length; ++j) {
+                    System.out.print(contenido[i][j]);
+                }
+                System.out.println();
+            }
+        }
+    }
+
     /* 
     private PairInt escogerDimensiones(HashMap<Integer, PairInt> combinacionesDimensiones, Integer numDim) {
         Integer filas = combinacionesDimensiones.get(numDim).getPrimero();
@@ -437,6 +456,11 @@ public class DriverFP {
                     driver.consultarContenidoTexto();
                     break;
                 }
+                case "13":
+                case "ConsultarTeclado": {
+                    driver.consultarContenidoTeclado();
+                    break;
+                }
                 /*case "7":
                 case "BorrarAlfabeto": {
                     // driver.borrarAlfabeto();
@@ -457,7 +481,7 @@ public class DriverFP {
                     //driver.borrarTeclado();
                     break;
                 }*/
-                case "13":
+                case "14":
                 case "PruebaQAP": {
                     // driver.agregarTeclado();
                     break;
@@ -495,6 +519,7 @@ public class DriverFP {
         System.out.println("(10|ConsultarlistaTeclados) - Consultar Lista Teclados");
         System.out.println("(11|ConsultarAlfabeto) - Consultar Alfabeto");
         System.out.println("(12|ConsultarTexto) - Consultar Texto");
+        System.out.println("(13|ConsultarTeclado) - Consultar Teclado");
         //Borrar
         //System.out.println("(11|BorrarAlfabeto) - Borrar Alfabeto");
         //System.out.println("(12|BorrarTexto) - Borrar Texto");

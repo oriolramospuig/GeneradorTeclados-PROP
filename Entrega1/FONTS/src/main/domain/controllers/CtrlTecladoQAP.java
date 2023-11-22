@@ -23,13 +23,16 @@ public class CtrlTecladoQAP {
     public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto) {
         //calcular dim
 
+        // com ens entren caracter espai caracter espai, hem de treure els espais. S'ha de replantejar això, per exemple, tipo lo de com introduir
+        // els textos quan els posem per frequència o algo així
         ArrayList<Character> letrasaux = alfabeto.getLetras();
-        ArrayList<Character> letras  =new ArrayList<>();
+        ArrayList<Character> letras  = new ArrayList<>();
         for (int i = 0; i < letrasaux.size(); ++i) {
             if (letrasaux.get(i) != ' ') {
                 letras.add(letrasaux.get(i));
             }
         }
+
         int n = letras.size();
         PairInt dimensiones = calculaDimensiones(n);
         int nf = dimensiones.getPrimero();
@@ -42,6 +45,7 @@ public class CtrlTecladoQAP {
         for (int i = 0; i < letras.size(); i++) {
             letraAIndice.put(letras.get(i), i);
         }
+
         int[][] matrizFrecuencias = new int[nf*nc][nf*nc];
         Matrices.generarMatrizDeFrecuencias(frecuencias, letras, letraAIndice, matrizFrecuencias);
 
@@ -57,11 +61,11 @@ public class CtrlTecladoQAP {
         return teclado;
     }
 
-    /*esta malament, genera 3*4 per 10 tecles i volem que generi 2*5*/
+    /*esta malament, cal pensar com volem generar la n*/
     public PairInt calculaDimensiones(int n) {
-        int nf = n/2;
-        int nc = n/2;
-        if (n%2 == 1) nc = nc + 1;
+        int nf = 1;
+        int nc = n;
+        // if (n%2 == 1) nc = nc + 1;
         PairInt dim = new PairInt(nf, nc);
         return dim;
     }

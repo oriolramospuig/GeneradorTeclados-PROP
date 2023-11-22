@@ -98,6 +98,8 @@ public class Teclado
         return asociacionTextosVinculado;
     }
 
+    public int[][] getContenido() {return contenido; }
+
 
     // ---------- SETTERS ----------
     /**
