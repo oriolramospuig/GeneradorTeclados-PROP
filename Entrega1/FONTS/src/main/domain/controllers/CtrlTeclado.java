@@ -29,6 +29,11 @@ public class CtrlTeclado
 
 
     // ---------- FUNCIONES TECLADO ----------
+    public int[][] getContenido(String nomT){
+        //return CjtTextos.getTexto(nomT).getFrecuenciaPalabras();
+        return teclados.getTeclado(nomT).getContenido();
+    }
+
     /**
      * No devuelve nada, manda a introducir la puntuación escrita en un Teclado (también pedido)
      */

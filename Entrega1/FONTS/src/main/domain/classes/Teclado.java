@@ -25,6 +25,9 @@ public class Teclado
     /** Asociación de textos vinculada al teclado */
     private String asociacionTextosVinculado;
 
+    /** Contenido del teclado, generado por el algoritmo */
+    private int[][] contenido;
+
 
     // ---------- CONSTRUCTORAS ----------
     /**
@@ -36,6 +39,18 @@ public class Teclado
         this.dimensiones = dimensiones;
         alfabetoVinculado = alfabeto.getNombre();
         asociacionTextosVinculado = asociacionTextos.getNombre();
+    }
+
+    /**
+     * Constructora de la clase Teclado
+     */
+    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dimensiones, int[][] contenido) {
+        this.nombre = nombre;
+        // this.algoritmo = algoritmo;
+        this.dimensiones = dimensiones;
+        this.alfabetoVinculado = alfabeto.getNombre();
+        this.asociacionTextosVinculado = asociacionTextos.getNombre();
+        this.contenido = contenido;
     }
 
 
@@ -82,6 +97,8 @@ public class Teclado
     public String getAsociacionTextosVinculado() {
         return asociacionTextosVinculado;
     }
+
+    public int[][] getContenido() {return contenido; }
 
 
     // ---------- SETTERS ----------
