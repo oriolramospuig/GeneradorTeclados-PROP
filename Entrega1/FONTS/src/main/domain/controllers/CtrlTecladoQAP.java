@@ -50,7 +50,7 @@ public class CtrlTecladoQAP {
 
         List<Integer> sol = new ArrayList<>();
         int [][] tec = new int[nf][nc];
-        QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias, sol, tec);
+        QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias);
         for (int i = 0; i < sol.size(); ++i) {
             int posicion = sol.get(i);
             System.out.println("Posición " + posicion + ": Elemento " + i + " | ");
