@@ -20,6 +20,7 @@ public class QAP {
     private int[][] matrizFrecuencias;
     private int[][] matrizDistancias;
     private List<Integer> sol;
+    private int[][] tec;
     private int glBound;
 
 
@@ -32,7 +33,7 @@ public class QAP {
      * @param matrizDistancias  Matriz de distancias.
      * @param sol               Lista de enteros que representa una solución inicial.
      */
-    public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias, List<Integer> sol) {
+    public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias, List<Integer> sol, int[][] tec) {
         this.filas = nf;
         this.columnas = nc;
         this.n = nf*nc;
@@ -48,6 +49,7 @@ public class QAP {
         int [][] indices = calcularMejorAsignacionAleatoria(ind, 100);
         this.teclado = indices;
         this.sol = sol;
+        this.tec = indices;
         this.glBound = calculoPuntuacion(indices);
         imprimirTeclado();
         System.out.println("Puntuacion inicial = " + glBound);
@@ -116,6 +118,18 @@ public class QAP {
     }
 
     /**
+     * Obtiene una copia de tec de la instancia actual.
+     *
+     * @return Una copia de tec.
+     */
+    public int[][] getTec() {
+        // Devuelve una copia para evitar la modificación directa de la matriz
+        return Arrays.stream(this.tec)
+                .map(int[]::clone)
+                .toArray(int[][]::new);
+    }
+
+    /**
      * Calcula la mejor asignación aleatoria de teclas entre las N generadas.
      *
      * @param teclas Lista de teclas a asignar aleatoriamente.
@@ -152,6 +166,7 @@ public class QAP {
 
         // Al final del bucle, mejorTeclado contiene la asignación con la mejor puntuación
         teclado = mejorTeclado; // Asignar la mejor asignación al teclado principal
+        tec = mejorTeclado;
         return mejorTeclado;
     }
 
@@ -246,11 +261,19 @@ public class QAP {
      * para encontrar la mejor asignación de teclas en el teclado.
      */
     private void calculo() {
-        imprimirMatrices();
+        // imprimirMatrices();
 
         GilmoreLawler gilmoreLawler = new GilmoreLawler(filas, columnas, glBound, matrizFrecuencias, matrizDistancias);
         gilmoreLawler.gilmore_lawler();
         sol = gilmoreLawler.getMejorSolucionParcial();
+        if (!sol.isEmpty()) {
+            // Recorrer la lista de soluciones parciales y asignar cada valor a su posición en el arreglo
+            for (int i = 0; i < sol.size(); i++) {
+                int fila = i / columnas;
+                int columna = i % columnas;
 
+                tec[fila][columna] = sol.get(i);
+            }
+        }
     }
 }
