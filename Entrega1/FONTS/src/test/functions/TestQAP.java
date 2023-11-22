@@ -30,7 +30,7 @@ public class TestQAP {
         Matrices.generarMatrizDistancias(1,3,md);
         List<Integer> sol = new ArrayList<>();
         int [][] tec = new int[filas][columnas];
-        QAP qap = new QAP(filas, columnas, mf, md, sol, tec);
+        QAP qap = new QAP(filas, columnas, mf, md);
 
         assertEquals(filas, qap.getFilas());
         assertEquals(columnas, qap.getColumnas());

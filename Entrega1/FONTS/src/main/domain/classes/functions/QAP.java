@@ -31,9 +31,8 @@ public class QAP {
      * @param nc                Número de columnas.
      * @param matrizFrecuencias Matriz de frecuencias.
      * @param matrizDistancias  Matriz de distancias.
-     * @param sol               Lista de enteros que representa una solución inicial.
      */
-    public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias, List<Integer> sol, int[][] tec) {
+    public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias) {
         this.filas = nf;
         this.columnas = nc;
         this.n = nf*nc;
@@ -48,7 +47,7 @@ public class QAP {
 
         int [][] indices = calcularMejorAsignacionAleatoria(ind, 100);
         this.teclado = indices;
-        this.sol = sol;
+        this.sol = new ArrayList<>();
         this.tec = indices;
         this.glBound = calculoPuntuacion(indices);
         imprimirTeclado();
