@@ -12,6 +12,7 @@ import main.domain.classes.types.PairInt;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static java.lang.Math.sqrt;
 
@@ -56,7 +57,18 @@ public class CtrlTecladoQAP {
         int [][] tec;
         QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias);
         tec = qap.getTec();
-        Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto,dimensiones, tec);
+        char[][] tecl = new char[tec.length][tec[0].length];
+        for (int i = 0; i < tec.length; i++) {
+            for (int j = 0; j < tec[i].length; j++) {
+                for (Map.Entry<Character, Integer> entry : letraAIndice.entrySet()) {
+                    if (entry.getValue().equals(tec[i][j])) {
+                        tecl[i][j] = entry.getKey();
+                        break;
+                    }
+                }
+            }
+        }
+        Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto,dimensiones, tecl);
 
         return teclado;
     }
