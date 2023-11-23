@@ -33,6 +33,14 @@ public class CtrlTeclado
         return teclados.getTeclado(nomT).getContenido();
     }
 
+    public String getAlfabeto(String nomT){
+        return teclados.getTeclado(nomT).getAlfabetoVinculado();
+    }
+
+    public String getAsociacion(String nomT){
+        return teclados.getTeclado(nomT).getAsociacionTextosVinculado();
+    }
+
     /**
      * No devuelve nada, manda a introducir la puntuación escrita en un Teclado (también pedido)
      */

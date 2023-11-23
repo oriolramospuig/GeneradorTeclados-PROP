@@ -256,6 +256,20 @@ public class CtrlDominio
         return null;
     }
 
+    public String consultarAlfabetoAsociadoTeclado(String nomT) {
+        if(ctrlTeclado.existeTeclado(nomT)) {
+            return ctrlTeclado.getAlfabeto(nomT);
+        }
+        return null;
+    }
+
+    public String consultarAsociacionAsociadoTeclado(String nomT) {
+        if(ctrlTeclado.existeTeclado(nomT)) {
+            return ctrlTeclado.getAsociacion(nomT);
+        }
+        return null;
+    }
+
     /**
      * 
      * @return
