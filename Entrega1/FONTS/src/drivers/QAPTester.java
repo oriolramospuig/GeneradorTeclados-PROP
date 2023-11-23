@@ -59,7 +59,7 @@ public class QAPTester {
                 }*/
                 System.out.println("NFILAS: " + nfilas + " NCOLS: " + ncolumnas);
                 List<Integer> sol = new ArrayList<>();
-                int [][] tec= new int[nfilas][ncolumnas];
+                int [][] tec;
                 QAP qap = new QAP(nfilas,ncolumnas,matrizFrecuencias,matrizDistancias);
                 tec = qap.getTeclado();
                 System.out.println("Tec = ");

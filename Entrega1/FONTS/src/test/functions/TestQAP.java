@@ -31,6 +31,7 @@ public class TestQAP {
         List<Integer> sol = new ArrayList<>();
         int [][] tec = new int[filas][columnas];
         QAP qap = new QAP(filas, columnas, mf, md);
+        tec = qap.getTeclado();
 
         assertEquals(filas, qap.getFilas());
         assertEquals(columnas, qap.getColumnas());
