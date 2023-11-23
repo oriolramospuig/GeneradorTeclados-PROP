@@ -348,7 +348,7 @@ public class DriverFP {
         imprimirNombresTeclados();
         System.out.println("Introduce el nombre del teclado que quieres consultar:");
         String nombreT = inOut.leerString();
-        int[][] contenido = ctrlDominio.consultarContenidoTeclado(nombreT);
+        char[][] contenido = ctrlDominio.consultarContenidoTeclado(nombreT);
         if(contenido == null) {
             System.out.println("Este nombre de teclado no existe, debes entrar un teclado de la lista");
         }
@@ -356,14 +356,14 @@ public class DriverFP {
             System.out.println(nombreT);
             for (int i = 0; i < contenido.length; ++i) {
                 for (int j = 0; j < contenido[i].length; ++j) {
-                    System.out.print(contenido[i][j]);
+                    System.out.print(contenido[i][j] + " ");
                 }
                 System.out.println();
             }
         }
     }
 
-    /* 
+    /*
     private PairInt escogerDimensiones(HashMap<Integer, PairInt> combinacionesDimensiones, Integer numDim) {
         Integer filas = combinacionesDimensiones.get(numDim).getPrimero();
         Integer columans = combinacionesDimensiones.get(numDim).getSegundo();

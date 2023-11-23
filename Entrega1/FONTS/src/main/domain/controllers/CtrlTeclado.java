@@ -29,8 +29,7 @@ public class CtrlTeclado
 
 
     // ---------- FUNCIONES TECLADO ----------
-    public int[][] getContenido(String nomT){
-        //return CjtTextos.getTexto(nomT).getFrecuenciaPalabras();
+    public char[][] getContenido(String nomT){
         return teclados.getTeclado(nomT).getContenido();
     }
 

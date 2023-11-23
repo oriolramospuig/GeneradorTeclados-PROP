@@ -26,7 +26,7 @@ public class Teclado
     private String asociacionTextosVinculado;
 
     /** Contenido del teclado, generado por el algoritmo */
-    private int[][] contenido;
+    private char[][] contenido;
 
 
     // ---------- CONSTRUCTORAS ----------
@@ -44,7 +44,7 @@ public class Teclado
     /**
      * Constructora de la clase Teclado
      */
-    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dimensiones, int[][] contenido) {
+    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dimensiones, char[][] contenido) {
         this.nombre = nombre;
         // this.algoritmo = algoritmo;
         this.dimensiones = dimensiones;
@@ -98,7 +98,11 @@ public class Teclado
         return asociacionTextosVinculado;
     }
 
-    public int[][] getContenido() {return contenido; }
+    /**
+     * Devuelve el contenido del teclado, mediante la distribución de las letras
+     * @return int[][] : Contenido del teclado
+     */
+    public char[][] getContenido() {return contenido; }
 
 
     // ---------- SETTERS ----------

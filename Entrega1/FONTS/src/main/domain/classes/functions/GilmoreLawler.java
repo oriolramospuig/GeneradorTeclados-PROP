@@ -118,7 +118,7 @@ public class GilmoreLawler
      * @return La cota inferior gracias al algoritmo
      */
     public int gilmore_lawler() {
-        System.out.println("GILMORE-LAWLER ejecutándose");
+        System.out.print("Gilmore-Lawler ejecutándose");
         System.out.println();
 
         List<Integer> ind = new ArrayList<>();
@@ -136,7 +136,7 @@ public class GilmoreLawler
         boolean[] vis = new boolean[ind.size()];
         dfs(0, ind, solucionParcial, 0, posicionesNoUsadas, letrasNO, vis); // Empezar DFS con profundidad 0 y cota 0
 
-        System.out.println("GILMORE_LAWLER acabado; Cota final = " + glBound);
+        System.out.print("Gilmore-Lawler acabado; Cota final = " + glBound);
         System.out.println();
         imprimirMejorSolucionParcial();
         return glBound;
@@ -318,13 +318,14 @@ public class GilmoreLawler
      * Imprime por terminal la Mejor Solucion Parcial
      */
     public void imprimirMejorSolucionParcial() {
-        // Suponiendo que 'mejorSolucionParcial' es una lista de índices que representa la mejor solución actual
         System.out.print("La mejor solución es: ");
-        for (int tecla = 0; tecla < mejorSolucionParcial.size(); tecla++) {
-            int posicion = mejorSolucionParcial.get(tecla);
-            System.out.println("Posición " + posicion + ": Elemento " + tecla + " | ");
+        for (int i = 0; i < mejorSolucionParcial.size(); i++) {
+            System.out.print(mejorSolucionParcial.get(i) + " ");
+            // Cada vez que se complete una fila, imprime una nueva línea
+            if ((i + 1) % columnas == 0) {
+                System.out.println();
+            }
         }
-        System.out.println();
     }
 
     /**

@@ -249,7 +249,7 @@ public class CtrlDominio
         else return -2;
     }
 
-    public int[][] consultarContenidoTeclado(String nomT){
+    public char[][] consultarContenidoTeclado(String nomT){
         if(ctrlTeclado.existeTeclado(nomT)) {
             return ctrlTeclado.getContenido(nomT);
         }
