@@ -36,8 +36,9 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto("Alfabeto");
         Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(10, 20);
-
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, algoritmo, dimensiones);
+        //buit, no esta generat per algorisme
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
 
         assertEquals(nombre, teclado.getNombre());
         //assertEquals(algoritmo, teclado.getAlgoritmo());
@@ -62,8 +63,9 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto("Alfabeto");
         Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(5, 10);
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, algoritmo, dimensiones);
-
+        //buida, no l'hem generat a partir de l'algoritme
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
         teclado.setDimensiones(dimensiones);
 
         PairInt resultado = teclado.getDimensiones();
@@ -87,7 +89,8 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto("Alfabeto");
         Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(5, 10);
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, algoritmo, dimensiones);
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
         float puntuacion = 100;
 
         teclado.setPuntuacion(puntuacion);
@@ -109,7 +112,8 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto("Alfabeto");
         Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(10, 20);
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, algoritmo, dimensiones);
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
         PairInt dimensiones2 = new PairInt(5, 10);
 
         teclado.setDimensiones(dimensiones2);
@@ -132,7 +136,8 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto("Alfabeto");
         Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(10, 20);
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, algoritmo, dimensiones);
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
         Alfabeto alfabeto2 = new Alfabeto("nombre2");
 
         teclado.agregarAlfabetoVinculado("nombre2");
@@ -154,7 +159,8 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto("Alfabeto");
         Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(10, 20);
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, algoritmo, dimensiones);
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
         AsociacionTextos asociacionTextos2 = new AsociacionTextos("nombre2");
 
         teclado.agregarAsociacionTextosVinculado("nombre2");
@@ -178,8 +184,8 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto("Alfabeto");
         Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(10, 20);
-
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, algoritmo, dimensiones);
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
 
         teclado.borrarAlfabetoVinculado("Alfabeto");
 
@@ -199,8 +205,8 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto("Alfabeto");
         Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(10, 20);
-
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, algoritmo, dimensiones);
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
 
         teclado.borrarAsociacionTextosVinculados("AsociaciondeTextos");
 
