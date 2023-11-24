@@ -30,9 +30,7 @@ public class Teclado
 
 
     // ---------- CONSTRUCTORAS ----------
-    /**
-     * Constructora de la clase Teclado
-     */
+    /** Constructora de la clase Teclado */
     public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dimensiones, char[][] contenido) {
         this.nombre = nombre;
         // this.algoritmo = algoritmo;

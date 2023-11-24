@@ -45,7 +45,5 @@ public class Palabras extends Texto
         }
     }
 
-    // ---------- SETTERS ----------
 
-    // ---------- AUXILIARES -----------
 }

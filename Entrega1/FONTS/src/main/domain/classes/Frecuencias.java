@@ -78,6 +78,4 @@ public class Frecuencias extends Texto
         frecuenciaLetras.put(parejaLetras, frecuencia);
      }
 
-
-    // ---------- AUXILIARES -----------
 }
