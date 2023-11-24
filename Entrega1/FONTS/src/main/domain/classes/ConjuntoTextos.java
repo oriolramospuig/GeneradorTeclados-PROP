@@ -15,7 +15,10 @@ public class ConjuntoTextos
 
 
     // ---------- CONSTRUCTORAS ----------
-    /** Crea una instancia de la clase ConjuntoTextos e inicializa la variable textos como un nuevo HashMap */
+    /**
+     * Constructora conjunto de textos.
+     * Inicialmente el conjunto de textos existentes está vacío.
+     */
     public ConjuntoTextos() {
         textos = new HashMap<>();
     }

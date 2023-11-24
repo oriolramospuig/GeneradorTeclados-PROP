@@ -15,6 +15,10 @@ public class ConjuntoTeclados
 
 
     // ---------- CONSTRUCTORES ----------
+    /**
+     * Constructora conjunto de teclados.
+     * Inicialmente el conjunto de teclados existentes está vacío.
+     */
     public ConjuntoTeclados() {
         teclados = new HashMap<>();
     }
