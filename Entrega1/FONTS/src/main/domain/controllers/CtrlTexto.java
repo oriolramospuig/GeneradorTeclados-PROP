@@ -11,7 +11,7 @@ import java.util.HashMap;
 /** Este controlador se encarga de gestionar los métodos de añadir, modificar y borrar de textos */
 
 /**
- * @author Júlia
+ * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
 public class CtrlTexto
 {

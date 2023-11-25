@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * Este controlador se encarga de gestionar todos los métodos y distribuir las funciones a los respectivos controladores
- * @author Alexia
+ * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
 public class CtrlDominio
 {

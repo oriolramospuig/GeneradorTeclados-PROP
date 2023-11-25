@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  * Este controlador se encarga de gestionar los métodos de añadir, modificar y borrar de conjunto teclados, teclado y el controlador del algoritmo
- * @author Júlia
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public class CtrlTeclado
 {
