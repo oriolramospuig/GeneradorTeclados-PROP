@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * Clase que representa un alfabeto
- * @author
+ * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
 public class Alfabeto
 {

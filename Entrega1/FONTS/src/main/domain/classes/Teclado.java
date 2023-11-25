@@ -5,7 +5,7 @@ import main.domain.classes.types.PairInt;
 
 /**
  * Classe que representa un teclado
- * @author Júlia
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class Teclado
 {

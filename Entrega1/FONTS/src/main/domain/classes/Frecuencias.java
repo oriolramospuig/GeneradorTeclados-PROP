@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * Clase que representa un Texto del tipo Frecuencias
- * @author Júlia
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public class Frecuencias extends Texto
 {

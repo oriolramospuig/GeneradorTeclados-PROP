@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 /**
  * Clase que representa el conjunto de asociaciones
- * @author ...
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public class ConjuntoAsociaciones
 {

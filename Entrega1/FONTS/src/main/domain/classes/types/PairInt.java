@@ -1,7 +1,7 @@
 package main.domain.classes.types;
 
 /** Clase que implementa un pair de Int, Int
- * @author X (X@estudiantat.upc.edu)
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class PairInt {
     Integer int1;

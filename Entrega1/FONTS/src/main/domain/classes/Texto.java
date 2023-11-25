@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 /**
  * Classe que representa un texto
- * @author Júlia
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public abstract class Texto
 {

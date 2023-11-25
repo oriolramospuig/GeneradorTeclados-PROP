@@ -5,7 +5,7 @@ import main.domain.classes.types.PairFrequency;
 import java.util.*;
 
 /** Clase que implementa un comparador de frecuencias
- * @author X (X@estudiantat.upc.edu)
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 class FrequencyComparator implements Comparator<PairFrequency> {
     // override the compare() method
@@ -21,7 +21,7 @@ class FrequencyComparator implements Comparator<PairFrequency> {
 }
 
 /** Clase que implementa una asociación de textos
- * @author X (X@estudiantat.upc.edu)
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public class AsociacionTextos
 {

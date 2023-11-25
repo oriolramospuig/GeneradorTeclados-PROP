@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 /**
  * Clase que representa el conjunto de alfabetos
- * @author
+ * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
 public class ConjuntoAlfabetos
 {
