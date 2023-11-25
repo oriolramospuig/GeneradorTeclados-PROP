@@ -14,7 +14,7 @@ public class Teclado
     private String nombre;
 
     /** Puntuación del teclado */
-    private float puntuacion;
+    private int puntuacion;
 
     /** Dimensiones del teclado */
     private PairInt dimensiones;
@@ -52,9 +52,9 @@ public class Teclado
 
     /**
      * Devuelve la puntuación del teclado
-     * @return float: Puntuación del teclado calculada debido al algoritmo
+     * @return int: Puntuación del teclado calculada debido al algoritmo
      */
-    public float getPuntuacion() {
+    public int getPuntuacion() {
         return puntuacion;
     }
 
@@ -98,7 +98,7 @@ public class Teclado
      * @param puntuacion nueva puntuación del teclado
      * Setea la puntuación con el valor pasado por parámetro puntuación
      */
-    public void setPuntuacion(float puntuacion) {
+    public void setPuntuacion(int puntuacion) {
         this.puntuacion = puntuacion;
     }
 

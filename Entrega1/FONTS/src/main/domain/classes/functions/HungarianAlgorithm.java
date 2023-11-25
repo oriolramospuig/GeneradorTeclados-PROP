@@ -1,6 +1,5 @@
 package main.domain.classes.functions;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +12,7 @@ import java.util.Map;
 public class HungarianAlgorithm {
     int[][] costMatrix;
     int max;
-    HashMap maxsol;
+    HashMap<Integer,Integer> maxsol;
 
     /**
      * Implementa el algoritmo de asignación húngaro para encontrar la asignación óptima en un problema de asignación.
@@ -30,7 +29,7 @@ public class HungarianAlgorithm {
         boolean[] filasCubiertas = new boolean[c1c2.length];
         boolean[] columnasCubiertas = new boolean[c1c2[0].length];
 
-        HashMap filassol = new HashMap<>();
+        HashMap<Integer, Integer> filassol = new HashMap<>();
         boolean[] colusadas = new boolean[c1c2[0].length];
         Arrays.fill(colusadas, false);
         maxsol = new HashMap<>();
@@ -112,7 +111,7 @@ public class HungarianAlgorithm {
      * @param colusadas   Un array que indica qué columnas han sido cubiertas.
      * @return true si es posible cubrir todas las filas y columnas, false de lo contrario.
      */
-    public boolean cadaFilaYColumnaTieneCero(int[][] matriz, int fila, HashMap solfilas, boolean[] colusadas) {
+    public boolean cadaFilaYColumnaTieneCero(int[][] matriz, int fila, HashMap<Integer,Integer> solfilas, boolean[] colusadas) {
         if (fila == matriz.length) {
             if (solfilas.size() == matriz.length) {
                 maxsol = new HashMap<>(solfilas);
