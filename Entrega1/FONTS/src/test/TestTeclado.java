@@ -24,8 +24,14 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto();
         //Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(10, 20);
+<<<<<<< Entrega1/FONTS/src/test/TestTeclado.java
 
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones);
+=======
+        //buit, no esta generat per algorisme
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+>>>>>>> Entrega1/FONTS/src/test/TestTeclado.java
 
         assertEquals(nombre, teclado.getNombre());
         //assertEquals(algoritmo, teclado.getAlgoritmo());
@@ -50,8 +56,14 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto();
         //Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(5, 10);
+<<<<<<< Entrega1/FONTS/src/test/TestTeclado.java
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones);
 
+=======
+        //buida, no l'hem generat a partir de l'algoritme
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+>>>>>>> Entrega1/FONTS/src/test/TestTeclado.java
         teclado.setDimensiones(dimensiones);
 
         PairInt resultado = teclado.getDimensiones();
@@ -75,7 +87,12 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto();
         //Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(5, 10);
+<<<<<<< Entrega1/FONTS/src/test/TestTeclado.java
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones);
+=======
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+>>>>>>> Entrega1/FONTS/src/test/TestTeclado.java
         float puntuacion = 100;
 
         teclado.setPuntuacion(puntuacion);
@@ -97,7 +114,12 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto();
         //Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(10, 20);
+<<<<<<< Entrega1/FONTS/src/test/TestTeclado.java
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones);
+=======
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+>>>>>>> Entrega1/FONTS/src/test/TestTeclado.java
         PairInt dimensiones2 = new PairInt(5, 10);
 
         teclado.setDimensiones(dimensiones2);
@@ -120,8 +142,14 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto();
         //Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(10, 20);
+<<<<<<< Entrega1/FONTS/src/test/TestTeclado.java
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones);
         Alfabeto alfabeto2 = new Alfabeto();
+=======
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+        Alfabeto alfabeto2 = new Alfabeto("nombre2");
+>>>>>>> Entrega1/FONTS/src/test/TestTeclado.java
 
         teclado.agregarAlfabetoVinculado("nombre2");
 
@@ -142,7 +170,12 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto();
         //Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(10, 20);
+<<<<<<< Entrega1/FONTS/src/test/TestTeclado.java
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones);
+=======
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+>>>>>>> Entrega1/FONTS/src/test/TestTeclado.java
         AsociacionTextos asociacionTextos2 = new AsociacionTextos("nombre2");
 
         teclado.agregarAsociacionTextosVinculado("nombre2");
@@ -166,8 +199,13 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto();
         //Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(10, 20);
+<<<<<<< Entrega1/FONTS/src/test/TestTeclado.java
 
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones);
+=======
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+>>>>>>> Entrega1/FONTS/src/test/TestTeclado.java
 
         teclado.borrarAlfabetoVinculado("Alfabeto");
 
@@ -187,8 +225,13 @@ public class TestTeclado {
         Alfabeto alfabeto = new Alfabeto();
         //Algoritmo algoritmo = Algoritmo.QAP;
         PairInt dimensiones = new PairInt(10, 20);
+<<<<<<< Entrega1/FONTS/src/test/TestTeclado.java
 
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones);
+=======
+        char[][] contenido = new char[0][0];
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+>>>>>>> Entrega1/FONTS/src/test/TestTeclado.java
 
         teclado.borrarAsociacionTextosVinculados("AsociaciondeTextos");
 

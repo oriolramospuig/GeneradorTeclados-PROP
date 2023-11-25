@@ -121,9 +121,9 @@ public class QAP {
      *
      * @return Una copia de tec.
      */
-    public int[][] getTec() {
+    public int[][] getTeclado() {
         // Devuelve una copia para evitar la modificación directa de la matriz
-        return Arrays.stream(this.tec)
+        return Arrays.stream(this.teclado)
                 .map(int[]::clone)
                 .toArray(int[][]::new);
     }
@@ -165,7 +165,6 @@ public class QAP {
 
         // Al final del bucle, mejorTeclado contiene la asignación con la mejor puntuación
         teclado = mejorTeclado; // Asignar la mejor asignación al teclado principal
-        tec = mejorTeclado;
         return mejorTeclado;
     }
 
@@ -271,7 +270,7 @@ public class QAP {
                 int fila = i / columnas;
                 int columna = i % columnas;
 
-                tec[fila][columna] = sol.get(i);
+                teclado[fila][columna] = sol.get(i);
             }
         }
     }

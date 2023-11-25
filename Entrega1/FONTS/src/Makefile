@@ -1,7 +1,12 @@
 # Rutas de los archivos fuente y de salida
-CLASS_INPUT_MAIN = ./main/*.java
+CLASS_INPUT_MAIN = ./main/domain/classes/*.java \
+						./main/domain/classes/functions/*.java \
+						./main/domain/classes/types/*.java \
+						./main/domain/controllers/*.java
 CLASS_INPUT_DRIVER = ./drivers/*.java
-CLASS_INPUT_TESTS = ./test/*.java
+CLASS_INPUT_TESTS = ./test/*.java \
+						./test/functions/*.java \
+						./test/types/*.java
 CLASS_OUTPUT = ../../EXE/
 JAR_OUTPUT = ../../EXE/
 
