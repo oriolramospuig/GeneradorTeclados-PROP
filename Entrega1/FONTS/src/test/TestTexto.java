@@ -46,17 +46,12 @@ public class TestTexto {
      * La función `TestAgregarAsociacionesVinculadas` tiene como objetivo verificar el correcto funcionamiento
      * del método `AgregarAsociacionesVinculadas` de la clase `Texto`. Este método debería agregar
      * un texto a una asociacion
-     *
-     * Ficheros Necesarios:
-     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
+     * Ficheros Necesarios: No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
      * principalmente de las estructuras de datos internas de la clase `Textos`.
-     *
      * Valores Estudiados:
-     * Se evalúan los siguientes aspectos:
      * 1. Se crea una instancia de `Palabras` y `Frecuencias`.
      * 2. Se agregan las dos a una Asociacion.
      * 3. Se verifica que la lista de frecuencias y palabras vinculadas se haya actualizado correctamente
-     *
      * Operativa:
      * 1. Se crea una palabras y una frecencias
      * 2. Se agregan las dos a la asociación mediante el método `agregarAsociacionesVinculadas`.
@@ -85,22 +80,19 @@ public class TestTexto {
      * La función `TestBorrarAsociacionesVinculadas` tiene como objetivo verificar el correcto funcionamiento
      * del método `BorrarAsociacionesVinculadas` de la clase `Texto`. Este método debería borrar
      * un texto a una asociacion
-     *
      * Ficheros Necesarios:
      * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
      * principalmente de las estructuras de datos internas de la clase `Textos`.
-     *
      * Valores Estudiados:
      * Se evalúan los siguientes aspectos:
      * 1. Se crean dos instancia de `Palabras` y `Frecuencias`.
      * 2. Se agregan las 4 a una Asociacion y se borran 2
      * 3. Se verifica que la lista de frecuencias y palabras vinculadas se haya actualizado correctamente
-     *
      * Operativa:
-     * 1. Se crea dos palabras y dos frecencias
+     * 1. Se crean dos palabras y dos frecencias
      * 2. Se agregan las 4 a la asociación mediante el método `agregarAsociacionesVinculadas`.
      * 3. Se borran una de cada una
-     * 3. Se verifica que la lista de teclados vinculados tenga el tamaño esperado y se han eliminado
+     * 4. Se verifica que la lista de teclados vinculados tenga el tamaño esperado y se han eliminado
      */
     @Test
     public void TestBorrarAsociacionesVinculadas() {
