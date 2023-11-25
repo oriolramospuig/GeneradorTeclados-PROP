@@ -24,6 +24,10 @@ import java.lang.IndexOutOfBoundsException;
 import java.lang.NegativeArraySizeException;
 
 
+/**
+ * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
+ */
 public class TestTexto {
     private Palabras palabras;
     private Frecuencias frecuencias;

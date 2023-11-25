@@ -15,6 +15,10 @@ import java.lang.NegativeArraySizeException;
 
 import static org.junit.Assert.*;
 
+/**
+ * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
+ */
 public class TestFrecuencias
 {
     private Frecuencias frecuencias;

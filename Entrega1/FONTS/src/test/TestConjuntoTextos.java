@@ -10,6 +10,9 @@ import java.util.HashMap;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
+ */
 public class TestConjuntoTextos {
     private ConjuntoTextos textos;
 

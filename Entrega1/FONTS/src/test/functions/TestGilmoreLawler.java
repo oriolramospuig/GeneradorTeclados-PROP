@@ -9,6 +9,9 @@ import java.util.*;
 
 import static org.junit.Assert.*;
 
+/**
+ * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
+ */
 public class TestGilmoreLawler {
     @Test
     public void TestConstructoraVacia() {

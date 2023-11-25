@@ -12,6 +12,9 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
+ */
 public class TestManhattan {
     @Test
     public void testcalcularDistancia() {

@@ -2,8 +2,6 @@ package test;
 
 
 import main.domain.classes.*;
-import main.domain.classes.types.PairInt;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -11,6 +9,9 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
+ */
 public class TestConjuntoTeclados {
     private ConjuntoTeclados teclados;
 

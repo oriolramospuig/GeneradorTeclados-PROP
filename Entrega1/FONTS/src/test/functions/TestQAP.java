@@ -10,6 +10,9 @@ import java.io.PrintStream;
 import java.util.*;
 import static org.junit.Assert.*;
 
+/**
+ * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
+ */
 public class TestQAP {
     @Test
     public void testConstructora() {

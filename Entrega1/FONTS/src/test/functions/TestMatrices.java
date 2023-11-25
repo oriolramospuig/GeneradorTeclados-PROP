@@ -1,15 +1,14 @@
 package test.functions;
 
-
-import main.domain.classes.Frecuencias;
-import main.domain.classes.Palabras;
-import main.domain.classes.Texto;
 import main.domain.classes.functions.Manhattan;
 import main.domain.classes.functions.Matrices;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
+ */
 public class TestMatrices {
     @Test
     public void TestGenerarMatrizDistancias() {

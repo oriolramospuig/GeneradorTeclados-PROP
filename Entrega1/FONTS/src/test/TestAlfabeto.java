@@ -20,6 +20,9 @@ import static org.junit.Assert.assertNotNull;
 import java.lang.IndexOutOfBoundsException;
 import java.lang.NegativeArraySizeException;
 
+/**
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
+ */
 public class TestAlfabeto {
     private Alfabeto alfabeto;
 
