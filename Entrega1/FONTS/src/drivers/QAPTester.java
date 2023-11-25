@@ -52,7 +52,7 @@ public class QAPTester {
 
                 double raiz = sqrt(n);
                 int r = (int)raiz;
-                int nfilas = 1, ncolumnas = 12;
+                int nfilas = 1, ncolumnas = n;
                 /*if(raiz == r) {
                     nfilas = ncolumnas = r;
                 }
