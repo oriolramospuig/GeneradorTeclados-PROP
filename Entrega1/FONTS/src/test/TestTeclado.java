@@ -5,6 +5,8 @@ import main.domain.classes.*;
 import main.domain.classes.types.PairInt;
 import org.junit.*;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -126,7 +128,8 @@ public class TestTeclado {
         PairInt dimensiones = new PairInt(10, 20);
         char[][] contenido = new char[0][0];
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
-        Alfabeto alfabeto2 = new Alfabeto("nombre2");
+        ArrayList<Character> letras = new ArrayList<>();
+        Alfabeto alfabeto2 = new Alfabeto("nombre2", letras);
 
         teclado.agregarAlfabetoVinculado("nombre2");
 
