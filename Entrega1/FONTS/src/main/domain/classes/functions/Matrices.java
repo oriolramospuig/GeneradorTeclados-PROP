@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /** Clase que calcula las diferentes matrices y operaciones (suma) necesarias para el algoritmo
- * @author Oriol i Victor
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class Matrices {
     /**Genera la matriz de distancias de Manhattan*/

@@ -1,16 +1,11 @@
 package main.domain.classes.functions;
 
-import main.domain.classes.types.PairFrequency;
-
 import java.util.*;
 
 /**
  * Clase que a partir de las matrices de frecuencias y de distancias calcula una solución inicial y
  * llama al algoritmo de gilmore-lawler con una cota inicial
-<<<<<<< Entrega1/FONTS/src/main/domain/classes/functions/QAP.java
- * @author Oriol i Victor
-=======
->>>>>>> Entrega1/FONTS/src/main/domain/classes/functions/QAP.java
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class QAP {
     private int[][] teclado; // La matriz del teclado

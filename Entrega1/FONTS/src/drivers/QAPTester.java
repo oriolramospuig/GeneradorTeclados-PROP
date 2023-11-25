@@ -7,6 +7,9 @@ import java.util.*;
 
 import static java.lang.Math.sqrt;
 
+/**
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
+ */
 public class QAPTester {
 
         public static void main(String[] args) {

@@ -6,8 +6,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/** Clase
- * @author Oriol
+/** Clase para gestionar entrada/salida de la terminal
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class InOut {
     private Scanner scanner;
