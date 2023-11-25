@@ -205,8 +205,10 @@ public class GilmoreLawler
                 // Aquí se considera cada par de índices solo una vez, i con j, donde i < j
                 int distanciaIJ = matrizDistancias[permutacion.get(i)][permutacion.get(j)];
                 int frecuenciaIJ = matrizFrecuencias[i][j]; // La frecuencia de i a j es la misma que de j a i
+                int frecuenciaJI = matrizFrecuencias[j][i];
 
                 cota += (distanciaIJ * frecuenciaIJ);
+                cota += (distanciaIJ * frecuenciaJI);
             }
         }
         return cota;
@@ -225,9 +227,11 @@ public class GilmoreLawler
                 if (permutacionActual.get(i) >= 0 && permutacionActual.get(j) >= 0) {// Aquí se considera cada par de índices solo una vez, i con j, donde i < j
                     int distanciaIJ = matrizDistancias[permutacionActual.get(i)][permutacionActual.get(j)];
                     int frecuenciaIJ = matrizFrecuencias[i][j]; // La frecuencia de i a j es la misma que de j a i
+                    int frecuenciaJI = matrizFrecuencias[j][i];
 
                     // Sumar el costo de la distancia multiplicado por la frecuencia de i a j
                     cota += (distanciaIJ * frecuenciaIJ);
+                    cota += (distanciaIJ * frecuenciaJI);
                 }
             }
         }
