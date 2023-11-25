@@ -32,7 +32,7 @@ public class TestHungarianAlgorithm {
                 {0, 1, 3, 3},
                 {0, 0, 0, 0}
         };
-        HashMap maxsol = new HashMap<>();
+        HashMap<Integer,Integer> maxsol = new HashMap<>();
         maxsol.put(0,1);
         maxsol.put(1,3);
         maxsol.put(2,2);

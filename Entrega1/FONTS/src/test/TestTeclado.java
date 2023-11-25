@@ -81,11 +81,12 @@ public class TestTeclado {
         PairInt dimensiones = new PairInt(5, 10);
         char[][] contenido = new char[0][0];
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
-        float puntuacion = 100;
+        int puntuacion = 100;
 
         teclado.setPuntuacion(puntuacion);
 
-        assertEquals(100, teclado.getPuntuacion());
+        int punt = teclado.getPuntuacion();
+        assertEquals(100, punt);
     }
 
     /**

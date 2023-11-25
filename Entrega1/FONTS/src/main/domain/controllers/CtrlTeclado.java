@@ -44,7 +44,7 @@ public class CtrlTeclado
     /**
      * No devuelve nada, manda a introducir la puntuación escrita en un Teclado (también pedido)
      */
-    public void setPuntuacion(String nomT, Float puntuacion) {
+    public void setPuntuacion(String nomT, int puntuacion) {
         teclados.getTeclado(nomT).setPuntuacion(puntuacion);
     }
 
