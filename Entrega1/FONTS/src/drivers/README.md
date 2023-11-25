@@ -13,21 +13,6 @@ Este directorio contiene el código de los Drivers de los controladores que prop
 Al ser ejecutado se muestra un menú con las posibles opciones a ejecutar. Se puede entrar el nombre o el título del método a probar.
 
 Uso:
-//Agregar
-System.out.println("(1|AlfabetoPorTerminal) - Añadir Alfabeto");
-System.out.println("(2|AlfabetoPorArchivo) - Añadir Alfabeto");
-System.out.println("(3|TextoPorTerminal) - Añadir Texto");
-System.out.println("(4|TextoPorArchivo) - Añadir Texto");
-//Crear
-System.out.println("(5|CrearAsociacionTextos) - Crear Asociación Textos");
-System.out.println("(6|CrearTeclado) - Crear Teclado");
-//Consultar
-System.out.println("(7|ConsultarlistaAlfabetos) - Consultar Lista Alfabetos");
-System.out.println("(8|ConsultarlistaAsociaciones) - Consultar Lista Asociaciones");
-System.out.println("(9|ConsultarlistaTextos) - Consultar Lista Textos");
-System.out.println("(10|ConsultarlistaTeclados) - Consultar Lista Teclados");
-System.out.println("(11|ConsultarAlfabeto) - Consultar Alfabeto");
-System.out.println("(12|ConsultarTexto) - Consultar Texto");
 
     0. Tancar el Driver
         Finalitza la execucio del Driver
@@ -36,7 +21,6 @@ System.out.println("(12|ConsultarTexto) - Consultar Texto");
     1. Alfabeto terminal
         Pregunta al usuario la información del alfabeto por terminal
         Guarda un alfabeto creado con un nombre y un contenido
-
 
 
     2. Alfabeto por archivo
@@ -48,7 +32,6 @@ System.out.println("(12|ConsultarTexto) - Consultar Texto");
     3. Texto terminal
         Pregunta al usuario la información del texto por terminal
         Guarda un texto creado con un nombre y un contenido
-
 
 
     4. Texto por archivo
@@ -81,6 +64,21 @@ System.out.println("(12|ConsultarTexto) - Consultar Texto");
 
     10. Consultar lista teclados
         Muestra la lista de teclados existentes
-    
 
-    
+
+    11. Consultar Alfabeto
+        Muestra la lista de alfabetos existentes
+        Pide el nombre de un alfabeto de la lista
+        Muestra el contendio del alfabeto seleccionado
+
+
+    12. Consultar texto
+        Muestra la lista de textos existentes
+        Pide el nombre de un texto de la lista
+        Muestra el contendio del texto seleccionado
+
+
+    13. Consultar Teclado
+        Muestra la lista de teclados existentes
+        Pide el nombre de un teclado de la lista
+        Muestra el contendio del teclado y el nombre del alfabeto y asociación asociados

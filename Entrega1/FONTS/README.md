@@ -1,9 +1,9 @@
-# Directori FONTS
+# Directorio FONTS
 
-> Path absolut: /FONTS
+> Path absoluto: /FONTS
 
-## Descripció del directori
-Aquest directori conté tot el codi del projecte organitzat per packages
+## Descripción del directorio
+Este directorio contiene todo el código del proyecto organizado por packages
 
 ## Elements del directori
 

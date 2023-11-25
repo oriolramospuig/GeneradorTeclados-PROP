@@ -1,13 +1,13 @@
-# Directori domain
+# Directorio domain
 
-> Path absolut: /FONTS/src/main/domain
+> Path absoluto: /FONTS/src/main/domain
 
-## Descripció del directori
-Aquest directori conté tots els codis de la capa de domini classificats per classes i controladors.
+## Descripción del directorio
+Este directorio contiene todos los códigos de la capa de dominio classificados por clases y controladores.
 
-## Elements del directori
+## Elementos del directorio
 
-- **Directori classes:**
-  Conté les classes de la capa de domini.
-- **Directori controllers:**
-  Conté els controladors de la capa de domini.
+- **Directorio classes:**
+  Contiene les clases de la capa de dominio.
+- **Directorio controllers:**
+  Contiene los controladores de la capa de dominio.

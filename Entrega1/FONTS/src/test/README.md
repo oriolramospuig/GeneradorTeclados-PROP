@@ -1,17 +1,17 @@
-# Directori test
+# Directori0 test
 
-> Path absolut: /FONTS/src/test
+> Path absoluto: /FONTS/src/test
 
-## Descripció del directori
+## Descripción del directorio
 
-Aquest directori conté els tests de cada una de les classes programades.
+Este directorio contiene los tests de cada una de les clases programadas.
 
-## Elements del directori
+## Elementos del directorio
 
-- **Directori functions:**
-  Conté els tests de totes les classes que realitzen alguna funcionalitat.
-- **Directori types:**
-  Conté els tests de totes les classes que representen algun tipus de dades nou.
+- **Directorio functions:**
+  Contiene los tests de todas las clases que realizan alguna funcionalidad.
+- **Directorio types:**
+  Contiene los tests de todas las clases que representan algún tipo de datos nuevo.
 - **MasterTestSuite:**
-  Conté les instàncies *.class* de TestSuiteFunctions i TestSuiteTipus, per fer més fàcil al *Makefile* compilar els
-  tests.
+  Contiene las instancias *.class* de TestSuiteFunctions i TestSuiteTipus, para hacer más fácil al *Makefile* compilar
+  los tests.

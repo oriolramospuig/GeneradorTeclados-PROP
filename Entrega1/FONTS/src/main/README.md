@@ -1,15 +1,16 @@
-# Directori main
+# Directorio main
 
-> Path absolut: /FONTS/src/main
+> Path absoluto: /FONTS/src/main
 
-## Descripció del directori
-Aquest directori conté el codi del sistema classificat per les tres capes: domini, persistència i presentació
+## Descripción del directorio
+Este directorio contiene el código del sistema clasificado por las tres capas: 
+dominio, persistencia, presentación
 
-## Elements del directori
+## Elementos del directorio
 
-- **Directori domain:**
-  Conté els codis de la capa de domini.
-- **Directori persistence:**
-  Conté els codis de la capa de persistència.
-- **Directori presentation:**
-  Conté els codis de la capa de presentació.
+- **Directorio domain:**
+  Contiene los códigos de la capa de dominio.
+- **Directorio persistence:**
+  Contiene los códigos de la capa de persistencia.
+- **Directorio presentation:**
+  Contiene los códigos de la capa de presentación.
