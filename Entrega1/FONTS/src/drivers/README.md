@@ -3,7 +3,6 @@
 > Path absoluto: /FONTS/src/drivers
 
 ## Descripción del directorio
-
 Este directorio contiene el código de los Drivers de los controladores que proporcionan alguna funcionalidad principal del sistema
 
 ## Elementos del directorio
