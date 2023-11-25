@@ -54,7 +54,11 @@ public class QAPTester {
             for (int filas = 1; filas <= n; filas++) {
                 if (n%filas == 0) {
                     int columnas = n/filas;
-                    System.out.println(x + ": " + filas + "filas, " + columnas + "columnas");
+                    if (n - filas*columnas <= 1) {
+                        System.out.print(x + ": " + filas + "filas, " + columnas + "columnas");
+                    }
+                    if (n - filas*columnas == 1) System.out.println(" Falta una tecla");
+                    else System.out.println();
                     x++;
                 }
             }
