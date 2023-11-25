@@ -1,6 +1,7 @@
 package test.functions;
 
 import main.domain.classes.functions.GilmoreLawler;
+import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -9,6 +10,7 @@ import java.util.*;
 import static org.junit.Assert.*;
 
 public class TestGilmoreLawler {
+    @Test
     public void TestConstructoraVacia() {
         System.out.println("TestConstructoraVacia");
 
@@ -21,6 +23,8 @@ public class TestGilmoreLawler {
         assertEquals(0, gilmoreLawler.getMatrizFrecuencias().length);
         assertEquals(new ArrayList<>(), gilmoreLawler.getMejorSolucionParcial());
     }
+
+    @Test
     public void TestConstructora() {
         System.out.println("TestConstructora");
         int nf = 3;
@@ -43,6 +47,7 @@ public class TestGilmoreLawler {
 
     }
 
+    @Test
     public void testgilmore_lawler() {
         System.out.println("Test Gilmore_Lawler");
         GilmoreLawler gilmoreLawler = new GilmoreLawler();
@@ -54,6 +59,7 @@ public class TestGilmoreLawler {
 
     }
 
+    @Test
     public void testimprimirMejorSolucionParcial() {
         System.out.println("Test Imprimir Mejor Solucion Parcial");
         GilmoreLawler gilmoreLawler = new GilmoreLawler();
@@ -65,6 +71,8 @@ public class TestGilmoreLawler {
 
         assertEquals("La mejor solución parcial es: Posición 0: Tecla a | Posición 1: Tecla b | Posición 2: Tecla c | Posición 3: Tecla d", SalidaEstandar.toString());
     }
+
+    @Test
     public void testminimos(){
         System.out.println("Test Minimos");
         GilmoreLawler gilmoreLawler = new GilmoreLawler();
