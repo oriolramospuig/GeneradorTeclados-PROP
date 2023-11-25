@@ -1,19 +1,21 @@
-# Directori src
+# Directorio src
 
-> Path absolut: /FONTS/src
+> Path absoluto: /FONTS/src
 
-## Descripció del directori
-Aquest directori conté tot el codi del projecte organitzat per packages
+## Descripción del directorio
+Este directorio contiene todo el código del proyecto organizado por packages
 
-## Elements del directori
+## Elementos del directorio
 
-- **Directori drivers:**
-  Conté els drivers que hem utilitzat al nostre sistema per poder testejar el sistema complet.
-- **Directori main:**
-  Conté tots els codis de les classes del model classificats per directoris, un per cada capa (seguint l'arquitectura
-  en tres capes). El directori domini és l'únic que té contingut.
-- **Directori test:**
-  Conté tots els tests unitaris, fets amb JUnit, de les classes del model conceptual clapssificats per les classes que
-  realitzen alguna funcionalitat i les classes que defineixen tipus de dades.
+- **Directorio drivers:**
+  Contiene los drivers que hemos usado en nuestro sistema para poder testear el sistema completo.
+- **Directorio main:**
+  Contiene todos los códigos de las clases del modelo classificados por directorios, uno por cada capa 
+  (siguiendo la arquitectura en tres capas). El directorio dominio es el único que tiene contenido.
+- **Directorio test:**
+  Contiene todos los test unitarios, hechos con JUnit, de de las clases del modelo conceptual clasificadas
+  por las clases que realizan alguna funcionalidad y las clases que definen tipos de datos.
 - ***Makefile***
-  Permet executar el sistema i testejar les classes a partir dels drivers. Conté diverses opcions.
+  Permite ejecutar el sistema y testear las clases a partir de los drivers. Contiene varias opciones.
+
+## Descripción Makefile
