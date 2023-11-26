@@ -1,9 +1,9 @@
-# Directori persistance
+# Directorio persistance
 
-> Path absolut: /FONTS/src/main/domain/persistance
+> Path absoluto: /FONTS/src/main/domain/persistance
 
-## Descripció del directori
-Aquest directori conté els codis de la capa de persistència
+## Descripción del directorio
+Este directorio contiene los códigos de la capa de persistencia
 
-## Elements del directori
-Aquest directori resta buit per la primera entrega
+## Elementos del directorio
+Este directorio está vacío para la primera entrega

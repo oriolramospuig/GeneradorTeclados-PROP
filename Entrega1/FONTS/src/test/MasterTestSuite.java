@@ -1,20 +1,15 @@
-/*package test;
+package test;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
-import test.types.TestSuiteTipus;
-import test.functions.TestSuiteFuncions;
+import test.types.TestSuiteTypes;
+import test.functions.TestSuiteFunctions;
 
+@RunWith(value = Suite.class)
+@SuiteClasses(value = {
+            TestAlfabeto.class, TestAsociacionTextos.class, TestConjuntoAlfabetos.class, TestConjuntoAsociaciones.class, TestConjuntoTeclados.class, TestConjuntoTextos.class, TestFrecuencias.class, TestPalabras.class, TestTeclado.class, TestTexto.class, TestSuiteTypes.class, TestSuiteFunctions.class
+})
 
-public class MasterTestSuite {
-    @RunWith(value = Suite.class)
-// Afegeix al array <nomtest>.class de la classe que vols que es comprovi al fer # make fulltest
-    @Suite.SuiteClasses(value = {
-            TestAlfabeto.class, TestAsociacionTextos.class, TestConjuntoAlfabetos.class, TestConjuntoAsociaciones.class, TestConjuntoTeclados.class, TestConjuntoTextos.class, TestFrecuencias.class, TestPalabras.class, TestTeclado.class, TestTexto.class, TestSuiteTipus.class, TestSuiteFuncions.class
-    })
-    public class MasterTestSuite {}
-}
-
-
- */
+public class MasterTestSuite {}

@@ -65,7 +65,7 @@ public class TestPairInt {
     public void TestToString() {
         System.out.println("Test toString");
 
-        PairInt pair = new PairInt(1, 2);
+        PairInt pair = new PairInt(1,2);
         assertEquals("(1,2)", pair.toString());
     }
 }
