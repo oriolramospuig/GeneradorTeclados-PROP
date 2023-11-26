@@ -1,19 +1,22 @@
-# Directori controllers
+# Directorio controllers
 
-> Path absolut: /FONTS/src/main/domain/controllers
+> Path absoluto: /FONTS/src/main/domain/controllers
 
-## Descripció del directori
-Aquest directori conté el codi dels controladors.
+## Descripción del directorio
+Este directorio contiene el código de los controladores.
 
-## Elements del directori
+## Elementos del directorio
 
-- **CtrlBloc:**
-  Aquest controlador tracta els blocs seleccionats del full. Els copia i talla al porta-retalls i enganxa al full
-- **CtrlCelaSeleccionada:**
-  Aquest controlador tracta la cela i n'obté el valor que conté i el pot esborrar i modificar.
-- **CtrlDocument:**
-  Aquest controlador tracta el document: obté el valor de les cel·les dels fulls que conté, carrega nous documents, entre
-  d'altres funcionalitats.
+- **CtrlAlfabeto:**
+  Este controlador trata los alfabetos y los conjntos de alfabetos.
+- **CtrlAsociacionTexto:**
+  Este controlador trata las asociaciones de textos (uno o más textos) y los conjuntos de asociaciones de textos.
+- **CtrlTexto:**
+  Este controlador trata los textos, ya sean por palabras o por frecuencias, y los conjuntos de textos.
+- **CtrlTeclado:**
+  ESte controlador trata el teclado y los conjuntos de teclado.
+- **CtrlTecladoQAP:**
+  Este controlador trata la generación del teclado mediante el algoritmo.
 - **CtrlDomini:**
-  Aquest controlador conté les instàncies i mètodes de tots els controladors del sistema. A partir del seu driver es pot
-  testejar el sistema sencer.
+  Este controlador contiene las instancias y métodos de todos los controladores del sistema. A partir de su driver se
+  puede testear el sistema entero.
