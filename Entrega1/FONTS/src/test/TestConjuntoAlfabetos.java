@@ -2,6 +2,7 @@ package test;
 
 import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,21 +32,10 @@ public class TestConjuntoAlfabetos {
 
     // ---------- CONSTRUCTORAS ----------
     /**
-     * - Objetivo de la Prueba:
-     *   Verificar que la constructora de la clase crea una instancia válida y que el conjunto
-     *   de alfabetos está vacío después de la creación.
-     * - Ficheros Necesarios:
-     *   No hay referencia a ficheros en esta función de prueba.
-     * - Valores Estudiados:
-     *   - Se imprime un mensaje indicando que se está probando la constructora.
-     *   - Se utiliza la aserción assertTrue para verificar que el conjunto de alfabetos
-     *     está vacío después de la creación.
-     * - Operativa:
-     *   1. Imprime un mensaje informativo en la consola indicando que se está probando la constructora.
-     *   2. Utiliza la aserción assertTrue para verificar que el conjunto de alfabetos está vacío
-     *      después de crear una instancia de la clase.
-     *   3. Si la aserción falla, se considera que la prueba no ha pasado con éxito.
-     *   4. Este método es parte de un conjunto más amplio de pruebas unitarias.
+     * Objeto de la prueba: Test de la constructora de ConjuntoAlfabeto (Constructora Default).
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se inicializa el atributo de conjuntoalfabeto vacío.
+     * Operativa: AssertTrue() comprueba que la lista de alfabetos está vacía.
      */
     @Test
     public void TestConstructora() {
@@ -55,25 +45,13 @@ public class TestConjuntoAlfabetos {
 
     // ---------- GETTERS ----------
     /**
-     * - Objetivo de la Prueba:
-     *   Verificar que la función getAlfabeto de la clase devuelve el alfabeto correcto asociado a un nombre dado.
-     *
-     * - Ficheros Necesarios:
-     *   No hay referencia a ficheros en esta función de prueba.
-     *
-     * - Valores Estudiados:
-     *   - Se imprime un mensaje indicando que se está probando la función getAlfabeto.
-     *   - Se agrega un alfabeto a la instancia de la clase (alfabetos).
-     *   - Se utiliza la aserción assertNotNull para verificar que el resultado de getAlfabeto no es nulo.
-     *   - Se utiliza la aserción assertEquals para verificar que el nombre del alfabeto obtenido coincide con el esperado.
-     *
-     * - Operativa:
-     *   1. Imprime un mensaje informativo en la consola indicando que se está probando la función getAlfabeto.
-     *   2. Agrega un alfabeto con nombre "nombreA1" a la instancia de la clase (alfabetos).
-     *   3. Utiliza la función getAlfabeto para obtener el alfabeto asociado al nombre "nombreA1".
-     *   4. Utiliza las aserciones assertNotNull y assertEquals para verificar que el resultado obtenido es válido.
-     *   5. Si alguna aserción falla, se considera que la prueba no ha pasado con éxito.
-     *   6. Este método es parte de un conjunto más amplio de pruebas unitarias.
+     * Objeto de la prueba: Test del método GetAlfabeto de ConjuntoAlfabeto.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se consulta un objecto alfabeto con el atributo que lo identifica.
+     * Primero se añade un alfabeto para poder consultarlo.
+     * Seguidamente se llama a la función getAlfabeto que retorna el objeto alfabeto con el nombre nombreA1 que es el que pasamos como parámetro.
+     * Operativa: AssertNotNull() compruba que la variable donde se ha guardado el objeto alfabeto consultado no es null.
+     * AssertEquals() comprueba que el nombre del alfabeto guardado equivale al nombre que se le ha añadido inicialmente.
      */
     @Test
     public void TestGetAlfabeto() {
@@ -86,25 +64,13 @@ public class TestConjuntoAlfabetos {
     }
 
     /**
-     * - Objetivo de la Prueba:
-     *   Verificar que la función getNombresAlfabetos de la clase devuelve la lista de nombres de alfabetos correcta.
-     *
-     * - Ficheros Necesarios:
-     *   No hay referencia a ficheros en esta función de prueba.
-     *
-     * - Valores Estudiados:
-     *   - Se imprime un mensaje indicando que se está probando la función getNombresAlfabetos.
-     *   - Se agregan dos alfabetos a la instancia de la clase (alfabetos).
-     *   - Se utiliza la función getNombresAlfabetos para obtener la lista de nombres de alfabetos.
-     *   - Se utiliza la aserción assertEquals para verificar que la cantidad de nombres obtenidos coincide con la esperada.
-     *
-     * - Operativa:
-     *   1. Imprime un mensaje informativo en la consola indicando que se está probando la función getNombresAlfabetos.
-     *   2. Agrega dos alfabetos con nombres "nombreA1" y "nombreA2" a la instancia de la clase (alfabetos).
-     *   3. Utiliza la función getNombresAlfabetos para obtener la lista de nombres de alfabetos.
-     *   4. Utiliza la aserción assertEquals para verificar que la cantidad de nombres obtenidos coincide con la esperada (2).
-     *   5. Si la aserción falla, se considera que la prueba no ha pasado con éxito.
-     *   6. Este método es parte de un conjunto más amplio de pruebas unitarias.
+     * Objeto de la prueba: Test del método GetNombresAlfabetosde ConjuntoAlfabeto.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se consulta la lista de nombres de los alfabetos existentes en el sistema.
+     * Primero se añaden dos alfabeto para poder consultar la lista.
+     * Seguidamente se llama a la función getNombresAlfabetos que retorna la lista de los nombres de los alfabetos existentes
+     * Operativa: AssertEquals() comprueba que la medida de la lista de alfabetos sea 2.
+     * Los siguientes dos AssertTrue comprueban que existan en la lista todos los nombre agregados anteriormente.
      */
     @Test
     public void TestGetNombresAlfabetos() {
@@ -116,30 +82,20 @@ public class TestConjuntoAlfabetos {
         ArrayList<String> nombres = alfabetos.getNombresAlfabetos();
 
         assertEquals(2, nombres.size());
+        assertNotNull(nombres);
+        Assert.assertTrue(nombres.contains("nombreA1"));
+        Assert.assertTrue(nombres.contains("nombreA1"));
+
     }
 
 
     // ---------- SETTERS ----------
     /**
-     * - Objetivo de la Prueba:
-     *   Verificar que la función agregarAlfabeto de la clase añade correctamente alfabetos a la instancia y actualiza su estado interno.
-     *
-     * - Ficheros Necesarios:
-     *   No hay referencia a ficheros en esta función de prueba.
-     *
-     * - Valores Estudiados:
-     *   - Se imprime un mensaje indicando que se está probando la función agregarAlfabeto.
-     *   - Se agregan dos alfabetos con nombres "nombreA1" y "nombreA2" a la instancia de la clase (alfabetos).
-     *   - Utiliza la aserción assertEquals para verificar que la cantidad de alfabetos es la esperada (2).
-     *   - Utiliza la aserción assertTrue para verificar que los nombres "nombreA1" y "nombreA2" están presentes en la instancia de la clase.
-     *
-     * - Operativa:
-     *   1. Imprime un mensaje informativo en la consola indicando que se está probando la función agregarAlfabeto.
-     *   2. Agrega dos alfabetos con nombres "nombreA1" y "nombreA2" a la instancia de la clase (alfabetos).
-     *   3. Utiliza la aserción assertEquals para verificar que la cantidad de alfabetos es la esperada (2).
-     *   4. Utiliza la aserción assertTrue para verificar que los nombres "nombreA1" y "nombreA2" están presentes en la instancia de la clase.
-     *   5. Si alguna de las aserciones falla, se considera que la prueba no ha pasado con éxito.
-     *   6. Este método es parte de un conjunto más amplio de pruebas unitarias.
+     * Objeto de la prueba: Test del método AgregarAlfabeto de ConjuntoAlfabeto.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se añaden dos alfabetos con la función agregaralfabeto y con los nombres asignados que es el atributo que los identifica.
+     * Operativa: AssertEquals() comprueba que la medida de la lista de alfabetos sea 2.
+     * Los siguientes AssertTrue() comprueban que los nombres de los alfabetos guardados existen en la lista.
      */
     @Test
     public void TestAgregarAlfabeto(){
@@ -156,25 +112,11 @@ public class TestConjuntoAlfabetos {
 
     // ---------- AUXILIARES ----------
     /**
-     * - Objetivo de la Prueba:
-     *   Verificar que la función existeAlfabeto de la clase devuelve el resultado esperado al buscar un alfabeto por nombre.
-     *
-     * - Ficheros Necesarios:
-     *   No hay referencia a ficheros en esta función de prueba.
-     *
-     * - Valores Estudiados:
-     *   - Se imprime un mensaje indicando que se está probando la función existeAlfabeto.
-     *   - Se agrega un alfabeto con nombre "nombreA1" a la instancia de la clase (alfabetos).
-     *   - Utiliza la aserción assertTrue para verificar que el alfabeto con nombre "nombreA1" existe en la instancia de la clase.
-     *   - Utiliza la aserción assertFalse para verificar que el alfabeto con nombre "nombreA2" no existe en la instancia de la clase.
-     *
-     * - Operativa:
-     *   1. Imprime un mensaje informativo en la consola indicando que se está probando la función existeAlfabeto.
-     *   2. Agrega un alfabeto con nombre "nombreA1" a la instancia de la clase (alfabetos).
-     *   3. Utiliza la aserción assertTrue para verificar que el alfabeto con nombre "nombreA1" existe en la instancia de la clase.
-     *   4. Utiliza la aserción assertFalse para verificar que el alfabeto con nombre "nombreA2" no existe en la instancia de la clase.
-     *   5. Si alguna de las aserciones falla, se considera que la prueba no ha pasado con éxito.
-     *   6. Este método es parte de un conjunto más amplio de pruebas unitarias.
+     * Objeto de la prueba: Test del método ExisteAlfabeto de ConjuntoAlfabeto.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se consulta si el alfabeto con un nombre concreto existe en la lista de alfabetos existentes.
+     * Operativa: AssertTrue() comprueba que el nombre del alfabeto guardado existe en la lista.
+     * AssertFalse() comprueba que el nombre del alfabeto no guardado, no existe en la lista.
      */
     @Test
     public void TestExisteAlfabeto() {

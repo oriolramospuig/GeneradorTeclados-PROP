@@ -28,27 +28,10 @@ public class TestConjuntoAsociaciones
     }
 
     /**
-     * Objetivo de la Prueba:
-     * La función `TestBorrarTecladoVinculado` tiene como objetivo verificar el correcto funcionamiento
-     * del método `borrarTecladoVinculado` de la clase `AsociacionTextos`. Este método debería eliminar
-     * un teclado vinculado de la asociación.
-     *
-     * Ficheros Necesarios:
-     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
-     * principalmente de las estructuras de datos internas de la clase `AsociacionTextos`.
-     *
-     * Valores Estudiados:
-     * Se evalúan los siguientes aspectos:
-     * 1. Se crea una instancia de `AsociacionTextos`.
-     * 2. Se agregan dos teclados vinculados a la asociación mediante el método `agregarTecladoVinculado`.
-     * 3. Se elimina un teclado vinculado específico mediante la invocación del método `borrarTecladoVinculado`.
-     * 4. Se verifica que la lista de teclados vinculados se haya actualizado correctamente después de la eliminación.
-     *
-     * Operativa:
-     * 1. Se crea una asociación de textos.
-     * 2. Se agregan dos teclados vinculados a la asociación mediante el método `agregarTecladoVinculado`.
-     * 3. Se elimina uno de los teclados vinculados mediante el método `borrarTecladoVinculado`.
-     * 4. Se verifica que la lista de teclados vinculados tenga el tamaño esperado y que no contenga el teclado eliminado.
+     * Objeto de la prueba: Test de la constructora de ConjuntoAsociacion (Constructora Default).
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se inicializa el atributo de conjuntoasociaciones vacío.
+     * Operativa: AssertEquals() comprueba que la lista de asociaciones está vacía.
      */
     // ---------- CONSTRUCTORAS ----------
     @Test
@@ -61,27 +44,13 @@ public class TestConjuntoAsociaciones
 
     // ---------- GETTERS ----------
     /**
-     * Objetivo de la Prueba:
-     * La función `TestGetAsociacionTextos` tiene como objetivo verificar el correcto funcionamiento
-     * del método `getAsociacionTextos` de la clase `Asociaciones`. Este método debería devolver
-     * la asociación de textos con el nombre especificado.
-     *
-     * Ficheros Necesarios:
-     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
-     * principalmente de las estructuras de datos internas de la clase `Asociaciones`.
-     *
-     * Valores Estudiados:
-     * Se evalúan los siguientes aspectos:
-     * 1. Se crea una instancia de `Asociaciones`.
-     * 2. Se agrega una asociación de textos a `Asociaciones` mediante el método `agregarAsociacionTexto`.
-     * 3. Se obtiene una asociación de textos por su nombre utilizando el método `getAsociacionTextos`.
-     * 4. Se verifica que la asociación de textos devuelta no sea nula y que tenga el nombre esperado.
-     *
-     * Operativa:
-     * 1. Se crea una instancia de `Asociaciones`.
-     * 2. Se agrega una asociación de textos a `Asociaciones` mediante el método `agregarAsociacionTexto`.
-     * 3. Se obtiene la asociación de textos por su nombre utilizando el método `getAsociacionTextos`.
-     * 4. Se verifica que la asociación de textos devuelta no sea nula y que tenga el nombre esperado.
+     * Objeto de la prueba: Test del método GetAsociacionTextos de ConjuntoAsociacionesTextos.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se consulta un objecto asociación con el atributo que lo identifica.
+     * Primero se añade una asociación para poder consultarla.
+     * Seguidamente se llama a la función getAsociacionTexto que retorna el objeto asociación con el nombre nombreAT1 que es el que pasamos como parámetro.
+     * Operativa: AssertNotNull() compruba que la variable donde se ha guardado el objeto asociación consultada no es null.
+     * AssertEquals() comprueba que el nombre de la asociación guardada equivale al nombre que se le ha añadido inicialmente.
      */
     @Test
     public void TestGetAsociacionTextos() {
@@ -94,25 +63,13 @@ public class TestConjuntoAsociaciones
     }
 
     /**
-     * Objetivo de la Prueba:
-     * La función `TestGetNombresAsociacionesTextos` tiene como objetivo verificar el correcto funcionamiento
-     * del método `getNombresAsociacionesTextos` de la clase `Asociaciones`. Este método debería devolver
-     * una lista de los nombres de las asociaciones de textos presentes en la colección.
-     *
-     * Ficheros Necesarios:
-     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
-     * principalmente de las estructuras de datos internas de la clase `Asociaciones`.
-     *
-     * Valores Estudiados:
-     * Se evalúan los siguientes aspectos:
-     * 1. Se crea una instancia de `Asociaciones`.
-     * 2. Se agregan dos asociaciones de textos mediante el método `agregarAsociacionTexto`.
-     * 3. Se verifica que la lista de nombres de asociaciones tenga el tamaño esperado y que contenga los nombres de las asociaciones agregadas.
-     *
-     * Operativa:
-     * 1. Se crea una instancia de `Asociaciones`.
-     * 2. Se agregan dos asociaciones de textos mediante el método `agregarAsociacionTexto`.
-     * 3. Se verifica que la lista de nombres de asociaciones tenga el tamaño esperado y que contenga los nombres de las asociaciones agregadas.
+     * Objeto de la prueba: Test del método GetNombresAsociacionesTextos de ConjuntoTextos.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se consulta la lista de nombres de las aociaciones existentes en el sistema.
+     * Primero se añaden dos asociaciaciones para poder consultar la lista.
+     * Seguidamente se llama a la función getNombresAsociacionesTextos que retorna la lista de los nombres de los asociaciones existentes
+     * Operativa: AssertEquals() comprueba que la medida de la lista de alfabetos sea 2.
+     * Los siguientes dos AssertTrue() comprueban que existan en la lista todos los nombres agregados anteriormente.
      */
     @Test
     public void TestGetNombresAsociacionesTextos() {
@@ -131,25 +88,11 @@ public class TestConjuntoAsociaciones
 
     // ---------- SETTERS ----------
     /**
-     * Objetivo de la Prueba:
-     * La función `TestAgregarAsociacionTexto` tiene como objetivo verificar el correcto funcionamiento
-     * del método `agregarAsociacionTexto` de la clase `Asociaciones`. Este método debería agregar
-     * una asociación de textos a la colección de asociaciones.
-     *
-     * Ficheros Necesarios:
-     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
-     * principalmente de las estructuras de datos internas de la clase `Asociaciones`.
-     *
-     * Valores Estudiados:
-     * Se evalúan los siguientes aspectos:
-     * 1. Se crea una instancia de `Asociaciones`.
-     * 2. Se agregan dos asociaciones de textos mediante el método `agregarAsociacionTexto`.
-     * 3. Se verifica que la colección de asociaciones tenga el tamaño esperado y que contenga las asociaciones agregadas.
-     *
-     * Operativa:
-     * 1. Se crea una instancia de `Asociaciones`.
-     * 2. Se agregan dos asociaciones de textos mediante el método `agregarAsociacionTexto`.
-     * 3. Se verifica que la colección de asociaciones tenga el tamaño esperado y que contenga las asociaciones agregadas.
+     * Objeto de la prueba: Test del método AgregarAsociacion de ConjuntoAsociaciones.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se añaden dos asociaciones con la función agregarAsociacionTexto y con los nombres asignados que es el atributo que las identifica.
+     * Operativa: AssertEquals() comprueba que la medida de la lista de asociaciones sea 2.
+     * Los siguientes AssertTrue() comprueban que los nombres de las asociaciones guardadas existen en la lista.
      */
     @Test
     public void TestAgregarAsociacionTexto(){
@@ -166,25 +109,11 @@ public class TestConjuntoAsociaciones
 
     // ---------- AUXILIARES ----------
     /**
-     * Objetivo de la Prueba:
-     * La función `TestExisteAsociaciondeTextos` tiene como objetivo verificar el correcto funcionamiento
-     * del método `existeAsociaciondeTextos` de la clase `Asociaciones`. Este método debería devolver
-     * `true` si la asociación de textos con el nombre dado está presente en la colección y `false` en caso contrario.
-     *
-     * Ficheros Necesarios:
-     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
-     * principalmente de las estructuras de datos internas de la clase `Asociaciones`.
-     *
-     * Valores Estudiados:
-     * Se evalúan los siguientes aspectos:
-     * 1. Se crea una instancia de `Asociaciones`.
-     * 2. Se agrega una asociación de textos mediante el método `agregarAsociacionTexto`.
-     * 3. Se verifica que el método `existeAsociaciondeTextos` devuelva `true` para el nombre de la asociación agregada y `false` para un nombre que no está presente.
-     *
-     * Operativa:
-     * 1. Se crea una instancia de `Asociaciones`.
-     * 2. Se agrega una asociación de textos mediante el método `agregarAsociacionTexto`.
-     * 3. Se verifica que el método `existeAsociaciondeTextos` devuelva `true` para el nombre de la asociación agregada y `false` para un nombre que no está presente.
+     * Objeto de la prueba: Test del método ExisteAsociaciondeTextos de ConjuntoAsociaciones.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se consulta si la ssociación con un nombre concreto existe en la lista de asociaciones existentes.
+     * Operativa: AssertTrue() comprueba que el nombre de la asociación guardada existe en la lista.
+     * AssertFalse() comprueba que el nombre de la asociación no guardada, no existe en la lista.
      */
     @Test
     public void TestExisteAsociaciondeTextos() {
