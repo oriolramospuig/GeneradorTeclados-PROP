@@ -33,13 +33,17 @@ public class TestAlfabeto {
 
     // --------- CONSTRUCTORAS ----------
     /**
-     * Objeto de la prueba: Test de la constructora de Alfabeto
-     * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
-     * Valores estudiados: Estrategia caja gris. Se crea un nuevo objeto Alfabeto y se comprueba que el nombre y las letras sean los mismos.
-     * Operativa: Creamos un nuevo Alfabeto con los parámetros "Vocales" y una lista de las vocales y comprobamos que los valores
-     * obtenidos de nombre y letras con los getters sean los mismos que los introducidos.
-     **/
-
+     * Objeto de la prueba: Test de la constructora de Alfabeto (Constructora Default).
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se inicializan los atributos del alfabeto y se crea un objeto alfabeto con estos atributos.
+     * Operativa: El primer assertEquals() comprueba que el nombre de aquel alfabeto este vacío.
+     * El segundo assertTrue() compruba que el contenido del alfabeto(getLetras) este vacío.
+     * El tercer assertTrue() comprueba que la lista de teclados vinculados a ese alfabeto este vacía.
+     * Seguidamente se añaden los datos que requiere la constructora. Estos son: el nombre y el contenido.
+     * El cuarto assertEquals() comprueba que el nombre del alfabeto se ha añadido correctamente, por tanto, coincide con la variable.
+     * El quinto assertEquals() comprueba que el contenido del alfabeto se ha añadido correctamente, por tanto, coincide con la variable.
+     * El sexto assertTrue() comprueba que no se ha añadido ningún teclado vinculado, por tanto, está vacío.
+     */
     @Test
     public void TestConstructora() {
         System.out.println("Test Constructora Default");
@@ -68,12 +72,15 @@ public class TestAlfabeto {
 
     // ---------- SETTERS ----------
     /**
-     * Objeto de la prueba: Test del método agregarTecladoVinculado(String nomT) de la clase Alfabeto.
-     * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
-     * Valores estudiados: Estrategia de caja gris. Se crea un alfabeto y un nombre de un teclado y se comprueba que se puede añadir correctamente un nombre de un teclado a tecladosVinculados.
-     * Operativa: Se comprueba que el método agregarTecladoVinculado añade correctamente en su lista un nuevo String, que corresponde al nombre de un teclado.
+     * Objeto de la prueba: Test del método agregarTecladoVinculado de alfabeto.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se añaden dos teclados a la lista de teclados vinculados de ese alfabeto.
+     * Primero se guarda el nombre de los dos teclados en variables para poder llamar a dicha función y agragarlos.
+     * Se llama a la función y ahora hay que comprobar que se han añadido correctamente.
+     * Operativa: El primer assertEquals() comprueba que la medida de la lista de teclados vinculados sea 2.
+     * El segundo assertTrue() compruba que el teclado1 está en la lista.
+     * El tercer assertTrue() comprueba que el teclado2 está en la lista.
      */
-
     @Test
     public void TestAgregarTecladoVinculado() {
         System.out.println("Test agregarTecladoVinculado");
@@ -91,12 +98,15 @@ public class TestAlfabeto {
 
     // ---------- AUXILIARES ----------
     /**
-     * Objeto de la prueba: Test del método borrarTecladoVinculado(String nomT) de la clase Alfabeto.
-     * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
-     * Valores estudiados: Estrategia de caja gris. Se crea un alfabeto y un nombre de un teclado, se añade a la lista tecladosVinculades y se comprueba que se puede borrar un nombre de un teclado correctamente.
-     * Operativa: Se comprueba que el método borrarTecladoVinculado borra correctamente de su lista un String, que corresponde al nombre de un teclado.
+     * Objeto de la prueba: Test del método borrarTecladoVinculado de alfabeto.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se borra un teclado de la lista de teclados vinculados de ese alfabeto.
+     * Primero hay que añadir dos teclados de igual manera que hemos hecho en la función agregarTecladoVinculado.
+     * Seguidamente se llama a la función borrarTecladoVinculado con uno de los nombres de los teclados agregados anteriormente.
+     * Operativa: El primer assertEquals() comprueba que la medida de la lista de teclados vinculados sea 1.(2 inicialmente menos el que hemos borrado).
+     * El segundo assertFalse() compruba que el teclado1 no está en la lista.
+     * El tercer assertTrue() comprueba que el teclado2 está en la lista.
      */
-
     @Test
     public void TestBorrarTecladoVinculado() {
         System.out.println("Test borrarTecladoVinculado");

@@ -45,25 +45,10 @@ public class TestConjuntoTextos {
 
     // ---------- CONSTRUCTORAS ----------
     /**
-     * Objetivo de la Prueba:
-     * La función `TestExisteAsociaciondeTextos` tiene como objetivo verificar el correcto funcionamiento
-     * del método `existeAsociaciondeTextos` de la clase `Asociaciones`. Este método debería devolver
-     * `true` si la asociación de textos con el nombre dado está presente en la colección y `false` en caso contrario.
-     *
-     * Ficheros Necesarios:
-     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
-     * principalmente de las estructuras de datos internas de la clase `Asociaciones`.
-     *
-     * Valores Estudiados:
-     * Se evalúan los siguientes aspectos:
-     * 1. Se crea una instancia de `Asociaciones`.
-     * 2. Se agrega una asociación de textos mediante el método `agregarAsociacionTexto`.
-     * 3. Se verifica que el método `existeAsociaciondeTextos` devuelva `true` para el nombre de la asociación agregada y `false` para un nombre que no está presente.
-     *
-     * Operativa:
-     * 1. Se crea una instancia de `Asociaciones`.
-     * 2. Se agrega una asociación de textos mediante el método `agregarAsociacionTexto`.
-     * 3. Se verifica que el método `existeAsociaciondeTextos` devuelva `true` para el nombre de la asociación agregada y `false` para un nombre que no está presente.
+     * Objeto de la prueba: Test de la constructora de ConjuntoTextos (Constructora Default).
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se inicializa el atributo de conjuntoTextos vacío.
+     * Operativa: AssertEquals() comprueba que la lista de textos está vacía.
      */
     @Test
     public void TestConstructora() {
@@ -75,29 +60,13 @@ public class TestConjuntoTextos {
 
     // ---------- GETTERS ----------
     /**
-     * Objetivo de la Prueba:
-     * La función `TestGetTexto` tiene como objetivo verificar el correcto funcionamiento
-     * del método `getTexto` de la clase `Textos`. Este método debería devolver un objeto
-     * `Texto` específico según el nombre proporcionado.
-     *
-     * Ficheros Necesarios:
-     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
-     * principalmente de las estructuras de datos internas de la clase `Textos`.
-     *
-     * Valores Estudiados:
-     * Se evalúan los siguientes aspectos:
-     * 1. Se agrega un texto de frecuencias a la colección mediante el método `agregarTexto`.
-     * 2. Se obtiene el texto de frecuencias por su nombre usando el método `getTexto`.
-     * 3. Se agrega un texto de palabras a la colección mediante el método `agregarTexto`.
-     * 4. Se obtiene el texto de palabras por su nombre usando el método `getTexto`.
-     * 5. Se verifica que los objetos `Texto` devueltos no sean nulos y que tengan los nombres esperados.
-     *
-     * Operativa:
-     * 1. Se agrega un texto de frecuencias a la colección mediante el método `agregarTexto`.
-     * 2. Se obtiene el texto de frecuencias por su nombre usando el método `getTexto`.
-     * 3. Se agrega un texto de palabras a la colección mediante el método `agregarTexto`.
-     * 4. Se obtiene el texto de palabras por su nombre usando el método `getTexto`.
-     * 5. Se verifica que los objetos `Texto` devueltos no sean nulos y que tengan los nombres esperados.
+     * Objeto de la prueba: Test del método GetTexto de ConjuntoTextos.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se consulta un objecto texto con el atributo que lo identifica.
+     * Primero se añade un texto para poder consultarlo.
+     * Seguidamente se llama a la función getTexto que retorna el objeto textocon el nombre nombreF1 que es el que pasamos como parámetro.
+     * Operativa :AssertNotNull() compruba que la variable donde se ha guardado el objeto texto consultado no es null.
+     * AssertEquals() comprueba que el nombre del texto guardado equivale al nombre que se le ha añadido inicialmente.
      */
     @Test
     public void TestGetTexto() {
@@ -116,25 +85,13 @@ public class TestConjuntoTextos {
     }
 
     /**
-     * Objetivo de la Prueba:
-     * La función `TestGetNombresTextos` tiene como objetivo verificar el correcto funcionamiento
-     * del método `getNombresTextos` de la clase `Textos`. Este método debería devolver una lista
-     * de nombres de textos presentes en la colección.
-     *
-     * Ficheros Necesarios:
-     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
-     * principalmente de las estructuras de datos internas de la clase `Textos`.
-     *
-     * Valores Estudiados:
-     * Se evalúan los siguientes aspectos:
-     * 1. Se agregan cuatro textos a la colección mediante el método `agregarTexto`.
-     * 2. Se obtiene la lista de nombres de textos mediante el método `getNombresTextos`.
-     * 3. Se verifica que la lista tenga el tamaño esperado y contenga los nombres de los textos agregados.
-     *
-     * Operativa:
-     * 1. Se agregan cuatro textos a la colección mediante el método `agregarTexto`.
-     * 2. Se obtiene la lista de nombres de textos mediante el método `getNombresTextos`.
-     * 3. Se verifica que la lista tenga el tamaño esperado y contenga los nombres de los textos agregados.
+     * Objeto de la prueba: Test del método GetNombresTextos de ConjuntoTextos.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se consulta la lista de nombres de los textos existentes en el sistema.
+     * Primero se añaden cuatro textos para poder consultar la lista.
+     * Seguidamente se llama a la función getNombresTextos que retorna la lista de los nombres de los textos existentes
+     * Operativa: AssertEquals() comprueba que la medida de la lista de textos sea 4.
+     * Los siguientes cuatro AssertTrue() comprueban que existan en la lista todos los nombres agregados anteriormente.
      */
     @Test
     public void TestGetNombresTextos() {
@@ -157,22 +114,11 @@ public class TestConjuntoTextos {
 
     // ---------- SETTERS ----------
     /**
-     * Objetivo de la Prueba:
-     * La función `TestAgregarTexto` tiene como objetivo verificar el correcto funcionamiento
-     * del método `agregarTexto` de la clase `Textos`. Este método debería agregar un texto a la colección.
-     *
-     * Ficheros Necesarios:
-     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
-     * principalmente de las estructuras de datos internas de la clase `Textos`.
-     *
-     * Valores Estudiados:
-     * Se evalúan los siguientes aspectos:
-     * 1. Se agrega un total de cuatro textos a la colección mediante el método `agregarTexto`.
-     * 2. Se verifica que la colección tenga el tamaño esperado y contenga los textos agregados.
-     *
-     * Operativa:
-     * 1. Se agrega un total de cuatro textos a la colección mediante el método `agregarTexto`.
-     * 2. Se verifica que la colección tenga el tamaño esperado y contenga los textos agregados.
+     * Objeto de la prueba: Test del método AgregarTexto de ConjuntoTextos.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se añaden cuatro textos con la función agregartexto y con los nombres asignados que es el atributo que los identifica.
+     * Operativa: AssertEquals() comprueba que la medida de la lista de textos sea 4.
+     * Los siguientes AssertTrue() comprueban que los nombres de los textos guardados existen en la lista.
      */
     @Test
     public void TestAgregarTexto(){
@@ -193,23 +139,11 @@ public class TestConjuntoTextos {
 
     // ---------- AUXILIARES ----------
     /**
-     * Objetivo de la Prueba:
-     * La función `TestExisteTexto` tiene como objetivo verificar el correcto funcionamiento
-     * del método `existeTexto` de la clase `Textos`. Este método debería indicar si un texto
-     * específico existe en la colección.
-     *
-     * Ficheros Necesarios:
-     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
-     * principalmente de las estructuras de datos internas de la clase `Textos`.
-     *
-     * Valores Estudiados:
-     * Se evalúan los siguientes aspectos:
-     * 1. Se agrega un total de dos textos a la colección mediante el método `agregarTexto`.
-     * 2. Se verifica la existencia de los textos agregados y la no existencia de textos no agregados.
-     *
-     * Operativa:
-     * 1. Se agrega un total de dos textos a la colección mediante el método `agregarTexto`.
-     * 2. Se verifica la existencia de los textos agregados y la no existencia de textos no agregados.
+     * Objeto de la prueba: Test del método ExisteTexto de ConjuntoTextos.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se consulta si los texto con un nombre concreto existen en la lista de textos existentes.
+     * Operativa: Los AssertTrue() comprueban que el nombre de los textos guardados existen en la lista.
+     * Los AssertFalse() comprueban que los nombres de los textos no guardados, no existen en la lista.
      */
     @Test
     public void TestExisteTexto() {
