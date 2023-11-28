@@ -40,11 +40,11 @@ public class TestConjuntoTeclados {
 
     // ---------- CONSTRUCTORAS ----------
     /**
-     * Objeto de la prueba: Test de la constructora de ConjuntoTeclados
-     * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
-     * Valores estudiados: Estrategia caja gris. Se crea un nuevo objeto Conjunto de Teclados y se comprueba que no tiene ningun teclado dentro del conjunto.
-     * Operativa: Creamos un nuevo Conjunto de Teclados vacío
-     **/
+     * Objeto de la prueba: Test de la constructora de ConjuntoTeclados (Constructora Default).
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se inicializa el atributo de conjuntoteclados vacío.
+     * Operativa: AssertEquals() comprueba que la lista de teclados está vacía.
+     */
     @Test
     public void TestConstructora() {
         System.out.println("Test Constructora");
@@ -55,10 +55,13 @@ public class TestConjuntoTeclados {
 
     // ---------- GETTERS ----------
     /**
-     * Objeto de la prueba: Test del método getTeclado(String nomT) de la clase Conjunto de Teclados.
-     * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
-     * Valores estudiados: Estrategia de caja gris. Se crea un teclado, se agrega a un conjunto ya creado y se comprueba que se puede acceder a el
-     * Operativa: Se comprueba que el resultado sacado pertenece al conjunto de Teclados.
+     * Objeto de la prueba: Test del método GetTeclado de ConjuntoTeclados.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se consulta un objecto teclado con el atributo que lo identifica.
+     * Primero se añade un teclado para poder consultarlo.
+     * Seguidamente se llama a la función getTeclado que retorna el objeto teclado con el nombre nombreT1 que es el que pasamos como parámetro.
+     * Operativa: AssertNotNull() compruba que la variable donde se ha guardado el objeto teclado consultado no es null.
+     * AssertEquals() comprueba que el nombre del teclado guardado equivale al nombre que se le ha añadido inicialmente.
      */
     @Test
     public void TestGetTeclado() {
@@ -71,10 +74,13 @@ public class TestConjuntoTeclados {
     }
 
     /**
-     * Objeto de la prueba: Test del método getNombresTeclado(String nomT) de la clase conjuntoTeclados
-     * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
-     * Valores estudiados: Estrategia de caja gris. Se crea un listado de teclados, se añaden a conjuntodeTextos y se comprueba que se puede acceder al nombre de ellos
-     * Operativa: Se comprueba que el resultado sacado pertenece al conjunto de Teclados.
+     * Objeto de la prueba: Test del método GetNombresTecladosde ConjuntoTeclados.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se consulta la lista de nombres de los teclados existentes en el sistema.
+     * Primero se añaden dos teclados para poder consultar la lista.
+     * Seguidamente se llama a la función getNombresTeclados que retorna la lista de los nombres de los teclados existentes
+     * Operativa: AssertEquals() comprueba que la medida de la lista de teclados sea 2.
+     * Los siguientes dos AssertTrue() comprueban que existan en la lista todos los nombres agregados anteriormente.
      */
     @Test
     public void TestGetNombresTeclados() {
@@ -93,10 +99,11 @@ public class TestConjuntoTeclados {
 
     // ---------- SETTERS ----------
     /**
-     * Objeto de la prueba: Test del método AgregarTeclado(String nomT, Teclado teclado) de la clase conjuntoTeclados
-     * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
-     * Valores estudiados: Estrategia de caja gris. Se crean teclados, se añaden al conjunto y se comprueban que estos teclados existen
-     * Operativa: Se comprueba que los teclados pertenecen al conjunto de Teclados.
+     * Objeto de la prueba: Test del método AgregarTecladode ConjuntoTeclados.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se añaden dos teclados con la función agregarTeclado y con los nombres asignados que es el atributo que los identifica.
+     * Operativa: AssertEquals() comprueba que la medida de la lista de teclados sea 2.
+     * Los siguientes AssertTrue() comprueban que los nombres de los teclados guardados existen en la lista.
      */
     @Test
     public void TestAgregarTeclado(){
@@ -113,10 +120,11 @@ public class TestConjuntoTeclados {
 
     // ---------- AUXILIARES ----------
     /**
-     * Objeto de la prueba: Test del método ExisteTeclado(String nomT) de la clase conjuntoTeclados
-     * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
-     * Valores estudiados: Estrategia de caja gris. Se crea un Teclado, se agrega al conjunto y se comprueba que se ha agregado correctamente.
-     * Operativa: Se comprueba que el teclado añadido existe en el conjunto.
+     * Objeto de la prueba: Test del método ExisteTecladode ConjuntoTeclados.
+     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
+     * Valores estudiados: Se consulta si el teclado con un nombre concreto existe en la lista de teclados existentes.
+     * Operativa: AssertTrue() comprueba que el nombre del teclado guardado existe en la lista.
+     * AssertFalse() comprueba que el nombre del teclado no guardado, no existe en la lista.
      */
     @Test
     public void TestExisteTeclado() {
