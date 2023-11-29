@@ -314,8 +314,9 @@ public class GilmoreLawler
         int [][] c1 = calcularContribucionC1(solucionParcial, posNO, letNO);
         int [][] c2 = calcularContribucionC2(posNO, letNO);
         int [][] c1c2 = Matrices.sumaMatrices(c1,c2);
-        //return HungarianAlgorithm.Hungarian(c1c2);
-        return minimos(c1c2);
+        HungarianAlgorithm hungarian = new HungarianAlgorithm(c1c2.length);
+         return hungarian.hungarianLeastCost(c1c2);
+        //return minimos(c1c2);
     }
 
     /**

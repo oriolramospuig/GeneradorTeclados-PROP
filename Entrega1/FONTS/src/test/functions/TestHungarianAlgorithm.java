@@ -13,21 +13,24 @@ import static org.junit.Assert.*;
  * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
  */
 public class TestHungarianAlgorithm {
-    /*@Test
+    @Test
     public void testHungarian() {
-        HungarianAlgorithm hungarianAlgorithm = new HungarianAlgorithm();
+        //HungarianAlgorithm hungarianAlgorithm = new HungarianAlgorithm();
         int[][] c1c2 = {
                 {21, 34, 31, 43},
                 {20, 35, 32, 44},
                 {20, 34, 33, 45},
                 {21, 34, 31, 43}
         };
-        int result = hungarianAlgorithm.Hungarian(c1c2);
-        assertEquals(128, result);
+        //int result = hungarianAlgorithm.Hungarian(c1c2);
+        HungarianAlgorithm hungarian = new HungarianAlgorithm(c1c2.length);
+
+        // Llamas al método para obtener el costo mínimo de asignación
+        int leastCost = hungarian.hungarianLeastCost(c1c2);
+        assertEquals(128, leastCost);
     }
 
-   */
-
+/*
     @Test
     public void testNlineas() {
         HungarianAlgorithm hungarianAlgorithm = new HungarianAlgorithm();
@@ -69,5 +72,5 @@ public class TestHungarianAlgorithm {
         asignacio.put(3,2);
         int cost = HungarianAlgorithm.calcularCostoAsignacion(asignacio, c1c2);
         assertEquals(128, cost);
-    }
+    }*/
 }
