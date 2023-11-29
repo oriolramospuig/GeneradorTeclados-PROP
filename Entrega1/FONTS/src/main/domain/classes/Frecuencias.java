@@ -69,13 +69,21 @@ public class Frecuencias extends Texto
     // ---------- SETTERS ----------
     /**
      * No devuelve nada. Añade el par de letras con su frecuencia (parejaLetras, frecuencia) a frecuenciasLetras, estructura donde las guardamos
-     * @param parejaLetras pareja de caracteres del texto
+     * @param palabra pareja de caracteres del texto
      * @param frecuencia frecuencia del par de palabras parejaLetras
      *
      */
     //PARA LA SEGUNDA ENTREGA
-     public void anadirFrecuencia(String parejaLetras, Integer frecuencia) {
-        frecuenciaLetras.put(parejaLetras, frecuencia);
-     }
+    public void anadirPalabra(String palabra, Integer frecuencia) {
+        frecuenciaPalabras.put(palabra, frecuencia);
+    }
 
+    public void eliminarPalabra(String palabra) {
+        frecuenciaPalabras.remove(palabra);
+    }
+
+    public void modificarFrecuencia(String palabra, Integer nuevaFrec) {
+        frecuenciaPalabras.remove(palabra);
+        frecuenciaPalabras.put(palabra, nuevaFrec);
+    }
 }
