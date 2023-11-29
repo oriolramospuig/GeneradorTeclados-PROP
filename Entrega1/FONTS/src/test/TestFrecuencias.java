@@ -97,8 +97,8 @@ public class TestFrecuencias
     public void TestGetTexto() {
         System.out.println("Test GetTexto");
 
-        frecuencias.anadirFrecuencia("AB", 3);
-        frecuencias.anadirFrecuencia("CD", 7);
+        frecuencias.anadirPalabra("AB", 3);
+        frecuencias.anadirPalabra("CD", 7);
 
         String textoEjemplo = "AB 3\nCD 7\n";
         assertEquals(textoEjemplo, frecuencias.getTexto());
