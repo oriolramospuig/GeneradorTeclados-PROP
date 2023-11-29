@@ -44,6 +44,4 @@ public class Palabras extends Texto
             System.out.println(e.getKey() + " " + e.getValue());
         }
     }
-
-
 }
