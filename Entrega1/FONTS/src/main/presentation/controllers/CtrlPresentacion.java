@@ -1,6 +1,5 @@
 package main.presentation.controllers;
 
-import main.domain.classes.Alfabeto;
 import main.presentation.views.*;
 import main.domain.controllers.CtrlDominio;
 
@@ -41,11 +40,7 @@ public class CtrlPresentacion {
     }
 
 
-    //FUNCIONES DE DOMINIO
-
-
-
-    //FUNCIONES DE ALFABETO
+    //FUNCIONES DE CTRlDOMINIO DE ALFABETO
     /**
      * Llama a la función agregarAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a agregar
@@ -54,11 +49,9 @@ public class CtrlPresentacion {
     public static void agregarAlfabeto(String nomA, ArrayList<Character> entradaCaracteres) {
         boolean agregado = cd.agregarAlfabeto(nomA, entradaCaracteres);
     }
-    /**
-     * Llama a la función getListaAlfabetos de CtrlDominio
-     */
+    /** Llama a la función getListaAlfabetos de CtrlDominio */
     public static void getListaAlfabetos() {
-        HashMap<String, Alfabeto> listaAlfabetos = cd.getListaAlfabetos();
+        //HashMap<String, Alfabeto> listaAlfabetos = cd.getListaAlfabetos(); // NO SE PUEDE PASAR EL OBJETO ALFABETO
     }
     /**
      * Llama a la función existealfabeto de CtrlDominio
@@ -83,24 +76,57 @@ public class CtrlPresentacion {
     }
 
 
-    //s'han d'afegir totes les funcions de totes les classes que crida el ctrlDominio
-
-
-    //FUNCIONES DE TEXTO
+    //FUNCIONES DE CTRlDOMINIO DE TEXTO
     /**
-     * Llama a la función agregarTextoPalabras de CtrlDomini
-     * @param
-     * @param
-     * @param
+     * Llama a la función agregarTextoPalabras de CtrlDominio
+     * @param nomTxt es el nombre del texto a agregar
+     * @param texto es la lista de caracteres que forman el contenido del texto
      */
-    public static void agregarTextoPalabras(String nomT, String texto) {
+    public static void agregarTextoPalabras(String nomTxt, String texto) {
+        boolean agregado = cd.agregarTextoPalabras(nomTxt, texto);
+    }
+    /*public static void agregarTextoPalabras(String nomT, String texto) {
         try {
             cd.agregarTextoPalabras(nomT,texto);
         } catch (Exception ignored) {}
+    }*/
+    /**
+     * Llama a la función agregarTextoFrecuencias de CtrlDominio
+     * @param nomTxt es el nombre del texto a agregar
+     * @param frecuenciaPalabras es la map con las palabras y sus frecuencias que forman el contenido del texto
+     */
+    public static void agregarTextoFrecuencias(String nomTxt, HashMap<String,Integer> frecuenciaPalabras) {
+        boolean agregado = cd.agregarTextoFrecuencias(nomTxt, frecuenciaPalabras);
+    }
+    /** Llama a la función getListaTextos de CtrlDominio */
+    public static void getListaTextos() {
+        //HashMap<String, Texto> getListaTextos = cd.getListaTextos(); NO SE PUEDE PASAR EL OBJETO TEXTO!!
+    }
+    /**
+     * Llama a la función existetexto de CtrlDominio
+     * @param nomTxt es el nombre del texto a consultar si existe
+     */
+    public static void existetexto(String nomTxt) {
+        boolean existe = cd.existealfabeto(nomTxt);
+    }
+    /**
+     * Llama a la función consultarContenidoTexto de CtrlDominio
+     * @param nomTxt es el nombre del texto a consultar
+     */
+    public static void consultarContenidoTexto(String nomTxt) {
+        String contenidoTxt = cd.consultarContenidoTexto(nomTxt);
+    }
+    /**
+     * Llama a la función borrarTexto de CtrlDominio
+     * @param nomTxt es el nombre del alfabeto a borrar
+     */
+    public static void borrarTexto(String nomTxt) {
+        //cd.borrarTexto(nomTxt);
     }
 
-    //FUNCIONES DE ASOCIACION DE TEXTOS
-    //FUNCIONES DE TECLADO
+
+    //FUNCIONES DE CTRlDOMINIO DE ASOCIACION DE TEXTOS
+    //FUNCIONES DE CTRlDOMINIO DE TECLADO
 
 
 

@@ -14,5 +14,5 @@ public class VistaTexto {
 
 
     /** Botó de tornar a la pantalla del menú principal */
-    private final JButton salir = new JButton("ATRÁS");
+    private final JButton bsalir = new JButton("ATRÁS");
 }
