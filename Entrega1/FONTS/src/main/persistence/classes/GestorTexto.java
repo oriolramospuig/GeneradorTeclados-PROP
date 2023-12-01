@@ -1,14 +1,15 @@
 package main.persistence.classes;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
 
 /**
  * Implementación de la clase gestionadora de datos para la clase "Texto", carga/vuelca los textos modificados en cada caso.
@@ -20,7 +21,7 @@ public class GestorTexto {
      * lograrlo, declaramos la constructora como privada y añadimos una operación estática que retorne siempre la misma
      * instancia. Para acceder a esta instancia lo haremos mediante la llamada GestorTextoArchivo.getInstance();
      */
-    private static GestorTexto singletonObject;
+    /*private static GestorTexto singletonObject;
 
     public static GestorTexto getInstance() {
         if (singletonObject == null)
@@ -60,5 +61,30 @@ public class GestorTexto {
             e.printStackTrace();
             return false;
         }
+    }*/
+    public void guardarTexto(String texto, String path) {
+        Path p = Paths.get(path);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(p.toString()))) {
+            writer.write(texto);
+        } catch (IOException e) {
+            System.err.println("[#GUARDAR] Error al guardar el texto: " + e.getMessage() + "\n" + Arrays.toString(e.getStackTrace()));
+        }
     }
+
+    public void cargarTexto(String path) {
+        StringBuilder texto = new StringBuilder();
+        Path p = Paths.get(path);
+        try (BufferedReader reader = new BufferedReader(new FileReader(p.toString()))) {
+            //para guardar cada linea del contenido del archivo
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                texto.append(linea).append("\n");
+            }
+        } catch (IOException e) {
+            System.err.println("[#CARGAR] Error al cargar el texto: " + e.getMessage() + "\n" + Arrays.toString(e.getStackTrace()));
+        }
+        //da error y no se porque
+        //return texto.toString();
+    }
+
 }
