@@ -98,7 +98,7 @@ public class CtrlPresentacion {
             cd.agregarTextoPalabras(nomT,texto);
         } catch (Exception ignored) {}
     }
-    
+
     //FUNCIONES DE ASOCIACION DE TEXTOS
     //FUNCIONES DE TECLADO
 
