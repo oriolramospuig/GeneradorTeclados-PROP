@@ -1,0 +1,240 @@
+7
+No hay alfabetos para mostrar. Debes agregar un alfabeto para hacer este paso.
+Pulsa ENTER para volver al menú principal
+
+8
+No hay asociaciones para mostrar. Debes crear una asociacion para hacer este paso
+Pulsa ENTER para volver al menú principal
+
+9
+No hay textos para mostrar. Debes agregar un texto para hacer este paso
+Pulsa ENTER para volver al menú principal
+
+10
+No hay teclados para mostrar.
+Pulsa ENTER para volver al menú principal
+
+1
+Introduce el nombre del alfabeto:
+alfabeto1
+Introduce los caracteres del alfabeto separados por espacio (ejemplo: a b c ...):
+a b   c
+El contenido introducido no es válido. Asegúrate de que sean caracteres separados por un espacio.
+Pulsa ENTER para volver al menú principal
+
+
+1
+Introduce el nombre del alfabeto:
+alfabeto1
+Introduce los caracteres del alfabeto separados por espacio (ejemplo: a b c ...):
+a b c d e f g h i j k l
+AGREGADO CON EXITO!
+Pulsa ENTER para volver al menú principal
+
+7
+Alfabetos actuales:
+alfabeto1
+Pulsa ENTER para volver al menú principal
+
+11
+Alfabetos actuales:
+alfabeto1
+Introduce el nombre del alfabeto que quieres consultar:
+alfabeto1
+alfabeto1
+a b c d e f g h i j k l
+Pulsa ENTER para volver al menú principal
+
+11
+Alfabetos actuales:
+alfabeto1
+Introduce el nombre del alfabeto que quieres consultar:
+alfabeto2
+Este nombre de alfabeto no existe, debes entrar un alfabeto de la lista
+Pulsa ENTER para volver al menú principal
+
+1
+Introduce el nombre del alfabeto:
+alfabeto1
+Introduce los caracteres del alfabeto separados por espacio (ejemplo: a b c ...):
+a b c 3 4 +
+Ya existe el alfabeto alfabeto1. Introduce un nombre nuevo
+Pulsa ENTER para volver al menú principal
+
+1
+Introduce el nombre del alfabeto:
+alfabeto1
+Introduce los caracteres del alfabeto separados por espacio (ejemplo: a b c ...):
+a  b 3 4 +
+El contenido introducido no es válido. Asegúrate de que sean caracteres separados por un espacio.
+Pulsa ENTER para volver al menú principal
+
+2
+Introduce el nombre del archivo:
+alfabeto2
+El archivo no se encontró: alfabeto2
+Pulsa ENTER para volver al menú principal
+
+
+2
+Introduce el nombre del archivo:
+alfabet2.txt
+Introduce el nombre del alfabeto:
+alfabet2
+AGREGADO CON EXITO!
+Pulsa ENTER para volver al menú principal
+
+7
+Alfabetos actuales:
+alfabet2
+alfabeto1
+Pulsa ENTER para volver al menú principal
+
+11
+Alfabetos actuales:
+alfabet2
+alfabeto1
+Introduce el nombre del alfabeto que quieres consultar:
+alfabet2
+alfabet2
+abcdefghijklmnopqrs1-
+Pulsa ENTER para volver al menú principal
+
+
+3
+Introduce el nombre del texto:
+palabras1
+Si desea entrar un texto escriba 1. En caso de querer entrar palabras con frecuencias escriba otro numero.
+1
+Introduce el texto:
+aei befg il
+AGREGADO CON EXITO!
+Pulsa ENTER para volver al menú principal
+
+
+3
+Introduce el nombre del texto:
+palabras1
+Si desea entrar un texto escriba 1. En caso de querer entrar palabras con frecuencias escriba otro numero.
+1
+Introduce el texto:
+hello
+Ya existe el texto palabras1
+Pulsa ENTER para volver al menú principal
+
+
+3
+Introduce el nombre del texto:
+frecuencias1
+Si desea entrar un texto escriba 1. En caso de querer entrar palabras con frecuencias escriba otro numero.
+3
+Introduce cuantas palabras quieres indicar:
+4
+Introduce palabras y sus frecuencias. El formato debe ser palabra, espacio, numero de frecuencia, salto de linea,  siguiente palabra.
+Ejemplo:
+hola 5
+mesa 3
+hola 5
+que 3
+tal 8
+estas 2
+AGREGADO CON EXITO!
+Pulsa ENTER para volver al menú principal
+
+9
+Textos actuales:
+palabras1
+frecuencias1
+Pulsa ENTER para volver al menú principal
+
+12
+Textos actuales:
+palabras1
+frecuencias1
+Introduce el nombre del texto que quieres consultar:
+palabras1
+palabras1
+aei befg il
+Pulsa ENTER para volver al menú principal
+
+12
+Textos actuales:
+palabras1
+frecuencias1
+Introduce el nombre del texto que quieres consultar:
+palabras10
+Este nombre de texto no existe, debes entrar un texto de la lista
+Pulsa ENTER para volver al menú principal
+
+
+-----
+podem afegir textos por archivo
+-----
+
+
+5
+Textos actuales:
+palabras1
+frecuencias1
+Introduce el numero de textos que quieres añadir a la nueva ascociacion:
+1
+Introduce el nombre de la asociacion:
+asociacion1
+Introduce el nombre del texto que quieres añadir a la nueva ascociacion:
+1
+No existe un texto con ese nombre. Vuelve a crear la asociacion.
+Pulsa ENTER para volver al menú principal
+
+
+5
+Textos actuales:
+palabras1
+Introduce el numero de textos que quieres añadir a la nueva ascociacion:
+1
+Introduce el nombre de la asociacion:
+as1
+Introduce el nombre del texto que quieres añadir a la nueva ascociacion:
+palabras1
+AGREGADO CON EXITO!
+Pulsa ENTER para volver al menú principal
+
+
+
+5
+Textos actuales:
+palabras1
+Introduce el numero de textos que quieres añadir a la nueva ascociacion:
+palabras1
+Introduce el nombre de la asociacion:
+asociacion1
+Ya existe el texto asociacion1
+Pulsa ENTER para volver al menú principal
+
+
+6
+Introduce el nombre del teclado:
+teclado1
+Alfabetos actuales:
+alfabeto1
+Introduce el nombre de un alfabeto de la lista:
+alfabeto1
+Asociaciones de textos actuales:
+as1
+Introduce el nombre de una asociacion de textos de la lista:
+as1
+La mejor de N asignaciones de las teclas aleatorias: 
+
+12 23 3 10 25 21 
+9 15 18 29 5 27 
+19 35 4 8 14 6 
+24 11 0 26 30 32 
+17 1 28 2 7 22 
+34 16 20 31 33 13 
+
+Puntuacion inicial = 13
+GILMORE-LAWLER ejecutándose
+
+#no acaba porque hay demasiadas letras y el tiempo es exponencial
+
+
+
