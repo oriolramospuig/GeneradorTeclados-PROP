@@ -16,7 +16,7 @@ public class CtrlTeclado
     /** Crea una instancia del conjunto de teclados*/
     private ConjuntoTeclados teclados;
 
-    /** Crea una instancia del conjunto de alfabetos*/
+    /** Crea una instancia del controlador del algoritmo*/
     private CtrlTecladoQAP ctrlAlgoritmo;
 
 
@@ -39,13 +39,6 @@ public class CtrlTeclado
 
     public String getAsociacion(String nomT){
         return teclados.getTeclado(nomT).getAsociacionTextosVinculado();
-    }
-
-    /**
-     * No devuelve nada, manda a introducir la puntuación escrita en un Teclado (también pedido)
-     */
-    public void setPuntuacion(String nomT, int puntuacion) {
-        teclados.getTeclado(nomT).setPuntuacion(puntuacion);
     }
 
     /**
