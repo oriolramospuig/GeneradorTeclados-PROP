@@ -198,53 +198,11 @@ public class QAP {
     }
 
     /**
-     * Imprime en la consola la disposición de índices de teclas proporcionada.
-     *
-     * @param tecladoIndices Matriz de índices de teclas a imprimir.
-     */
-    private void imprimirTeclado(int[][] tecladoIndices) {
-        for (int i = 0; i < tecladoIndices.length; i++) {
-            for (int j = 0; j < tecladoIndices[i].length; j++) {
-                System.out.print(tecladoIndices[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
-
-    /**
-     * Imprime en la consola las matrices de frecuencias y distancias.
-     */
-    private void imprimirMatrices() {
-        System.out.println("Imprimiendo matriz frecuencias: ");
-        System.out.println();
-        for (int i = 0; i < matrizFrecuencias.length; i++) {
-            for (int j = 0; j < matrizFrecuencias[i].length; j++) {
-                System.out.print(matrizFrecuencias[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-
-        System.out.println("Imprimiendo matriz distancias: ");
-        System.out.println();
-        for (int i = 0; i < matrizDistancias.length; i++) {
-            for (int j = 0; j < matrizDistancias[i].length; j++) {
-                System.out.print(matrizDistancias[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
-
-    /**
      * Realiza el cálculo utilizando el algoritmo de Gilmore-Lawler.
      * Imprime las matrices de frecuencias y distancias, y luego utiliza el algoritmo
      * para encontrar la mejor asignación de teclas en el teclado.
      */
     private void calculo() {
-        // imprimirMatrices();
-
         GilmoreLawler gilmoreLawler = new GilmoreLawler(filas, columnas, glBound, matrizFrecuencias, matrizDistancias);
         gilmoreLawler.gilmore_lawler();
         sol = gilmoreLawler.getMejorSolucionParcial();
