@@ -8,76 +8,111 @@ public class HungarianAlgorithm {
 
     private int N;
     private int maxMatch;
-    private int[] labelX;
-    private int[] labelY;
-    private int[] matchXY;
-    private int[] matchYX;
+    private int[] priorityKeys;
+    private int[] priorityPositions;
+    private int[] keyToPosition;
+    private int[] positionToKey;
     private boolean[] S;
     private boolean[] T;
-    private int[] slack;
-    private int[] slackCauser;
-    private int[] prevOnTree;
+    private int[] minCostToAssign;
+    private int[] keyCausingMinCost;
+    private int[] previousKeyInTree;
 
+    /**
+     * Constructor que inicializa el algoritmo con un tamaño específico.
+     *
+     * @param n El tamaño de la matriz, que es el número de teclas o posiciones.
+     */
     public HungarianAlgorithm(int n) {
-        initGlobalVariables(n);
+        N = n;
+        maxMatch = 0;
+        priorityKeys = new int[N];
+        priorityPositions = new int[N];
+        keyToPosition = new int[N];
+        positionToKey = new int[N];
+        S = new boolean[N];
+        T = new boolean[N];
+        minCostToAssign = new int[N];
+        keyCausingMinCost = new int[N];
+        previousKeyInTree = new int[N];
     }
 
+    /**
+     * Añade una tecla al árbol de expansión del algoritmo húngaro y actualiza la información de 'slack'.
+     *
+     * @param current La tecla actual que se está considerando para la asignación.
+     * @param prev La tecla previa conectada a la actual en el árbol de expansión.
+     * @param cost La matriz de costos que representa las incompatibilidades entre teclas y posiciones.
+     */
     private void addToTree(int current, int prev, int[][] cost) {
         int slackForNewNode;
 
         S[current] = true;
-        prevOnTree[current] = prev;
+        previousKeyInTree[current] = prev;
 
         for (int i = 0; i < N; ++i) {
             if (!T[i]) {
-                slackForNewNode = labelX[current] + labelY[i] - cost[current][i];
-                if (slackForNewNode < slack[i]) {
-                    slack[i] = slackForNewNode;
-                    slackCauser[i] = current;
+                slackForNewNode = priorityKeys[current] + priorityPositions[i] - cost[current][i];
+                if (slackForNewNode < minCostToAssign[i]) {
+                    minCostToAssign[i] = slackForNewNode;
+                    keyCausingMinCost[i] = current;
                 }
             }
         }
     }
 
+    /**
+     * Inicializa las etiquetas (prioridades) de las teclas y las posiciones.
+     *
+     * @param cost La matriz de costos que representa las incompatibilidades entre teclas y posiciones.
+     */
     private void initLabels(int[][] cost) {
-        Arrays.fill(labelY, 0);
-        Arrays.fill(labelX, Integer.MIN_VALUE);
+        Arrays.fill(priorityPositions, 0);
+        Arrays.fill(priorityKeys, Integer.MIN_VALUE);
 
         for (int i = 0; i < N; ++i) {
             for (int j = 0; j < N; ++j) {
-                labelX[i] = Math.max(labelX[i], cost[i][j]);
+                priorityKeys[i] = Math.max(priorityKeys[i], cost[i][j]);
             }
         }
 
-        Arrays.fill(matchXY, -1);
-        Arrays.fill(matchYX, -1);
+        Arrays.fill(keyToPosition, -1);
+        Arrays.fill(positionToKey, -1);
     }
 
+    /**
+     * Actualiza las etiquetas (prioridades) de las teclas y las posiciones para el método de etiquetado.
+     */
     private void updateLabels() {
         int delta = Integer.MAX_VALUE;
 
         for (int i = 0; i < N; ++i) {
             if (!T[i]) {
-                delta = Math.min(delta, slack[i]);
+                delta = Math.min(delta, minCostToAssign[i]);
             }
         }
 
         for (int i = 0; i < N; ++i) {
             if (S[i]) {
-                labelX[i] -= delta;
+                priorityKeys[i] -= delta;
             }
             if (T[i]) {
-                labelY[i] += delta;
+                priorityPositions[i] += delta;
             }
         }
 
         for (int i = 0; i < N; ++i) {
             if (!T[i]) {
-                slack[i] -= delta;
+                minCostToAssign[i] -= delta;
             }
         }
     }
 
+    /**
+     * Intenta aumentar el número máximo de asignaciones posibles.
+     *
+     * @param cost La matriz de costos que representa las incompatibilidades entre teclas y posiciones.
+     */
     private void augment(int[][] cost) {
         if (maxMatch == N) {
             return;
@@ -85,7 +120,7 @@ public class HungarianAlgorithm {
 
         Arrays.fill(S, false);
         Arrays.fill(T, false);
-        Arrays.fill(prevOnTree, -1);
+        Arrays.fill(previousKeyInTree, -1);
 
         int[] queue = new int[N];
         int qHead = 0;
@@ -93,18 +128,18 @@ public class HungarianAlgorithm {
 
         int root = -1;
         for (int i = 0; i < N; ++i) {
-            if (matchXY[i] == -1) {
+            if (keyToPosition[i] == -1) {
                 queue[qTail++] = i;
                 root = i;
-                prevOnTree[i] = -2;
+                previousKeyInTree[i] = -2;
                 S[i] = true;
                 break;
             }
         }
 
         for (int j = 0; j < N; ++j) {
-            slack[j] = labelX[root] + labelY[j] - cost[root][j];
-            slackCauser[j] = root;
+            minCostToAssign[j] = priorityKeys[root] + priorityPositions[j] - cost[root][j];
+            keyCausingMinCost[j] = root;
         }
 
         int x = -1;
@@ -113,13 +148,13 @@ public class HungarianAlgorithm {
             while (qHead < qTail) {
                 x = queue[qHead++];
                 for (y = 0; y < N; y++) {
-                    if (cost[x][y] == labelX[x] + labelY[y] && !T[y]) {
-                        if (matchYX[y] == -1) {
+                    if (cost[x][y] == priorityKeys[x] + priorityPositions[y] && !T[y]) {
+                        if (positionToKey[y] == -1) {
                             break;
                         }
                         T[y] = true;
-                        queue[qTail++] = matchYX[y];
-                        addToTree(matchYX[y], x, cost);
+                        queue[qTail++] = positionToKey[y];
+                        addToTree(positionToKey[y], x, cost);
                     }
                 }
                 if (y < N) {
@@ -136,15 +171,15 @@ public class HungarianAlgorithm {
             qTail = 0;
 
             for (y = 0; y < N; y++) {
-                if (!T[y] && slack[y] == 0) {
-                    if (matchYX[y] == -1) {
-                        x = slackCauser[y];
+                if (!T[y] && minCostToAssign[y] == 0) {
+                    if (positionToKey[y] == -1) {
+                        x = keyCausingMinCost[y];
                         break;
                     } else {
                         T[y] = true;
-                        if (!S[matchYX[y]]) {
-                            queue[qTail++] = matchYX[y];
-                            addToTree(matchYX[y], slackCauser[y], cost);
+                        if (!S[positionToKey[y]]) {
+                            queue[qTail++] = positionToKey[y];
+                            addToTree(positionToKey[y], keyCausingMinCost[y], cost);
                         }
                     }
                 }
@@ -157,15 +192,21 @@ public class HungarianAlgorithm {
 
         if (y < N) {
             maxMatch++;
-            for (int cx = x, cy = y, ty; cx != -2; cx = prevOnTree[cx], cy = ty) {
-                ty = matchXY[cx];
-                matchYX[cy] = cx;
-                matchXY[cx] = cy;
+            for (int cx = x, cy = y, ty; cx != -2; cx = previousKeyInTree[cx], cy = ty) {
+                ty = keyToPosition[cx];
+                positionToKey[cy] = cx;
+                keyToPosition[cx] = cy;
             }
             augment(cost);
         }
     }
 
+    /**
+     * Calcula la asignación con el menor costo total utilizando el algoritmo húngaro.
+     *
+     * @param cost La matriz de costos que representa las incompatibilidades entre teclas y posiciones.
+     * @return El costo total de la asignación óptima.
+     */
     public int hungarianLeastCost(int[][] cost) {
         int maxCost = Arrays.stream(cost).flatMapToInt(Arrays::stream).max().orElse(Integer.MIN_VALUE);
         for (int i = 0; i < N; ++i) {
@@ -179,35 +220,9 @@ public class HungarianAlgorithm {
 
         int totalCost = 0;
         for (int i = 0; i < N; ++i) {
-            totalCost += cost[i][matchXY[i]];
+            totalCost += cost[i][keyToPosition[i]];
         }
         totalCost = maxCost * N - totalCost; // Adjust cost back to the original
         return totalCost;
-    }
-
-    private void initGlobalVariables(int n) {
-        N = n;
-        maxMatch = 0;
-        labelX = new int[N];
-        labelY = new int[N];
-        matchXY = new int[N];
-        matchYX = new int[N];
-        S = new boolean[N];
-        T = new boolean[N];
-        slack = new int[N];
-        slackCauser = new int[N];
-        prevOnTree = new int[N];
-    }
-
-    public static void main(String[] args) {
-        int[][] costMatrix = {
-                {4, 1, 3},
-                {2, 0, 5},
-                {3, 2, 2}
-        };
-
-        HungarianAlgorithm ha = new HungarianAlgorithm(costMatrix.length);
-        int result = ha.hungarianLeastCost(costMatrix);
-        System.out.println("The result is: " + result);
     }
 }

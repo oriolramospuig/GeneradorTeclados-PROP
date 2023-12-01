@@ -133,8 +133,7 @@ public class GilmoreLawler
             posicionesNoUsadas.add(i);
             letrasNO.add(i);
         }
-        boolean[] vis = new boolean[ind.size()];
-        dfs(0, ind, solucionParcial, 0, posicionesNoUsadas, letrasNO, vis); // Empezar DFS con profundidad 0 y cota 0
+        dfs(0, solucionParcial, 0, posicionesNoUsadas, letrasNO); // Empezar DFS con profundidad 0 y cota 0
 
         System.out.print("Gilmore-Lawler acabado; Cota final = " + glBound);
         System.out.println();
@@ -145,14 +144,12 @@ public class GilmoreLawler
     /**
      * Realiza una búsqueda en profundidad (DFS) para poder encontrar una solución parcial
      * @param profundidad           Profundidad actual en la búsqueda
-     * @param ind                   Lista de índices a tratar
      * @param solucionParcial       Lista que representa la solución parcial actual
      * @param cotaActual            Cota actual en la búsqueda
      * @param posNO                 Posiciones no usadas
      * @param letNO                 Letras no usadas
-     * @param vis                   Elementos visitados
      */
-    private void dfs(int profundidad, List<Integer> ind, List<Integer> solucionParcial, int cotaActual, List<Integer> posNO, List<Integer> letNO, boolean[] vis) {
+    private void dfs(int profundidad, List<Integer> solucionParcial, int cotaActual, List<Integer> posNO, List<Integer> letNO) {
         if (profundidad == filas * columnas) {
             // Se ha encontrado una solución completa
             int cotaPermutacion = calcularCotaPermutacion(solucionParcial);
@@ -172,12 +169,12 @@ public class GilmoreLawler
                     Integer y = profundidad;
                     posNO.remove(y);
 
-                    int nuevaCota = cotaActual + calcularContribucionC1C2(solucionParcial, profundidad, letra, posNO, letNO);
+                    int nuevaCota = cotaActual + calcularContribucionC1C2(solucionParcial, posNO, letNO);
 
                     if (nuevaCota < glBound) {
                         int cotaAnt = cotaActual;
                         cotaActual = calcularCotaPermutacionAct(solucionParcial);
-                        dfs(profundidad + 1, ind, solucionParcial, cotaActual, posNO, letNO, vis);
+                        dfs(profundidad + 1, solucionParcial, cotaActual, posNO, letNO);
                         cotaActual = cotaAnt;
                     }
                     solucionParcial.set(letra, -1); // Limpia la posición para el próximo intento
@@ -304,13 +301,11 @@ public class GilmoreLawler
      * Calcula la contribución la contribución de C1 y C2 para una solución parcial específica.
      *
      * @param solucionParcial    La solución parcial actual.
-     * @param posicion           La posición actual en la solución parcial.
-     * @param indiceTeclaActual  El índice de la tecla actual.
      * @param posNO              Lista de posiciones no usadas.
      * @param letNO              Lista de letras no usadas.
      * @return La contribución combinada de C1 y C2.
      */
-    private int calcularContribucionC1C2(List<Integer> solucionParcial, int posicion, int indiceTeclaActual, List<Integer> posNO, List<Integer> letNO) {
+    private int calcularContribucionC1C2(List<Integer> solucionParcial, List<Integer> posNO, List<Integer> letNO) {
         int [][] c1 = calcularContribucionC1(solucionParcial, posNO, letNO);
         int [][] c2 = calcularContribucionC2(posNO, letNO);
         int [][] c1c2 = Matrices.sumaMatrices(c1,c2);

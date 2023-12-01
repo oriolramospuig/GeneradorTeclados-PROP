@@ -15,7 +15,6 @@ public class QAP {
     private int[][] matrizFrecuencias;
     private int[][] matrizDistancias;
     private List<Integer> sol;
-    private int[][] tec;
     private int glBound;
 
 
@@ -43,7 +42,6 @@ public class QAP {
         int [][] indices = calcularMejorAsignacionAleatoria(ind, 100);
         this.teclado = indices;
         this.sol = new ArrayList<>();
-        this.tec = indices;
         this.glBound = calculoPuntuacion(indices);
         imprimirTeclado();
         System.out.println("Puntuacion inicial = " + glBound);
@@ -76,15 +74,6 @@ public class QAP {
      */
     public int getN() {
         return this.n;
-    }
-
-    /**
-     * Obtiene la cota mínima de la instancia actual.
-     *
-     * @return La cota mínima.
-     */
-    public int getGlBound() {
-        return this.glBound;
     }
 
     /**
