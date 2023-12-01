@@ -28,5 +28,8 @@ public class VistaMenuPrincipal extends JFrame {
     /** Botón para ir a la ventana de teclado */
     private final JButton bteclado = new JButton("TECLADO");
 
+    /** Botón de salida para cerrar el programa */
+    private final JButton bsalir = new JButton("Salir");
+
 
 }

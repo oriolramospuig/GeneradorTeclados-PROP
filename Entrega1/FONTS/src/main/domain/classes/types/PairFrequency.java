@@ -1,7 +1,7 @@
 package main.domain.classes.types;
 
 /** Clase que implementa un pair de String, Int
- * @author Júlia Tena (julia.tena-domingo@estudiantat.upc.edu)
+ * @author Júlia Tena (julia.tena-domingo   @estudiantat.upc.edu)
  */
 public class PairFrequency {
     String pair;
