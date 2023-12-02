@@ -1,9 +1,12 @@
 package main.domain.controllers;
 
 import main.domain.classes.*;
+import main.domain.classes.config.Configuracion;
 import main.domain.classes.functions.InOut;
 import main.domain.classes.types.PairInt;
+import main.persistence.controllers.CtrlPersistencia;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +29,10 @@ public class CtrlDominio
     /** Crea una instancia del controlador teclado */
     private CtrlTeclado ctrlTeclado;
 
+    private final CtrlPersistencia ctrlPersistencia;
+
+    private Configuracion configuracion;
+
 
     // ---------- CONSTRUCTORAS ----------
     /** Inicialización de la instancia controlador dominio */
@@ -34,8 +41,42 @@ public class CtrlDominio
         ctrlTexto = new CtrlTexto();
         ctrlAsociacionTexto = new CtrlAsociacionTexto();
         ctrlTeclado = new CtrlTeclado();
+        ctrlPersistencia = new CtrlPersistencia();
+        //cargar configuracion alfabetos de capa de persistencia
+        if (ctrlPersistencia.existeCongigAlfabetos()) {
+            try {
+                byte[] bytes = ctrlPersistencia.cargaConfigAlfabetos();
+                ByteArrayInputStream bs = new ByteArrayInputStream(bytes);
+                ObjectInputStream is = new ObjectInputStream(bs);
+                configuracion = (Configuracion) is.readObject();
+                is.close();
+            } catch (InvalidClassException e) {
+                System.err.println("HANDLEABLE EXCEPTION -> CLASS VERSION MISMATCH");
+                System.err.println("Regenerating configAlfabetos.cdp file");
+                if (!ctrlPersistencia.borraConfigAlfabeto()) {
+                    System.err.println("Could not handle exception! Quitting.");
+                    System.err.println(Thread.currentThread().getStackTrace().toString());
+                    System.exit(-100);
+                }
+                configuracion = new Configuracion();
+                System.err.println("SUCCESS -> Exception handled!");
+            } catch (Exception e) {
+                System.err.println("HANDLEABLE EXCEPTION -> Exception when trying to write/create configuration file! E: "
+                        + e.getMessage());
+                System.err.println("Regenerating configAlfabetos.cdp file");
+                if (!ctrlPersistencia.borraConfigAlfabeto()) {
+                    System.err.println("Could not handle exception! Quitting.");
+                    System.err.println(Thread.currentThread().getStackTrace().toString());
+                    System.exit(-100);
+                }
+                configuracion = new Configuracion();
+                System.err.println("SUCCESS -> Exception handled!");
+            }
+        }
+        else {
+            configuracion = new Configuracion();
+        }
     }
-
 
     // ---------- FUNCIONES ALFABETO ----------
     /**
@@ -341,4 +382,35 @@ public class CtrlDominio
         ctrlAlfabeto.borrarTecladoVinculado(aVinculado, nomT);
         ctrlTeclado.borrarTeclado(nomT);
     }*/
+
+
+    // ---------- FUNCIONES PERSISTENCIA ----------
+    /**
+     * Guarda el objeto Configuracion configuracion en un fichero usando el CtrlPersistencia
+     */
+    public void guardaConfigAlfabetos() {
+        try {
+            ByteArrayOutputStream bs = new ByteArrayOutputStream();
+            ObjectOutputStream os = new ObjectOutputStream(bs);
+            os.writeObject(configuracion);
+            os.close();
+            byte[] bytes = bs.toByteArray();
+            ctrlPersistencia.guardaConfigAlfabetos(bytes);
+        } catch (IOException e) {
+            System.err.println(
+                    "RUNTIME UNHANDLED EXCEPTION -> IOException when trying to save config file! E: " + e.toString());
+            Thread.currentThread().getStackTrace();
+            System.exit(-102);
+        }
+    }
+
+
+    /**
+     * LA HAREMOS MÁS TARDE!!!
+     * Converteix les dades de Configuracio _config a una matriu de String per poder compartir-les entre capes
+     public Vector<Vector<String>> obtenirConfig() {
+     return _config.simplify();
+     } */
+
 }
+
