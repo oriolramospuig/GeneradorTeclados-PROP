@@ -21,7 +21,7 @@ public class VistaAlfabetoAB extends JFrame {
     /** Botón para borrar un alfabeto */
     private final JButton bBorrarAlfabeto = new JButton("Borrar Alfabeto");
     /** Botó de tornar a la pantalla del menú principal */
-    private final JButton bsalir = new JButton("ATRÁS");
+    private final JButton bsalir = new JButton("Atrás");
 
 
     //TEXTOS Y AREAS DE TEXTO
@@ -215,7 +215,7 @@ public class VistaAlfabetoAB extends JFrame {
                     bSalirErrorNombre2.addActionListener(lSalirErrorNombre);
 
                 }else { //se han llenado todos los campos
-                    CtrlPresentacion.borrarAlfabeto(areanomA1.getText());
+                    CtrlPresentacion.borrarAlfabeto(areanomA2.getText());
                     setVisible(false);
                 }
 
