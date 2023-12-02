@@ -2,6 +2,8 @@ package test;
 
 
 import main.domain.classes.*;
+import main.domain.classes.types.PairInt;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -18,24 +20,36 @@ public class TestConjuntoTeclados {
     private Teclado teclado1;
 
     private Teclado teclado2;
-    /*
+
     @Before
     public void setUp() {
         teclados = new ConjuntoTeclados();
-        String nombre = "nombre";
-        AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
-        Alfabeto alfabeto = new Alfabeto("Alfabeto");
-        Algoritmo algoritmo = Algoritmo.QAP;
-        PairInt dimensiones = new PairInt(5, 10);
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, algoritmo, dimensiones);
-        String nombre1 = "nombre";
-        AsociacionTextos asociacionTextos1 = new AsociacionTextos("Asociaciondetextos");
-        Alfabeto alfabeto1 = new Alfabeto("Alfabeto");
-        Algoritmo algoritmo1 = Algoritmo.QAP;
-        PairInt dimensiones1 = new PairInt(5, 10);
-        Teclado teclado1 = new Teclado(nombre, asociacionTextos, alfabeto, algoritmo, dimensiones);
+
+        String nombre = "teclado1";
+
+        AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos1");
+
+        ArrayList<Character> letras = new ArrayList<>();
+        Character c = 'a';
+        for (int i = 0; i < 12; ++i) {
+            letras.add(c);
+            ++c;
+        }
+        Alfabeto alfabeto = new Alfabeto("Alfabeto1", letras);
+
+        PairInt dimensiones = new PairInt(3, 4);
+        char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
+        teclado1 = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+
+        String nombre1 = "teclado2";
+
+        AsociacionTextos asociacionTextos1 = new AsociacionTextos("Asociaciondetextos2");
+
+        Alfabeto alfabeto1 = new Alfabeto("Alfabeto2", letras);
+        PairInt dimensiones1 = new PairInt(2, 6);
+        char[][] cont = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
+        teclado2 = new Teclado(nombre1, asociacionTextos1, alfabeto1, dimensiones1, cont);
     }
-     */
 
 
     // ---------- CONSTRUCTORAS ----------
@@ -48,7 +62,6 @@ public class TestConjuntoTeclados {
     @Test
     public void TestConstructora() {
         System.out.println("Test Constructora");
-
         assertTrue(teclados.getTeclados().isEmpty());
     }
 
@@ -67,10 +80,10 @@ public class TestConjuntoTeclados {
     public void TestGetTeclado() {
         System.out.println("Test getTeclado");
 
-        teclados.agregarTeclado("nombreT1", teclado1);
-        Teclado resultado = teclados.getTeclado("nombreT1");
+        teclados.agregarTeclado(teclado1.getNombre(), teclado1);
+        Teclado resultado = teclados.getTeclado(teclado1.getNombre());
         assertNotNull(resultado);
-        assertEquals("nombreT1", resultado.getNombre());
+        assertEquals("teclado1", resultado.getNombre());
     }
 
     /**
