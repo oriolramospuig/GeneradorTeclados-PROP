@@ -59,7 +59,7 @@ public class VistaMenuPrincipal extends JFrame {
         add(bteclado);
 
         // Botón salir
-        bsalir.setBounds(150, 235, 200, 20);
+        bsalir.setBounds(250, 235, 200, 20);
         add(bsalir);
 
         add(lamina);
@@ -70,9 +70,8 @@ public class VistaMenuPrincipal extends JFrame {
         ActionListener alfabeto = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //UIManager.put("FileChooser.openButtonText", "Obrir");
-                //UIManager.put("FileChooser.chooseButtonText", "Triar");
-                //UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
+                UIManager.put("FileChooser.openButtonText", "Obrir");
+                UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
                 CtrlPresentacion.vistaAlfabeto();
                 setVisible(false);
             }
@@ -81,9 +80,8 @@ public class VistaMenuPrincipal extends JFrame {
         ActionListener texto = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //UIManager.put("FileChooser.openButtonText", "Obrir");
-                //UIManager.put("FileChooser.chooseButtonText", "Triar");
-                //UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
+                UIManager.put("FileChooser.openButtonText", "Obrir");
+                UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
                 CtrlPresentacion.vistaTexto();
                 setVisible(false);
             }
@@ -92,9 +90,8 @@ public class VistaMenuPrincipal extends JFrame {
         ActionListener asocTextos = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //UIManager.put("FileChooser.openButtonText", "Obrir");
-                //UIManager.put("FileChooser.chooseButtonText", "Triar");
-                //UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
+                UIManager.put("FileChooser.openButtonText", "Obrir");
+                UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
                 CtrlPresentacion.vistaAsociacionTextos();
                 setVisible(false);
             }
@@ -103,9 +100,8 @@ public class VistaMenuPrincipal extends JFrame {
         ActionListener teclado = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //UIManager.put("FileChooser.openButtonText", "Obrir");
-                //UIManager.put("FileChooser.chooseButtonText", "Triar");
-                //UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
+                UIManager.put("FileChooser.openButtonText", "Obrir");
+                UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
                 CtrlPresentacion.vistaTeclado();
                 setVisible(false);
             }
