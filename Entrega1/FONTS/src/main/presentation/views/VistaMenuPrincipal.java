@@ -18,48 +18,81 @@ public class VistaMenuPrincipal extends JFrame {
     /** Título de la ventana */
     private final JLabel tituloVista = new JLabel("Generador de teclados PROP");
 
-    /** Botón para ir a la ventana de alfabeto */
-    private final JButton balfabeto = new JButton("ALFABETO");
+    /** Menú desplegable amb les opcions de crear o obrir un nou document, o guardar el document que s'està editant */
+    private JMenu alfabeto = new JMenu("Alfabeto");
 
-    /** Botón para ir a la ventana de texto */
-    private final JButton btexto = new JButton("TEXTO");
+    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
+    private JMenuItem agregar_borrarA = new JMenuItem("Agrega/Elimina");
 
-    /** Botón para ir a la ventana de asociacion de textos */
-    private final JButton basociacionTextos = new JButton("ASOCIACIÓN DE TEXTOS");
+    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
+    private JMenuItem consultar_modificarA = new JMenuItem("Consulta/Modifica");
 
-    /** Botón para ir a la ventana de teclado */
-    private final JButton bteclado = new JButton("TECLADO");
+    /** Menú desplegable amb les opcions de crear o obrir un nou document, o guardar el document que s'està editant */
+    private JMenu texto = new JMenu("Texto");
+
+    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
+    private JMenuItem agregar_borrarTxt = new JMenuItem("Agrega/Elimina");
+
+    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
+    private JMenuItem consultar_modificarTxt = new JMenuItem("Consulta/Modifica");
+
+    /** Menú desplegable amb les opcions de crear o obrir un nou document, o guardar el document que s'està editant */
+    private JMenu asociacion = new JMenu("Asociación de Textos");
+
+    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
+    private JMenuItem agregar_borrarAT = new JMenuItem("Agrega/Elimina");
+
+    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
+    private JMenuItem consultar_modificarAT = new JMenuItem("Consulta/Modifica");
+
+    /** Menú desplegable amb les opcions de crear o obrir un nou document, o guardar el document que s'està editant */
+    private JMenu teclado = new JMenu("Teclado");
+
+    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
+    private JMenuItem agregar_borrarT = new JMenuItem("Agrega/Elimina");
+
+    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
+    private JMenuItem consultar_modificarT = new JMenuItem("Consulta/Modifica");
 
     /** Botón de salida para cerrar el programa */
     private final JButton bsalir = new JButton("Salir");
 
     public VistaMenuPrincipal() {
-        setBounds(500, 300, 500, 300);
+        setBounds(250, 150, 1000, 600);
         setResizable(true);
         setTitle("Generador de teclados PROP");
 
+        alfabeto.add(agregar_borrarA);
+        alfabeto.add(consultar_modificarA);
+        texto.add(agregar_borrarTxt);
+        texto.add(consultar_modificarTxt);
+        asociacion.add(agregar_borrarAT);
+        asociacion.add(consultar_modificarAT);
+        teclado.add(agregar_borrarT);
+        teclado.add(consultar_modificarT);
+
         // Títol finestra
-        tituloVista.setBounds(10, 5, 200, 30);
+        tituloVista.setBounds(40, 20, 200, 30);
         add(tituloVista);
 
         // Botón alfabeto
-        balfabeto.setBounds(150, 50, 200, 20);
-        add(balfabeto);
+        alfabeto.setBounds(400, 100, 200, 20);
+        add(alfabeto);
 
         // Botón texto
-        btexto.setBounds(150, 90, 200, 20);
-        add(btexto);
+        texto.setBounds(400, 200, 200, 20);
+        add(texto);
 
         // Botón asociación textos
-        basociacionTextos.setBounds(150, 130, 200, 20);
-        add(basociacionTextos);
+        asociacion.setBounds(400, 300, 200, 20);
+        add(asociacion);
 
         // Botón teclado
-        bteclado.setBounds(150, 170, 200, 20);
-        add(bteclado);
+        teclado.setBounds(400, 400, 200, 20);
+        add(teclado);
 
         // Botón salir
-        bsalir.setBounds(250, 235, 200, 20);
+        bsalir.setBounds(800, 500, 100, 20);
         add(bsalir);
 
         add(lamina);
@@ -67,42 +100,66 @@ public class VistaMenuPrincipal extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        ActionListener alfabeto = new ActionListener() {
+        ActionListener lAgregarEliminarA = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UIManager.put("FileChooser.openButtonText", "Obrir");
-                UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
-                CtrlPresentacion.vistaAlfabeto();
+                CtrlPresentacion.vistaAsociacionTextosAB();
                 setVisible(false);
             }
         };
 
-        ActionListener texto = new ActionListener() {
+        ActionListener lAgregarEliminarTxt = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UIManager.put("FileChooser.openButtonText", "Obrir");
-                UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
-                CtrlPresentacion.vistaTexto();
+                CtrlPresentacion.vistaTextoAB();
                 setVisible(false);
             }
         };
 
-        ActionListener asocTextos = new ActionListener() {
+        ActionListener lAgregarEliminarAT = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UIManager.put("FileChooser.openButtonText", "Obrir");
-                UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
-                CtrlPresentacion.vistaAsociacionTextos();
+                CtrlPresentacion.vistaAsociacionTextosAB();
                 setVisible(false);
             }
         };
 
-        ActionListener teclado = new ActionListener() {
+        ActionListener lAgregarEliminarT = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UIManager.put("FileChooser.openButtonText", "Obrir");
-                UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
-                CtrlPresentacion.vistaTeclado();
+                CtrlPresentacion.vistaTecladoAB();
+                setVisible(false);
+            }
+        };
+
+        ActionListener lConsultarModificarA = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.vistaAlfabetoCM();
+                setVisible(false);
+            }
+        };
+
+        ActionListener lConsultarModificarTxt = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.vistaTextoCM();
+                setVisible(false);
+            }
+        };
+
+        ActionListener lConsultarModificarAT = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.vistaAsociacionTextosCM();
+                setVisible(false);
+            }
+        };
+
+        ActionListener lConsultarModificarT = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.vistaTecladoCM();
                 setVisible(false);
             }
         };
@@ -114,11 +171,16 @@ public class VistaMenuPrincipal extends JFrame {
             }
         };
 
-        balfabeto.addActionListener(alfabeto);
-        btexto.addActionListener(texto);
-        basociacionTextos.addActionListener(asocTextos);
-        bteclado.addActionListener(teclado);
         bsalir.addActionListener(salir);
+
+        agregar_borrarA.addActionListener(lAgregarEliminarA);
+        consultar_modificarA.addActionListener(lConsultarModificarA);
+        agregar_borrarTxt.addActionListener(lAgregarEliminarTxt);
+        consultar_modificarTxt.addActionListener(lConsultarModificarTxt);
+        agregar_borrarAT.addActionListener(lAgregarEliminarAT);
+        consultar_modificarAT.addActionListener(lConsultarModificarAT);
+        agregar_borrarT.addActionListener(lAgregarEliminarT);
+        consultar_modificarT.addActionListener(lConsultarModificarT);
     }
 
 
