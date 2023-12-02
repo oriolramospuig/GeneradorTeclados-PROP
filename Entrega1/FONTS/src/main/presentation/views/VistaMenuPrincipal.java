@@ -9,87 +9,66 @@ import java.io.File;
 
 public class VistaMenuPrincipal extends JFrame {
 
-    /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
-
-    /** Ventana de selección del directori on es vol crear el document creat */
-    //private JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory()); // el getHomeDirectory ns si va aqui
-
-    /** Título de la ventana */
     private final JLabel tituloVista = new JLabel("Generador de teclados PROP");
 
-    /** Menú desplegable amb les opcions de crear o obrir un nou document, o guardar el document que s'està editant */
-    private JMenu alfabeto = new JMenu("Alfabeto");
+    private JPopupMenu popupMenuA = new JPopupMenu();
+    private JPopupMenu popupMenuTxt = new JPopupMenu();
+    private JPopupMenu popupMenuAT = new JPopupMenu();
+    private JPopupMenu popupMenuT = new JPopupMenu();
 
-    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
     private JMenuItem agregar_borrarA = new JMenuItem("Agrega/Elimina");
-
-    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
     private JMenuItem consultar_modificarA = new JMenuItem("Consulta/Modifica");
 
-    /** Menú desplegable amb les opcions de crear o obrir un nou document, o guardar el document que s'està editant */
-    private JMenu texto = new JMenu("Texto");
-
-    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
     private JMenuItem agregar_borrarTxt = new JMenuItem("Agrega/Elimina");
-
-    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
     private JMenuItem consultar_modificarTxt = new JMenuItem("Consulta/Modifica");
 
-    /** Menú desplegable amb les opcions de crear o obrir un nou document, o guardar el document que s'està editant */
-    private JMenu asociacion = new JMenu("Asociación de Textos");
-
-    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
     private JMenuItem agregar_borrarAT = new JMenuItem("Agrega/Elimina");
-
-    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
     private JMenuItem consultar_modificarAT = new JMenuItem("Consulta/Modifica");
 
-    /** Menú desplegable amb les opcions de crear o obrir un nou document, o guardar el document que s'està editant */
-    private JMenu teclado = new JMenu("Teclado");
-
-    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
     private JMenuItem agregar_borrarT = new JMenuItem("Agrega/Elimina");
-
-    /** Ítem del menú desplegable de Fitxer per a crear un nou document */
     private JMenuItem consultar_modificarT = new JMenuItem("Consulta/Modifica");
 
-    /** Botón de salida para cerrar el programa */
-    private final JButton bsalir = new JButton("Salir");
+    private JButton bsalir = new JButton("Salir");
+
+    // Botones para mostrar los menús
+    private JButton btnAlfabeto = new JButton("Alfabeto");
+    private JButton btnTexto = new JButton("Texto");
+    private JButton btnAsociacion = new JButton("Asociación de Textos");
+    private JButton btnTeclado = new JButton("Teclado");
 
     public VistaMenuPrincipal() {
         setBounds(250, 150, 1000, 600);
         setResizable(true);
         setTitle("Generador de teclados PROP");
 
-        alfabeto.add(agregar_borrarA);
-        alfabeto.add(consultar_modificarA);
-        texto.add(agregar_borrarTxt);
-        texto.add(consultar_modificarTxt);
-        asociacion.add(agregar_borrarAT);
-        asociacion.add(consultar_modificarAT);
-        teclado.add(agregar_borrarT);
-        teclado.add(consultar_modificarT);
+        popupMenuA.add(agregar_borrarA);
+        popupMenuA.add(consultar_modificarA);
 
-        // Títol finestra
+        popupMenuTxt.add(agregar_borrarTxt);
+        popupMenuTxt.add(consultar_modificarTxt);
+
+        popupMenuAT.add(agregar_borrarAT);
+        popupMenuAT.add(consultar_modificarAT);
+
+        popupMenuT.add(agregar_borrarT);
+        popupMenuT.add(consultar_modificarT);
+
+        // Configurar botones y sus posiciones
+        btnAlfabeto.setBounds(400, 100, 200, 20);
+        btnTexto.setBounds(400, 200, 200, 20);
+        btnAsociacion.setBounds(400, 300, 200, 20);
+        btnTeclado.setBounds(400, 400, 200, 20);
+
+        // Añadir botones a la ventana
+        add(btnAlfabeto);
+        add(btnTexto);
+        add(btnAsociacion);
+        add(btnTeclado);
+
+        // Título de la ventana
         tituloVista.setBounds(40, 20, 200, 30);
         add(tituloVista);
-
-        // Botón alfabeto
-        alfabeto.setBounds(400, 100, 200, 20);
-        add(alfabeto);
-
-        // Botón texto
-        texto.setBounds(400, 200, 200, 20);
-        add(texto);
-
-        // Botón asociación textos
-        asociacion.setBounds(400, 300, 200, 20);
-        add(asociacion);
-
-        // Botón teclado
-        teclado.setBounds(400, 400, 200, 20);
-        add(teclado);
 
         // Botón salir
         bsalir.setBounds(800, 500, 100, 20);
@@ -170,6 +149,11 @@ public class VistaMenuPrincipal extends JFrame {
                 System.exit(0);
             }
         };
+
+        btnAlfabeto.addActionListener(e -> popupMenuA.show(btnAlfabeto, 0, btnAlfabeto.getHeight()));
+        btnTexto.addActionListener(e -> popupMenuTxt.show(btnTexto, 0, btnTexto.getHeight()));
+        btnAsociacion.addActionListener(e -> popupMenuAT.show(btnAsociacion, 0, btnAsociacion.getHeight()));
+        btnTeclado.addActionListener(e -> popupMenuT.show(btnTeclado, 0, btnTeclado.getHeight()));
 
         bsalir.addActionListener(salir);
 
