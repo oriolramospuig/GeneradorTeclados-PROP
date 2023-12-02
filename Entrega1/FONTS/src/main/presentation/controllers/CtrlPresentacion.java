@@ -20,23 +20,45 @@ public class CtrlPresentacion {
     public static void iniPresentacion() {
         VistaMenuPrincipal vMP = new VistaMenuPrincipal();
     }
+
     /** Muestra por pantalla la ventana de las funcionalidades de alfabeto */
-    public static void vistaAlfabeto() {
-        VistaAlfabeto vA = new VistaAlfabeto ();
+    public static void vistaAlfabetoAB() {
+        VistaAlfabetoAB vA = new VistaAlfabetoAB();
+    }
+    /** Muestra por pantalla la ventana de las funcionalidades de alfabeto */
+    public static void vistaAlfabetoCM() {
+        VistaAlfabetoCM vA = new VistaAlfabetoCM();
+    }
+
+    /** Muestra por pantalla la ventana de las funcionalidades de texto */
+    public static void vistaTextoAB() {
+        VistaTextoAB vTxt = new VistaTextoAB();
     }
     /** Muestra por pantalla la ventana de las funcionalidades de texto */
-    public static void vistaTexto() {
-        VistaTexto vTxt = new VistaTexto();
+    public static void vistaTextoCM() {
+        VistaTextoCM vTxt = new VistaTextoCM();
+    }
+
+    /** Muestra por pantalla la ventana de las funcionalidades de asociación de textos */
+    public static void vistaAsociacionTextosAB() {
+        VistaAsociacionTextosAB vAT = new VistaAsociacionTextosAB();
     }
     /** Muestra por pantalla la ventana de las funcionalidades de asociación de textos */
-    public static void vistaAsociacionTextos() {
-        VistaAsociacionTextos vAT = new VistaAsociacionTextos();
+    public static void vistaAsociacionTextosCM() {
+        VistaAsociacionTextosCM vAT = new VistaAsociacionTextosCM();
+    }
+
+    /**
+     * Muestra por pantalla la ventana de las funcionalidades de teclado
+     */
+    public static void vistaTecladoAB() {
+        VistaTecladoAB vTec = new VistaTecladoAB();
     }
     /**
      * Muestra por pantalla la ventana de las funcionalidades de teclado
      */
-    public static void vistaTeclado() {
-        VistaTeclado vTec = new VistaTeclado();
+    public static void vistaTecladoCM() {
+        VistaTecladoCM vTec = new VistaTecladoCM();
     }
 
 
