@@ -1,5 +1,7 @@
 package main.presentation.views;
 
+import main.presentation.controllers.CtrlPresentacion;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.event.*;
@@ -64,6 +66,63 @@ public class VistaMenuPrincipal extends JFrame {
 
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        ActionListener alfabeto = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //UIManager.put("FileChooser.openButtonText", "Obrir");
+                //UIManager.put("FileChooser.chooseButtonText", "Triar");
+                //UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
+                CtrlPresentacion.vistaAlfabeto();
+                setVisible(false);
+            }
+        };
+
+        ActionListener texto = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //UIManager.put("FileChooser.openButtonText", "Obrir");
+                //UIManager.put("FileChooser.chooseButtonText", "Triar");
+                //UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
+                CtrlPresentacion.vistaTexto();
+                setVisible(false);
+            }
+        };
+
+        ActionListener asocTextos = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //UIManager.put("FileChooser.openButtonText", "Obrir");
+                //UIManager.put("FileChooser.chooseButtonText", "Triar");
+                //UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
+                CtrlPresentacion.vistaAsociacionTextos();
+                setVisible(false);
+            }
+        };
+
+        ActionListener teclado = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //UIManager.put("FileChooser.openButtonText", "Obrir");
+                //UIManager.put("FileChooser.chooseButtonText", "Triar");
+                //UIManager.put("FileChooser.cancelButtonText", "Cancel·lar");
+                CtrlPresentacion.vistaTeclado();
+                setVisible(false);
+            }
+        };
+
+        ActionListener salir = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        };
+
+        balfabeto.addActionListener(alfabeto);
+        btexto.addActionListener(texto);
+        basociacionTextos.addActionListener(asocTextos);
+        bteclado.addActionListener(teclado);
+        bsalir.addActionListener(salir);
     }
 
 
