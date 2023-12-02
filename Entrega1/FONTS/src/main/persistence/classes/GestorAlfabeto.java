@@ -19,10 +19,10 @@ public class GestorAlfabeto {
         }
     }
 
-    public static Map<String, ArrayList<Character>> cargarAlfabeto(String path) {
-        Map<String, ArrayList<Character>> alfabeto = new HashMap<>();
+    public static HashMap<String, ArrayList<Character>> cargarAlfabeto(String path) {
+        HashMap<String, ArrayList<Character>> alfabeto = new HashMap<>();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
-            alfabeto = (Map<String, ArrayList<Character>>) ois.readObject();
+            alfabeto = (HashMap<String, ArrayList<Character>>) ois.readObject();
             System.out.println("Alfabeto cargado con éxito desde " + path);
         } catch (IOException | ClassNotFoundException e) {
             logger.log(Level.SEVERE, "Error al cargar alfabetos desde el archivo " + path, e);
