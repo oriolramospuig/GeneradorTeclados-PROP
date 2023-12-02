@@ -1,23 +1,26 @@
 package main.presentation.views;
 
+import main.presentation.controllers.CtrlPresentacion;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.event.*;
 import java.io.File;
 
 
-public class VistaTeclado {
+public class VistaTeclado extends JFrame{
 
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
     /** Título de la ventana */
-    private final JLabel tituloVistaT = new JLabel("Editar teclados");
+    private final JLabel tituloVistaT = new JLabel("Teclados");
     /** Botón para agregar un teclado por QAP o Algoritmo 2 */
-    private final JButton bNuevoTecladoPor = new JButton("Nuevo Teclado por");
-    /** Botón para crear un teclado por QAP */
-    private final JButton bNuevoTecladoPorQAP = new JButton("Nuevo teclado mediante QAP");
+    private final JButton bNuevoTecladoPor = new JButton("Crear Teclado");
     /** Área de texto para introducir el nombre del teclado que se quiere crear */
-    private final JTextArea areanomT = new JTextArea();
+    private final JButton bConsultarTeclado = new JButton("Consultar Teclado");
+    private final JButton bModificarTeclado = new JButton("Modificar Teclado");
+    private final JButton bEliminarTeclado = new JButton("Eliminar Teclado");
+    private final JButton bAtras = new JButton("Atrás");
 
 
     //FUNCIONALIDADES
@@ -34,18 +37,45 @@ public class VistaTeclado {
 
     public VistaTeclado(){
 
-        lamina.setBounds(500, 300, 500, 300);
+        setBounds(500, 300, 500, 300);
 
         // Título
         tituloVistaT.setBounds(10, 5, 120, 30);
-        lamina.add(tituloVistaT);
+        add(tituloVistaT);
 
         // Botón agregarAlfabetoPorTerminal
-        bNuevoTecladoPor.setBounds(150, 200, 200, 20);
-        lamina.add(bNuevoTecladoPor);
+        bNuevoTecladoPor.setBounds(150, 50, 200, 20);
+        add(bNuevoTecladoPor);
 
-        // Área texto Nombre Alfabeto
-        areanomT.setBounds(175,75, 200,20);
-        lamina.add(areanomT);
+        bConsultarTeclado.setBounds(150, 90, 200, 20);
+        add(bConsultarTeclado);
+
+        bModificarTeclado.setBounds(150, 130, 200, 20);
+        add(bModificarTeclado);
+
+        bEliminarTeclado.setBounds(150, 170, 200, 20);
+        add(bEliminarTeclado);
+
+        bAtras.setBounds(250, 235, 200, 20);
+        add(bAtras);
+
+        add(lamina);
+
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        ActionListener crear = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.iniPresentacion();
+                setVisible(false);
+            }
+        };
+
+        bNuevoTecladoPor.addActionListener(crear);
+        bConsultarTeclado.addActionListener(crear);
+        bModificarTeclado.addActionListener(crear);
+        bEliminarTeclado.addActionListener(crear);
+        bAtras.addActionListener(crear);
     }
 }
