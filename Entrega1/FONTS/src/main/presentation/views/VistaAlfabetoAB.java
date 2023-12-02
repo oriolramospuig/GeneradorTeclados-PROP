@@ -1,5 +1,7 @@
 package main.presentation.views;
 
+import main.presentation.controllers.CtrlPresentacion;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.event.*;
@@ -19,14 +21,15 @@ public class VistaAlfabetoAB extends JFrame {
     /** Botón para borrar un alfabeto */
     private final JButton bBorrarAlfabeto = new JButton("Borrar Alfabeto");
     /** Botó de tornar a la pantalla del menú principal */
-    private final JButton salir = new JButton("ATRÁS");
+    private final JButton bsalir = new JButton("ATRÁS");
 
 
     //TEXTOS Y AREAS DE TEXTO
+    //VENTANA SUPERIOR
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
-    private final JLabel txtNombre = new JLabel("NOMBRE:");
+    private final JLabel txtNombre1 = new JLabel("NOMBRE:");
     /** Área de texto para introducir el nombre del alfabeto que se quiere crear */
-    private final JTextArea areanomA = new JTextArea();
+    private final JTextArea areanomA1 = new JTextArea();
     /** Texto indicando que la barra de texto de al lado es para introducir el contenido del alfabeto */
     private final JLabel txtContenido = new JLabel("CONTENIDO:");
     /** Área de texto para introducir el contenido del alfabeto que se quiere crear */
@@ -35,6 +38,12 @@ public class VistaAlfabetoAB extends JFrame {
     private final JLabel txtPath = new JLabel("PATH:");
     /** Área de texto para introducir el path del alfabeto que se quiere crear */
     private final JTextArea areaPath = new JTextArea();
+
+    //VENTANA INFERIOR
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
+    private final JLabel txtNombre2 = new JLabel("NOMBRE:");
+    /** Área de texto para introducir el nombre del alfabeto que se quiere crear */
+    private final JTextArea areanomA2 = new JTextArea();
 
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere crear un alfabeto sin nombre */
@@ -55,41 +64,55 @@ public class VistaAlfabetoAB extends JFrame {
         add(tituloVistaA1);
 
         // Título ventana inferior
-        tituloVistaA2.setBounds(310, 5, 120, 30);
+        tituloVistaA2.setBounds(10, 305, 120, 30);
         add(tituloVistaA2);
 
-
+        //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombre.setBounds(50, 35, 200, 20);
-        add(txtNombre);
+        txtNombre1.setBounds(50, 35, 200, 20);
+        add(txtNombre1);
 
         // Área texto Nombre
-        areanomA.setBounds(175,35, 200,20);
-        add(areanomA);
+        areanomA1.setBounds(250,35, 200,20);
+        add(areanomA1);
 
         // Texto Contenido
         txtContenido.setBounds(50, 75, 200, 20);
         add(txtContenido);
 
         // Área texto Contenido
-        areaContenido.setBounds(175,75, 200,60);
+        areaContenido.setBounds(250,75, 200,60);
         add(areaContenido);
 
         // Texto Path
-        txtPath.setBounds(50, 135, 200, 20);
+        txtPath.setBounds(50, 175, 200, 20);
         add(txtPath);
 
         // Área texto Path
-        areaPath.setBounds(175,135, 200,20);
+        areaPath.setBounds(250,175, 200,20);
         add(areaPath);
 
+        //VENTANA INFERIOR
+        // Texto Nombre
+        txtNombre2.setBounds(50, 335, 200, 20);
+        add(txtNombre2);
+
+        // Área texto Nombre
+        areanomA2.setBounds(250,335, 200,20);
+        add(areanomA2);
+
+        //
         // Botón agregar Alfabeto
-        bAgregarAlfabeto.setBounds(150, 250, 100, 20);
+        bAgregarAlfabeto.setBounds(700, 250, 200, 20);
         add(bAgregarAlfabeto);
 
         // Botón borrar Alfabeto
-        bBorrarAlfabeto.setBounds(150, 550, 100, 20);
+        bBorrarAlfabeto.setBounds(700, 400, 200, 20);
         add(bBorrarAlfabeto);
+
+        // Botón salir para ir a la pantalla principal
+        bsalir.setBounds(800, 500, 100, 20);
+        add(bsalir);
 
         add(lamina);
 
@@ -100,7 +123,7 @@ public class VistaAlfabetoAB extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nombreA = null;
-                if (areanomA.getText().isEmpty()){
+                if (areanomA1.getText().isEmpty()){
                     JDialog sinNombre =  new JDialog(Nomframe, "Error: No Nombre");
                     sinNombre.setBounds(800, 300, 400, 200);
                     sinNombre.setLayout(null);
@@ -113,11 +136,17 @@ public class VistaAlfabetoAB extends JFrame {
                     sinNombre.add(txtErrorNombre);
                     sinNombre.add(bSalirErrorNombre);
                     sinNombre.setVisible(true);
-                }
-                else nombreA = areanomA.getText();
 
-                String contenido = null;
-                if (areaContenido.getText().isEmpty() && areaPath.getText().isEmpty()){
+                    ActionListener lSalirErrorNombre = new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            sinNombre.dispose();
+                            sinNombre.setVisible(false);
+                        }
+                    };
+                    bSalirErrorNombre.addActionListener(lSalirErrorNombre);
+
+                } else if (areaContenido.getText().isEmpty() && areaPath.getText().isEmpty()){
                     JDialog sinConPath =  new JDialog(Nomframe, "Error: No Contenido o No Path");
                     sinConPath.setBounds(800, 300, 400, 200);
                     sinConPath.setLayout(null);
@@ -130,13 +159,22 @@ public class VistaAlfabetoAB extends JFrame {
                     sinConPath.add(txtErrorConPath);
                     sinConPath.add(bSalirErrorConPath);
                     sinConPath.setVisible(true);
-                }
-                else {
+
+                    ActionListener lSalirErrorConPath = new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            sinConPath.dispose();
+                            sinConPath.setVisible(false);
+                        }
+                    };
+                    bSalirErrorConPath.addActionListener(lSalirErrorConPath);
+                }else { //se han llenado todos los campos
                     if(areaContenido.getText().isEmpty()){
                         // fer lo del path areaPath.getText();
                     }
                     else if(areaPath.getText().isEmpty()) {
-                        contenido = areaContenido.getText();
+                        //CtrlPresentacion.agregarAlfabeto(areanomA1.getText(), areaContenido.getText());
+                        setVisible(false);
                     }
                 }
 
@@ -144,48 +182,27 @@ public class VistaAlfabetoAB extends JFrame {
                 //else files = Integer.parseInt(areaFiles.getText());
 
 
-                /*if (areaPath.getText().length() == 0){
-                    JDialog senseLoc =  new JDialog(frame, "Error: no Path");
-                    senseLoc.setBounds(800, 300, 400, 200);
-                    senseLoc.setLayout(null);
+            }
+        };
 
-                    JLabel txtErrorPath = new JLabel("S'ha d'especificar el path del Document");
-                    txtErrorPath.setBounds(80, 20, 400, 40);
-                    JButton botoSortirErrorPath = new JButton("Sortir");
-                    botoSortirErrorPath.setVisible(true);
-                    botoSortirErrorPath.setBounds(150, 110, 100, 30);
-                    senseLoc.add(txtErrorPath);
-                    senseLoc.add(botoSortirErrorPath);
-                    senseLoc.setVisible(true);
-
-                    ActionListener lSortirErrorPath = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            senseLoc.dispose();
-                            senseLoc.setVisible(false);
-                        }
-                    };
-
-                    botoSortirErrorPath.addActionListener(lSortirErrorPath);
-
-                } else if (areaNom.getText().length() == 0) {
-                    CtrlPresentacion.crearDocument(areaPath.getText(), "Sense_titol");
-                    CtrlPresentacio.crearFull("Full 1", columnes , files);
-                    CtrlPresentacio.vistaSpreadsheet("Sense_titol", false);
-                    setVisible(false);
-
-                } else { // s'ha introduït un nom
-                    CtrlPresentacio.crearDocument(areaPath.getText(), areaNom.getText());
-                    CtrlPresentacio.crearFull(columnes , files);
-                    CtrlPresentacio.vistaSpreadsheet(CtrlPresentacio.getNomDocument(), false);
-                    setVisible(false);
-                }*/
-
+        ActionListener lBorrar = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
             }
         };
 
+        ActionListener lSalir = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.iniPresentacion();
+                setVisible(false);
+            }
+        };
 
+        bAgregarAlfabeto.addActionListener(lAgregar);
+        bBorrarAlfabeto.addActionListener(lBorrar);
+        bsalir.addActionListener(lSalir);
 
     }
 
