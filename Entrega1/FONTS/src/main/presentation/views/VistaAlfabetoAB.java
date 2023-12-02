@@ -10,14 +10,17 @@ public class VistaAlfabetoAB extends JFrame {
     //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
-    /** Título de la ventana */
-    private final JLabel tituloVistaA = new JLabel("Editar alfabetos");
-    /** Botón para agregar un alfabeto por .... */
-    private final JButton bNuevoAlfabetoPor = new JButton("Nuevo alfabeto por");
-    /** Botón para agregar un alfabeto por archivo */
-    private final JButton bNuevoAlfabetoPorArchivo = new JButton("Nuevo alfabeto por archivo");
+    /** Título de media ventana superior */
+    private final JLabel tituloVistaA1 = new JLabel("Agregar alfabeto");
+    /** Título de media ventana inferior */
+    private final JLabel tituloVistaA2 = new JLabel("Borrar alfabeto");
+    /** Botón para agregar un alfabeto */
+    private final JButton bAgregarAlfabeto = new JButton("Agregar Alfabeto");
+    /** Botón para borrar un alfabeto */
+    private final JButton bBorrarAlfabeto = new JButton("Borrar Alfabeto");
     /** Botó de tornar a la pantalla del menú principal */
     private final JButton salir = new JButton("ATRÁS");
+
 
     //TEXTOS Y AREAS DE TEXTO
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
@@ -47,21 +50,21 @@ public class VistaAlfabetoAB extends JFrame {
         //setResizable(true);
         //setTitle("Funcionalidades alfabeto);
 
-        // Título ventana
-        tituloVistaA.setBounds(10, 5, 120, 30);
-        add(tituloVistaA);
+        // Título ventana superior
+        tituloVistaA1.setBounds(10, 5, 120, 30);
+        add(tituloVistaA1);
 
-        // Botón agregarAlfabetoPorTerminal
-        bNuevoAlfabetoPor.setBounds(150, 200, 200, 20);
-        add(bNuevoAlfabetoPor);
+        // Título ventana inferior
+        tituloVistaA2.setBounds(310, 5, 120, 30);
+        add(tituloVistaA2);
 
 
         // Texto Nombre
-        txtNombre.setBounds(50, 75, 200, 20);
+        txtNombre.setBounds(50, 35, 200, 20);
         add(txtNombre);
 
         // Área texto Nombre
-        areanomA.setBounds(175,75, 200,20);
+        areanomA.setBounds(175,35, 200,20);
         add(areanomA);
 
         // Texto Contenido
@@ -73,12 +76,20 @@ public class VistaAlfabetoAB extends JFrame {
         add(areaContenido);
 
         // Texto Path
-        txtPath.setBounds(50, 35, 200, 20);
+        txtPath.setBounds(50, 135, 200, 20);
         add(txtPath);
 
         // Área texto Path
-        areaPath.setBounds(175,75, 200,60);
+        areaPath.setBounds(175,135, 200,20);
         add(areaPath);
+
+        // Botón agregar Alfabeto
+        bAgregarAlfabeto.setBounds(150, 250, 100, 20);
+        add(bAgregarAlfabeto);
+
+        // Botón borrar Alfabeto
+        bBorrarAlfabeto.setBounds(150, 550, 100, 20);
+        add(bBorrarAlfabeto);
 
         add(lamina);
 
