@@ -7,8 +7,7 @@ import org.junit.*;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 /**
  * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
@@ -24,18 +23,23 @@ public class TestTeclado {
     @Test
     public void TestConstructora() {
         System.out.println("Test Constructora");
-        String nombre = "nombre";
-        AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
-        Alfabeto alfabeto = new Alfabeto();
-        //Algoritmo algoritmo = Algoritmo.QAP;
-        PairInt dimensiones = new PairInt(10, 20);
-        //buit, no esta generat per algorisme
-        char[][] contenido = new char[0][0];
+
+        String nombre = "nombre1";
+
+        AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos1");
+
+        ArrayList<Character> l = new ArrayList<>();
+        Alfabeto alfabeto = new Alfabeto("Alfabeto1", l);
+
+        PairInt dimensiones = new PairInt(10,20);
+        char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
+
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
 
+        assertNotNull(teclado);
         assertEquals(nombre, teclado.getNombre());
-        //assertEquals(algoritmo, teclado.getAlgoritmo());
-        assertEquals(dimensiones, teclado.getDimensiones());
+        assertEquals(10, teclado.getDimensiones().getPrimero().intValue());
+        assertEquals(20, teclado.getDimensiones().getSegundo().intValue());
         assertEquals(alfabeto.getNombre(), teclado.getAlfabetoVinculado());
         assertEquals(asociacionTextos.getNombre(), teclado.getAsociacionTextosVinculado());
     }
@@ -51,13 +55,16 @@ public class TestTeclado {
     @Test
     public void testgetDimensiones() {
         System.out.println("Test get Dimensiones");
-        String nombre = "nombre";
-        AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
-        Alfabeto alfabeto = new Alfabeto();
-        //Algoritmo algoritmo = Algoritmo.QAP;
+        String nombre = "nombreTec";
+
+        AsociacionTextos asociacionTextos = new AsociacionTextos("AsociaciondetextosTec");
+
+        ArrayList<Character> l = new ArrayList<>();
+        Alfabeto alfabeto = new Alfabeto("AlfabetoTec", l);
+
         PairInt dimensiones = new PairInt(5, 10);
-        //buida, no l'hem generat a partir de l'algoritme
-        char[][] contenido = new char[0][0];
+        char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
+
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
         teclado.setDimensiones(dimensiones);
 
@@ -77,12 +84,17 @@ public class TestTeclado {
     @Test
     public void testSetPuntuacion() {
         System.out.println("Test set Puntuacion");
+
         String nombre = "nombre";
+
         AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
-        Alfabeto alfabeto = new Alfabeto();
-        //Algoritmo algoritmo = Algoritmo.QAP;
+
+        ArrayList<Character> l = new ArrayList<>();
+        Alfabeto alfabeto = new Alfabeto("Alfabeto", l);
+
         PairInt dimensiones = new PairInt(5, 10);
-        char[][] contenido = new char[0][0];
+
+        char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
         int puntuacion = 100;
 
@@ -101,13 +113,19 @@ public class TestTeclado {
     @Test
     public void testSetDimensiones() {
         System.out.println("Test set Dimensiones");
+
         String nombre = "nombre";
+
         AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
-        Alfabeto alfabeto = new Alfabeto();
-        //Algoritmo algoritmo = Algoritmo.QAP;
+
+        ArrayList<Character> l = new ArrayList<>();
+        Alfabeto alfabeto = new Alfabeto("Alfabeto", l);
+
         PairInt dimensiones = new PairInt(10, 20);
-        char[][] contenido = new char[0][0];
+
+        char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+
         PairInt dimensiones2 = new PairInt(5, 10);
 
         teclado.setDimensiones(dimensiones2);
@@ -125,13 +143,19 @@ public class TestTeclado {
     @Test
     public void testagregarAlfabetovinculado() {
         System.out.println("Test agregar Alfabeto Vinculado");
+
         String nombre = "nombre";
+
         AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
-        Alfabeto alfabeto = new Alfabeto();
-        //Algoritmo algoritmo = Algoritmo.QAP;
-        PairInt dimensiones = new PairInt(10, 20);
-        char[][] contenido = new char[0][0];
+
+        ArrayList<Character> l = new ArrayList<>();
+        Alfabeto alfabeto = new Alfabeto("Alfabeto", l);
+
+        PairInt dimensiones = new PairInt(5, 10);
+
+        char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+
         ArrayList<Character> letras = new ArrayList<>();
         Alfabeto alfabeto2 = new Alfabeto("nombre2", letras);
 
@@ -149,13 +173,19 @@ public class TestTeclado {
     @Test
     public void testagregarAsociacionTextosVinculado() {
         System.out.println("Test agregar Asociacion Textos Vinculado");
+
         String nombre = "nombre";
+
         AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
-        Alfabeto alfabeto = new Alfabeto();
-        //Algoritmo algoritmo = Algoritmo.QAP;
-        PairInt dimensiones = new PairInt(10, 20);
-        char[][] contenido = new char[0][0];
+
+        ArrayList<Character> l = new ArrayList<>();
+        Alfabeto alfabeto = new Alfabeto("Alfabeto", l);
+
+        PairInt dimensiones = new PairInt(5, 10);
+
+        char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+
         AsociacionTextos asociacionTextos2 = new AsociacionTextos("nombre2");
 
         teclado.agregarAsociacionTextosVinculado("nombre2");
@@ -174,12 +204,17 @@ public class TestTeclado {
     @Test
     public void testborrarAlfabetoVinculado() {
         System.out.println("Test Borrar Alfabeto Vinculado");
+
         String nombre = "nombre";
+
         AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
-        Alfabeto alfabeto = new Alfabeto();
-        //Algoritmo algoritmo = Algoritmo.QAP;
-        PairInt dimensiones = new PairInt(10, 20);
-        char[][] contenido = new char[0][0];
+
+        ArrayList<Character> l = new ArrayList<>();
+        Alfabeto alfabeto = new Alfabeto("Alfabeto", l);
+
+        PairInt dimensiones = new PairInt(5, 10);
+
+        char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
 
         teclado.borrarAlfabetoVinculado("Alfabeto");
@@ -195,17 +230,21 @@ public class TestTeclado {
     @Test
     public void testborrarAsociacionTextosVinculado() {
         System.out.println("Test Borrar Asociacion Textos Vinculado");
-        String nombre = "nombre";
-        AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
-        Alfabeto alfabeto = new Alfabeto();
-        //Algoritmo algoritmo = Algoritmo.QAP;
+
+        String nombre = "nombreT";
+
+        AsociacionTextos asociacionTextos = new AsociacionTextos("AsociaciondetextosT");
+
+        ArrayList<Character> l = new ArrayList<>();
+        Alfabeto alfabeto = new Alfabeto("AlfabetoT", l);
+
         PairInt dimensiones = new PairInt(10, 20);
-        char[][] contenido = new char[0][0];
+        char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
 
-        teclado.borrarAsociacionTextosVinculados("AsociaciondeTextos");
+        teclado.borrarAsociacionTextosVinculados("AsociaciondeTextosT");
 
-        assertNull(teclado.getAlfabetoVinculado());
+        assertNull(teclado.getAsociacionTextosVinculado());
     }
 }
 
