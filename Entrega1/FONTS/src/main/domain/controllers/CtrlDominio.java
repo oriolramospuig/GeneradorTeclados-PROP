@@ -98,6 +98,13 @@ public class CtrlDominio
     }
 
     /**
+     * Retorna la lista de nombres de los alfabetos existentes
+     * @return ArrayList<String> getNombresAlfabetos: lista de alfabetos existentes ordenada por el nombre de alfabeto que es la clave primaria
+     */
+    public ArrayList<String> getNombresAlfabetos(){
+        return ctrlAlfabeto.getNombresAlfabetos();
+    }
+    /**
      * Retorna si existe el alfabeto con nomA
      * @param nomA el nombre del alfabeto a buscar
      * @return Boolean: true si existe el alfabeto con nomA, false si no existe

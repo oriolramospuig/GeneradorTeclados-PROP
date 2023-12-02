@@ -75,6 +75,10 @@ public class CtrlPresentacion {
     public static void getListaAlfabetos() {
         //HashMap<String, Alfabeto> listaAlfabetos = cd.getListaAlfabetos(); // NO SE PUEDE PASAR EL OBJETO ALFABETO
     }
+    /** Llama a la función getNombresAlfabetos de CtrlDominio */
+    public static void getNombresAlfabetos() {
+        ArrayList<String> listaAlfabetosNombres = cd.getNombresAlfabetos();
+    }
     /**
      * Llama a la función existealfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a consultar si existe

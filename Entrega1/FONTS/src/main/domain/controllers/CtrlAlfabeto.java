@@ -75,6 +75,13 @@ public class CtrlAlfabeto
         }
         return false;
     }
+    /**
+     * Devuelve la lista de nombres de alfabetos existentes
+     * @return ArrayList<String> : La lista de los nombres de los alfabetos existentes
+     */
+    public ArrayList<String> getNombresAlfabetos(){
+        return CjtAlfabetos.getNombresAlfabetos();
+    }
 
     //PARA LA SEGUNDA ENTREGA
     /*public ArrayList<String> getTecladosVinculadosAlfabeto(String nomA){

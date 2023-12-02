@@ -122,7 +122,6 @@ public class VistaAlfabetoAB extends JFrame {
         ActionListener lAgregar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nombreA = null;
                 if (areanomA1.getText().isEmpty()){
                     JDialog sinNombre =  new JDialog(Nomframe, "Error: No Nombre");
                     sinNombre.setBounds(800, 300, 400, 200);
@@ -147,12 +146,12 @@ public class VistaAlfabetoAB extends JFrame {
                     bSalirErrorNombre.addActionListener(lSalirErrorNombre);
 
                 } else if (areaContenido.getText().isEmpty() && areaPath.getText().isEmpty()){
-                    JDialog sinConPath =  new JDialog(Nomframe, "Error: No Contenido o No Path");
-                    sinConPath.setBounds(800, 300, 400, 200);
+                    JDialog sinConPath =  new JDialog(CPframe, "Error: No Contenido o No Path");
+                    sinConPath.setBounds(450, 300, 700, 200);
                     sinConPath.setLayout(null);
 
                     JLabel txtErrorConPath = new JLabel("Hay que añadir un contenido del alfabeto a mano o entrar un path donde se encuentra el archivo del alfabeto");
-                    txtErrorConPath.setBounds(80, 20, 400, 40);
+                    txtErrorConPath.setBounds(20, 20, 700, 40);
                     JButton bSalirErrorConPath = new JButton("Salir");
                     bSalirErrorConPath.setVisible(true);
                     bSalirErrorConPath.setBounds(150, 110, 100, 30);
@@ -188,6 +187,37 @@ public class VistaAlfabetoAB extends JFrame {
         ActionListener lBorrar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                //CtrlPresentacion.getNombresAlfabetos();
+
+
+                if (areanomA2.getText().isEmpty()){
+                    JDialog sinNombre2 =  new JDialog(Nomframe, "Error: No Nombre");
+                    sinNombre2.setBounds(800, 300, 400, 200);
+                    sinNombre2.setLayout(null);
+
+                    JLabel txtErrorNombre2 = new JLabel("Hay que entrar el nombre de un alfabeto de la lista de alfabetos");
+                    txtErrorNombre2.setBounds(10, 20, 400, 40);
+                    JButton bSalirErrorNombre2 = new JButton("Salir");
+                    bSalirErrorNombre2.setVisible(true);
+                    bSalirErrorNombre2.setBounds(150, 110, 100, 30);
+                    sinNombre2.add(txtErrorNombre2);
+                    sinNombre2.add(bSalirErrorNombre2);
+                    sinNombre2.setVisible(true);
+
+                    ActionListener lSalirErrorNombre = new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            sinNombre2.dispose();
+                            sinNombre2.setVisible(false);
+                        }
+                    };
+                    bSalirErrorNombre2.addActionListener(lSalirErrorNombre);
+
+                }else { //se han llenado todos los campos
+                    CtrlPresentacion.borrarAlfabeto(areanomA1.getText());
+                    setVisible(false);
+                }
 
             }
         };
