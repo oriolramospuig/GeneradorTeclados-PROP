@@ -31,5 +31,40 @@ public class VistaMenuPrincipal extends JFrame {
     /** Botón de salida para cerrar el programa */
     private final JButton bsalir = new JButton("Salir");
 
+    public VistaMenuPrincipal() {
+        setBounds(500, 300, 500, 300);
+        setResizable(true);
+        setTitle("Generador de teclados PROP");
+
+        // Títol finestra
+        tituloVista.setBounds(10, 5, 200, 30);
+        add(tituloVista);
+
+        // Botón alfabeto
+        balfabeto.setBounds(150, 50, 200, 20);
+        add(balfabeto);
+
+        // Botón texto
+        btexto.setBounds(150, 90, 200, 20);
+        add(btexto);
+
+        // Botón asociación textos
+        basociacionTextos.setBounds(150, 130, 200, 20);
+        add(basociacionTextos);
+
+        // Botón teclado
+        bteclado.setBounds(150, 170, 200, 20);
+        add(bteclado);
+
+        // Botón salir
+        bsalir.setBounds(150, 235, 200, 20);
+        add(bsalir);
+
+        add(lamina);
+
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
 
 }
