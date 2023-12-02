@@ -99,7 +99,7 @@ public class CtrlDominio
 
     /**
      * Retorna la lista de nombres de los alfabetos existentes
-     * @return ArrayList<String> getNombresAlfabetos: lista de alfabetos existentes ordenada por el nombre de alfabeto que es la clave primaria
+     * @return ArrayList<String>: lista de alfabetos existentes ordenada por el nombre de alfabeto que es la clave primaria
      */
     public ArrayList<String> getNombresAlfabetos(){
         return ctrlAlfabeto.getNombresAlfabetos();
@@ -241,7 +241,6 @@ public class CtrlDominio
         }
         else return false;
     }
-
     /**
      * No retorna
      * @param nomAT nombre de la asociacion donde añadir el texto
@@ -253,6 +252,13 @@ public class CtrlDominio
             Texto texto = ctrlTexto.getTexto(nomT);
             ctrlAsociacionTexto.agregarTextoAsociacion(nomAT, texto);
         }
+    }
+    /**
+     * Retorna la lista de nombres de las asociaciones existentes
+     * @return ArrayList<String>: lista de asociaciones existentes ordenada por el nombre de la asociación que es la clave primaria
+     */
+    public ArrayList<String> getNombresAsociaciones(){
+        return ctrlAsociacionTexto.getNombresAsociaciones();
     }
 
     /**
@@ -280,10 +286,11 @@ public class CtrlDominio
      * Borra el texto con nombre nomT
      * También se desvincula de las asociaciones en las que estaba
      */
-    /*public boolean borrarAsociacionTextos(String nomT){
-        String avinculado = ctrlTeclado.TecladoTieneAlfabetoVinculado(tVinculados.get(i));
-        return ctrlTexto.borrarTexto(nomT);
-    }*/
+    public boolean borrarAsociacionTextos(String nomT){
+        //String avinculado = ctrlTeclado.TecladoTieneAlfabetoVinculado(tVinculados.get(i));
+        //return ctrlTexto.borrarTexto(nomT);
+        return false;
+    }
 
 
     // ---------- FUNCIONES TECLADO ----------

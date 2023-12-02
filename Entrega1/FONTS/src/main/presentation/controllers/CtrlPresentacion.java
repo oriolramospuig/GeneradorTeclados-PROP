@@ -21,6 +21,7 @@ public class CtrlPresentacion {
         VistaMenuPrincipal vMP = new VistaMenuPrincipal();
     }
 
+    //VISTAS ALFABETO
     /** Muestra por pantalla la ventana de las funcionalidades de alfabeto */
     public static void vistaAlfabetoAB() {
         VistaAlfabetoAB vA = new VistaAlfabetoAB();
@@ -30,6 +31,7 @@ public class CtrlPresentacion {
         VistaAlfabetoCM vA = new VistaAlfabetoCM();
     }
 
+    //VISTAS TEXTO
     /** Muestra por pantalla la ventana de las funcionalidades de texto */
     public static void vistaTextoAB() {
         VistaTextoAB vTxt = new VistaTextoAB();
@@ -39,6 +41,7 @@ public class CtrlPresentacion {
         VistaTextoCM vTxt = new VistaTextoCM();
     }
 
+    //VISTAS ASOCIACIONES DE TEXTOS
     /** Muestra por pantalla la ventana de las funcionalidades de asociación de textos */
     public static void vistaAsociacionTextosAB() {
         VistaAsociacionTextosAB vAT = new VistaAsociacionTextosAB();
@@ -48,15 +51,12 @@ public class CtrlPresentacion {
         VistaAsociacionTextosCM vAT = new VistaAsociacionTextosCM();
     }
 
-    /**
-     * Muestra por pantalla la ventana de las funcionalidades de teclado
-     */
+    //VISTAS TECLADO
+    /** Muestra por pantalla la ventana de las funcionalidades de teclado */
     public static void vistaTecladoAB() {
         VistaTecladoAB vTec = new VistaTecladoAB();
     }
-    /**
-     * Muestra por pantalla la ventana de las funcionalidades de teclado
-     */
+    /** Muestra por pantalla la ventana de las funcionalidades de teclado */
     public static void vistaTecladoCM() {
         VistaTecladoCM vTec = new VistaTecladoCM();
     }
@@ -71,10 +71,13 @@ public class CtrlPresentacion {
     public static void agregarAlfabeto(String nomA, ArrayList<Character> entradaCaracteres) {
         boolean agregado = cd.agregarAlfabeto(nomA, entradaCaracteres);
     }
-    /** Llama a la función getListaAlfabetos de CtrlDominio */
+
+    //crec que no s'hauria d'utilitzar perque no podem passar per referencia tots els alfabets aixi per la cara
+    /** Llama a la función getListaAlfabetos de CtrlDominio
     public static void getListaAlfabetos() {
         //HashMap<String, Alfabeto> listaAlfabetos = cd.getListaAlfabetos(); // NO SE PUEDE PASAR EL OBJETO ALFABETO
-    }
+    }*/
+
     /** Llama a la función getNombresAlfabetos de CtrlDominio */
     public static void getNombresAlfabetos() {
         ArrayList<String> listaAlfabetosNombres = cd.getNombresAlfabetos();
@@ -124,10 +127,14 @@ public class CtrlPresentacion {
     public static void agregarTextoFrecuencias(String nomTxt, HashMap<String,Integer> frecuenciaPalabras) {
         boolean agregado = cd.agregarTextoFrecuencias(nomTxt, frecuenciaPalabras);
     }
-    /** Llama a la función getListaTextos de CtrlDominio */
+
+    //crec que no s'hauria d'utilitzar perque no podem passar per referencia tots els textos aixi per la cara
+    /** Llama a la función getListaTextos de CtrlDominio
     public static void getListaTextos() {
-        //HashMap<String, Texto> getListaTextos = cd.getListaTextos(); NO SE PUEDE PASAR EL OBJETO TEXTO!!
-    }
+        //HashMap<String, Texto> ListaTextos = cd.getListaTextos(); NO SE PUEDE PASAR EL OBJETO TEXTO!!
+    }*/
+
+
     /**
      * Llama a la función existetexto de CtrlDominio
      * @param nomTxt es el nombre del texto a consultar si existe
@@ -152,8 +159,50 @@ public class CtrlPresentacion {
 
 
     //FUNCIONES DE CTRlDOMINIO DE ASOCIACION DE TEXTOS
+    /**
+     * Llama a la función agregarAsociacion de CtrlDominio
+     * @param nomAT es el nombre de la asociación a agregar
+     * @param textosagregar es la lista de nombres de textos a agregar en la asociación
+     */
+    public static void agregarAsociacion(String nomAT, ArrayList<String> textosagregar) {
+        boolean agregada = cd.agregarAsociacion(nomAT, textosagregar);
+    }
+    /**
+     * Llama a la función agregarAsociacion de CtrlDominio
+     * @param nomAT es el nombre de la asociación a agregar
+     * @param textosagregar es la lista de nombres de textos a agregar en la asociación
+     */
+    public static void agregarTextoAsociacion (String nomAT, ArrayList<String> textosagregar) {
+        cd.agregarTextoAsociacion(nomAT, textosagregar);
+    }
+
+    //crec que no s'hauria d'utilitzar perque no podem passar per referencia totes les associacions aixi per la cara
+    /** Llama a la función getListaAsociaciones de CtrlDominio
+     public static void getListaAsociaciones() {
+     //HashMap<String, AsociacionTextos> ListaAsociaciones = cd.getListaAsociaciones(); NO SE PUEDE PASAR EL OBJETO TEXTO!!
+     }*/
 
 
+    /** Llama a la función getNombresAsociaciones de CtrlDominio */
+    public static void getNombresAsociaciones() {
+        ArrayList<String> listaAsociacionesNombres = cd.getNombresAsociaciones();
+    }
+    /**
+     * Llama a la función existeasociacion de CtrlDominio
+     * @param nomAT es el nombre de la asociación a consultar si existe
+     */
+    public static void existeasociacion(String nomAT) {
+        boolean existe = cd.existeasociacion(nomAT);
+    }
+
+    /**
+     * Llama a la función borrarAsociacionTextos de CtrlDominio
+     * @param nomAT es el nombre de la asociación a borrar
+     */
+    public static void borrarAsociacionTextos(String nomAT) {
+        boolean borrada = cd.borrarAsociacionTextos(nomAT);
+    }
+    
 
     //FUNCIONES DE CTRlDOMINIO DE TECLADO
 

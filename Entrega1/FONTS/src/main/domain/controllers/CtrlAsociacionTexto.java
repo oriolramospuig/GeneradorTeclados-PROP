@@ -74,6 +74,13 @@ public class CtrlAsociacionTexto
         }
         return false;
     }
+    /**
+     * Devuelve la lista de nombres de asociaciones existentes
+     * @return ArrayList<String> : La lista de los nombres de las asociaciones existentes
+     */
+    public ArrayList<String> getNombresAsociaciones(){
+        return AsociacionesTextos.getNombresAsociacionesTextos();
+    }
 
     //Para la segunda entrega
     /*public void borrarAsociacionTextos(String nomAT){
