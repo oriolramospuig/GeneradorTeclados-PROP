@@ -3,66 +3,190 @@ package main.presentation.views;
 import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+public class VistaTecladoCM extends JFrame {
 
-public class VistaTecladoCM extends JFrame{
-
+    //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
-    /** Título de la ventana */
-    private final JLabel tituloVistaT = new JLabel("Teclados");
-    /** Botón para agregar un teclado por QAP o Algoritmo 2 */
-    private final JButton bNuevoTecladoPor = new JButton("Crear Teclado");
-    /** Área de texto para introducir el nombre del teclado que se quiere crear */
-    private final JButton bConsultarTeclado = new JButton("Consultar Teclado");
-    private final JButton bModificarTeclado = new JButton("Modificar Teclado");
-    private final JButton bEliminarTeclado = new JButton("Eliminar Teclado");
-    private final JButton bAtras = new JButton("Atrás");
+    /** Título de media ventana superior */
+    private final JLabel tituloVistaTCM1 = new JLabel("Consultar teclado");
+    /** Título de media ventana */
+    private final JLabel tituloVistaTCM2 = new JLabel("Consultar lista de teclados");
+    /** Título de media ventana inferior */
+    private final JLabel tituloVistaTCM3 = new JLabel("Modificar teclado");
+    /** Botón para consultar un teclado */
+    private final JButton bConsultarTeclado = new JButton("Consultar teclado");
+    /** Botón para consultar la lista de teclados */
+    private final JButton bConsultarListaTeclados = new JButton("Consultar lista de teclados");
+    /** Botón para modificar un teclado */
+    private final JButton bModificarTeclado = new JButton("Modificar teclado");
+    /** Botó de tornar a la pantalla del menú principal */
+    private final JButton bsalir = new JButton("Atrás");
 
 
-    //FUNCIONALIDADES
-    /** Botón para ir a la ventana de documentos recientemente abiertos */
-    private final JButton bDocRecents = new JButton("Documentos recientes");
-    /** Botón para ir a la ventana de cargar un documento */
-    private final JButton bCarregarDoc = new JButton("Cargar Documento");
-    /** Botón para ir a la ventana de eliminar un documento */
-    private final JButton bEliminarDoc = new JButton("Eliminar Document");
+    //TEXTOS Y AREAS DE TEXTO
+    //VENTANA SUPERIOR
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del teclado a consultar*/
+    private final JLabel txtNombreCM1 = new JLabel("NOMBRE:");
+    /** Área de texto para introducir el nombre del teclado que se quiere consultar */
+    private final JTextArea areanomCMT1 = new JTextArea();
 
-    /** Botón de volver a la pantalla del menú principal */
-    private final JButton salir = new JButton("ATRÁS");
+    //VENTANA INFERIOR
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del teclado a modificar */
+    private final JLabel txtNombreCM2 = new JLabel("NOMBRE:");
+    /** Área de texto para introducir el nombre del teclado que se quiere modificar */
+    private final JTextArea areanomCMT2 = new JTextArea();
+
+    //MENSAJES DE ERROR
+    /** Pantalla de error que aparece cuando se quiere consultar/modificar un teclado sin nombre */
+    private final JFrame Nomframe = new JFrame ("JFrame");
+
 
 
     public VistaTecladoCM(){
 
         setBounds(250, 150, 1000, 600);
+        //setExtendedState(Frame.MAXIMIZED_BOTH);
+        //setResizable(true);
+        //setTitle("Funcionalidades teclado);
 
-        // Título
-        tituloVistaT.setBounds(10, 5, 120, 30);
-        add(tituloVistaT);
+        // Título ventana superior
+        tituloVistaTCM1.setBounds(10, 5, 120, 30);
+        add(tituloVistaTCM1);
 
-        // Botón agregarAlfabetoPorTerminal
-        bNuevoTecladoPor.setBounds(150, 50, 200, 20);
-        add(bNuevoTecladoPor);
+        // Título media ventana
+        tituloVistaTCM2.setBounds(10, 205, 200, 30);
+        add(tituloVistaTCM2);
 
-        bConsultarTeclado.setBounds(150, 90, 200, 20);
+        // Título ventana inferior
+        tituloVistaTCM3.setBounds(10, 305, 120, 30);
+        add(tituloVistaTCM3);
+
+        //VENTANA SUPERIOR
+        // Texto Nombre
+        txtNombreCM1.setBounds(50, 35, 200, 20);
+        add(txtNombreCM1);
+
+        // Área texto Nombre
+        areanomCMT1.setBounds(250,35, 200,20);
+        add(areanomCMT1);
+
+        //VENTANA INFERIOR
+        // Texto Nombre
+        txtNombreCM2.setBounds(50, 335, 200, 20);
+        add(txtNombreCM2);
+
+        // Área texto Nombre
+        areanomCMT2.setBounds(250,335, 200,20);
+        add(areanomCMT2);
+
+        // Botón consultar teclado
+        bConsultarTeclado.setBounds(700, 150, 200, 20);
         add(bConsultarTeclado);
 
-        bModificarTeclado.setBounds(150, 130, 200, 20);
+        // Botón consultar lista de teclados
+        bConsultarListaTeclados.setBounds(700, 250, 200, 20);
+        add(bConsultarListaTeclados);
+
+        // Botón borrar teclado
+        bModificarTeclado.setBounds(700, 400, 200, 20);
         add(bModificarTeclado);
 
-        bEliminarTeclado.setBounds(150, 170, 200, 20);
-        add(bEliminarTeclado);
-
-        bAtras.setBounds(250, 235, 200, 20);
-        add(bAtras);
+        // Botón salir para ir a la pantalla principal
+        bsalir.setBounds(800, 500, 100, 20);
+        add(bsalir);
 
         add(lamina);
 
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        ActionListener crear = new ActionListener() {
+        ActionListener lConsultarA = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //CtrlPresentacion.getNombresAlfabetos();
+
+                if (areanomCMT1.getText().isEmpty()){
+                    JDialog sinNombre2 =  new JDialog(Nomframe, "Error: No Nombre");
+                    sinNombre2.setBounds(800, 300, 400, 200);
+                    sinNombre2.setLayout(null);
+
+                    JLabel txtErrorNombre2 = new JLabel("Hay que entrar el nombre de un teclado de la lista de teclados");
+                    txtErrorNombre2.setBounds(10, 20, 400, 40);
+                    JButton bSalirErrorNombre2 = new JButton("Salir");
+                    bSalirErrorNombre2.setVisible(true);
+                    bSalirErrorNombre2.setBounds(150, 110, 100, 30);
+                    sinNombre2.add(txtErrorNombre2);
+                    sinNombre2.add(bSalirErrorNombre2);
+                    sinNombre2.setVisible(true);
+
+                    ActionListener lSalirErrorNombre = new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            sinNombre2.dispose();
+                            sinNombre2.setVisible(false);
+                        }
+                    };
+                    bSalirErrorNombre2.addActionListener(lSalirErrorNombre);
+
+                }else { //se han llenado todos los campos
+                    // CtrlPresentacion.consultarContenidoTeclado(areanomCMT1.getText());
+                    setVisible(false);
+                }
+
+            }
+        };
+
+        ActionListener lConsultarListaA = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        };
+
+        ActionListener lModificarA = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //CtrlPresentacion.getNombresAlfabetos();
+
+                if (areanomCMT2.getText().isEmpty()){
+                    JDialog sinNombre2 =  new JDialog(Nomframe, "Error: No Nombre");
+                    sinNombre2.setBounds(800, 300, 400, 200);
+                    sinNombre2.setLayout(null);
+
+                    JLabel txtErrorNombre2 = new JLabel("Hay que entrar el nombre de un teclado de la lista de teclados");
+                    txtErrorNombre2.setBounds(10, 20, 400, 40);
+                    JButton bSalirErrorNombre2 = new JButton("Salir");
+                    bSalirErrorNombre2.setVisible(true);
+                    bSalirErrorNombre2.setBounds(150, 110, 100, 30);
+                    sinNombre2.add(txtErrorNombre2);
+                    sinNombre2.add(bSalirErrorNombre2);
+                    sinNombre2.setVisible(true);
+
+                    ActionListener lSalirErrorNombre = new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            sinNombre2.dispose();
+                            sinNombre2.setVisible(false);
+                        }
+                    };
+                    bSalirErrorNombre2.addActionListener(lSalirErrorNombre);
+
+                }else { //se han llenado todos los campos
+                    // CtrlPresentacion.consultarContenidoTeclado(areanomCMT2.getText());
+                    setVisible(false);
+                }
+
+            }
+        };
+
+
+        ActionListener lSalir = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CtrlPresentacion.iniPresentacion();
@@ -70,11 +194,12 @@ public class VistaTecladoCM extends JFrame{
             }
         };
 
-        bNuevoTecladoPor.addActionListener(crear);
-        bConsultarTeclado.addActionListener(crear);
-        bModificarTeclado.addActionListener(crear);
-        bEliminarTeclado.addActionListener(crear);
-        bAtras.addActionListener(crear);
+        bConsultarTeclado.addActionListener(lConsultarA);
+        bConsultarListaTeclados.addActionListener(lConsultarListaA);
+        bModificarTeclado.addActionListener(lModificarA);
+        bsalir.addActionListener(lSalir);
+
     }
+
 }
 
