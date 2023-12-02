@@ -82,7 +82,7 @@ public class VistaMenuPrincipal extends JFrame {
         ActionListener lAgregarEliminarA = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CtrlPresentacion.vistaAsociacionTextosAB();
+                CtrlPresentacion.vistaAlfabetoAB();
                 setVisible(false);
             }
         };

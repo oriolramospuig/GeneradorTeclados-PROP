@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.*;
 
 
-public class VistaTecladoAB extends JFrame{
+public class VistaTecladoAB extends JFrame {
 
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();

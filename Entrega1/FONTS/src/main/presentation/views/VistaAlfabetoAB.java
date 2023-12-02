@@ -80,6 +80,11 @@ public class VistaAlfabetoAB extends JFrame {
         areaPath.setBounds(175,75, 200,60);
         add(areaPath);
 
+        add(lamina);
+
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         ActionListener lAgregar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
