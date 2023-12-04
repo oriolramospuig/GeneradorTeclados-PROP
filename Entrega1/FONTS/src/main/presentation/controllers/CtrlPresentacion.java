@@ -59,20 +59,20 @@ public class CtrlPresentacion {
 
     //VISTAS ASOCIACIONES DE TEXTOS
     /** Muestra por pantalla la ventana de las funcionalidades de asociación de textos */
-    public static void vistaAsociacionTextosAB() {
-        VistaAsociacionTextosAB vAT = new VistaAsociacionTextosAB();
+    public static void vistaAsociacionTextosA() {
+        VistaAsociacionTextosA vAT = new VistaAsociacionTextosA();
     }
     /** Muestra por pantalla la ventana de las funcionalidades de asociación de textos */
     public static void vistaAsociacionTextosB() {
-        VistaAsociacionTextosAB vAT = new VistaAsociacionTextosAB();
+        VistaAsociacionTextosB vAT = new VistaAsociacionTextosB();
+    }
+    /** Muestra por pantalla la ventana de las funcionalidades de asociación de textos */
+    public static void vistaAsociacionTextosC() {
+        VistaAsociacionTextosC vAT = new VistaAsociacionTextosC();
     }
     /** Muestra por pantalla la ventana de las funcionalidades de asociación de textos */
     public static void vistaAsociacionTextosM() {
-        VistaAsociacionTextosCM vAT = new VistaAsociacionTextosCM();
-    }
-    /** Muestra por pantalla la ventana de las funcionalidades de asociación de textos */
-    public static void vistaAsociacionTextosCM() {
-        VistaAsociacionTextosCM vAT = new VistaAsociacionTextosCM();
+        VistaAsociacionTextosM vAT = new VistaAsociacionTextosM();
     }
 
     //VISTAS TECLADO
