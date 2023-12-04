@@ -17,17 +17,29 @@ public class VistaMenuPrincipal extends JFrame {
     private JPopupMenu popupMenuAT = new JPopupMenu();
     private JPopupMenu popupMenuT = new JPopupMenu();
 
-    private JMenuItem agregar_borrarA = new JMenuItem("Agrega/Elimina");
-    private JMenuItem consultar_modificarA = new JMenuItem("Consulta/Modifica");
+    //ALFABETO
+    private JMenuItem agregarA = new JMenuItem("Agrega");
+    private JMenuItem borrarA = new JMenuItem("Elimina");
+    private JMenuItem consultarA = new JMenuItem("Consulta");
+    private JMenuItem modificarA = new JMenuItem("Modifica");
 
-    private JMenuItem agregar_borrarTxt = new JMenuItem("Agrega/Elimina");
-    private JMenuItem consultar_modificarTxt = new JMenuItem("Consulta/Modifica");
+    //TEXTO
+    private JMenuItem agregarTxt = new JMenuItem("Agrega");
+    private JMenuItem borrarTxt = new JMenuItem("Elimina");
+    private JMenuItem consultarTxt = new JMenuItem("Consulta");
+    private JMenuItem modificarTxt = new JMenuItem("Modifica");
 
-    private JMenuItem agregar_borrarAT = new JMenuItem("Agrega/Elimina");
-    private JMenuItem consultar_modificarAT = new JMenuItem("Consulta/Modifica");
+    //ASOCIACIÓN
+    private JMenuItem agregarAT = new JMenuItem("Agrega");
+    private JMenuItem borrarAT = new JMenuItem("Elimina");
+    private JMenuItem consultarAT = new JMenuItem("Consulta");
+    private JMenuItem modificarAT = new JMenuItem("Modifica");
 
-    private JMenuItem agregar_borrarT = new JMenuItem("Agrega/Elimina");
-    private JMenuItem consultar_modificarT = new JMenuItem("Consulta/Modifica");
+    //TECLADO
+    private JMenuItem agregarT = new JMenuItem("Agrega");
+    private JMenuItem borrarT = new JMenuItem("Elimina");
+    private JMenuItem consultarT = new JMenuItem("Consulta");
+    private JMenuItem modificarT = new JMenuItem("Modifica");
 
     private JButton bsalir = new JButton("Salir");
 
@@ -42,17 +54,25 @@ public class VistaMenuPrincipal extends JFrame {
         setResizable(true);
         setTitle("Generador de teclados PROP");
 
-        popupMenuA.add(agregar_borrarA);
-        popupMenuA.add(consultar_modificarA);
+        popupMenuA.add(agregarA);
+        popupMenuA.add(borrarA);
+        popupMenuA.add(consultarA);
+        popupMenuA.add(modificarA);
 
-        popupMenuTxt.add(agregar_borrarTxt);
-        popupMenuTxt.add(consultar_modificarTxt);
+        popupMenuTxt.add(agregarTxt);
+        popupMenuTxt.add(borrarTxt);
+        popupMenuTxt.add(consultarTxt);
+        popupMenuTxt.add(modificarTxt);
 
-        popupMenuAT.add(agregar_borrarAT);
-        popupMenuAT.add(consultar_modificarAT);
+        popupMenuAT.add(agregarAT);
+        popupMenuAT.add(borrarAT);
+        popupMenuAT.add(consultarAT);
+        popupMenuAT.add(modificarAT);
 
-        popupMenuT.add(agregar_borrarT);
-        popupMenuT.add(consultar_modificarT);
+        popupMenuT.add(agregarT);
+        popupMenuT.add(borrarT);
+        popupMenuT.add(consultarT);
+        popupMenuT.add(modificarT);
 
         // Configurar botones y sus posiciones
         bAlfabeto.setBounds(400, 100, 200, 20);
@@ -79,15 +99,16 @@ public class VistaMenuPrincipal extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        ActionListener lAgregarEliminarA = new ActionListener() {
+        //FUNCIONES AGREGAR
+        ActionListener lAgregarA = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CtrlPresentacion.vistaAlfabetoAB();
+                CtrlPresentacion.vistaAlfabetoA();
                 setVisible(false);
             }
         };
 
-        ActionListener lAgregarEliminarTxt = new ActionListener() {
+        ActionListener lAgregarTxt = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CtrlPresentacion.vistaTextoAB();
@@ -95,7 +116,7 @@ public class VistaMenuPrincipal extends JFrame {
             }
         };
 
-        ActionListener lAgregarEliminarAT = new ActionListener() {
+        ActionListener lAgregarAT = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CtrlPresentacion.vistaAsociacionTextosAB();
@@ -103,7 +124,7 @@ public class VistaMenuPrincipal extends JFrame {
             }
         };
 
-        ActionListener lAgregarEliminarT = new ActionListener() {
+        ActionListener lAgregarT = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CtrlPresentacion.vistaTecladoAB();
@@ -111,34 +132,97 @@ public class VistaMenuPrincipal extends JFrame {
             }
         };
 
-        ActionListener lConsultarModificarA = new ActionListener() {
+        //FUNCIONES ELIMINAR
+        ActionListener lEliminarA = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CtrlPresentacion.vistaAlfabetoCM();
+                CtrlPresentacion.vistaAlfabetoB();
+                setVisible(false);
+            }
+        };
+        ActionListener lEliminarTxt = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.vistaTextoB();
                 setVisible(false);
             }
         };
 
-        ActionListener lConsultarModificarTxt = new ActionListener() {
+        ActionListener lEliminarAT = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.vistaAsociacionTextosB();
+                setVisible(false);
+            }
+        };
+
+        ActionListener lEliminarT = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.vistaTecladoB();
+                setVisible(false);
+            }
+        };
+
+        //FUNCIONES CONSULTAR
+        ActionListener lConsultarA = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.vistaAlfabetoC();
+                setVisible(false);
+            }
+        };
+        ActionListener lConsultarTxt = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CtrlPresentacion.vistaTextoCM();
                 setVisible(false);
             }
         };
-
-        ActionListener lConsultarModificarAT = new ActionListener() {
+        ActionListener lConsultarAT = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CtrlPresentacion.vistaAsociacionTextosCM();
                 setVisible(false);
             }
         };
-
-        ActionListener lConsultarModificarT = new ActionListener() {
+        ActionListener lConsultarT = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CtrlPresentacion.vistaTecladoCM();
+                setVisible(false);
+            }
+        };
+
+        //FUNCIONES MODIFICAR
+        ActionListener lModificarA = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.vistaAlfabetoM();
+                setVisible(false);
+            }
+        };
+
+        ActionListener lModificarTxt = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.vistaTextoM();
+                setVisible(false);
+            }
+        };
+
+        ActionListener lModificarAT = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.vistaAsociacionTextosM();
+                setVisible(false);
+            }
+        };
+
+        ActionListener lModificarT = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.vistaTecladoM();
                 setVisible(false);
             }
         };
@@ -157,14 +241,25 @@ public class VistaMenuPrincipal extends JFrame {
 
         bsalir.addActionListener(salir);
 
-        agregar_borrarA.addActionListener(lAgregarEliminarA);
-        consultar_modificarA.addActionListener(lConsultarModificarA);
-        agregar_borrarTxt.addActionListener(lAgregarEliminarTxt);
-        consultar_modificarTxt.addActionListener(lConsultarModificarTxt);
-        agregar_borrarAT.addActionListener(lAgregarEliminarAT);
-        consultar_modificarAT.addActionListener(lConsultarModificarAT);
-        agregar_borrarT.addActionListener(lAgregarEliminarT);
-        consultar_modificarT.addActionListener(lConsultarModificarT);
+        agregarA.addActionListener(lAgregarA);
+        borrarA.addActionListener(lEliminarA);
+        consultarA.addActionListener(lConsultarA);
+        modificarA.addActionListener(lModificarA);
+
+        agregarTxt.addActionListener(lAgregarTxt);
+        borrarTxt.addActionListener(lEliminarTxt);
+        consultarTxt.addActionListener(lConsultarTxt);
+        modificarTxt.addActionListener(lModificarTxt);
+
+        agregarAT.addActionListener(lAgregarAT);
+        borrarAT.addActionListener(lEliminarAT);
+        consultarAT.addActionListener(lConsultarAT);
+        modificarAT.addActionListener(lModificarAT);
+
+        agregarT.addActionListener(lAgregarT);
+        borrarT.addActionListener(lEliminarT);
+        consultarT.addActionListener(lConsultarT);
+        modificarT.addActionListener(lModificarT);
     }
 
 
