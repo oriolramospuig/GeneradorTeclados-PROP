@@ -22,43 +22,76 @@ public class CtrlPresentacion {
     }
 
     //VISTAS ALFABETO
-    /** Muestra por pantalla la ventana de las funcionalidades de alfabeto */
-    public static void vistaAlfabetoAB() {
-        VistaAlfabetoAB vA = new VistaAlfabetoAB();
+    /** Muestra por pantalla la ventana de agregar alfabeto */
+    public static void vistaAlfabetoA() {
+        VistaAlfabetoA vA = new VistaAlfabetoA();
     }
-    /** Muestra por pantalla la ventana de las funcionalidades de alfabeto */
-    public static void vistaAlfabetoCM() {
-        VistaAlfabetoCM vA = new VistaAlfabetoCM();
+    /** Muestra por pantalla la ventana de consultar alfabeto */
+    public static void vistaAlfabetoC() {
+        VistaAlfabetoC vA = new VistaAlfabetoC();
+    }
+    /** Muestra por pantalla la ventana de modificar de alfabeto */
+    public static void vistaAlfabetoM() {
+        VistaAlfabetoM vA = new VistaAlfabetoM();
+    }
+    /** Muestra por pantalla la ventana de borrar alfabeto */
+    public static void vistaAlfabetoB() {
+        VistaAlfabetoB vA = new VistaAlfabetoB();
     }
 
     //VISTAS TEXTO
     /** Muestra por pantalla la ventana de las funcionalidades de texto */
-    public static void vistaTextoAB() {
-        VistaTextoAB vTxt = new VistaTextoAB();
+    public static void vistaTextoA() {
+        VistaTextoA vTxt = new VistaTextoA();
     }
     /** Muestra por pantalla la ventana de las funcionalidades de texto */
-    public static void vistaTextoCM() {
-        VistaTextoCM vTxt = new VistaTextoCM();
+    public static void vistaTextoC() {
+        VistaTextoC vTxt = new VistaTextoC();
+    }
+    /** Muestra por pantalla la ventana de las funcionalidades de texto */
+    public static void vistaTextoM() {
+        VistaTextoM vTxt = new VistaTextoM();
+    }
+    /** Muestra por pantalla la ventana de las funcionalidades de texto */
+    public static void vistaTextoB() {
+        VistaTextoB vTxt = new VistaTextoB();
     }
 
     //VISTAS ASOCIACIONES DE TEXTOS
     /** Muestra por pantalla la ventana de las funcionalidades de asociación de textos */
-    public static void vistaAsociacionTextosAB() {
-        VistaAsociacionTextosAB vAT = new VistaAsociacionTextosAB();
+    public static void vistaAsociacionTextosA() {
+        VistaAsociacionTextosA vAT = new VistaAsociacionTextosA();
     }
     /** Muestra por pantalla la ventana de las funcionalidades de asociación de textos */
-    public static void vistaAsociacionTextosCM() {
-        VistaAsociacionTextosCM vAT = new VistaAsociacionTextosCM();
+    public static void vistaAsociacionTextosB() {
+        VistaAsociacionTextosB vAT = new VistaAsociacionTextosB();
+    }
+    /** Muestra por pantalla la ventana de las funcionalidades de asociación de textos */
+    public static void vistaAsociacionTextosC() {
+        VistaAsociacionTextosC vAT = new VistaAsociacionTextosC();
+    }
+    /** Muestra por pantalla la ventana de las funcionalidades de asociación de textos */
+    public static void vistaAsociacionTextosM() {
+        VistaAsociacionTextosM vAT = new VistaAsociacionTextosM();
     }
 
     //VISTAS TECLADO
     /** Muestra por pantalla la ventana de las funcionalidades de teclado */
-    public static void vistaTecladoAB() {
-        VistaTecladoAB vTec = new VistaTecladoAB();
+    public static void vistaTecladoA() {
+        VistaTecladoA vTec = new VistaTecladoA();
     }
     /** Muestra por pantalla la ventana de las funcionalidades de teclado */
-    public static void vistaTecladoCM() {
-        VistaTecladoCM vTec = new VistaTecladoCM();
+    public static void vistaTecladoC() {
+        VistaTecladoC vTec = new VistaTecladoC();
+    }
+
+    /** Muestra por pantalla la ventana de las funcionalidades de texto */
+    public static void vistaTecladoM() {
+        VistaTecladoM vTxt = new VistaTecladoM();
+    }
+    /** Muestra por pantalla la ventana de las funcionalidades de texto */
+    public static void vistaTecladoB() {
+        VistaTecladoB vTxt = new VistaTecladoB();
     }
 
 
