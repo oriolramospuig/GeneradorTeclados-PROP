@@ -6,27 +6,29 @@ import java.util.List;
 import java.util.Random;
 
 public class SimulatedAnnealing {
-    private static final double TEMPERATURA_INICIAL = 1000;
-    private static final double FACTOR_ENFRIAMIENTO = 0.95;
-    private static final int MAX_ITERACIONES = 1000;
+    private static final double TEMPERATURA_INICIAL = 100000;
+    private static final double FACTOR_ENFRIAMIENTO = 0.999;
+    private static final int MAX_ITERACIONES = 100000;
     private static int[][] matrizFrecuencias;
     private static int[][] matrizDistancias;
     private static int filas;
     private static int columnas;
+    private static int puntuacionFinal;
+
+    public int getPuntuacionFinal() {return puntuacionFinal;}
 
     public SimulatedAnnealing(int filas, int columnas, int[][] mf, int[][] md) {
         SimulatedAnnealing.filas = filas;
         SimulatedAnnealing.columnas = columnas;
         SimulatedAnnealing.matrizFrecuencias = mf;
         SimulatedAnnealing.matrizDistancias = md;
-
         calculo();
     }
 
     public static int[][] simulatedAnnealing(int[][] tecladoInicial) {
         Random random = new Random();
         int[][] tecladoActual = copiarMatriz(tecladoInicial);
-        int costoActual = calculoPuntuacion(tecladoActual);
+        int costeActual = calculoPuntuacion(tecladoActual);
 
         double temperatura = TEMPERATURA_INICIAL;
 
@@ -35,12 +37,12 @@ public class SimulatedAnnealing {
                 break;
             }
 
-            int[][] tecladoVecino = generarTecladoVecino(copiarMatriz(tecladoActual), random);
-            int costoVecino = calculoPuntuacion(tecladoVecino);
+            int[][] sucesor = generarTecladoVecino(copiarMatriz(tecladoActual), random);
+            int costeSucesor = calculoPuntuacion(sucesor);
 
-            if (aceptarMovimiento(costoActual, costoVecino, temperatura, random)) {
-                tecladoActual = tecladoVecino;
-                costoActual = costoVecino;
+            if (aceptarMovimiento(costeActual, costeSucesor, temperatura, random)) {
+                tecladoActual = sucesor;
+                costeActual = costeSucesor;
             }
 
             temperatura *= FACTOR_ENFRIAMIENTO;
@@ -106,8 +108,7 @@ public class SimulatedAnnealing {
     }
 
     private static int[][] calcularMejorAsignacionAleatoria(List<Integer> teclas, int N) {
-        System.out.println("La mejor de N asignaciones de las teclas aleatorias: ");
-        System.out.println();
+        // System.out.println("La mejor de N asignaciones de las teclas aleatorias: ");
         if (teclas.size() != filas * columnas) {
             throw new IllegalArgumentException("El número de teclas debe coincidir con el número de posiciones en el teclado.");
         }
@@ -144,11 +145,27 @@ public class SimulatedAnnealing {
         }
 
         int[][] tecIni = calcularMejorAsignacionAleatoria(ind, 100);
+        /*for (int i = 0; i < filas; ++i) {
+            for (int j = 0; j < columnas; ++j) {
+                System.out.print(tecIni[i][j] + " ");
+            }
+            System.out.println();
+        }*/
         int punt = calculoPuntuacion(tecIni);
+        //System.out.println("Puntuación inicial = " + punt);
+        //System.out.println("Empezando Simulated Annealing:");
         int[][] tecFinal = simulatedAnnealing(tecIni);
+        /*System.out.println("Tec final: ");
+        for (int i = 0; i < filas; ++i) {
+            for (int j = 0; j < columnas; ++j) {
+                System.out.print(tecFinal[i][j] + " ");
+            }
+            System.out.println();
+        }*/
+        //System.out.println();
         int puntFinal = calculoPuntuacion(tecFinal);
-        System.out.println("Puntuacion final = " + puntFinal);
+        //System.out.println("Puntuacion final = " + puntFinal);
+        puntuacionFinal = puntFinal;
     }
-    // falta puntuacion y sol ini, generadas en QAP
 }
 
