@@ -182,7 +182,7 @@ public class SimulatedAnnealing {
             ind.add(i);
         }
 
-        int[][] tecIni = calcularMejorAsignacionAleatoria(ind, 100);
+        int[][] tecIni = calcularMejorAsignacionAleatoria(ind, 1000);
         int[][] tecAux = generarSolucionInicial(matrizFrecuencias);
         for (int i = 0; i < filas; ++i) {
             for (int j = 0; j < columnas; ++j) {
