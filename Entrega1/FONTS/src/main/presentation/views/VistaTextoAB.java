@@ -13,11 +13,16 @@ public class VistaTextoAB extends JFrame {
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
     /** Título de media ventana superior */
-    private final JLabel tituloVistaTxt1 = new JLabel("Agregar texto");
+    private final JLabel tituloVistaTxt1 = new JLabel("Agregar texto de palabras");
+    /** Título de media ventana superior */
+    private final JLabel tituloVistaTxt11 = new JLabel("Agregar texto de frecuencias");
     /** Título de media ventana inferior */
     private final JLabel tituloVistaTxt2 = new JLabel("Borrar texto");
+
     /** Botón para agregar un texto */
-    private final JButton bAgregarTexto = new JButton("Agregar texto");
+    private final JButton bAgregarTexto = new JButton("Agregar texto de palabras");
+    /** Botón para agregar un texto */
+    private final JButton bAgregarTextoFrec = new JButton("Agregar texto de frecuencias");
     /** Botón para borrar un texto */
     private final JButton bBorrarTexto = new JButton("Borrar texto");
     /** Botó de tornar a la pantalla del menú principal */
@@ -38,6 +43,22 @@ public class VistaTextoAB extends JFrame {
     private final JLabel txtPath = new JLabel("PATH:");
     /** Área de texto para introducir el path del texto que se quiere crear */
     private final JTextArea areaPath = new JTextArea();
+
+
+    //VENTANA SUPERIOR2
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto */
+    private final JLabel txtNombre11 = new JLabel("NOMBRE:");
+    /** Área de texto para introducir el nombre del texto que se quiere crear */
+    private final JTextArea areanomTxt11 = new JTextArea();
+    /** Texto indicando que la barra de texto de al lado es para introducir el contenido del texto */
+    private final JLabel txtContenido1 = new JLabel("CONTENIDO:");
+    /** Área de texto para introducir el contenido del texto que se quiere crear */
+    private final JTextArea areaContenido1 = new JTextArea();
+    /** Texto indicando que la barra de texto de al lado es para introducir el path del texto, para saber donde esta guardado */
+    private final JLabel txtPath1 = new JLabel("PATH:");
+    /** Área de texto para introducir el path del texto que se quiere crear */
+    private final JTextArea areaPath1 = new JTextArea();
+
 
     //VENTANA INFERIOR
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto */
@@ -62,6 +83,10 @@ public class VistaTextoAB extends JFrame {
         // Título ventana superior
         tituloVistaTxt1.setBounds(10, 5, 120, 30);
         add(tituloVistaTxt1);
+
+        // Título ventana superior2
+        tituloVistaTxt11.setBounds(310, 5, 120, 30);
+        add(tituloVistaTxt11);
 
         // Título ventana inferior
         tituloVistaTxt2.setBounds(10, 305, 120, 30);
@@ -92,6 +117,33 @@ public class VistaTextoAB extends JFrame {
         areaPath.setBounds(250,175, 200,20);
         add(areaPath);
 
+        add(tituloVistaTxt2);
+
+        //VENTANA SUPERIOR2
+        // Texto Nombre
+        txtNombre11.setBounds(350, 35, 200, 20);
+        add(txtNombre11);
+
+        // Área texto Nombre
+        areanomTxt11.setBounds(550,35, 200,20);
+        add(areanomTxt11);
+
+        // Texto Contenido
+        txtContenido1.setBounds(350, 75, 200, 20);
+        add(txtContenido1);
+
+        // Área texto Contenido
+        areaContenido1.setBounds(550,75, 200,60);
+        add(areaContenido1);
+
+        // Texto Path
+        txtPath1.setBounds(350, 175, 200, 20);
+        add(txtPath1);
+
+        // Área texto Path
+        areaPath1.setBounds(550,175, 200,20);
+        add(areaPath1);
+
         //VENTANA INFERIOR
         // Texto Nombre
         txtNombre2.setBounds(50, 335, 200, 20);
@@ -101,8 +153,12 @@ public class VistaTextoAB extends JFrame {
         areanomTxt2.setBounds(250,335, 200,20);
         add(areanomTxt2);
 
-        //
-        // Botón agregar texto
+        //BOTONES
+        // Botón agregar texto palabras
+        bAgregarTexto.setBounds(400, 250, 200, 20);
+        add(bAgregarTexto);
+
+        // Botón agregar texto frecuencias
         bAgregarTexto.setBounds(700, 250, 200, 20);
         add(bAgregarTexto);
 
