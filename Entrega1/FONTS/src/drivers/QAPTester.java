@@ -1,5 +1,6 @@
 package drivers;
 import main.domain.classes.functions.QAP;
+import main.domain.classes.functions.SimulatedAnnealing;
 import main.domain.classes.types.PairInt;
 
 import java.io.*;
@@ -14,7 +15,7 @@ import static java.lang.Math.sqrt;
 public class QAPTester {
 
     public static void main(String[] args) {
-        String nombreTest = "chr12c.dat";
+        String nombreTest = "sko64.dat";
         //String path = "C:\\Users\\34696\\OneDrive\\Descargas\\VARIS\\";
         //String pathInput = path + "qapdata\\rou12.dat";
         //String pathSolutions = path + "qapsoln";
@@ -73,9 +74,8 @@ public class QAPTester {
                 nfilas = r;
                 ncolumnas = nfilas + 1;
             }*/
-            System.out.println("NFILAS: " + nfilas + " NCOLS: " + ncolumnas);
-            List<Integer> sol = new ArrayList<>();
-            int [][] tec;
+            System.out.println("Filas: " + nfilas + " Columnas: " + ncolumnas);
+            /*int [][] tec;
             QAP qap = new QAP(nfilas,ncolumnas,matrizFrecuencias,matrizDistancias);
             tec = qap.getTeclado();
             for (int i = 0; i < nfilas; ++i) {
@@ -83,7 +83,23 @@ public class QAPTester {
                     System.out.print(tec[i][j] + " ");
                 }
                 System.out.println();
+            }*/
+            /*int media = 0;
+            for (int i = 0; i < 100; ++i) {
+                System.out.println("Iteracion " + i + " simulated Annealing");
+                SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing(nfilas, ncolumnas, matrizFrecuencias, matrizDistancias);
+                int p = simulatedAnnealing.getPuntuacionFinal();
+                System.out.println("Puntuacion = " + p);
+                media += p;
             }
+            float m = (float) media / 100;
+            System.out.println("Media de las 100 iteraciones = " + m);*/
+
+            SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing(nfilas, ncolumnas, matrizFrecuencias, matrizDistancias);
+            int p = simulatedAnnealing.getPuntuacionFinal();
+            System.out.println("Puntuacion = " + p);
+
+
 
 
         } catch (FileNotFoundException e) {
