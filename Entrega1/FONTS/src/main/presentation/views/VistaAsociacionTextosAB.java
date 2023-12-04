@@ -27,7 +27,7 @@ public class VistaAsociacionTextosAB extends JFrame {
     /** Área de texto para introducir el nombre de la asociación que se quiere crear */
     private final JTextArea areanomAT1 = new JTextArea();
     /** Texto indicando que la barra de texto de al lado es para introducir el contenido de la asociación */
-    private final JLabel txtContenido = new JLabel("CONTENIDO:");
+    private final JLabel txtContenido = new JLabel("TEXTOS A AGREGAR:");
     /** Área de texto para introducir el contenido de la asociación que se quiere crear */
     private final JTextArea areaContenido = new JTextArea();
     /** Texto indicando que la barra de texto de al lado es para introducir el path de la asociación, para saber donde esta guardado */
@@ -55,11 +55,11 @@ public class VistaAsociacionTextosAB extends JFrame {
         //setTitle("Funcionalidades alfabeto);
 
         // Título ventana superior
-        tituloVistaAT1.setBounds(10, 5, 120, 30);
+        tituloVistaAT1.setBounds(10, 5, 200, 30);
         add(tituloVistaAT1);
 
         // Título ventana inferior
-        tituloVistaAT2.setBounds(10, 305, 120, 30);
+        tituloVistaAT2.setBounds(10, 305, 200, 30);
         add(tituloVistaAT2);
 
         //VENTANA SUPERIOR
