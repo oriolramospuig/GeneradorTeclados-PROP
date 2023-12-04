@@ -41,12 +41,12 @@ public class CtrlPresentacion {
 
     //VISTAS TEXTO
     /** Muestra por pantalla la ventana de las funcionalidades de texto */
-    public static void vistaTextoAB() {
-        VistaTextoAB vTxt = new VistaTextoAB();
+    public static void vistaTextoA() {
+        VistaTextoA vTxt = new VistaTextoA();
     }
     /** Muestra por pantalla la ventana de las funcionalidades de texto */
-    public static void vistaTextoCM() {
-        VistaTextoCM vTxt = new VistaTextoCM();
+    public static void vistaTextoC() {
+        VistaTextoC vTxt = new VistaTextoC();
     }
     /** Muestra por pantalla la ventana de las funcionalidades de texto */
     public static void vistaTextoM() {

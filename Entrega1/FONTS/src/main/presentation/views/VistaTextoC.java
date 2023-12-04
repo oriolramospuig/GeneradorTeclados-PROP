@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VistaTextoM extends JFrame {
+public class VistaTextoC extends JFrame {
 
     //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
@@ -46,7 +46,7 @@ public class VistaTextoM extends JFrame {
 
 
 
-    public VistaTextoM(){
+    public VistaTextoC(){
 
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);

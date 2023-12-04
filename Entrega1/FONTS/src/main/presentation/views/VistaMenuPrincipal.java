@@ -111,7 +111,7 @@ public class VistaMenuPrincipal extends JFrame {
         ActionListener lAgregarTxt = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CtrlPresentacion.vistaTextoAB();
+                CtrlPresentacion.vistaTextoA();
                 setVisible(false);
             }
         };
@@ -175,7 +175,7 @@ public class VistaMenuPrincipal extends JFrame {
         ActionListener lConsultarTxt = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CtrlPresentacion.vistaTextoCM();
+                CtrlPresentacion.vistaTextoC();
                 setVisible(false);
             }
         };
