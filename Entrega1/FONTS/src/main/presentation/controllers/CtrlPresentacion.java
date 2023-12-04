@@ -86,7 +86,7 @@ public class CtrlPresentacion {
      * Llama a la función existealfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a consultar si existe
      */
-    public static void existealfabeto(String nomA) {
+    public static void existeAlfabeto(String nomA) {
         boolean existe = cd.existealfabeto(nomA);
     }
     /**
@@ -139,7 +139,7 @@ public class CtrlPresentacion {
      * Llama a la función existetexto de CtrlDominio
      * @param nomTxt es el nombre del texto a consultar si existe
      */
-    public static void existetexto(String nomTxt) {
+    public static void existeTexto(String nomTxt) {
         boolean existe = cd.existealfabeto(nomTxt);
     }
     /**
@@ -191,7 +191,7 @@ public class CtrlPresentacion {
      * Llama a la función existeasociacion de CtrlDominio
      * @param nomAT es el nombre de la asociación a consultar si existe
      */
-    public static void existeasociacion(String nomAT) {
+    public static void existeAsociacion(String nomAT) {
         boolean existe = cd.existeasociacion(nomAT);
     }
 
@@ -206,7 +206,7 @@ public class CtrlPresentacion {
 
     //FUNCIONES DE CTRlDOMINIO DE TECLADO
 
-    
+
 
 
 
