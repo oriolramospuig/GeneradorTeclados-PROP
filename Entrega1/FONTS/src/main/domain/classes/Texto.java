@@ -41,7 +41,7 @@ public abstract class Texto
     }
 
     /**
-     * Devuela una lista de nombres de las asociaciones de textos que contienen el texto
+     * Devuelve una lista de nombres de las asociaciones de textos que contienen el texto
      * @return ArrayList<String>: Lista de los nombres de las asociaciones vinculadas al texto
      */
     public ArrayList<String> getAsociacionesVinculadas() {
