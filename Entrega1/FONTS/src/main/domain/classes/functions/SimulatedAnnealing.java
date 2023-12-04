@@ -107,6 +107,44 @@ public class SimulatedAnnealing {
         return puntuacion;
     }
 
+    public static int[][] generarSolucionInicial(int[][] matrizFrecuencias) {
+        int n = filas * columnas;
+        int[][] solucion = new int[filas][columnas];
+        boolean[] letrasAsignadas = new boolean[n];
+
+        int actual = 0;
+        int filaActual = 0;
+        int columnaActual = 0;
+
+        solucion[filaActual][columnaActual] = actual;
+        letrasAsignadas[actual] = true;
+
+        for (int i = 1; i < n; i++) {
+            int siguienteLetra = -1;
+            int maxFrecuencia = -1;
+
+            for (int j = 0; j < n; j++) {
+                if (!letrasAsignadas[j] && matrizFrecuencias[actual][j] > maxFrecuencia) {
+                    siguienteLetra = j;
+                    maxFrecuencia = matrizFrecuencias[actual][j];
+                }
+            }
+
+            actual = siguienteLetra;
+            letrasAsignadas[actual] = true;
+
+            columnaActual++;
+            if (columnaActual == columnas) {
+                columnaActual = 0;
+                filaActual++;
+            }
+
+            solucion[filaActual][columnaActual] = actual;
+        }
+
+        return solucion;
+    }
+
     private static int[][] calcularMejorAsignacionAleatoria(List<Integer> teclas, int N) {
         // System.out.println("La mejor de N asignaciones de las teclas aleatorias: ");
         if (teclas.size() != filas * columnas) {
@@ -145,16 +183,26 @@ public class SimulatedAnnealing {
         }
 
         int[][] tecIni = calcularMejorAsignacionAleatoria(ind, 100);
-        /*for (int i = 0; i < filas; ++i) {
+        int[][] tecAux = generarSolucionInicial(matrizFrecuencias);
+        for (int i = 0; i < filas; ++i) {
             for (int j = 0; j < columnas; ++j) {
                 System.out.print(tecIni[i][j] + " ");
             }
             System.out.println();
-        }*/
+        }
+        for (int i = 0; i < filas; ++i) {
+            for (int j = 0; j < columnas; ++j) {
+                System.out.print(tecAux[i][j] + " ");
+            }
+            System.out.println();
+        }
         int punt = calculoPuntuacion(tecIni);
-        //System.out.println("Puntuación inicial = " + punt);
+        int aux = calculoPuntuacion(tecAux);
+        System.out.println("Puntuación N aleatorios = " + punt);
+        System.out.println("Puntuación greedy = " + aux);
         //System.out.println("Empezando Simulated Annealing:");
         int[][] tecFinal = simulatedAnnealing(tecIni);
+        int[][] tecFinalAux = simulatedAnnealing(tecAux);
         /*System.out.println("Tec final: ");
         for (int i = 0; i < filas; ++i) {
             for (int j = 0; j < columnas; ++j) {
@@ -164,7 +212,9 @@ public class SimulatedAnnealing {
         }*/
         //System.out.println();
         int puntFinal = calculoPuntuacion(tecFinal);
-        //System.out.println("Puntuacion final = " + puntFinal);
+        int puntAux = calculoPuntuacion(tecFinalAux);
+        System.out.println("Puntuacion final N aleatorias = " + puntFinal);
+        System.out.println("Puntuacion final greedy = " + puntAux);
         puntuacionFinal = puntFinal;
     }
 }

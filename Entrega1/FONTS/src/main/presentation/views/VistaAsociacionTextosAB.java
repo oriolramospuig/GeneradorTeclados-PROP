@@ -54,7 +54,7 @@ public class VistaAsociacionTextosAB extends JFrame {
     private final JFrame CPframe = new JFrame ("JFrame");
 
 
-    public JPopupMenu VistaAsociacionTextosAB() {
+    public VistaAsociacionTextosAB() {
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);
         //setResizable(true);
@@ -286,6 +286,6 @@ public class VistaAsociacionTextosAB extends JFrame {
         bBorrarAsociacion.addActionListener(lBorrar);
         bsalir.addActionListener(lSalir);
 
-        return null;
+        // return null;
     }
 }
