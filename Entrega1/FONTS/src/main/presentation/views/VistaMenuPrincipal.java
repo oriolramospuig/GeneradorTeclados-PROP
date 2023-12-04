@@ -32,10 +32,10 @@ public class VistaMenuPrincipal extends JFrame {
     private JButton bsalir = new JButton("Salir");
 
     // Botones para mostrar los menús
-    private JButton btnAlfabeto = new JButton("Alfabeto");
-    private JButton btnTexto = new JButton("Texto");
-    private JButton btnAsociacion = new JButton("Asociación de Textos");
-    private JButton btnTeclado = new JButton("Teclado");
+    private JButton bAlfabeto = new JButton("Alfabeto");
+    private JButton bTexto = new JButton("Texto");
+    private JButton bAsociacion = new JButton("Asociación de Textos");
+    private JButton bTeclado = new JButton("Teclado");
 
     public VistaMenuPrincipal() {
         setBounds(250, 150, 1000, 600);
@@ -55,16 +55,16 @@ public class VistaMenuPrincipal extends JFrame {
         popupMenuT.add(consultar_modificarT);
 
         // Configurar botones y sus posiciones
-        btnAlfabeto.setBounds(400, 100, 200, 20);
-        btnTexto.setBounds(400, 200, 200, 20);
-        btnAsociacion.setBounds(400, 300, 200, 20);
-        btnTeclado.setBounds(400, 400, 200, 20);
+        bAlfabeto.setBounds(400, 100, 200, 20);
+        bTexto.setBounds(400, 200, 200, 20);
+        bAsociacion.setBounds(400, 300, 200, 20);
+        bTeclado.setBounds(400, 400, 200, 20);
 
         // Añadir botones a la ventana
-        add(btnAlfabeto);
-        add(btnTexto);
-        add(btnAsociacion);
-        add(btnTeclado);
+        add(bAlfabeto);
+        add(bTexto);
+        add(bAsociacion);
+        add(bTeclado);
 
         // Título de la ventana
         tituloVista.setBounds(40, 20, 200, 30);
@@ -150,10 +150,10 @@ public class VistaMenuPrincipal extends JFrame {
             }
         };
 
-        btnAlfabeto.addActionListener(e -> popupMenuA.show(btnAlfabeto, 0, btnAlfabeto.getHeight()));
-        btnTexto.addActionListener(e -> popupMenuTxt.show(btnTexto, 0, btnTexto.getHeight()));
-        btnAsociacion.addActionListener(e -> popupMenuAT.show(btnAsociacion, 0, btnAsociacion.getHeight()));
-        btnTeclado.addActionListener(e -> popupMenuT.show(btnTeclado, 0, btnTeclado.getHeight()));
+        bAlfabeto.addActionListener(e -> popupMenuA.show(bAlfabeto, 0, bAlfabeto.getHeight()));
+        bTexto.addActionListener(e -> popupMenuTxt.show(bTexto, 0, bTexto.getHeight()));
+        bAsociacion.addActionListener(e -> popupMenuAT.show(bAsociacion, 0, bAsociacion.getHeight()));
+        bTeclado.addActionListener(e -> popupMenuT.show(bTeclado, 0, bTeclado.getHeight()));
 
         bsalir.addActionListener(salir);
 
