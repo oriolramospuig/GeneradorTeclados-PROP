@@ -137,6 +137,14 @@ public class CtrlTexto
         return false;
     }
 
+    /**
+     * Devuelve la lista de nombres de textos existentes
+     * @return ArrayList<String> : La lista de los nombres de los textos existentes
+     */
+    public ArrayList<String> getNombresTextos(){
+        return CjtTextos.getNombresTextos();
+    }
+
     //Para la segunda entrega
     /*public void borrarTexto(String nomT){
         ArrayList<String> AVinculadas = CjtTextos.getTexto(nomT).getAsociacionesVinculadas();
