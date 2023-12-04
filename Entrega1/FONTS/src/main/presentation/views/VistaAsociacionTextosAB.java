@@ -26,14 +26,15 @@ public class VistaAsociacionTextosAB extends JFrame {
     private final JLabel txtNombre1 = new JLabel("NOMBRE:");
     /** Área de texto para introducir el nombre de la asociación que se quiere crear */
     private final JTextArea areanomAT1 = new JTextArea();
+    /** Texto indicando que la barra de texto de al lado es para introducir el número de textos que quiere agregar a la asociación */
+    private final JLabel txtNumTextos = new JLabel("NÚM DE TEXTOS A AÑADIR:");
+    /** Área de texto para introducir el número de textos que quiere añadir a la asociación */
+    private final JTextArea areaNumTextos = new JTextArea();
     /** Texto indicando que la barra de texto de al lado es para introducir el contenido de la asociación */
-    private final JLabel txtContenido = new JLabel("TEXTOS A AGREGAR:");
+    private final JLabel txtTextosAgregar = new JLabel("TEXTOS A AGREGAR:");
     /** Área de texto para introducir el contenido de la asociación que se quiere crear */
-    private final JTextArea areaContenido = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el path de la asociación, para saber donde esta guardado */
-    private final JLabel txtPath = new JLabel("PATH:");
-    /** Área de texto para introducir el path de la asociación que se quiere crear */
-    private final JTextArea areaPath = new JTextArea();
+    private final JTextArea areaTextosAgregar = new JTextArea();
+
 
     //VENTANA INFERIOR
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociación */
@@ -71,21 +72,22 @@ public class VistaAsociacionTextosAB extends JFrame {
         areanomAT1.setBounds(250,35, 200,20);
         add(areanomAT1);
 
-        // Texto Contenido
-        txtContenido.setBounds(50, 75, 200, 20);
-        add(txtContenido);
+        // Texto núm. textos
+        txtNumTextos.setBounds(550, 175, 200, 20);
+        add(txtNumTextos);
 
-        // Área texto Contenido
-        areaContenido.setBounds(250,75, 200,60);
-        add(areaContenido);
+        // Área texto núm. textos
+        areaNumTextos.setBounds(750,175, 200,20);
+        add(areaNumTextos);
 
-        // Texto Path
-        txtPath.setBounds(50, 175, 200, 20);
-        add(txtPath);
+        // Texto textos a agregar
+        txtTextosAgregar.setBounds(50, 75, 200, 20);
+        add(txtTextosAgregar);
 
-        // Área texto Path
-        areaPath.setBounds(250,175, 200,20);
-        add(areaPath);
+        // Área textos a agregar
+        areaTextosAgregar.setBounds(250,75, 200,60);
+        add(areaTextosAgregar);
+
 
         //VENTANA INFERIOR
         // Texto Nombre
@@ -98,7 +100,7 @@ public class VistaAsociacionTextosAB extends JFrame {
 
         //
         // Botón agregar Alfabeto
-        bAgregarAsociacion.setBounds(700, 250, 200, 20);
+        bAgregarAsociacion.setBounds(700, 250, 250, 20);
         add(bAgregarAsociacion);
 
         // Botón borrar Alfabeto
@@ -140,36 +142,38 @@ public class VistaAsociacionTextosAB extends JFrame {
                     };
                     bSalirErrorNombre.addActionListener(lSalirErrorNombre);
 
-                } else if (areaContenido.getText().isEmpty() && areaPath.getText().isEmpty()){
-                    JDialog sinConPath =  new JDialog(CPframe, "Error: No Contenido o No Path");
-                    sinConPath.setBounds(450, 300, 700, 200);
-                    sinConPath.setLayout(null);
+                } else if (areaNumTextos.getText().isEmpty()){
+                    JDialog sinNumTextos =  new JDialog(CPframe, "Error: No núm textos");
+                    sinNumTextos.setBounds(450, 300, 700, 200);
+                    sinNumTextos.setLayout(null);
 
-                    JLabel txtErrorConPath = new JLabel("Hay que añadir un contenido de la asociación a mano o entrar un path donde se encuentra el archivo de la asociación");
-                    txtErrorConPath.setBounds(20, 20, 700, 40);
-                    JButton bSalirErrorConPath = new JButton("Salir");
-                    bSalirErrorConPath.setVisible(true);
-                    bSalirErrorConPath.setBounds(150, 110, 100, 30);
-                    sinConPath.add(txtErrorConPath);
-                    sinConPath.add(bSalirErrorConPath);
-                    sinConPath.setVisible(true);
+                    JLabel txtErrorSinNum = new JLabel("Hay que entrar un número de textos que se querrán agregar a la asociación");
+                    txtErrorSinNum.setBounds(20, 20, 700, 40);
+                    JButton bSalirErrorNumTextos = new JButton("Salir");
+                    bSalirErrorNumTextos.setVisible(true);
+                    bSalirErrorNumTextos.setBounds(150, 110, 100, 30);
+                    sinNumTextos.add(txtErrorSinNum);
+                    sinNumTextos.add(bSalirErrorNumTextos);
+                    sinNumTextos.setVisible(true);
 
                     ActionListener lSalirErrorConPath = new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            sinConPath.dispose();
-                            sinConPath.setVisible(false);
+                            sinNumTextos.dispose();
+                            sinNumTextos.setVisible(false);
                         }
                     };
-                    bSalirErrorConPath.addActionListener(lSalirErrorConPath);
-                }else { //se han llenado todos los campos
-                    if(areaContenido.getText().isEmpty()){
-                        // fer lo del path areaPath.getText();
-                    }
-                    else if(areaPath.getText().isEmpty()) {
-                        //CtrlPresentacion.agregarAlfabeto(areanomA1.getText(), areaContenido.getText());
+                    bSalirErrorNumTextos.addActionListener(lSalirErrorConPath);
+                }else if(areaTextosAgregar.getText().isEmpty() ){
+                    //&& areaNumTextos.getText() != '0'
+
+                    if(areaTextosAgregar.getText().isEmpty()) {
+                        //CtrlPresentacion.agregarTexto(areanomA1.getText(), areaContenido.getText());
                         setVisible(false);
                     }
+                }else {//se han llenado todos los campos
+
+                    //CtrlPresentacion.agregarAsociacion(areanomA1.getText(), areaContenido.getText());
                 }
 
                 //if (areaFiles.getText().length() == 0) files = 50;
