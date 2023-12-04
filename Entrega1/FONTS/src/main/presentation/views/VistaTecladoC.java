@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VistaTecladoM extends JFrame {
+public class VistaTecladoC extends JFrame {
 
     //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
@@ -46,7 +46,7 @@ public class VistaTecladoM extends JFrame {
 
 
 
-    public VistaTecladoM(){
+    public VistaTecladoC(){
 
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);

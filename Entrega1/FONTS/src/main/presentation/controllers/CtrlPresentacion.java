@@ -77,12 +77,12 @@ public class CtrlPresentacion {
 
     //VISTAS TECLADO
     /** Muestra por pantalla la ventana de las funcionalidades de teclado */
-    public static void vistaTecladoAB() {
-        VistaTecladoAB vTec = new VistaTecladoAB();
+    public static void vistaTecladoA() {
+        VistaTecladoA vTec = new VistaTecladoA();
     }
     /** Muestra por pantalla la ventana de las funcionalidades de teclado */
-    public static void vistaTecladoCM() {
-        VistaTecladoCM vTec = new VistaTecladoCM();
+    public static void vistaTecladoC() {
+        VistaTecladoC vTec = new VistaTecladoC();
     }
 
     /** Muestra por pantalla la ventana de las funcionalidades de texto */

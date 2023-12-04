@@ -7,7 +7,7 @@ import javax.swing.filechooser.FileSystemView;
 import java.awt.event.*;
 import java.io.File;
 
-public class VistaTecladoB extends JFrame {
+public class VistaTecladoA extends JFrame {
 
     //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
@@ -52,7 +52,7 @@ public class VistaTecladoB extends JFrame {
     private final JFrame CPframe = new JFrame ("JFrame");
 
 
-    public VistaTecladoB(){
+    public VistaTecladoA(){
 
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);
