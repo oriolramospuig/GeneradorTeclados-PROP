@@ -187,6 +187,13 @@ public class CtrlDominio
     public boolean agregarTextoFrecuencias(String nomT, HashMap<String,Integer> frecuenciaPalabras){
         return ctrlTexto.agregarTextoFrecuencias(nomT,frecuenciaPalabras);
     }
+    /**
+     * Retorna la lista de nombres de los textos existentes
+     * @return ArrayList<String>: lista de textos existentes ordenada por el nombre de texto que es la clave primaria
+     */
+    public ArrayList<String> getNombresTextos(){
+        return ctrlTexto.getNombresTextos();
+    }
 
     /**
      * Retorna la lista de textos existentes

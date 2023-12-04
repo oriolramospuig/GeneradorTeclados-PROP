@@ -134,6 +134,11 @@ public class CtrlPresentacion {
         //HashMap<String, Texto> ListaTextos = cd.getListaTextos(); NO SE PUEDE PASAR EL OBJETO TEXTO!!
     }*/
 
+    /** Llama a la función getNombresTextos de CtrlDominio */
+    public static ArrayList<String> getNombresTextos() {
+        ArrayList<String> listaTextosNombres = cd.getNombresAsociaciones();
+        return listaTextosNombres;
+    }
 
     /**
      * Llama a la función existetexto de CtrlDominio
@@ -183,9 +188,14 @@ public class CtrlPresentacion {
      }*/
 
 
-    /** Llama a la función getNombresAsociaciones de CtrlDominio */
-    public static void getNombresAsociaciones() {
+    /**
+     * Llama a la función getNombresAsociaciones de CtrlDominio
+     *
+     * @return
+     */
+    public static ArrayList<String> getNombresAsociaciones() {
         ArrayList<String> listaAsociacionesNombres = cd.getNombresAsociaciones();
+        return listaAsociacionesNombres;
     }
     /**
      * Llama a la función existeasociacion de CtrlDominio

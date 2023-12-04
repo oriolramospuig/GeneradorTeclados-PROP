@@ -5,6 +5,7 @@ import main.presentation.controllers.CtrlPresentacion;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class VistaAsociacionTextosAB extends JFrame {
 
@@ -35,6 +36,10 @@ public class VistaAsociacionTextosAB extends JFrame {
     /** Área de texto para introducir el contenido de la asociación que se quiere crear */
     private final JTextArea areaTextosAgregar = new JTextArea();
 
+    private JPopupMenu popupMenuA = new JPopupMenu();
+    private JButton showPopupButton = new JButton("Mostrar Menú Emergente");
+
+
 
     //VENTANA INFERIOR
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociación */
@@ -49,7 +54,7 @@ public class VistaAsociacionTextosAB extends JFrame {
     private final JFrame CPframe = new JFrame ("JFrame");
 
 
-    public VistaAsociacionTextosAB() {
+    public JPopupMenu VistaAsociacionTextosAB() {
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);
         //setResizable(true);
@@ -73,19 +78,19 @@ public class VistaAsociacionTextosAB extends JFrame {
         add(areanomAT1);
 
         // Texto núm. textos
-        txtNumTextos.setBounds(550, 175, 200, 20);
+        txtNumTextos.setBounds(50, 75, 200, 20);
         add(txtNumTextos);
 
         // Área texto núm. textos
-        areaNumTextos.setBounds(750,175, 200,20);
+        areaNumTextos.setBounds(250,75, 200,20);
         add(areaNumTextos);
 
         // Texto textos a agregar
-        txtTextosAgregar.setBounds(50, 75, 200, 20);
+        txtTextosAgregar.setBounds(50, 115, 200, 20);
         add(txtTextosAgregar);
 
         // Área textos a agregar
-        areaTextosAgregar.setBounds(250,75, 200,60);
+        areaTextosAgregar.setBounds(250,115, 200,60);
         add(areaTextosAgregar);
 
 
@@ -115,6 +120,51 @@ public class VistaAsociacionTextosAB extends JFrame {
 
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Dynamic Popup Menu Example");
+            //JButton showPopupButton = new JButton("Mostrar Menú Emergente");
+            ActionListener lPopup = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Crear el menú emergente
+                    //JPopupMenu popupMenu = createPopupMenu();
+
+                    // Obtener la posición del botón y mostrar el menú emergente
+                    int x = showPopupButton.getX();
+                    int y = showPopupButton.getY() + showPopupButton.getHeight();
+                    //popupMenu.show(showPopupButton, x, y);
+                }
+            };
+
+            frame.getContentPane().add(showPopupButton);
+            frame.setSize(300, 200);
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
+
+        // Método para crear el menú emergente con elementos dinámicos
+        /*private static JPopupMenu createPopupMenu() {
+            JPopupMenu popupMenu = new JPopupMenu();
+            //Pedir a ctrlPresentacion la lista de nombres de los textos existentes
+            ArrayList<String> nombresTextos = CtrlPresentacion.getNombresTextos();
+
+            // Agregar elementos al menú emergente
+            for (int i = 0; i < nombresTextos.size(); ++i) {
+                JMenuItem menuItem = new JMenuItem(nombresTextos.get(i));
+                menuItem.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JMenuItem source = (JMenuItem) e.getSource();
+                        JOptionPane.showMessageDialog(null, "Seleccionaste: " + source.getText());
+                    }
+                });
+                popupMenu.add(menuItem);
+            }
+            return popupMenu;
+        };*/
+        //showPopupButton.lPopup();
+
 
         ActionListener lAgregar = new ActionListener() {
             @Override
@@ -229,9 +279,13 @@ public class VistaAsociacionTextosAB extends JFrame {
             }
         };
 
+        showPopupButton.addActionListener(e -> popupMenuA.show(showPopupButton, 0, showPopupButton.getHeight()));
+
+
         bAgregarAsociacion.addActionListener(lAgregar);
         bBorrarAsociacion.addActionListener(lBorrar);
         bsalir.addActionListener(lSalir);
 
+        return null;
     }
 }
