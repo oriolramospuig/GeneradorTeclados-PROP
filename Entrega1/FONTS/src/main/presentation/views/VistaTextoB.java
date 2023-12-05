@@ -12,64 +12,19 @@ public class VistaTextoB extends JFrame {
     //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana superior */
-    private final JLabel tituloVistaTxt1 = new JLabel("Agregar texto de palabras");
-    /** Título de media ventana superior */
-    private final JLabel tituloVistaTxt11 = new JLabel("Agregar texto de frecuencias");
     /** Título de media ventana inferior */
-    private final JLabel tituloVistaTxt2 = new JLabel("Borrar texto");
-
-    /** Botón para agregar un texto */
-    private final JButton bAgregarTexto = new JButton("Agregar texto de palabras");
-    /** Botón para agregar un texto */
-    private final JButton bAgregarTextoFrec = new JButton("Agregar texto de frecuencias");
-    /** Botón para borrar un texto */
+    private final JLabel tituloVistaTxtB = new JLabel("Borrar texto");
     private final JButton bBorrarTexto = new JButton("Borrar texto");
     /** Botó de tornar a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
 
 
     //TEXTOS Y AREAS DE TEXTO
-    //VENTANA SUPERIOR
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto */
-    private final JLabel txtNombre1 = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del texto que se quiere crear */
-    private final JTextArea areanomTxt1 = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el contenido del texto */
-    private final JLabel txtContenido = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el contenido del texto que se quiere crear */
-    private final JTextArea areaContenido = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el path del texto, para saber donde esta guardado */
-    private final JLabel txtPath = new JLabel("PATH:");
-    /** Área de texto para introducir el path del texto que se quiere crear */
-    private final JTextArea areaPath = new JTextArea();
-    /** Texto explicando las instrucciones de como entrar el texto en caso de palabras */
-    private final JLabel txtInstrucciones = new JLabel("(Hay que añadir un texto del formato palabras en frases. Ej: Hola que tal)");
-
-
-    //VENTANA SUPERIOR2
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto */
-    private final JLabel txtNombre11 = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del texto que se quiere crear */
-    private final JTextArea areanomTxt11 = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el contenido del texto */
-    private final JLabel txtContenido1 = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el contenido del texto que se quiere crear */
-    private final JTextArea areaContenido1 = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el path del texto, para saber donde esta guardado */
-    private final JLabel txtPath1 = new JLabel("PATH:");
-    /** Área de texto para introducir el path del texto que se quiere crear */
-    private final JTextArea areaPath1 = new JTextArea();
-    /** Texto explicando las instrucciones de como entrar el texto en caso de palabras */
-    private final JLabel txtInstrucciones1 = new JLabel("(Hay que añadir un texto del formato palabras con sus rescpectivas");
-    /** Texto explicando las instrucciones de como entrar el texto en caso de palabras */
-    private final JLabel txtInstrucciones11 = new JLabel("frecuencias separadas por un espacio. Ej: hola 5)");
-
     //VENTANA INFERIOR
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto */
-    private final JLabel txtNombre2 = new JLabel("NOMBRE:");
+    private final JLabel txtNombreB = new JLabel("NOMBRE:");
     /** Área de texto para introducir el nombre del texto que se quiere crear */
-    private final JTextArea areanomTxt2 = new JTextArea();
+    private final JTextArea areanomTxtB = new JTextArea();
 
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere crear un texto sin nombre */
@@ -85,101 +40,20 @@ public class VistaTextoB extends JFrame {
         //setResizable(true);
         //setTitle("Funcionalidades texto);
 
-        // Título ventana superior
-        tituloVistaTxt1.setBounds(10, 5, 200, 30);
-        add(tituloVistaTxt1);
-
-        // Título ventana superior2
-        tituloVistaTxt11.setBounds(510, 5, 200, 30);
-        add(tituloVistaTxt11);
-
         // Título ventana inferior
-        tituloVistaTxt2.setBounds(10, 305, 120, 30);
-        add(tituloVistaTxt2);
-
-        //VENTANA SUPERIOR
-        // Texto Nombre
-        txtNombre1.setBounds(30, 35, 200, 20);
-        add(txtNombre1);
-
-        // Área texto Nombre
-        areanomTxt1.setBounds(230,35, 200,20);
-        add(areanomTxt1);
-
-        // Texto Contenido
-        txtContenido.setBounds(30, 75, 200, 20);
-        add(txtContenido);
-
-        // Área texto Contenido
-        areaContenido.setBounds(230,75, 200,60);
-        add(areaContenido);
-
-        // Texto Path
-        txtPath.setBounds(30, 175, 200, 20);
-        add(txtPath);
-
-        // Área texto Path
-        areaPath.setBounds(230,175, 200,20);
-        add(areaPath);
-
-        // Texto Instrucciones
-        txtInstrucciones.setBounds(30, 260, 500, 20);
-        add(txtInstrucciones);
-
-
-        //VENTANA SUPERIOR2
-        // Texto Nombre
-        txtNombre11.setBounds(550, 35, 200, 20);
-        add(txtNombre11);
-
-        // Área texto Nombre
-        areanomTxt11.setBounds(750,35, 200,20);
-        add(areanomTxt11);
-
-        // Texto Contenido
-        txtContenido1.setBounds(550, 75, 200, 20);
-        add(txtContenido1);
-
-        // Área texto Contenido
-        areaContenido1.setBounds(750,75, 200,60);
-        add(areaContenido1);
-
-        // Texto Path
-        txtPath1.setBounds(550, 175, 200, 20);
-        add(txtPath1);
-
-        // Área texto Path
-        areaPath1.setBounds(750,175, 200,20);
-        add(areaPath1);
-
-        // Texto Instrucciones
-        txtInstrucciones1.setBounds(550, 260, 500, 20);
-        add(txtInstrucciones1);
-        // Texto Instrucciones2
-        txtInstrucciones11.setBounds(550, 280, 500, 20);
-        add(txtInstrucciones11);
-
+        tituloVistaTxtB.setBounds(10, 305, 120, 30);
+        add(tituloVistaTxtB);
 
         //VENTANA INFERIOR
         // Texto Nombre
-        txtNombre2.setBounds(50, 335, 200, 20);
-        add(txtNombre2);
+        txtNombreB.setBounds(50, 335, 200, 20);
+        add(txtNombreB);
 
         // Área texto Nombre
-        areanomTxt2.setBounds(250,335, 200,20);
-        add(areanomTxt2);
-
-
+        areanomTxtB.setBounds(250,335, 200,20);
+        add(areanomTxtB);
 
         //BOTONES
-        // Botón agregar texto palabras
-        bAgregarTexto.setBounds(200, 240, 200, 20);
-        add(bAgregarTexto);
-
-        // Botón agregar texto frecuencias
-        bAgregarTextoFrec.setBounds(700, 240, 200, 20);
-        add(bAgregarTextoFrec);
-
         // Botón borrar texto
         bBorrarTexto.setBounds(700, 400, 200, 20);
         add(bBorrarTexto);
@@ -193,136 +67,6 @@ public class VistaTextoB extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        ActionListener lAgregar = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (areanomTxt1.getText().isEmpty()){
-                    JDialog sinNombre =  new JDialog(Nomframe, "Error: No Nombre");
-                    sinNombre.setBounds(800, 300, 400, 200);
-                    sinNombre.setLayout(null);
-
-                    JLabel txtErrorNombre = new JLabel("Hay que agregar el texto con un nombre nuevo");
-                    txtErrorNombre.setBounds(80, 20, 400, 40);
-                    JButton bSalirErrorNombre = new JButton("Salir");
-                    bSalirErrorNombre.setVisible(true);
-                    bSalirErrorNombre.setBounds(150, 110, 100, 30);
-                    sinNombre.add(txtErrorNombre);
-                    sinNombre.add(bSalirErrorNombre);
-                    sinNombre.setVisible(true);
-
-                    ActionListener lSalirErrorNombre = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinNombre.dispose();
-                            sinNombre.setVisible(false);
-                        }
-                    };
-                    bSalirErrorNombre.addActionListener(lSalirErrorNombre);
-
-                } else if (areaContenido.getText().isEmpty() && areaPath.getText().isEmpty()){
-                    JDialog sinConPath =  new JDialog(CPframe, "Error: No Contenido o No Path");
-                    sinConPath.setBounds(450, 300, 700, 200);
-                    sinConPath.setLayout(null);
-
-                    JLabel txtErrorConPath = new JLabel("Hay que añadir un contenido del texto a mano o entrar un path donde se encuentra el archivo del texto");
-                    txtErrorConPath.setBounds(20, 20, 700, 40);
-                    JButton bSalirErrorConPath = new JButton("Salir");
-                    bSalirErrorConPath.setVisible(true);
-                    bSalirErrorConPath.setBounds(150, 110, 100, 30);
-                    sinConPath.add(txtErrorConPath);
-                    sinConPath.add(bSalirErrorConPath);
-                    sinConPath.setVisible(true);
-
-                    ActionListener lSalirErrorConPath = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinConPath.dispose();
-                            sinConPath.setVisible(false);
-                        }
-                    };
-                    bSalirErrorConPath.addActionListener(lSalirErrorConPath);
-                }else { //se han llenado todos los campos
-                    if(areaContenido.getText().isEmpty()){
-                        // fer lo del path areaPath.getText();
-                    }
-                    else if(areaPath.getText().isEmpty()) {
-                        //CtrlPresentacion.agregarTexto(areanomA1.getText(), areaContenido.getText());
-                        setVisible(false);
-                    }
-                }
-
-                //if (areaFiles.getText().length() == 0) files = 50;
-                //else files = Integer.parseInt(areaFiles.getText());
-
-
-            }
-        };
-
-        ActionListener lAgregarFrec = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (areanomTxt11.getText().isEmpty()){
-                    JDialog sinNombre =  new JDialog(Nomframe, "Error: No Nombre");
-                    sinNombre.setBounds(800, 300, 400, 200);
-                    sinNombre.setLayout(null);
-
-                    JLabel txtErrorNombre = new JLabel("Hay que agregar el texto con un nombre nuevo");
-                    txtErrorNombre.setBounds(80, 20, 400, 40);
-                    JButton bSalirErrorNombre = new JButton("Salir");
-                    bSalirErrorNombre.setVisible(true);
-                    bSalirErrorNombre.setBounds(150, 110, 100, 30);
-                    sinNombre.add(txtErrorNombre);
-                    sinNombre.add(bSalirErrorNombre);
-                    sinNombre.setVisible(true);
-
-                    ActionListener lSalirErrorNombre = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinNombre.dispose();
-                            sinNombre.setVisible(false);
-                        }
-                    };
-                    bSalirErrorNombre.addActionListener(lSalirErrorNombre);
-
-                } else if (areaContenido1.getText().isEmpty() && areaPath1.getText().isEmpty()){
-                    JDialog sinConPath =  new JDialog(CPframe, "Error: No Contenido o No Path");
-                    sinConPath.setBounds(450, 300, 700, 200);
-                    sinConPath.setLayout(null);
-
-                    JLabel txtErrorConPath = new JLabel("Hay que añadir un contenido del texto a mano o entrar un path donde se encuentra el archivo del texto");
-                    txtErrorConPath.setBounds(20, 20, 700, 40);
-                    JButton bSalirErrorConPath = new JButton("Salir");
-                    bSalirErrorConPath.setVisible(true);
-                    bSalirErrorConPath.setBounds(150, 110, 100, 30);
-                    sinConPath.add(txtErrorConPath);
-                    sinConPath.add(bSalirErrorConPath);
-                    sinConPath.setVisible(true);
-
-                    ActionListener lSalirErrorConPath = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinConPath.dispose();
-                            sinConPath.setVisible(false);
-                        }
-                    };
-                    bSalirErrorConPath.addActionListener(lSalirErrorConPath);
-                }else { //se han llenado todos los campos
-                    if(areaContenido1.getText().isEmpty()){
-                        // fer lo del path areaPath.getText();
-                    }
-                    else if(areaPath1.getText().isEmpty()) {
-                        //CtrlPresentacion.agregarTexto(areanomA1.getText(), areaContenido.getText());
-                        setVisible(false);
-                    }
-                }
-
-                //if (areaFiles.getText().length() == 0) files = 50;
-                //else files = Integer.parseInt(areaFiles.getText());
-
-
-            }
-        };
-
         ActionListener lBorrar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -330,7 +74,7 @@ public class VistaTextoB extends JFrame {
                 //CtrlPresentacion.getNombresTextos();
 
 
-                if (areanomTxt2.getText().isEmpty()){
+                if (areanomTxtB.getText().isEmpty()){
                     JDialog sinNombre2 =  new JDialog(Nomframe, "Error: No Nombre");
                     sinNombre2.setBounds(800, 300, 400, 200);
                     sinNombre2.setLayout(null);
@@ -354,7 +98,7 @@ public class VistaTextoB extends JFrame {
                     bSalirErrorNombre2.addActionListener(lSalirErrorNombre);
 
                 }else { //se han llenado todos los campos
-                    CtrlPresentacion.borrarTexto(areanomTxt2.getText());
+                    CtrlPresentacion.borrarTexto(areanomTxtB.getText());
                     setVisible(false);
                 }
 
@@ -368,9 +112,6 @@ public class VistaTextoB extends JFrame {
                 setVisible(false);
             }
         };
-
-        bAgregarTexto.addActionListener(lAgregar);
-        bAgregarTextoFrec.addActionListener(lAgregarFrec);
         bBorrarTexto.addActionListener(lBorrar);
         bsalir.addActionListener(lSalir);
 
