@@ -13,13 +13,9 @@ public class VistaTecladoA extends JFrame {
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
     /** Título de media ventana superior */
-    private final JLabel tituloVistaT1 = new JLabel("Agregar teclado");
-    /** Título de media ventana inferior */
-    private final JLabel tituloVistaT2 = new JLabel("Borrar teclado");
+    private final JLabel tituloVistaTA = new JLabel("Agregar teclado");
     /** Botón para agregar un teclado */
     private final JButton bAgregarTeclado = new JButton("Agregar teclado");
-    /** Botón para borrar un teclado */
-    private final JButton bBorrarTeclado = new JButton("Borrar teclado");
     /** Botó de tornar a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
 
@@ -27,23 +23,17 @@ public class VistaTecladoA extends JFrame {
     //TEXTOS Y AREAS DE TEXTO
     //VENTANA SUPERIOR
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del teclado */
-    private final JLabel txtNombre1 = new JLabel("NOMBRE:");
+    private final JLabel txtNombreTA = new JLabel("NOMBRE:");
     /** Área de texto para introducir el nombre del teclado que se quiere crear */
-    private final JTextArea areanomT1 = new JTextArea();
+    private final JTextArea areanomTA = new JTextArea();
     /** Texto indicando que la barra de texto de al lado es para introducir el contenido del teclado */
-    private final JLabel txtContenido = new JLabel("CONTENIDO:");
+    private final JLabel txtContenidoTA = new JLabel("CONTENIDO:");
     /** Área de texto para introducir el contenido del teclado que se quiere crear */
-    private final JTextArea areaContenido = new JTextArea();
+    private final JTextArea areaContenidoTA = new JTextArea();
     /** Texto indicando que la barra de texto de al lado es para introducir el path del teclado, para saber donde esta guardado */
-    private final JLabel txtPath = new JLabel("PATH:");
+    private final JLabel txtPathTA = new JLabel("PATH:");
     /** Área de texto para introducir el path del teclado que se quiere crear */
-    private final JTextArea areaPath = new JTextArea();
-
-    //VENTANA INFERIOR
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del teclado */
-    private final JLabel txtNombre2 = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del teclado que se quiere crear */
-    private final JTextArea areanomT2 = new JTextArea();
+    private final JTextArea areaPathTA = new JTextArea();
 
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere crear un teclado sin nombre */
@@ -60,55 +50,37 @@ public class VistaTecladoA extends JFrame {
         //setTitle("Funcionalidades teclado);
 
         // Título ventana superior
-        tituloVistaT1.setBounds(10, 5, 120, 30);
-        add(tituloVistaT1);
-
-        // Título ventana inferior
-        tituloVistaT2.setBounds(10, 305, 120, 30);
-        add(tituloVistaT2);
+        tituloVistaTA.setBounds(10, 5, 120, 30);
+        add(tituloVistaTA);
 
         //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombre1.setBounds(50, 35, 200, 20);
-        add(txtNombre1);
+        txtNombreTA.setBounds(50, 35, 200, 20);
+        add(txtNombreTA);
 
         // Área texto Nombre
-        areanomT1.setBounds(250,35, 200,20);
-        add(areanomT1);
+        areanomTA.setBounds(250,35, 200,20);
+        add(areanomTA);
 
         // Texto Contenido
-        txtContenido.setBounds(50, 75, 200, 20);
-        add(txtContenido);
+        txtContenidoTA.setBounds(50, 75, 200, 20);
+        add(txtContenidoTA);
 
         // Área texto Contenido
-        areaContenido.setBounds(250,75, 200,60);
-        add(areaContenido);
+        areaContenidoTA.setBounds(250,75, 200,60);
+        add(areaContenidoTA);
 
         // Texto Path
-        txtPath.setBounds(50, 175, 200, 20);
-        add(txtPath);
+        txtPathTA.setBounds(50, 175, 200, 20);
+        add(txtPathTA);
 
         // Área texto Path
-        areaPath.setBounds(250,175, 200,20);
-        add(areaPath);
+        areaPathTA.setBounds(250,175, 200,20);
+        add(areaPathTA);
 
-        //VENTANA INFERIOR
-        // Texto Nombre
-        txtNombre2.setBounds(50, 335, 200, 20);
-        add(txtNombre2);
-
-        // Área texto Nombre
-        areanomT2.setBounds(250,335, 200,20);
-        add(areanomT2);
-
-        //
         // Botón agregar teclado
         bAgregarTeclado.setBounds(700, 250, 200, 20);
         add(bAgregarTeclado);
-
-        // Botón borrar teclado
-        bBorrarTeclado.setBounds(700, 400, 200, 20);
-        add(bBorrarTeclado);
 
         // Botón salir para ir a la pantalla principal
         bsalir.setBounds(800, 500, 100, 20);
@@ -122,7 +94,7 @@ public class VistaTecladoA extends JFrame {
         ActionListener lAgregar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (areanomT1.getText().isEmpty()){
+                if (areanomTA.getText().isEmpty()){
                     JDialog sinNombre =  new JDialog(Nomframe, "Error: No Nombre");
                     sinNombre.setBounds(800, 300, 400, 200);
                     sinNombre.setLayout(null);
@@ -145,7 +117,7 @@ public class VistaTecladoA extends JFrame {
                     };
                     bSalirErrorNombre.addActionListener(lSalirErrorNombre);
 
-                } else if (areaContenido.getText().isEmpty() && areaPath.getText().isEmpty()){
+                } else if (areaContenidoTA.getText().isEmpty() && areaPathTA.getText().isEmpty()){
                     JDialog sinConPath =  new JDialog(CPframe, "Error: No Contenido o No Path");
                     sinConPath.setBounds(450, 300, 700, 200);
                     sinConPath.setLayout(null);
@@ -168,10 +140,10 @@ public class VistaTecladoA extends JFrame {
                     };
                     bSalirErrorConPath.addActionListener(lSalirErrorConPath);
                 }else { //se han llenado todos los campos
-                    if(areaContenido.getText().isEmpty()){
+                    if(areaContenidoTA.getText().isEmpty()){
                         // fer lo del path areaPath.getText();
                     }
-                    else if(areaPath.getText().isEmpty()) {
+                    else if(areaPathTA.getText().isEmpty()) {
                         //CtrlPresentacion.agregarAlfabeto(areanomA1.getText(), areaContenido.getText());
                         setVisible(false);
                     }
@@ -180,44 +152,6 @@ public class VistaTecladoA extends JFrame {
                 //if (areaFiles.getText().length() == 0) files = 50;
                 //else files = Integer.parseInt(areaFiles.getText());
 
-
-            }
-        };
-
-        ActionListener lBorrar = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                //CtrlPresentacion.getNombresAlfabetos();
-
-
-                if (areanomT2.getText().isEmpty()){
-                    JDialog sinNombre2 =  new JDialog(Nomframe, "Error: No Nombre");
-                    sinNombre2.setBounds(800, 300, 400, 200);
-                    sinNombre2.setLayout(null);
-
-                    JLabel txtErrorNombre2 = new JLabel("Hay que entrar el nombre de un teclado de la lista de teclados");
-                    txtErrorNombre2.setBounds(10, 20, 400, 40);
-                    JButton bSalirErrorNombre2 = new JButton("Salir");
-                    bSalirErrorNombre2.setVisible(true);
-                    bSalirErrorNombre2.setBounds(150, 110, 100, 30);
-                    sinNombre2.add(txtErrorNombre2);
-                    sinNombre2.add(bSalirErrorNombre2);
-                    sinNombre2.setVisible(true);
-
-                    ActionListener lSalirErrorNombre = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinNombre2.dispose();
-                            sinNombre2.setVisible(false);
-                        }
-                    };
-                    bSalirErrorNombre2.addActionListener(lSalirErrorNombre);
-
-                }else { //se han llenado todos los campos
-                    // CtrlPresentacion.borrarTeclado(areanomT2.getText());
-                    setVisible(false);
-                }
 
             }
         };
@@ -231,7 +165,6 @@ public class VistaTecladoA extends JFrame {
         };
 
         bAgregarTeclado.addActionListener(lAgregar);
-        bBorrarTeclado.addActionListener(lBorrar);
         bsalir.addActionListener(lSalir);
 
     }
