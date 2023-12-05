@@ -12,8 +12,8 @@ public class VistaAlfabetoA extends JFrame {
     //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana superior */
-    private final JLabel tituloVistaA1 = new JLabel("Agregar alfabeto");
+    /** Título de media ventana */
+    private final JLabel tituloVistaA = new JLabel("Agregar alfabeto");
     /** Botón para agregar un alfabeto */
     private final JButton bAgregarAlfabeto = new JButton("Agregar Alfabeto");
     /** Botó de tornar a la pantalla del menú principal */
@@ -22,9 +22,9 @@ public class VistaAlfabetoA extends JFrame {
 
     //TEXTOS Y AREAS DE TEXTO
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
-    private final JLabel txtNombre1 = new JLabel("NOMBRE:");
+    private final JLabel txtNombre = new JLabel("NOMBRE:");
     /** Área de texto para introducir el nombre del alfabeto que se quiere crear */
-    private final JTextArea areanomA1 = new JTextArea();
+    private final JTextArea areanomA = new JTextArea();
     /** Texto indicando que la barra de texto de al lado es para introducir el contenido del alfabeto */
     private final JLabel txtContenido = new JLabel("CONTENIDO:");
     /** Área de texto para introducir el contenido del alfabeto que se quiere crear */
@@ -33,7 +33,6 @@ public class VistaAlfabetoA extends JFrame {
     private final JLabel txtPath = new JLabel("PATH:");
     /** Área de texto para introducir el path del alfabeto que se quiere crear */
     private final JTextArea areaPath = new JTextArea();
-
 
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere crear un alfabeto sin nombre */
@@ -50,17 +49,17 @@ public class VistaAlfabetoA extends JFrame {
         //setTitle("Funcionalidades alfabeto);
 
         // Título ventana superior
-        tituloVistaA1.setBounds(10, 5, 120, 30);
-        add(tituloVistaA1);
+        tituloVistaA.setBounds(10, 5, 120, 30);
+        add(tituloVistaA);
 
 
         // Texto Nombre
-        txtNombre1.setBounds(50, 35, 200, 20);
-        add(txtNombre1);
+        txtNombre.setBounds(50, 35, 200, 20);
+        add(txtNombre);
 
         // Área texto Nombre
-        areanomA1.setBounds(250,35, 200,20);
-        add(areanomA1);
+        areanomA.setBounds(250,35, 200,20);
+        add(areanomA);
 
         // Texto Contenido
         txtContenido.setBounds(50, 75, 200, 20);
@@ -95,7 +94,7 @@ public class VistaAlfabetoA extends JFrame {
         ActionListener lAgregar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (areanomA1.getText().isEmpty()){
+                if (areanomA.getText().isEmpty()){
                     JDialog sinNombre =  new JDialog(Nomframe, "Error: No Nombre");
                     sinNombre.setBounds(800, 300, 400, 200);
                     sinNombre.setLayout(null);

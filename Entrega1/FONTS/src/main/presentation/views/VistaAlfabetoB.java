@@ -13,7 +13,7 @@ public class VistaAlfabetoB extends JFrame{
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
     /** Título de la ventana */
-    private final JLabel tituloVistaA2 = new JLabel("Borrar alfabeto");
+    private final JLabel tituloVistaA = new JLabel("Borrar alfabeto");
     /** Botón para borrar un alfabeto */
     private final JButton bBorrarAlfabeto = new JButton("Borrar Alfabeto");
     /** Botó de tornar a la pantalla del menú principal */
@@ -21,9 +21,9 @@ public class VistaAlfabetoB extends JFrame{
 
     //TEXTOS Y AREAS
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
-    private final JLabel txtNombre2 = new JLabel("NOMBRE:");
+    private final JLabel txtNombre = new JLabel("NOMBRE:");
     /** Área de texto para introducir el nombre del alfabeto que se quiere crear */
-    private final JTextArea areanomA2 = new JTextArea();
+    private final JTextArea areanomA = new JTextArea();
 
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere crear un alfabeto sin nombre */
@@ -40,16 +40,16 @@ public class VistaAlfabetoB extends JFrame{
         //setTitle("Funcionalidades alfabeto);
 
         // Título ventana
-        tituloVistaA2.setBounds(10, 305, 120, 30);
-        add(tituloVistaA2);
+        tituloVistaA.setBounds(10, 305, 120, 30);
+        add(tituloVistaA);
 
         // Texto Nombre
-        txtNombre2.setBounds(50, 335, 200, 20);
-        add(txtNombre2);
+        txtNombre.setBounds(50, 335, 200, 20);
+        add(txtNombre);
 
         // Área texto Nombre
-        areanomA2.setBounds(250,335, 200,20);
-        add(areanomA2);
+        areanomA.setBounds(250,335, 200,20);
+        add(areanomA);
 
         // Botón borrar Alfabeto
         bBorrarAlfabeto.setBounds(700, 400, 200, 20);
@@ -71,7 +71,7 @@ public class VistaAlfabetoB extends JFrame{
                 //CtrlPresentacion.getNombresAlfabetos();
 
 
-                if (areanomA2.getText().isEmpty()){
+                if (areanomA.getText().isEmpty()){
                     JDialog sinNombre2 =  new JDialog(Nomframe, "Error: No Nombre");
                     sinNombre2.setBounds(800, 300, 400, 200);
                     sinNombre2.setLayout(null);
@@ -95,7 +95,7 @@ public class VistaAlfabetoB extends JFrame{
                     bSalirErrorNombre2.addActionListener(lSalirErrorNombre);
 
                 }else { //se han llenado todos los campos
-                    CtrlPresentacion.borrarAlfabeto(areanomA2.getText());
+                    CtrlPresentacion.borrarAlfabeto(areanomA.getText());
                     setVisible(false);
                 }
 
