@@ -13,7 +13,7 @@ public class VistaAlfabetoA extends JFrame {
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
     /** Título de media ventana */
-    private final JLabel tituloVistaA = new JLabel("Agregar alfabeto");
+    private final JLabel tituloVistaAA = new JLabel("Agregar alfabeto");
     /** Botón para agregar un alfabeto */
     private final JButton bAgregarAlfabeto = new JButton("Agregar Alfabeto");
     /** Botó de tornar a la pantalla del menú principal */
@@ -22,17 +22,17 @@ public class VistaAlfabetoA extends JFrame {
 
     //TEXTOS Y AREAS DE TEXTO
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
-    private final JLabel txtNombre = new JLabel("NOMBRE:");
+    private final JLabel txtNombreAA = new JLabel("NOMBRE:");
     /** Área de texto para introducir el nombre del alfabeto que se quiere crear */
-    private final JTextArea areanomA = new JTextArea();
+    private final JTextArea areanomAA = new JTextArea();
     /** Texto indicando que la barra de texto de al lado es para introducir el contenido del alfabeto */
-    private final JLabel txtContenido = new JLabel("CONTENIDO:");
+    private final JLabel txtContenidoAA = new JLabel("CONTENIDO:");
     /** Área de texto para introducir el contenido del alfabeto que se quiere crear */
-    private final JTextArea areaContenido = new JTextArea();
+    private final JTextArea areaContenidoAA = new JTextArea();
     /** Texto indicando que la barra de texto de al lado es para introducir el path del alfabeto, para saber donde esta guardado */
-    private final JLabel txtPath = new JLabel("PATH:");
+    private final JLabel txtPathAA = new JLabel("PATH:");
     /** Área de texto para introducir el path del alfabeto que se quiere crear */
-    private final JTextArea areaPath = new JTextArea();
+    private final JTextArea areaPathAA = new JTextArea();
 
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere crear un alfabeto sin nombre */
@@ -49,33 +49,33 @@ public class VistaAlfabetoA extends JFrame {
         //setTitle("Funcionalidades alfabeto);
 
         // Título ventana superior
-        tituloVistaA.setBounds(10, 5, 120, 30);
-        add(tituloVistaA);
+        tituloVistaAA.setBounds(10, 5, 120, 30);
+        add(tituloVistaAA);
 
 
         // Texto Nombre
-        txtNombre.setBounds(50, 35, 200, 20);
-        add(txtNombre);
+        txtNombreAA.setBounds(50, 35, 200, 20);
+        add(txtNombreAA);
 
         // Área texto Nombre
-        areanomA.setBounds(250,35, 200,20);
-        add(areanomA);
+        areanomAA.setBounds(250,35, 200,20);
+        add(areanomAA);
 
         // Texto Contenido
-        txtContenido.setBounds(50, 75, 200, 20);
-        add(txtContenido);
+        txtContenidoAA.setBounds(50, 75, 200, 20);
+        add(txtContenidoAA);
 
         // Área texto Contenido
-        areaContenido.setBounds(250,75, 200,60);
-        add(areaContenido);
+        areaContenidoAA.setBounds(250,75, 200,60);
+        add(areaContenidoAA);
 
         // Texto Path
-        txtPath.setBounds(50, 175, 200, 20);
-        add(txtPath);
+        txtPathAA.setBounds(50, 175, 200, 20);
+        add(txtPathAA);
 
         // Área texto Path
-        areaPath.setBounds(250,175, 200,20);
-        add(areaPath);
+        areaPathAA.setBounds(250,175, 200,20);
+        add(areaPathAA);
 
         //BOTONES
         // Botón agregar Alfabeto
@@ -94,7 +94,7 @@ public class VistaAlfabetoA extends JFrame {
         ActionListener lAgregar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (areanomA.getText().isEmpty()){
+                if (areanomAA.getText().isEmpty()){
                     JDialog sinNombre =  new JDialog(Nomframe, "Error: No Nombre");
                     sinNombre.setBounds(800, 300, 400, 200);
                     sinNombre.setLayout(null);
@@ -117,7 +117,7 @@ public class VistaAlfabetoA extends JFrame {
                     };
                     bSalirErrorNombre.addActionListener(lSalirErrorNombre);
 
-                } else if (areaContenido.getText().isEmpty() && areaPath.getText().isEmpty()){
+                } else if (areaContenidoAA.getText().isEmpty() && areaPathAA.getText().isEmpty()){
                     JDialog sinConPath =  new JDialog(CPframe, "Error: No Contenido o No Path");
                     sinConPath.setBounds(450, 300, 700, 200);
                     sinConPath.setLayout(null);
@@ -140,10 +140,10 @@ public class VistaAlfabetoA extends JFrame {
                     };
                     bSalirErrorConPath.addActionListener(lSalirErrorConPath);
                 }else { //se han llenado todos los campos
-                    if(areaContenido.getText().isEmpty()){
+                    if(areaContenidoAA.getText().isEmpty()){
                         // fer lo del path areaPath.getText();
                     }
-                    else if(areaPath.getText().isEmpty()) {
+                    else if(areaPathAA.getText().isEmpty()) {
                         //CtrlPresentacion.agregarAlfabeto(areanomA1.getText(), areaContenido.getText());
                         setVisible(false);
                     }
