@@ -3,11 +3,23 @@ package main.presentation.views;
 import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
-public class VistaAlfabetoC extends JFrame {
-
+/**
+ * Aquesta vista s’encarrega de carregar un fitxer guardat a l’ordinador i obrir-lo. La vista obre l’explorador d’arxius
+ * on es podran seleccionar únicament fitxers que el nostre sistema és capaç d’obrir. Es proporciona un botó de
+ * cancel·lar que tornarà a la VistaMenuPrincipal i un botó d’obrir que farà que s’obri a la VistaSpreadsheet el fitxer
+ * seleccionat.
+ * @author Marc Clapés Marana (marc.clapes.marana@estudiantat.upc.edu)
+ */
+public class VistaAlfabetoC extends JFrame{
+    /** Finestra de selecció de l'arxiu que es vol carregar al nostre full de càlcul */
+    JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
     //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
@@ -30,14 +42,35 @@ public class VistaAlfabetoC extends JFrame {
     /** Área de texto para introducir el nombre del alfabeto que se quiere consultar */
     private final JTextArea areanomAC = new JTextArea();
 
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto a consultar*/
+    private final JLabel txtContenido = new JLabel("CONTENIDO:");
+    /** Área de texto para introducir el nombre del alfabeto que se quiere consultar */
+    private final JTextArea areacontenidoAC = new JTextArea();
+
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere consultar/modificar un alfabeto sin nombre */
     private final JFrame Nomframe = new JFrame ("JFrame");
 
 
+    /** Constructora de la finestra de carregar document */
+    public VistaAlfabetoC() {
+        // Posar els formats que ens facin falta
+        chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
+        chooser.setDialogTitle("Selecciona fitxer");
+        chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Alfabetos"));
+        int returnValue = chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File arxiu = chooser.getSelectedFile();
+            if (arxiu.getName().endsWith(".txt")) {
+                imprimirDatos(arxiu);
+                // consultarFichero(arxiu.getName().substring(0, arxiu.getName().length() - 4), true);
+            }
+        } else if (returnValue == JFileChooser.CANCEL_OPTION) {
+            CtrlPresentacion.iniPresentacion();
+        }
+    }
 
-    public VistaAlfabetoC(){
-
+    public void imprimirDatos(File arxiu) {
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);
         //setResizable(true);
@@ -57,12 +90,17 @@ public class VistaAlfabetoC extends JFrame {
         add(txtNombreAC);
 
         // Área texto Nombre
+        areanomAC.setEditable(false);
         areanomAC.setBounds(250,35, 200,20);
         add(areanomAC);
 
-        // Botón consultar Alfabeto
-        bConsultarAlfabeto.setBounds(700, 150, 200, 20);
-        add(bConsultarAlfabeto);
+        txtContenido.setBounds(50, 75, 200, 20);
+        add(txtContenido);
+
+        areacontenidoAC.setEditable(false); // Opcional, si no quieres que se pueda editar el contenido
+        JScrollPane scrollPane = new JScrollPane(areacontenidoAC); // Para agregar scroll al área de texto
+        scrollPane.setBounds(250, 75, 400, 150); // Ajusta las dimensiones según tus necesidades
+        add(scrollPane);
 
         // Botón consultar lista de Alfabetos
         bConsultarListaAlfabetos.setBounds(700, 250, 200, 20);
@@ -76,6 +114,9 @@ public class VistaAlfabetoC extends JFrame {
 
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        areanomAC.setText(arxiu.getName().substring(0, arxiu.getName().length() - 4));
+        mostrarContenidoArchivo(arxiu);
 
         ActionListener lConsultarA = new ActionListener() {
             @Override
@@ -135,4 +176,15 @@ public class VistaAlfabetoC extends JFrame {
 
     }
 
+    private void mostrarContenidoArchivo(File archivo) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+            areacontenidoAC.setText("");
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                areacontenidoAC.append(linea + "\n");
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al leer el archivo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
