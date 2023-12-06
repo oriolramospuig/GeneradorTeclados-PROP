@@ -1,5 +1,7 @@
 package main.presentation.controllers;
 
+import main.domain.classes.Alfabeto;
+import main.domain.classes.AsociacionTextos;
 import main.presentation.views.*;
 import main.domain.controllers.CtrlDominio;
 
@@ -248,9 +250,26 @@ public class CtrlPresentacion {
 
     //FUNCIONES DE CTRlDOMINIO DE TECLADO
 
+    /**
+     * Retorna si el alfabeto y la asociacion de textos tiene caracteres parecidos y por lo tanto son compatibles
+     * @param alfabeto objeto alfabeto para comparar
+     * @param asociacionTextos objeto asociacion de textos para comparar
+     * @return Boolean: true si el alfabeto y la asociación de textos son comptibles, false si no lo son
+     */
+    public void compatibles(Alfabeto alfabeto, AsociacionTextos asociacionTextos){
+        boolean comp = cd.compatibles(alfabeto,asociacionTextos);
+    }
 
-
-
+    /**
+     * Llama a la función agregarTeclado de CtrlDominio
+     * @param nomT nombre del teclado a agregar
+     * @param nomA nombre del alfabeto a vincular con el teclado nomT
+     * @param nomAT nombre de la asociación de textos a vincular con el teclado nomT
+     */
+    public void agregarTeclado(String nomT, String nomA, String nomAT){
+        int acabado = cd.agregarTeclado(nomT,nomA,nomAT);
+    }
+    //falten mes
 
 
 }
