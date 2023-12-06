@@ -27,8 +27,6 @@ public class VistaAlfabetoC extends JFrame{
     private final JLabel tituloVistaAC = new JLabel("Consultar alfabeto");
     /** Título de media ventana */
     private final JLabel tituloVistaAC2 = new JLabel("Consultar lista de alfabetos");
-    /** Botón para consultar un alfabeto */
-    private final JButton bConsultarAlfabeto = new JButton("Consultar alfabeto");
     /** Botón para consultar la lista de alfabetos */
     private final JButton bConsultarListaAlfabetos = new JButton("Consultar lista de alfabetos");
     /** Botó de tornar a la pantalla del menú principal */
@@ -118,43 +116,6 @@ public class VistaAlfabetoC extends JFrame{
         areanomAC.setText(arxiu.getName().substring(0, arxiu.getName().length() - 4));
         mostrarContenidoArchivo(arxiu);
 
-        ActionListener lConsultarA = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                //CtrlPresentacion.getNombresAlfabetos();
-
-                if (areanomAC.getText().isEmpty()){
-                    JDialog sinNombre2 =  new JDialog(Nomframe, "Error: No Nombre");
-                    sinNombre2.setBounds(800, 300, 400, 200);
-                    sinNombre2.setLayout(null);
-
-                    JLabel txtErrorNombre2 = new JLabel("Hay que entrar el nombre de un alfabeto de la lista de alfabetos");
-                    txtErrorNombre2.setBounds(10, 20, 400, 40);
-                    JButton bSalirErrorNombre2 = new JButton("Salir");
-                    bSalirErrorNombre2.setVisible(true);
-                    bSalirErrorNombre2.setBounds(150, 110, 100, 30);
-                    sinNombre2.add(txtErrorNombre2);
-                    sinNombre2.add(bSalirErrorNombre2);
-                    sinNombre2.setVisible(true);
-
-                    ActionListener lSalirErrorNombre = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinNombre2.dispose();
-                            sinNombre2.setVisible(false);
-                        }
-                    };
-                    bSalirErrorNombre2.addActionListener(lSalirErrorNombre);
-
-                }else { //se han llenado todos los campos
-                    CtrlPresentacion.consultarContenidoAlfabeto(areanomAC.getText());
-                    setVisible(false);
-                }
-
-            }
-        };
-
         ActionListener lConsultarListaA = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -170,7 +131,6 @@ public class VistaAlfabetoC extends JFrame{
             }
         };
 
-        bConsultarAlfabeto.addActionListener(lConsultarA);
         bConsultarListaAlfabetos.addActionListener(lConsultarListaA);
         bsalir.addActionListener(lSalir);
 
