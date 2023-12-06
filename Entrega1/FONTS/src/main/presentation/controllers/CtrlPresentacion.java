@@ -134,7 +134,7 @@ public class CtrlPresentacion {
      * @param nomA es el nombre del alfabeto a borrar
      */
     public static void borrarAlfabeto(String nomA) {
-        //cd.borrarAlfabeto(nomA);
+        cd.borrarAlfabeto(nomA);
     }
 
 
@@ -166,7 +166,6 @@ public class CtrlPresentacion {
     public static void getListaTextos() {
         //HashMap<String, Texto> ListaTextos = cd.getListaTextos(); NO SE PUEDE PASAR EL OBJETO TEXTO!!
     }*/
-
     /** Llama a la función getNombresTextos de CtrlDominio */
     public static ArrayList<String> getNombresTextos() {
         ArrayList<String> listaTextosNombres = cd.getNombresAsociaciones();
@@ -192,7 +191,7 @@ public class CtrlPresentacion {
      * @param nomTxt es el nombre del alfabeto a borrar
      */
     public static void borrarTexto(String nomTxt) {
-        //cd.borrarTexto(nomTxt);
+        cd.borrarTexto(nomTxt);
     }
 
 
@@ -243,11 +242,12 @@ public class CtrlPresentacion {
      * @param nomAT es el nombre de la asociación a borrar
      */
     public static void borrarAsociacionTextos(String nomAT) {
-        boolean borrada = cd.borrarAsociacionTextos(nomAT);
+        cd.borrarAsociacionTextos(nomAT);
     }
 
 
     //FUNCIONES DE CTRlDOMINIO DE TECLADO
+
 
 
 

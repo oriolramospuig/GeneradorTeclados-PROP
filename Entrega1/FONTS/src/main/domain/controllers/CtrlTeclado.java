@@ -97,8 +97,7 @@ public class CtrlTeclado
         teclados.agregarTeclado(nomT, teclado);
     }
 
-    //Para la segunda entrega
-    /*public String TecladoTieneAlfabetoVinculado(String nomT){
+    public String TecladoTieneAlfabetoVinculado(String nomT){
         return teclados.getTeclado(nomT).getAlfabetoVinculado();
     }
     public String TecladoTieneAsociacionVinculada(String nomA){
@@ -111,5 +110,5 @@ public class CtrlTeclado
 
         //String asociacionTextosVinculado = teclados.getTeclado(nomT).getAsociacionTextosVinculado();
         //if (!asociacionTextosVinculado.isEmpty()) asociacionesTextos.borrarAsociacionTextos(asociacionTextosVinculado);
-    }*/
+    }
 }

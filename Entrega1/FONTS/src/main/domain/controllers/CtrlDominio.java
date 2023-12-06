@@ -112,7 +112,6 @@ public class CtrlDominio
     public boolean existealfabeto(String nomA){
         return ctrlAlfabeto.getCjtAlfabetos().existeAlfabeto(nomA);
     }
-
     /**
      * Retorna el contenido del alfabeto con nomA
      * @param nomA el nombre del alfabeto a buscar
@@ -124,7 +123,6 @@ public class CtrlDominio
         }
         return null;
     }
-
     /**
      * Retorna el numero de caracteres que tiene el contenido del alfabeto
      * @param nomA el nombre del alfabeto a buscar
@@ -133,9 +131,6 @@ public class CtrlDominio
     public int numeroCaracteres(String nomA) {
         return ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA).getLetras().size();
     }
-
-    //Para la segunda entrega
-
     /**
      * No retorna
      * @param nomA el nombre del alfabeto a borrar
@@ -143,7 +138,7 @@ public class CtrlDominio
      * También borra en cascada los teclados que tenia vinculados
      * Y desvincula las asociaciones de textos vinculadas a estos teclados borrados
      */
-    /*public void borrarAlfabeto(String nomA){
+    public void borrarAlfabeto(String nomA){
         ArrayList<String> tVinculados = ctrlAlfabeto.getTecladosVinculadosAlfabeto(nomA);
         if(!tVinculados.isEmpty()) {
             for (int i = 0; i < tVinculados.size(); ++i){
@@ -154,16 +149,6 @@ public class CtrlDominio
         }
         ctrlAlfabeto.borrarAlfabeto(nomA);
     }
-
-    public boolean alfabetoTieneTecladosVinculados(String nomA){
-        return ctrlAlfabeto.alfabetoTieneTecladosVinculados(nomA);
-    }
-    */
-    /**
-     * Retorna si el alfabeto con nombre nomA tiene teclados vinculados
-     * @param nomA el nombre del alfabeto a buscar
-     * @return Boolean: true si el alfabeto nomA tiene teclados vinculados, falso si no tiene
-     */
 
 
     // ---------- FUNCIONES TEXTO ----------
@@ -202,7 +187,6 @@ public class CtrlDominio
     public HashMap<String, Texto> getListaTextos(){
         return ctrlTexto.getTextos().getTextos();
     }
-
     /**
      * Retorna el contenido del texto con nombre nomT
      * @param nomT el nombre del texto a buscar
@@ -211,7 +195,6 @@ public class CtrlDominio
     public String consultarContenidoTexto(String nomT){
         return ctrlTexto.getContenido(nomT);
     }
-
     /**
      * Retorna si existe el texto con nombre nomT
      * @param nomT elnombre del texto a buscar
@@ -220,18 +203,21 @@ public class CtrlDominio
     public boolean existetexto(String nomT){
         return ctrlTexto.getTextos().existeTexto(nomT);
     }
-
     /**
      * Retorna si el texto nomT ha sido borrado correctamente
      * @param nomT el nombre del texto a borrar
      * Borra el texto con nombre nomT
      * También se desvincula de las asociaciones en las que estaba
      */
-    /*public boolean borrarTexto(String nomT){
-        String avinculado = ctrlTeclado.TecladoTieneAlfabetoVinculado(tVinculados.get(i));
-        return ctrlTexto.borrarTexto(nomT);
-    }*/
-
+    public void borrarTexto(String nomT){
+        ArrayList<String> AVinculadas = CtrlTexto.getAsociacionesVinculadasTexto(nomT);
+        if(!AVinculadas.isEmpty()) {
+            for (int i = 0; i < AVinculadas.size(); ++i){
+                CtrlAsociacionTexto.borrarTextoAsociacion(AVinculadas.get(i),nomT);
+            }
+            CtrlTexto.borrarTexto(nomT);
+        }
+    }
 
     // ---------- FUNCIONES ASOCIACION TEXTOS ----------
 
@@ -285,18 +271,27 @@ public class CtrlDominio
         return ctrlAsociacionTexto.getCjtAsociaciones().existeAsociaciondeTextos(nomAT);
     }
 
-    //Para la segunda entrega
-    //Hacemos que se pueda borrar una asociacion?
     /**
-     * Retorna si el texto nomT ha sido borrado correctamente
-     * @param nomT el nombre del texto a borrar
+     * Retorna si la asociación con nombre nomAT ha sido borrada correctamente
+     * @param nomAT el nombre del texto a borrar
      * Borra el texto con nombre nomT
      * También se desvincula de las asociaciones en las que estaba
      */
-    public boolean borrarAsociacionTextos(String nomT){
+    /*public boolean borrarAsociacionTextos(String nomAT){
         //String avinculado = ctrlTeclado.TecladoTieneAlfabetoVinculado(tVinculados.get(i));
         //return ctrlTexto.borrarTexto(nomT);
         return false;
+    }*/
+    public void borrarAsociacionTextos(String nomAT){
+        ArrayList<String> tVinculados = ctrlAsociacionTexto.getTecladosVinculadosAsociacion(nomAT);
+        if(!tVinculados.isEmpty()) {
+            for (int i = 0; i < tVinculados.size(); ++i){
+                String avinculado = ctrlTeclado.TecladoTieneAlfabetoVinculado(tVinculados.get(i));
+                ctrlAlfabeto.borrarTecladoVinculado(avinculado,tVinculados.get(i));
+                ctrlTeclado.borrarTeclado(tVinculados.get(i));
+            }
+        }
+        ctrlAsociacionTexto.borrarAsociacionTextos(nomAT);
     }
 
 
@@ -388,21 +383,20 @@ public class CtrlDominio
         return ctrlTeclado.getCjtTeclados().getNombresTeclados();
     }
 
-    //Para la segunda entrega
     /**
      * No retorna
      * @param nomT el nombre del teclado a borrar
      * Borra el teclado con nombre nomT
      * También desvincula el alfabeto y la asociación de textos que tenía vinculados
      */
-    /*public void borrarTeclado(String nomT) {
+    public void borrarTeclado(String nomT) {
         String atvinculada = ctrlTeclado.TecladoTieneAsociacionVinculada(nomT);
         String aVinculado = ctrlTeclado.TecladoTieneAlfabetoVinculado(nomT);
 
         ctrlAsociacionTexto.borrarTecladoVinculado(atvinculada, nomT);
         ctrlAlfabeto.borrarTecladoVinculado(aVinculado, nomT);
         ctrlTeclado.borrarTeclado(nomT);
-    }*/
+    }
 
 
     // ---------- FUNCIONES PERSISTENCIA ----------

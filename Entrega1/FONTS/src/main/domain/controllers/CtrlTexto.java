@@ -17,7 +17,7 @@ public class CtrlTexto
 {
     // ---------- PARÁMETROS ----------
     /** Representa conjunto de textos dentro del controlador para gestioanr y manipular los textos */
-    private ConjuntoTextos CjtTextos;
+    private static ConjuntoTextos CjtTextos;
 
 
     // ---------- CONSTRUCTORA ----------
@@ -144,15 +144,20 @@ public class CtrlTexto
     public ArrayList<String> getNombresTextos(){
         return CjtTextos.getNombresTextos();
     }
-
-    //Para la segunda entrega
-    /*public void borrarTexto(String nomT){
-        ArrayList<String> AVinculadas = CjtTextos.getTexto(nomT).getAsociacionesVinculadas();
-        if(!AVinculadas.isEmpty()) {
-            for (int i = 0; i < AVinculadas.size(); ++i){
-                CjtAsociaciones.borrarAsociacionTextos(AVinculadas.get(i));
-            }
-            CjtTextos.borrarTexto(nomT);
-        }
-    }*/
+    /**
+     * Devuelve la lista de nombres de teclados vinculados al alfabeto con nombre nomA
+     * @return ArrayList<String> : La lista de los nombres de teclados vinculados al alfabeto
+     */
+    public static ArrayList<String> getAsociacionesVinculadasTexto(String nomT){
+        return CjtTextos.getTexto(nomT).getAsociacionesVinculadas();
+    }
+    /**
+     * No retorna
+     * @param nomT el nombre del texto a borrar
+     * Borra el texto con nombre nomT
+     * También desvincula las asociaciones de textos vinculadas a este texto borrado
+     */
+    public static void borrarTexto(String nomT){
+        CjtTextos.borrarTexto(nomT);
+    }
 }

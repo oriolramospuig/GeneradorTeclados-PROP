@@ -14,7 +14,7 @@ public class CtrlAsociacionTexto
 {
     // ---------- PARÁMETROS ----------
     /** Representa conjunto de asociaciones de textos dentro del controlador para gestioanr y manipular los textos */
-    private ConjuntoAsociaciones AsociacionesTextos;
+    private static ConjuntoAsociaciones AsociacionesTextos;
 
 
     // ---------- CONSTRUCTORA ----------
@@ -33,7 +33,6 @@ public class CtrlAsociacionTexto
     public void agregarTecladoVinculado (String nomA, String nomT) {
         AsociacionesTextos.getAsociacionTextos(nomA).agregarTecladoVinculado(nomT);
     }
-
     /**
      * No devuelve nada. Manda añadir un texto a la asociacion de textos pasada como parámetro
      * @param nomA nombre de la asociación de textos
@@ -42,14 +41,12 @@ public class CtrlAsociacionTexto
     public void agregarTextoAsociacion (String nomA, Texto texto){
         AsociacionesTextos.getAsociacionTextos(nomA).agregarTexto(texto);
     }
-
-    //Para la segunda entrega
-    /*public void borrarTecladoVinculado (String nomA, String nomT){
-        AsociacionesTextos.getAsociacionTextos(nomA).borrarTecladoVinculado(nomT);
+    public void borrarTecladoVinculado(String atvinculada,String tvinculado){
+        AsociacionesTextos.getAsociacionTextos(atvinculada).borrarTecladoVinculado(tvinculado);
     }
-    public void borrarTextoAsociacion (String nomA, String nomT){
+    public static void borrarTextoAsociacion(String nomA, String nomT){
         AsociacionesTextos.getAsociacionTextos(nomA).borrarTexto(nomT);
-    }*/
+    }
 
 
     // ---------- FUNCIONES CONJUNTOASOCIACIONES ----------
@@ -82,15 +79,16 @@ public class CtrlAsociacionTexto
         return AsociacionesTextos.getNombresAsociacionesTextos();
     }
 
-    //Para la segunda entrega
-    /*public void borrarAsociacionTextos(String nomAT){
-        // mirar error d'aquesta linia, diu algo de static
-        ArrayList<String> tVinculado = AsociacionesTextos.getAsociacionTextos(nomAT).getTecladosVinculados();
-        if(!tVinculado.isEmpty()) {
-            for (int i = 0; i < tVinculado.size(); ++i){
-                conjuntoTeclados.borrarTeclado(tVinculado.get(i));
-            }
-        }
+    public ArrayList<String> getTecladosVinculadosAsociacion(String nomAT){
+        ArrayList<String> tVinculados = AsociacionesTextos.getAsociacionTextos(nomAT).getTecladosVinculados();
+        return tVinculados;
+    }
+    /**
+     * No retorna
+     * @param nomAT el nombre de la asociación a borrar
+     * Borra la asociaión con nombre nomAT
+     */
+    public void borrarAsociacionTextos(String nomAT){
         AsociacionesTextos.borrarAsociacionTextos(nomAT);
-    }*/
+    }
 }

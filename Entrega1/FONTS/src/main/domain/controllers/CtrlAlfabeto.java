@@ -44,12 +44,15 @@ public class CtrlAlfabeto
     public void agregarTecladoVinculado (String nomA,String nomT){
         CjtAlfabetos.getAlfabeto(nomA).agregarTecladoVinculado(nomT);
     }
-
-
-    //PARA LA SEGUNDA ENTREGA
-    /*public void borrarTecladoVinculado (String nomA,String nomT){
+    /**
+     * No devuelve nada.
+     * @param nomT clave primaria del teclado
+     * @param nomA clave primaria del alfabeto
+     * Borra el nombre del teclado nomT de la lista de teclados vinculados del alfabeto nomA
+     */
+    public void borrarTecladoVinculado (String nomA,String nomT){
         CjtAlfabetos.getAlfabeto(nomA).borrarTecladoVinculado(nomT);
-    }*/
+    }
 
 
     // ---------- FUNCIONES CONJUNTOALFABETOS ----------
@@ -83,16 +86,20 @@ public class CtrlAlfabeto
         return CjtAlfabetos.getNombresAlfabetos();
     }
 
-    //PARA LA SEGUNDA ENTREGA
-    /*public ArrayList<String> getTecladosVinculadosAlfabeto(String nomA){
+    /**
+     * Devuelve la lista de nombres de teclados vinculados al alfabeto con nombre nomA
+     * @return ArrayList<String> : La lista de los nombres de teclados vinculados al alfabeto
+     */
+    public ArrayList<String> getTecladosVinculadosAlfabeto(String nomA){
         ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
         return tVinculados;
     }
-    public boolean alfabetoTieneTecladosVinculados(String nomA){
-        ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
-        return !tVinculados.isEmpty();
-    }
+    /**
+     * No retorna
+     * @param nomA el nombre del alfabeto a borrar
+     * Borra el alfabeto con nombre nomA
+     */
     public void borrarAlfabeto(String nomA){
         CjtAlfabetos.borrarAlfabeto(nomA);
-    }*/
+    }
 }
