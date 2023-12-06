@@ -2,7 +2,11 @@
 CLASS_INPUT_MAIN = ./main/domain/classes/*.java \
 						./main/domain/classes/functions/*.java \
 						./main/domain/classes/types/*.java \
-						./main/domain/controllers/*.java
+						./main/domain/controllers/*.java \
+						./main/presentation/controllers/*.java \
+						./main/presentation/views/*.java \
+						./main/persistence/classes/*.java \
+						./main/persistence/controllers/*.java
 CLASS_INPUT_DRIVER = ./drivers/*.java
 CLASS_INPUT_TESTS = ./test/*.java \
 						./test/functions/*.java \
@@ -24,10 +28,12 @@ compile_main:
 compile_driver:
 	javac -cp $(CLASS_OUTPUT):$(JUNIT_JARS) -d $(CLASS_OUTPUT) $(CLASS_INPUT_DRIVER)
 
-
 # Regla para compilar los tests con JUnit
 compile_tests:
 	javac -cp $(CLASS_OUTPUT):$(JUNIT_JARS) -d $(CLASS_OUTPUT) $(CLASS_INPUT_TESTS)
+
+MasterTestSuite:
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.MasterTestSuite
 
 TestTeclado: all
 	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestTeclado
@@ -58,7 +64,6 @@ TestAsociacionTextos: all
 
 TestAlfabeto: all
 	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestAlfabeto
-
 
 DriverFP: all
 	java -cp $(CLASS_OUTPUT) drivers.DriverFP

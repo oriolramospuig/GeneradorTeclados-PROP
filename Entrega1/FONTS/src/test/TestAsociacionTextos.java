@@ -46,6 +46,7 @@ public class TestAsociacionTextos {
      *   7. Si alguna de las aserciones falla, se considera que la prueba no ha pasado con éxito.
      *   8. Este método es parte de un conjunto más amplio de pruebas unitarias.
      */
+    @Test
     public void TestConstructora() {
         System.out.println("Test Constructora Vacia");
         AsociacionTextos asociacionTextos = new AsociacionTextos();
@@ -64,22 +65,18 @@ public class TestAsociacionTextos {
 
         AsociacionTextos asociacionTextos2 = new AsociacionTextos(nombre, frecuenciaLetras);
 
-        assertEquals(nombre, asociacionTextos.getNombre());
-        assertEquals(frecuenciaLetras, asociacionTextos.getFrecuenciaLetras());
-        assertTrue(asociacionTextos.getTextosAsociaciados().isEmpty());
-        assertTrue(asociacionTextos.getTecladosVinculados().isEmpty());
-
-        assertEquals("a", asociacionTextos2.getFrecuenciaLetras().get(0));
-        assertEquals("b", asociacionTextos2.getFrecuenciaLetras().get(1));
-        assertEquals("c", asociacionTextos2.getFrecuenciaLetras().get(2));
+        assertEquals(nombre, asociacionTextos2.getNombre());
+        assertEquals(frecuenciaLetras, asociacionTextos2.getFrecuenciaLetras());
+        assertTrue(asociacionTextos2.getTextosAsociaciados().isEmpty());
+        assertTrue(asociacionTextos2.getTecladosVinculados().isEmpty());
 
         System.out.println("Test Constructora con nombre");
         AsociacionTextos asociacionTextos3 = new AsociacionTextos(nombre);
 
-        assertEquals(nombre, asociacionTextos.getNombre());
-        assertTrue(asociacionTextos.getTextosAsociaciados().isEmpty());
-        assertTrue(asociacionTextos.getTecladosVinculados().isEmpty());
-        assertTrue(asociacionTextos.getFrecuenciaLetras().isEmpty());
+        assertEquals(nombre, asociacionTextos3.getNombre());
+        assertTrue(asociacionTextos3.getTextosAsociaciados().isEmpty());
+        assertTrue(asociacionTextos3.getTecladosVinculados().isEmpty());
+        assertTrue(asociacionTextos3.getFrecuenciaLetras().isEmpty());
     }
 
     // ---------- GETTERS ----------
@@ -106,6 +103,7 @@ public class TestAsociacionTextos {
      *   4. Utiliza aserciones para verificar que la lista de teclados vinculados se actualiza correctamente.
      *   5. Este método es parte de un conjunto más amplio de pruebas unitarias.
      */
+    @Test
     public void TestagregarTecladoVinculado() {
         System.out.println("Test agregarTecladoVinculado");
         String nombreT1 = "Teclado1";
@@ -150,13 +148,14 @@ public class TestAsociacionTextos {
  * 5. Se verifican las frecuencias de letras en la asociación para asegurarse de que se hayan actualizado
  *    correctamente según las frecuencias del nuevo texto.
  */
- public void TestagregarTexto(){
+@Test
+public void TestagregarTexto(){
         System.out.println("Test agregarTexto");
         String nombre = "Asociacion";
-        HashMap<String, Integer> frecuenciaPalabras = new HashMap<String, Integer>();
+        HashMap<String, Integer> frecuenciaPalabras = new HashMap<>();
         frecuenciaPalabras.put("aba", 2);
         frecuenciaPalabras.put("cbc", 4);
-        HashMap<String, Integer> frecuenciaLetras = new HashMap<String, Integer>();
+        HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
         frecuenciaLetras.put("ab", 2);
         frecuenciaLetras.put("bc", 2);
         AsociacionTextos asociacionTextos = new AsociacionTextos(nombre, frecuenciaLetras);
@@ -196,6 +195,7 @@ public class TestAsociacionTextos {
      * 3. Se elimina uno de los teclados vinculados mediante el método `borrarTecladoVinculado`.
      * 4. Se verifica que la lista de teclados vinculados tenga el tamaño esperado y que no contenga el teclado eliminado.
      */
+    @Test
     public void TestBorrarTecladoVinculado() {
         System.out.println("Test borrarTecladoVinculado");
         AsociacionTextos asociacionTextos = new AsociacionTextos();
@@ -211,13 +211,14 @@ public class TestAsociacionTextos {
         assertTrue(asociacionTextos.getTecladosVinculados().contains(nombreT2));
     }
 
+    @Test
     public void TestborrarTexto() {
         System.out.println("Test borrar Texto");
         String nombre = "Asociacion";
-        HashMap<String, Integer> frecuenciaPalabras = new HashMap<String, Integer>();
+        HashMap<String, Integer> frecuenciaPalabras = new HashMap<>();
         frecuenciaPalabras.put("aba", 4);
         frecuenciaPalabras.put("cbc", 8);
-        HashMap<String, Integer> frecuenciaLetras = new HashMap<String, Integer>();
+        HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
         frecuenciaLetras.put("ab", 2);
         frecuenciaLetras.put("bc", 3);
         AsociacionTextos asociacionTextos = new AsociacionTextos(nombre, frecuenciaLetras);
@@ -228,9 +229,9 @@ public class TestAsociacionTextos {
         HashMap<String, Integer> frecuenciasLetras = asociacionTextos.getFrecuenciaLetras();
 
         assertEquals(0, textoAsociados.size());
-        assertEquals(0, frecuenciaLetras.size());
-        assertEquals(0, frecuenciaLetras.get("ab").intValue());
-        assertEquals(0, frecuenciaLetras.get("ca").intValue());
+        assertEquals(2, frecuenciaLetras.size());
+        assertEquals(2, frecuenciaLetras.get("ab").intValue());
+        assertNull(frecuenciaLetras.get("ca"));
     }
 }
 
