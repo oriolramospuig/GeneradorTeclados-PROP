@@ -29,10 +29,10 @@ public class TestQAP {
         for (int i = 0; i < teclas.size(); i++) {
             letraAIndice.put(teclas.get(i), i);
         }
-        int [][] mf = new int[3][3];
+        int [][] mf = new int[9][9];
         Matrices.generarMatrizDeFrecuencias(paresFrecuencias, teclas, letraAIndice, mf);
-        int [][] md = new int [3][3];
-        Matrices.generarMatrizDistancias(1,3,md);
+        int [][] md = new int [9][9];
+        Matrices.generarMatrizDistancias(3,3, md);
         List<Integer> sol = new ArrayList<>();
         int [][] tec = new int[filas][columnas];
         QAP qap = new QAP(filas, columnas, mf, md);
