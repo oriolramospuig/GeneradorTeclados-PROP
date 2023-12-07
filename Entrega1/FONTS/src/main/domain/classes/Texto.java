@@ -1,5 +1,7 @@
 package main.domain.classes;
 
+import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -8,7 +10,7 @@ import java.util.HashMap;
  * Classe que representa un texto
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
-public abstract class Texto
+public abstract class Texto implements Serializable
 {
     // ---------- ATRIBUTOS COMUNES ----------
     /** Guarda el nombre introducido por el usuario */

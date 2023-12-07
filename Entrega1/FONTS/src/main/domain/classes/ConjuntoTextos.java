@@ -1,5 +1,6 @@
 package main.domain.classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -7,7 +8,7 @@ import java.util.HashMap;
  * Clase que representa el conjunto de textos
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
-public class ConjuntoTextos
+public class ConjuntoTextos implements Serializable
 {
     // ---------- ATRIBUTOS ----------
     /** Guarda el conjunto de textos  introducidos por el usuario */
