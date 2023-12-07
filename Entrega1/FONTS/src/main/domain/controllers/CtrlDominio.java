@@ -427,5 +427,28 @@ public class CtrlDominio
      return _config.simplify();
      } */
 
-}
+    public void guardaCnjtAlfabetos() {
+        String nomDoc = "conjuntoAlfabetos";
+        //if(nomDoc.endsWith(".prop")) { nomDoc = nomDoc+".prop"; }
+        String path = "C:\\Users\\julia\\OneDrive\\Escritorio\\PropCache\\"+nomDoc+"\\";
+        try {
+            byte[] bytes = ctrlAlfabeto.alfabetosToByteArray();
+            ctrlPersistencia.guardaAlfabeto(bytes,path);
+        } catch (IOException e) {
+            System.err.println("[#GUARDAR] Error al guardar el conjunto de alfabetos" + e.getMessage());
+            Thread.currentThread().getStackTrace();
+            System.exit(-102);
+        }
+        //configuracion.añadirCnjtAlfabetos(nomDoc, path);
+        //guardaConfigAlfabetos();
+    }
 
+    public void cargaCnjtAlfabetos(String path) {
+        try {
+            byte[] bytes = ctrlPersistencia.cargaCnjtAlfabetos(path);
+            CtrlAlfabeto.byteArrayToAlfabetos(bytes);
+        } catch (Exception e) {
+            System.err.println("[#CARGA] Error al cargar el conjunto de alfabetos" + e.getMessage());
+        }
+    }
+}
