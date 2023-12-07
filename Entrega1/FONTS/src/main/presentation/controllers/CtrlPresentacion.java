@@ -165,6 +165,7 @@ public class CtrlPresentacion {
      * @param texto es la lista de caracteres que forman el contenido del texto
      */
     public static boolean agregarTextoPalabras(String nomTxt, String texto) {
+        //ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
         boolean agregado = cd.agregarTextoPalabras(nomTxt, texto);
         return agregado;
     }
