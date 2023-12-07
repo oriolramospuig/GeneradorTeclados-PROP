@@ -153,7 +153,7 @@ public class VistaAlfabetoA extends JFrame {
                             alfabetoNoAgregado.setBounds(800, 300, 400, 200);
                             alfabetoNoAgregado.setLayout(null);
 
-                            JLabel lalfabetoNoAgregado = new JLabel("Ya existe un alfabeto con el nombre " + areanomAA.getText());
+                            JLabel lalfabetoNoAgregado = new JLabel("Ya existe un alfabeto con el nombre " + areanomAA.getText() + " debe cambiar el nombre.");
                             lalfabetoNoAgregado.setBounds(80, 20, 400, 40);
                             bSalir1.setVisible(true);
                             bSalir1.setBounds(150, 110, 100, 30);
@@ -169,7 +169,8 @@ public class VistaAlfabetoA extends JFrame {
                                 }
                             };
                             bSalir1.addActionListener(lSortirAlfabetoNoAgregado);
-                            setVisible(false);
+                        }else {
+                            //POSAR EN BLANC ELS REQUADRES DE TEXT
                         }
                     }
                 }

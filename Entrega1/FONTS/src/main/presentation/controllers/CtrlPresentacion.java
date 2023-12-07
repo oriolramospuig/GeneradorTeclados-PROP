@@ -87,7 +87,6 @@ public class CtrlPresentacion {
     public static void vistaTecladoC() {
         VistaTecladoC vTec = new VistaTecladoC();
     }
-
     /** Muestra por pantalla la ventana de las funcionalidades de texto */
     public static void vistaTecladoM() {
         VistaTecladoM vTxt = new VistaTecladoM();
@@ -109,7 +108,6 @@ public class CtrlPresentacion {
         boolean agregado = cd.agregarAlfabeto(nomA, entrada);
         return agregado;
     }
-
     /**
      * Llama a la función agregarAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a agregar
@@ -127,7 +125,6 @@ public class CtrlPresentacion {
     public static void getListaAlfabetos() {
         //HashMap<String, Alfabeto> listaAlfabetos = cd.getListaAlfabetos(); // NO SE PUEDE PASAR EL OBJETO ALFABETO
     }*/
-
     /** Llama a la función getNombresAlfabetos de CtrlDominio */
     public static ArrayList<String> getNombresAlfabetos() {
         ArrayList<String> listaAlfabetosNombres = cd.getNombresAlfabetos();
@@ -169,19 +166,16 @@ public class CtrlPresentacion {
         boolean agregado = cd.agregarTextoPalabras(nomTxt, texto);
         return agregado;
     }
-    /*public static void agregarTextoPalabras(String nomT, String texto) {
-        try {
-            cd.agregarTextoPalabras(nomT,texto);
-        } catch (Exception ignored) {}
-    }*/
     /**
      * Llama a la función agregarTextoFrecuencias de CtrlDominio
      * @param nomTxt es el nombre del texto a agregar
      * @param frecuenciaPalabras es la map con las palabras y sus frecuencias que forman el contenido del texto
      */
-    public static boolean agregarTextoFrecuencias(String nomTxt, HashMap<String,Integer> frecuenciaPalabras) {
-        boolean agregado = cd.agregarTextoFrecuencias(nomTxt, frecuenciaPalabras);
-        return agregado;
+    public static boolean agregarTextoFrecuencias(String nomTxt, String frecuenciaPalabras) {
+        //HashMap<String,Integer> entrada = InOut.leerCaracteresDeTerminal(frecuenciaPalabras);
+        //boolean agregado = cd.agregarTextoFrecuencias(nomTxt, entrada);
+        //return agregado;
+        return false;
     }
 
     //crec que no s'hauria d'utilitzar perque no podem passar per referencia tots els textos aixi per la cara
@@ -194,7 +188,6 @@ public class CtrlPresentacion {
         ArrayList<String> listaTextosNombres = cd.getNombresAsociaciones();
         return listaTextosNombres;
     }
-
     /**
      * Llama a la función existetexto de CtrlDominio
      * @param nomTxt es el nombre del texto a consultar si existe
@@ -244,8 +237,6 @@ public class CtrlPresentacion {
      public static void getListaAsociaciones() {
      //HashMap<String, AsociacionTextos> ListaAsociaciones = cd.getListaAsociaciones(); NO SE PUEDE PASAR EL OBJETO TEXTO!!
      }*/
-
-
     /**
      * Llama a la función getNombresAsociaciones de CtrlDominio
      *
@@ -263,7 +254,6 @@ public class CtrlPresentacion {
         boolean existe = cd.existeasociacion(nomAT);
         return existe;
     }
-
     /**
      * Llama a la función borrarAsociacionTextos de CtrlDominio
      * @param nomAT es el nombre de la asociación a borrar
@@ -274,7 +264,6 @@ public class CtrlPresentacion {
 
 
     //FUNCIONES DE CTRlDOMINIO DE TECLADO
-
     /**
      * Retorna si el alfabeto y la asociacion de textos tiene caracteres parecidos y por lo tanto son compatibles
      * @param alfabeto objeto alfabeto para comparar

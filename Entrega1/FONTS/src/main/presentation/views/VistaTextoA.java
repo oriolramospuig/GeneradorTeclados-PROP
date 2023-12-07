@@ -91,8 +91,8 @@ public class VistaTextoA extends JFrame {
         add(txtNombreTxtA);
 
         // Área texto Nombre
-        areanomTxtA1.setBounds(230,35, 200,20);
-        add(areanomTxtA1);
+        areanomTxtA.setBounds(230,35, 200,20);
+        add(areanomTxtA);
 
         // Texto Contenido
         txtContenidoTxtA.setBounds(30, 75, 200, 20);
@@ -169,7 +169,7 @@ public class VistaTextoA extends JFrame {
         ActionListener lAgregar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (areanomTxtA1.getText().isEmpty()){
+                if (areanomTxtA.getText().isEmpty()){
                     JDialog sinNombre =  new JDialog(Nomframe, "Error: No Nombre");
                     sinNombre.setBounds(800, 300, 400, 200);
                     sinNombre.setLayout(null);
@@ -220,13 +220,13 @@ public class VistaTextoA extends JFrame {
                         // fer lo del path areaPath.getText();
                     }
                     else if(areaPathTxtA.getText().isEmpty()) {
-                        boolean agregado = CtrlPresentacion.agregarTextoPalabras(areanomTxtA1.getText(), areaContenidoTxtA.getText());
+                        boolean agregado = CtrlPresentacion.agregarTextoPalabras(areanomTxtA.getText(), areaContenidoTxtA.getText());
                         if (!agregado) {
                             JDialog textoNoAgregado = new JDialog(frame, "Texto no agregado");
                             textoNoAgregado.setBounds(800, 300, 400, 200);
                             textoNoAgregado.setLayout(null);
 
-                            JLabel ltextoNoAgregado = new JLabel("Ya existe un texto con el nombre " + areanomTxtA1.getText());
+                            JLabel ltextoNoAgregado = new JLabel("Ya existe un texto con el nombre " + areanomTxtA.getText());
                             ltextoNoAgregado.setBounds(80, 20, 400, 40);
                             bSalir1.setVisible(true);
                             bSalir1.setBounds(150, 110, 100, 30);
@@ -242,7 +242,8 @@ public class VistaTextoA extends JFrame {
                                 }
                             };
                             bSalir1.addActionListener(lSortirTextoNoAgregado);
-                            setVisible(false);
+                        }else {
+                            //POSAR EN BLANC ELS REQUADRES DE TEXT
                         }
                     }
                 }
@@ -298,19 +299,38 @@ public class VistaTextoA extends JFrame {
                     };
                     bSalirErrorConPath.addActionListener(lSalirErrorConPath);
                 }else { //se han llenado todos los campos
+                    JButton bSalir1 = new JButton("Salir");
                     if(areaContenidoTxtA1.getText().isEmpty()){
                         // fer lo del path areaPath.getText();
                     }
                     else if(areaPathTxtA1.getText().isEmpty()) {
-                        //CtrlPresentacion.agregarTexto(areanomA1.getText(), areaContenido.getText());
-                        setVisible(false);
+                        boolean agregado = CtrlPresentacion.agregarTextoFrecuencias(areanomTxtA1.getText(), areaContenidoTxtA1.getText());
+                        if (!agregado) {
+                            JDialog textoNoAgregado = new JDialog(frame, "Texto no agregado");
+                            textoNoAgregado.setBounds(800, 300, 400, 200);
+                            textoNoAgregado.setLayout(null);
+
+                            JLabel ltextoNoAgregado = new JLabel("Ya existe un texto con el nombre " + areanomTxtA1.getText());
+                            ltextoNoAgregado.setBounds(80, 20, 400, 40);
+                            bSalir1.setVisible(true);
+                            bSalir1.setBounds(150, 110, 100, 30);
+                            textoNoAgregado.add(ltextoNoAgregado);
+                            textoNoAgregado.add(bSalir1);
+                            textoNoAgregado.setVisible(true);
+
+                            ActionListener lSortirTextoNoAgregado = new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    textoNoAgregado.dispose();
+                                    textoNoAgregado.setVisible(false);
+                                }
+                            };
+                            bSalir1.addActionListener(lSortirTextoNoAgregado);
+                        }else {
+                            //POSAR EN BLANC ELS REQUADRES DE TEXT
+                        }
                     }
                 }
-
-                //if (areaFiles.getText().length() == 0) files = 50;
-                //else files = Integer.parseInt(areaFiles.getText());
-
-
             }
         };
 

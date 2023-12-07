@@ -40,6 +40,8 @@ public class VistaAsociacionTextosA extends JFrame {
     private final JFrame Nomframe = new JFrame ("JFrame");
     /** Pantalla de error que aparece cuando se quiere crear una asociación sin textos o sin path */
     private final JFrame CPframe = new JFrame ("JFrame");
+    /** Pantalla de error asociacion no agregada */
+    private JFrame frame = new JFrame();
 
 
     public VistaAsociacionTextosA() {
@@ -191,12 +193,33 @@ public class VistaAsociacionTextosA extends JFrame {
                         setVisible(false);
                     }
                 }else {//se han llenado todos los campos
+                    /*JButton bSalir1 = new JButton("Salir");
+                    boolean agregado = CtrlPresentacion.agregarAsociacion(areanomATA.getText(), areaContenido.getText());
+                    if (!agregado) {
+                        JDialog textoNoAgregado = new JDialog(frame, "Asociacion no agregada");
+                        textoNoAgregado.setBounds(800, 300, 400, 200);
+                        textoNoAgregado.setLayout(null);
 
-                    //CtrlPresentacion.agregarAsociacion(areanomA1.getText(), areaContenido.getText());
+                        JLabel ltextoNoAgregado = new JLabel("Ya existe una asociacion con el nombre " + areanomATA.getText() + " debe cambiar el nombre.");
+                        ltextoNoAgregado.setBounds(80, 20, 400, 40);
+                        bSalir1.setVisible(true);
+                        bSalir1.setBounds(150, 110, 100, 30);
+                        textoNoAgregado.add(ltextoNoAgregado);
+                        textoNoAgregado.add(bSalir1);
+                        textoNoAgregado.setVisible(true);
+
+                        ActionListener lSortirTextoNoAgregado = new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                textoNoAgregado.dispose();
+                                textoNoAgregado.setVisible(false);
+                            }
+                        };
+                        bSalir1.addActionListener(lSortirTextoNoAgregado);
+                    }else {
+                        //POSAR EN BLANC ELS REQUADRES DE TEXT
+                    }*/
                 }
-
-                //if (areaFiles.getText().length() == 0) files = 50;
-                //else files = Integer.parseInt(areaFiles.getText());
 
 
             }
