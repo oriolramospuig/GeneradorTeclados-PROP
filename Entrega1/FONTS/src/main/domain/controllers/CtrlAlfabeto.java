@@ -4,6 +4,7 @@ import main.domain.classes.Alfabeto;
 import main.domain.classes.ConjuntoAlfabetos;
 import main.domain.classes.ConjuntoTeclados;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,7 +16,7 @@ public class CtrlAlfabeto
 {
     // ---------- PARÁMETROS ----------
     /** Crea una instancia del conjunto de alfabetos*/
-    private ConjuntoAlfabetos CjtAlfabetos;
+    private static ConjuntoAlfabetos CjtAlfabetos;
 
 
     // ---------- CONSTRUCTORAS ----------
@@ -101,5 +102,20 @@ public class CtrlAlfabeto
      */
     public void borrarAlfabeto(String nomA){
         CjtAlfabetos.borrarAlfabeto(nomA);
+    }
+
+    public byte[] alfabetosToByteArray() throws IOException {
+        ByteArrayOutputStream bs = new ByteArrayOutputStream();
+        ObjectOutputStream os = new ObjectOutputStream(bs);
+        os.writeObject(CjtAlfabetos);
+        os.close();
+        return bs.toByteArray();
+    }
+
+    public static void byteArrayToAlfabetos(byte[] bytes) throws IOException, ClassNotFoundException {
+        ByteArrayInputStream bs = new ByteArrayInputStream(bytes);
+        ObjectInputStream is = new ObjectInputStream(bs);
+        CjtAlfabetos = (ConjuntoAlfabetos) is.readObject();
+        is.close();
     }
 }
