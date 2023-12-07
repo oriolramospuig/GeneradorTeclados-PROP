@@ -95,7 +95,6 @@ public class InOut {
 
     /**
      * Lee líneas de texto que contienen palabras y sus frecuencias y almacena la información en un HashMap.
-     *
      * @param n Número de líneas a leer.
      * @return Un HashMap que mapea palabras a sus frecuencias.
      * @throws NumberFormatException Si la frecuencia no es un número válido.
