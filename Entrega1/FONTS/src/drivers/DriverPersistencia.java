@@ -56,7 +56,7 @@ public class DriverPersistencia {
     private void borrarAlfabeto() {
         imprimirNombresAlfabetos();
         System.out.println("Introduce el nombre del alfabeto que quieres borrar:");
-        String nombreA = inOut.leerString();
+        String nombreA = inOut.leerString(); //hay que escribirlo bien
         ctrlDominio.borrarAlfabeto(nombreA);
         ctrlDominio.guardaCnjtAlfabetos();
     }
@@ -200,6 +200,14 @@ public class DriverPersistencia {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void borrarTexto() {
+        imprimirNombresTextos();
+        System.out.println("Introduce el nombre del texto que quieres borrar:");
+        String nombreT = inOut.leerString(); //hay que escribirlo bien
+        ctrlDominio.borrarTexto(nombreT);
+        ctrlDominio.guardaCnjtTextos();
     }
 
     /**
@@ -513,12 +521,12 @@ public class DriverPersistencia {
                     driver.borrarAlfabeto();
                     break;
                 }
-                /*
-                case "8":
+                case "16":
                 case "BorrarTexto": {
-                    // driver.borrarTexto();
+                    driver.borrarTexto();
                     break;
                 }
+                /*
                 case "9":
                 case "BorrarAsociacionTexto": {
                     //driver.borrarAsociacionTexto();
@@ -570,7 +578,7 @@ public class DriverPersistencia {
         System.out.println("(13|ConsultarTeclado) - Consultar Teclado");
         //Borrar
         System.out.println("(15|BorrarAlfabeto) - Borrar Alfabeto");
-        //System.out.println("(12|BorrarTexto) - Borrar Texto");
+        System.out.println("(16|BorrarTexto) - Borrar Texto");
         //System.out.println("(13|BorrarAsociacionTextos) - Borrar Asociacion Textos");
         //System.out.println("(14|BorrarTeclado) - Borrar Teclado");
         //QAP
