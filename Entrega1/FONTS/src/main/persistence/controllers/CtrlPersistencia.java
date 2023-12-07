@@ -67,11 +67,11 @@ public class CtrlPersistencia {
 
     // ---------- FUNCIONES TEXTOS ----------
     public void guardaCnjtTextos(byte[] bytes, String path) {
-        GestorTexto.guardarTexto(bytes, path);
+        GestorTexto.gestorTextos(bytes, path);
     }
 
     public byte[] cargaCnjtTextos(String path) {
-        gestorTexto.cargarTextos(path);
+        return gestorTexto.cargarTextos(path);
     }
 
 

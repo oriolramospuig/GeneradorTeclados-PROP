@@ -2,6 +2,7 @@ package main.domain.controllers;
 
 import main.domain.classes.*;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -159,5 +160,20 @@ public class CtrlTexto
      */
     public static void borrarTexto(String nomT){
         CjtTextos.borrarTexto(nomT);
+    }
+
+    public byte[] textosToByteArray() throws IOException {
+        ByteArrayOutputStream bs = new ByteArrayOutputStream();
+        ObjectOutputStream os = new ObjectOutputStream(bs);
+        os.writeObject(CjtTextos);
+        os.close();
+        return bs.toByteArray();
+    }
+
+    public static void byteArrayToTextos(byte[] bytes) throws IOException, ClassNotFoundException {
+        ByteArrayInputStream bs = new ByteArrayInputStream(bytes);
+        ObjectInputStream is = new ObjectInputStream(bs);
+        CjtTextos = (ConjuntoTextos) is.readObject();
+        is.close();
     }
 }
