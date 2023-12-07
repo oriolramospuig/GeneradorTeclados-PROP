@@ -40,7 +40,7 @@ public class CtrlDominio
         ctrlTeclado = new CtrlTeclado();
         ctrlPersistencia = new CtrlPersistencia();
         //cargar configuracion alfabetos de capa de persistencia
-        if (ctrlPersistencia.existeCongigAlfabetos()) {
+        if (ctrlPersistencia.existeConfigAlfabetos()) {
             try {
                 byte[] bytes = ctrlPersistencia.cargaConfigAlfabetos();
                 ByteArrayInputStream bs = new ByteArrayInputStream(bytes);

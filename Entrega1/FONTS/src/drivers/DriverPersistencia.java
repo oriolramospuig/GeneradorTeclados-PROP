@@ -145,7 +145,10 @@ public class DriverPersistencia {
             else {
                 boolean agregado = ctrlDominio.agregarTextoPalabras(nombreTxt,texto);
                 if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
-                else System.out.println("AGREGADO CON EXITO!");
+                else {
+                    System.out.println("AGREGADO CON EXITO!");
+                    ctrlDominio.guardaCnjtTextos();
+                }
             }
         } else {
             System.out.println("Introduce cuantas palabras quieres indicar:");
@@ -162,7 +165,10 @@ public class DriverPersistencia {
             else {
                 boolean agregado = ctrlDominio.agregarTextoFrecuencias(nombreTxt, frecPalabras);
                 if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
-                else System.out.println("AGREGADO CON EXITO!");
+                else {
+                    System.out.println("AGREGADO CON EXITO!");
+                    ctrlDominio.guardaCnjtTextos();
+                }
             }
         }
     }
@@ -183,7 +189,10 @@ public class DriverPersistencia {
             String nombreTxt = inOut.leerString();
             boolean agregado = ctrlDominio.agregarTextoPalabras(nombreTxt,texto);
             if (!agregado) System.out.println("Ya existe el texto " + nombreTxt);
-            else System.out.println("AGREGADO CON EXITO!");
+            else {
+                System.out.println("AGREGADO CON EXITO!");
+                ctrlDominio.guardaCnjtTextos();
+            }
         } catch (FileNotFoundException e) {
             System.out.println("El archivo no se encontró: " + nombreArchivo);
         } catch (IllegalArgumentException e) {
@@ -276,7 +285,10 @@ public class DriverPersistencia {
                 if(crear){
                     boolean agregada = ctrlDominio.agregarAsociacion(nombreAT, textosagregar);
                     if (!agregada) System.out.println("Ya existe el texto " + nombreAT);
-                    else System.out.println("AGREGADO CON EXITO!");
+                    else {
+                        System.out.println("AGREGADO CON EXITO!");
+                        //ctrlDominio.cargaCnjtAsociaciones;
+                    }
                 }
             }
             else System.out.println("No hay tantos textos creados. Debes crear más textos.");
@@ -331,7 +343,10 @@ public class DriverPersistencia {
                             int agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT);
                             if (agregado == -1) System.out.println("Ya existe el teclado " + nombreT);
                             else if(agregado == -2) System.out.println("El alfabeto y la asociación de textos no son compatibles");
-                            else System.out.println("AGREGADO CON EXITO!");
+                            else {
+                                System.out.println("AGREGADO CON EXITO!");
+                                //ctrlDominio.guardaCnjtTeclados();
+                            }
                         }
                         else System.out.println("No existe ninguna asociacion con ese nombre. Hay que seleccionar una asociacion de la lista");
                     }
@@ -414,8 +429,14 @@ public class DriverPersistencia {
     // ---------- FUNCIONES MAIN ----------
     public static void main(String[] args) {
         DriverPersistencia driver = new DriverPersistencia();
+
+        //cargar alfabetos, textos, asociaciones y teclados
         String currentDirectory = System.getProperty("user.dir");
         ctrlDominio.cargaCnjtAlfabetos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAlfabetos"+"\\");
+        ctrlDominio.cargaCnjtTextos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTextos"+"\\");
+        //ctrlDominio.cargaCnjtAsociaciones(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAsociaciones"+"\\");
+        //ctrlDominio.cargaCnjtTeclados(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTeclados"+"\\");
+
         muestraMetodos();
         // System.out.println("Selecciona el método para agregar el alfabeto (1 - Terminal, 2 - Archivo):");
         String metodo = driver.inOut.leerString();

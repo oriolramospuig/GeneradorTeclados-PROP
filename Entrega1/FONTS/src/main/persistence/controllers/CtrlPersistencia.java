@@ -16,6 +16,7 @@ public class CtrlPersistencia {
     public CtrlPersistencia() {
         gestorConfiguracion = new GestorConfiguracion();
         gestorAlfabeto = new GestorAlfabeto();
+        gestorTexto = new GestorTexto();
     }
 
     // ---------- FUNCIONES CONFIGURACION ----------
@@ -42,7 +43,7 @@ public class CtrlPersistencia {
      *
      * @return
      */
-    public boolean existeCongigAlfabetos() {
+    public boolean existeConfigAlfabetos() {
         return gestorConfiguracion.existeConfigAlfabetos();
     }
 
