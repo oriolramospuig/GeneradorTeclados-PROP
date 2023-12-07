@@ -396,7 +396,7 @@ public class CtrlDominio
     }
 
 
-    // ---------- FUNCIONES PERSISTENCIA ----------
+    // ---------- FUNCIONES PERSISTENCIA CONFIGURACIÓN ----------
     /**
      * Guarda el objeto Configuracion configuracion en un fichero usando el CtrlPersistencia
      */
@@ -416,7 +416,6 @@ public class CtrlDominio
         }
     }
 
-
     /**
      * LA HAREMOS MÁS TARDE!!!
      * Converteix les dades de Configuracio _config a una matriu de String per poder compartir-les entre capes
@@ -424,6 +423,7 @@ public class CtrlDominio
      return _config.simplify();
      } */
 
+    // ---------- FUNCIONES PERSISTENCIA ALFABETOS ----------
     public void guardaCnjtAlfabetos() {
         String nomDoc = "conjuntoAlfabetos";
         //if(nomDoc.endsWith(".prop")) { nomDoc = nomDoc+".prop"; }
@@ -431,7 +431,7 @@ public class CtrlDominio
         String path = currentDirectory+"\\Entrega1\\data\\Cache\\"+nomDoc+"\\";
         try {
             byte[] bytes = ctrlAlfabeto.alfabetosToByteArray();
-            ctrlPersistencia.guardaAlfabeto(bytes,path);
+            ctrlPersistencia.guardaCnjtAlfabetos(bytes,path);
         } catch (IOException e) {
             System.err.println("[#GUARDAR] Error al guardar el conjunto de alfabetos" + e.getMessage());
             Thread.currentThread().getStackTrace();
@@ -449,4 +449,17 @@ public class CtrlDominio
             System.err.println("[#CARGA] Error al cargar el conjunto de alfabetos" + e.getMessage());
         }
     }
+
+    // ---------- FUNCIONES PERSISTENCIA TEXTOS ----------
+    public void guardaCnjtTextos() {}
+
+    public void cargaCnjtTextos() {}
+
+
+    // ---------- FUNCIONES PERSISTENCIA ASOCIACIONES TEXTOS ----------
+
+
+    // ---------- FUNCIONES PERSISTENCIA TECLADOS ----------
+
+
 }

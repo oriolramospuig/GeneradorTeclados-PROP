@@ -2,6 +2,7 @@ package main.persistence.controllers;
 
 import main.persistence.classes.GestorAlfabeto;
 import main.persistence.classes.GestorConfiguracion;
+import main.persistence.classes.GestorTexto;
 
 /**
  *  El controlador de persistencia se encarga de gestionar el almacenamiento de datos, es decir, se
@@ -10,12 +11,14 @@ import main.persistence.classes.GestorConfiguracion;
 public class CtrlPersistencia {
     private final GestorConfiguracion gestorConfiguracion;
     private final GestorAlfabeto gestorAlfabeto;
+    private final GestorTexto gestorTexto;
 
     public CtrlPersistencia() {
         gestorConfiguracion = new GestorConfiguracion();
         gestorAlfabeto = new GestorAlfabeto();
     }
 
+    // ---------- FUNCIONES CONFIGURACION ----------
     /**
      * Guarda contenido Alfabetos de la clase Configuracion en el fichero configAlfabetos.cdp"
      *
@@ -53,11 +56,27 @@ public class CtrlPersistencia {
     }
 
 
-    public void guardaAlfabeto(byte[] bytes, String path) {
+    // ---------- FUNCIONES ALFABETOS ----------
+    public void guardaCnjtAlfabetos(byte[] bytes, String path) {
         GestorAlfabeto.gestorAlfabeto(bytes, path);
     }
 
     public byte[] cargaCnjtAlfabetos(String path) {
         return gestorAlfabeto.cargarAlfabeto(path);
     }
+
+    // ---------- FUNCIONES TEXTOS ----------
+    public void guardaCnjtTextos(byte[] bytes, String path) {
+
+    }
+
+    public byte[] cargaCnjtTextos(String path) {
+
+    }
+
+
+    // ---------- FUNCIONES ASOCIACIONES TEXTOS ----------
+
+
+    // ---------- FUNCIONES TECLADOS ----------
 }

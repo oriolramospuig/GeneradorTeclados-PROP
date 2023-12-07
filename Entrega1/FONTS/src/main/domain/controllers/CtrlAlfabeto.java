@@ -79,6 +79,7 @@ public class CtrlAlfabeto
         }
         return false;
     }
+
     /**
      * Devuelve la lista de nombres de alfabetos existentes
      * @return ArrayList<String> : La lista de los nombres de los alfabetos existentes
@@ -95,6 +96,7 @@ public class CtrlAlfabeto
         ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
         return tVinculados;
     }
+
     /**
      * No retorna
      * @param nomA el nombre del alfabeto a borrar
