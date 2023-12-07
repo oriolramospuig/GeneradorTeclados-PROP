@@ -79,7 +79,7 @@ public class CtrlTexto
         }
         return false;
     }
-
+    //ESTO VA A INOUT
     /**
      * Convierte el texto de entrada en frencuencia de letars (pareja letras con frecuencia respectiva)
      * @param texto Contenido del texto
@@ -100,6 +100,7 @@ public class CtrlTexto
         return frecuenciaLetras;
     }
 
+    //ESTO VA A LA PROPIA CLASE TEXTO
     /**
      * Convierte las frecuencias de palabars en frecuencias de letras
      * @param frecPalabras Frecuencias de palabras a convertir
