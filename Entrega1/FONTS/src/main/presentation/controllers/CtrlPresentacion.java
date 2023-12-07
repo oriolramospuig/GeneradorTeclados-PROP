@@ -148,6 +148,7 @@ public class CtrlPresentacion {
     public static boolean agregarAlfabetoPath(String nomA, String path) {
         //ArrayList<Character> entrada = InOut.leerCaracteresDeArchivo(path);
         //boolean agregado = cd.agregarAlfabeto(nomA, entradaCaracteres);
+        //faltara afegir algo semblant al agregarAlfabetoManual que he fet adalt amb 3 params perque es guardi sempre al mateix path
         //return agregado;
         return false;
     }

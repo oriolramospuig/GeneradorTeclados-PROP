@@ -27,6 +27,11 @@ public class VistaAlfabetoA extends JFrame {
     private final JLabel txtContenidoAA = new JLabel("CONTENIDO:");
     /** Área de texto para introducir el contenido del alfabeto que se quiere crear */
     private final JTextArea areaContenidoAA = new JTextArea();
+    /** Texto indicando que la barra de texto de al lado es para introducir el path del alfabeto, para saber donde esta guardado */
+    private final JLabel txtPathAA = new JLabel("PATH:");
+    /** Área de texto para introducir el path del alfabeto que se quiere crear */
+    private final JTextArea areaPathAA = new JTextArea();
+
 
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere crear un alfabeto sin nombre */
@@ -65,6 +70,15 @@ public class VistaAlfabetoA extends JFrame {
         areaContenidoAA.setBounds(250,75, 200,60);
         add(areaContenidoAA);
 
+        // Texto Path
+        txtPathAA.setBounds(50, 175, 200, 20);
+        add(txtPathAA);
+
+        // Área texto Path
+        areaPathAA.setBounds(250,175, 200,20);
+        add(areaPathAA);
+
+
         //BOTONES
         // Botón agregar Alfabeto
         bAgregarAlfabeto.setBounds(700, 250, 200, 20);
@@ -84,6 +98,7 @@ public class VistaAlfabetoA extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String nombreAlfabeto = areanomAA.getText().trim();
                 String contenidoAlfabeto = areaContenidoAA.getText();
+                String pathArchivo = areaPathAA.getText();
                 String pathAlfabeto = System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Alfabetos";
 
                 // Verificar que el nombre no esté vacío
@@ -93,20 +108,31 @@ public class VistaAlfabetoA extends JFrame {
                 }
 
                 // Verificar que haya contenido proporcionado
-                if (contenidoAlfabeto.isEmpty()) {
-                    JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: No Contenido", "Error", JOptionPane.ERROR_MESSAGE);
+                if (contenidoAlfabeto.isEmpty() && pathArchivo.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: Añade contenido o seleccione archivo que contenga un alfabeto", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                // Llamar al controlador para agregar el alfabeto
-                boolean agregado = CtrlPresentacion.agregarAlfabetoManual(nombreAlfabeto, contenidoAlfabeto, pathAlfabeto);
-
-                // Mensaje de éxito o error
-                if (agregado) {
-                    JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    areanomAA.setText("");
-                    areaContenidoAA.setText("");
-                } else {
-                    JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: El nombre " + nombreAlfabeto + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                else if (contenidoAlfabeto.isEmpty()) {
+                    boolean agregado = CtrlPresentacion.agregarAlfabetoPath(nombreAlfabeto, pathAlfabeto);
+                    // Mensaje de éxito o error
+                    if (agregado) {
+                        JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        areanomAA.setText("");
+                        areaContenidoAA.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: El nombre " + nombreAlfabeto + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                else {
+                    boolean agregado = CtrlPresentacion.agregarAlfabetoManual(nombreAlfabeto, contenidoAlfabeto, pathAlfabeto);
+                    // Mensaje de éxito o error
+                    if (agregado) {
+                        JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        areanomAA.setText("");
+                        areaContenidoAA.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: El nombre " + nombreAlfabeto + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         };
