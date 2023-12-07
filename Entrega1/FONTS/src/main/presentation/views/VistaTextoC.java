@@ -80,7 +80,7 @@ public class VistaTextoC extends JFrame {
         add(txtNombreTxtC);
 
         // Área texto Nombre
-        // areanomTxtC.setEditable(false);
+        areanomTxtC.setEditable(false);
         areanomTxtC.setBounds(250,35, 200,20);
         add(areanomTxtC);
 
