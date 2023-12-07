@@ -1,6 +1,8 @@
 package main.persistence.classes;
 
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,24 +11,27 @@ import java.util.logging.Logger;
  * Implementación de la clase gestionadora de datos para la clase "Alfabeto", carga/vuelca los alfabetos modificados en cada caso.
  */
 public class GestorAlfabeto {
-    private static final Logger logger = Logger.getLogger(GestorAlfabeto.class.getName());
-    public static void guardarAlfabeto(Map<String, ArrayList<Character>> alfabetos, String path) {
-        try (ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(path))) {
-            o.writeObject(alfabetos);
-            System.out.println("Alfabeto guardado con éxito en " + path);
+    public static void gestorAlfabeto(byte[] bytes, String path) {
+        Path p = Paths.get(path);
+        try {
+            FileOutputStream outFile = new FileOutputStream(path);
+            outFile.write(bytes);
+            outFile.flush();
+            outFile.close();
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Error al guardar alfabeto en" + path, e);
+            System.err.println("[#GUARDAR] Error al guardar el conjunto de alfabetos: " + e.getMessage() + "\n" + Arrays.toString(e.getStackTrace()));
         }
     }
 
-    public static HashMap<String, ArrayList<Character>> cargarAlfabeto(String path) {
-        HashMap<String, ArrayList<Character>> alfabeto = new HashMap<>();
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
-            alfabeto = (HashMap<String, ArrayList<Character>>) ois.readObject();
-            System.out.println("Alfabeto cargado con éxito desde " + path);
-        } catch (IOException | ClassNotFoundException e) {
-            logger.log(Level.SEVERE, "Error al cargar alfabetos desde el archivo " + path, e);
+    public byte[] cargarAlfabeto(String path) {
+        byte[] bytes = null;
+        try {
+            FileInputStream inFile = new FileInputStream(path);
+            bytes = inFile.readAllBytes();
+            inFile.close();
+        } catch (IOException e) {
+            System.err.println("[#CARGAR] Error al cargar el conjunto de alfabetos: " + e.getMessage() + "\n" + Arrays.toString(e.getStackTrace()));
         }
-        return alfabeto;
+        return  bytes;
     }
 }
