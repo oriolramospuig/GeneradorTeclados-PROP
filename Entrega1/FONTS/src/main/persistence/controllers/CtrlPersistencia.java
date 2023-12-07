@@ -1,9 +1,6 @@
 package main.persistence.controllers;
 
-import main.persistence.classes.GestorAlfabeto;
-import main.persistence.classes.GestorAsociaciones;
-import main.persistence.classes.GestorConfiguracion;
-import main.persistence.classes.GestorTexto;
+import main.persistence.classes.*;
 
 /**
  *  El controlador de persistencia se encarga de gestionar el almacenamiento de datos, es decir, se
@@ -14,12 +11,14 @@ public class CtrlPersistencia {
     private final GestorAlfabeto gestorAlfabeto;
     private final GestorTexto gestorTexto;
     private final GestorAsociaciones gestorAsociaciones;
+    private final GestorTeclado gestorTeclado;
 
     public CtrlPersistencia() {
         //gestorConfiguracion = new GestorConfiguracion();
         gestorAlfabeto = new GestorAlfabeto();
         gestorTexto = new GestorTexto();
         gestorAsociaciones = new GestorAsociaciones();
+        gestorTeclado = new GestorTeclado();
     }
 
     // ---------- FUNCIONES CONFIGURACION ----------
@@ -110,4 +109,11 @@ public class CtrlPersistencia {
     }
 
     // ---------- FUNCIONES TECLADOS ----------
+    public void guardaCnjtTeclados(byte[] bytes, String path) {
+        GestorTeclado.gestorTeclados(bytes, path);
+    }
+
+    public byte[] cargaCnjtTeclados(String path) {
+        return gestorTeclado.cargarTeclados(path);
+    }
 }

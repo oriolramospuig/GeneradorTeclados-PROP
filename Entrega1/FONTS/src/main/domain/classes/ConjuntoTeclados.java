@@ -1,5 +1,6 @@
 package main.domain.classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -7,7 +8,7 @@ import java.util.HashMap;
  * Classe que representa el conjunto de teclados
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
-public class ConjuntoTeclados
+public class ConjuntoTeclados implements Serializable
 {
     // ---------- ATRIBUTOS ----------
     /** Guarda el conjunto de teclados generados por el usuario */

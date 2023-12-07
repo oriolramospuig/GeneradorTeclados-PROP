@@ -4,6 +4,7 @@ package main.domain.controllers;
 import main.domain.classes.*;
 import main.domain.classes.types.PairInt;
 
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,7 @@ public class CtrlTeclado
 {
     // ---------- PARÁMETROS ----------
     /** Crea una instancia del conjunto de teclados*/
-    private ConjuntoTeclados teclados;
+    private static ConjuntoTeclados teclados;
 
     /** Crea una instancia del controlador del algoritmo*/
     private CtrlTecladoQAP ctrlAlgoritmo;
@@ -110,5 +111,20 @@ public class CtrlTeclado
 
         //String asociacionTextosVinculado = teclados.getTeclado(nomT).getAsociacionTextosVinculado();
         //if (!asociacionTextosVinculado.isEmpty()) asociacionesTextos.borrarAsociacionTextos(asociacionTextosVinculado);
+    }
+
+    public byte[] tecladosToByteArray() throws IOException {
+        ByteArrayOutputStream bs = new ByteArrayOutputStream();
+        ObjectOutputStream os = new ObjectOutputStream(bs);
+        os.writeObject(teclados);
+        os.close();
+        return bs.toByteArray();
+    }
+
+    public static void byteArrayToTeclados(byte[] bytes) throws IOException, ClassNotFoundException {
+        ByteArrayInputStream bs = new ByteArrayInputStream(bytes);
+        ObjectInputStream is = new ObjectInputStream(bs);
+        teclados = (ConjuntoTeclados) is.readObject();
+        is.close();
     }
 }

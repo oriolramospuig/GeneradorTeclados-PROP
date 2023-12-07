@@ -525,6 +525,29 @@ public class CtrlDominio
     }
 
     // ---------- FUNCIONES PERSISTENCIA TECLADOS ----------
+    public void guardaCnjtTeclados() {
+        String nomDoc = "conjuntoTeclados";
+        String currentDirectory = System.getProperty("user.dir");
+        String path = currentDirectory+"\\Entrega1\\data\\Cache\\"+nomDoc+"\\";
+        try {
+            byte[] bytes = ctrlTeclado.tecladosToByteArray();
+            ctrlPersistencia.guardaCnjtTeclados(bytes,path);
+        } catch (IOException e) {
+            System.err.println("[#GUARDAR] Error al guardar el conjunto de teclados " + e.getMessage());
+            Thread.currentThread().getStackTrace();
+            System.exit(-102);
+        }
+        //configuracion.añadirCnjtAlfabetos(nomDoc, path);
+        //guardaConfigAlfabetos();
+    }
 
+    public void cargaCnjtTeclados(String path) {
+        try {
+            byte[] bytes = ctrlPersistencia.cargaCnjtTeclados(path);
+            ctrlTeclado.byteArrayToTeclados(bytes);
+        } catch (Exception e) {
+            System.err.println("[#CARGA] Error al cargar el conjunto de teclados " + e.getMessage());
+        }
+    }
 
 }
