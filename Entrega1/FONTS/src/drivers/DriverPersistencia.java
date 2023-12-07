@@ -295,7 +295,7 @@ public class DriverPersistencia {
                     if (!agregada) System.out.println("Ya existe el texto " + nombreAT);
                     else {
                         System.out.println("AGREGADO CON EXITO!");
-                        //ctrlDominio.cargaCnjtAsociaciones;
+                        ctrlDominio.guardaCnjtAsociaciones();
                     }
                 }
             }
@@ -443,7 +443,7 @@ public class DriverPersistencia {
         //ctrlDominio.cargaConfig();
         ctrlDominio.cargaCnjtAlfabetos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAlfabetos"+"\\");
         ctrlDominio.cargaCnjtTextos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTextos"+"\\");
-        //ctrlDominio.cargaCnjtAsociaciones(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAsociaciones"+"\\");
+        ctrlDominio.cargaCnjtAsociaciones(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAsociaciones"+"\\");
         //ctrlDominio.cargaCnjtTeclados(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTeclados"+"\\");
 
         muestraMetodos();
@@ -526,17 +526,16 @@ public class DriverPersistencia {
                     driver.borrarTexto();
                     break;
                 }
-                /*
-                case "9":
+                case "17":
                 case "BorrarAsociacionTexto": {
-                    //driver.borrarAsociacionTexto();
+                    driver.borrarAsociacionTexto();
                     break;
                 }
-                case "10":
+                case "18":
                 case "BorrarTeclado": {
-                    //driver.borrarTeclado();
+                    driver.borrarTeclado();
                     break;
-                }*/
+                }
                 case "14":
                 case "PruebaQAP": {
                     // driver.agregarTeclado();
@@ -553,6 +552,22 @@ public class DriverPersistencia {
             // MIRAR DE FER SERVIR SCANNER I NEXT LINE
         }
         driver.inOut.cerrarScanner();
+    }
+
+    private void borrarAsociacionTexto() {
+        imprimirNombresAsociaciones();
+        System.out.println("Introduce el nombre de la asociacion que quieres borrar:");
+        String nombreAT = inOut.leerString(); //hay que escribirlo bien
+        ctrlDominio.borrarAsociacionTextos(nombreAT);
+        ctrlDominio.guardaCnjtAsociaciones();
+    }
+
+    private void borrarTeclado() {
+        imprimirNombresTeclados();
+        System.out.println("Introduce el nombre del teclado que quieres borrar:");
+        String nombreT = inOut.leerString(); //hay que escribirlo bien
+        ctrlDominio.borrarTeclado(nombreT);
+        //ctrlDominio.guardaCnjtTeclados();
     }
 
     /**
@@ -579,8 +594,8 @@ public class DriverPersistencia {
         //Borrar
         System.out.println("(15|BorrarAlfabeto) - Borrar Alfabeto");
         System.out.println("(16|BorrarTexto) - Borrar Texto");
-        //System.out.println("(13|BorrarAsociacionTextos) - Borrar Asociacion Textos");
-        //System.out.println("(14|BorrarTeclado) - Borrar Teclado");
+        System.out.println("(17|BorrarAsociacionTextos) - Borrar Asociacion Textos");
+        System.out.println("(18|BorrarTeclado) - Borrar Teclado");
         //QAP
         System.out.println();
         System.out.println("(0|Salir) - Cerrar Driver");

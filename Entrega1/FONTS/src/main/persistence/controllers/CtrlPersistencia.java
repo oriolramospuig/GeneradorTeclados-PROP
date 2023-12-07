@@ -1,6 +1,7 @@
 package main.persistence.controllers;
 
 import main.persistence.classes.GestorAlfabeto;
+import main.persistence.classes.GestorAsociaciones;
 import main.persistence.classes.GestorConfiguracion;
 import main.persistence.classes.GestorTexto;
 
@@ -12,11 +13,13 @@ public class CtrlPersistencia {
     //private final GestorConfiguracion gestorConfiguracion;
     private final GestorAlfabeto gestorAlfabeto;
     private final GestorTexto gestorTexto;
+    private final GestorAsociaciones gestorAsociaciones;
 
     public CtrlPersistencia() {
         //gestorConfiguracion = new GestorConfiguracion();
         gestorAlfabeto = new GestorAlfabeto();
         gestorTexto = new GestorTexto();
+        gestorAsociaciones = new GestorAsociaciones();
     }
 
     // ---------- FUNCIONES CONFIGURACION ----------
@@ -97,9 +100,14 @@ public class CtrlPersistencia {
         return gestorTexto.cargarTextos(path);
     }
 
-
     // ---------- FUNCIONES ASOCIACIONES TEXTOS ----------
+    public void guardaCnjtAsociaciones(byte[] bytes, String path) {
+        GestorAsociaciones.gestorAsociaciones(bytes, path);
+    }
 
+    public byte[] cargaCnjtAsociaciones(String path) {
+        return gestorAsociaciones.cargarAsociaciones(path);
+    }
 
     // ---------- FUNCIONES TECLADOS ----------
 }

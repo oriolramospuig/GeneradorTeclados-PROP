@@ -2,6 +2,7 @@ package main.domain.classes;
 
 import main.domain.classes.types.PairFrequency;
 
+import java.io.Serializable;
 import java.util.*;
 
 /** Clase que implementa un comparador de frecuencias
@@ -23,7 +24,7 @@ class FrequencyComparator implements Comparator<PairFrequency> {
 /** Clase que implementa una asociación de textos
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
-public class AsociacionTextos
+public class AsociacionTextos implements Serializable
 {
     // ---------- ATRIBUTOS ----------
     /** Guarda el nombre introducido por el usuario */
