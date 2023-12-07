@@ -103,8 +103,9 @@ public class CtrlPresentacion {
      * @param nomA es el nombre del alfabeto a agregar
      * @param entradaCaracteres es la lista de caracteres que forman el contenido del alfabeto
      */
-    public static void agregarAlfabeto(String nomA, ArrayList<Character> entradaCaracteres) {
+    public static boolean agregarAlfabeto(String nomA, ArrayList<Character> entradaCaracteres) {
         boolean agregado = cd.agregarAlfabeto(nomA, entradaCaracteres);
+        return agregado;
     }
 
     //crec que no s'hauria d'utilitzar perque no podem passar per referencia tots els alfabets aixi per la cara
@@ -114,22 +115,25 @@ public class CtrlPresentacion {
     }*/
 
     /** Llama a la función getNombresAlfabetos de CtrlDominio */
-    public static void getNombresAlfabetos() {
+    public static ArrayList<String> getNombresAlfabetos() {
         ArrayList<String> listaAlfabetosNombres = cd.getNombresAlfabetos();
+        return listaAlfabetosNombres;
     }
     /**
      * Llama a la función existealfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a consultar si existe
      */
-    public static void existeAlfabeto(String nomA) {
+    public static boolean existeAlfabeto(String nomA) {
         boolean existe = cd.existealfabeto(nomA);
+        return existe;
     }
     /**
      * Llama a la función consultarContenidoAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a consultar
      */
-    public static void consultarContenidoAlfabeto(String nomA) {
+    public static ArrayList<Character> consultarContenidoAlfabeto(String nomA) {
         ArrayList<Character> contenidoA = cd.consultarContenidoAlfabeto(nomA);
+        return contenidoA;
     }
     /**
      * Llama a la función borrarAlfabeto de CtrlDominio
