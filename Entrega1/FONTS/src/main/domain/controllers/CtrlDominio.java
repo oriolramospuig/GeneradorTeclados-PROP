@@ -451,9 +451,30 @@ public class CtrlDominio
     }
 
     // ---------- FUNCIONES PERSISTENCIA TEXTOS ----------
-    public void guardaCnjtTextos() {}
+    public void guardaCnjtTextos() {
+        String nomDoc = "conjuntoTextos";
+        String currentDirectory = System.getProperty("user.dir");
+        String path = currentDirectory+"\\Entrega1\\data\\Cache\\"+nomDoc+"\\";
+        try {
+            byte[] bytes = ctrlTexto.textosToByteArray();
+            ctrlPersistencia.guardaCnjtTextos(bytes,path);
+        } catch (IOException e) {
+            System.err.println("[#GUARDAR] Error al guardar el conjunto de textos" + e.getMessage());
+            Thread.currentThread().getStackTrace();
+            System.exit(-102);
+        }
+        //configuracion.añadirCnjtAlfabetos(nomDoc, path);
+        //guardaConfigAlfabetos();
+    }
 
-    public void cargaCnjtTextos() {}
+    public void cargaCnjtTextos(String path) {
+        try {
+            byte[] bytes = ctrlPersistencia.cargaCnjtTextos(path);
+            CtrlTexto.byteArrayToTextos(bytes);
+        } catch (Exception e) {
+            System.err.println("[#CARGA] Error al cargar el conjunto de textos" + e.getMessage());
+        }
+    }
 
 
     // ---------- FUNCIONES PERSISTENCIA ASOCIACIONES TEXTOS ----------
