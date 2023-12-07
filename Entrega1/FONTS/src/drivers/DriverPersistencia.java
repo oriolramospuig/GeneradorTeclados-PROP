@@ -54,6 +54,14 @@ public class DriverPersistencia {
         }
     }
 
+    private void borrarAlfabeto() {
+        imprimirNombresAlfabetos();
+        System.out.println("Introduce el nombre del alfabeto que quieres borrar:");
+        String nombreA = inOut.leerString();
+        ctrlDominio.borrarAlfabeto(nombreA);
+        ctrlDominio.guardaCnjtAlfabetos();
+    }
+
     /**
      * No devuelve nada.
      * Muestra por pantalla mensajes para introducir información por archivo del alfabeto que se quiere crear.
@@ -475,11 +483,12 @@ public class DriverPersistencia {
                     driver.consultarContenidoTeclado();
                     break;
                 }
-                /*case "7":
+                case "15":
                 case "BorrarAlfabeto": {
-                    // driver.borrarAlfabeto();
+                    driver.borrarAlfabeto();
                     break;
                 }
+                /*
                 case "8":
                 case "BorrarTexto": {
                     // driver.borrarTexto();
@@ -535,7 +544,7 @@ public class DriverPersistencia {
         System.out.println("(12|ConsultarTexto) - Consultar Texto");
         System.out.println("(13|ConsultarTeclado) - Consultar Teclado");
         //Borrar
-        //System.out.println("(11|BorrarAlfabeto) - Borrar Alfabeto");
+        System.out.println("(15|BorrarAlfabeto) - Borrar Alfabeto");
         //System.out.println("(12|BorrarTexto) - Borrar Texto");
         //System.out.println("(13|BorrarAsociacionTextos) - Borrar Asociacion Textos");
         //System.out.println("(14|BorrarTeclado) - Borrar Teclado");
