@@ -2,14 +2,11 @@ package main.domain.controllers;
 
 import main.domain.classes.*;
 import main.domain.classes.config.Configuracion;
-import main.domain.classes.functions.InOut;
-import main.domain.classes.types.PairInt;
 import main.persistence.controllers.CtrlPersistencia;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Este controlador se encarga de gestionar todos los métodos y distribuir las funciones a los respectivos controladores

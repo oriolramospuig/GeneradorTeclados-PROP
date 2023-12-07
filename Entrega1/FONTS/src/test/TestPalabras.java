@@ -1,20 +1,10 @@
 package test;
 
-import main.domain.classes.AsociacionTextos;
 import main.domain.classes.Palabras;
 
-import java.util.ArrayList;
-
-import main.domain.classes.Frecuencias;
-import main.domain.classes.Texto;
-import main.domain.classes.functions.InOut;
-import main.domain.classes.types.PairFrequency;
 import org.junit.*;
 
-import java.io.*;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
@@ -22,9 +12,6 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertNotNull;
-
-import java.lang.IndexOutOfBoundsException;
-import java.lang.NegativeArraySizeException;
 
 /**
  * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)

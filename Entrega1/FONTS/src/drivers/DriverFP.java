@@ -1,7 +1,6 @@
 package drivers;
 
 import main.domain.classes.*;
-import main.domain.classes.functions.InOut;
 import main.domain.classes.types.PairInt;
 import main.domain.controllers.CtrlDominio;
 

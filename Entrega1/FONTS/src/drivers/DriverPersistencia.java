@@ -3,7 +3,6 @@ package drivers;
 import main.domain.classes.Alfabeto;
 import main.domain.classes.AsociacionTextos;
 import main.domain.classes.Texto;
-import main.domain.classes.functions.InOut;
 import main.domain.classes.types.PairInt;
 import main.domain.controllers.CtrlDominio;
 

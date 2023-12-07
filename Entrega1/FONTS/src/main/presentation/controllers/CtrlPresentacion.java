@@ -1,5 +1,6 @@
 package main.presentation.controllers;
 
+import drivers.InOut;
 import main.domain.classes.Alfabeto;
 import main.domain.classes.AsociacionTextos;
 import main.presentation.views.*;
@@ -101,11 +102,24 @@ public class CtrlPresentacion {
     /**
      * Llama a la función agregarAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a agregar
-     * @param entradaCaracteres es la lista de caracteres que forman el contenido del alfabeto
+     * @param entradaCaracteres es el contenido del alfabeto
      */
-    public static boolean agregarAlfabeto(String nomA, ArrayList<Character> entradaCaracteres) {
-        boolean agregado = cd.agregarAlfabeto(nomA, entradaCaracteres);
+    public static boolean agregarAlfabetoManual(String nomA, String entradaCaracteres) {
+        ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
+        boolean agregado = cd.agregarAlfabeto(nomA, entrada);
         return agregado;
+    }
+
+    /**
+     * Llama a la función agregarAlfabeto de CtrlDominio
+     * @param nomA es el nombre del alfabeto a agregar
+     * @param path es la lista de caracteres que forman el contenido del alfabeto
+     */
+    public static boolean agregarAlfabetoPath(String nomA, String path) {
+        //ArrayList<Character> entrada = InOut.leerCaracteresDeArchivo(path);
+        //boolean agregado = cd.agregarAlfabeto(nomA, entradaCaracteres);
+        //return agregado;
+        return false;
     }
 
     //crec que no s'hauria d'utilitzar perque no podem passar per referencia tots els alfabets aixi per la cara
@@ -150,8 +164,9 @@ public class CtrlPresentacion {
      * @param nomTxt es el nombre del texto a agregar
      * @param texto es la lista de caracteres que forman el contenido del texto
      */
-    public static void agregarTextoPalabras(String nomTxt, String texto) {
+    public static boolean agregarTextoPalabras(String nomTxt, String texto) {
         boolean agregado = cd.agregarTextoPalabras(nomTxt, texto);
+        return agregado;
     }
     /*public static void agregarTextoPalabras(String nomT, String texto) {
         try {
@@ -163,8 +178,9 @@ public class CtrlPresentacion {
      * @param nomTxt es el nombre del texto a agregar
      * @param frecuenciaPalabras es la map con las palabras y sus frecuencias que forman el contenido del texto
      */
-    public static void agregarTextoFrecuencias(String nomTxt, HashMap<String,Integer> frecuenciaPalabras) {
+    public static boolean agregarTextoFrecuencias(String nomTxt, HashMap<String,Integer> frecuenciaPalabras) {
         boolean agregado = cd.agregarTextoFrecuencias(nomTxt, frecuenciaPalabras);
+        return agregado;
     }
 
     //crec que no s'hauria d'utilitzar perque no podem passar per referencia tots els textos aixi per la cara
@@ -182,15 +198,17 @@ public class CtrlPresentacion {
      * Llama a la función existetexto de CtrlDominio
      * @param nomTxt es el nombre del texto a consultar si existe
      */
-    public static void existeTexto(String nomTxt) {
+    public static boolean existeTexto(String nomTxt) {
         boolean existe = cd.existealfabeto(nomTxt);
+        return existe;
     }
     /**
      * Llama a la función consultarContenidoTexto de CtrlDominio
      * @param nomTxt es el nombre del texto a consultar
      */
-    public static void consultarContenidoTexto(String nomTxt) {
+    public static String consultarContenidoTexto(String nomTxt) {
         String contenidoTxt = cd.consultarContenidoTexto(nomTxt);
+        return contenidoTxt;
     }
     /**
      * Llama a la función borrarTexto de CtrlDominio
@@ -207,8 +225,9 @@ public class CtrlPresentacion {
      * @param nomAT es el nombre de la asociación a agregar
      * @param textosagregar es la lista de nombres de textos a agregar en la asociación
      */
-    public static void agregarAsociacion(String nomAT, ArrayList<String> textosagregar) {
+    public static boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar) {
         boolean agregada = cd.agregarAsociacion(nomAT, textosagregar);
+        return agregada;
     }
     /**
      * Llama a la función agregarAsociacion de CtrlDominio
@@ -239,8 +258,9 @@ public class CtrlPresentacion {
      * Llama a la función existeasociacion de CtrlDominio
      * @param nomAT es el nombre de la asociación a consultar si existe
      */
-    public static void existeAsociacion(String nomAT) {
+    public static boolean existeAsociacion(String nomAT) {
         boolean existe = cd.existeasociacion(nomAT);
+        return existe;
     }
 
     /**
@@ -260,8 +280,9 @@ public class CtrlPresentacion {
      * @param asociacionTextos objeto asociacion de textos para comparar
      * @return Boolean: true si el alfabeto y la asociación de textos son comptibles, false si no lo son
      */
-    public void compatibles(Alfabeto alfabeto, AsociacionTextos asociacionTextos){
+    public boolean compatibles(Alfabeto alfabeto, AsociacionTextos asociacionTextos){
         boolean comp = cd.compatibles(alfabeto,asociacionTextos);
+        return comp;
     }
 
     /**
@@ -270,8 +291,9 @@ public class CtrlPresentacion {
      * @param nomA nombre del alfabeto a vincular con el teclado nomT
      * @param nomAT nombre de la asociación de textos a vincular con el teclado nomT
      */
-    public void agregarTeclado(String nomT, String nomA, String nomAT){
+    public int agregarTeclado(String nomT, String nomA, String nomAT){
         int acabado = cd.agregarTeclado(nomT,nomA,nomAT);
+        return acabado;
     }
     //falten mes
 

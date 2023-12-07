@@ -39,6 +39,8 @@ public class VistaAlfabetoA extends JFrame {
     private final JFrame Nomframe = new JFrame ("JFrame");
     /** Pantalla de error que aparece cuando se quiere crear un alfabeto sin contenido o sin path */
     private final JFrame CPframe = new JFrame ("JFrame");
+    /** Pantalla de error alfabeto no agregado */
+    private JFrame frame = new JFrame();
 
 
     public VistaAlfabetoA(){
@@ -140,19 +142,37 @@ public class VistaAlfabetoA extends JFrame {
                     };
                     bSalirErrorConPath.addActionListener(lSalirErrorConPath);
                 }else { //se han llenado todos los campos
+                    JButton bSalir1 = new JButton("Salir");
                     if(areaContenidoAA.getText().isEmpty()){
-                        // fer lo del path areaPath.getText();
+                        boolean agregado = CtrlPresentacion.agregarAlfabetoPath(areanomAA.getText(), areaPathAA.getText());
                     }
                     else if(areaPathAA.getText().isEmpty()) {
-                        //CtrlPresentacion.agregarAlfabeto(areanomA1.getText(), areaContenido.getText());
-                        setVisible(false);
+                        boolean agregado = CtrlPresentacion.agregarAlfabetoManual(areanomAA.getText(), areaContenidoAA.getText());
+                        if (!agregado) {
+                            JDialog alfabetoNoAgregado = new JDialog(frame, "Alfabeto no agregado");
+                            alfabetoNoAgregado.setBounds(800, 300, 400, 200);
+                            alfabetoNoAgregado.setLayout(null);
+
+                            JLabel lalfabetoNoAgregado = new JLabel("Ya existe un alfabeto con el nombre " + areanomAA.getText());
+                            lalfabetoNoAgregado.setBounds(80, 20, 400, 40);
+                            bSalir1.setVisible(true);
+                            bSalir1.setBounds(150, 110, 100, 30);
+                            alfabetoNoAgregado.add(lalfabetoNoAgregado);
+                            alfabetoNoAgregado.add(bSalir1);
+                            alfabetoNoAgregado.setVisible(true);
+
+                            ActionListener lSortirAlfabetoNoAgregado = new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    alfabetoNoAgregado.dispose();
+                                    alfabetoNoAgregado.setVisible(false);
+                                }
+                            };
+                            bSalir1.addActionListener(lSortirAlfabetoNoAgregado);
+                            setVisible(false);
+                        }
                     }
                 }
-
-                //if (areaFiles.getText().length() == 0) files = 50;
-                //else files = Integer.parseInt(areaFiles.getText());
-
-
             }
         };
 
@@ -166,7 +186,5 @@ public class VistaAlfabetoA extends JFrame {
 
         bAgregarAlfabeto.addActionListener(lAgregar);
         bsalir.addActionListener(lSalir);
-
     }
-
 }
