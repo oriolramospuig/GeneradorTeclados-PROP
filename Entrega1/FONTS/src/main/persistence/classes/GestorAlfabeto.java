@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  * Implementación de la clase gestionadora de datos para la clase "Alfabeto", carga/vuelca los alfabetos modificados en cada caso.
  */
 public class GestorAlfabeto {
-    public static void gestorAlfabeto(byte[] bytes, String path) {
+    public static void gestorAlfabetos(byte[] bytes, String path) {
         Path p = Paths.get(path);
         try {
             FileOutputStream outFile = new FileOutputStream(path);
@@ -23,7 +23,7 @@ public class GestorAlfabeto {
         }
     }
 
-    public byte[] cargarAlfabeto(String path) {
+    public byte[] cargarAlfabetos(String path) {
         byte[] bytes = null;
         try {
             FileInputStream inFile = new FileInputStream(path);

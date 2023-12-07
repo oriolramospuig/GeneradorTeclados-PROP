@@ -58,20 +58,20 @@ public class CtrlPersistencia {
 
     // ---------- FUNCIONES ALFABETOS ----------
     public void guardaCnjtAlfabetos(byte[] bytes, String path) {
-        GestorAlfabeto.gestorAlfabeto(bytes, path);
+        GestorAlfabeto.gestorAlfabetos(bytes, path);
     }
 
     public byte[] cargaCnjtAlfabetos(String path) {
-        return gestorAlfabeto.cargarAlfabeto(path);
+        return gestorAlfabeto.cargarAlfabetos(path);
     }
 
     // ---------- FUNCIONES TEXTOS ----------
     public void guardaCnjtTextos(byte[] bytes, String path) {
-
+        GestorTexto.guardarTexto(bytes, path);
     }
 
     public byte[] cargaCnjtTextos(String path) {
-
+        gestorTexto.cargarTextos(path);
     }
 
 
