@@ -169,83 +169,35 @@ public class VistaTextoA extends JFrame {
         ActionListener lAgregar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (areanomTxtA.getText().isEmpty()){
-                    JDialog sinNombre =  new JDialog(Nomframe, "Error: No Nombre");
-                    sinNombre.setBounds(800, 300, 400, 200);
-                    sinNombre.setLayout(null);
+                String nombreTexto = areanomTxtA.getText().trim();
+                String contenidoTexto = areaContenidoTxtA.getText();
+                String pathTexto = areaPathTxtA.getText();
+                String path = System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Textos";
 
-                    JLabel txtErrorNombre = new JLabel("Hay que agregar el texto con un nombre nuevo");
-                    txtErrorNombre.setBounds(80, 20, 400, 40);
-                    JButton bSalirErrorNombre = new JButton("Salir");
-                    bSalirErrorNombre.setVisible(true);
-                    bSalirErrorNombre.setBounds(150, 110, 100, 30);
-                    sinNombre.add(txtErrorNombre);
-                    sinNombre.add(bSalirErrorNombre);
-                    sinNombre.setVisible(true);
+                if (nombreTexto.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTextoA.this, "Error: No Nombre", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
-                    ActionListener lSalirErrorNombre = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinNombre.dispose();
-                            sinNombre.setVisible(false);
-                        }
-                    };
-                    bSalirErrorNombre.addActionListener(lSalirErrorNombre);
+                if (contenidoTexto.isEmpty() && pathTexto.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTextoA.this, "Error: Añade contenido o selecciona un archivo", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
-                } else if (areaContenidoTxtA.getText().isEmpty() && areaPathTxtA.getText().isEmpty()){
-                    JDialog sinConPath =  new JDialog(CPframe, "Error: No Contenido o No Path");
-                    sinConPath.setBounds(450, 300, 700, 200);
-                    sinConPath.setLayout(null);
+                boolean agregado;
+                if (contenidoTexto.isEmpty()) {
+                    agregado = CtrlPresentacion.agregarTextoPalabras(nombreTexto, pathTexto, path);
+                } else {
+                    agregado = CtrlPresentacion.agregarTextoPalabras(nombreTexto, contenidoTexto, path);
+                }
 
-                    JLabel txtErrorConPath = new JLabel("Hay que añadir un contenido del texto a mano o entrar un path donde se encuentra el archivo del texto");
-                    txtErrorConPath.setBounds(20, 20, 700, 40);
-                    JButton bSalirErrorConPath = new JButton("Salir");
-                    bSalirErrorConPath.setVisible(true);
-                    bSalirErrorConPath.setBounds(150, 110, 100, 30);
-                    sinConPath.add(txtErrorConPath);
-                    sinConPath.add(bSalirErrorConPath);
-                    sinConPath.setVisible(true);
-
-                    ActionListener lSalirErrorConPath = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinConPath.dispose();
-                            sinConPath.setVisible(false);
-                        }
-                    };
-                    bSalirErrorConPath.addActionListener(lSalirErrorConPath);
-                }else { //se han llenado todos los campos
-                    JButton bSalir1 = new JButton("Salir");
-                    if(areaContenidoTxtA.getText().isEmpty()){
-                        // fer lo del path areaPath.getText();
-                    }
-                    else if(areaPathTxtA.getText().isEmpty()) {
-                        boolean agregado = CtrlPresentacion.agregarTextoPalabras(areanomTxtA.getText(), areaContenidoTxtA.getText());
-                        if (!agregado) {
-                            JDialog textoNoAgregado = new JDialog(frame, "Texto no agregado");
-                            textoNoAgregado.setBounds(800, 300, 400, 200);
-                            textoNoAgregado.setLayout(null);
-
-                            JLabel ltextoNoAgregado = new JLabel("Ya existe un texto con el nombre " + areanomTxtA.getText());
-                            ltextoNoAgregado.setBounds(80, 20, 400, 40);
-                            bSalir1.setVisible(true);
-                            bSalir1.setBounds(150, 110, 100, 30);
-                            textoNoAgregado.add(ltextoNoAgregado);
-                            textoNoAgregado.add(bSalir1);
-                            textoNoAgregado.setVisible(true);
-
-                            ActionListener lSortirTextoNoAgregado = new ActionListener() {
-                                @Override
-                                public void actionPerformed(ActionEvent e) {
-                                    textoNoAgregado.dispose();
-                                    textoNoAgregado.setVisible(false);
-                                }
-                            };
-                            bSalir1.addActionListener(lSortirTextoNoAgregado);
-                        }else {
-                            //POSAR EN BLANC ELS REQUADRES DE TEXT
-                        }
-                    }
+                if (agregado) {
+                    JOptionPane.showMessageDialog(VistaTextoA.this, "Texto de palabras agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    areanomTxtA.setText("");
+                    areaContenidoTxtA.setText("");
+                    areaPathTxtA.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(VistaTextoA.this, "Error: El texto no se pudo agregar o ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         };
@@ -253,83 +205,35 @@ public class VistaTextoA extends JFrame {
         ActionListener lAgregarFrec = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (areanomTxtA1.getText().isEmpty()){
-                    JDialog sinNombre =  new JDialog(Nomframe, "Error: No Nombre");
-                    sinNombre.setBounds(800, 300, 400, 200);
-                    sinNombre.setLayout(null);
+                String nombreTexto = areanomTxtA1.getText().trim();
+                String contenidoTexto = areaContenidoTxtA1.getText();
+                String pathTexto = areaPathTxtA1.getText();
+                String path = System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Textos";
 
-                    JLabel txtErrorNombre = new JLabel("Hay que agregar el texto con un nombre nuevo");
-                    txtErrorNombre.setBounds(80, 20, 400, 40);
-                    JButton bSalirErrorNombre = new JButton("Salir");
-                    bSalirErrorNombre.setVisible(true);
-                    bSalirErrorNombre.setBounds(150, 110, 100, 30);
-                    sinNombre.add(txtErrorNombre);
-                    sinNombre.add(bSalirErrorNombre);
-                    sinNombre.setVisible(true);
+                if (nombreTexto.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTextoA.this, "Error: No Nombre", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
-                    ActionListener lSalirErrorNombre = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinNombre.dispose();
-                            sinNombre.setVisible(false);
-                        }
-                    };
-                    bSalirErrorNombre.addActionListener(lSalirErrorNombre);
+                if (contenidoTexto.isEmpty() && pathTexto.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTextoA.this, "Error: Añade contenido o selecciona un archivo", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
-                } else if (areaContenidoTxtA1.getText().isEmpty() && areaPathTxtA1.getText().isEmpty()){
-                    JDialog sinConPath =  new JDialog(CPframe, "Error: No Contenido o No Path");
-                    sinConPath.setBounds(450, 300, 700, 200);
-                    sinConPath.setLayout(null);
+                boolean agregado;
+                if (contenidoTexto.isEmpty()) {
+                    agregado = CtrlPresentacion.agregarTextoFrecuencias(nombreTexto, pathTexto, path);
+                } else {
+                    agregado = CtrlPresentacion.agregarTextoFrecuencias(nombreTexto, contenidoTexto, path);
+                }
 
-                    JLabel txtErrorConPath = new JLabel("Hay que añadir un contenido del texto a mano o entrar un path donde se encuentra el archivo del texto");
-                    txtErrorConPath.setBounds(20, 20, 700, 40);
-                    JButton bSalirErrorConPath = new JButton("Salir");
-                    bSalirErrorConPath.setVisible(true);
-                    bSalirErrorConPath.setBounds(150, 110, 100, 30);
-                    sinConPath.add(txtErrorConPath);
-                    sinConPath.add(bSalirErrorConPath);
-                    sinConPath.setVisible(true);
-
-                    ActionListener lSalirErrorConPath = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinConPath.dispose();
-                            sinConPath.setVisible(false);
-                        }
-                    };
-                    bSalirErrorConPath.addActionListener(lSalirErrorConPath);
-                }else { //se han llenado todos los campos
-                    JButton bSalir1 = new JButton("Salir");
-                    if(areaContenidoTxtA1.getText().isEmpty()){
-                        // fer lo del path areaPath.getText();
-                    }
-                    else if(areaPathTxtA1.getText().isEmpty()) {
-                        boolean agregado = CtrlPresentacion.agregarTextoFrecuencias(areanomTxtA1.getText(), areaContenidoTxtA1.getText());
-                        if (!agregado) {
-                            JDialog textoNoAgregado = new JDialog(frame, "Texto no agregado");
-                            textoNoAgregado.setBounds(800, 300, 400, 200);
-                            textoNoAgregado.setLayout(null);
-
-                            JLabel ltextoNoAgregado = new JLabel("Ya existe un texto con el nombre " + areanomTxtA1.getText());
-                            ltextoNoAgregado.setBounds(80, 20, 400, 40);
-                            bSalir1.setVisible(true);
-                            bSalir1.setBounds(150, 110, 100, 30);
-                            textoNoAgregado.add(ltextoNoAgregado);
-                            textoNoAgregado.add(bSalir1);
-                            textoNoAgregado.setVisible(true);
-
-                            ActionListener lSortirTextoNoAgregado = new ActionListener() {
-                                @Override
-                                public void actionPerformed(ActionEvent e) {
-                                    textoNoAgregado.dispose();
-                                    textoNoAgregado.setVisible(false);
-                                }
-                            };
-                            bSalir1.addActionListener(lSortirTextoNoAgregado);
-                        }else {
-                            //POSAR EN BLANC ELS REQUADRES DE TEXT
-                        }
-                    }
+                if (agregado) {
+                    JOptionPane.showMessageDialog(VistaTextoA.this, "Texto de frecuencias agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    areanomTxtA1.setText("");
+                    areaContenidoTxtA1.setText("");
+                    areaPathTxtA1.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(VistaTextoA.this, "Error: El texto no se pudo agregar o ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         };

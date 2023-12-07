@@ -6,6 +6,10 @@ import main.domain.classes.AsociacionTextos;
 import main.presentation.views.*;
 import main.domain.controllers.CtrlDominio;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -102,6 +106,35 @@ public class CtrlPresentacion {
      * Llama a la función agregarAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a agregar
      * @param entradaCaracteres es el contenido del alfabeto
+     * @param path path donde se crea y guarda el alfabeto
+     */
+    public static boolean agregarAlfabetoManual(String nomA, String entradaCaracteres, String path) {
+        ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
+        boolean agregado = cd.agregarAlfabeto(nomA, entrada);
+
+        if (agregado) {
+            try {
+                File archivo = new File(path, nomA + ".txt");
+                if (!archivo.exists()) {
+                    archivo.createNewFile(); // Crea el archivo si no existe
+                }
+                try (PrintWriter writer = new PrintWriter(archivo)) {
+                    for (Character c : entrada) {
+                        writer.print(c);
+                    }
+                }
+                return true; // El alfabeto se agregó correctamente y se guardó el archivo
+            } catch (IOException e) {
+                return false; // Retorna false si hubo un error al escribir el archivo
+            }
+        } else {
+            return false; // El alfabeto no se pudo agregar
+        }
+    }
+    /**
+     * Llama a la función agregarAlfabeto de CtrlDominio
+     * @param nomA es el nombre del alfabeto a agregar
+     * @param entradaCaracteres es el contenido del alfabeto
      */
     public static boolean agregarAlfabetoManual(String nomA, String entradaCaracteres) {
         ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
@@ -116,6 +149,7 @@ public class CtrlPresentacion {
     public static boolean agregarAlfabetoPath(String nomA, String path) {
         //ArrayList<Character> entrada = InOut.leerCaracteresDeArchivo(path);
         //boolean agregado = cd.agregarAlfabeto(nomA, entradaCaracteres);
+        //faltara afegir algo semblant al agregarAlfabetoManual que he fet adalt amb 3 params perque es guardi sempre al mateix path
         //return agregado;
         return false;
     }
@@ -161,20 +195,41 @@ public class CtrlPresentacion {
      * @param nomTxt es el nombre del texto a agregar
      * @param texto es la lista de caracteres que forman el contenido del texto
      */
-    public static boolean agregarTextoPalabras(String nomTxt, String texto) {
+    public static boolean agregarTextoPalabras(String nomTxt, String texto, String path) {
         //ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
         boolean agregado = cd.agregarTextoPalabras(nomTxt, texto);
-        return agregado;
+        if (agregado) {
+            File archivo = new File(path, nomTxt + ".txt");
+            try (FileWriter writer = new FileWriter(archivo)) {
+                writer.write(texto);
+                return true; // El texto se agregó correctamente
+            } catch (IOException e) {
+                // Manejar errores, como problemas al escribir en el archivo
+                return false;
+            }
+        } else return false;
     }
     /**
      * Llama a la función agregarTextoFrecuencias de CtrlDominio
      * @param nomTxt es el nombre del texto a agregar
      * @param frecuenciaPalabras es la map con las palabras y sus frecuencias que forman el contenido del texto
      */
-    public static boolean agregarTextoFrecuencias(String nomTxt, String frecuenciaPalabras) {
+    public static boolean agregarTextoFrecuencias(String nomTxt, String frecuenciaPalabras, String path) {
         //HashMap<String,Integer> entrada = InOut.leerCaracteresDeTerminal(frecuenciaPalabras);
-        //boolean agregado = cd.agregarTextoFrecuencias(nomTxt, entrada);
-        //return agregado;
+        //boolean agregado = cd.agregarTextoFrecuencias(nomTxt, frecuenciaPalabras);
+        /*if (agregado) {
+            File archivo = new File(path, nomTxt + ".txt");
+            try (FileWriter writer = new FileWriter(archivo)) {
+                String[] lineas = frecuenciaPalabras.split("\n");
+                for (String linea : lineas) {
+                    writer.write(linea + "\n");
+                }
+                return true; // El texto se agregó correctamente
+            } catch (IOException e) {
+                // Manejar errores, como problemas al escribir en el archivo
+                return false;
+            }
+        } else return false;*/
         return false;
     }
 
