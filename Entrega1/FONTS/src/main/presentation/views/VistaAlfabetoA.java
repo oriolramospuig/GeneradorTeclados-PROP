@@ -3,9 +3,7 @@ package main.presentation.views;
 import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileSystemView;
 import java.awt.event.*;
-import java.io.File;
 
 public class VistaAlfabetoA extends JFrame {
 
@@ -29,10 +27,6 @@ public class VistaAlfabetoA extends JFrame {
     private final JLabel txtContenidoAA = new JLabel("CONTENIDO:");
     /** Área de texto para introducir el contenido del alfabeto que se quiere crear */
     private final JTextArea areaContenidoAA = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el path del alfabeto, para saber donde esta guardado */
-    private final JLabel txtPathAA = new JLabel("PATH:");
-    /** Área de texto para introducir el path del alfabeto que se quiere crear */
-    private final JTextArea areaPathAA = new JTextArea();
 
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere crear un alfabeto sin nombre */
@@ -71,14 +65,6 @@ public class VistaAlfabetoA extends JFrame {
         areaContenidoAA.setBounds(250,75, 200,60);
         add(areaContenidoAA);
 
-        // Texto Path
-        txtPathAA.setBounds(50, 175, 200, 20);
-        add(txtPathAA);
-
-        // Área texto Path
-        areaPathAA.setBounds(250,175, 200,20);
-        add(areaPathAA);
-
         //BOTONES
         // Botón agregar Alfabeto
         bAgregarAlfabeto.setBounds(700, 250, 200, 20);
@@ -96,86 +82,36 @@ public class VistaAlfabetoA extends JFrame {
         ActionListener lAgregar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (areanomAA.getText().isEmpty()){
-                    JDialog sinNombre =  new JDialog(Nomframe, "Error: No Nombre");
-                    sinNombre.setBounds(800, 300, 400, 200);
-                    sinNombre.setLayout(null);
+                String nombreAlfabeto = areanomAA.getText().trim();
+                String contenidoAlfabeto = areaContenidoAA.getText();
+                String pathAlfabeto = System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Alfabetos";
 
-                    JLabel txtErrorNombre = new JLabel("Hay que agregar el alfabeto con un nombre nuevo");
-                    txtErrorNombre.setBounds(80, 20, 400, 40);
-                    JButton bSalirErrorNombre = new JButton("Salir");
-                    bSalirErrorNombre.setVisible(true);
-                    bSalirErrorNombre.setBounds(150, 110, 100, 30);
-                    sinNombre.add(txtErrorNombre);
-                    sinNombre.add(bSalirErrorNombre);
-                    sinNombre.setVisible(true);
+                // Verificar que el nombre no esté vacío
+                if (nombreAlfabeto.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: No Nombre", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
-                    ActionListener lSalirErrorNombre = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinNombre.dispose();
-                            sinNombre.setVisible(false);
-                        }
-                    };
-                    bSalirErrorNombre.addActionListener(lSalirErrorNombre);
+                // Verificar que haya contenido proporcionado
+                if (contenidoAlfabeto.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: No Contenido", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                // Llamar al controlador para agregar el alfabeto
+                boolean agregado = CtrlPresentacion.agregarAlfabetoManual(nombreAlfabeto, contenidoAlfabeto, pathAlfabeto);
 
-                } else if (areaContenidoAA.getText().isEmpty() && areaPathAA.getText().isEmpty()){
-                    JDialog sinConPath =  new JDialog(CPframe, "Error: No Contenido o No Path");
-                    sinConPath.setBounds(450, 300, 700, 200);
-                    sinConPath.setLayout(null);
-
-                    JLabel txtErrorConPath = new JLabel("Hay que añadir un contenido del alfabeto a mano o entrar un path donde se encuentra el archivo del alfabeto");
-                    txtErrorConPath.setBounds(20, 20, 700, 40);
-                    JButton bSalirErrorConPath = new JButton("Salir");
-                    bSalirErrorConPath.setVisible(true);
-                    bSalirErrorConPath.setBounds(150, 110, 100, 30);
-                    sinConPath.add(txtErrorConPath);
-                    sinConPath.add(bSalirErrorConPath);
-                    sinConPath.setVisible(true);
-
-                    ActionListener lSalirErrorConPath = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinConPath.dispose();
-                            sinConPath.setVisible(false);
-                        }
-                    };
-                    bSalirErrorConPath.addActionListener(lSalirErrorConPath);
-                }else { //se han llenado todos los campos
-                    JButton bSalir1 = new JButton("Salir");
-                    if(areaContenidoAA.getText().isEmpty()){
-                        boolean agregado = CtrlPresentacion.agregarAlfabetoPath(areanomAA.getText(), areaPathAA.getText());
-                    }
-                    else if(areaPathAA.getText().isEmpty()) {
-                        boolean agregado = CtrlPresentacion.agregarAlfabetoManual(areanomAA.getText(), areaContenidoAA.getText());
-                        if (!agregado) {
-                            JDialog alfabetoNoAgregado = new JDialog(frame, "Alfabeto no agregado");
-                            alfabetoNoAgregado.setBounds(800, 300, 400, 200);
-                            alfabetoNoAgregado.setLayout(null);
-
-                            JLabel lalfabetoNoAgregado = new JLabel("Ya existe un alfabeto con el nombre " + areanomAA.getText() + " debe cambiar el nombre.");
-                            lalfabetoNoAgregado.setBounds(80, 20, 400, 40);
-                            bSalir1.setVisible(true);
-                            bSalir1.setBounds(150, 110, 100, 30);
-                            alfabetoNoAgregado.add(lalfabetoNoAgregado);
-                            alfabetoNoAgregado.add(bSalir1);
-                            alfabetoNoAgregado.setVisible(true);
-
-                            ActionListener lSortirAlfabetoNoAgregado = new ActionListener() {
-                                @Override
-                                public void actionPerformed(ActionEvent e) {
-                                    alfabetoNoAgregado.dispose();
-                                    alfabetoNoAgregado.setVisible(false);
-                                }
-                            };
-                            bSalir1.addActionListener(lSortirAlfabetoNoAgregado);
-                        }else {
-                            //POSAR EN BLANC ELS REQUADRES DE TEXT
-                        }
-                    }
+                // Mensaje de éxito o error
+                if (agregado) {
+                    JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    areanomAA.setText("");
+                    areaContenidoAA.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: El nombre " + nombreAlfabeto + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         };
+
+
 
         ActionListener lSalir = new ActionListener() {
             @Override

@@ -6,6 +6,9 @@ import main.domain.classes.AsociacionTextos;
 import main.presentation.views.*;
 import main.domain.controllers.CtrlDominio;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -98,6 +101,35 @@ public class CtrlPresentacion {
 
 
     //FUNCIONES DE CTRlDOMINIO DE ALFABETO
+    /**
+     * Llama a la función agregarAlfabeto de CtrlDominio
+     * @param nomA es el nombre del alfabeto a agregar
+     * @param entradaCaracteres es el contenido del alfabeto
+     * @param path path donde se crea y guarda el alfabeto
+     */
+    public static boolean agregarAlfabetoManual(String nomA, String entradaCaracteres, String path) {
+        ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
+        boolean agregado = cd.agregarAlfabeto(nomA, entrada);
+
+        if (agregado) {
+            try {
+                File archivo = new File(path, nomA + ".txt");
+                if (!archivo.exists()) {
+                    archivo.createNewFile(); // Crea el archivo si no existe
+                }
+                try (PrintWriter writer = new PrintWriter(archivo)) {
+                    for (Character c : entrada) {
+                        writer.print(c);
+                    }
+                }
+                return true; // El alfabeto se agregó correctamente y se guardó el archivo
+            } catch (IOException e) {
+                return false; // Retorna false si hubo un error al escribir el archivo
+            }
+        } else {
+            return false; // El alfabeto no se pudo agregar
+        }
+    }
     /**
      * Llama a la función agregarAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a agregar
