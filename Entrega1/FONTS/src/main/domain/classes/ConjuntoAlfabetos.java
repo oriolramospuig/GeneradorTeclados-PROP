@@ -1,5 +1,6 @@
 package main.domain.classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -7,7 +8,7 @@ import java.util.HashMap;
  * Clase que representa el conjunto de alfabetos
  * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
-public class ConjuntoAlfabetos
+public class ConjuntoAlfabetos implements Serializable
 {
     // ---------- ATRIBUTOS ----------
     /** Guarda el conjunto de alfabetos introducidos por el usuario */
