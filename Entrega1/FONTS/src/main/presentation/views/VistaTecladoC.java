@@ -3,11 +3,18 @@ package main.presentation.views;
 import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class VistaTecladoC extends JFrame {
-
+    /** Finestra de selecció de l'arxiu que es vol carregar al nostre full de càlcul */
+    JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
     //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
@@ -29,6 +36,10 @@ public class VistaTecladoC extends JFrame {
     private final JLabel txtNombreTC = new JLabel("NOMBRE:");
     /** Área de texto para introducir el nombre del teclado que se quiere consultar */
     private final JTextArea areanomTC = new JTextArea();
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del teclado a consultar*/
+    private final JLabel txtContenidoTC = new JLabel("NOMBRE:");
+    /** Área de texto para introducir el nombre del teclado que se quiere consultar */
+    private final JTextArea areacontenidoTC = new JTextArea();
 
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere consultar/modificar un teclado sin nombre */
@@ -36,8 +47,24 @@ public class VistaTecladoC extends JFrame {
 
 
 
-    public VistaTecladoC(){
+    public VistaTecladoC() {
+        // Posar els formats que ens facin falta
+        chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
+        chooser.setDialogTitle("Selecciona fitxer");
+        chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Teclados"));
+        int returnValue = chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File arxiu = chooser.getSelectedFile();
+            if (arxiu.getName().endsWith(".txt")) {
+                imprimirDatos(arxiu);
+                // consultarFichero(arxiu.getName().substring(0, arxiu.getName().length() - 4), true);
+            }
+        } else if (returnValue == JFileChooser.CANCEL_OPTION) {
+            CtrlPresentacion.iniPresentacion();
+        }
+    }
 
+    public void imprimirDatos(File arxiu) {
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);
         //setResizable(true);
@@ -52,19 +79,22 @@ public class VistaTecladoC extends JFrame {
         add(tituloVistaTC2);
 
         //VENTANA SUPERIOR
-        // Texto Nombre
         txtNombreTC.setBounds(50, 35, 200, 20);
         add(txtNombreTC);
-
         // Área texto Nombre
+        areanomTC.setEditable(false);
         areanomTC.setBounds(250,35, 200,20);
         add(areanomTC);
 
-        // Botón consultar teclado
-        bConsultarTeclado.setBounds(700, 150, 200, 20);
-        add(bConsultarTeclado);
+        txtContenidoTC.setBounds(50, 75, 200, 20);
+        add(txtContenidoTC);
 
-        // Botón consultar lista de teclados
+        areacontenidoTC.setEditable(false); // Opcional, si no quieres que se pueda editar el contenido
+        JScrollPane scrollPane = new JScrollPane(areacontenidoTC); // Para agregar scroll al área de texto
+        scrollPane.setBounds(250, 75, 400, 150); // Ajusta las dimensiones según tus necesidades
+        add(scrollPane);
+
+        // Botón consultar lista de Alfabetos
         bConsultarListaTeclados.setBounds(700, 250, 200, 20);
         add(bConsultarListaTeclados);
 
@@ -77,42 +107,8 @@ public class VistaTecladoC extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        ActionListener lConsultarA = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                //CtrlPresentacion.getNombresAlfabetos();
-
-                if (areanomTC.getText().isEmpty()){
-                    JDialog sinNombre2 =  new JDialog(Nomframe, "Error: No Nombre");
-                    sinNombre2.setBounds(800, 300, 400, 200);
-                    sinNombre2.setLayout(null);
-
-                    JLabel txtErrorNombre2 = new JLabel("Hay que entrar el nombre de un teclado de la lista de teclados");
-                    txtErrorNombre2.setBounds(10, 20, 400, 40);
-                    JButton bSalirErrorNombre2 = new JButton("Salir");
-                    bSalirErrorNombre2.setVisible(true);
-                    bSalirErrorNombre2.setBounds(150, 110, 100, 30);
-                    sinNombre2.add(txtErrorNombre2);
-                    sinNombre2.add(bSalirErrorNombre2);
-                    sinNombre2.setVisible(true);
-
-                    ActionListener lSalirErrorNombre = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinNombre2.dispose();
-                            sinNombre2.setVisible(false);
-                        }
-                    };
-                    bSalirErrorNombre2.addActionListener(lSalirErrorNombre);
-
-                }else { //se han llenado todos los campos
-                    // CtrlPresentacion.consultarContenidoTeclado(areanomCMT1.getText());
-                    setVisible(false);
-                }
-
-            }
-        };
+        areanomTC.setText(arxiu.getName().substring(0, arxiu.getName().length() - 4));
+        mostrarContenidoArchivo(arxiu);
 
         ActionListener lConsultarListaA = new ActionListener() {
             @Override
@@ -129,10 +125,20 @@ public class VistaTecladoC extends JFrame {
             }
         };
 
-        bConsultarTeclado.addActionListener(lConsultarA);
         bConsultarListaTeclados.addActionListener(lConsultarListaA);
         bsalir.addActionListener(lSalir);
 
     }
 
+    private void mostrarContenidoArchivo(File archivo) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+            areacontenidoTC.setText("");
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                areacontenidoTC.append(linea + "\n");
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al leer el archivo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }

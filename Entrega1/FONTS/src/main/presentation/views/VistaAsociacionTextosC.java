@@ -76,6 +76,8 @@ public class VistaAsociacionTextosC extends JFrame {
         add(tituloVistaATC2);
 
         //VENTANA SUPERIOR
+        txtNombreATC.setBounds(50, 35, 200, 20);
+        add(txtNombreATC);
         // Área texto Nombre
         areanomATC.setEditable(false);
         areanomATC.setBounds(250,35, 200,20);
