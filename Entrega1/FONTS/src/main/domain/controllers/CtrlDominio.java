@@ -430,7 +430,8 @@ public class CtrlDominio
     public void guardaCnjtAlfabetos() {
         String nomDoc = "conjuntoAlfabetos";
         //if(nomDoc.endsWith(".prop")) { nomDoc = nomDoc+".prop"; }
-        String path = "C:\\Users\\julia\\OneDrive\\Escritorio\\PropCache\\"+nomDoc+"\\";
+        String currentDirectory = System.getProperty("user.dir");
+        String path = currentDirectory+"\\Entrega1\\data\\Cache\\"+nomDoc+"\\";
         try {
             byte[] bytes = ctrlAlfabeto.alfabetosToByteArray();
             ctrlPersistencia.guardaAlfabeto(bytes,path);

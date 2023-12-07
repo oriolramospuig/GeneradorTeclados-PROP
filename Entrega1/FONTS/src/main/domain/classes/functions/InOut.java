@@ -74,7 +74,7 @@ public class InOut {
     public ArrayList<Character> leerCaracteresDeArchivo(String nombreArchivo) throws IOException {
         String currentDirectory = System.getProperty("user.dir");
         // Ruta absoluta del archivo
-        String rutaArchivo = currentDirectory+"\\Entrega1\\INPUT_FILES\\"+nombreArchivo;
+        String rutaArchivo = currentDirectory+"\\Entrega1\\data\\Alfabetos\\"+nombreArchivo;
         ArrayList<Character> caracteres = new ArrayList<>();
 
         BufferedReader br = new BufferedReader(new FileReader(rutaArchivo));
