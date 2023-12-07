@@ -3,27 +3,22 @@ package main.persistence.controllers;
 import main.persistence.classes.GestorAlfabeto;
 import main.persistence.classes.GestorConfiguracion;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
-import java.io.FileNotFoundException;
-
 /**
  *  El controlador de persistencia se encarga de gestionar el almacenamiento de datos, es decir, se
  *  encarga de saber dónde y como están estos almacenados.
  */
 public class CtrlPersistencia {
     private final GestorConfiguracion gestorConfiguracion;
+    private final GestorAlfabeto gestorAlfabeto;
 
     public CtrlPersistencia() {
         gestorConfiguracion = new GestorConfiguracion();
+        gestorAlfabeto = new GestorAlfabeto();
     }
 
     /**
      * Guarda contenido Alfabetos de la clase Configuracion en el fichero configAlfabetos.cdp"
+     *
      * @param bytes
      */
     public void guardaConfigAlfabetos(byte[] bytes) {
@@ -32,6 +27,7 @@ public class CtrlPersistencia {
 
     /**
      * Carga contenido de Alfabetos de la clase Configuracion del fichero "configAlfabetos.cdp"
+     *
      * @return configuracion de alfabetos como a byte array
      */
     public byte[] cargaConfigAlfabetos() {
@@ -40,6 +36,7 @@ public class CtrlPersistencia {
 
     /**
      * Devuelve true si existe contenido de alfabetos en la clase Configuracion
+     *
      * @return
      */
     public boolean existeCongigAlfabetos() {
@@ -48,6 +45,7 @@ public class CtrlPersistencia {
 
     /**
      * Borra fichero alfabeto de Configuracion
+     *
      * @return
      */
     public boolean borraConfigAlfabeto() {
@@ -55,8 +53,11 @@ public class CtrlPersistencia {
     }
 
 
+    public void guardaAlfabeto(byte[] bytes, String path) {
+        GestorAlfabeto.gestorAlfabeto(bytes, path);
+    }
 
-    // public void guardaAlfabeto(String nombreA) throws FileNotFoundException {gestorAlfabeto.getContenidoAlfabeto(nombreA);}
-    // public boolean existeAlfabeto(String nombreA) { return gestorAlfabeto.existeAlfabeto(nombreA);}
-    // public boolean borraAlfabeto(String nombreA) {return gestorAlfabeto.borrarAlfabeto(nombreA);}
+    public byte[] cargaCnjtAlfabetos(String path) {
+        return gestorAlfabeto.cargarAlfabeto(path);
+    }
 }
