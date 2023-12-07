@@ -3,11 +3,18 @@ package main.presentation.views;
 import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class VistaTextoC extends JFrame {
-
+    /** Finestra de selecció de l'arxiu que es vol carregar al nostre full de càlcul */
+    JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
     //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
@@ -15,8 +22,6 @@ public class VistaTextoC extends JFrame {
     private final JLabel tituloVistaTxtC = new JLabel("Consultar texto");
     /** Título de media ventana */
     private final JLabel tituloVistaTxtC2 = new JLabel("Consultar lista de textos");
-    /** Botón para consultar un texto */
-    private final JButton bConsultarTexto = new JButton("Consultar texto");
     /** Botón para consultar la lista de textos */
     private final JButton bConsultarListaTextos = new JButton("Consultar lista de textos");
     /** Botó de tornar a la pantalla del menú principal */
@@ -29,15 +34,33 @@ public class VistaTextoC extends JFrame {
     private final JLabel txtNombreTxtC = new JLabel("NOMBRE:");
     /** Área de texto para introducir el nombre del texto que se quiere consultar */
     private final JTextArea areanomTxtC = new JTextArea();
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto a consultar*/
+    private final JLabel txtContenidoTxtC = new JLabel("NOMBRE:");
+    /** Área de texto para introducir el nombre del texto que se quiere consultar */
+    private final JTextArea areacontenidoTxtC = new JTextArea();
 
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere consultar/modificar un texto sin nombre */
     private final JFrame Nomframe = new JFrame ("JFrame");
 
+    public VistaTextoC() {
+        // Posar els formats que ens facin falta
+        chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
+        chooser.setDialogTitle("Selecciona fitxer");
+        chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Textos"));
+        int returnValue = chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File arxiu = chooser.getSelectedFile();
+            if (arxiu.getName().endsWith(".txt")) {
+                imprimirDatos(arxiu);
+                // consultarFichero(arxiu.getName().substring(0, arxiu.getName().length() - 4), true);
+            }
+        } else if (returnValue == JFileChooser.CANCEL_OPTION) {
+            CtrlPresentacion.iniPresentacion();
+        }
+    }
 
-
-    public VistaTextoC(){
-
+    public void imprimirDatos(File arxiu) {
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);
         //setResizable(true);
@@ -57,16 +80,17 @@ public class VistaTextoC extends JFrame {
         add(txtNombreTxtC);
 
         // Área texto Nombre
+        // areanomTxtC.setEditable(false);
         areanomTxtC.setBounds(250,35, 200,20);
         add(areanomTxtC);
 
-        // Botón consultar texto
-        bConsultarTexto.setBounds(700, 150, 200, 20);
-        add(bConsultarTexto);
+        txtContenidoTxtC.setBounds(50, 75, 200, 20);
+        add(txtContenidoTxtC);
 
-        // Botón consultar lista de textos
-        bConsultarListaTextos.setBounds(700, 250, 200, 20);
-        add(bConsultarListaTextos);
+        areacontenidoTxtC.setEditable(false); // Opcional, si no quieres que se pueda editar el contenido
+        JScrollPane scrollPane = new JScrollPane(areacontenidoTxtC); // Para agregar scroll al área de texto
+        scrollPane.setBounds(250, 75, 400, 150); // Ajusta las dimensiones según tus necesidades
+        add(scrollPane);
 
         // Botón salir para ir a la pantalla principal
         bsalir.setBounds(800, 500, 100, 20);
@@ -77,42 +101,8 @@ public class VistaTextoC extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        ActionListener lConsultarA = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                //CtrlPresentacion.getNombresTextos();
-
-                if (areanomTxtC.getText().isEmpty()){
-                    JDialog sinNombre2 =  new JDialog(Nomframe, "Error: No Nombre");
-                    sinNombre2.setBounds(800, 300, 400, 200);
-                    sinNombre2.setLayout(null);
-
-                    JLabel txtErrorNombre2 = new JLabel("Hay que entrar el nombre de un texto de la lista de textos");
-                    txtErrorNombre2.setBounds(10, 20, 400, 40);
-                    JButton bSalirErrorNombre2 = new JButton("Salir");
-                    bSalirErrorNombre2.setVisible(true);
-                    bSalirErrorNombre2.setBounds(150, 110, 100, 30);
-                    sinNombre2.add(txtErrorNombre2);
-                    sinNombre2.add(bSalirErrorNombre2);
-                    sinNombre2.setVisible(true);
-
-                    ActionListener lSalirErrorNombre = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinNombre2.dispose();
-                            sinNombre2.setVisible(false);
-                        }
-                    };
-                    bSalirErrorNombre2.addActionListener(lSalirErrorNombre);
-
-                }else { //se han llenado todos los campos
-                    CtrlPresentacion.consultarContenidoTexto(areanomTxtC.getText());
-                    setVisible(false);
-                }
-
-            }
-        };
+        areanomTxtC.setText(arxiu.getName().substring(0, arxiu.getName().length() - 4));
+        mostrarContenidoArchivo(arxiu);
 
         ActionListener lConsultarListaA = new ActionListener() {
             @Override
@@ -129,10 +119,20 @@ public class VistaTextoC extends JFrame {
             }
         };
 
-        bConsultarTexto.addActionListener(lConsultarA);
         bConsultarListaTextos.addActionListener(lConsultarListaA);
         bsalir.addActionListener(lSalir);
 
     }
 
+    private void mostrarContenidoArchivo(File archivo) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+            areacontenidoTxtC.setText("");
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                areacontenidoTxtC.append(linea + "\n");
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al leer el archivo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
