@@ -99,7 +99,7 @@ public class VistaAlfabetoA extends JFrame {
                 String nombreAlfabeto = areanomAA.getText().trim();
                 String contenidoAlfabeto = areaContenidoAA.getText();
                 String pathArchivo = areaPathAA.getText();
-                String pathAlfabeto = System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Alfabetos";
+                String path = System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Alfabetos";
 
                 // Verificar que el nombre no esté vacío
                 if (nombreAlfabeto.isEmpty()) {
@@ -113,7 +113,7 @@ public class VistaAlfabetoA extends JFrame {
                     return;
                 }
                 else if (contenidoAlfabeto.isEmpty()) {
-                    boolean agregado = CtrlPresentacion.agregarAlfabetoPath(nombreAlfabeto, pathAlfabeto);
+                    boolean agregado = CtrlPresentacion.agregarAlfabetoPath(nombreAlfabeto, path);
                     // Mensaje de éxito o error
                     if (agregado) {
                         JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -124,7 +124,7 @@ public class VistaAlfabetoA extends JFrame {
                     }
                 }
                 else {
-                    boolean agregado = CtrlPresentacion.agregarAlfabetoManual(nombreAlfabeto, contenidoAlfabeto, pathAlfabeto);
+                    boolean agregado = CtrlPresentacion.agregarAlfabetoManual(nombreAlfabeto, contenidoAlfabeto, path);
                     // Mensaje de éxito o error
                     if (agregado) {
                         JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);

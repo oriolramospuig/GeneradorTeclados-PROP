@@ -7,6 +7,7 @@ import main.presentation.views.*;
 import main.domain.controllers.CtrlDominio;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -194,20 +195,41 @@ public class CtrlPresentacion {
      * @param nomTxt es el nombre del texto a agregar
      * @param texto es la lista de caracteres que forman el contenido del texto
      */
-    public static boolean agregarTextoPalabras(String nomTxt, String texto) {
+    public static boolean agregarTextoPalabras(String nomTxt, String texto, String path) {
         //ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
         boolean agregado = cd.agregarTextoPalabras(nomTxt, texto);
-        return agregado;
+        if (agregado) {
+            File archivo = new File(path, nomTxt + ".txt");
+            try (FileWriter writer = new FileWriter(archivo)) {
+                writer.write(texto);
+                return true; // El texto se agregó correctamente
+            } catch (IOException e) {
+                // Manejar errores, como problemas al escribir en el archivo
+                return false;
+            }
+        } else return false;
     }
     /**
      * Llama a la función agregarTextoFrecuencias de CtrlDominio
      * @param nomTxt es el nombre del texto a agregar
      * @param frecuenciaPalabras es la map con las palabras y sus frecuencias que forman el contenido del texto
      */
-    public static boolean agregarTextoFrecuencias(String nomTxt, String frecuenciaPalabras) {
+    public static boolean agregarTextoFrecuencias(String nomTxt, String frecuenciaPalabras, String path) {
         //HashMap<String,Integer> entrada = InOut.leerCaracteresDeTerminal(frecuenciaPalabras);
-        //boolean agregado = cd.agregarTextoFrecuencias(nomTxt, entrada);
-        //return agregado;
+        //boolean agregado = cd.agregarTextoFrecuencias(nomTxt, frecuenciaPalabras);
+        /*if (agregado) {
+            File archivo = new File(path, nomTxt + ".txt");
+            try (FileWriter writer = new FileWriter(archivo)) {
+                String[] lineas = frecuenciaPalabras.split("\n");
+                for (String linea : lineas) {
+                    writer.write(linea + "\n");
+                }
+                return true; // El texto se agregó correctamente
+            } catch (IOException e) {
+                // Manejar errores, como problemas al escribir en el archivo
+                return false;
+            }
+        } else return false;*/
         return false;
     }
 
