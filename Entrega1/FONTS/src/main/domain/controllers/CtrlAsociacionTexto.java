@@ -2,6 +2,7 @@ package main.domain.controllers;
 
 import main.domain.classes.*;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -90,5 +91,20 @@ public class CtrlAsociacionTexto
      */
     public void borrarAsociacionTextos(String nomAT){
         AsociacionesTextos.borrarAsociacionTextos(nomAT);
+    }
+
+    public byte[] asociacionesToByteArray() throws IOException {
+        ByteArrayOutputStream bs = new ByteArrayOutputStream();
+        ObjectOutputStream os = new ObjectOutputStream(bs);
+        os.writeObject(AsociacionesTextos);
+        os.close();
+        return bs.toByteArray();
+    }
+
+    public static void byteArrayToAsociaciones(byte[] bytes) throws IOException, ClassNotFoundException {
+        ByteArrayInputStream bs = new ByteArrayInputStream(bytes);
+        ObjectInputStream is = new ObjectInputStream(bs);
+        AsociacionesTextos = (ConjuntoAsociaciones) is.readObject();
+        is.close();
     }
 }
