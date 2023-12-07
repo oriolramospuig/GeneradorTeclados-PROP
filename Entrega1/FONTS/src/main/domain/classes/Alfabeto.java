@@ -1,5 +1,6 @@
 package main.domain.classes;
 
+import java.io.Serializable;
 import java.lang.String;
 import java.util.ArrayList;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * Clase que representa un alfabeto
  * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
-public class Alfabeto
+public class Alfabeto implements Serializable
 {
     // ---------- ATRIBUTOS ----------
     /** Nombre del alfabeto (clave única) */

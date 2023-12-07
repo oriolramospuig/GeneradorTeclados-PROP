@@ -12,24 +12,24 @@ public class Configuracion {
     /** Contiene la estructura de datos donde se guardan todos los alfabetos con los respectivos campos de cada uno */
     private HashMap<String, HashMap<String, Pair<ArrayList<Character>, ArrayList<String>>>> configAlfabetos;
 
-    private boolean existeAlfabeto(String nombreA, ArrayList<Character> contenido) {
+   /* private boolean existeAlfabeto(String nombreA, ArrayList<Character> contenido) {
         for (var entry : configAlfabetos.entrySet()) {
             if (entry.getKey().equals(nombreA) && entry.getValue().equals(contenido)) return true;
         }
         return false;
     }
+    */
 
     /** Constructora por defecto para crear una instancia vacía de la clase. */
     public Configuracion() {
         configAlfabetos = new HashMap<>();
     }
 
-    /**
+  /*  /**
      * Añade un nuevo alfabeto con nombreA, letras y tecladosVinculados.
      * @param nombreA
      * @param letras
      * @param tecladosVinculados
-     */
     public void añadirAlfabeto(String nombreA, ArrayList<Character> letras, ArrayList<String> tecladosVinculados) {
         if (!existeAlfabeto(nombreA, letras)) {
             HashMap<String, Pair<ArrayList<Character>, ArrayList<String>>> nuevoAlfabeto = new HashMap<>();
@@ -38,12 +38,9 @@ public class Configuracion {
             configAlfabetos.put(nombreA, nuevoAlfabeto);
         }
     }
+   */
 
-    /**
-     * se cambia el contenido del alfabeto nombreA con las nuevas letras
-     * @param nombreA
-     * @param letras
-     */
+/*
     public void modificarAlfabeto(String nombreA, ArrayList<Character> letras) {
         for (var entry : configAlfabetos.entrySet()) {
             if (entry.getKey().equals(nombreA)) {
@@ -56,10 +53,8 @@ public class Configuracion {
         }
     }
 
-    /**
-     * elimina el alfabeto nombreA de la configuracion
-     * @param nombreA
-     */
+ */
+    /*
     public void eliminarAlfabeto(String nombreA) {
         for (var entry : configAlfabetos.entrySet()) {
             if (entry.getKey().equals(nombreA)) {
@@ -68,6 +63,7 @@ public class Configuracion {
             }
         }
     }
+     */
 
     /**
      * SE NECESITA UNA FUNCION DE ESTE TIPO PARA HACER EL TEST DE CONFIG.
