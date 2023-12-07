@@ -432,6 +432,7 @@ public class DriverPersistencia {
 
         //cargar alfabetos, textos, asociaciones y teclados
         String currentDirectory = System.getProperty("user.dir");
+        //ctrlDominio.cargaConfig();
         ctrlDominio.cargaCnjtAlfabetos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAlfabetos"+"\\");
         ctrlDominio.cargaCnjtTextos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTextos"+"\\");
         //ctrlDominio.cargaCnjtAsociaciones(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAsociaciones"+"\\");
