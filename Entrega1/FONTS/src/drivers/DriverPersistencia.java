@@ -77,7 +77,10 @@ public class DriverPersistencia {
             String nombreA = inOut.leerString();
             boolean agregado = ctrlDominio.agregarAlfabeto(nombreA, caracteres);
             if (!agregado) System.out.println("Ya existe el alfabeto " + nombreA);
-            else System.out.println("AGREGADO CON EXITO!");
+            else {
+                System.out.println("AGREGADO CON EXITO!");
+                ctrlDominio.guardaCnjtAlfabetos();
+            }
         } catch (IllegalArgumentException e) {
             System.out.println("El contenido del archivo no es válido: " + e.getMessage());
         } catch (IOException e) {
@@ -412,7 +415,8 @@ public class DriverPersistencia {
     // ---------- FUNCIONES MAIN ----------
     public static void main(String[] args) {
         DriverPersistencia driver = new DriverPersistencia();
-        ctrlDominio.cargaCnjtAlfabetos("C:\\Users\\julia\\OneDrive\\Escritorio\\PropCache\\"+"conjuntoAlfabetos"+"\\");
+        String currentDirectory = System.getProperty("user.dir");
+        ctrlDominio.cargaCnjtAlfabetos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAlfabetos"+"\\");
         muestraMetodos();
         // System.out.println("Selecciona el método para agregar el alfabeto (1 - Terminal, 2 - Archivo):");
         String metodo = driver.inOut.leerString();
