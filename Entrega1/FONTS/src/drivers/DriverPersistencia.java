@@ -567,7 +567,7 @@ public class DriverPersistencia {
         System.out.println("Introduce el nombre del teclado que quieres borrar:");
         String nombreT = inOut.leerString(); //hay que escribirlo bien
         ctrlDominio.borrarTeclado(nombreT);
-        //ctrlDominio.guardaCnjtTeclados();
+        ctrlDominio.guardaCnjtTeclados();
     }
 
     /**

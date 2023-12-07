@@ -3,11 +3,13 @@ package main.domain.classes;
 import main.domain.classes.functions.QAP;
 import main.domain.classes.types.PairInt;
 
+import java.io.Serializable;
+
 /**
  * Classe que representa un teclado
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
-public class Teclado
+public class Teclado implements Serializable
 {
     // ---------- ATRIBUTOS ----------
     /** Guarda el nombre introducido por el usuario*/
