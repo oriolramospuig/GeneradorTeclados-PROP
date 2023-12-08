@@ -3,12 +3,15 @@ package main.presentation.views;
 import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.event.*;
 import java.io.File;
 
 public class VistaTecladoA extends JFrame {
 
+    /** Finestra de selecció de l'arxiu que es vol carregar al nostre full de càlcul */
+    JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
     //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
@@ -16,6 +19,10 @@ public class VistaTecladoA extends JFrame {
     private final JLabel tituloVistaTA = new JLabel("Agregar teclado");
     /** Botón para agregar un teclado */
     private final JButton bAgregarTeclado = new JButton("Agregar teclado");
+    /** Botón para agregar un teclado */
+    private final JButton bSeleccionarAlfabeto = new JButton("Selecciona alfabeto");
+    /** Botón para agregar un teclado */
+    private final JButton bSeleccionaAsociacion = new JButton("Selecciona asociación");
     /** Botó de tornar a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
 
@@ -27,13 +34,13 @@ public class VistaTecladoA extends JFrame {
     /** Área de texto para introducir el nombre del teclado que se quiere crear */
     private final JTextArea areanomTA = new JTextArea();
     /** Texto indicando que la barra de texto de al lado es para introducir el contenido del teclado */
-    private final JLabel txtContenidoTA = new JLabel("CONTENIDO:");
+    private final JLabel txtNombreAlfabetoTA = new JLabel("ALFABETO:");
     /** Área de texto para introducir el contenido del teclado que se quiere crear */
-    private final JTextArea areaContenidoTA = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el path del teclado, para saber donde esta guardado */
-    private final JLabel txtPathTA = new JLabel("PATH:");
-    /** Área de texto para introducir el path del teclado que se quiere crear */
-    private final JTextArea areaPathTA = new JTextArea();
+    private final JTextArea areaContenidoAlfabetoTA = new JTextArea();
+    /** Texto indicando que la barra de texto de al lado es para introducir el contenido del teclado */
+    private final JLabel txtNombreAsociacionTA = new JLabel("ASOCIACIÓN:");
+    /** Área de texto para introducir el contenido del teclado que se quiere crear */
+    private final JTextArea areaContenidoAsociacionTA = new JTextArea();
 
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere crear un teclado sin nombre */
@@ -63,20 +70,24 @@ public class VistaTecladoA extends JFrame {
         add(areanomTA);
 
         // Texto Contenido
-        txtContenidoTA.setBounds(50, 75, 200, 20);
-        add(txtContenidoTA);
+        txtNombreAlfabetoTA.setBounds(50, 75, 200, 20);
+        add(txtNombreAlfabetoTA);
 
         // Área texto Contenido
-        areaContenidoTA.setBounds(250,75, 200,60);
-        add(areaContenidoTA);
+        areaContenidoAlfabetoTA.setBounds(250,75, 200,60);
+        add(areaContenidoAlfabetoTA);
 
-        // Texto Path
-        txtPathTA.setBounds(50, 175, 200, 20);
-        add(txtPathTA);
+        txtNombreAsociacionTA.setBounds(50, 175, 200, 20);
+        add(txtNombreAsociacionTA);
 
-        // Área texto Path
-        areaPathTA.setBounds(250,175, 200,20);
-        add(areaPathTA);
+        areaContenidoAsociacionTA.setBounds(250,175, 200,60);
+        add(areaContenidoAsociacionTA);
+
+        bSeleccionarAlfabeto.setBounds(550, 75, 200, 20);
+        add(bSeleccionarAlfabeto);
+
+        bSeleccionaAsociacion.setBounds(550, 175, 200, 20);
+        add(bSeleccionaAsociacion);
 
         // Botón agregar teclado
         bAgregarTeclado.setBounds(700, 250, 200, 20);
@@ -94,65 +105,70 @@ public class VistaTecladoA extends JFrame {
         ActionListener lAgregar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (areanomTA.getText().isEmpty()){
-                    JDialog sinNombre =  new JDialog(Nomframe, "Error: No Nombre");
-                    sinNombre.setBounds(800, 300, 400, 200);
-                    sinNombre.setLayout(null);
+                String nombreTeclado = areanomTA.getText().trim();
+                String nombreAlfabeto = areaContenidoAlfabetoTA.getText();
+                String nombreAsociacion = areaContenidoAsociacionTA.getText();
+                String path = System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Teclados";
 
-                    JLabel txtErrorNombre = new JLabel("Hay que agregar el teclado con un nombre nuevo");
-                    txtErrorNombre.setBounds(80, 20, 400, 40);
-                    JButton bSalirErrorNombre = new JButton("Salir");
-                    bSalirErrorNombre.setVisible(true);
-                    bSalirErrorNombre.setBounds(150, 110, 100, 30);
-                    sinNombre.add(txtErrorNombre);
-                    sinNombre.add(bSalirErrorNombre);
-                    sinNombre.setVisible(true);
-
-                    ActionListener lSalirErrorNombre = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinNombre.dispose();
-                            sinNombre.setVisible(false);
-                        }
-                    };
-                    bSalirErrorNombre.addActionListener(lSalirErrorNombre);
-
-                } else if (areaContenidoTA.getText().isEmpty() && areaPathTA.getText().isEmpty()){
-                    JDialog sinConPath =  new JDialog(CPframe, "Error: No Contenido o No Path");
-                    sinConPath.setBounds(450, 300, 700, 200);
-                    sinConPath.setLayout(null);
-
-                    JLabel txtErrorConPath = new JLabel("Hay que añadir un contenido del teclado a mano o entrar un path donde se encuentra el archivo del teclado");
-                    txtErrorConPath.setBounds(20, 20, 700, 40);
-                    JButton bSalirErrorConPath = new JButton("Salir");
-                    bSalirErrorConPath.setVisible(true);
-                    bSalirErrorConPath.setBounds(150, 110, 100, 30);
-                    sinConPath.add(txtErrorConPath);
-                    sinConPath.add(bSalirErrorConPath);
-                    sinConPath.setVisible(true);
-
-                    ActionListener lSalirErrorConPath = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinConPath.dispose();
-                            sinConPath.setVisible(false);
-                        }
-                    };
-                    bSalirErrorConPath.addActionListener(lSalirErrorConPath);
-                }else { //se han llenado todos los campos
-                    if(areaContenidoTA.getText().isEmpty()){
-                        // fer lo del path areaPath.getText();
-                    }
-                    else if(areaPathTA.getText().isEmpty()) {
-                        //CtrlPresentacion.agregarAlfabeto(areanomA1.getText(), areaContenido.getText());
-                        setVisible(false);
-                    }
+                // Verificar que el nombre no esté vacío
+                if (nombreTeclado.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: No Nombre", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
 
-                //if (areaFiles.getText().length() == 0) files = 50;
-                //else files = Integer.parseInt(areaFiles.getText());
+                // Verificar que haya contenido proporcionado
+                if (nombreAlfabeto.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Debe seleccionar un alfabeto con el que crear el teclado", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if (nombreAsociacion.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Debe seleccionar una asociación con la que crear el teclado", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
+                //boolean agregado = CtrlPresentacion.crearTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, path);
+                boolean agregado = false;
+                // Mensaje de éxito o error
+                if (agregado) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    areanomTA.setText("");
+                    areaContenidoAlfabetoTA.setText("");
+                    areaContenidoAsociacionTA.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El nombre " + nombreTeclado + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        };
 
+        ActionListener lSeleccionarAlfabeto = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chooser.setDialogTitle("Selecciona alfabeto");
+                chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
+                chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Alfabetos"));
+                int returnValue = chooser.showOpenDialog(null);
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    File archivo = chooser.getSelectedFile();
+                    areaContenidoAlfabetoTA.setText(archivo.getName().substring(0, archivo.getName().length() - 4));
+                } else if (returnValue == JFileChooser.CANCEL_OPTION) {
+                    CtrlPresentacion.vistaTecladoA();
+                }
+            }
+        };
+
+        ActionListener lSeleccionarAsociacion = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chooser.setDialogTitle("Selecciona asociación de textos");
+                chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
+                chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Asociaciones"));
+                int returnValue = chooser.showOpenDialog(null);
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    File archivo = chooser.getSelectedFile();
+                    areaContenidoAsociacionTA.setText(archivo.getName());
+                } else if (returnValue == JFileChooser.CANCEL_OPTION) {
+                    CtrlPresentacion.vistaTecladoA();
+                }
             }
         };
 
@@ -164,6 +180,8 @@ public class VistaTecladoA extends JFrame {
             }
         };
 
+        bSeleccionarAlfabeto.addActionListener(lSeleccionarAlfabeto);
+        bSeleccionaAsociacion.addActionListener(lSeleccionarAsociacion);
         bAgregarTeclado.addActionListener(lAgregar);
         bsalir.addActionListener(lSalir);
 
