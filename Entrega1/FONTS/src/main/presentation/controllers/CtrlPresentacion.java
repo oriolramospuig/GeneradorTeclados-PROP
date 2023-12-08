@@ -270,14 +270,45 @@ public class CtrlPresentacion {
 
     //FUNCIONES DE CTRlDOMINIO DE ASOCIACION DE TEXTOS
     /**
+     * Llama a la función agregarAlfabeto de CtrlDominio
+     * @param nomA es el nombre del alfabeto a agregar
+     * @param nomtx es el contenido del alfabeto
+     */
+    public static boolean agregarAsociacion(String nomA, String nomtx) {
+        //if(nomtx == null)
+        //ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
+        /*boolean agregado = cd.agregarAlfabeto(nomA, entrada);
+
+        if (agregado) {
+            try {
+                File archivo = new File(path, nomA + ".txt");
+                if (!archivo.exists()) {
+                    archivo.createNewFile(); // Crea el archivo si no existe
+                }
+                try (PrintWriter writer = new PrintWriter(archivo)) {
+                    for (Character c : entrada) {
+                        writer.print(c);
+                    }
+                }
+                return true; // El alfabeto se agregó correctamente y se guardó el archivo
+            } catch (IOException e) {
+                return false; // Retorna false si hubo un error al escribir el archivo
+            }
+        } else {
+            return false; // El alfabeto no se pudo agregar
+        }*/
+        return false;
+    }
+
+    /**
      * Llama a la función agregarAsociacion de CtrlDominio
      * @param nomAT es el nombre de la asociación a agregar
      * @param textosagregar es la lista de nombres de textos a agregar en la asociación
      */
-    public static boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar) {
+    /*public static boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar) {
         boolean agregada = cd.agregarAsociacion(nomAT, textosagregar);
         return agregada;
-    }
+    }*/
     /**
      * Llama a la función agregarAsociacion de CtrlDominio
      * @param nomAT es el nombre de la asociación a agregar
