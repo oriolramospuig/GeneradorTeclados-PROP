@@ -59,27 +59,27 @@ public class VistaAsociacionTextosA extends JFrame {
 
         //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombreATA.setBounds(50, 35, 200, 20);
+        txtNombreATA.setBounds(200, 140, 200, 20);
         add(txtNombreATA);
 
         // Área texto Nombre
-        areanomATA.setBounds(250, 35, 200, 20);
+        areanomATA.setBounds(400, 140, 200, 20);
         add(areanomATA);
 
         // Texto textos a agregar
-        txtTextosAgregarATA.setBounds(50, 115, 200, 20);
+        txtTextosAgregarATA.setBounds(200, 220, 200, 20);
         add(txtTextosAgregarATA);
 
         // Área textos a agregar
-        areaTextosAgregarATA.setBounds(250,115, 200,60);
+        areaTextosAgregarATA.setBounds(400,220, 200,60);
         add(areaTextosAgregarATA);
 
         // Botón agregar Texto
-        bAgregarTexto.setBounds(700, 250, 250, 20);
+        bAgregarTexto.setBounds(620, 220, 150, 20);
         add(bAgregarTexto);
 
         // Botón agregar Asociación
-        bAgregarAsociacion.setBounds(700, 50, 250, 20);
+        bAgregarAsociacion.setBounds(620, 350, 200, 20);
         add(bAgregarAsociacion);
 
         // Botón salir para ir a la pantalla principal
