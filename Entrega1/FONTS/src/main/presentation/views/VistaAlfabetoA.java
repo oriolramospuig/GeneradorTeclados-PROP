@@ -81,7 +81,7 @@ public class VistaAlfabetoA extends JFrame {
 
         //BOTONES
         // Botón agregar Alfabeto
-        bAgregarAlfabeto.setBounds(700, 340, 200, 20);
+        bAgregarAlfabeto.setBounds(700, 400, 200, 20);
         add(bAgregarAlfabeto);
 
         // Botón salir para ir a la pantalla principal

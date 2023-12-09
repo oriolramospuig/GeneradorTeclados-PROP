@@ -62,35 +62,35 @@ public class VistaTecladoA extends JFrame {
 
         //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombreTA.setBounds(50, 35, 200, 20);
+        txtNombreTA.setBounds(250, 140, 200, 20);
         add(txtNombreTA);
 
         // Área texto Nombre
-        areanomTA.setBounds(250,35, 200,20);
+        areanomTA.setBounds(450,140, 200,20);
         add(areanomTA);
 
         // Texto Contenido
-        txtNombreAlfabetoTA.setBounds(50, 75, 200, 20);
+        txtNombreAlfabetoTA.setBounds(250, 180, 200, 20);
         add(txtNombreAlfabetoTA);
 
         // Área texto Contenido
-        areaContenidoAlfabetoTA.setBounds(250,75, 200,60);
+        areaContenidoAlfabetoTA.setBounds(450,180, 200,60);
         add(areaContenidoAlfabetoTA);
 
-        txtNombreAsociacionTA.setBounds(50, 175, 200, 20);
+        txtNombreAsociacionTA.setBounds(250, 280, 200, 20);
         add(txtNombreAsociacionTA);
 
-        areaContenidoAsociacionTA.setBounds(250,175, 200,60);
+        areaContenidoAsociacionTA.setBounds(450,280, 200,60);
         add(areaContenidoAsociacionTA);
 
-        bSeleccionarAlfabeto.setBounds(550, 75, 200, 20);
+        bSeleccionarAlfabeto.setBounds(660, 180, 175, 20);
         add(bSeleccionarAlfabeto);
 
-        bSeleccionaAsociacion.setBounds(550, 175, 200, 20);
+        bSeleccionaAsociacion.setBounds(660, 280, 175, 20);
         add(bSeleccionaAsociacion);
 
         // Botón agregar teclado
-        bAgregarTeclado.setBounds(700, 250, 200, 20);
+        bAgregarTeclado.setBounds(700, 400, 200, 20);
         add(bAgregarTeclado);
 
         // Botón salir para ir a la pantalla principal
