@@ -55,33 +55,33 @@ public class VistaAlfabetoA extends JFrame {
 
 
         // Texto Nombre
-        txtNombreAA.setBounds(50, 35, 200, 20);
+        txtNombreAA.setBounds(250, 140 , 200, 20);
         add(txtNombreAA);
 
         // Área texto Nombre
-        areanomAA.setBounds(250,35, 200,20);
+        areanomAA.setBounds(450,140, 200,20);
         add(areanomAA);
 
         // Texto Contenido
-        txtContenidoAA.setBounds(50, 75, 200, 20);
+        txtContenidoAA.setBounds(250, 180, 200, 20);
         add(txtContenidoAA);
 
         // Área texto Contenido
-        areaContenidoAA.setBounds(250,75, 200,60);
+        areaContenidoAA.setBounds(450,180, 200,60);
         add(areaContenidoAA);
 
         // Texto Path
-        txtPathAA.setBounds(50, 175, 200, 20);
+        txtPathAA.setBounds(250, 280, 200, 20);
         add(txtPathAA);
 
         // Área texto Path
-        areaPathAA.setBounds(250,175, 200,20);
+        areaPathAA.setBounds(450,280, 200,20);
         add(areaPathAA);
 
 
         //BOTONES
         // Botón agregar Alfabeto
-        bAgregarAlfabeto.setBounds(700, 250, 200, 20);
+        bAgregarAlfabeto.setBounds(700, 340, 200, 20);
         add(bAgregarAlfabeto);
 
         // Botón salir para ir a la pantalla principal
