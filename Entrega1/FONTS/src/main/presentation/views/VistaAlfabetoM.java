@@ -77,22 +77,22 @@ public class VistaAlfabetoM extends JFrame{
 
         //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombreAM.setBounds(50, 35, 200, 20);
+        txtNombreAM.setBounds(200, 140, 200, 20);
         add(txtNombreAM);
 
         // Área texto Nombre
-        areanomAM.setBounds(250,35, 200,20);
+        areanomAM.setBounds(400,140, 200,20);
         add(areanomAM);
 
-        txtContenidoAM.setBounds(50, 75, 200, 20);
+        txtContenidoAM.setBounds(200, 180, 200, 20);
         add(txtContenidoAM);
 
         JScrollPane scrollPane = new JScrollPane(areacontenidoAM); // Para agregar scroll al área de texto
-        scrollPane.setBounds(250, 75, 400, 150); // Ajusta las dimensiones según tus necesidades
+        scrollPane.setBounds(400, 180, 400, 150); // Ajusta las dimensiones según tus necesidades
         add(scrollPane);
 
         // Botón modificar alfabetos
-        bModificarAlfabeto.setBounds(700, 250, 200, 20);
+        bModificarAlfabeto.setBounds(700, 400, 200, 20);
         add(bModificarAlfabeto);
 
         // Botón salir para ir a la pantalla principal

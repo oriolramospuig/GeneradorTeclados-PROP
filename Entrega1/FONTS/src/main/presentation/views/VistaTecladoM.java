@@ -77,22 +77,22 @@ public class VistaTecladoM extends JFrame{
 
         //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombreTM.setBounds(50, 35, 200, 20);
+        txtNombreTM.setBounds(200, 140, 200, 20);
         add(txtNombreTM);
 
         // Área texto Nombre
-        areanomTM.setBounds(250,35, 200,20);
+        areanomTM.setBounds(400,140, 200,20);
         add(areanomTM);
 
-        txtContenidoTM.setBounds(50, 75, 200, 20);
+        txtContenidoTM.setBounds(200, 180, 200, 20);
         add(txtContenidoTM);
 
         JScrollPane scrollPane = new JScrollPane(areacontenidoTM); // Para agregar scroll al área de texto
-        scrollPane.setBounds(250, 75, 400, 150); // Ajusta las dimensiones según tus necesidades
+        scrollPane.setBounds(400, 180, 400, 150); // Ajusta las dimensiones según tus necesidades
         add(scrollPane);
 
         // Botón modificar alfabetos
-        bModificarTeclado.setBounds(700, 250, 200, 20);
+        bModificarTeclado.setBounds(700, 400, 200, 20);
         add(bModificarTeclado);
 
         // Botón salir para ir a la pantalla principal
