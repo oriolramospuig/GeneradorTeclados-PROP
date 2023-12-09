@@ -227,6 +227,13 @@ public class CtrlDominio
 
     // ---------- FUNCIONES ASOCIACION TEXTOS ----------
 
+    public boolean agregarAsociacionNombre(String nomAT){
+        if(ctrlAsociacionTexto.agregarAsociacion(nomAT)){
+            // agregarTextoAsociacion(nomAT,textosagregar);
+            return true;
+        }
+        else return false;
+    }
     /**
      * Retorna si se ha creado bien la asociacion con nombre nomAT
      * @param nomAT el nombre de la asociacion a agregar
