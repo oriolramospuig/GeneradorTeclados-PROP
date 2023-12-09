@@ -72,27 +72,27 @@ public class VistaAsociacionTextosC extends JFrame {
         add(tituloVistaATC);
 
         // Título media ventana
-        tituloVistaATC2.setBounds(10, 205, 200, 30);
+        tituloVistaATC2.setBounds(10, 400, 200, 30);
         add(tituloVistaATC2);
 
         //VENTANA SUPERIOR
-        txtNombreATC.setBounds(50, 35, 200, 20);
+        txtNombreATC.setBounds(200, 140, 200, 20);
         add(txtNombreATC);
         // Área texto Nombre
         areanomATC.setEditable(false);
-        areanomATC.setBounds(250,35, 200,20);
+        areanomATC.setBounds(400,140, 200,20);
         add(areanomATC);
 
-        txtContenidoATC.setBounds(50, 75, 200, 20);
+        txtContenidoATC.setBounds(200, 180, 200, 20);
         add(txtContenidoATC);
 
         areacontenidoATC.setEditable(false); // Opcional, si no quieres que se pueda editar el contenido
         JScrollPane scrollPane = new JScrollPane(areacontenidoATC); // Para agregar scroll al área de texto
-        scrollPane.setBounds(250, 75, 400, 150); // Ajusta las dimensiones según tus necesidades
+        scrollPane.setBounds(400, 180, 400, 150); // Ajusta las dimensiones según tus necesidades
         add(scrollPane);
 
         // Botón consultar lista de Alfabetos
-        bConsultarListaAsociaciones.setBounds(700, 250, 200, 20);
+        bConsultarListaAsociaciones.setBounds(700, 400, 200, 20);
         add(bConsultarListaAsociaciones);
 
         // Botón salir para ir a la pantalla principal
