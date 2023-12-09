@@ -52,7 +52,7 @@ public class VistaTextoM extends JFrame{
         // Posar els formats que ens facin falta
         chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
         chooser.setDialogTitle("Selecciona fitxer");
-        chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Teclados"));
+        chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Textos"));
         int returnValue = chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File arxiu = chooser.getSelectedFile();
@@ -77,22 +77,22 @@ public class VistaTextoM extends JFrame{
 
         //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombreTxtM.setBounds(50, 35, 200, 20);
+        txtNombreTxtM.setBounds(200, 140, 200, 20);
         add(txtNombreTxtM);
 
         // Área texto Nombre
-        areanomTxtM.setBounds(250,35, 200,20);
+        areanomTxtM.setBounds(400,140, 200,20);
         add(areanomTxtM);
 
-        txtContenidoTxtM.setBounds(50, 75, 200, 20);
+        txtContenidoTxtM.setBounds(200, 180, 200, 20);
         add(txtContenidoTxtM);
 
         JScrollPane scrollPane = new JScrollPane(areacontenidoTxtM); // Para agregar scroll al área de texto
-        scrollPane.setBounds(250, 75, 400, 150); // Ajusta las dimensiones según tus necesidades
+        scrollPane.setBounds(400, 180, 400, 150); // Ajusta las dimensiones según tus necesidades
         add(scrollPane);
 
         // Botón modificar alfabetos
-        bModificarTexto.setBounds(700, 250, 200, 20);
+        bModificarTexto.setBounds(700, 400, 200, 20);
         add(bModificarTexto);
 
         // Botón salir para ir a la pantalla principal

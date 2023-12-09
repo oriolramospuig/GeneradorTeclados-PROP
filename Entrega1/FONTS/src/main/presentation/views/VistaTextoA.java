@@ -87,74 +87,74 @@ public class VistaTextoA extends JFrame {
 
         //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombreTxtA.setBounds(30, 35, 200, 20);
+        txtNombreTxtA.setBounds(30, 140, 200, 20);
         add(txtNombreTxtA);
 
         // Área texto Nombre
-        areanomTxtA.setBounds(230,35, 200,20);
+        areanomTxtA.setBounds(230,140, 200,20);
         add(areanomTxtA);
 
         // Texto Contenido
-        txtContenidoTxtA.setBounds(30, 75, 200, 20);
+        txtContenidoTxtA.setBounds(30, 180, 200, 20);
         add(txtContenidoTxtA);
 
         // Área texto Contenido
-        areaContenidoTxtA.setBounds(230,75, 200,60);
+        areaContenidoTxtA.setBounds(230,180, 200,60);
         add(areaContenidoTxtA);
 
         // Texto Path
-        txtPathTxtA.setBounds(30, 175, 200, 20);
+        txtPathTxtA.setBounds(30, 280, 200, 20);
         add(txtPathTxtA);
 
         // Área texto Path
-        areaPathTxtA.setBounds(230,175, 200,20);
+        areaPathTxtA.setBounds(230,280, 200,20);
         add(areaPathTxtA);
 
         // Texto Instrucciones
-        txtInstruccionesTxtA.setBounds(30, 260, 500, 20);
+        txtInstruccionesTxtA.setBounds(30, 340, 500, 20);
         add(txtInstruccionesTxtA);
 
 
         //VENTANA SUPERIOR2
         // Texto Nombre
-        txtNombreTxtA1.setBounds(550, 35, 200, 20);
+        txtNombreTxtA1.setBounds(550, 140, 200, 20);
         add(txtNombreTxtA1);
 
         // Área texto Nombre
-        areanomTxtA1.setBounds(750,35, 200,20);
+        areanomTxtA1.setBounds(750,140, 200,20);
         add(areanomTxtA1);
 
         // Texto Contenido
-        txtContenidoTxtA1.setBounds(550, 75, 200, 20);
+        txtContenidoTxtA1.setBounds(550, 180, 200, 20);
         add(txtContenidoTxtA1);
 
         // Área texto Contenido
-        areaContenidoTxtA1.setBounds(750,75, 200,60);
+        areaContenidoTxtA1.setBounds(750,180, 200,60);
         add(areaContenidoTxtA1);
 
         // Texto Path
-        txtPathTxtA1.setBounds(550, 175, 200, 20);
+        txtPathTxtA1.setBounds(550, 280, 200, 20);
         add(txtPathTxtA1);
 
         // Área texto Path
-        areaPathTxtA1.setBounds(750,175, 200,20);
+        areaPathTxtA1.setBounds(750,280, 200,20);
         add(areaPathTxtA1);
 
         // Texto Instrucciones
-        txtInstruccionesTxtA1.setBounds(550, 260, 500, 20);
+        txtInstruccionesTxtA1.setBounds(550, 340, 500, 20);
         add(txtInstruccionesTxtA1);
         // Texto Instrucciones2
-        txtInstruccionesTxtA2.setBounds(550, 280, 500, 20);
+        txtInstruccionesTxtA2.setBounds(550, 360, 500, 20);
         add(txtInstruccionesTxtA2);
 
 
         //BOTONES
         // Botón agregar texto palabras
-        bAgregarTexto.setBounds(200, 240, 200, 20);
+        bAgregarTexto.setBounds(230, 400, 200, 20);
         add(bAgregarTexto);
 
         // Botón agregar texto frecuencias
-        bAgregarTextoFrec.setBounds(700, 240, 200, 20);
+        bAgregarTextoFrec.setBounds(750, 400, 200, 20);
         add(bAgregarTextoFrec);
 
         // Botón salir para ir a la pantalla principal

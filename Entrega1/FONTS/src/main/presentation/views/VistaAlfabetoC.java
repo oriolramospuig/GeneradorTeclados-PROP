@@ -79,29 +79,29 @@ public class VistaAlfabetoC extends JFrame{
         add(tituloVistaAC);
 
         // Título media ventana
-        tituloVistaAC2.setBounds(10, 205, 200, 30);
+        tituloVistaAC2.setBounds(10, 400, 200, 30);
         add(tituloVistaAC2);
 
         //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombreAC.setBounds(50, 35, 200, 20);
+        txtNombreAC.setBounds(200, 140, 200, 20);
         add(txtNombreAC);
 
         // Área texto Nombre
         areanomAC.setEditable(false);
-        areanomAC.setBounds(250,35, 200,20);
+        areanomAC.setBounds(400,140, 200,20);
         add(areanomAC);
 
-        txtContenido.setBounds(50, 75, 200, 20);
+        txtContenido.setBounds(200, 180, 200, 20);
         add(txtContenido);
 
         areacontenidoAC.setEditable(false); // Opcional, si no quieres que se pueda editar el contenido
         JScrollPane scrollPane = new JScrollPane(areacontenidoAC); // Para agregar scroll al área de texto
-        scrollPane.setBounds(250, 75, 400, 150); // Ajusta las dimensiones según tus necesidades
+        scrollPane.setBounds(400, 180, 400, 150); // Ajusta las dimensiones según tus necesidades
         add(scrollPane);
 
         // Botón consultar lista de Alfabetos
-        bConsultarListaAlfabetos.setBounds(700, 250, 200, 20);
+        bConsultarListaAlfabetos.setBounds(700, 400, 200, 20);
         add(bConsultarListaAlfabetos);
 
         // Botón salir para ir a la pantalla principal

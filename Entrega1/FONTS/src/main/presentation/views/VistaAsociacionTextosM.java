@@ -77,22 +77,22 @@ public class VistaAsociacionTextosM extends JFrame{
 
         //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombreATM.setBounds(50, 35, 200, 20);
+        txtNombreATM.setBounds(200, 140, 200, 20);
         add(txtNombreATM);
 
         // Área texto Nombre
-        areanomATM.setBounds(250,35, 200,20);
+        areanomATM.setBounds(400,140, 200,20);
         add(areanomATM);
 
-        txtContenidoATM.setBounds(50, 75, 200, 20);
+        txtContenidoATM.setBounds(200, 180, 200, 20);
         add(txtContenidoATM);
 
         JScrollPane scrollPane = new JScrollPane(areacontenidoATM); // Para agregar scroll al área de texto
-        scrollPane.setBounds(250, 75, 400, 150); // Ajusta las dimensiones según tus necesidades
+        scrollPane.setBounds(400, 180, 400, 150); // Ajusta las dimensiones según tus necesidades
         add(scrollPane);
 
         // Botón modificar alfabetos
-        bModificarAsociacion.setBounds(700, 250, 200, 20);
+        bModificarAsociacion.setBounds(700, 400, 200, 20);
         add(bModificarAsociacion);
 
         // Botón salir para ir a la pantalla principal

@@ -75,27 +75,27 @@ public class VistaTecladoC extends JFrame {
         add(tituloVistaTC);
 
         // Título media ventana
-        tituloVistaTC2.setBounds(10, 205, 200, 30);
+        tituloVistaTC2.setBounds(10, 400, 200, 30);
         add(tituloVistaTC2);
 
         //VENTANA SUPERIOR
-        txtNombreTC.setBounds(50, 35, 200, 20);
+        txtNombreTC.setBounds(200, 140, 200, 20);
         add(txtNombreTC);
         // Área texto Nombre
         areanomTC.setEditable(false);
-        areanomTC.setBounds(250,35, 200,20);
+        areanomTC.setBounds(400,140, 200,20);
         add(areanomTC);
 
-        txtContenidoTC.setBounds(50, 75, 200, 20);
+        txtContenidoTC.setBounds(200, 180, 200, 20);
         add(txtContenidoTC);
 
         areacontenidoTC.setEditable(false); // Opcional, si no quieres que se pueda editar el contenido
         JScrollPane scrollPane = new JScrollPane(areacontenidoTC); // Para agregar scroll al área de texto
-        scrollPane.setBounds(250, 75, 400, 150); // Ajusta las dimensiones según tus necesidades
+        scrollPane.setBounds(400, 180, 400, 150); // Ajusta las dimensiones según tus necesidades
         add(scrollPane);
 
         // Botón consultar lista de Alfabetos
-        bConsultarListaTeclados.setBounds(700, 250, 200, 20);
+        bConsultarListaTeclados.setBounds(700, 400, 200, 20);
         add(bConsultarListaTeclados);
 
         // Botón salir para ir a la pantalla principal
