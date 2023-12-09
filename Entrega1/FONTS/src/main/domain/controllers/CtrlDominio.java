@@ -278,6 +278,15 @@ public class CtrlDominio
     }
 
     /**
+     * Retorna si existe la asociacion con nombre nomAT
+     * @param nomAT nombre de la asociacion a buscar
+     * @return Boolean: true si se ha encontrado la asociacion, false si no se ha encontrado
+     */
+    /*public ArrayList<String> consultarAsociacionTextos(String nomAT){
+        return ctrlAsociacionTexto.getCjtAsociaciones().existeAsociaciondeTextos(nomAT);
+    }*/
+
+    /**
      * Retorna si la asociación con nombre nomAT ha sido borrada correctamente
      * @param nomAT el nombre del texto a borrar
      * Borra el texto con nombre nomT
@@ -367,7 +376,6 @@ public class CtrlDominio
         }
         return null;
     }
-
 
     /**
      * Retorna el nombre de la asociación de textos asociada al teclado nomT

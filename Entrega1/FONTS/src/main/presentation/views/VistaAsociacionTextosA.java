@@ -132,7 +132,7 @@ public class VistaAsociacionTextosA extends JFrame {
                     sinNombre.setBounds(800, 300, 400, 200);
                     sinNombre.setLayout(null);
 
-                    JLabel txtErrorNombre = new JLabel("No hay nombre de asociación donde añadir texos");
+                    JLabel txtErrorNombre = new JLabel("No hay nombre de asociación donde añadir texto");
                     txtErrorNombre.setBounds(40, 20, 400, 40);
                     JButton bSalirErrorNombre = new JButton("Salir");
                     bSalirErrorNombre.setVisible(true);
