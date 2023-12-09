@@ -234,8 +234,9 @@ public class CtrlDominio
      * @return Boolean: true si se ha creado bien la asociacion, false si no se ha creado bien
      */
     public boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar){
+        //boolean agregada = ctrlAsociacionTexto.agregarAsociacion(nomAT);
         if(ctrlAsociacionTexto.agregarAsociacion(nomAT)){
-            agregarTextoAsociacion(nomAT,textosagregar);
+           //agregarTextoAsociacion(nomAT,textosagregar);
             return true;
         }
         else return false;
@@ -243,14 +244,13 @@ public class CtrlDominio
     /**
      * No retorna
      * @param nomAT nombre de la asociacion donde añadir el texto
-     * @param textosagregar lista de los nombres de los textos a añadir en la asociacion
+     * @param nomTxt nombre del texto a añadir en la asociacion
      */
-    public void agregarTextoAsociacion (String nomAT, ArrayList<String> textosagregar){
-        for (String nomT : textosagregar) {
-            ctrlTexto.agregarAsociacionVinculada(nomT,nomAT);
-            Texto texto = ctrlTexto.getTexto(nomT);
-            ctrlAsociacionTexto.agregarTextoAsociacion(nomAT, texto);
-        }
+    public void agregarTextoAsociacion (String nomAT, String nomTxt){
+        ctrlTexto.agregarAsociacionVinculada(nomTxt,nomAT);
+        Texto texto = ctrlTexto.getTexto(nomTxt);
+        ctrlAsociacionTexto.agregarTextoAsociacion(nomAT, texto);
+
     }
     /**
      * Retorna la lista de nombres de las asociaciones existentes

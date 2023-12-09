@@ -11,7 +11,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * El CtrlPresentacion se encarga de hacer de comunicador entre las vistas de la capa de presentación.
@@ -274,7 +273,7 @@ public class CtrlPresentacion {
      * @param nomA es el nombre del alfabeto a agregar
      * @param nomtx es el contenido del alfabeto
      */
-    public static boolean agregarAsociacion(String nomA, String nomtx) {
+    public static boolean agregarAsociacion1(String nomA, String nomtx) {
         //if(nomtx == null)
         //ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
         /*boolean agregado = cd.agregarAlfabeto(nomA, entrada);
@@ -303,19 +302,20 @@ public class CtrlPresentacion {
     /**
      * Llama a la función agregarAsociacion de CtrlDominio
      * @param nomAT es el nombre de la asociación a agregar
-     * @param textosagregar es la lista de nombres de textos a agregar en la asociación
      */
-    /*public static boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar) {
-        boolean agregada = cd.agregarAsociacion(nomAT, textosagregar);
-        return agregada;
-    }*/
+    public static boolean agregarAsociacionNombre(String nomAT) {
+        return cd.agregarAsociacionNombre(nomAT);
+    }
     /**
      * Llama a la función agregarAsociacion de CtrlDominio
-     * @param nomAT es el nombre de la asociación a agregar
-     * @param textosagregar es la lista de nombres de textos a agregar en la asociación
+     *
+     * @param nomAT  es el nombre de la asociación a agregar
+     * @param nomTxt es el nombre del texto a agregar en la asociación
+     * @return
      */
-    public static void agregarTextoAsociacion (String nomAT, ArrayList<String> textosagregar) {
-        cd.agregarTextoAsociacion(nomAT, textosagregar);
+    public static boolean agregarTextoAsociacion (String nomAT, String nomTxt) {
+        cd.agregarTextoAsociacion(nomAT, nomTxt);
+        return false;
     }
 
     //crec que no s'hauria d'utilitzar perque no podem passar per referencia totes les associacions aixi per la cara
