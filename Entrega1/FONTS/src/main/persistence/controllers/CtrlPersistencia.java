@@ -4,7 +4,7 @@ import main.persistence.classes.*;
 
 /**
  *  El controlador de persistencia se encarga de gestionar el almacenamiento de datos, es decir, se
- *  encarga de saber dónde y como están estos almacenados.
+ *  encarga de saber dónde y como están almacenados los alfabetos, textos, asociaciones y teclados.
  */
 public class CtrlPersistencia {
     private final GestorAlfabeto gestorAlfabeto;
