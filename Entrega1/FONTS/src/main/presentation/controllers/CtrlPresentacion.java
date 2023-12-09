@@ -11,7 +11,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * El CtrlPresentacion se encarga de hacer de comunicador entre las vistas de la capa de presentación.
@@ -274,7 +273,7 @@ public class CtrlPresentacion {
      * @param nomA es el nombre del alfabeto a agregar
      * @param nomtx es el contenido del alfabeto
      */
-    public static boolean agregarAsociacion(String nomA, String nomtx) {
+    public static boolean agregarAsociacion1(String nomA, String nomtx) {
         //if(nomtx == null)
         //ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
         /*boolean agregado = cd.agregarAlfabeto(nomA, entrada);
@@ -303,19 +302,20 @@ public class CtrlPresentacion {
     /**
      * Llama a la función agregarAsociacion de CtrlDominio
      * @param nomAT es el nombre de la asociación a agregar
-     * @param textosagregar es la lista de nombres de textos a agregar en la asociación
      */
-    /*public static boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar) {
-        boolean agregada = cd.agregarAsociacion(nomAT, textosagregar);
-        return agregada;
-    }*/
+    public static boolean agregarAsociacionNombre(String nomAT) {
+        return cd.agregarAsociacionNombre(nomAT);
+    }
     /**
      * Llama a la función agregarAsociacion de CtrlDominio
-     * @param nomAT es el nombre de la asociación a agregar
-     * @param textosagregar es la lista de nombres de textos a agregar en la asociación
+     *
+     * @param nomAT  es el nombre de la asociación a agregar
+     * @param nomTxt es el nombre del texto a agregar en la asociación
+     * @return
      */
-    public static void agregarTextoAsociacion (String nomAT, ArrayList<String> textosagregar) {
-        cd.agregarTextoAsociacion(nomAT, textosagregar);
+    public static boolean agregarTextoAsociacion (String nomAT, String nomTxt) {
+        cd.agregarTextoAsociacion(nomAT, nomTxt);
+        return false;
     }
 
     //crec que no s'hauria d'utilitzar perque no podem passar per referencia totes les associacions aixi per la cara
@@ -371,7 +371,49 @@ public class CtrlPresentacion {
         int acabado = cd.agregarTeclado(nomT,nomA,nomAT);
         return acabado;
     }
-    //falten mes
 
+    /**
+     * Llama a la función consultarContenidoTeclado de CtrlDominio
+     * @param nomT nombre del teclado a consultar
+     * @return char[][]: la matriz que representa el contenido del teclado nomT
+     */
+    public char[][] consultarContenidoTeclado(String nomT){
+        return cd.consultarContenidoTeclado(nomT);
+    }
+
+    /**
+     * Llama a la función consultarAlfabetoAsociadoTeclado de CtrlDominio
+     * @param nomT nombre del teclado a consultar
+     * @return String: nombre del alfabeto vinculado al teclado nomT
+     */
+    public String consultarAlfabetoAsociadoTeclado(String nomT) {
+        return cd.consultarAlfabetoAsociadoTeclado(nomT);
+    }
+
+
+    /**
+     * Llama a la función consultarAsociacionAsociadoTeclado de CtrlDominio
+     * @param nomT nombre del teclado a consultar
+     * @return String: nombre de la asociación vinculada al teclado nomT
+     */
+    public String consultarAsociacionAsociadoTeclado(String nomT) {
+        return cd.consultarAsociacionAsociadoTeclado(nomT);
+    }
+
+    /**
+     * Llama a la función getListaTeclados de CtrlDominio
+     * @return ArrayList<String>: lista de nombres de los teclados existentes
+     */
+    public ArrayList<String> getListaTeclados(){
+        return cd.getListaTeclados();
+    }
+
+    /**
+     * Llama a la función borrarTeclado de CtrlDominio
+     * @param nomT nombre del teclado a borrar
+     */
+    public void borrarTeclado(String nomT) {
+        cd.borrarTeclado(nomT);
+    }
 
 }
