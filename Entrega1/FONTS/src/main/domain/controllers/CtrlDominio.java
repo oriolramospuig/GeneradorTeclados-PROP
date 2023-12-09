@@ -39,7 +39,14 @@ public class CtrlDominio
         ctrlAsociacionTexto = new CtrlAsociacionTexto();
         ctrlTeclado = new CtrlTeclado();
         ctrlPersistencia = new CtrlPersistencia();
-        //cargar configuracion alfabetos de capa de persistencia
+        //cargar alfabetos, textos, asociaciones y teclados de capa de persistencia
+        String currentDirectory = System.getProperty("user.dir");
+        cargaCnjtAlfabetos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAlfabetos"+"\\");
+        cargaCnjtTextos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTextos"+"\\");
+        cargaCnjtAsociaciones(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAsociaciones"+"\\");
+        cargaCnjtTeclados(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTeclados"+"\\");
+
+
      /*   if (ctrlPersistencia.existeConfig()) {
             try {
                 byte[] bytes = ctrlPersistencia.cargaConfig();

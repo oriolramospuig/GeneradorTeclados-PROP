@@ -437,15 +437,6 @@ public class DriverPersistencia {
     // ---------- FUNCIONES MAIN ----------
     public static void main(String[] args) {
         DriverPersistencia driver = new DriverPersistencia();
-
-        //cargar alfabetos, textos, asociaciones y teclados
-        String currentDirectory = System.getProperty("user.dir");
-        //ctrlDominio.cargaConfig();
-        ctrlDominio.cargaCnjtAlfabetos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAlfabetos"+"\\");
-        ctrlDominio.cargaCnjtTextos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTextos"+"\\");
-        ctrlDominio.cargaCnjtAsociaciones(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAsociaciones"+"\\");
-        ctrlDominio.cargaCnjtTeclados(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTeclados"+"\\");
-
         muestraMetodos();
         // System.out.println("Selecciona el método para agregar el alfabeto (1 - Terminal, 2 - Archivo):");
         String metodo = driver.inOut.leerString();
