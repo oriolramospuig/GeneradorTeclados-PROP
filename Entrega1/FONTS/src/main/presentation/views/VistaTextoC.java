@@ -71,26 +71,29 @@ public class VistaTextoC extends JFrame {
         add(tituloVistaTxtC);
 
         // Título media ventana
-        tituloVistaTxtC2.setBounds(10, 205, 200, 30);
+        tituloVistaTxtC2.setBounds(10, 400, 200, 30);
         add(tituloVistaTxtC2);
 
         //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombreTxtC.setBounds(50, 35, 200, 20);
+        txtNombreTxtC.setBounds(200, 140, 200, 20);
         add(txtNombreTxtC);
 
         // Área texto Nombre
         areanomTxtC.setEditable(false);
-        areanomTxtC.setBounds(250,35, 200,20);
+        areanomTxtC.setBounds(400,140, 200,20);
         add(areanomTxtC);
 
-        txtContenidoTxtC.setBounds(50, 75, 200, 20);
+        txtContenidoTxtC.setBounds(200, 180, 200, 20);
         add(txtContenidoTxtC);
 
         areacontenidoTxtC.setEditable(false); // Opcional, si no quieres que se pueda editar el contenido
         JScrollPane scrollPane = new JScrollPane(areacontenidoTxtC); // Para agregar scroll al área de texto
-        scrollPane.setBounds(250, 75, 400, 150); // Ajusta las dimensiones según tus necesidades
+        scrollPane.setBounds(400, 180, 400, 150); // Ajusta las dimensiones según tus necesidades
         add(scrollPane);
+
+        bConsultarListaTextos.setBounds(700, 400, 200, 20);
+        add(bConsultarListaTextos);
 
         // Botón salir para ir a la pantalla principal
         bsalir.setBounds(800, 500, 100, 20);
