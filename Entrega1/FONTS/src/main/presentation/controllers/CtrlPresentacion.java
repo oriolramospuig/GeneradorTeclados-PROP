@@ -371,7 +371,49 @@ public class CtrlPresentacion {
         int acabado = cd.agregarTeclado(nomT,nomA,nomAT);
         return acabado;
     }
-    //falten mes
 
+    /**
+     * Llama a la función consultarContenidoTeclado de CtrlDominio
+     * @param nomT nombre del teclado a consultar
+     * @return char[][]: la matriz que representa el contenido del teclado nomT
+     */
+    public char[][] consultarContenidoTeclado(String nomT){
+        return cd.consultarContenidoTeclado(nomT);
+    }
+
+    /**
+     * Llama a la función consultarAlfabetoAsociadoTeclado de CtrlDominio
+     * @param nomT nombre del teclado a consultar
+     * @return String: nombre del alfabeto vinculado al teclado nomT
+     */
+    public String consultarAlfabetoAsociadoTeclado(String nomT) {
+        return cd.consultarAlfabetoAsociadoTeclado(nomT);
+    }
+
+
+    /**
+     * Llama a la función consultarAsociacionAsociadoTeclado de CtrlDominio
+     * @param nomT nombre del teclado a consultar
+     * @return String: nombre de la asociación vinculada al teclado nomT
+     */
+    public String consultarAsociacionAsociadoTeclado(String nomT) {
+        return cd.consultarAsociacionAsociadoTeclado(nomT);
+    }
+
+    /**
+     * Llama a la función getListaTeclados de CtrlDominio
+     * @return ArrayList<String>: lista de nombres de los teclados existentes
+     */
+    public ArrayList<String> getListaTeclados(){
+        return cd.getListaTeclados();
+    }
+
+    /**
+     * Llama a la función borrarTeclado de CtrlDominio
+     * @param nomT nombre del teclado a borrar
+     */
+    public void borrarTeclado(String nomT) {
+        cd.borrarTeclado(nomT);
+    }
 
 }
