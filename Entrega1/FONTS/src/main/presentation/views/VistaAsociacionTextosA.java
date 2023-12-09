@@ -172,6 +172,7 @@ public class VistaAsociacionTextosA extends JFrame {
                 setVisible(false);
             }
         };
+        
 
         bAgregarTexto.addActionListener(lSeleccionarTexto);
         bAgregarAsociacion.addActionListener(lAgregar);
