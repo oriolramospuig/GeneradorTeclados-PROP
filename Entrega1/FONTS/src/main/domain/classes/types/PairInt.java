@@ -1,9 +1,11 @@
 package main.domain.classes.types;
 
+import java.io.Serializable;
+
 /** Clase que implementa un pair de Int, Int
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
-public class PairInt {
+public class PairInt implements Serializable {
     Integer int1;
     Integer int2;
 

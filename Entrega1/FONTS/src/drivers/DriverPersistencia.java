@@ -353,7 +353,7 @@ public class DriverPersistencia {
                             else if(agregado == -2) System.out.println("El alfabeto y la asociación de textos no son compatibles");
                             else {
                                 System.out.println("AGREGADO CON EXITO!");
-                                //ctrlDominio.guardaCnjtTeclados();
+                                ctrlDominio.guardaCnjtTeclados();
                             }
                         }
                         else System.out.println("No existe ninguna asociacion con ese nombre. Hay que seleccionar una asociacion de la lista");
@@ -444,7 +444,7 @@ public class DriverPersistencia {
         ctrlDominio.cargaCnjtAlfabetos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAlfabetos"+"\\");
         ctrlDominio.cargaCnjtTextos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTextos"+"\\");
         ctrlDominio.cargaCnjtAsociaciones(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAsociaciones"+"\\");
-        //ctrlDominio.cargaCnjtTeclados(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTeclados"+"\\");
+        ctrlDominio.cargaCnjtTeclados(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTeclados"+"\\");
 
         muestraMetodos();
         // System.out.println("Selecciona el método para agregar el alfabeto (1 - Terminal, 2 - Archivo):");
