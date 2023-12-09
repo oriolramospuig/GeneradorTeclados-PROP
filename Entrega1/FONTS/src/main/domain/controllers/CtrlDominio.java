@@ -1,7 +1,6 @@
 package main.domain.controllers;
 
 import main.domain.classes.*;
-import main.domain.classes.config.Configuracion;
 import main.persistence.controllers.CtrlPersistencia;
 
 import java.io.*;
@@ -28,8 +27,6 @@ public class CtrlDominio
 
     private final CtrlPersistencia ctrlPersistencia;
 
-    private Configuracion configuracion;
-
 
     // ---------- CONSTRUCTORAS ----------
     /** Inicialización de la instancia controlador dominio */
@@ -45,43 +42,6 @@ public class CtrlDominio
         cargaCnjtTextos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTextos"+"\\");
         cargaCnjtAsociaciones(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAsociaciones"+"\\");
         cargaCnjtTeclados(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTeclados"+"\\");
-
-
-     /*   if (ctrlPersistencia.existeConfig()) {
-            try {
-                byte[] bytes = ctrlPersistencia.cargaConfig();
-                ByteArrayInputStream bs = new ByteArrayInputStream(bytes);
-                ObjectInputStream is = new ObjectInputStream(bs);
-                configuracion = (Configuracion) is.readObject();
-                is.close();
-            } catch (InvalidClassException e) {
-                System.err.println("HANDLEABLE EXCEPTION -> CLASS VERSION MISMATCH");
-                System.err.println("Regenerating config*.cdp file");
-                if (!ctrlPersistencia.borraConfig()) {
-                    System.err.println("Could not handle exception! Quitting.");
-                    System.err.println(Thread.currentThread().getStackTrace().toString());
-                    System.exit(-100);
-                }
-                configuracion = new Configuracion();
-                System.err.println("SUCCESS -> Exception handled!");
-            } catch (Exception e) {
-                System.err.println("HANDLEABLE EXCEPTION -> Exception when trying to write/create configuration file! E: "
-                        + e.getMessage());
-                System.err.println("Regenerating config*.cdp file");
-                if (!ctrlPersistencia.borraConfig()) {
-                    System.err.println("Could not handle exception! Quitting.");
-                    System.err.println(Thread.currentThread().getStackTrace().toString());
-                    System.exit(-100);
-                }
-                configuracion = new Configuracion();
-                System.err.println("SUCCESS -> Exception handled!");
-            }
-        }
-        else {
-            configuracion = new Configuracion();
-        }
-
-      */
     }
 
     // ---------- FUNCIONES ALFABETO ----------
@@ -420,52 +380,6 @@ public class CtrlDominio
     }
 
 
-    // ---------- FUNCIONES PERSISTENCIA CONFIGURACIÓN ----------
-    /**
-     * Guarda el objeto Configuracion configuracion en un fichero usando el CtrlPersistencia
-     */
-  /*  public void guardaConfigAlfabetos() {
-        try {
-            ByteArrayOutputStream bs = new ByteArrayOutputStream();
-            ObjectOutputStream os = new ObjectOutputStream(bs);
-            os.writeObject(configuracion);
-            os.close();
-            byte[] bytes = bs.toByteArray();
-            ctrlPersistencia.guardaConfigAlfabetos(bytes);
-        } catch (IOException e) {
-            System.err.println(
-                    "RUNTIME UNHANDLED EXCEPTION -> IOException when trying to save config file! E: " + e.toString());
-            Thread.currentThread().getStackTrace();
-            System.exit(-102);
-        }
-    }
-   */
-
-  /*  public void cargaConfig() {
-        try {
-            ByteArrayOutputStream bs = new ByteArrayOutputStream();
-            ObjectOutputStream os = new ObjectOutputStream(bs);
-            os.writeObject(configuracion);
-            os.close();
-            byte[] bytes = bs.toByteArray();
-           ctrlPersistencia.guardaConfig(bytes);
-        } catch (IOException e) {
-            System.err.println(
-                    "RUNTIME UNHANDLED EXCEPTION -> IOException when trying to save config file! E: " + e.toString());
-            Thread.currentThread().getStackTrace();
-            System.exit(-102);
-        }
-    }
-
-   */
-
-    /**
-     * LA HAREMOS MÁS TARDE!!!
-     * Converteix les dades de Configuracio _config a una matriu de String per poder compartir-les entre capes
-     public Vector<Vector<String>> obtenirConfig() {
-     return _config.simplify();
-     } */
-
     // ---------- FUNCIONES PERSISTENCIA ALFABETOS ----------
     public void guardaCnjtAlfabetos() {
         String nomDoc = "conjuntoAlfabetos";
@@ -480,8 +394,6 @@ public class CtrlDominio
             Thread.currentThread().getStackTrace();
             System.exit(-102);
         }
-        //configuracion.añadirCnjtAlfabetos(nomDoc, path);
-        //guardaConfigAlfabetos();
     }
 
     public void cargaCnjtAlfabetos(String path) {
@@ -492,6 +404,7 @@ public class CtrlDominio
             System.err.println("[#CARGA] Error al cargar el conjunto de alfabetos " + e.getMessage());
         }
     }
+
 
     // ---------- FUNCIONES PERSISTENCIA TEXTOS ----------
     public void guardaCnjtTextos() {
@@ -506,8 +419,6 @@ public class CtrlDominio
             Thread.currentThread().getStackTrace();
             System.exit(-102);
         }
-        //configuracion.añadirCnjtAlfabetos(nomDoc, path);
-        //guardaConfigAlfabetos();
     }
 
     public void cargaCnjtTextos(String path) {
@@ -533,8 +444,6 @@ public class CtrlDominio
             Thread.currentThread().getStackTrace();
             System.exit(-102);
         }
-        //configuracion.añadirCnjtAlfabetos(nomDoc, path);
-        //guardaConfigAlfabetos();
     }
 
     public void cargaCnjtAsociaciones(String path) {
@@ -545,6 +454,7 @@ public class CtrlDominio
             System.err.println("[#CARGA] Error al cargar el conjunto de asociaciones de textos " + e.getMessage());
         }
     }
+
 
     // ---------- FUNCIONES PERSISTENCIA TECLADOS ----------
     public void guardaCnjtTeclados() {
@@ -559,8 +469,6 @@ public class CtrlDominio
             Thread.currentThread().getStackTrace();
             System.exit(-102);
         }
-        //configuracion.añadirCnjtAlfabetos(nomDoc, path);
-        //guardaConfigAlfabetos();
     }
 
     public void cargaCnjtTeclados(String path) {
@@ -571,5 +479,4 @@ public class CtrlDominio
             System.err.println("[#CARGA] Error al cargar el conjunto de teclados " + e.getMessage());
         }
     }
-
 }
