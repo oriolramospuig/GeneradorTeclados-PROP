@@ -35,6 +35,15 @@ public class ConjuntoAlfabetos implements Serializable
         if (alfabetos.containsKey(nomA)) return alfabetos.get(nomA);
         else return null;
     }
+
+    /**
+     * Retorna el conjunto de alfabetos existentes
+     * @return HashMap<String, Alfabeto>: Conjunto de alfabetos
+     */
+    /*public HashMap<String, Alfabeto> getAlfabetos () {
+        return alfabetos;
+    }*/
+
     /**
      * Retorna el nombre de los alfabetos del conjunto
      * @return ArrayList<String>: Lista de nombres de los alfabetos del conjunto
