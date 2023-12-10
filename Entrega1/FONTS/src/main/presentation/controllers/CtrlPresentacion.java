@@ -152,12 +152,6 @@ public class CtrlPresentacion {
         //return agregado;
         return false;
     }
-
-    //crec que no s'hauria d'utilitzar perque no podem passar per referencia tots els alfabets aixi per la cara
-    /** Llama a la función getListaAlfabetos de CtrlDominio
-    public static void getListaAlfabetos() {
-        //HashMap<String, Alfabeto> listaAlfabetos = cd.getListaAlfabetos(); // NO SE PUEDE PASAR EL OBJETO ALFABETO
-    }*/
     /** Llama a la función getNombresAlfabetos de CtrlDominio */
     public static ArrayList<String> getNombresAlfabetos() {
         ArrayList<String> listaAlfabetosNombres = cd.getNombresAlfabetos();
@@ -231,12 +225,6 @@ public class CtrlPresentacion {
         } else return false;*/
         return false;
     }
-
-    //crec que no s'hauria d'utilitzar perque no podem passar per referencia tots els textos aixi per la cara
-    /** Llama a la función getListaTextos de CtrlDominio
-    public static void getListaTextos() {
-        //HashMap<String, Texto> ListaTextos = cd.getListaTextos(); NO SE PUEDE PASAR EL OBJETO TEXTO!!
-    }*/
     /** Llama a la función getNombresTextos de CtrlDominio */
     public static ArrayList<String> getNombresTextos() {
         ArrayList<String> listaTextosNombres = cd.getNombresAsociaciones();
@@ -318,11 +306,6 @@ public class CtrlPresentacion {
         return false;
     }
 
-    //crec que no s'hauria d'utilitzar perque no podem passar per referencia totes les associacions aixi per la cara
-    /** Llama a la función getListaAsociaciones de CtrlDominio
-     public static void getListaAsociaciones() {
-     //HashMap<String, AsociacionTextos> ListaAsociaciones = cd.getListaAsociaciones(); NO SE PUEDE PASAR EL OBJETO TEXTO!!
-     }*/
     /**
      * Llama a la función getNombresAsociaciones de CtrlDominio
      *
@@ -360,7 +343,6 @@ public class CtrlPresentacion {
         boolean comp = cd.compatibles(alfabeto,asociacionTextos);
         return comp;
     }
-
     /**
      * Llama a la función agregarTeclado de CtrlDominio
      * @param nomT nombre del teclado a agregar
@@ -371,7 +353,6 @@ public class CtrlPresentacion {
         int acabado = cd.agregarTeclado(nomT,nomA,nomAT);
         return acabado;
     }
-
     /**
      * Llama a la función consultarContenidoTeclado de CtrlDominio
      * @param nomT nombre del teclado a consultar
@@ -380,7 +361,6 @@ public class CtrlPresentacion {
     public char[][] consultarContenidoTeclado(String nomT){
         return cd.consultarContenidoTeclado(nomT);
     }
-
     /**
      * Llama a la función consultarAlfabetoAsociadoTeclado de CtrlDominio
      * @param nomT nombre del teclado a consultar
@@ -389,8 +369,6 @@ public class CtrlPresentacion {
     public String consultarAlfabetoAsociadoTeclado(String nomT) {
         return cd.consultarAlfabetoAsociadoTeclado(nomT);
     }
-
-
     /**
      * Llama a la función consultarAsociacionAsociadoTeclado de CtrlDominio
      * @param nomT nombre del teclado a consultar
@@ -399,7 +377,6 @@ public class CtrlPresentacion {
     public String consultarAsociacionAsociadoTeclado(String nomT) {
         return cd.consultarAsociacionAsociadoTeclado(nomT);
     }
-
     /**
      * Llama a la función getListaTeclados de CtrlDominio
      * @return ArrayList<String>: lista de nombres de los teclados existentes
@@ -407,7 +384,6 @@ public class CtrlPresentacion {
     public ArrayList<String> getListaTeclados(){
         return cd.getListaTeclados();
     }
-
     /**
      * Llama a la función borrarTeclado de CtrlDominio
      * @param nomT nombre del teclado a borrar
