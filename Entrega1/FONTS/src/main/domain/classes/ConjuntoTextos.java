@@ -35,15 +35,6 @@ public class ConjuntoTextos implements Serializable
         if (textos.containsKey(nomT)) return textos.get(nomT);
         return null;
     }
-
-    /**
-     * Devuelve el conjunto de textos existentes
-     * @return HashMap<String, Texto>: Conjunto de textos
-     */
-    public HashMap<String, Texto> getTextos() {
-        return textos;
-    }
-
     /**
      * Devuelve el nombre de los textos del conjunto textos
      * @return ArrayList<String>: Lista de nombres de los textos del conjunto
