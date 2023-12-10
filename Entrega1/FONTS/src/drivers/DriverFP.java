@@ -75,7 +75,7 @@ public class DriverFP {
      * No devuelve nada.
      * Imprime por pantalla una lista de los alfabetos que hay en el sistema
      */
-    public void imprimirNombresAlfabetos() {
+    /*public void imprimirNombresAlfabetos() {
         HashMap<String, Alfabeto> alfabetos = ctrlDominio.getListaAlfabetos();
         if (alfabetos.isEmpty()) {
             System.out.println("No hay alfabetos para mostrar. Debes agregar un alfabeto para hacer este paso.");
@@ -86,13 +86,13 @@ public class DriverFP {
             String nombre = entry.getKey();
             System.out.println(nombre);
         }
-    }
+    }*/
 
     /**
      * No devuelve nada.
      * Imprime por pantalla el contenido del teclado que se desea consultar, si existe
      */
-    public void consultarContenidoAlfabeto(){
+    /*public void consultarContenidoAlfabeto(){
         imprimirNombresAlfabetos();
         System.out.println("Introduce el nombre del alfabeto que quieres consultar:");
         String nombreA = inOut.leerString();
@@ -105,7 +105,7 @@ public class DriverFP {
             Letras.forEach(System.out::print);
             System.out.println();
         }
-    }
+    }*/
 
 
     // ---------- FUNCIONES ASOCIACIONES TEXTOS ----------
@@ -181,7 +181,7 @@ public class DriverFP {
      * No devuelve nada.
      * Imprime por pantalla una lista de los textos que hay en el sistema
      */
-    public void imprimirNombresTextos() {
+    /*public void imprimirNombresTextos() {
 
         HashMap<String, Texto> listaTextos = ctrlDominio.getListaTextos();
         if (listaTextos.isEmpty()) {
@@ -193,13 +193,13 @@ public class DriverFP {
             String nombre = entry.getKey();
             System.out.println(nombre);
         }
-    }
+    }*/
 
     /**
      * No devuelve nada.
      * Imprime por pantalla una lista de las asociaciones de textos que hay en el sistema
      */
-    public void imprimirNombresAsociaciones() {
+    /*public void imprimirNombresAsociaciones() {
         HashMap<String, AsociacionTextos> asociaciones = ctrlDominio.getListaAsociaciones();
         if (asociaciones.isEmpty()) {
             System.out.println("No hay asociaciones para mostrar. Debes crear una asociacion para hacer este paso");
@@ -209,13 +209,13 @@ public class DriverFP {
             String nombre = entry.getKey();
             System.out.println(nombre);
         }
-    }
+    }*/
 
     /**
      * No devuelve nada.
      * Imprime por pantalla el contenido del texto que se desea consultar, si existe
      */
-    public void consultarContenidoTexto(){
+    /*public void consultarContenidoTexto(){
         imprimirNombresTextos();
         System.out.println("Introduce el nombre del texto que quieres consultar:");
         String nombreT = inOut.leerString(); //suponemos que lo escribe bien porque lo copia de la lista
@@ -228,13 +228,13 @@ public class DriverFP {
             String Palabras = ctrlDominio.consultarContenidoTexto(nombreT);
             System.out.println(Palabras);
         }
-    }
+    }*/
 
     /**
      * No devuelve nada.
      * Se crea una asociación nueva con textos existentes que haya en el sistema
      */
-    public void crearAsociacion(){
+    /*public void crearAsociacion(){
         imprimirNombresTextos();
         HashMap<String, Texto> textos = ctrlDominio.getListaTextos();
         //HashMap<String, AsociacionTextos> asociaciones1 = ctrlDominio.getListaAsociaciones();
@@ -265,7 +265,7 @@ public class DriverFP {
             }
             else System.out.println("No hay tantos textos creados. Debes crear más textos.");
         }
-    }
+    }*/
 
 
     // ---------- FUNCIONES TECLADO ----------
@@ -275,7 +275,7 @@ public class DriverFP {
      * Llama a la función de ctrlDominio para agregar el teclado.
      * Muestra por pantalla mensajes de error o de éxito.
      */
-    public void agregarTeclado() {
+    /*public void agregarTeclado() {
         System.out.println("Introduce el nombre del teclado:");
         String nombreT = inOut.leerString();
         try {
@@ -312,7 +312,7 @@ public class DriverFP {
 
 
                             //boolean agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP, PairIntEnum.EMPTY_PAIR);
-                            int agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT);
+                            /*int agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT);
                             if (agregado == -1) System.out.println("Ya existe el teclado " + nombreT);
                             else if(agregado == -2) System.out.println("El alfabeto y la asociación de textos no son compatibles");
                             else System.out.println("AGREGADO CON EXITO!");
@@ -326,7 +326,7 @@ public class DriverFP {
         } catch (IllegalArgumentException e) {
             System.out.println("Existe un teclado con el mismo nombre " + nombreT); //?? que tipo de excepcion tendria que pasar?
         }
-    }
+    }*/
 
     /**
      * No devuelve nada.
@@ -425,42 +425,42 @@ public class DriverFP {
                 }
                 case "5":
                 case "CrearAsociacionTextos": {
-                    driver.crearAsociacion();
+                    //driver.crearAsociacion();
                     break;
                 }
                 case "6":
                 case "CrearTeclado": {
-                    driver.agregarTeclado();
+                    //driver.agregarTeclado();
                     break;
                 }
                 case "7":
                 case "ConsultarlistaAlfabetos": {
-                    driver.imprimirNombresAlfabetos();
+                    //driver.imprimirNombresAlfabetos();
                     break;
                 }
                 case "8":
                 case "ConsultarlistaAsociaciones": {
-                    driver.imprimirNombresAsociaciones();
+                    //driver.imprimirNombresAsociaciones();
                     break;
                 }
                 case "9":
                 case "ConsultarlistaTextos": {
-                    driver.imprimirNombresTextos();
+                    //driver.imprimirNombresTextos();
                     break;
                 }
                 case "10":
                 case "ConsultarlistaTeclados": {
-                    driver.imprimirNombresTeclados();
+                    //driver.imprimirNombresTeclados();
                     break;
                 }
                 case "11":
                 case "ConsultarAlfabeto": {
-                    driver.consultarContenidoAlfabeto();
+                    //driver.consultarContenidoAlfabeto();
                     break;
                 }
                 case "12":
                 case "ConsultarTexto": {
-                    driver.consultarContenidoTexto();
+                    //driver.consultarContenidoTexto();
                     break;
                 }
                 case "13":

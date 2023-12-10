@@ -326,7 +326,6 @@ public class CtrlDominio
         }
         return null;
     }
-
     /**
      * Retorna el nombre del alfabeto asociado al teclado con nombre nomT
      * @param nomT nombre del teclado a buscar
@@ -338,7 +337,6 @@ public class CtrlDominio
         }
         return null;
     }
-
     /**
      * Retorna el nombre de la asociación de textos asociada al teclado nomT
      * @param nomT nombre del teclado a buscar
@@ -350,7 +348,6 @@ public class CtrlDominio
         }
         return null;
     }
-
     /**
      * Retorna la lista de teclados existentes
      * @return ArrayList<String>: lista de nombres de los teclados existentes
@@ -358,7 +355,6 @@ public class CtrlDominio
     public ArrayList<String> getListaTeclados(){
         return ctrlTeclado.getCjtTeclados().getNombresTeclados();
     }
-
     /**
      * No retorna
      * @param nomT el nombre del teclado a borrar
