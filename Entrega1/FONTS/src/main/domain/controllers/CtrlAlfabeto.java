@@ -106,6 +106,10 @@ public class CtrlAlfabeto
         CjtAlfabetos.borrarAlfabeto(nomA);
     }
 
+    /**
+     * Convierte un conjunto de alfabeto en ByteArray con el fin de almacenarlos.
+     * @throws IOException
+     */
     public byte[] alfabetosToByteArray() throws IOException {
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         ObjectOutputStream os = new ObjectOutputStream(bs);
@@ -114,6 +118,12 @@ public class CtrlAlfabeto
         return bs.toByteArray();
     }
 
+    /**
+     * Transforma un conjunto de alfabetos para almacenar en un array de bytes al formato original de Alfabeto.
+     * @param bytes
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static void byteArrayToAlfabetos(byte[] bytes) throws IOException, ClassNotFoundException {
         ByteArrayInputStream bs = new ByteArrayInputStream(bytes);
         ObjectInputStream is = new ObjectInputStream(bs);
