@@ -38,10 +38,10 @@ public class CtrlDominio
         ctrlPersistencia = new CtrlPersistencia();
         //cargar alfabetos, textos, asociaciones y teclados de capa de persistencia
         String currentDirectory = System.getProperty("user.dir");
-        cargaCnjtAlfabetos(currentDirectory+"\\subgrup-prop14.3\\Entrega1\\data\\Cache\\"+"conjuntoAlfabetos"+"\\");
-        cargaCnjtTextos(currentDirectory+"\\subgrup-prop14.3\\Entrega1\\data\\Cache\\"+"conjuntoTextos"+"\\");
-        cargaCnjtAsociaciones(currentDirectory+"\\subgrup-prop14.3\\Entrega1\\data\\Cache\\"+"conjuntoAsociaciones"+"\\");
-        cargaCnjtTeclados(currentDirectory+"\\subgrup-prop14.3\\Entrega1\\data\\Cache\\"+"conjuntoTeclados"+"\\");
+        cargaCnjtAlfabetos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAlfabetos"+"\\");
+        cargaCnjtTextos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTextos"+"\\");
+        cargaCnjtAsociaciones(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAsociaciones"+"\\");
+        cargaCnjtTeclados(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTeclados"+"\\");
     }
 
     // ---------- FUNCIONES ALFABETO ----------
@@ -53,14 +53,6 @@ public class CtrlDominio
      */
     public boolean agregarAlfabeto(String nomA, ArrayList<Character> entradaCaracteres){
         return ctrlAlfabeto.CrearAlfabeto(nomA,entradaCaracteres);
-    }
-
-    /**
-     * Retorna la lista de alfabetos existentes
-     * @return HashMap<String, Alfabeto>: lista de alfabetos existentes ordenada por el nombre de alfabeto que es la clave primaria
-     */
-    public HashMap<String, Alfabeto> getListaAlfabetos(){
-        return ctrlAlfabeto.getCjtAlfabetos().getAlfabetos();
     }
 
     /**
@@ -147,13 +139,6 @@ public class CtrlDominio
     }
 
     /**
-     * Retorna la lista de textos existentes
-     * @return HashMap<String, Texto>: lista de textos existentes ordenados por el nombre que es su clave primaria
-     */
-    public HashMap<String, Texto> getListaTextos(){
-        return ctrlTexto.getTextos().getTextos();
-    }
-    /**
      * Retorna el contenido del texto con nombre nomT
      * @param nomT el nombre del texto a buscar
      * @return String: contenido del texto con nombre nomT
@@ -225,14 +210,6 @@ public class CtrlDominio
      */
     public ArrayList<String> getNombresAsociaciones(){
         return ctrlAsociacionTexto.getNombresAsociaciones();
-    }
-
-    /**
-     * Retorna la lista de asociaciones existentes
-     * @return HashMap<String, AsociacionTextos>: lista de asociaciones ordenada por nombres que son las claves primarias de las asociaciones
-     */
-    public HashMap<String, AsociacionTextos> getListaAsociaciones(){
-        return ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionesTextos();
     }
 
     /**
@@ -372,6 +349,10 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA ALFABETOS ----------
+
+    /**
+     * Almacena el conjunto de alfabetos en una localización específica.
+     */
     public void guardaCnjtAlfabetos() {
         String nomDoc = "conjuntoAlfabetos";
         //if(nomDoc.endsWith(".prop")) { nomDoc = nomDoc+".prop"; }
@@ -387,6 +368,10 @@ public class CtrlDominio
         }
     }
 
+    /**
+     * Retorna el conjunto de alfabetos que se encuentra en path.
+     * @param path
+     */
     public void cargaCnjtAlfabetos(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtAlfabetos(path);
@@ -398,6 +383,10 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA TEXTOS ----------
+
+    /**
+     * Guarda el conjunto de textos en una ubicación particular.
+     */
     public void guardaCnjtTextos() {
         String nomDoc = "conjuntoTextos";
         String currentDirectory = System.getProperty("user.dir");
@@ -412,6 +401,10 @@ public class CtrlDominio
         }
     }
 
+    /**
+     * Devuelve el conjunto de textos que se halla en la ruta especificada.
+     * @param path
+     */
     public void cargaCnjtTextos(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtTextos(path);
@@ -423,6 +416,10 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA ASOCIACIONES TEXTOS ----------
+
+    /**
+     * Guarda en un lugar determinado el conjunto de Asociaciones de Textos.
+     */
     public void guardaCnjtAsociaciones() {
         String nomDoc = "conjuntoAsociaciones";
         String currentDirectory = System.getProperty("user.dir");
@@ -437,6 +434,10 @@ public class CtrlDominio
         }
     }
 
+    /**
+     * Entrega el conjunto de asociaciones de textos ubicado en la ruta indicada.
+     * @param path
+     */
     public void cargaCnjtAsociaciones(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtAsociaciones(path);
@@ -448,6 +449,10 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA TECLADOS ----------
+
+    /**
+     * Deposita el conjunto de Teclados en una ubicación designada.
+     */
     public void guardaCnjtTeclados() {
         String nomDoc = "conjuntoTeclados";
         String currentDirectory = System.getProperty("user.dir");
@@ -462,6 +467,10 @@ public class CtrlDominio
         }
     }
 
+    /**
+     * Recupera el conjunto de teclados presente en la ruta especificada.
+     * @param path
+     */
     public void cargaCnjtTeclados(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtTeclados(path);
@@ -470,4 +479,30 @@ public class CtrlDominio
             System.err.println("[#CARGA] Error al cargar el conjunto de teclados " + e.getMessage());
         }
     }
+
+    /**
+     * Retorna la lista de alfabetos existentes
+     * @return HashMap<String, Alfabeto>: lista de alfabetos existentes ordenada por el nombre de alfabeto que es la clave primaria
+     */
+    public HashMap<String, Alfabeto> getListaAlfabetos(){
+        return ctrlAlfabeto.getCjtAlfabetos().getAlfabetos();
+    }
+
+    /**
+     * Retorna la lista de textos existentes
+     * @return HashMap<String, Texto>: lista de textos existentes ordenados por el nombre que es su clave primaria
+     */
+    public HashMap<String, Texto> getListaTextos(){
+        return ctrlTexto.getTextos().getTextos();
+    }
+
+    /**
+     * Retorna la lista de asociaciones existentes
+     * @return HashMap<String, AsociacionTextos>: lista de asociaciones ordenada por nombres que son las claves primarias de las asociaciones
+     */
+    public HashMap<String, AsociacionTextos> getListaAsociaciones(){
+        return ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionesTextos();
+    }
+
+
 }

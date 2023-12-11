@@ -52,7 +52,7 @@ public class VistaAlfabetoM extends JFrame{
         // Posar els formats que ens facin falta
         chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
         chooser.setDialogTitle("Selecciona fitxer");
-        chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Alfabetos"));
+        chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/Entrega1/data/Alfabetos"));
         int returnValue = chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File arxiu = chooser.getSelectedFile();

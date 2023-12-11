@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8fb7b30-ecfc-4c0c-97a1-87e97b4b92fe" name="Changes" comment="comprobar contenido driver y in-out (alfabeto)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +38,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/34696/OneDrive/Escriptori/FIB/PROP/Prop/Entrega1",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/victo/OneDrive/Escritorio/PropLab2/subgrup-prop14.3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -63,6 +63,7 @@
       <workItem from="1699296165001" duration="2377000" />
       <workItem from="1699341867118" duration="338000" />
       <workItem from="1699342231439" duration="456000" />
+      <workItem from="1702295247389" duration="68000" />
     </task>
     <task id="LOCAL-00001" summary="arreglos alfabeto y driver">
       <option name="closed" value="true" />
