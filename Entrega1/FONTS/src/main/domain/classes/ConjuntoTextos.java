@@ -78,4 +78,13 @@ public class ConjuntoTextos implements Serializable
     public void borrarTexto(String nomT) {
         textos.remove(nomT);
     }
+
+    /**
+     * Devuelve el conjunto de textos existentes
+     * @return HashMap<String, Texto>: Conjunto de textos
+     */
+    public HashMap<String, Texto> getTextos() {
+        return textos;
+    }
+
 }

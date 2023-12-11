@@ -266,7 +266,8 @@ public class DriverPersistencia {
      */
     public void crearAsociacion(){
         imprimirNombresTextos();
-        ArrayList<String> textos = ctrlDominio.getNombresTextos();
+        // ArrayList<String> textos = ctrlDominio.getNombresTextos();
+        HashMap<String, Texto> textos = ctrlDominio.getListaTextos();
         //HashMap<String, AsociacionTextos> asociaciones1 = ctrlDominio.getListaAsociaciones();
         if (!textos.isEmpty()) {
             System.out.println("Introduce el numero de textos que quieres añadir a la nueva ascociacion:");
@@ -314,9 +315,10 @@ public class DriverPersistencia {
         try {
             //Seleccionar alfabeto
             imprimirNombresAlfabetos();
-            ArrayList<String> alfabetos = ctrlDominio.getNombresAlfabetos();
-            // HashMap<String, AsociacionTextos> asociaciones = ctrlDominio.getListaAsociaciones();
-            ArrayList<String> asociaciones = ctrlDominio.getNombresAsociaciones();
+            HashMap<String, Alfabeto> alfabetos = ctrlDominio.getListaAlfabetos();
+            // ArrayList<String> alfabetos = ctrlDominio.getNombresAlfabetos();
+            HashMap<String, AsociacionTextos> asociaciones = ctrlDominio.getListaAsociaciones();
+            // ArrayList<String> asociaciones = ctrlDominio.getNombresAsociaciones();
             if (!alfabetos.isEmpty()) {
                 System.out.println("Introduce el nombre de un alfabeto de la lista:");
                 String nombreA = inOut.leerString();

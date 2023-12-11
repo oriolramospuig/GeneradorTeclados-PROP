@@ -75,4 +75,13 @@ public class ConjuntoAsociaciones implements Serializable
     public void borrarAsociacionTextos(String nomAT) {
         asociaciones.remove(nomAT);
     }
+
+    /**
+     * Devuelve el conjunto de asociaciones de textos existentes
+     * @return HashMap<String, AsociacionTextos>: Conjunto de asociaciones de textos
+     */
+    public HashMap<String, AsociacionTextos> getAsociacionesTextos() {
+        return asociaciones;
+    }
+
 }

@@ -79,4 +79,13 @@ public class ConjuntoAlfabetos implements Serializable
     public void borrarAlfabeto(String nomA) {
         alfabetos.remove(nomA);
     }
+
+    /**
+     * Retorna el conjunto de alfabetos existentes
+     * @return HashMap<String, Alfabeto>: Conjunto de alfabetos
+     */
+    public HashMap<String, Alfabeto> getAlfabetos () {
+        return alfabetos;
+    }
+
 }

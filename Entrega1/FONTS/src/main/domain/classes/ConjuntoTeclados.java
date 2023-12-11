@@ -79,4 +79,13 @@ public class ConjuntoTeclados implements Serializable
     public void borrarTeclado(String nomT) {
         teclados.remove(nomT);
     }
+
+    /**
+     * Retorna el conjunto de teclados existentes
+     * @return HashMap<String, Teclado>: Conjunto de teclados
+     */
+    public HashMap<String, Teclado> getTeclados() {
+        return teclados;
+    }
+
 }
