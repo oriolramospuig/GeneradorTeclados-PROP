@@ -92,15 +92,14 @@ public class DriverPersistencia {
      * Imprime por pantalla una lista de los alfabetos que hay en el sistema
      */
     public void imprimirNombresAlfabetos() {
-        HashMap<String, Alfabeto> alfabetos = ctrlDominio.getListaAlfabetos();
-        if (alfabetos.isEmpty()) {
+        ArrayList<String> nombres = ctrlDominio.getNombresAlfabetos();
+        if (nombres.isEmpty()) {
             System.out.println("No hay alfabetos para mostrar. Debes agregar un alfabeto para hacer este paso.");
             return;
         }
         System.out.println("Alfabetos actuales:");
-        for (HashMap.Entry<String, Alfabeto> entry : alfabetos.entrySet()) {
-            String nombre = entry.getKey();
-            System.out.println(nombre);
+        for (int i = 0; i < nombres.size(); ++i) {
+            System.out.println(nombres.get(i));
         }
     }
 
@@ -317,7 +316,7 @@ public class DriverPersistencia {
         try {
             //Seleccionar alfabeto
             imprimirNombresAlfabetos();
-            HashMap<String, Alfabeto> alfabetos = ctrlDominio.getListaAlfabetos();
+            ArrayList<String> alfabetos = ctrlDominio.getNombresAlfabetos();
             HashMap<String, AsociacionTextos> asociaciones = ctrlDominio.getListaAsociaciones();
             if (!alfabetos.isEmpty()) {
                 System.out.println("Introduce el nombre de un alfabeto de la lista:");

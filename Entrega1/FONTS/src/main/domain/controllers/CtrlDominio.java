@@ -36,12 +36,6 @@ public class CtrlDominio
         ctrlAsociacionTexto = new CtrlAsociacionTexto();
         ctrlTeclado = new CtrlTeclado();
         ctrlPersistencia = new CtrlPersistencia();
-        //cargar alfabetos, textos, asociaciones y teclados de capa de persistencia
-        String currentDirectory = System.getProperty("user.dir");
-        cargaCnjtAlfabetos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAlfabetos"+"\\");
-        cargaCnjtTextos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTextos"+"\\");
-        cargaCnjtAsociaciones(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAsociaciones"+"\\");
-        cargaCnjtTeclados(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTeclados"+"\\");
     }
 
     // ---------- FUNCIONES ALFABETO ----------
@@ -59,9 +53,9 @@ public class CtrlDominio
      * Retorna la lista de alfabetos existentes
      * @return HashMap<String, Alfabeto>: lista de alfabetos existentes ordenada por el nombre de alfabeto que es la clave primaria
      */
-    public HashMap<String, Alfabeto> getListaAlfabetos(){
+    /*public HashMap<String, Alfabeto> getListaAlfabetos(){
         return ctrlAlfabeto.getCjtAlfabetos().getAlfabetos();
-    }
+    }*/
 
     /**
      * Retorna la lista de nombres de los alfabetos existentes

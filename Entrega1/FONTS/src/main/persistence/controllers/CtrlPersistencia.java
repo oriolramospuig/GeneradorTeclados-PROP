@@ -17,6 +17,12 @@ public class CtrlPersistencia {
         gestorTexto = new GestorTexto();
         gestorAsociaciones = new GestorAsociaciones();
         gestorTeclado = new GestorTeclado();
+        //cargar alfabetos, textos, asociaciones y teclados de capa de persistencia
+        String currentDirectory = System.getProperty("user.dir");
+        cargaCnjtAlfabetos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAlfabetos"+"\\");
+        cargaCnjtTextos(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTextos"+"\\");
+        cargaCnjtAsociaciones(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoAsociaciones"+"\\");
+        cargaCnjtTeclados(currentDirectory+"\\Entrega1\\data\\Cache\\"+"conjuntoTeclados"+"\\");
     }
 
     // ---------- FUNCIONES ALFABETOS ----------
