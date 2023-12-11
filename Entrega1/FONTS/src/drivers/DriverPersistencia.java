@@ -215,15 +215,14 @@ public class DriverPersistencia {
      */
     public void imprimirNombresTextos() {
 
-        HashMap<String, Texto> listaTextos = ctrlDominio.getListaTextos();
+        ArrayList<String> listaTextos = ctrlDominio.getNombresTextos();
         if (listaTextos.isEmpty()) {
             System.out.println("No hay textos para mostrar. Debes agregar un texto para hacer este paso");
             return;
         }
         System.out.println("Textos actuales:");
-        for (HashMap.Entry<String, Texto> entry : listaTextos.entrySet()) {
-            String nombre = entry.getKey();
-            System.out.println(nombre);
+        for (int i = 0; i < listaTextos.size(); ++i) {
+            System.out.println(listaTextos.get(i));
         }
     }
 
@@ -232,14 +231,13 @@ public class DriverPersistencia {
      * Imprime por pantalla una lista de las asociaciones de textos que hay en el sistema
      */
     public void imprimirNombresAsociaciones() {
-        HashMap<String, AsociacionTextos> asociaciones = ctrlDominio.getListaAsociaciones();
+        ArrayList<String> asociaciones = ctrlDominio.getNombresAsociaciones();
         if (asociaciones.isEmpty()) {
             System.out.println("No hay asociaciones para mostrar. Debes crear una asociacion para hacer este paso");
             return;
         }
-        for (HashMap.Entry<String, AsociacionTextos> entry : asociaciones.entrySet()) {
-            String nombre = entry.getKey();
-            System.out.println(nombre);
+        for (int i = 0; i < asociaciones.size(); ++i) {
+            System.out.println(asociaciones.get(i));
         }
     }
 
@@ -268,7 +266,7 @@ public class DriverPersistencia {
      */
     public void crearAsociacion(){
         imprimirNombresTextos();
-        HashMap<String, Texto> textos = ctrlDominio.getListaTextos();
+        ArrayList<String> textos = ctrlDominio.getNombresTextos();
         //HashMap<String, AsociacionTextos> asociaciones1 = ctrlDominio.getListaAsociaciones();
         if (!textos.isEmpty()) {
             System.out.println("Introduce el numero de textos que quieres añadir a la nueva ascociacion:");
@@ -317,7 +315,8 @@ public class DriverPersistencia {
             //Seleccionar alfabeto
             imprimirNombresAlfabetos();
             ArrayList<String> alfabetos = ctrlDominio.getNombresAlfabetos();
-            HashMap<String, AsociacionTextos> asociaciones = ctrlDominio.getListaAsociaciones();
+            // HashMap<String, AsociacionTextos> asociaciones = ctrlDominio.getListaAsociaciones();
+            ArrayList<String> asociaciones = ctrlDominio.getNombresAsociaciones();
             if (!alfabetos.isEmpty()) {
                 System.out.println("Introduce el nombre de un alfabeto de la lista:");
                 String nombreA = inOut.leerString();

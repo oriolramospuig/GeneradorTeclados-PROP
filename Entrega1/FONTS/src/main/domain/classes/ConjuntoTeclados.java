@@ -37,14 +37,6 @@ public class ConjuntoTeclados implements Serializable
     }
 
     /**
-     * Retorna el conjunto de teclados existentes
-     * @return HashMap<String, Teclado>: Conjunto de teclados
-     */
-    public HashMap<String, Teclado> getTeclados() {
-        return teclados;
-    }
-
-    /**
      * Retorna el nombre de los teclados del conjunto
      * @return ArrayList<String>: Lista de nombres de los teclados del conjunto
      */
