@@ -80,6 +80,10 @@ public class CtrlAsociacionTexto
         return AsociacionesTextos.getNombresAsociacionesTextos();
     }
 
+    /**
+     * Devuelve la lista de nombres de teclados vinculados a la asociación con nombre nomA.
+     * @param nomAT
+     */
     public ArrayList<String> getTecladosVinculadosAsociacion(String nomAT){
         ArrayList<String> tVinculados = AsociacionesTextos.getAsociacionTextos(nomAT).getTecladosVinculados();
         return tVinculados;
@@ -93,6 +97,10 @@ public class CtrlAsociacionTexto
         AsociacionesTextos.borrarAsociacionTextos(nomAT);
     }
 
+    /**
+     * Convierte un conjunto de asociación de textos en ByteArray con el fin de almacenarlos.
+     * @throws IOException
+     */
     public byte[] asociacionesToByteArray() throws IOException {
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         ObjectOutputStream os = new ObjectOutputStream(bs);
@@ -101,6 +109,11 @@ public class CtrlAsociacionTexto
         return bs.toByteArray();
     }
 
+    /**
+     * Transforma un conjunto de asociación de textos para almacenar en un array de bytes al formato original de AsaociacionTextos.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static void byteArrayToAsociaciones(byte[] bytes) throws IOException, ClassNotFoundException {
         ByteArrayInputStream bs = new ByteArrayInputStream(bytes);
         ObjectInputStream is = new ObjectInputStream(bs);

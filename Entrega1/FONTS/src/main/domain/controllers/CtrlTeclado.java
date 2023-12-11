@@ -98,12 +98,28 @@ public class CtrlTeclado
         teclados.agregarTeclado(nomT, teclado);
     }
 
+    /**
+     * Obtiene el nombre del alfabeto vinculado a un teclado específico.
+     * @param nomT
+     * @return Nombre del alfabeto vinculado a un teclado específico
+     */
     public String TecladoTieneAlfabetoVinculado(String nomT){
         return teclados.getTeclado(nomT).getAlfabetoVinculado();
     }
+
+    /**
+     * Obtiene el nombre de la asociación de textos vinculada a un teclado específico.
+     * @param nomA
+     * @return Nombre de la asociación de textos vinculada a un teclado específico
+     */
     public String TecladoTieneAsociacionVinculada(String nomA){
         return teclados.getTeclado(nomA).getAsociacionTextosVinculado();
     }
+
+    /**
+     * Borra Teclado con nombre nomT.
+     * @param nomT
+     */
     public void borrarTeclado(String nomT) {
         //String alfabetoVinculado = teclados.getTeclado(nomT).getAlfabetoVinculado();
         //if (!alfabetoVinculado.isEmpty()) alfabetos.borrarAlfabeto(alfabetoVinculado);
@@ -113,6 +129,11 @@ public class CtrlTeclado
         //if (!asociacionTextosVinculado.isEmpty()) asociacionesTextos.borrarAsociacionTextos(asociacionTextosVinculado);
     }
 
+    /**
+     * Convierte un conjunto de teclados en ByteArray con el fin de almacenarlos.
+     * @return Conjunto de teclados convertidos
+     * @throws IOException
+     */
     public byte[] tecladosToByteArray() throws IOException {
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         ObjectOutputStream os = new ObjectOutputStream(bs);
@@ -121,6 +142,12 @@ public class CtrlTeclado
         return bs.toByteArray();
     }
 
+    /**
+     * Transforma un conjunto de teclados almacenar en un array de bytes al formato original de Teclado.
+     * @param bytes
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static void byteArrayToTeclados(byte[] bytes) throws IOException, ClassNotFoundException {
         ByteArrayInputStream bs = new ByteArrayInputStream(bytes);
         ObjectInputStream is = new ObjectInputStream(bs);

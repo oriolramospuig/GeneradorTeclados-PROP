@@ -163,6 +163,11 @@ public class CtrlTexto
         CjtTextos.borrarTexto(nomT);
     }
 
+    /**
+     * Convierte un conjunto de textos en ByteArray con el fin de almacenarlos.
+     * @return Conjunto de textos convertidos
+     * @throws IOException
+     */
     public byte[] textosToByteArray() throws IOException {
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         ObjectOutputStream os = new ObjectOutputStream(bs);
@@ -171,6 +176,12 @@ public class CtrlTexto
         return bs.toByteArray();
     }
 
+    /**
+     * Transforma un conjunto de textos almacenar en un array de bytes al formato original de Texto.
+     * @param bytes
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static void byteArrayToTextos(byte[] bytes) throws IOException, ClassNotFoundException {
         ByteArrayInputStream bs = new ByteArrayInputStream(bytes);
         ObjectInputStream is = new ObjectInputStream(bs);

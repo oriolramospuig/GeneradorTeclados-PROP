@@ -372,6 +372,10 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA ALFABETOS ----------
+
+    /**
+     * Almacena el conjunto de alfabetos en una localización específica.
+     */
     public void guardaCnjtAlfabetos() {
         String nomDoc = "conjuntoAlfabetos";
         //if(nomDoc.endsWith(".prop")) { nomDoc = nomDoc+".prop"; }
@@ -387,6 +391,10 @@ public class CtrlDominio
         }
     }
 
+    /**
+     * Retorna el conjunto de alfabetos que se encuentra en path.
+     * @param path
+     */
     public void cargaCnjtAlfabetos(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtAlfabetos(path);
@@ -398,6 +406,10 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA TEXTOS ----------
+
+    /**
+     * Guarda el conjunto de textos en una ubicación particular.
+     */
     public void guardaCnjtTextos() {
         String nomDoc = "conjuntoTextos";
         String currentDirectory = System.getProperty("user.dir");
@@ -412,6 +424,10 @@ public class CtrlDominio
         }
     }
 
+    /**
+     * Devuelve el conjunto de textos que se halla en la ruta especificada.
+     * @param path
+     */
     public void cargaCnjtTextos(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtTextos(path);
@@ -423,6 +439,10 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA ASOCIACIONES TEXTOS ----------
+
+    /**
+     * Guarda en un lugar determinado el conjunto de Asociaciones de Textos.
+     */
     public void guardaCnjtAsociaciones() {
         String nomDoc = "conjuntoAsociaciones";
         String currentDirectory = System.getProperty("user.dir");
@@ -437,6 +457,10 @@ public class CtrlDominio
         }
     }
 
+    /**
+     * Entrega el conjunto de asociaciones de textos ubicado en la ruta indicada.
+     * @param path
+     */
     public void cargaCnjtAsociaciones(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtAsociaciones(path);
@@ -448,6 +472,10 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA TECLADOS ----------
+
+    /**
+     * Deposita el conjunto de Teclados en una ubicación designada.
+     */
     public void guardaCnjtTeclados() {
         String nomDoc = "conjuntoTeclados";
         String currentDirectory = System.getProperty("user.dir");
@@ -462,6 +490,10 @@ public class CtrlDominio
         }
     }
 
+    /**
+     * Recupera el conjunto de teclados presente en la ruta especificada.
+     * @param path
+     */
     public void cargaCnjtTeclados(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtTeclados(path);
