@@ -172,7 +172,7 @@ public class VistaTextoA extends JFrame {
                 String nombreTexto = areanomTxtA.getText().trim();
                 String contenidoTexto = areaContenidoTxtA.getText();
                 String pathTexto = areaPathTxtA.getText();
-                String path = System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Textos";
+                String path = System.getProperty("user.dir") + "/Entrega1/data/Textos";
 
                 if (nombreTexto.isEmpty()) {
                     JOptionPane.showMessageDialog(VistaTextoA.this, "Error: No Nombre", "Error", JOptionPane.ERROR_MESSAGE);

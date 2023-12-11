@@ -17,7 +17,7 @@ public class VistaAlfabetoB {
         chooser.setDialogTitle("Selecciona fichero a borrar");
         chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
         /*Revisar el tema del path, depende de cómo se ejecute no hará falta subgrup-prop14.3*/
-        chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Alfabetos"));
+        chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/Entrega1/data/Alfabetos"));
         int returnValue = chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File archivo = chooser.getSelectedFile();

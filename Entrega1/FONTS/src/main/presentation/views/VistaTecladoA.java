@@ -123,7 +123,7 @@ public class VistaTecladoA extends JFrame {
                 String nombreTeclado = areanomTA.getText().trim();
                 String nombreAlfabeto = areaContenidoAlfabetoTA.getText();
                 String nombreAsociacion = areaContenidoAsociacionTA.getText();
-                String path = System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Teclados";
+                String path = System.getProperty("user.dir") + "/Entrega1/data/Teclados";
 
                 // Verificar que el nombre no esté vacío
                 if (nombreTeclado.isEmpty()) {

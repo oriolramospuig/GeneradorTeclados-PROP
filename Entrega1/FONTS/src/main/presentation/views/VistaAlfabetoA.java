@@ -99,7 +99,7 @@ public class VistaAlfabetoA extends JFrame {
                 String nombreAlfabeto = areanomAA.getText().trim();
                 String contenidoAlfabeto = areaContenidoAA.getText();
                 String pathArchivo = areaPathAA.getText();
-                String path = System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Alfabetos";
+                String path = System.getProperty("user.dir") + "/Entrega1/data/Alfabetos";
 
                 // Verificar que el nombre no esté vacío
                 if (nombreAlfabeto.isEmpty()) {
