@@ -85,7 +85,9 @@ public class InOut {
                 throw new IllegalArgumentException("El contenido del archivo no es válido.");
             }
             for (char c : line.toCharArray()) {
-                caracteres.add(c);
+                if (c != ' ') { // Asume que los caracteres están separados por espacios, ignora los espacios
+                    caracteres.add(c);
+                }
             }
         }
         return caracteres;
@@ -149,13 +151,13 @@ public class InOut {
         if (entrada == null || entrada.isEmpty()) {
             return false; // Entrada vacía no es válida.
         }
-        /*String[] partes = entrada.split(" ");
+        String[] partes = entrada.split(" ");
         for (String parte : partes) {
             // Verifica que cada parte sea un solo carácter.
             if (parte.length() != 1) {
                 return false;
             }
-        }*/
+        }
         return true; // La entrada es válida si todos los segmentos contienen solo un carácter.
     }
 
