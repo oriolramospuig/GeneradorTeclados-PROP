@@ -18,7 +18,9 @@ public class VistaTecladoA extends JFrame {
     /** Título de media ventana superior */
     private final JLabel tituloVistaTA = new JLabel("Agregar teclado");
     /** Botón para agregar un teclado */
-    private final JButton bAgregarTeclado = new JButton("Agregar teclado");
+    private final JButton bAgregarTecladoBB = new JButton("Agregar teclado B&B");
+    /** Botón para agregar un teclado */
+    private final JButton bAgregarTecladoSA = new JButton("Agregar teclado SA");
     /** Botón para agregar un teclado */
     private final JButton bSeleccionarAlfabeto = new JButton("Selecciona alfabeto");
     /** Botón para agregar un teclado */
@@ -41,6 +43,10 @@ public class VistaTecladoA extends JFrame {
     private final JLabel txtNombreAsociacionTA = new JLabel("ASOCIACIÓN:");
     /** Área de texto para introducir el contenido del teclado que se quiere crear */
     private final JTextArea areaContenidoAsociacionTA = new JTextArea();
+    /** Texto explicando el botón de Branch and Bound*/
+    private final JLabel txtbotonBB = new JLabel("Para generar el teclado mediante Branch&Bound");
+    /** Texto explicando el botón de SA*/
+    private final JLabel txtbotonSA = new JLabel("Para generar el teclado mediante Simulated Annealing");
 
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere crear un teclado sin nombre */
@@ -89,9 +95,18 @@ public class VistaTecladoA extends JFrame {
         bSeleccionaAsociacion.setBounds(660, 280, 175, 20);
         add(bSeleccionaAsociacion);
 
+        txtbotonBB.setBounds(650,360, 300, 20);
+        add(txtbotonBB);
+
+        txtbotonSA.setBounds(650,420, 320, 20);
+        add(txtbotonSA);
+
         // Botón agregar teclado
-        bAgregarTeclado.setBounds(700, 400, 200, 20);
-        add(bAgregarTeclado);
+        bAgregarTecladoBB.setBounds(700, 390, 200, 20);
+        add(bAgregarTecladoBB);
+
+        bAgregarTecladoSA.setBounds(700, 450, 200, 20);
+        add(bAgregarTecladoSA);
 
         // Botón salir para ir a la pantalla principal
         bsalir.setBounds(800, 500, 100, 20);
@@ -102,7 +117,7 @@ public class VistaTecladoA extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        ActionListener lAgregar = new ActionListener() {
+        ActionListener lAgregarBB = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nombreTeclado = areanomTA.getText().trim();
@@ -126,6 +141,45 @@ public class VistaTecladoA extends JFrame {
                     return;
                 }
 
+                //enviar BB
+                //boolean agregado = CtrlPresentacion.crearTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, path);
+                boolean agregado = false;
+                // Mensaje de éxito o error
+                if (agregado) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    areanomTA.setText("");
+                    areaContenidoAlfabetoTA.setText("");
+                    areaContenidoAsociacionTA.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El nombre " + nombreTeclado + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        };
+
+        ActionListener lAgregarSA = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombreTeclado = areanomTA.getText().trim();
+                String nombreAlfabeto = areaContenidoAlfabetoTA.getText();
+                String nombreAsociacion = areaContenidoAsociacionTA.getText();
+                String path = System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Teclados";
+
+                // Verificar que el nombre no esté vacío
+                if (nombreTeclado.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: No Nombre", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                // Verificar que haya contenido proporcionado
+                if (nombreAlfabeto.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Debe seleccionar un alfabeto con el que crear el teclado", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if (nombreAsociacion.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Debe seleccionar una asociación con la que crear el teclado", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                // enviar SA
                 //boolean agregado = CtrlPresentacion.crearTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, path);
                 boolean agregado = false;
                 // Mensaje de éxito o error
@@ -182,7 +236,8 @@ public class VistaTecladoA extends JFrame {
 
         bSeleccionarAlfabeto.addActionListener(lSeleccionarAlfabeto);
         bSeleccionaAsociacion.addActionListener(lSeleccionarAsociacion);
-        bAgregarTeclado.addActionListener(lAgregar);
+        bAgregarTecladoBB.addActionListener(lAgregarBB);
+        bAgregarTecladoSA.addActionListener(lAgregarSA);
         bsalir.addActionListener(lSalir);
 
     }
