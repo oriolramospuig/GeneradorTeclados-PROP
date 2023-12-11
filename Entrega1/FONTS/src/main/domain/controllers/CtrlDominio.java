@@ -59,9 +59,9 @@ public class CtrlDominio
      * Retorna la lista de alfabetos existentes
      * @return HashMap<String, Alfabeto>: lista de alfabetos existentes ordenada por el nombre de alfabeto que es la clave primaria
      */
-    /*public HashMap<String, Alfabeto> getListaAlfabetos(){
+    public HashMap<String, Alfabeto> getListaAlfabetos(){
         return ctrlAlfabeto.getCjtAlfabetos().getAlfabetos();
-    }*/
+    }
 
     /**
      * Retorna la lista de nombres de los alfabetos existentes
@@ -150,9 +150,9 @@ public class CtrlDominio
      * Retorna la lista de textos existentes
      * @return HashMap<String, Texto>: lista de textos existentes ordenados por el nombre que es su clave primaria
      */
-    /*public HashMap<String, Texto> getListaTextos(){
+    public HashMap<String, Texto> getListaTextos(){
         return ctrlTexto.getTextos().getTextos();
-    }*/
+    }
     /**
      * Retorna el contenido del texto con nombre nomT
      * @param nomT el nombre del texto a buscar
@@ -231,9 +231,9 @@ public class CtrlDominio
      * Retorna la lista de asociaciones existentes
      * @return HashMap<String, AsociacionTextos>: lista de asociaciones ordenada por nombres que son las claves primarias de las asociaciones
      */
-    /*public HashMap<String, AsociacionTextos> getListaAsociaciones(){
+    public HashMap<String, AsociacionTextos> getListaAsociaciones(){
         return ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionesTextos();
-    }*/
+    }
 
     /**
      * Retorna si existe la asociacion con nombre nomAT

@@ -40,9 +40,9 @@ public class ConjuntoTextos implements Serializable
      * Devuelve el conjunto de textos existentes
      * @return HashMap<String, Texto>: Conjunto de textos
      */
-    /*public HashMap<String, Texto> getTextos() {
+    public HashMap<String, Texto> getTextos() {
         return textos;
-    }*/
+    }
 
     /**
      * Devuelve el nombre de los textos del conjunto textos
