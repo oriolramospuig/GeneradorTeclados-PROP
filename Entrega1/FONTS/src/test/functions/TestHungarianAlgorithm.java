@@ -30,6 +30,42 @@ public class TestHungarianAlgorithm {
         assertEquals(128, leastCost);
     }
 
+    @Test
+    public void testHungarian2() {
+        //HungarianAlgorithm hungarianAlgorithm = new HungarianAlgorithm();
+        int[][] c1c2 = {
+                {40, 26, 7, 33},
+                {23, 37, 15, 21},
+                {74, 72, 12, 23},
+                {37, 21, 65, 91}
+        };
+        //int result = hungarianAlgorithm.Hungarian(c1c2);
+        HungarianAlgorithm hungarian = new HungarianAlgorithm(c1c2.length);
+
+        // Llamas al método para obtener el costo mínimo de asignación
+        int leastCost = hungarian.hungarianLeastCost(c1c2);
+        assertEquals(74, leastCost);
+    }
+
+    @Test
+    public void testHungarian3() {
+        //HungarianAlgorithm hungarianAlgorithm = new HungarianAlgorithm();
+        int[][] c1c2 = {
+                {13, 6, 50, 35, 92, 76},
+                {48, 24, 68, 30, 13, 30},
+                {49, 79, 56, 88, 40, 43},
+                {27, 32, 69, 40, 4, 82},
+                {19, 53, 56, 97, 69, 55},
+                {33, 86, 3, 62, 2, 62}
+        };
+        //int result = hungarianAlgorithm.Hungarian(c1c2);
+        HungarianAlgorithm hungarian = new HungarianAlgorithm(c1c2.length);
+
+        // Llamas al método para obtener el costo mínimo de asignación
+        int leastCost = hungarian.hungarianLeastCost(c1c2);
+        assertEquals(105, leastCost);
+    }
+
 /*
     @Test
     public void testNlineas() {

@@ -15,7 +15,7 @@ import static java.lang.Math.sqrt;
 public class QAPTester {
 
     public static void main(String[] args) {
-        String nombreTest = "sko64.dat";
+        String nombreTest = "sko100a.dat";
         //String path = "C:\\Users\\34696\\OneDrive\\Descargas\\VARIS\\";
         //String pathInput = path + "qapdata\\rou12.dat";
         //String pathSolutions = path + "qapsoln";

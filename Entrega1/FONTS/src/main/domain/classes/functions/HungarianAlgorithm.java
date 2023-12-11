@@ -4,19 +4,19 @@ import java.util.Arrays;
 
 public class HungarianAlgorithm {
 
-    private static final double INF = 1e8;
+    private static final double INF = 1e8; // Un valor muy grande para representar 'infinito'
 
-    private int N;
-    private int maxMatch;
-    private int[] priorityKeys;
-    private int[] priorityPositions;
-    private int[] keyToPosition;
-    private int[] positionToKey;
-    private boolean[] S;
-    private boolean[] T;
-    private int[] minCostToAssign;
-    private int[] keyCausingMinCost;
-    private int[] previousKeyInTree;
+    private int N; // El número de elementos (teclas o posiciones)
+    private int maxMatch; // El máximo número de coincidencias encontradas
+    private int[] priorityKeys; // Prioridades asignadas a las teclas
+    private int[] priorityPositions; // Prioridades asignadas a las posiciones
+    private int[] keyToPosition; // Asignaciones de teclas a posiciones
+    private int[] positionToKey; // Asignaciones de posiciones a teclas
+    private boolean[] S; // Conjunto de teclas seleccionadas
+    private boolean[] T; // Conjunto de posiciones seleccionadas
+    private int[] minCostToAssign; // Costo mínimo para asignar una tecla a una posición
+    private int[] keyCausingMinCost; // Tecla que causa el costo mínimo
+    private int[] previousKeyInTree; // Tecla previa en el árbol de asignación
 
     /**
      * Constructor que inicializa el algoritmo con un tamaño específico.
