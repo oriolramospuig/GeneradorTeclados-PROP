@@ -4,6 +4,7 @@ import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class VistaAlfabetoA extends JFrame {
 
@@ -124,7 +125,11 @@ public class VistaAlfabetoA extends JFrame {
                     }
                 }
                 else {
-                    boolean agregado = CtrlPresentacion.agregarAlfabetoManual(nombreAlfabeto, contenidoAlfabeto, path);
+                    // Convertimos la entrada de string en una lista de characters
+                    ArrayList<Character> caracteres = new ArrayList<>();
+                    for (char c : contenidoAlfabeto.toCharArray()) caracteres.add(c);
+
+                    boolean agregado = CtrlPresentacion.agregarAlfabetoManual(nombreAlfabeto, caracteres, path);
                     // Mensaje de éxito o error
                     if (agregado) {
                         JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);

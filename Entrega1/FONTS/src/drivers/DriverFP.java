@@ -36,7 +36,7 @@ public class DriverFP {
     public void agregarAlfabetoPorTerminal() {
         System.out.println("Introduce el nombre del alfabeto:");
         String nombreA = inOut.leerString();
-        System.out.println("Introduce los caracteres del alfabeto separados por espacio (ejemplo: a b c ...):");
+        System.out.println("Introduce los caracteres del alfabeto todos juntos (ejemplo: abcde ...):");
         String entradaCaracteres = inOut.leerString();
         if (inOut.alfabetoValido(entradaCaracteres)) {
             ArrayList<Character> caracteres = inOut.leerCaracteresDeTerminal(entradaCaracteres);
@@ -92,8 +92,8 @@ public class DriverFP {
      * No devuelve nada.
      * Imprime por pantalla el contenido del teclado que se desea consultar, si existe
      */
-    /*public void consultarContenidoAlfabeto(){
-        imprimirNombresAlfabetos();
+    public void consultarContenidoAlfabeto(){
+        //imprimirNombresAlfabetos();
         System.out.println("Introduce el nombre del alfabeto que quieres consultar:");
         String nombreA = inOut.leerString();
         ArrayList<Character> Letras = ctrlDominio.consultarContenidoAlfabeto(nombreA);
@@ -105,7 +105,7 @@ public class DriverFP {
             Letras.forEach(System.out::print);
             System.out.println();
         }
-    }*/
+    }
 
 
     // ---------- FUNCIONES ASOCIACIONES TEXTOS ----------
@@ -455,7 +455,7 @@ public class DriverFP {
                 }
                 case "11":
                 case "ConsultarAlfabeto": {
-                    //driver.consultarContenidoAlfabeto();
+                    driver.consultarContenidoAlfabeto();
                     break;
                 }
                 case "12":

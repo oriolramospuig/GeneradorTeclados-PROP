@@ -104,13 +104,12 @@ public class CtrlPresentacion {
     /**
      * Llama a la función agregarAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a agregar
-     * @param entradaCaracteres es el contenido del alfabeto
+     * @param entrada la lista de caracteres que forman el contenido del alfabeto
      * @param path path donde se crea y guarda el alfabeto
      */
-    public static boolean agregarAlfabetoManual(String nomA, String entradaCaracteres, String path) {
-        ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
+    public static boolean agregarAlfabetoManual(String nomA, ArrayList<Character> entrada, String path) {
+        //ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
         boolean agregado = cd.agregarAlfabeto(nomA, entrada);
-
         if (agregado) {
             try {
                 File archivo = new File(path, nomA + ".txt");
@@ -135,11 +134,12 @@ public class CtrlPresentacion {
      * @param nomA es el nombre del alfabeto a agregar
      * @param entradaCaracteres es el contenido del alfabeto
      */
-    public static boolean agregarAlfabetoManual(String nomA, String entradaCaracteres) {
+    //Mirar si cal aquesta funció
+    /*public static boolean agregarAlfabetoManual(String nomA, String entradaCaracteres) {
         ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
         boolean agregado = cd.agregarAlfabeto(nomA, entrada);
         return agregado;
-    }
+    }*/
     /**
      * Llama a la función agregarAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a agregar
