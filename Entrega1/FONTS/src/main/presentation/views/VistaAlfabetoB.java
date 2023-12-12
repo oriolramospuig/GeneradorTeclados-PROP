@@ -21,6 +21,7 @@ public class VistaAlfabetoB extends JFrame{
     private final JButton bsalir = new JButton("Atrás");
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
     private final JLabel txtDesplegableAB = new JLabel("LISTA NOMBRES:");
+    /** Desplegable con los nombres de los alfabetos*/
     private JComboBox<String> nombresAB = new JComboBox<>();
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
     private final JLabel txtNombreAB = new JLabel("NOMBRE:");
