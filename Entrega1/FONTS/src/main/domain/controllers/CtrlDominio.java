@@ -220,15 +220,17 @@ public class CtrlDominio
     public boolean existeasociacion(String nomAT){
         return ctrlAsociacionTexto.getCjtAsociaciones().existeAsociaciondeTextos(nomAT);
     }
-
     /**
-     * Retorna si existe la asociacion con nombre nomAT
-     * @param nomAT nombre de la asociacion a buscar
-     * @return Boolean: true si se ha encontrado la asociacion, false si no se ha encontrado
+     * Retorna el contenido de l asociación con nomAT
+     * @param nomAT el nombre de la asociación a buscar
+     * @return ArrayList<String>: una lista de los nombres de los textos que forman la asociación con nombre nomAT
      */
-    /*public ArrayList<String> consultarAsociacionTextos(String nomAT){
-        return ctrlAsociacionTexto.getCjtAsociaciones().existeAsociaciondeTextos(nomAT);
-    }*/
+    public ArrayList<String> consultarCjtTextosAsociacion(String nomAT){
+        if(existeasociacion(nomAT)) {
+            return ctrlAsociacionTexto.getCjtTextos(nomAT);
+        }
+        return null;
+    }
 
     /**
      * Retorna si la asociación con nombre nomAT ha sido borrada correctamente

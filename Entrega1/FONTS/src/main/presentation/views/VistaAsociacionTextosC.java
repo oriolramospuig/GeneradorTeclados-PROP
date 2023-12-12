@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class VistaAsociacionTextosC extends JFrame {
     /** Finestra de selecció de l'arxiu que es vol carregar al nostre full de càlcul */
@@ -19,81 +20,70 @@ public class VistaAsociacionTextosC extends JFrame {
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
     /** Título de media ventana superior */
-    private final JLabel tituloVistaATC = new JLabel("Consultar asociación de textos");
-    /** Título de media ventana */
-    private final JLabel tituloVistaATC2 = new JLabel("Consultar lista de asociaciones de textos");
-    /** Botón para consultar la lista de asociaciones */
-    private final JButton bConsultarListaAsociaciones = new JButton("Consultar lista de asociaciones de textos");
+    private final JLabel tituloVistaATC = new JLabel("Consultar asociacion");
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion */
+    private final JLabel txtDesplegableATC = new JLabel("LISTA NOMBRES:");
+    /** Desplegable con los nombres de la asociacion*/
+    private JComboBox<String> nombresATC = new JComboBox<>();
     /** Botó de tornar a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
 
 
     //TEXTOS Y AREAS DE TEXTO
     //VENTANA SUPERIOR
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociación a consultar*/
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
     private final JLabel txtNombreATC = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre de la asociación que se quiere consultar */
+    /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
     private final JTextArea areanomATC = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociación a consultar*/
+
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
     private final JLabel txtContenidoATC = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el nombre de la asociación que se quiere consultar */
+    /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
     private final JTextArea areacontenidoATC = new JTextArea();
 
     //MENSAJES DE ERROR
-    /** Pantalla de error que aparece cuando se quiere consultar/modificar una asociación sin nombre */
+    /** Pantalla de error que aparece cuando se quiere consultar/modificar una asociacion sin nombre */
     private final JFrame Nomframe = new JFrame ("JFrame");
 
-
-
     public VistaAsociacionTextosC() {
-        // Posar els formats que ens facin falta
-        chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
-        chooser.setDialogTitle("Selecciona fitxer");
-        chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/Entrega1/data/Asociaciones"));
-        int returnValue = chooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File arxiu = chooser.getSelectedFile();
-            if (arxiu.getName().endsWith(".txt")) {
-                imprimirDatos(arxiu);
-                // consultarFichero(arxiu.getName().substring(0, arxiu.getName().length() - 4), true);
-            }
-        } else if (returnValue == JFileChooser.CANCEL_OPTION) {
-            CtrlPresentacion.iniPresentacion();
-        }
-    }
-
-    public void imprimirDatos(File arxiu) {
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);
         //setResizable(true);
+        //setTitle("Funcionalidades alfabeto);
+        ArrayList<String> nombres = CtrlPresentacion.getNombresAsociaciones();
+        nombresATC = new JComboBox<>();
+        nombresATC.addItem("");
+        for (String nombre : nombres) {
+            nombresATC.addItem(nombre);
+        }
 
         // Título ventana superior
-        tituloVistaATC.setBounds(10, 5, 200, 30);
+        tituloVistaATC.setBounds(10, 5, 120, 30);
         add(tituloVistaATC);
 
-        // Título media ventana
-        tituloVistaATC2.setBounds(10, 400, 200, 30);
-        add(tituloVistaATC2);
+        txtDesplegableATC.setBounds(200, 120, 200, 20);
+        add(txtDesplegableATC);
+
+        nombresATC.setBounds(400, 120, 200, 20);
+        add(nombresATC);
 
         //VENTANA SUPERIOR
-        txtNombreATC.setBounds(200, 140, 200, 20);
+        // Texto Nombre
+        txtNombreATC.setBounds(200, 180, 200, 20);
         add(txtNombreATC);
+
         // Área texto Nombre
         areanomATC.setEditable(false);
-        areanomATC.setBounds(400,140, 200,20);
+        areanomATC.setBounds(400,180, 200,20);
         add(areanomATC);
 
-        txtContenidoATC.setBounds(200, 180, 200, 20);
+        txtContenidoATC.setBounds(200, 220, 200, 20);
         add(txtContenidoATC);
 
         areacontenidoATC.setEditable(false); // Opcional, si no quieres que se pueda editar el contenido
         JScrollPane scrollPane = new JScrollPane(areacontenidoATC); // Para agregar scroll al área de texto
-        scrollPane.setBounds(400, 180, 400, 150); // Ajusta las dimensiones según tus necesidades
+        scrollPane.setBounds(400, 220, 400, 150); // Ajusta las dimensiones según tus necesidades
         add(scrollPane);
-
-        // Botón consultar lista de Alfabetos
-        bConsultarListaAsociaciones.setBounds(700, 400, 200, 20);
-        add(bConsultarListaAsociaciones);
 
         // Botón salir para ir a la pantalla principal
         bsalir.setBounds(800, 500, 100, 20);
@@ -104,13 +94,23 @@ public class VistaAsociacionTextosC extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        areanomATC.setText(arxiu.getName().substring(0, arxiu.getName().length() - 4));
-        mostrarContenidoArchivo(arxiu);
-
-        ActionListener lConsultarListaA = new ActionListener() {
+        ActionListener lElementoSeleccionado = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                String selectedName = (String) nombresATC.getSelectedItem();
+                ArrayList<String> contenido = CtrlPresentacion.consultarCjtTextosAsociacion(selectedName);
+                if (selectedName != null && !selectedName.isEmpty()) {
+                    areanomATC.setText(selectedName);
+                    // Convertir ArrayList<Character> a String
+                    StringBuilder contenidoStr = new StringBuilder();
+                    for (String c : contenido) {
+                        contenidoStr.append(c).append("\n");
+                    }
+                    areacontenidoATC.setText(contenidoStr.toString());
+                } else {
+                    areanomATC.setText("");
+                    areacontenidoATC.setText("");
+                }
             }
         };
 
@@ -122,20 +122,7 @@ public class VistaAsociacionTextosC extends JFrame {
             }
         };
 
-        bConsultarListaAsociaciones.addActionListener(lConsultarListaA);
+        nombresATC.addActionListener(lElementoSeleccionado);
         bsalir.addActionListener(lSalir);
-
-    }
-
-    private void mostrarContenidoArchivo(File archivo) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
-            areacontenidoATC.setText("");
-            String linea;
-            while ((linea = reader.readLine()) != null) {
-                areacontenidoATC.append(linea + "\n");
-            }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error al leer el archivo", "Error", JOptionPane.ERROR_MESSAGE);
-        }
     }
 }
