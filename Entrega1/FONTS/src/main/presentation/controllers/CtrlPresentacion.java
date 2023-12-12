@@ -345,6 +345,9 @@ public class CtrlPresentacion {
             ArrayList<String > cjtTextosAsociacion = cd.consultarCjtTextosAsociacion(nomAT);
             return cjtTextosAsociacion;
     }
+    public static void borrarTextoAsociacion (String nomAT, String nomTxt) {
+        cd.borrarTextoAsociacion(nomAT, nomTxt);
+    }
     /**
      * Llama a la función borrarAsociacionTextos de CtrlDominio
      * @param nomAT es el nombre de la asociación a borrar

@@ -91,6 +91,7 @@ public class CtrlAsociacionTexto
         ArrayList<String> tVinculados = AsociacionesTextos.getAsociacionTextos(nomAT).getTecladosVinculados();
         return tVinculados;
     }
+
     /**
      * No retorna
      * @param nomAT el nombre de la asociación a borrar

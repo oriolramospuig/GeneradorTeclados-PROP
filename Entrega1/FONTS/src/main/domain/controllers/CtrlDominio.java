@@ -247,6 +247,12 @@ public class CtrlDominio
         return null;
     }
 
+    public void borrarTextoAsociacion (String nomAT, String nomTxt){
+        ctrlTexto.borrarAsociacionVinculada(nomTxt,nomAT);
+        CtrlAsociacionTexto.borrarTextoAsociacion(nomAT, nomTxt);
+
+    }
+
     /**
      * Retorna si la asociación con nombre nomAT ha sido borrada correctamente
      * @param nomAT el nombre del texto a borrar

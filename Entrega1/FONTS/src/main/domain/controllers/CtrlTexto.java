@@ -52,6 +52,10 @@ public class CtrlTexto
         CjtTextos.getTexto(nomT).agregarAsociacionesVinculadas(nomAT);
     }
 
+    public void borrarAsociacionVinculada(String nomT, String nomAT){
+        CjtTextos.getTexto(nomT).borrarAsociacionesVinculadas(nomAT);
+    }
+
     // ---------- FUNCIONES CONJUNTOTEXTOS ----------
     /**
      * Obtiene un objeto Texto dado su nombre
