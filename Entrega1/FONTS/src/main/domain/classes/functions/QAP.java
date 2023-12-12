@@ -19,37 +19,6 @@ public class QAP {
 
 
     /**
-     * Constructor de la clase QAP (Quadratic Assignment Problem).
-     *
-     * @param nf                Número de filas.
-     * @param nc                Número de columnas.
-     * @param matrizFrecuencias Matriz de frecuencias.
-     * @param matrizDistancias  Matriz de distancias.
-     */
-    public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias) {
-        this.filas = nf;
-        this.columnas = nc;
-        this.n = nf*nc;
-
-        this.matrizFrecuencias = matrizFrecuencias;
-        this.matrizDistancias = matrizDistancias;
-
-        List<Integer> ind = new ArrayList<>();
-        for (int i = 0; i < nf*nc; ++i) {
-            ind.add(i);
-        }
-
-        int [][] indices = calcularMejorAsignacionAleatoria(ind, 100);
-        this.teclado = indices;
-        this.sol = new ArrayList<>();
-        this.glBound = calculoPuntuacion(indices);
-        imprimirTeclado();
-        System.out.println("Puntuacion inicial = " + glBound);
-
-        calculo();
-    }
-
-    /**
      * Obtiene el número de filas de la instancia actual.
      *
      * @return El número de filas.
@@ -110,6 +79,37 @@ public class QAP {
         return Arrays.stream(this.teclado)
                 .map(int[]::clone)
                 .toArray(int[][]::new);
+    }
+
+    /**
+     * Constructor de la clase QAP (Quadratic Assignment Problem).
+     *
+     * @param nf                Número de filas.
+     * @param nc                Número de columnas.
+     * @param matrizFrecuencias Matriz de frecuencias.
+     * @param matrizDistancias  Matriz de distancias.
+     */
+    public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias) {
+        this.filas = nf;
+        this.columnas = nc;
+        this.n = nf*nc;
+
+        this.matrizFrecuencias = matrizFrecuencias;
+        this.matrizDistancias = matrizDistancias;
+
+        List<Integer> ind = new ArrayList<>();
+        for (int i = 0; i < nf*nc; ++i) {
+            ind.add(i);
+        }
+
+        int [][] indices = calcularMejorAsignacionAleatoria(ind, 100);
+        this.teclado = indices;
+        this.sol = new ArrayList<>();
+        this.glBound = calculoPuntuacion(indices);
+        imprimirTeclado();
+        System.out.println("Puntuacion inicial = " + glBound);
+
+        calculo();
     }
 
     /**
