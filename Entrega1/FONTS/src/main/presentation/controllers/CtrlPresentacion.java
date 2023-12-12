@@ -324,6 +324,14 @@ public class CtrlPresentacion {
         return existe;
     }
     /**
+     * Llama a la función consultarContenidoAsociacion de CtrlDominio
+     * @param nomAT es el nombre de la asociación a consultar
+     */
+    public static ArrayList<String> consultarCjtTextosAsociacion(String nomAT) {
+            ArrayList<String > cjtTextosAsociacion = cd.consultarCjtTextosAsociacion(nomAT);
+            return cjtTextosAsociacion;
+    }
+    /**
      * Llama a la función borrarAsociacionTextos de CtrlDominio
      * @param nomAT es el nombre de la asociación a borrar
      */

@@ -42,6 +42,9 @@ public class CtrlAsociacionTexto
     public void agregarTextoAsociacion (String nomA, Texto texto){
         AsociacionesTextos.getAsociacionTextos(nomA).agregarTexto(texto);
     }
+    public ArrayList<String> getCjtTextos(String nomAT){
+        return AsociacionesTextos.getAsociacionTextos(nomAT).getTextosAsociaciados();
+    }
     public void borrarTecladoVinculado(String atvinculada,String tvinculado){
         AsociacionesTextos.getAsociacionTextos(atvinculada).borrarTecladoVinculado(tvinculado);
     }
