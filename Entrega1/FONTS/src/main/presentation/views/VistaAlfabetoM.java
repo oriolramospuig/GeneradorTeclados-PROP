@@ -19,8 +19,6 @@ import java.util.ArrayList;
  * @author Marc Clapés Marana (marc.clapes.marana@estudiantat.upc.edu)
  */
 public class VistaAlfabetoM extends JFrame{
-    /** Finestra de selecció de l'arxiu que es vol carregar al nostre full de càlcul */
-    JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
     //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
