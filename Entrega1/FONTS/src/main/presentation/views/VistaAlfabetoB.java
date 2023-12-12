@@ -7,78 +7,110 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.event.*;
 import java.io.File;
+import java.util.ArrayList;
 
-public class VistaAlfabetoB {
+public class VistaAlfabetoB extends JFrame{
     private JFrame frame = new JFrame();
+    /** Panel donde se incluyen los elementos de la ventana */
+    private final JPanel lamina = new JPanel();
+    /** Título de media ventana */
+    private final JLabel tituloVistaAB = new JLabel("Borrar alfabeto");
+    /** Botón para agregar un alfabeto */
+    private final JButton bBorrarAlfabeto = new JButton("Borrar Alfabeto");
+    /** Botó de tornar a la pantalla del menú principal */
+    private final JButton bsalir = new JButton("Atrás");
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
+    private final JLabel txtDesplegableAB = new JLabel("LISTA NOMBRES:");
+    private JComboBox<String> nombresAB = new JComboBox<>();
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
+    private final JLabel txtNombreAB = new JLabel("NOMBRE:");
+    /** Área de texto para introducir el nombre del alfabeto que se quiere crear */
+    private final JTextArea areanomAB = new JTextArea();
 
     /** Constructora de la ventana de eliminar alfabeto */
     public VistaAlfabetoB() {
-        JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-        chooser.setDialogTitle("Selecciona fichero a borrar");
-        chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
-        /*Revisar el tema del path, depende de cómo se ejecute no hará falta subgrup-prop14.3*/
-        chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/Entrega1/data/Alfabetos"));
-        int returnValue = chooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File archivo = chooser.getSelectedFile();
-            CtrlPresentacion.borrarAlfabeto(chooser.getName(archivo));
-            eliminarFichero(archivo);
-        } else if (returnValue == JFileChooser.CANCEL_OPTION) {
-            CtrlPresentacion.iniPresentacion();
+        setBounds(250, 150, 1000, 600);
+        //setExtendedState(Frame.MAXIMIZED_BOTH);
+        //setResizable(true);
+        //setTitle("Funcionalidades alfabeto);
+        ArrayList<String> nombres = CtrlPresentacion.getNombresAlfabetos();
+        nombresAB = new JComboBox<>();
+        nombresAB.addItem("");
+        for (String nombre : nombres) {
+            nombresAB.addItem(nombre);
         }
-    }
 
-    /**
-     * Se borra del sistema el fichero pasado por parámetro i aparece un mensaje conforme se ha realizado correctamente.
-     * Sale un mensaje de error en caso que el fichero no exista
-     * @param fichero
-     */
-    private void eliminarFichero(File fichero) {
-        JButton bSalir = new JButton("Salir");
-        boolean status = fichero.delete();
-        if (!status) {
-            JDialog fitxerNoExisteix =  new JDialog(frame, "El fichero no existe");
-            fitxerNoExisteix.setBounds(800, 300, 400, 200);
-            fitxerNoExisteix.setLayout(null);
+        // Título ventana superior
+        tituloVistaAB.setBounds(10, 5, 120, 30);
+        add(tituloVistaAB);
 
-            JLabel txtFitxerNoExisteix = new JLabel("El fichero " + fichero.getName() + " no existe");
-            txtFitxerNoExisteix.setBounds(80, 20, 400, 40);
-            bSalir.setVisible(true);
-            bSalir.setBounds(150, 110, 100, 30);
-            fitxerNoExisteix.add(txtFitxerNoExisteix);
-            fitxerNoExisteix.add(bSalir);
-            fitxerNoExisteix.setVisible(true);
+        txtDesplegableAB.setBounds(250, 140, 200, 20);
+        add(txtDesplegableAB);
 
-            ActionListener lSortirFitxerNoExisteix = new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    fitxerNoExisteix.dispose();
-                    fitxerNoExisteix.setVisible(false);
+        nombresAB.setBounds(450, 140, 200, 20);
+        add(nombresAB);
+
+        // Texto Nombre
+        txtNombreAB.setBounds(250, 220 , 200, 20);
+        add(txtNombreAB);
+
+        // Área texto Nombre
+        areanomAB.setBounds(450,220, 200,20);
+        add(areanomAB);
+
+        bBorrarAlfabeto.setBounds(700, 400, 200, 20);
+        add(bBorrarAlfabeto);
+
+        // Botón salir para ir a la pantalla principal
+        bsalir.setBounds(800, 500, 100, 20);
+        add(bsalir);
+
+        add(lamina);
+
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+        ActionListener lElementoSeleccionado = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedName = (String) nombresAB.getSelectedItem();
+                if (selectedName != null && !selectedName.isEmpty()) {
+                    areanomAB.setText(selectedName);
+                } else {
+                    areanomAB.setText("");  // Limpiar el área de texto si se selecciona el elemento vacío
                 }
-            };
-            bSalir.addActionListener(lSortirFitxerNoExisteix);
-
-        } else {
-            JDialog fitxerEsborrat =  new JDialog(frame, "Fichero borrado correctamente");
-            fitxerEsborrat.setBounds(800, 300, 400, 200);
-            fitxerEsborrat.setLayout(null);
-
-            JLabel txtFitxerEsborrat = new JLabel("El fichero " + fichero.getName() + " se ha borrado correctamente");
-            txtFitxerEsborrat.setBounds(80, 20, 400, 40);
-            bSalir.setVisible(true);
-            bSalir.setBounds(150, 110, 100, 30);
-            fitxerEsborrat.add(txtFitxerEsborrat);
-            fitxerEsborrat.add(bSalir);
-            fitxerEsborrat.setVisible(true);
-
-            ActionListener lSortirFitxerEsborrat = new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    fitxerEsborrat.dispose();
-                    fitxerEsborrat.setVisible(false);
+            }
+        };
+        
+        ActionListener lBorrar = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombreAlfabeto = areanomAB.getText().trim();
+                // Verificar si el área de texto está vacía
+                if (nombreAlfabeto.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Por favor, selecciona un alfabeto para borrar.", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    // Llamar al controlador para eliminar el alfabeto
+                    CtrlPresentacion.borrarAlfabeto(nombreAlfabeto);
+                    // Actualizar el JComboBox eliminando el alfabeto borrado
+                    nombresAB.removeItem(nombreAlfabeto);
+                    nombresAB.setSelectedItem("");
+                    JOptionPane.showMessageDialog(frame, "Alfabeto eliminado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 }
-            };
-            bSalir.addActionListener(lSortirFitxerEsborrat);
-        }
+            }
+        };
+
+        ActionListener lSalir = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.iniPresentacion();
+                setVisible(false);
+            }
+        };
+
+        nombresAB.addActionListener(lElementoSeleccionado);
+        bBorrarAlfabeto.addActionListener(lBorrar);
+        bsalir.addActionListener(lSalir);
     }
 }
