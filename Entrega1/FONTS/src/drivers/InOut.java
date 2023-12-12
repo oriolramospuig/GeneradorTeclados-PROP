@@ -56,6 +56,7 @@ public class InOut {
      * @param line La cadena de texto que se convertirá.
      * @return Una lista de caracteres que representa la cadena de texto.
      */
+    //Mirar si es pot canviar que driver persistencia no ho cridi
     public static ArrayList<Character> leerCaracteresDeTerminal(String line) {
         ArrayList<Character> caracteres = new ArrayList<>();
         for (char c : line.toCharArray()) {
@@ -85,9 +86,9 @@ public class InOut {
                 throw new IllegalArgumentException("El contenido del archivo no es válido.");
             }
             for (char c : line.toCharArray()) {
-                if (c != ' ') { // Asume que los caracteres están separados por espacios, ignora los espacios
+                //if (c != ' ') { // Asume que los caracteres están separados por espacios, ignora los espacios
                     caracteres.add(c);
-                }
+                //}
             }
         }
         return caracteres;
@@ -151,13 +152,13 @@ public class InOut {
         if (entrada == null || entrada.isEmpty()) {
             return false; // Entrada vacía no es válida.
         }
-        String[] partes = entrada.split(" ");
+        /*String[] partes = entrada.split(" ");
         for (String parte : partes) {
             // Verifica que cada parte sea un solo carácter.
             if (parte.length() != 1) {
                 return false;
             }
-        }
+        }*/
         return true; // La entrada es válida si todos los segmentos contienen solo un carácter.
     }
 

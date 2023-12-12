@@ -53,6 +53,10 @@ public class DriverPersistencia {
         }
     }
 
+    /**
+     * No devuelve nada
+     * Borra el Alfabeto elegido por el usuario (lo elige por terminal)
+     */
     private void borrarAlfabeto() {
         imprimirNombresAlfabetos();
         System.out.println("Introduce el nombre del alfabeto que quieres borrar:");
@@ -201,6 +205,9 @@ public class DriverPersistencia {
         }
     }
 
+    /**
+     * Borra el Texto elegido por el usuario (lo escribe por terminal)
+     */
     private void borrarTexto() {
         imprimirNombresTextos();
         System.out.println("Introduce el nombre del texto que quieres borrar:");
@@ -382,6 +389,10 @@ public class DriverPersistencia {
         }
     }
 
+    /**
+     * No devuelve nada
+     * Imprime por pantalla el contenido del teclado que se desea consultar, si existe.
+     */
     public void consultarContenidoTeclado(){
         imprimirNombresTeclados();
         System.out.println("Introduce el nombre del teclado que quieres consultar:");
@@ -417,6 +428,12 @@ public class DriverPersistencia {
     }*/
 
     /*Entrega 2*/
+
+    /**
+     * Genera y devuelve un HashMap que representa las posibles dimensiones para organizar las teclas de un teclado.
+     * @param nomA Nombre de Alfabeto
+     * @return HashMap donde muestra todas las posibles dimensiones
+     */
     private HashMap<Integer, PairInt> imprimirPosiblesDimensiones(String nomA) {
         int numCaracteres = ctrlDominio.numeroCaracteres(nomA);       // func saber num caracteres del alfabeto
 
@@ -435,6 +452,11 @@ public class DriverPersistencia {
 
 
     // ---------- FUNCIONES MAIN ----------
+
+    /**
+     * Funcion principal, es lo que ve el usuario al tratar con el proyecto y las diferentes opciones posibles
+     * @param args
+     */
     public static void main(String[] args) {
         DriverPersistencia driver = new DriverPersistencia();
         muestraMetodos();

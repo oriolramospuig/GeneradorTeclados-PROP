@@ -128,7 +128,7 @@ public class VistaTextoM extends JFrame{
                 // Escribir el nuevo contenido en el archivo
                 try (PrintWriter out = new PrintWriter(new FileWriter(archivoNuevo))) {
                     out.print(nuevoContenido);
-                    JOptionPane.showMessageDialog(VistaTextoM.this, "Alfabeto modificado con éxito.",
+                    JOptionPane.showMessageDialog(VistaTextoM.this, "Texto modificado con éxito.",
                             "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 } catch (IOException ioException) {
                     JOptionPane.showMessageDialog(VistaTextoM.this, "Error al escribir en el archivo.",
