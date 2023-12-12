@@ -9,6 +9,7 @@ import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Aquesta vista s’encarrega de carregar un fitxer guardat a l’ordinador i obrir-lo. La vista obre l’explorador d’arxius
@@ -25,6 +26,10 @@ public class VistaAlfabetoM extends JFrame{
     private final JPanel lamina = new JPanel();
     /** Título de media ventana inferior */
     private final JLabel tituloVistaAM = new JLabel("Modificar alfabeto");
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
+    private final JLabel txtDesplegableAM = new JLabel("LISTA NOMBRES:");
+    /** Desplegable con los nombres de los alfabetos*/
+    private JComboBox<String> nombresAM = new JComboBox<>();
     private final JButton bModificarAlfabeto = new JButton("Modificar alfabeto");
     /** Botó de tornar a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
@@ -46,53 +51,47 @@ public class VistaAlfabetoM extends JFrame{
     /** Pantalla de error que aparece cuando se quiere consultar/modificar un alfabeto sin nombre */
     private final JFrame Nomframe = new JFrame ("JFrame");
 
-
-    /** Constructora de la finestra de carregar document */
     public VistaAlfabetoM() {
-        // Posar els formats que ens facin falta
-        chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
-        chooser.setDialogTitle("Selecciona fitxer");
-        chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/Entrega1/data/Alfabetos"));
-        int returnValue = chooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File arxiu = chooser.getSelectedFile();
-            if (arxiu.getName().endsWith(".txt")) {
-                imprimirDatos(arxiu);
-                // consultarFichero(arxiu.getName().substring(0, arxiu.getName().length() - 4), true);
-            }
-        } else if (returnValue == JFileChooser.CANCEL_OPTION) {
-            CtrlPresentacion.iniPresentacion();
-        }
-    }
-
-    public void imprimirDatos(File arxiu) {
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);
         //setResizable(true);
         //setTitle("Funcionalidades alfabeto);
+        ArrayList<String> nombres = CtrlPresentacion.getNombresAlfabetos();
+        nombresAM = new JComboBox<>();
+        nombresAM.addItem("");
+        for (String nombre : nombres) {
+            nombresAM.addItem(nombre);
+        }
 
         // Título ventana superior
         tituloVistaAM.setBounds(10, 5, 120, 30);
         add(tituloVistaAM);
 
+        txtDesplegableAM.setBounds(200, 120, 200, 20);
+        add(txtDesplegableAM);
+
+        nombresAM.setBounds(400, 120, 200, 20);
+        add(nombresAM);
+
         //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombreAM.setBounds(200, 140, 200, 20);
+        txtNombreAM.setBounds(200, 180, 200, 20);
         add(txtNombreAM);
 
         // Área texto Nombre
-        areanomAM.setBounds(400,140, 200,20);
+        areanomAM.setEditable(false);
+        areanomAM.setBounds(400,180, 200,20);
         add(areanomAM);
 
-        txtContenidoAM.setBounds(200, 180, 200, 20);
+        txtContenidoAM.setBounds(200, 220, 200, 20);
         add(txtContenidoAM);
 
         JScrollPane scrollPane = new JScrollPane(areacontenidoAM); // Para agregar scroll al área de texto
-        scrollPane.setBounds(400, 180, 400, 150); // Ajusta las dimensiones según tus necesidades
+        scrollPane.setBounds(400, 220, 400, 150); // Ajusta las dimensiones según tus necesidades
         add(scrollPane);
 
         // Botón modificar alfabetos
-        bModificarAlfabeto.setBounds(700, 400, 200, 20);
+        bModificarAlfabeto.setBounds(700, 420, 200, 20);
         add(bModificarAlfabeto);
 
         // Botón salir para ir a la pantalla principal
@@ -104,38 +103,64 @@ public class VistaAlfabetoM extends JFrame{
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        areanomAM.setText(arxiu.getName().substring(0, arxiu.getName().length() - 4));
-        mostrarContenidoArchivo(arxiu);
+        ActionListener lElementoSeleccionado = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedName = (String) nombresAM.getSelectedItem();
+                ArrayList<Character> contenido = CtrlPresentacion.consultarContenidoAlfabeto(selectedName);
+                if (selectedName != null && !selectedName.isEmpty()) {
+                    areanomAM.setText(selectedName);
+                    // Convertir ArrayList<Character> a String
+                    StringBuilder contenidoStr = new StringBuilder();
+                    for (Character c : contenido) {
+                        contenidoStr.append(c);
+                    }
+                    areacontenidoAM.setText(contenidoStr.toString());
+                } else {
+                    areanomAM.setText("");
+                    areacontenidoAM.setText("");
+                }
+            }
+        };
 
         ActionListener lModificarA = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nuevoNombre = areanomAM.getText().trim() + ".txt";
-                String nuevoContenido = areacontenidoAM.getText();
+                String nombreAlfabeto = areanomAM.getText().trim();
+                String contenidoStr = areacontenidoAM.getText();
 
-                File archivoAntiguo = chooser.getSelectedFile();
-                File archivoNuevo = new File(archivoAntiguo.getParent(), nuevoNombre);
-
-                // Cambiar el nombre del archivo si es necesario
-                if (!archivoAntiguo.getName().equals(nuevoNombre)) {
-                    if (!archivoAntiguo.renameTo(archivoNuevo)) {
-                        JOptionPane.showMessageDialog(VistaAlfabetoM.this, "No se pudo cambiar el nombre del archivo.",
-                                "Error", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-                }
-
-                // Escribir el nuevo contenido en el archivo
-                try (PrintWriter out = new PrintWriter(new FileWriter(archivoNuevo))) {
-                    out.print(nuevoContenido);
-                    JOptionPane.showMessageDialog(VistaAlfabetoM.this, "Alfabeto modificado con éxito.",
-                            "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                } catch (IOException ioException) {
-                    JOptionPane.showMessageDialog(VistaAlfabetoM.this, "Error al escribir en el archivo.",
+                // Comprobar si se ha seleccionado un alfabeto
+                if (nombreAlfabeto.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaAlfabetoM.this, "No hay ningún alfabeto seleccionado.",
                             "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
+
+                // Comprobar si el contenido ha sido modificado
+                ArrayList<Character> contenidoActual = CtrlPresentacion.consultarContenidoAlfabeto(nombreAlfabeto);
+                StringBuilder contenidoActualStr = new StringBuilder();
+                for (Character c : contenidoActual) {
+                    contenidoActualStr.append(c);
+                }
+                if (contenidoActualStr.toString().equals(contenidoStr)) {
+                    JOptionPane.showMessageDialog(VistaAlfabetoM.this, "No se han realizado cambios en el contenido.",
+                            "Información", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
+
+                // Convertir el contenido del área de texto a ArrayList<Character>
+                ArrayList<Character> nuevoContenido = new ArrayList<>();
+                for (char c : contenidoStr.toCharArray()) {
+                    nuevoContenido.add(c);
+                }
+
+                // Llamar a la función de control para modificar el alfabeto
+                //CtrlPresentacion.modificarAlfabeto(nombreAlfabeto, nuevoContenido);
+                JOptionPane.showMessageDialog(VistaAlfabetoM.this, "Alfabeto modificado con éxito.",
+                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
             }
         };
+
 
 
 
@@ -147,20 +172,9 @@ public class VistaAlfabetoM extends JFrame{
             }
         };
 
+        nombresAM.addActionListener(lElementoSeleccionado);
         bModificarAlfabeto.addActionListener(lModificarA);
         bsalir.addActionListener(lSalir);
 
-    }
-
-    private void mostrarContenidoArchivo(File archivo) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
-            areacontenidoAM.setText("");
-            String linea;
-            while ((linea = reader.readLine()) != null) {
-                areacontenidoAM.append(linea + "\n");
-            }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error al leer el archivo", "Error", JOptionPane.ERROR_MESSAGE);
-        }
     }
 }
