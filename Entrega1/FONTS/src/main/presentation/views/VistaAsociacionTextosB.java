@@ -33,7 +33,7 @@ public class VistaAsociacionTextosB extends JFrame{
         //setExtendedState(Frame.MAXIMIZED_BOTH);
         //setResizable(true);
         //setTitle("Funcionalidades texto);
-        ArrayList<String> nombres = CtrlPresentacion.getNombresTextos();
+        ArrayList<String> nombres = CtrlPresentacion.getNombresAsociaciones();
         nombresATB = new JComboBox<>();
         nombresATB.addItem("");
         for (String nombre : nombres) {
