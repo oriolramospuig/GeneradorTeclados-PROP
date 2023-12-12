@@ -80,6 +80,10 @@ public class Alfabeto implements Serializable
         tecladosVinculados.add(nomT);
     }
 
+    public void modificarContenido(ArrayList<Character> entradaCaracteres){
+        letras = entradaCaracteres;
+    }
+
 
     // ---------- AUXILIARES ----------
     /**

@@ -81,6 +81,13 @@ public class CtrlDominio
         }
         return null;
     }
+    public boolean modificarContenidoAlfabeto(String nomA, ArrayList<Character> entrada){
+        if(existealfabeto(nomA)) {
+            ctrlAlfabeto.modificarContenido(nomA, entrada);
+            return true;
+        }
+        return false;
+    }
     /**
      * Retorna el numero de caracteres que tiene el contenido del alfabeto
      * @param nomA el nombre del alfabeto a buscar
@@ -145,6 +152,14 @@ public class CtrlDominio
      */
     public String consultarContenidoTexto(String nomT){
         return ctrlTexto.getContenido(nomT);
+    }
+
+    public boolean modificarContenidoTexto(String nomT, String entrada){
+        if(existetexto(nomT)) {
+            ctrlTexto.modificarContenido(nomT, entrada);
+            return true;
+        }
+        return false;
     }
     /**
      * Retorna si existe el texto con nombre nomT

@@ -39,6 +39,10 @@ public class CtrlTexto
         return CjtTextos.getTexto(nomT).getTexto();
     }
 
+    public void modificarContenido(String nomT, String entradaCaracteres) {
+        CjtTextos.getTexto(nomT).modificarContenido(entradaCaracteres);
+    }
+
     /**
      * No devuelve nada. Agrega una asociación vinculada a un texto dado su nombre
      * @param nomT Nombre del texto

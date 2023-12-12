@@ -36,6 +36,10 @@ public class CtrlAlfabeto
         return CjtAlfabetos.getAlfabeto(nomA).getLetras();
     }
 
+
+    public void modificarContenido(String nomA, ArrayList<Character> entradaCaracteres) {
+        CjtAlfabetos.getAlfabeto(nomA).modificarContenido(entradaCaracteres);
+    }
     /**
      * No devuelve nada.
      * @param nomT clave primaria del teclado
