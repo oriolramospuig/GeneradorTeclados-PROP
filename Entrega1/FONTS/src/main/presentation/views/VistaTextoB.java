@@ -7,78 +7,110 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.event.*;
 import java.io.File;
+import java.util.ArrayList;
 
-public class VistaTextoB {
+public class VistaTextoB extends JFrame{
     private JFrame frame = new JFrame();
+    /** Panel donde se incluyen los elementos de la ventana */
+    private final JPanel lamina = new JPanel();
+    /** Título de media ventana */
+    private final JLabel tituloVistaTxtB = new JLabel("Borrar texto");
+    /** Botón para agregar un texto */
+    private final JButton bBorrarTexto = new JButton("Borrar Texto");
+    /** Botó de tornar a la pantalla del menú principal */
+    private final JButton bsalir = new JButton("Atrás");
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto */
+    private final JLabel txtDesplegableTxtB = new JLabel("LISTA NOMBRES:");
+    private JComboBox<String> nombresTxtB = new JComboBox<>();
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto */
+    private final JLabel txtNombreTxtB = new JLabel("NOMBRE:");
+    /** Área de texto para introducir el nombre del texto que se quiere crear */
+    private final JTextArea areanomTxtB = new JTextArea();
 
-    /** Constructora de la ventana de eliminar alfabeto */
+    /** Constructora de la ventana de eliminar texto */
     public VistaTextoB() {
-        JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-        chooser.setDialogTitle("Selecciona fichero a borrar");
-        chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
-        /*Revisar el tema del path, depende de cómo se ejecute no hará falta subgrup-prop14.3*/
-        chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/Entrega1/data/Textos"));
-        int returnValue = chooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File archivo = chooser.getSelectedFile();
-            CtrlPresentacion.borrarTexto(chooser.getName(archivo));
-            eliminarFichero(archivo);
-        } else if (returnValue == JFileChooser.CANCEL_OPTION) {
-            CtrlPresentacion.iniPresentacion();
+        setBounds(250, 150, 1000, 600);
+        //setExtendedState(Frame.MAXIMIZED_BOTH);
+        //setResizable(true);
+        //setTitle("Funcionalidades texto);
+        ArrayList<String> nombres = CtrlPresentacion.getNombresTextos();
+        nombresTxtB = new JComboBox<>();
+        nombresTxtB.addItem("");
+        for (String nombre : nombres) {
+            nombresTxtB.addItem(nombre);
         }
-    }
 
-    /**
-     * Se borra del sistema el fichero pasado por parámetro i aparece un mensaje conforme se ha realizado correctamente.
-     * Sale un mensaje de error en caso que el fichero no exista
-     * @param fichero
-     */
-    private void eliminarFichero(File fichero) {
-        JButton bSalir = new JButton("Salir");
-        boolean status = fichero.delete();
-        if (!status) {
-            JDialog fitxerNoExisteix =  new JDialog(frame, "El fichero no existe");
-            fitxerNoExisteix.setBounds(800, 300, 400, 200);
-            fitxerNoExisteix.setLayout(null);
+        // Título ventana superior
+        tituloVistaTxtB.setBounds(10, 5, 120, 30);
+        add(tituloVistaTxtB);
 
-            JLabel txtFitxerNoExisteix = new JLabel("El fichero " + fichero.getName() + " no existe");
-            txtFitxerNoExisteix.setBounds(80, 20, 400, 40);
-            bSalir.setVisible(true);
-            bSalir.setBounds(150, 110, 100, 30);
-            fitxerNoExisteix.add(txtFitxerNoExisteix);
-            fitxerNoExisteix.add(bSalir);
-            fitxerNoExisteix.setVisible(true);
+        txtDesplegableTxtB.setBounds(250, 140, 200, 20);
+        add(txtDesplegableTxtB);
 
-            ActionListener lSortirFitxerNoExisteix = new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    fitxerNoExisteix.dispose();
-                    fitxerNoExisteix.setVisible(false);
+        nombresTxtB.setBounds(450, 140, 200, 20);
+        add(nombresTxtB);
+
+        // Texto Nombre
+        txtNombreTxtB.setBounds(250, 220 , 200, 20);
+        add(txtNombreTxtB);
+
+        // Área texto Nombre
+        areanomTxtB.setBounds(450,220, 200,20);
+        add(areanomTxtB);
+
+        bBorrarTexto.setBounds(700, 400, 200, 20);
+        add(bBorrarTexto);
+
+        // Botón salir para ir a la pantalla principal
+        bsalir.setBounds(800, 500, 100, 20);
+        add(bsalir);
+
+        add(lamina);
+
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        ActionListener lElementoSeleccionado = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedName = (String) nombresTxtB.getSelectedItem();
+                if (selectedName != null && !selectedName.isEmpty()) {
+                    areanomTxtB.setText(selectedName);
+                } else {
+                    areanomTxtB.setText("");  // Limpiar el área de texto si se selecciona el elemento vacío
                 }
-            };
-            bSalir.addActionListener(lSortirFitxerNoExisteix);
+            }
+        };
 
-        } else {
-            JDialog fitxerEsborrat =  new JDialog(frame, "Fichero borrado correctamente");
-            fitxerEsborrat.setBounds(800, 300, 400, 200);
-            fitxerEsborrat.setLayout(null);
-
-            JLabel txtFitxerEsborrat = new JLabel("El fichero " + fichero.getName() + " se ha borrado correctamente");
-            txtFitxerEsborrat.setBounds(80, 20, 400, 40);
-            bSalir.setVisible(true);
-            bSalir.setBounds(150, 110, 100, 30);
-            fitxerEsborrat.add(txtFitxerEsborrat);
-            fitxerEsborrat.add(bSalir);
-            fitxerEsborrat.setVisible(true);
-
-            ActionListener lSortirFitxerEsborrat = new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    fitxerEsborrat.dispose();
-                    fitxerEsborrat.setVisible(false);
+        ActionListener lBorrar = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombreTexto = areanomTxtB.getText().trim();
+                // Verificar si el área de texto está vacía
+                if (nombreTexto.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Por favor, selecciona un texto para borrar.", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    // Llamar al controlador para eliminar el texto
+                    CtrlPresentacion.borrarTexto(nombreTexto);
+                    // Actualizar el JComboBox eliminando el texto borrado
+                    nombresTxtB.removeItem(nombreTexto);
+                    nombresTxtB.setSelectedItem("");
+                    JOptionPane.showMessageDialog(frame, "Texto eliminado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 }
-            };
-            bSalir.addActionListener(lSortirFitxerEsborrat);
-        }
+            }
+        };
+
+        ActionListener lSalir = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CtrlPresentacion.iniPresentacion();
+                setVisible(false);
+            }
+        };
+
+        nombresTxtB.addActionListener(lElementoSeleccionado);
+        bBorrarTexto.addActionListener(lBorrar);
+        bsalir.addActionListener(lSalir);
+
     }
 }
