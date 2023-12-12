@@ -92,11 +92,11 @@ public class CtrlPresentacion {
     }
     /** Muestra por pantalla la ventana de las funcionalidades de texto */
     public static void vistaTecladoM() {
-        VistaTecladoM vTxt = new VistaTecladoM();
+        VistaTecladoM vTec = new VistaTecladoM();
     }
     /** Muestra por pantalla la ventana de las funcionalidades de texto */
     public static void vistaTecladoB() {
-        VistaTecladoB vTxt = new VistaTecladoB();
+        VistaTecladoB vTec= new VistaTecladoB();
     }
 
 
@@ -381,8 +381,9 @@ public class CtrlPresentacion {
      * Llama a la función getListaTeclados de CtrlDominio
      * @return ArrayList<String>: lista de nombres de los teclados existentes
      */
-    public ArrayList<String> getListaTeclados(){
-        return cd.getListaTeclados();
+    public static ArrayList<String> getListaTeclados(){
+        ArrayList<String> listaTeclados = cd.getListaTeclados();
+        return listaTeclados;
     }
     /**
      * Llama a la función borrarTeclado de CtrlDominio
