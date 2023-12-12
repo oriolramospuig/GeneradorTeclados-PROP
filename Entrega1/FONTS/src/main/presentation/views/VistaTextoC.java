@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class VistaTextoC extends JFrame {
-    /** Finestra de selecció de l'arxiu que es vol carregar al nostre full de càlcul */
-    JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
     //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
