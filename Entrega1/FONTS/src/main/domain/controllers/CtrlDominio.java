@@ -1,7 +1,6 @@
 package main.domain.controllers;
 
 import main.domain.classes.*;
-import main.domain.classes.types.PairInt;
 import main.persistence.controllers.CtrlPersistencia;
 
 import java.io.*;
