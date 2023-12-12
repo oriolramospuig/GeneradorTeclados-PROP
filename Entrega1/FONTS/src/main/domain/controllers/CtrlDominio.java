@@ -1,6 +1,7 @@
 package main.domain.controllers;
 
 import main.domain.classes.*;
+import main.domain.classes.types.PairInt;
 import main.persistence.controllers.CtrlPersistencia;
 
 import java.io.*;
@@ -342,6 +343,7 @@ public class CtrlDominio
         }
         return null;
     }
+    //public boolean modificarContenidoTeclado(String nomT, PairInt dimensiones)
     /**
      * Retorna la lista de teclados existentes
      * @return ArrayList<String>: lista de nombres de los teclados existentes
