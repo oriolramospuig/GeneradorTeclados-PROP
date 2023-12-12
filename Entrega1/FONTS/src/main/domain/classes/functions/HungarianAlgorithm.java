@@ -7,16 +7,16 @@ public class HungarianAlgorithm {
     private static final double INF = 1e8; // Un valor muy grande para representar 'infinito'
 
     private int N; // El número de elementos (teclas o posiciones)
-    private int maxMatch; // El máximo número de coincidencias encontradas
-    private int[] priorityKeys; // Prioridades asignadas a las teclas
-    private int[] priorityPositions; // Prioridades asignadas a las posiciones
-    private int[] keyToPosition; // Asignaciones de teclas a posiciones
-    private int[] positionToKey; // Asignaciones de posiciones a teclas
+    private int maxcoincidencia; // El máximo número de coincidencias encontradas
+    private int[] prioridadteclas; // Prioridades asignadas a las teclas
+    private int[] prioridadPos; // Prioridades asignadas a las posiciones
+    private int[] teclastoPos; // Asignaciones de teclas a posiciones
+    private int[] Postoteclas; // Asignaciones de posiciones a teclas
     private boolean[] S; // Conjunto de teclas seleccionadas
     private boolean[] T; // Conjunto de posiciones seleccionadas
-    private int[] minCostToAssign; // Costo mínimo para asignar una tecla a una posición
-    private int[] keyCausingMinCost; // Tecla que causa el costo mínimo
-    private int[] previousKeyInTree; // Tecla previa en el árbol de asignación
+    private int[] minimCostassignar; // Costo mínimo para asignar una tecla a una posición
+    private int[] TeclacostMin; // Tecla que causa el costo mínimo
+    private int[] teclaprevia; // Tecla previa en el árbol de asignación
 
     /**
      * Constructor que inicializa el algoritmo con un tamaño específico.
@@ -25,37 +25,37 @@ public class HungarianAlgorithm {
      */
     public HungarianAlgorithm(int n) {
         N = n;
-        maxMatch = 0;
-        priorityKeys = new int[N];
-        priorityPositions = new int[N];
-        keyToPosition = new int[N];
-        positionToKey = new int[N];
+        maxcoincidencia = 0;
+        prioridadteclas = new int[N];
+        prioridadPos = new int[N];
+        teclastoPos = new int[N];
+        Postoteclas = new int[N];
         S = new boolean[N];
         T = new boolean[N];
-        minCostToAssign = new int[N];
-        keyCausingMinCost = new int[N];
-        previousKeyInTree = new int[N];
+        minimCostassignar = new int[N];
+        TeclacostMin = new int[N];
+        teclaprevia = new int[N];
     }
 
     /**
      * Añade una tecla al árbol de expansión del algoritmo húngaro y actualiza la información de 'slack'.
      *
-     * @param current La tecla actual que se está considerando para la asignación.
+     * @param act La tecla actual que se está considerando para la asignación.
      * @param prev La tecla previa conectada a la actual en el árbol de expansión.
      * @param cost La matriz de costos que representa las incompatibilidades entre teclas y posiciones.
      */
-    private void addToTree(int current, int prev, int[][] cost) {
+    private void addToTree(int act, int prev, int[][] cost) {
         int slackForNewNode;
 
-        S[current] = true;
-        previousKeyInTree[current] = prev;
+        S[act] = true;
+        teclaprevia[act] = prev;
 
         for (int i = 0; i < N; ++i) {
             if (!T[i]) {
-                slackForNewNode = priorityKeys[current] + priorityPositions[i] - cost[current][i];
-                if (slackForNewNode < minCostToAssign[i]) {
-                    minCostToAssign[i] = slackForNewNode;
-                    keyCausingMinCost[i] = current;
+                slackForNewNode = prioridadteclas[act] + prioridadPos[i] - cost[act][i];
+                if (slackForNewNode < minimCostassignar[i]) {
+                    minimCostassignar[i] = slackForNewNode;
+                    TeclacostMin[i] = act;
                 }
             }
         }
@@ -66,44 +66,44 @@ public class HungarianAlgorithm {
      *
      * @param cost La matriz de costos que representa las incompatibilidades entre teclas y posiciones.
      */
-    private void initLabels(int[][] cost) {
-        Arrays.fill(priorityPositions, 0);
-        Arrays.fill(priorityKeys, Integer.MIN_VALUE);
+    private void initetiq(int[][] cost) {
+        Arrays.fill(prioridadPos, 0);
+        Arrays.fill(prioridadteclas, Integer.MIN_VALUE);
 
         for (int i = 0; i < N; ++i) {
             for (int j = 0; j < N; ++j) {
-                priorityKeys[i] = Math.max(priorityKeys[i], cost[i][j]);
+                prioridadteclas[i] = Math.max(prioridadteclas[i], cost[i][j]);
             }
         }
 
-        Arrays.fill(keyToPosition, -1);
-        Arrays.fill(positionToKey, -1);
+        Arrays.fill(teclastoPos, -1);
+        Arrays.fill(Postoteclas, -1);
     }
 
     /**
      * Actualiza las etiquetas (prioridades) de las teclas y las posiciones para el método de etiquetado.
      */
-    private void updateLabels() {
+    private void actualizaretiquetas() {
         int delta = Integer.MAX_VALUE;
 
         for (int i = 0; i < N; ++i) {
             if (!T[i]) {
-                delta = Math.min(delta, minCostToAssign[i]);
+                delta = Math.min(delta, minimCostassignar[i]);
             }
         }
 
         for (int i = 0; i < N; ++i) {
             if (S[i]) {
-                priorityKeys[i] -= delta;
+                prioridadteclas[i] -= delta;
             }
             if (T[i]) {
-                priorityPositions[i] += delta;
+                prioridadPos[i] += delta;
             }
         }
 
         for (int i = 0; i < N; ++i) {
             if (!T[i]) {
-                minCostToAssign[i] -= delta;
+                minimCostassignar[i] -= delta;
             }
         }
     }
@@ -114,13 +114,13 @@ public class HungarianAlgorithm {
      * @param cost La matriz de costos que representa las incompatibilidades entre teclas y posiciones.
      */
     private void augment(int[][] cost) {
-        if (maxMatch == N) {
+        if (maxcoincidencia == N) {
             return;
         }
 
         Arrays.fill(S, false);
         Arrays.fill(T, false);
-        Arrays.fill(previousKeyInTree, -1);
+        Arrays.fill(teclaprevia, -1);
 
         int[] queue = new int[N];
         int qHead = 0;
@@ -128,18 +128,18 @@ public class HungarianAlgorithm {
 
         int root = -1;
         for (int i = 0; i < N; ++i) {
-            if (keyToPosition[i] == -1) {
+            if (teclastoPos[i] == -1) {
                 queue[qTail++] = i;
                 root = i;
-                previousKeyInTree[i] = -2;
+                teclaprevia[i] = -2;
                 S[i] = true;
                 break;
             }
         }
 
         for (int j = 0; j < N; ++j) {
-            minCostToAssign[j] = priorityKeys[root] + priorityPositions[j] - cost[root][j];
-            keyCausingMinCost[j] = root;
+            minimCostassignar[j] = prioridadteclas[root] + prioridadPos[j] - cost[root][j];
+            TeclacostMin[j] = root;
         }
 
         int x = -1;
@@ -148,13 +148,13 @@ public class HungarianAlgorithm {
             while (qHead < qTail) {
                 x = queue[qHead++];
                 for (y = 0; y < N; y++) {
-                    if (cost[x][y] == priorityKeys[x] + priorityPositions[y] && !T[y]) {
-                        if (positionToKey[y] == -1) {
+                    if (cost[x][y] == prioridadteclas[x] + prioridadPos[y] && !T[y]) {
+                        if (Postoteclas[y] == -1) {
                             break;
                         }
                         T[y] = true;
-                        queue[qTail++] = positionToKey[y];
-                        addToTree(positionToKey[y], x, cost);
+                        queue[qTail++] = Postoteclas[y];
+                        addToTree(Postoteclas[y], x, cost);
                     }
                 }
                 if (y < N) {
@@ -165,21 +165,21 @@ public class HungarianAlgorithm {
                 break;
             }
 
-            updateLabels();
+            actualizaretiquetas();
 
             qHead = 0;
             qTail = 0;
 
             for (y = 0; y < N; y++) {
-                if (!T[y] && minCostToAssign[y] == 0) {
-                    if (positionToKey[y] == -1) {
-                        x = keyCausingMinCost[y];
+                if (!T[y] && minimCostassignar[y] == 0) {
+                    if (Postoteclas[y] == -1) {
+                        x = TeclacostMin[y];
                         break;
                     } else {
                         T[y] = true;
-                        if (!S[positionToKey[y]]) {
-                            queue[qTail++] = positionToKey[y];
-                            addToTree(positionToKey[y], keyCausingMinCost[y], cost);
+                        if (!S[Postoteclas[y]]) {
+                            queue[qTail++] = Postoteclas[y];
+                            addToTree(Postoteclas[y], TeclacostMin[y], cost);
                         }
                     }
                 }
@@ -191,11 +191,11 @@ public class HungarianAlgorithm {
         }
 
         if (y < N) {
-            maxMatch++;
-            for (int cx = x, cy = y, ty; cx != -2; cx = previousKeyInTree[cx], cy = ty) {
-                ty = keyToPosition[cx];
-                positionToKey[cy] = cx;
-                keyToPosition[cx] = cy;
+            maxcoincidencia++;
+            for (int cx = x, cy = y, ty; cx != -2; cx = teclaprevia[cx], cy = ty) {
+                ty = teclastoPos[cx];
+                Postoteclas[cy] = cx;
+                teclastoPos[cx] = cy;
             }
             augment(cost);
         }
@@ -215,12 +215,12 @@ public class HungarianAlgorithm {
             }
         }
 
-        initLabels(cost);
+        initetiq(cost);
         augment(cost);
 
         int totalCost = 0;
         for (int i = 0; i < N; ++i) {
-            totalCost += cost[i][keyToPosition[i]];
+            totalCost += cost[i][teclastoPos[i]];
         }
         totalCost = maxCost * N - totalCost; // Adjust cost back to the original
         return totalCost;
