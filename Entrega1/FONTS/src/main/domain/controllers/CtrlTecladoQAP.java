@@ -55,7 +55,7 @@ public class CtrlTecladoQAP {
 
         // List<Integer> sol = new ArrayList<>();
         int [][] tec;
-        QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias);
+        QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias, 0);
         tec = qap.getTeclado();
         char[][] tecl = new char[tec.length][tec[0].length];
         for (int i = 0; i < tec.length; i++) {
