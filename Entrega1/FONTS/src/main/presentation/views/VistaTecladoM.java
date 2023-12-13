@@ -9,6 +9,7 @@ import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Aquesta vista s’encarrega de carregar un fitxer guardat a l’ordinador i obrir-lo. La vista obre l’explorador d’arxius
@@ -18,13 +19,15 @@ import java.io.*;
  * @author Marc Clapés Marana (marc.clapes.marana@estudiantat.upc.edu)
  */
 public class VistaTecladoM extends JFrame{
-    /** Finestra de selecció de l'arxiu que es vol carregar al nostre full de càlcul */
-    JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
     //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
     /** Título de media ventana inferior */
     private final JLabel tituloVistaTM = new JLabel("Modificar teclado");
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociación */
+    private final JLabel txtDesplegableTM = new JLabel("LISTA NOMBRES:");
+    /** Desplegable con los nombres de las asociaciones*/
+    private JComboBox<String> nombresTM = new JComboBox<>();
     private final JButton bModificarTeclado = new JButton("Modificar teclado");
     /** Botó de tornar a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
@@ -32,67 +35,61 @@ public class VistaTecladoM extends JFrame{
 
     //TEXTOS Y AREAS DE TEXTO
     //VENTANA SUPERIOR
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto a consultar*/
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
     private final JLabel txtNombreTM = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del alfabeto que se quiere consultar */
+    /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
     private final JTextArea areanomTM = new JTextArea();
 
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto a consultar*/
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
     private final JLabel txtContenidoTM = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el nombre del alfabeto que se quiere consultar */
+    /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
     private final JTextArea areacontenidoTM = new JTextArea();
 
     //MENSAJES DE ERROR
-    /** Pantalla de error que aparece cuando se quiere consultar/modificar un alfabeto sin nombre */
+    /** Pantalla de error que aparece cuando se quiere consultar/modificar una asociacion sin nombre */
     private final JFrame Nomframe = new JFrame ("JFrame");
 
-
-    /** Constructora de la finestra de carregar document */
     public VistaTecladoM() {
-        // Posar els formats que ens facin falta
-        chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
-        chooser.setDialogTitle("Selecciona fitxer");
-        chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/Entrega1/data/Teclados"));
-        int returnValue = chooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File arxiu = chooser.getSelectedFile();
-            if (arxiu.getName().endsWith(".txt")) {
-                imprimirDatos(arxiu);
-                // consultarFichero(arxiu.getName().substring(0, arxiu.getName().length() - 4), true);
-            }
-        } else if (returnValue == JFileChooser.CANCEL_OPTION) {
-            CtrlPresentacion.iniPresentacion();
-        }
-    }
-
-    public void imprimirDatos(File arxiu) {
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);
         //setResizable(true);
         //setTitle("Funcionalidades alfabeto);
+        ArrayList<String> nombres = CtrlPresentacion.getListaTeclados();
+        nombresTM = new JComboBox<>();
+        nombresTM.addItem("");
+        for (String nombre : nombres) {
+            nombresTM.addItem(nombre);
+        }
 
         // Título ventana superior
         tituloVistaTM.setBounds(10, 5, 120, 30);
         add(tituloVistaTM);
 
+        txtDesplegableTM.setBounds(200, 120, 200, 20);
+        add(txtDesplegableTM);
+
+        nombresTM.setBounds(400, 120, 200, 20);
+        add(nombresTM);
+
         //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombreTM.setBounds(200, 140, 200, 20);
+        txtNombreTM.setBounds(200, 180, 200, 20);
         add(txtNombreTM);
 
         // Área texto Nombre
-        areanomTM.setBounds(400,140, 200,20);
+        areanomTM.setEditable(false);
+        areanomTM.setBounds(400,180, 200,20);
         add(areanomTM);
 
-        txtContenidoTM.setBounds(200, 180, 200, 20);
+        txtContenidoTM.setBounds(200, 220, 200, 20);
         add(txtContenidoTM);
 
         JScrollPane scrollPane = new JScrollPane(areacontenidoTM); // Para agregar scroll al área de texto
-        scrollPane.setBounds(400, 180, 400, 150); // Ajusta las dimensiones según tus necesidades
+        scrollPane.setBounds(400, 220, 400, 150); // Ajusta las dimensiones según tus necesidades
         add(scrollPane);
 
         // Botón modificar alfabetos
-        bModificarTeclado.setBounds(700, 400, 200, 20);
+        bModificarTeclado.setBounds(700, 420, 200, 20);
         add(bModificarTeclado);
 
         // Botón salir para ir a la pantalla principal
@@ -104,38 +101,66 @@ public class VistaTecladoM extends JFrame{
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        areanomTM.setText(arxiu.getName().substring(0, arxiu.getName().length() - 4));
-        mostrarContenidoArchivo(arxiu);
+        ActionListener lElementoSeleccionado = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedName = (String) nombresTM.getSelectedItem();
+                ArrayList<String> textos = CtrlPresentacion.consultarCjtTextosAsociacion(selectedName);
+                if (selectedName != null && !selectedName.isEmpty()) {
+                    areanomTM.setText(selectedName);
+                    StringBuilder contenidoStr = new StringBuilder();
+                    for (String texto : textos) {
+                        contenidoStr.append(texto).append("\n");
+                    }
+                    areacontenidoTM.setText(contenidoStr.toString());
+                } else {
+                    areanomTM.setText("");
+                    areacontenidoTM.setText("");
+                }
+            }
+        };
 
         ActionListener lModificarA = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nuevoNombre = areanomTM.getText().trim() + ".txt";
-                String nuevoContenido = areacontenidoTM.getText();
+                String nombreAsoc = areanomTM.getText().trim();
+                String contenidoStr = areacontenidoTM.getText();
 
-                File archivoAntiguo = chooser.getSelectedFile();
-                File archivoNuevo = new File(archivoAntiguo.getParent(), nuevoNombre);
-
-                // Cambiar el nombre del archivo si es necesario
-                if (!archivoAntiguo.getName().equals(nuevoNombre)) {
-                    if (!archivoAntiguo.renameTo(archivoNuevo)) {
-                        JOptionPane.showMessageDialog(VistaTecladoM.this, "No se pudo cambiar el nombre del archivo.",
-                                "Error", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-                }
-
-                // Escribir el nuevo contenido en el archivo
-                try (PrintWriter out = new PrintWriter(new FileWriter(archivoNuevo))) {
-                    out.print(nuevoContenido);
-                    JOptionPane.showMessageDialog(VistaTecladoM.this, "Alfabeto modificado con éxito.",
-                            "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                } catch (IOException ioException) {
-                    JOptionPane.showMessageDialog(VistaTecladoM.this, "Error al escribir en el archivo.",
+                // Comprobar si se ha seleccionado un alfabeto
+                if (nombreAsoc.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTecladoM.this, "No hay ninguna asociación seleccionado.",
                             "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
+
+                // Comprobar si el contenido ha sido modificado
+                //s'ha de canviar
+                ArrayList<String> contenidoActual = CtrlPresentacion.consultarCjtTextosAsociacion(nombreAsoc);
+                StringBuilder contenidoActualStr = new StringBuilder();
+                for (String c : contenidoActual) {
+                    contenidoActualStr.append(c).append("\n");
+                }
+                if (contenidoActualStr.toString().equals(contenidoStr)) {
+                    JOptionPane.showMessageDialog(VistaTecladoM.this, "No se han realizado cambios en el contenido.",
+                            "Información", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
+
+                // Convertir el contenido del área de texto a ArrayList<Character>
+                ArrayList<String> nuevoContenido = new ArrayList<>();
+                String[] lineas = contenidoStr.split("\n");  // Divide el texto en líneas usando "\n" como delimitador
+
+                for (String linea : lineas) {
+                    nuevoContenido.add(linea);  // Agrega cada línea al ArrayList
+                }
+
+                // Llamar a la función de control para modificar el alfabeto
+                //CtrlPresentacion.modificarAlfabeto(nombreAlfabeto, nuevoContenido);
+                JOptionPane.showMessageDialog(VistaTecladoM.this, "Asociación modificada con éxito.",
+                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
             }
         };
+
 
 
 
@@ -147,20 +172,9 @@ public class VistaTecladoM extends JFrame{
             }
         };
 
+        nombresTM.addActionListener(lElementoSeleccionado);
         bModificarTeclado.addActionListener(lModificarA);
         bsalir.addActionListener(lSalir);
 
-    }
-
-    private void mostrarContenidoArchivo(File archivo) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
-            areacontenidoTM.setText("");
-            String linea;
-            while ((linea = reader.readLine()) != null) {
-                areacontenidoTM.append(linea + "\n");
-            }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error al leer el archivo", "Error", JOptionPane.ERROR_MESSAGE);
-        }
     }
 }
