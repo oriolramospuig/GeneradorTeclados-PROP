@@ -1,5 +1,7 @@
 package main.domain.classes.functions;
 
+import main.domain.classes.Alfabeto;
+
 import java.util.*;
 
 /**
@@ -89,7 +91,7 @@ public class QAP {
      * @param matrizFrecuencias Matriz de frecuencias.
      * @param matrizDistancias  Matriz de distancias.
      */
-    public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias) {
+    public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias, int alg) {
         this.filas = nf;
         this.columnas = nc;
         this.n = nf*nc;
@@ -109,7 +111,7 @@ public class QAP {
         imprimirTeclado();
         System.out.println("Puntuacion inicial = " + glBound);
 
-        calculo();
+        calculo(alg);
     }
 
     /**
@@ -202,18 +204,26 @@ public class QAP {
      * Imprime las matrices de frecuencias y distancias, y luego utiliza el algoritmo
      * para encontrar la mejor asignación de teclas en el teclado.
      */
-    private void calculo() {
-        GilmoreLawler gilmoreLawler = new GilmoreLawler(filas, columnas, glBound, matrizFrecuencias, matrizDistancias);
-        gilmoreLawler.gilmore_lawler();
-        sol = gilmoreLawler.getMejorSolucionParcial();
-        if (!sol.isEmpty()) {
-            // Recorrer la lista de soluciones parciales y asignar cada valor a su posición en el arreglo
-            for (int i = 0; i < sol.size(); i++) {
-                int fila = i / columnas;
-                int columna = i % columnas;
+    private void calculo(int alg) {
+        if (alg == 0) {
+            GilmoreLawler gilmoreLawler = new GilmoreLawler(filas, columnas, glBound, matrizFrecuencias, matrizDistancias);
+            gilmoreLawler.gilmore_lawler();
+            sol = gilmoreLawler.getMejorSolucionParcial();
+            if (!sol.isEmpty()) {
+                // Recorrer la lista de soluciones parciales y asignar cada valor a su posición en el arreglo
+                for (int i = 0; i < sol.size(); i++) {
+                    int fila = i / columnas;
+                    int columna = i % columnas;
 
-                teclado[fila][columna] = sol.get(i);
+                    teclado[fila][columna] = sol.get(i);
+                }
             }
         }
+        else {
+            // SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing(filas, columnas, glBound, matrizFrecuencias, matrizDistancias);
+            // ...
+        }
+
+
     }
 }

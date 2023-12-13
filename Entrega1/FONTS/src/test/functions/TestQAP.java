@@ -35,7 +35,7 @@ public class TestQAP {
         Matrices.generarMatrizDistancias(3,3, md);
         List<Integer> sol = new ArrayList<>();
         int [][] tec = new int[filas][columnas];
-        QAP qap = new QAP(filas, columnas, mf, md);
+        QAP qap = new QAP(filas, columnas, mf, md, 0);
         tec = qap.getTeclado();
 
         assertEquals(filas, qap.getFilas());
@@ -86,7 +86,7 @@ public class TestQAP {
         /*creadora de la classe qap nova, per que poguem provar amb lo que ha dit a classe*/
         List<Integer> sol = new ArrayList<>();
         int [][] tec = new int[nf][nc];
-        QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias);
+        QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias, 0);
         tec = qap.getTeclado();
     }
 }
