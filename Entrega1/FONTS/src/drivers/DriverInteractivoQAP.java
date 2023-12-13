@@ -114,7 +114,7 @@ public class DriverInteractivoQAP {
             switch (opcionMetodo) {
                 case 1: // QAP
                     int [][] tec;
-                    QAP qap = new QAP(nfilas,ncolumnas,matrizFrecuencias,matrizDistancias);
+                    QAP qap = new QAP(nfilas,ncolumnas,matrizFrecuencias,matrizDistancias, 0);
                     tec = qap.getTeclado();
                     for (int i = 0; i < nfilas; ++i) {
                         for (int j = 0; j < ncolumnas; ++j) {
