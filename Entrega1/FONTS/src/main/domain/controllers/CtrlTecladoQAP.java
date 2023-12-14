@@ -21,23 +21,16 @@ import static java.lang.Math.sqrt;
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class CtrlTecladoQAP {
-    public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto) {
-        //calcular dim
+    public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dim) {
 
-        // com ens entren caracter espai caracter espai, hem de treure els espais. S'ha de replantejar això, per exemple, tipo lo de com introduir
-        // els textos quan els posem per frequència o algo així
-        ArrayList<Character> letrasaux = alfabeto.getLetras();
-        ArrayList<Character> letras  = new ArrayList<>();
-        for (int i = 0; i < letrasaux.size(); ++i) {
-            if (letrasaux.get(i) != ' ') {
-                letras.add(letrasaux.get(i));
-            }
+        ArrayList<Character> letras = alfabeto.getLetras();
+        for (int i = 0; i < letras.size(); ++i) {
+            System.out.print(letras.get(i) + " ");
         }
 
         int n = letras.size();
-        PairInt dimensiones = calculaDimensiones(n);
-        int nf = dimensiones.getPrimero();
-        int nc = dimensiones.getSegundo();
+        int nf = dim.getPrimero();
+        int nc = dim.getSegundo();
 
         // HashMap<String, Integer> frecuenciasLetras = asociacionTextos.getFrecuenciaLetras();
         ArrayList<PairFrequency> frecuencias = asociacionTextos.getFrecuenciaLetrasArray();
@@ -68,17 +61,8 @@ public class CtrlTecladoQAP {
                 }
             }
         }
-        Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto,dimensiones, tecl);
+        Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto, dim, tecl);
 
         return teclado;
-    }
-
-    /*esta malament, cal pensar com volem generar la n*/
-    public PairInt calculaDimensiones(int n) {
-        int nf = 1;
-        int nc = n;
-        // if (n%2 == 1) nc = nc + 1;
-        PairInt dim = new PairInt(nf, nc);
-        return dim;
     }
 }

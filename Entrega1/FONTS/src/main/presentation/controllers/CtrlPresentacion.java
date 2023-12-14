@@ -3,6 +3,7 @@ package main.presentation.controllers;
 import drivers.InOut;
 import main.domain.classes.Alfabeto;
 import main.domain.classes.AsociacionTextos;
+import main.domain.classes.types.PairInt;
 import main.presentation.views.*;
 import main.domain.controllers.CtrlDominio;
 
@@ -371,8 +372,8 @@ public class CtrlPresentacion {
      * @param nomA nombre del alfabeto a vincular con el teclado nomT
      * @param nomAT nombre de la asociación de textos a vincular con el teclado nomT
      */
-    public int agregarTeclado(String nomT, String nomA, String nomAT){
-        int acabado = cd.agregarTeclado(nomT,nomA,nomAT);
+    public int agregarTeclado(String nomT, String nomA, String nomAT, PairInt dim){
+        int acabado = cd.agregarTeclado(nomT,nomA,nomAT, dim);
         return acabado;
     }
     /**

@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class DriverFP {
 
     // ---------- PARÁMETROS ----------
-    private final InOut inOut;
+    final InOut inOut;
     private CtrlDominio ctrlDominio;
 
     /** Constructora del driver de la funcionalidad principal */
@@ -234,8 +234,8 @@ public class DriverFP {
      * No devuelve nada.
      * Se crea una asociación nueva con textos existentes que haya en el sistema
      */
-    /*public void crearAsociacion(){
-        imprimirNombresTextos();
+    public void crearAsociacion(){
+        //imprimirNombresTextos();
         HashMap<String, Texto> textos = ctrlDominio.getListaTextos();
         //HashMap<String, AsociacionTextos> asociaciones1 = ctrlDominio.getListaAsociaciones();
         if (!textos.isEmpty()) {
@@ -265,7 +265,7 @@ public class DriverFP {
             }
             else System.out.println("No hay tantos textos creados. Debes crear más textos.");
         }
-    }*/
+    }
 
 
     // ---------- FUNCIONES TECLADO ----------
@@ -275,12 +275,49 @@ public class DriverFP {
      * Llama a la función de ctrlDominio para agregar el teclado.
      * Muestra por pantalla mensajes de error o de éxito.
      */
-    /*public void agregarTeclado() {
+
+    private static ArrayList<PairInt> generarDimensiones(int n) {
+        ArrayList<PairInt> dim = new ArrayList<>();
+        Integer x = 1;
+        for (int filas = 1; filas <= n; filas++) {
+            if (n % filas == 0) {
+                int columnas = n / filas;
+                System.out.print(x + ": " + filas + "filas, " + columnas + "columnas");
+                dim.add(new PairInt(filas, columnas));
+                if (n - filas * columnas == 1) System.out.println(" Falta una tecla");
+                else System.out.println();
+                x++;
+            }
+        }
+        if (esPrimo(n)) {
+            int N = n+1;
+            Integer y = 1;
+            for (int filas = 1; filas <= N; filas++) {
+                if (N % filas == 0) {
+                    int columnas = N / filas;
+                    System.out.print(y + ": " + filas + "filas, " + columnas + "columnas");
+                    dim.add(new PairInt(filas, columnas));
+                    System.out.println();
+                    y++;
+                }
+            }
+        }
+        return dim;
+    }
+
+    private static boolean esPrimo(int num) {
+        if (num <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+    public void agregarTeclado() {
         System.out.println("Introduce el nombre del teclado:");
         String nombreT = inOut.leerString();
         try {
             //Seleccionar alfabeto
-            imprimirNombresAlfabetos();
+            // imprimirNombresAlfabetos();
             HashMap<String, Alfabeto> alfabetos = ctrlDominio.getListaAlfabetos();
             HashMap<String, AsociacionTextos> asociaciones = ctrlDominio.getListaAsociaciones();
             if (!alfabetos.isEmpty()) {
@@ -289,30 +326,24 @@ public class DriverFP {
                 if(ctrlDominio.existealfabeto(nombreA)){
                     //Seleccionar asociacion de textos
                     System.out.println("Asociaciones de textos actuales:");
-                    imprimirNombresAsociaciones();
+                    // imprimirNombresAsociaciones();
                     if(!asociaciones.isEmpty()) {
                         System.out.println("Introduce el nombre de una asociacion de textos de la lista:");
                         String nombreAT = inOut.leerString();
                         if (ctrlDominio.existeasociacion(nombreAT)) {
-                            //Siguiente entrega: funcion para mostrar algoritmos
-                            //System.out.println("Escoge el algoritmo:");
-                            //Integer numAlg = inOut.leerEntero();
-                            //Algoritmo algoritmo;
-                            //  if (numAlg==1) algoritmo = algoritmo.QAP;
-                            //  else algoritmo = algoritmo.Alg2;
-
                             //Seleccionar dimensiones del teclado
-                            /*System.out.println("Posibles Dimensiones a escoger para el alfabeto " + nombreA + ":");
-                            HashMap<Integer, PairInt> combinacionesDimensiones = imprimirPosiblesDimensiones(nombreA);
+                            System.out.println("Posibles Dimensiones a escoger para el alfabeto " + nombreA + ":");
+                            int n = ctrlDominio.consultarContenidoAlfabeto(nombreA).size();
+                            ArrayList<PairInt> combinacionesDimensiones = generarDimensiones(n);
                             DriverFP driver = new DriverFP();
                             System.out.println("Selecciona las dimensiones del teclado:");
                             Integer numDim = driver.inOut.leerEntero();
                             PairInt dimensiones = escogerDimensiones(combinacionesDimensiones, numDim);
-                            System.out.println("El teclado tendrá " + dimensiones.getPrimero() + " filas y " + dimensiones.getSegundo() + " columnas.");*/
+                            System.out.println("El teclado tendrá " + dimensiones.getPrimero() + " filas y " + dimensiones.getSegundo() + " columnas.");
 
 
                             //boolean agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP, PairIntEnum.EMPTY_PAIR);
-                            /*int agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT);
+                            int agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, dimensiones);
                             if (agregado == -1) System.out.println("Ya existe el teclado " + nombreT);
                             else if(agregado == -2) System.out.println("El alfabeto y la asociación de textos no son compatibles");
                             else System.out.println("AGREGADO CON EXITO!");
@@ -326,7 +357,7 @@ public class DriverFP {
         } catch (IllegalArgumentException e) {
             System.out.println("Existe un teclado con el mismo nombre " + nombreT); //?? que tipo de excepcion tendria que pasar?
         }
-    }*/
+    }
 
     /**
      * No devuelve nada.
@@ -370,12 +401,12 @@ public class DriverFP {
         }
     }
 
-    /*
-    private PairInt escogerDimensiones(HashMap<Integer, PairInt> combinacionesDimensiones, Integer numDim) {
-        Integer filas = combinacionesDimensiones.get(numDim).getPrimero();
-        Integer columans = combinacionesDimensiones.get(numDim).getSegundo();
-        return new PairInt(filas, columans);
-    }*/
+
+    private PairInt escogerDimensiones(ArrayList<PairInt> combinacionesDimensiones, Integer numDim) {
+        Integer filas = combinacionesDimensiones.get(numDim-1).getPrimero();
+        Integer columnas = combinacionesDimensiones.get(numDim-1).getSegundo();
+        return new PairInt(filas, columnas);
+    }
 
     /*Entrega 2*/
     private HashMap<Integer, PairInt> imprimirPosiblesDimensiones(String nomA) {
@@ -425,12 +456,12 @@ public class DriverFP {
                 }
                 case "5":
                 case "CrearAsociacionTextos": {
-                    //driver.crearAsociacion();
+                    driver.crearAsociacion();
                     break;
                 }
                 case "6":
                 case "CrearTeclado": {
-                    //driver.agregarTeclado();
+                    driver.agregarTeclado();
                     break;
                 }
                 case "7":

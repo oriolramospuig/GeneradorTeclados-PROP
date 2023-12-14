@@ -93,8 +93,8 @@ public class CtrlTeclado
      * No devuelve nada.
      * Crea el nuevo objecto Teclado y añade este objeto a ConjuntoTeclados
      */
-    public void CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto) {
-        Teclado teclado = ctrlAlgoritmo.crearTeclado(nomT, asociacionTextos, alfabeto);
+    public void CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dim) {
+        Teclado teclado = ctrlAlgoritmo.crearTeclado(nomT, asociacionTextos, alfabeto, dim);
         teclados.agregarTeclado(nomT, teclado);
     }
 
