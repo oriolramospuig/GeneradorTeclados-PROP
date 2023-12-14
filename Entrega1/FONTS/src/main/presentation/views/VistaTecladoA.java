@@ -1,5 +1,6 @@
 package main.presentation.views;
 
+import main.domain.classes.types.PairInt;
 import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
@@ -7,6 +8,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.event.*;
 import java.io.File;
+import java.util.ArrayList;
 
 public class VistaTecladoA extends JFrame {
 
@@ -25,6 +27,12 @@ public class VistaTecladoA extends JFrame {
     private final JButton bSeleccionarAlfabeto = new JButton("Selecciona alfabeto");
     /** Botón para agregar un teclado */
     private final JButton bSeleccionaAsociacion = new JButton("Selecciona asociación");
+    /** Desplegable con los nombres de los alfabetos*/
+    private JComboBox<String> nombresAlfabetosTA = new JComboBox<>();
+    /** Desplegable con los nombres de las asociaciones*/
+    private JComboBox<String> nombresAsociacionesTA = new JComboBox<>();
+    /** Desplegable con las posibles dimensiones del teclado*/
+    private JComboBox<String> posiblesDimensiones = new JComboBox<>();
     /** Botó de tornar a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
 
@@ -43,6 +51,9 @@ public class VistaTecladoA extends JFrame {
     private final JLabel txtNombreAsociacionTA = new JLabel("ASOCIACIÓN:");
     /** Área de texto para introducir el contenido del teclado que se quiere crear */
     private final JTextArea areaContenidoAsociacionTA = new JTextArea();
+    private final JLabel txtDimensionesTA = new JLabel("DIMENSIONES:");
+    /** Área de texto para introducir el contenido del teclado que se quiere crear */
+    private final JTextArea areaDimensionesTA = new JTextArea();
     /** Texto explicando el botón de Branch and Bound*/
     private final JLabel txtbotonBB = new JLabel("Para generar el teclado mediante Branch&Bound");
     /** Texto explicando el botón de SA*/
@@ -61,6 +72,21 @@ public class VistaTecladoA extends JFrame {
         //setExtendedState(Frame.MAXIMIZED_BOTH);
         //setResizable(true);
         //setTitle("Funcionalidades teclado);
+        ArrayList<String> nombres = CtrlPresentacion.getNombresAlfabetos();
+        nombresAlfabetosTA = new JComboBox<>();
+        nombresAlfabetosTA.addItem("");
+        for (String nombre : nombres) {
+            nombresAlfabetosTA.addItem(nombre);
+        }
+        ArrayList<String> nombresAT = CtrlPresentacion.getNombresAsociaciones();
+        nombresAsociacionesTA = new JComboBox<>();
+        nombresAsociacionesTA.addItem("");
+        for (String nombre : nombresAT) {
+            nombresAsociacionesTA.addItem(nombre);
+        }
+        //ArrayList<PairInt> dim = CtrlPresentacion.getPosiblesDimensiones();
+        posiblesDimensiones = new JComboBox<>();
+        posiblesDimensiones.addItem("");
 
         // Título ventana superior
         tituloVistaTA.setBounds(10, 5, 120, 30);
@@ -68,41 +94,50 @@ public class VistaTecladoA extends JFrame {
 
         //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombreTA.setBounds(250, 140, 200, 20);
+        txtNombreTA.setBounds(250, 100, 200, 20);
         add(txtNombreTA);
 
         // Área texto Nombre
-        areanomTA.setBounds(450,140, 200,20);
+        areanomTA.setBounds(450,100, 200,20);
         add(areanomTA);
 
         // Texto Contenido
-        txtNombreAlfabetoTA.setBounds(250, 180, 200, 20);
+        txtNombreAlfabetoTA.setBounds(250, 140, 200, 20);
         add(txtNombreAlfabetoTA);
 
         // Área texto Contenido
-        areaContenidoAlfabetoTA.setBounds(450,180, 200,60);
+        areaContenidoAlfabetoTA.setBounds(450,140, 200,60);
         add(areaContenidoAlfabetoTA);
 
-        txtNombreAsociacionTA.setBounds(250, 280, 200, 20);
+        txtNombreAsociacionTA.setBounds(250, 240, 200, 20);
         add(txtNombreAsociacionTA);
 
-        areaContenidoAsociacionTA.setBounds(450,280, 200,60);
+        areaContenidoAsociacionTA.setBounds(450,240, 200,60);
         add(areaContenidoAsociacionTA);
 
-        bSeleccionarAlfabeto.setBounds(660, 180, 175, 20);
-        add(bSeleccionarAlfabeto);
+        txtDimensionesTA.setBounds(250, 320, 200, 20);
+        add(txtDimensionesTA);
 
-        bSeleccionaAsociacion.setBounds(660, 280, 175, 20);
-        add(bSeleccionaAsociacion);
+        areaDimensionesTA.setBounds(450,320, 200,60);
+        add(areaDimensionesTA);
 
-        txtbotonBB.setBounds(650,360, 300, 20);
+        posiblesDimensiones.setBounds(660, 320, 175, 20);
+        add(posiblesDimensiones);
+
+        nombresAlfabetosTA.setBounds(660, 140, 175, 20);
+        add(nombresAlfabetosTA);
+
+        nombresAsociacionesTA.setBounds(660, 240, 175, 20);
+        add(nombresAsociacionesTA);
+
+        txtbotonBB.setBounds(200,420, 300, 20);
         add(txtbotonBB);
 
         txtbotonSA.setBounds(650,420, 320, 20);
         add(txtbotonSA);
 
         // Botón agregar teclado
-        bAgregarTecladoBB.setBounds(700, 390, 200, 20);
+        bAgregarTecladoBB.setBounds(250, 450, 200, 20);
         add(bAgregarTecladoBB);
 
         bAgregarTecladoSA.setBounds(700, 450, 200, 20);

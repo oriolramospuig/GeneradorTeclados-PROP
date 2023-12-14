@@ -1,6 +1,7 @@
 package main.domain.controllers;
 
 import main.domain.classes.*;
+import main.domain.classes.types.PairInt;
 import main.persistence.controllers.CtrlPersistencia;
 
 import java.io.*;
@@ -294,15 +295,16 @@ public class CtrlDominio
      * -1 si el nombre nomT ya existe en otro teclado
      * -2 si el alfabeto y la asociación de textos elegidos no son compatibles
      */
-    public int agregarTeclado(String nomT, String nomA, String nomAT){
+    public int agregarTeclado(String nomT, String nomA, String nomAT, PairInt dimensiones){
         if(ctrlTeclado.existeTeclado(nomT)) return -1;
         
         Alfabeto alfabeto = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA);
         AsociacionTextos asociacionTextos = ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionTextos(nomAT);
         if(compatibles(alfabeto,asociacionTextos)) {
+            System.out.println("alfabeto = " + nomA + " tecldo = " + nomT + " asoc = " + nomAT);
             ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
             ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
-            ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto);
+            ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, dimensiones);
             ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
             ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
             return 0;
