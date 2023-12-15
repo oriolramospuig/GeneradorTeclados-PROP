@@ -55,7 +55,7 @@ public class CtrlAlfabeto
      * @param nomA clave primaria del alfabeto
      * Borra el nombre del teclado nomT de la lista de teclados vinculados del alfabeto nomA
      */
-    public void borrarTecladoVinculado (String nomA,String nomT){
+    public void borrarTecladoVinculado (String nomA, String nomT){
         CjtAlfabetos.getAlfabeto(nomA).borrarTecladoVinculado(nomT);
     }
 

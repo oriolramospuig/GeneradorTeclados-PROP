@@ -154,11 +154,11 @@ public class CtrlTeclado
 
     /**
      * Obtiene el nombre de la asociación de textos vinculada a un teclado específico.
-     * @param nomA
+     * @param nomT
      * @return Nombre de la asociación de textos vinculada a un teclado específico
      */
-    public String TecladoTieneAsociacionVinculada(String nomA){
-        return teclados.getTeclado(nomA).getAsociacionTextosVinculado();
+    public String TecladoTieneAsociacionVinculada(String nomT){
+        return teclados.getTeclado(nomT).getAsociacionTextosVinculado();
     }
 
     /**
