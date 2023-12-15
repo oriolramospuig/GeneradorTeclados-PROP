@@ -303,6 +303,7 @@ public class CtrlDominio
         if(compatibles(alfabeto,asociacionTextos)) {
             ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
             ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
+            System.out.println("llegamos aqui?");
             ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, dimensiones, alg);
             ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
             ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);

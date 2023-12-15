@@ -23,7 +23,6 @@ import static java.lang.Math.sqrt;
  */
 public class CtrlTecladoQAP {
     public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dim, boolean alg) {
-
         ArrayList<Character> letras = alfabeto.getLetras();
         for (int i = 0; i < letras.size(); ++i) {
             System.out.print(letras.get(i) + " ");
@@ -33,8 +32,16 @@ public class CtrlTecladoQAP {
         int nf = dim.getPrimero();
         int nc = dim.getSegundo();
 
-        // HashMap<String, Integer> frecuenciasLetras = asociacionTextos.getFrecuenciaLetras();
+        /*HashMap<String, Integer> frecuenciasLetras = asociacionTextos.getFrecuenciaLetras();
+        for (HashMap.Entry<String, Integer> entry : frecuenciasLetras.entrySet()) {
+            System.out.println("HOLA");
+            System.out.print(entry.getKey());
+            System.out.println(entry.getValue());
+        }*/
         ArrayList<PairFrequency> frecuencias = asociacionTextos.getFrecuenciaLetrasArray();
+        /*for (int i = 0; i < frecuencias.size(); ++i) {
+            System.out.print(frecuencias.get(i));
+        }*/
 
         HashMap<Character, Integer> letraAIndice = new HashMap<>();
         for (int i = 0; i < letras.size(); i++) {
