@@ -34,15 +34,6 @@ public class VistaAlfabetoA extends JFrame {
     private final JTextArea areaPathAA = new JTextArea();
 
 
-    //MENSAJES DE ERROR
-    /** Pantalla de error que aparece cuando se quiere crear un alfabeto sin nombre */
-    private final JFrame Nomframe = new JFrame ("JFrame");
-    /** Pantalla de error que aparece cuando se quiere crear un alfabeto sin contenido o sin path */
-    private final JFrame CPframe = new JFrame ("JFrame");
-    /** Pantalla de error alfabeto no agregado */
-    private JFrame frame = new JFrame();
-
-
     public VistaAlfabetoA(){
 
         setBounds(250, 150, 1000, 600);

@@ -39,7 +39,7 @@ public class TestConjuntoTeclados {
 
         PairInt dimensiones = new PairInt(3, 4);
         char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
-        teclado1 = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+        teclado1 = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
 
         String nombre1 = "teclado2";
 
@@ -48,7 +48,7 @@ public class TestConjuntoTeclados {
         Alfabeto alfabeto1 = new Alfabeto("Alfabeto2", letras);
         PairInt dimensiones1 = new PairInt(2, 6);
         char[][] cont = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
-        teclado2 = new Teclado(nombre1, asociacionTextos1, alfabeto1, dimensiones1, cont);
+        teclado2 = new Teclado(nombre1, asociacionTextos1, alfabeto1, dimensiones1, cont, 0);
     }
 
 

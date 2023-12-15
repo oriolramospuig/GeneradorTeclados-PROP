@@ -1,5 +1,7 @@
 package main.domain.classes.functions;
 
+import main.domain.classes.Alfabeto;
+
 import java.util.*;
 
 /**
@@ -81,6 +83,10 @@ public class QAP {
                 .toArray(int[][]::new);
     }
 
+    public int getGlBound() {
+        return glBound;
+    }
+
     /**
      * Constructor de la clase QAP (Quadratic Assignment Problem).
      *
@@ -89,7 +95,7 @@ public class QAP {
      * @param matrizFrecuencias Matriz de frecuencias.
      * @param matrizDistancias  Matriz de distancias.
      */
-    public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias) {
+    public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias, int alg) {
         this.filas = nf;
         this.columnas = nc;
         this.n = nf*nc;
@@ -206,6 +212,7 @@ public class QAP {
         GilmoreLawler gilmoreLawler = new GilmoreLawler(filas, columnas, glBound, matrizFrecuencias, matrizDistancias);
         gilmoreLawler.gilmore_lawler();
         sol = gilmoreLawler.getMejorSolucionParcial();
+        glBound = gilmoreLawler.getGlBound();
         if (!sol.isEmpty()) {
             // Recorrer la lista de soluciones parciales y asignar cada valor a su posición en el arreglo
             for (int i = 0; i < sol.size(); i++) {

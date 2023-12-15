@@ -19,8 +19,6 @@ import java.util.ArrayList;
  * @author Marc Clapés Marana (marc.clapes.marana@estudiantat.upc.edu)
  */
 public class VistaAlfabetoC extends JFrame{
-    /** Finestra de selecció de l'arxiu que es vol carregar al nostre full de càlcul */
-    JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
     //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
@@ -45,10 +43,6 @@ public class VistaAlfabetoC extends JFrame{
     private final JLabel txtContenido = new JLabel("CONTENIDO:");
     /** Área de texto para introducir el nombre del alfabeto que se quiere consultar */
     private final JTextArea areacontenidoAC = new JTextArea();
-
-    //MENSAJES DE ERROR
-    /** Pantalla de error que aparece cuando se quiere consultar/modificar un alfabeto sin nombre */
-    private final JFrame Nomframe = new JFrame ("JFrame");
 
     public VistaAlfabetoC() {
         setBounds(250, 150, 1000, 600);

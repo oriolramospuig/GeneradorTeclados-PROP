@@ -10,35 +10,38 @@ import java.util.List;
  */
 public class Matrices {
     /**Genera la matriz de distancias de Manhattan*/
-    public static void generarMatrizDistancias(int filas, int columnas, int[][] matrizDistancias) {
+    public static int[][] generarMatrizDistancias(int filas, int columnas) {
+        int[][] md = new int[filas*columnas][filas*columnas];
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 for (int k = 0; k < filas; k++) {
                     for (int l = 0; l < columnas; l++) {
                         int indice1 = i * columnas + j;
                         int indice2 = k * columnas + l;
-                        matrizDistancias[indice1][indice2] = Manhattan.calcularDistancia(i, j, k, l);
+                        md[indice1][indice2] = Manhattan.calcularDistancia(i, j, k, l);
                     }
                 }
             }
         }
+        return md;
     }
 
     /**
      * Genera matriz de frecuencias, le pasamos la lista de pares de letras con las frecuencias ordenadas
      * y la lista de teclas.
      */
-    public static void generarMatrizDeFrecuencias(List<PairFrequency> frecuenciasPares, List<Character> teclas, HashMap<Character, Integer> letraAIndice, int[][] matrizFrecuencias) {
+    public static int[][] generarMatrizDeFrecuencias(int n, List<PairFrequency> frecuenciasPares, List<Character> teclas, HashMap<Character, Integer> letraAIndice) {
         // Primero, mapear cada letra a su índice en la matriz del teclado
         int index = 0;
+        int[][] mf = new int[n][n];
         for (Character c : teclas) {
             letraAIndice.put(c, index++);
         }
 
         // Inicializa la matriz de frecuencias a cero
-        for (int i = 0; i < matrizFrecuencias.length; i++) {
-            for (int j = 0; j < matrizFrecuencias[i].length; j++) {
-                matrizFrecuencias[i][j] = 0;
+        for (int i = 0; i < mf.length; i++) {
+            for (int j = 0; j < mf[i].length; j++) {
+                mf[i][j] = 0;
             }
         }
 
@@ -52,10 +55,11 @@ public class Matrices {
             Integer indice2 = letraAIndice.get(letra2);
 
             if (indice1 != null && indice2 != null) {
-                matrizFrecuencias[indice1][indice2] = frecuencia;
-                matrizFrecuencias[indice2][indice1] = frecuencia;
+                mf[indice1][indice2] = frecuencia;
+                mf[indice2][indice1] = frecuencia;
             }
         }
+        return mf;
     }
 
     /**

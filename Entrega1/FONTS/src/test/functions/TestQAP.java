@@ -29,13 +29,11 @@ public class TestQAP {
         for (int i = 0; i < teclas.size(); i++) {
             letraAIndice.put(teclas.get(i), i);
         }
-        int [][] mf = new int[9][9];
-        Matrices.generarMatrizDeFrecuencias(paresFrecuencias, teclas, letraAIndice, mf);
-        int [][] md = new int [9][9];
-        Matrices.generarMatrizDistancias(3,3, md);
+        int [][] mf = Matrices.generarMatrizDeFrecuencias(9, paresFrecuencias, teclas, letraAIndice);
+        int [][] md = Matrices.generarMatrizDistancias(3,3);
         List<Integer> sol = new ArrayList<>();
         int [][] tec = new int[filas][columnas];
-        QAP qap = new QAP(filas, columnas, mf, md);
+        QAP qap = new QAP(filas, columnas, mf, md, 0);
         tec = qap.getTeclado();
 
         assertEquals(filas, qap.getFilas());
@@ -78,15 +76,13 @@ public class TestQAP {
             letraAIndice.put(teclas.get(i), i);
         }
         /*les dues matrius que s'han de generar, una a partir de frecuencies, l'altre a partir del teclat seleccionat(mides)*/
-        int[][] matrizFrecuencias = new int[nf*nc][nf*nc];
-        Matrices.generarMatrizDeFrecuencias(frecuenciasPares, teclas, letraAIndice, matrizFrecuencias);
+        int[][] matrizFrecuencias = Matrices.generarMatrizDeFrecuencias(nf*nc, frecuenciasPares, teclas, letraAIndice);;
 
-        int [][] matrizDistancias = new int[nf*nc][nf*nc];
-        Matrices.generarMatrizDistancias(nf,nc,matrizDistancias);
+        int [][] matrizDistancias = Matrices.generarMatrizDistancias(nf,nc);
         /*creadora de la classe qap nova, per que poguem provar amb lo que ha dit a classe*/
         List<Integer> sol = new ArrayList<>();
         int [][] tec = new int[nf][nc];
-        QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias);
+        QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias, 0);
         tec = qap.getTeclado();
     }
 }

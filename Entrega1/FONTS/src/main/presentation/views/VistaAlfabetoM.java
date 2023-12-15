@@ -45,10 +45,6 @@ public class VistaAlfabetoM extends JFrame{
     /** Área de texto para introducir el nombre del alfabeto que se quiere consultar */
     private final JTextArea areacontenidoAM = new JTextArea();
 
-    //MENSAJES DE ERROR
-    /** Pantalla de error que aparece cuando se quiere consultar/modificar un alfabeto sin nombre */
-    private final JFrame Nomframe = new JFrame ("JFrame");
-
     public VistaAlfabetoM() {
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);

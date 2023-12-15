@@ -1,6 +1,7 @@
 package main.domain.controllers;
 
 import main.domain.classes.*;
+import main.domain.classes.types.PairInt;
 import main.persistence.controllers.CtrlPersistencia;
 
 import java.io.*;
@@ -203,8 +204,10 @@ public class CtrlDominio
     public boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar){
         //boolean agregada = ctrlAsociacionTexto.agregarAsociacion(nomAT);
         if(ctrlAsociacionTexto.agregarAsociacion(nomAT)){
-           //agregarTextoAsociacion(nomAT,textosagregar);
-            return true;
+           for (int i = 0; i < textosagregar.size(); ++i) {
+               agregarTextoAsociacion(nomAT,textosagregar.get(i));
+           }
+           return true;
         }
         else return false;
     }
@@ -300,7 +303,7 @@ public class CtrlDominio
      * -1 si el nombre nomT ya existe en otro teclado
      * -2 si el alfabeto y la asociación de textos elegidos no son compatibles
      */
-    public int agregarTeclado(String nomT, String nomA, String nomAT){
+    public int agregarTeclado(String nomT, String nomA, String nomAT, PairInt dimensiones, boolean alg){
         if(ctrlTeclado.existeTeclado(nomT)) return -1;
         
         Alfabeto alfabeto = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA);
@@ -308,7 +311,8 @@ public class CtrlDominio
         if(compatibles(alfabeto,asociacionTextos)) {
             ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
             ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
-            ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto);
+            System.out.println("llegamos aqui?");
+            ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, dimensiones, alg);
             ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
             ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
             return 0;
@@ -326,6 +330,18 @@ public class CtrlDominio
         }
         return null;
     }
+    /**
+     * Retorna el contenido del teclado nomT
+     * @param nomT nombre del teclado a consultar
+     * @return char[][]: la matriz que representa el contenido del teclado nomT
+     */
+    public int consultarPuntuacionTeclado(String nomT){
+        if(ctrlTeclado.existeTeclado(nomT)) {
+            return ctrlTeclado.getPuntuacion(nomT);
+        }
+        return -1;
+    }
+
     /**
      * Retorna el nombre del alfabeto asociado al teclado con nombre nomT
      * @param nomT nombre del teclado a buscar
@@ -350,6 +366,17 @@ public class CtrlDominio
     }
     //public boolean modificarContenidoTeclado(String nomT, PairInt dimensiones)
     /**
+     * Retorna el nombre de la asociación de textos asociada al teclado nomT
+     * @param nomT nombre del teclado a buscar
+     * @return String: nombre de la asociación vinculada al teclado nomT
+     */
+    public PairInt consultarDimensionesTeclado(String nomT) {
+        if(ctrlTeclado.existeTeclado(nomT)) {
+            return ctrlTeclado.getDimensiones(nomT);
+        }
+        return null;
+    }
+    /**
      * Retorna la lista de teclados existentes
      * @return ArrayList<String>: lista de nombres de los teclados existentes
      */
@@ -369,6 +396,11 @@ public class CtrlDominio
         ctrlAsociacionTexto.borrarTecladoVinculado(atvinculada, nomT);
         ctrlAlfabeto.borrarTecladoVinculado(aVinculado, nomT);
         ctrlTeclado.borrarTeclado(nomT);
+    }
+
+    public ArrayList<PairInt> getPosiblesDimensiones(String nomA) {
+        int n = ctrlAlfabeto.getContenido(nomA).size();
+        return ctrlTeclado.getPosiblesDimensiones(n);
     }
 
 
@@ -399,7 +431,12 @@ public class CtrlDominio
     public void cargaCnjtAlfabetos(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtAlfabetos(path);
-            CtrlAlfabeto.byteArrayToAlfabetos(bytes);
+            if (bytes != null || bytes.length != 0) {
+                CtrlAlfabeto.byteArrayToAlfabetos(bytes);
+            }
+            else {
+                System.out.println("El archivo está vacío. No se carga ningun alfabeto.");
+            }
         } catch (Exception e) {
             System.err.println("[#CARGA] Error al cargar el conjunto de alfabetos " + e.getMessage());
         }
@@ -432,7 +469,12 @@ public class CtrlDominio
     public void cargaCnjtTextos(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtTextos(path);
-            CtrlTexto.byteArrayToTextos(bytes);
+            if (bytes != null || bytes.length != 0) {
+                CtrlTexto.byteArrayToTextos(bytes);
+            }
+            else {
+                System.out.println("El archivo está vacío. No se carga ningun texto.");
+            }
         } catch (Exception e) {
             System.err.println("[#CARGA] Error al cargar el conjunto de textos " + e.getMessage());
         }
@@ -465,7 +507,12 @@ public class CtrlDominio
     public void cargaCnjtAsociaciones(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtAsociaciones(path);
-            CtrlAsociacionTexto.byteArrayToAsociaciones(bytes);
+            if (bytes != null || bytes.length != 0) {
+                CtrlAsociacionTexto.byteArrayToAsociaciones(bytes);
+            }
+            else {
+                System.out.println("El archivo está vacío. No se carga ninguna asociación.");
+            }
         } catch (Exception e) {
             System.err.println("[#CARGA] Error al cargar el conjunto de asociaciones de textos " + e.getMessage());
         }
@@ -498,7 +545,12 @@ public class CtrlDominio
     public void cargaCnjtTeclados(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtTeclados(path);
-            ctrlTeclado.byteArrayToTeclados(bytes);
+            if (bytes != null || bytes.length != 0) {
+                ctrlTeclado.byteArrayToTeclados(bytes);
+            }
+            else {
+                System.out.println("El archivo está vacío. No se carga ningun teclado.");
+            }
         } catch (Exception e) {
             System.err.println("[#CARGA] Error al cargar el conjunto de teclados " + e.getMessage());
         }

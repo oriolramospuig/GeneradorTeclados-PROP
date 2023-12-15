@@ -15,7 +15,10 @@ public class SimulatedAnnealing {
     private static int columnas;
     private static int puntuacionFinal;
 
+    private static int[][] tecFinal;
+
     public int getPuntuacionFinal() {return puntuacionFinal;}
+    public int[][] getTecFinal() {return tecFinal;}
 
     public SimulatedAnnealing(int filas, int columnas, int[][] mf, int[][] md) {
         SimulatedAnnealing.filas = filas;
@@ -184,24 +187,25 @@ public class SimulatedAnnealing {
 
         int[][] tecIni = calcularMejorAsignacionAleatoria(ind, 1000);
         int[][] tecAux = generarSolucionInicial(matrizFrecuencias);
-        for (int i = 0; i < filas; ++i) {
+        /*for (int i = 0; i < filas; ++i) {
             for (int j = 0; j < columnas; ++j) {
                 System.out.print(tecIni[i][j] + " ");
             }
             System.out.println();
-        }
+        }*/
+        /*
         for (int i = 0; i < filas; ++i) {
             for (int j = 0; j < columnas; ++j) {
                 System.out.print(tecAux[i][j] + " ");
             }
             System.out.println();
-        }
+        }*/
         int punt = calculoPuntuacion(tecIni);
         int aux = calculoPuntuacion(tecAux);
-        System.out.println("Puntuación N aleatorios = " + punt);
-        System.out.println("Puntuación greedy = " + aux);
+        //System.out.println("Puntuación N aleatorios = " + punt);
+        //System.out.println("Puntuación greedy = " + aux);
         //System.out.println("Empezando Simulated Annealing:");
-        int[][] tecFinal = simulatedAnnealing(tecIni);
+        tecFinal = simulatedAnnealing(tecIni);
         int[][] tecFinalAux = simulatedAnnealing(tecAux);
         /*System.out.println("Tec final: ");
         for (int i = 0; i < filas; ++i) {
@@ -213,8 +217,8 @@ public class SimulatedAnnealing {
         //System.out.println();
         int puntFinal = calculoPuntuacion(tecFinal);
         int puntAux = calculoPuntuacion(tecFinalAux);
-        System.out.println("Puntuacion final N aleatorias = " + puntFinal);
-        System.out.println("Puntuacion final greedy = " + puntAux);
+        //System.out.println("Puntuacion final N aleatorias = " + puntFinal);
+        //System.out.println("Puntuacion final greedy = " + puntAux);
         puntuacionFinal = puntFinal;
     }
 }
