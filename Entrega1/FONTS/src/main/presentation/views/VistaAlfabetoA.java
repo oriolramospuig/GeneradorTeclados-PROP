@@ -6,6 +6,21 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
+/**
+ * Esta vista es la encargada de agregar un alfabeto. Se indican claramente 3 campos de texto, pero solo hay que rellenar 2 de estos 3
+ * El primer campo es el del nombre del alfabeto a crear. Este es necesario ya que sin el nombre no se puede crear.
+ * (el nombre será el identificador del alfabeto). De los otros dos campos hay qe escoger 1.
+ * La primera opción es entrar el contenido del alfabeto manualmente, en el cuadro de texto que se proporciona.
+ * La segunda opción es adjuntar el path del archivo que se quiere añadir como alfabeto.
+ * Solo se puede agregar el alfabeto si: se ha añadido un nombre y si se han rellenado
+ * Només es pot crear document si no s’indica almenys la localització on estarà guardat, si no és així salta un
+ * missatge d’error conforme no s’ha indicat el path. La localització del document es pot indicar manualment escrita
+ * a la barra de text o es pot seleccionar el directori fent clic al botó triar directori, on s’obre l’explorador de
+ * documents i es pot seleccionar el directori a guardar el document. A sota de la vista s’hi proporciona també un botó
+ * per a tornar al menú principal.
+ * @author Andreu Orensanz Bargalló (andreu.orensanz@estudiantat.upc.edu)
+ */
+
 public class VistaAlfabetoA extends JFrame {
 
     //BOTONES
@@ -15,7 +30,7 @@ public class VistaAlfabetoA extends JFrame {
     private final JLabel tituloVistaAA = new JLabel("Agregar alfabeto");
     /** Botón para agregar un alfabeto */
     private final JButton bAgregarAlfabeto = new JButton("Agregar Alfabeto");
-    /** Botó de tornar a la pantalla del menú principal */
+    /** Botón de volver a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
 
 
@@ -44,7 +59,6 @@ public class VistaAlfabetoA extends JFrame {
         // Título ventana superior
         tituloVistaAA.setBounds(10, 5, 120, 30);
         add(tituloVistaAA);
-
 
         // Texto Nombre
         txtNombreAA.setBounds(250, 140 , 200, 20);
@@ -81,10 +95,10 @@ public class VistaAlfabetoA extends JFrame {
         add(bsalir);
 
         add(lamina);
-
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        /**  */
         ActionListener lAgregar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

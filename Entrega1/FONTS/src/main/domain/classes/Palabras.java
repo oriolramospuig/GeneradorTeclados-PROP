@@ -44,4 +44,8 @@ public class Palabras extends Texto
             System.out.println(e.getKey() + " " + e.getValue());
         }
     }
+
+    public void modificarPalabras(String entrada){
+        //modfificar palabras
+    }
 }
