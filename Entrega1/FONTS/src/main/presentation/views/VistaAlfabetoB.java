@@ -9,7 +9,20 @@ import java.awt.event.*;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * Esta vista es la encargada de eliminar un alfabeto. Se indican claramente 2 campos de texto, pero solo hay que rellenar 1 de estos 2.
+ * El primer campo es una lista de desplegable de los nombres de los alfabetos existentes en el sistema.
+ * De manera que el usuario debe seleccionar uno de estos para eliminar.
+ * El segundo campo se llenará automáticamente con el nombre que el usuario haya seleccionado de la lista del campo anterior.
+ * Solo se puede eliminar un alfabeto si se selecciona algún nombre de la lista.
+ * De no ser así, se muestra un mensaje de error avisando al usuario qué le falta para poder borrar de forma correcta el alfabeto deseado.
+ * Debajo de las áreas de texto se proporciona un botón para borrar el alfabeto con la información introducida.
+ * Más también hay un botón con la opción de volver al menú principal.
+ * @author
+ */
+
 public class VistaAlfabetoB extends JFrame{
+    /** Pantalla de error que aparece cuando falta información por introducir */
     private JFrame frame = new JFrame();
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
@@ -17,7 +30,7 @@ public class VistaAlfabetoB extends JFrame{
     private final JLabel tituloVistaAB = new JLabel("Borrar alfabeto");
     /** Botón para agregar un alfabeto */
     private final JButton bBorrarAlfabeto = new JButton("Borrar Alfabeto");
-    /** Botó de tornar a la pantalla del menú principal */
+    /** Botón para volver a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
     private final JLabel txtDesplegableAB = new JLabel("LISTA NOMBRES:");
@@ -70,7 +83,6 @@ public class VistaAlfabetoB extends JFrame{
 
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 
         ActionListener lElementoSeleccionado = new ActionListener() {
             @Override

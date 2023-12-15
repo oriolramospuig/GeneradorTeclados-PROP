@@ -1,6 +1,5 @@
 package main.presentation.controllers;
 
-import drivers.InOut;
 import main.domain.classes.Alfabeto;
 import main.domain.classes.AsociacionTextos;
 import main.domain.classes.types.PairInt;
@@ -109,7 +108,6 @@ public class CtrlPresentacion {
      * @param path path donde se crea y guarda el alfabeto
      */
     public static boolean agregarAlfabetoManual(String nomA, ArrayList<Character> entrada, String path) {
-        //ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
         boolean agregado = cd.agregarAlfabeto(nomA, entrada);
         if (agregado) {
             try {
@@ -133,17 +131,6 @@ public class CtrlPresentacion {
     /**
      * Llama a la función agregarAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a agregar
-     * @param entradaCaracteres es el contenido del alfabeto
-     */
-    //Mirar si cal aquesta funció
-    /*public static boolean agregarAlfabetoManual(String nomA, String entradaCaracteres) {
-        ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
-        boolean agregado = cd.agregarAlfabeto(nomA, entrada);
-        return agregado;
-    }*/
-    /**
-     * Llama a la función agregarAlfabeto de CtrlDominio
-     * @param nomA es el nombre del alfabeto a agregar
      * @param path es la lista de caracteres que forman el contenido del alfabeto
      */
     public static boolean agregarAlfabetoPath(String nomA, String path) {
@@ -162,10 +149,10 @@ public class CtrlPresentacion {
      * Llama a la función existealfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a consultar si existe
      */
-    public static boolean existeAlfabeto(String nomA) {
+    /*public static boolean existeAlfabeto(String nomA) {
         boolean existe = cd.existealfabeto(nomA);
         return existe;
-    }
+    }*/
     /**
      * Llama a la función consultarContenidoAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a consultar
@@ -176,10 +163,11 @@ public class CtrlPresentacion {
     }
     /**
      * Llama a la función modificarContenidoAlfabeto de CtrlDominio
+     *
      * @param nomA es el nombre del alfabeto a modificar
      */
-    public static boolean modificarContenidoAlfabeto(String nomA, ArrayList<Character> entrada) {
-        return cd.modificarContenidoAlfabeto(nomA, entrada);
+    public static void modificarContenidoAlfabeto(String nomA, ArrayList<Character> entrada) {
+        cd.modificarContenidoAlfabeto(nomA, entrada);
     }
     /**
      * Llama a la función borrarAlfabeto de CtrlDominio

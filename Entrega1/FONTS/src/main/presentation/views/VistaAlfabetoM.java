@@ -12,37 +12,42 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Aquesta vista s’encarrega de carregar un fitxer guardat a l’ordinador i obrir-lo. La vista obre l’explorador d’arxius
- * on es podran seleccionar únicament fitxers que el nostre sistema és capaç d’obrir. Es proporciona un botó de
- * cancel·lar que tornarà a la VistaMenuPrincipal i un botó d’obrir que farà que s’obri a la VistaSpreadsheet el fitxer
- * seleccionat.
- * @author Marc Clapés Marana (marc.clapes.marana@estudiantat.upc.edu)
+ * Esta vista es la encargada de modificar un alfabeto. Se indican claramente 3 campos de texto, pero solo hay que rellenar 1 de estos 3.
+ * El primer campo es una lista de desplegable de los nombres de los alfabetos existentes en el sistema.
+ * De manera que el usuario debe seleccionar uno de estos para modificar.
+ * El segundo campo se llenará automáticamente con el nombre que el usuario haya seleccionado de la lista del campo anterior.
+ * El tercer campo se llenará automáticamente con el contenido del alfabeto que el usuario haya seleccionado en el primer campo.
+ * El usuario tendrá acceso a modificar el contenido del alfabeto pero no el nombre, ya que este último es el identificador.
+ * Solo se puede modificar un alfabeto si se selecciona algún nombre de la lista.
+ * De no ser así, se muestra un mensaje de error avisando al usuario qué le falta para poder modificar de forma correcta el alfabeto deseado.
+ * Debajo de las áreas de texto se proporciona un botón para modificar el alfabeto con la información introducida.
+ * Más también hay un botón con la opción de volver al menú principal.
+ * @author
  */
 public class VistaAlfabetoM extends JFrame{
-    //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana inferior */
+    /** Título ventana */
     private final JLabel tituloVistaAM = new JLabel("Modificar alfabeto");
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
     private final JLabel txtDesplegableAM = new JLabel("LISTA NOMBRES:");
     /** Desplegable con los nombres de los alfabetos*/
     private JComboBox<String> nombresAM = new JComboBox<>();
+    /** Botón para modificar el alfabeto del nombre seleccionado */
     private final JButton bModificarAlfabeto = new JButton("Modificar alfabeto");
-    /** Botó de tornar a la pantalla del menú principal */
+    /** Botón para volver a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
 
 
     //TEXTOS Y AREAS DE TEXTO
-    //VENTANA SUPERIOR
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto a consultar*/
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto a modificar*/
     private final JLabel txtNombreAM = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del alfabeto que se quiere consultar */
+    /** Área de texto para introducir el nombre del alfabeto que se quiere modificar */
     private final JTextArea areanomAM = new JTextArea();
 
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto a consultar*/
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto a modificar*/
     private final JLabel txtContenidoAM = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el nombre del alfabeto que se quiere consultar */
+    /** Área de texto para introducir el nombre del alfabeto que se quiere modificar */
     private final JTextArea areacontenidoAM = new JTextArea();
 
     public VistaAlfabetoM() {
@@ -149,7 +154,7 @@ public class VistaAlfabetoM extends JFrame{
                 }
 
                 // Llamar a la función de control para modificar el alfabeto
-                //CtrlPresentacion.modificarAlfabeto(nombreAlfabeto, nuevoContenido);
+                CtrlPresentacion.modificarContenidoAlfabeto(nombreAlfabeto, nuevoContenido);
                 JOptionPane.showMessageDialog(VistaAlfabetoM.this, "Alfabeto modificado con éxito.",
                         "Éxito", JOptionPane.INFORMATION_MESSAGE);
             }

@@ -12,13 +12,13 @@ import java.util.ArrayList;
  * (el nombre será el identificador del alfabeto). De los otros dos campos hay qe escoger 1.
  * La primera opción es entrar el contenido del alfabeto manualmente, en el cuadro de texto que se proporciona.
  * La segunda opción es adjuntar el path del archivo que se quiere añadir como alfabeto.
- * Solo se puede agregar el alfabeto si: se ha añadido un nombre y si se han rellenado
- * Només es pot crear document si no s’indica almenys la localització on estarà guardat, si no és així salta un
- * missatge d’error conforme no s’ha indicat el path. La localització del document es pot indicar manualment escrita
- * a la barra de text o es pot seleccionar el directori fent clic al botó triar directori, on s’obre l’explorador de
- * documents i es pot seleccionar el directori a guardar el document. A sota de la vista s’hi proporciona també un botó
- * per a tornar al menú principal.
- * @author Andreu Orensanz Bargalló (andreu.orensanz@estudiantat.upc.edu)
+ * Solo se puede agregar el alfabeto si: se ha añadido un nombre y si se han rellenado uno de los dos campos (contenido o path).
+ * De no ser así, se muestra un mensaje de error avisando al usuario qué le falta para poder agregar de forma correcta el alfabeto deseado..
+ * Hay que tener en cuenta que se comprobará que el nombre no exista en otro alfabeto ya creado,
+ * por lo que el nombre que se escriba debe ser nuevo, no debe coincidir con un alfabeto ya existente.
+ * Debajo de las áreas de texto se proporciona un botón para agregar el alfabeto con la información introducida.
+ * Más también hay un botón con la opción de volver al menú principal.
+ * @author
  */
 
 public class VistaAlfabetoA extends JFrame {
@@ -47,7 +47,9 @@ public class VistaAlfabetoA extends JFrame {
     private final JLabel txtPathAA = new JLabel("PATH:");
     /** Área de texto para introducir el path del alfabeto que se quiere crear */
     private final JTextArea areaPathAA = new JTextArea();
-
+    /** Texto explicando las instrucciones de como entrar el alfabeto correctamente */
+    private final JLabel txtInstruccionesA = new JLabel("(Hay que añadir el contenido con todos los carácteres juntos y sin repetir.");
+    private final JLabel txtInstruccionesA1 = new JLabel("Si desea el espacio como carácter, hay que añadirlo también en el contenido. Ej: Abdf i%67)");
 
     public VistaAlfabetoA(){
 
@@ -83,6 +85,12 @@ public class VistaAlfabetoA extends JFrame {
         // Área texto Path
         areaPathAA.setBounds(450,280, 200,20);
         add(areaPathAA);
+
+        // Texto Instrucciones
+        txtInstruccionesA.setBounds(30, 340, 600, 20);
+        add(txtInstruccionesA);
+        txtInstruccionesA1.setBounds(30, 360, 600, 20);
+        add(txtInstruccionesA1);
 
 
         //BOTONES
@@ -129,11 +137,10 @@ public class VistaAlfabetoA extends JFrame {
                         JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: El nombre " + nombreAlfabeto + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
-                else {
+                else if (pathArchivo.isEmpty()){
                     // Convertimos la entrada de string en una lista de characters
                     ArrayList<Character> caracteres = new ArrayList<>();
                     for (char c : contenidoAlfabeto.toCharArray()) caracteres.add(c);
-
                     boolean agregado = CtrlPresentacion.agregarAlfabetoManual(nombreAlfabeto, caracteres, path);
                     // Mensaje de éxito o error
                     if (agregado) {
@@ -143,11 +150,12 @@ public class VistaAlfabetoA extends JFrame {
                     } else {
                         JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: El nombre " + nombreAlfabeto + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                     }
+                } else {
+                    JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: No puede haber contenido y path a la vez, solo uno de los dos", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
             }
         };
-
-
 
         ActionListener lSalir = new ActionListener() {
             @Override
