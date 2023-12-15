@@ -110,20 +110,14 @@ public class VistaTecladoA extends JFrame {
         add(txtNombreAlfabetoTA);
 
         // Área texto Contenido
-        areaContenidoAlfabetoTA.setBounds(450,140, 200,60);
+        areaContenidoAlfabetoTA.setBounds(450,140, 200,20);
         add(areaContenidoAlfabetoTA);
 
         txtNombreAsociacionTA.setBounds(250, 240, 200, 20);
         add(txtNombreAsociacionTA);
 
-        areaContenidoAsociacionTA.setBounds(450,240, 200,60);
+        areaContenidoAsociacionTA.setBounds(450,240, 200,20);
         add(areaContenidoAsociacionTA);
-
-        //txtDimensionesTA.setBounds(250, 320, 200, 20);
-        //add(txtDimensionesTA);
-
-        //areaDimensionesTA.setBounds(450,320, 200,60);
-        //add(areaDimensionesTA);
 
         txtFilasTA.setBounds(250, 320, 200, 20);
         add(txtFilasTA);

@@ -397,7 +397,7 @@ public class CtrlPresentacion {
      * @param nomT nombre del teclado a consultar
      * @return String: nombre del alfabeto vinculado al teclado nomT
      */
-    public String consultarAlfabetoAsociadoTeclado(String nomT) {
+    public static String consultarAlfabetoAsociadoTeclado(String nomT) {
         return cd.consultarAlfabetoAsociadoTeclado(nomT);
     }
     /**
@@ -405,8 +405,16 @@ public class CtrlPresentacion {
      * @param nomT nombre del teclado a consultar
      * @return String: nombre de la asociación vinculada al teclado nomT
      */
-    public String consultarAsociacionAsociadoTeclado(String nomT) {
+    public static String consultarAsociacionAsociadoTeclado(String nomT) {
         return cd.consultarAsociacionAsociadoTeclado(nomT);
+    }
+    /**
+     * Llama a la función consultarAsociacionAsociadoTeclado de CtrlDominio
+     * @param nomT nombre del teclado a consultar
+     * @return String: nombre de la asociación vinculada al teclado nomT
+     */
+    public static PairInt consultarDimensionesTeclado(String nomT) {
+        return cd.consultarDimensionesTeclado(nomT);
     }
     /**
      * Llama a la función getListaTeclados de CtrlDominio

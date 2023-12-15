@@ -356,6 +356,17 @@ public class CtrlDominio
         return null;
     }
     /**
+     * Retorna el nombre de la asociación de textos asociada al teclado nomT
+     * @param nomT nombre del teclado a buscar
+     * @return String: nombre de la asociación vinculada al teclado nomT
+     */
+    public PairInt consultarDimensionesTeclado(String nomT) {
+        if(ctrlTeclado.existeTeclado(nomT)) {
+            return ctrlTeclado.getDimensiones(nomT);
+        }
+        return null;
+    }
+    /**
      * Retorna la lista de teclados existentes
      * @return ArrayList<String>: lista de nombres de los teclados existentes
      */

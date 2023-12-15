@@ -46,6 +46,10 @@ public class CtrlTeclado
         return teclados.getTeclado(nomT).getAsociacionTextosVinculado();
     }
 
+    public PairInt getDimensiones(String nomT){
+        return teclados.getTeclado(nomT).getDimensiones();
+    }
+
     /**
      * No devuelve nada, manda a introducir las dimensiones escritas en un Teclado (también pedido)
      */
