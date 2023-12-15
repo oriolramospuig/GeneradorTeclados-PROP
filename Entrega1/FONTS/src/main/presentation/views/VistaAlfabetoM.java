@@ -12,11 +12,17 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Aquesta vista s’encarrega de carregar un fitxer guardat a l’ordinador i obrir-lo. La vista obre l’explorador d’arxius
- * on es podran seleccionar únicament fitxers que el nostre sistema és capaç d’obrir. Es proporciona un botó de
- * cancel·lar que tornarà a la VistaMenuPrincipal i un botó d’obrir que farà que s’obri a la VistaSpreadsheet el fitxer
- * seleccionat.
- * @author Marc Clapés Marana (marc.clapes.marana@estudiantat.upc.edu)
+ * Esta vista es la encargada de modificar un alfabeto. Se indican claramente 3 campos de texto, pero solo hay que rellenar 1 de estos 3.
+ * El primer campo es una lista de desplegable de los nombres de los alfabetos existentes en el sistema.
+ * De manera que el usuario debe seleccionar uno de estos para modificar.
+ * El segundo campo se llenará automáticamente con el nombre que el usuario haya seleccionado de la lista del campo anterior.
+ * El tercer campo se llenará automáticamente con el contenido del alfabeto que el usuario haya seleccionado en el primer campo.
+ * El usuario tendrá acceso a modificar el contenido del alfabeto pero no el nombre, ya que este último es el identificador.
+ * Solo se puede modificar un alfabeto si se selecciona algún nombre de la lista.
+ * De no ser así, se muestra un mensaje de error avisando al usuario qué le falta para poder modificar de forma correcta el alfabeto deseado.
+ * Debajo de las áreas de texto se proporciona un botón para modificar el alfabeto con la información introducida.
+ * Más también hay un botón con la opción de volver al menú principal.
+ * @author
  */
 public class VistaAlfabetoM extends JFrame{
     //BOTONES

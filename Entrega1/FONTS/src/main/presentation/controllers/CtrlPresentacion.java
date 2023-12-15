@@ -109,7 +109,6 @@ public class CtrlPresentacion {
      * @param path path donde se crea y guarda el alfabeto
      */
     public static boolean agregarAlfabetoManual(String nomA, ArrayList<Character> entrada, String path) {
-        //ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
         boolean agregado = cd.agregarAlfabeto(nomA, entrada);
         if (agregado) {
             try {

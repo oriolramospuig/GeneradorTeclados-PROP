@@ -12,17 +12,22 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Aquesta vista s’encarrega de carregar un fitxer guardat a l’ordinador i obrir-lo. La vista obre l’explorador d’arxius
- * on es podran seleccionar únicament fitxers que el nostre sistema és capaç d’obrir. Es proporciona un botó de
- * cancel·lar que tornarà a la VistaMenuPrincipal i un botó d’obrir que farà que s’obri a la VistaSpreadsheet el fitxer
- * seleccionat.
- * @author Marc Clapés Marana (marc.clapes.marana@estudiantat.upc.edu)
+ * Esta vista es la encargada de consultar un alfabeto. Se indican claramente 3 campos de texto, pero solo hay que rellenar 1 de estos 3.
+ * El primer campo es una lista de desplegable de los nombres de los alfabetos existentes en el sistema.
+ * De manera que el usuario debe seleccionar uno de estos para consultar.
+ * El segundo campo se llenará automáticamente con el nombre que el usuario haya seleccionado de la lista del campo anterior.
+ * El tercer campo se llenará automáticamente con el contenido del alfabeto que el usuario haya seleccionado en el primer campo.
+ * Solo se puede consultar un alfabeto si se selecciona algún nombre de la lista.
+ * De no ser así, se muestra un mensaje de error avisando al usuario qué le falta para poder consultar de forma correcta el alfabeto deseado.
+ * Debajo de las áreas de texto se proporciona un botón para consultar el alfabeto con la información introducida.
+ * Más también hay un botón con la opción de volver al menú principal.
+ * @author
  */
+
 public class VistaAlfabetoC extends JFrame{
-    //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana superior */
+    /** Título ventana */
     private final JLabel tituloVistaAC = new JLabel("Consultar alfabeto");
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
     private final JLabel txtDesplegableAC = new JLabel("LISTA NOMBRES:");
@@ -33,7 +38,6 @@ public class VistaAlfabetoC extends JFrame{
 
 
     //TEXTOS Y AREAS DE TEXTO
-    //VENTANA SUPERIOR
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto a consultar*/
     private final JLabel txtNombreAC = new JLabel("NOMBRE:");
     /** Área de texto para introducir el nombre del alfabeto que se quiere consultar */
