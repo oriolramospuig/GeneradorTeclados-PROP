@@ -25,30 +25,29 @@ import java.util.ArrayList;
  * @author
  */
 public class VistaAlfabetoM extends JFrame{
-    //BOTONES
     /** Panel donde se incluyen los elementos de la ventana */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana inferior */
+    /** Título ventana */
     private final JLabel tituloVistaAM = new JLabel("Modificar alfabeto");
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
     private final JLabel txtDesplegableAM = new JLabel("LISTA NOMBRES:");
     /** Desplegable con los nombres de los alfabetos*/
     private JComboBox<String> nombresAM = new JComboBox<>();
+    /** Botón para modificar el alfabeto del nombre seleccionado */
     private final JButton bModificarAlfabeto = new JButton("Modificar alfabeto");
-    /** Botó de tornar a la pantalla del menú principal */
+    /** Botón para volver a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
 
 
     //TEXTOS Y AREAS DE TEXTO
-    //VENTANA SUPERIOR
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto a consultar*/
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto a modificar*/
     private final JLabel txtNombreAM = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del alfabeto que se quiere consultar */
+    /** Área de texto para introducir el nombre del alfabeto que se quiere modificar */
     private final JTextArea areanomAM = new JTextArea();
 
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto a consultar*/
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto a modificar*/
     private final JLabel txtContenidoAM = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el nombre del alfabeto que se quiere consultar */
+    /** Área de texto para introducir el nombre del alfabeto que se quiere modificar */
     private final JTextArea areacontenidoAM = new JTextArea();
 
     public VistaAlfabetoM() {

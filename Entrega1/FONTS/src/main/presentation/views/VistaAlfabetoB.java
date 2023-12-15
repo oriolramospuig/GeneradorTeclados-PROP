@@ -30,7 +30,7 @@ public class VistaAlfabetoB extends JFrame{
     private final JLabel tituloVistaAB = new JLabel("Borrar alfabeto");
     /** Botón para agregar un alfabeto */
     private final JButton bBorrarAlfabeto = new JButton("Borrar Alfabeto");
-    /** Botó de tornar a la pantalla del menú principal */
+    /** Botón para volver a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
     private final JLabel txtDesplegableAB = new JLabel("LISTA NOMBRES:");

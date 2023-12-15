@@ -33,7 +33,7 @@ public class VistaAlfabetoC extends JFrame{
     private final JLabel txtDesplegableAC = new JLabel("LISTA NOMBRES:");
     /** Desplegable con los nombres de los alfabetos*/
     private JComboBox<String> nombresAC = new JComboBox<>();
-    /** Botó de tornar a la pantalla del menú principal */
+    /** Botón para volver a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
 
 
