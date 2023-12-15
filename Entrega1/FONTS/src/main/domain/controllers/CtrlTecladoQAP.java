@@ -41,11 +41,15 @@ public class CtrlTecladoQAP {
             letraAIndice.put(letras.get(i), i);
         }
 
-        int[][] matrizFrecuencias = new int[nf*nc][nf*nc];
-        Matrices.generarMatrizDeFrecuencias(frecuencias, letras, letraAIndice, matrizFrecuencias);
+        int[][] matrizFrecuencias = Matrices.generarMatrizDeFrecuencias(nf*nc, frecuencias, letras, letraAIndice);;
+        for (int i = 0; i < matrizFrecuencias.length; ++i) {
+            for (int j = 0; j < matrizFrecuencias.length; ++j) {
+                System.out.print(matrizFrecuencias[i][j]);
+            }
+            System.out.println();
+        }
 
-        int [][] matrizDistancias = new int[nf*nc][nf*nc];
-        Matrices.generarMatrizDistancias(nf,nc,matrizDistancias);
+        int [][] matrizDistancias = Matrices.generarMatrizDistancias(nf,nc);
 
         if (alg) {
             // List<Integer> sol = new ArrayList<>();

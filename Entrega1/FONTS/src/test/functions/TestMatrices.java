@@ -14,10 +14,8 @@ public class TestMatrices {
     public void TestGenerarMatrizDistancias() {
         int filas = 3;
         int columnas = 3;
-        int[][] matrizDistancias = new int[filas * columnas][filas * columnas];
+        int[][] matrizDistancias = Matrices.generarMatrizDistancias(filas, columnas);;
 
-        // Llamar a la función para generar la matriz de distancias
-        Matrices.generarMatrizDistancias(filas, columnas, matrizDistancias);
 
         // Verificar que la matriz de distancias se haya generado correctamenteyou
         for (int i = 0; i < filas * columnas; i++) {
