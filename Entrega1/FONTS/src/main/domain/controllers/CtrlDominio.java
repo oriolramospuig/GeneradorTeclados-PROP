@@ -421,7 +421,12 @@ public class CtrlDominio
     public void cargaCnjtAlfabetos(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtAlfabetos(path);
-            CtrlAlfabeto.byteArrayToAlfabetos(bytes);
+            if (bytes != null || bytes.length != 0) {
+                CtrlAlfabeto.byteArrayToAlfabetos(bytes);
+            }
+            else {
+                System.out.println("El archivo está vacío. No se carga ningun alfabeto.");
+            }
         } catch (Exception e) {
             System.err.println("[#CARGA] Error al cargar el conjunto de alfabetos " + e.getMessage());
         }
@@ -454,7 +459,12 @@ public class CtrlDominio
     public void cargaCnjtTextos(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtTextos(path);
-            CtrlTexto.byteArrayToTextos(bytes);
+            if (bytes != null || bytes.length != 0) {
+                CtrlTexto.byteArrayToTextos(bytes);
+            }
+            else {
+                System.out.println("El archivo está vacío. No se carga ningun texto.");
+            }
         } catch (Exception e) {
             System.err.println("[#CARGA] Error al cargar el conjunto de textos " + e.getMessage());
         }
@@ -487,7 +497,12 @@ public class CtrlDominio
     public void cargaCnjtAsociaciones(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtAsociaciones(path);
-            CtrlAsociacionTexto.byteArrayToAsociaciones(bytes);
+            if (bytes != null || bytes.length != 0) {
+                CtrlAsociacionTexto.byteArrayToAsociaciones(bytes);
+            }
+            else {
+                System.out.println("El archivo está vacío. No se carga ninguna asociación.");
+            }
         } catch (Exception e) {
             System.err.println("[#CARGA] Error al cargar el conjunto de asociaciones de textos " + e.getMessage());
         }
@@ -520,7 +535,12 @@ public class CtrlDominio
     public void cargaCnjtTeclados(String path) {
         try {
             byte[] bytes = ctrlPersistencia.cargaCnjtTeclados(path);
-            ctrlTeclado.byteArrayToTeclados(bytes);
+            if (bytes != null || bytes.length != 0) {
+                ctrlTeclado.byteArrayToTeclados(bytes);
+            }
+            else {
+                System.out.println("El archivo está vacío. No se carga ningun teclado.");
+            }
         } catch (Exception e) {
             System.err.println("[#CARGA] Error al cargar el conjunto de teclados " + e.getMessage());
         }
