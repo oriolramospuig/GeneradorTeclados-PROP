@@ -55,7 +55,6 @@ public class CtrlDominio
     public boolean agregarAlfabeto(String nomA, ArrayList<Character> entradaCaracteres){
         return ctrlAlfabeto.CrearAlfabeto(nomA,entradaCaracteres);
     }
-
     /**
      * Retorna la lista de nombres de los alfabetos existentes
      * @return ArrayList<String>: lista de alfabetos existentes ordenada por el nombre de alfabeto que es la clave primaria
@@ -82,12 +81,8 @@ public class CtrlDominio
         }
         return null;
     }
-    public boolean modificarContenidoAlfabeto(String nomA, ArrayList<Character> entrada){
-        if(existealfabeto(nomA)) {
-            ctrlAlfabeto.modificarContenido(nomA, entrada);
-            return true;
-        }
-        return false;
+    public void modificarContenidoAlfabeto(String nomA, ArrayList<Character> entrada){
+        ctrlAlfabeto.modificarContenido(nomA, entrada);
     }
     /**
      * Retorna el numero de caracteres que tiene el contenido del alfabeto
