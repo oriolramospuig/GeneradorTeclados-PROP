@@ -372,8 +372,8 @@ public class CtrlPresentacion {
      * @param nomA nombre del alfabeto a vincular con el teclado nomT
      * @param nomAT nombre de la asociación de textos a vincular con el teclado nomT
      */
-    public int agregarTeclado(String nomT, String nomA, String nomAT, PairInt dim){
-        int acabado = cd.agregarTeclado(nomT,nomA,nomAT, dim);
+    public static int agregarTeclado(String nomT, String nomA, String nomAT, PairInt dim, boolean alg){
+        int acabado = cd.agregarTeclado(nomT,nomA,nomAT, dim, alg);
         return acabado;
     }
     /**
@@ -381,8 +381,16 @@ public class CtrlPresentacion {
      * @param nomT nombre del teclado a consultar
      * @return char[][]: la matriz que representa el contenido del teclado nomT
      */
-    public char[][] consultarContenidoTeclado(String nomT){
+    public static char[][] consultarContenidoTeclado(String nomT){
         return cd.consultarContenidoTeclado(nomT);
+    }
+    /**
+     * Llama a la función consultarContenidoTeclado de CtrlDominio
+     * @param nomT nombre del teclado a consultar
+     * @return char[][]: la matriz que representa el contenido del teclado nomT
+     */
+    public static int consultarPuntuacionTeclado(String nomT){
+        return cd.consultarPuntuacionTeclado(nomT);
     }
     /**
      * Llama a la función consultarAlfabetoAsociadoTeclado de CtrlDominio
@@ -412,8 +420,12 @@ public class CtrlPresentacion {
      * Llama a la función borrarTeclado de CtrlDominio
      * @param nomT nombre del teclado a borrar
      */
-    public void borrarTeclado(String nomT) {
+    public static void borrarTeclado(String nomT) {
         cd.borrarTeclado(nomT);
+    }
+
+    public static ArrayList<PairInt> getPosiblesDimensiones(String nomA) {
+        return cd.getPosiblesDimensiones(nomA);
     }
 
 }

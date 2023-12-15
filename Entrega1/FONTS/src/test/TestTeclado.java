@@ -34,7 +34,7 @@ public class TestTeclado {
         PairInt dimensiones = new PairInt(10,20);
         char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
 
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
 
         assertNotNull(teclado);
         assertEquals(nombre, teclado.getNombre());
@@ -65,7 +65,7 @@ public class TestTeclado {
         PairInt dimensiones = new PairInt(5, 10);
         char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
 
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
         teclado.setDimensiones(dimensiones);
 
         PairInt resultado = teclado.getDimensiones();
@@ -95,7 +95,7 @@ public class TestTeclado {
         PairInt dimensiones = new PairInt(5, 10);
 
         char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
         int puntuacion = 100;
 
         teclado.setPuntuacion(puntuacion);
@@ -124,7 +124,7 @@ public class TestTeclado {
         PairInt dimensiones = new PairInt(10, 20);
 
         char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
 
         PairInt dimensiones2 = new PairInt(5, 10);
 
@@ -154,7 +154,7 @@ public class TestTeclado {
         PairInt dimensiones = new PairInt(5, 10);
 
         char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
 
         ArrayList<Character> letras = new ArrayList<>();
         Alfabeto alfabeto2 = new Alfabeto("nombre2", letras);
@@ -184,7 +184,7 @@ public class TestTeclado {
         PairInt dimensiones = new PairInt(5, 10);
 
         char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
 
         AsociacionTextos asociacionTextos2 = new AsociacionTextos("nombre2");
 
@@ -215,7 +215,7 @@ public class TestTeclado {
         PairInt dimensiones = new PairInt(5, 10);
 
         char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
 
         teclado.borrarAlfabetoVinculado("Alfabeto");
 
@@ -240,7 +240,7 @@ public class TestTeclado {
 
         PairInt dimensiones = new PairInt(10, 20);
         char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido);
+        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
 
         teclado.borrarAsociacionTextosVinculados("AsociaciondeTextosT");
 

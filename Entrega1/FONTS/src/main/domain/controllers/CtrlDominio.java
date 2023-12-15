@@ -295,16 +295,15 @@ public class CtrlDominio
      * -1 si el nombre nomT ya existe en otro teclado
      * -2 si el alfabeto y la asociación de textos elegidos no son compatibles
      */
-    public int agregarTeclado(String nomT, String nomA, String nomAT, PairInt dimensiones){
+    public int agregarTeclado(String nomT, String nomA, String nomAT, PairInt dimensiones, boolean alg){
         if(ctrlTeclado.existeTeclado(nomT)) return -1;
         
         Alfabeto alfabeto = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA);
         AsociacionTextos asociacionTextos = ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionTextos(nomAT);
         if(compatibles(alfabeto,asociacionTextos)) {
-            System.out.println("alfabeto = " + nomA + " tecldo = " + nomT + " asoc = " + nomAT);
             ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
             ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
-            ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, dimensiones);
+            ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, dimensiones, alg);
             ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
             ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
             return 0;
@@ -322,6 +321,18 @@ public class CtrlDominio
         }
         return null;
     }
+    /**
+     * Retorna el contenido del teclado nomT
+     * @param nomT nombre del teclado a consultar
+     * @return char[][]: la matriz que representa el contenido del teclado nomT
+     */
+    public int consultarPuntuacionTeclado(String nomT){
+        if(ctrlTeclado.existeTeclado(nomT)) {
+            return ctrlTeclado.getPuntuacion(nomT);
+        }
+        return -1;
+    }
+
     /**
      * Retorna el nombre del alfabeto asociado al teclado con nombre nomT
      * @param nomT nombre del teclado a buscar
@@ -364,6 +375,11 @@ public class CtrlDominio
         ctrlAsociacionTexto.borrarTecladoVinculado(atvinculada, nomT);
         ctrlAlfabeto.borrarTecladoVinculado(aVinculado, nomT);
         ctrlTeclado.borrarTeclado(nomT);
+    }
+
+    public ArrayList<PairInt> getPosiblesDimensiones(String nomA) {
+        int n = ctrlAlfabeto.getContenido(nomA).size();
+        return ctrlTeclado.getPosiblesDimensiones(n);
     }
 
 

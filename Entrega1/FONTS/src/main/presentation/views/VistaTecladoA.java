@@ -54,6 +54,10 @@ public class VistaTecladoA extends JFrame {
     private final JLabel txtDimensionesTA = new JLabel("DIMENSIONES:");
     /** Área de texto para introducir el contenido del teclado que se quiere crear */
     private final JTextArea areaDimensionesTA = new JTextArea();
+    private final JLabel txtFilasTA = new JLabel("FILAS:");
+    private final JTextField areaFilasTA = new JTextField();
+    private final JLabel txtColumnasTA = new JLabel("COLUMNAS:");
+    private final JTextField areaColumnasTA = new JTextField();
     /** Texto explicando el botón de Branch and Bound*/
     private final JLabel txtbotonBB = new JLabel("Para generar el teclado mediante Branch&Bound");
     /** Texto explicando el botón de SA*/
@@ -115,11 +119,23 @@ public class VistaTecladoA extends JFrame {
         areaContenidoAsociacionTA.setBounds(450,240, 200,60);
         add(areaContenidoAsociacionTA);
 
-        txtDimensionesTA.setBounds(250, 320, 200, 20);
-        add(txtDimensionesTA);
+        //txtDimensionesTA.setBounds(250, 320, 200, 20);
+        //add(txtDimensionesTA);
 
-        areaDimensionesTA.setBounds(450,320, 200,60);
-        add(areaDimensionesTA);
+        //areaDimensionesTA.setBounds(450,320, 200,60);
+        //add(areaDimensionesTA);
+
+        txtFilasTA.setBounds(250, 320, 200, 20);
+        add(txtFilasTA);
+
+        areaFilasTA.setBounds(450, 320, 200, 20);
+        add(areaFilasTA);
+
+        txtColumnasTA.setBounds(250, 350, 200, 20);
+        add(txtColumnasTA);
+
+        areaColumnasTA.setBounds(450, 350, 200, 20);
+        add(areaColumnasTA);
 
         posiblesDimensiones.setBounds(660, 320, 175, 20);
         add(posiblesDimensiones);
@@ -158,6 +174,8 @@ public class VistaTecladoA extends JFrame {
                 String nombreTeclado = areanomTA.getText().trim();
                 String nombreAlfabeto = areaContenidoAlfabetoTA.getText();
                 String nombreAsociacion = areaContenidoAsociacionTA.getText();
+                String filasStr = areaFilasTA.getText();
+                String columnasStr = areaColumnasTA.getText();
                 String path = System.getProperty("user.dir") + "/Entrega1/data/Teclados";
 
                 // Verificar que el nombre no esté vacío
@@ -167,26 +185,37 @@ public class VistaTecladoA extends JFrame {
                 }
 
                 // Verificar que haya contenido proporcionado
-                if (nombreAlfabeto.isEmpty()) {
-                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Debe seleccionar un alfabeto con el que crear el teclado", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-                if (nombreAsociacion.isEmpty()) {
-                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Debe seleccionar una asociación con la que crear el teclado", "Error", JOptionPane.ERROR_MESSAGE);
+                if (nombreAlfabeto.isEmpty() || nombreAsociacion.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Debe seleccionar un alfabeto y una asociación", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
-                //enviar BB
-                //boolean agregado = CtrlPresentacion.crearTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, path);
-                boolean agregado = false;
-                // Mensaje de éxito o error
-                if (agregado) {
-                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    areanomTA.setText("");
-                    areaContenidoAlfabetoTA.setText("");
-                    areaContenidoAsociacionTA.setText("");
-                } else {
-                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El nombre " + nombreTeclado + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                if (filasStr.isEmpty() || columnasStr.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Debe seleccionar filas y columnas", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                try {
+                    int filas = Integer.parseInt(filasStr);
+                    int columnas = Integer.parseInt(columnasStr);
+
+                    // Llamar a CtrlPresentacion para agregar el teclado
+                    PairInt dimensiones = new PairInt(filas, columnas);
+                    int agregado = CtrlPresentacion.agregarTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, dimensiones, true);
+
+                    // Mensaje de éxito o error
+                    if (agregado == 0) {
+                        JOptionPane.showMessageDialog(VistaTecladoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        areanomTA.setText("");
+                        areaContenidoAlfabetoTA.setText("");
+                        areaContenidoAsociacionTA.setText("");
+                        areaFilasTA.setText("");
+                        areaColumnasTA.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El nombre " + nombreTeclado + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Las filas y las columnas deben ser números enteros", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         };
@@ -197,7 +226,9 @@ public class VistaTecladoA extends JFrame {
                 String nombreTeclado = areanomTA.getText().trim();
                 String nombreAlfabeto = areaContenidoAlfabetoTA.getText();
                 String nombreAsociacion = areaContenidoAsociacionTA.getText();
-                String path = System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Teclados";
+                String filasStr = areaFilasTA.getText();
+                String columnasStr = areaColumnasTA.getText();
+                String path = System.getProperty("user.dir") + "/Entrega1/data/Teclados";
 
                 // Verificar que el nombre no esté vacío
                 if (nombreTeclado.isEmpty()) {
@@ -206,25 +237,37 @@ public class VistaTecladoA extends JFrame {
                 }
 
                 // Verificar que haya contenido proporcionado
-                if (nombreAlfabeto.isEmpty()) {
-                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Debe seleccionar un alfabeto con el que crear el teclado", "Error", JOptionPane.ERROR_MESSAGE);
+                if (nombreAlfabeto.isEmpty() || nombreAsociacion.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Debe seleccionar un alfabeto y una asociación", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                if (nombreAsociacion.isEmpty()) {
-                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Debe seleccionar una asociación con la que crear el teclado", "Error", JOptionPane.ERROR_MESSAGE);
+
+                if (filasStr.isEmpty() || columnasStr.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Debe seleccionar filas y columnas", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                // enviar SA
-                //boolean agregado = CtrlPresentacion.crearTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, path);
-                boolean agregado = false;
-                // Mensaje de éxito o error
-                if (agregado) {
-                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    areanomTA.setText("");
-                    areaContenidoAlfabetoTA.setText("");
-                    areaContenidoAsociacionTA.setText("");
-                } else {
-                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El nombre " + nombreTeclado + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+
+                try {
+                    int filas = Integer.parseInt(filasStr);
+                    int columnas = Integer.parseInt(columnasStr);
+
+                    // Llamar a CtrlPresentacion para agregar el teclado
+                    PairInt dimensiones = new PairInt(filas, columnas);
+                    int agregado = CtrlPresentacion.agregarTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, dimensiones, false);
+
+                    // Mensaje de éxito o error
+                    if (agregado == 0) {
+                        JOptionPane.showMessageDialog(VistaTecladoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        areanomTA.setText("");
+                        areaContenidoAlfabetoTA.setText("");
+                        areaContenidoAsociacionTA.setText("");
+                        areaFilasTA.setText("");
+                        areaColumnasTA.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El nombre " + nombreTeclado + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Las filas y las columnas deben ser números enteros", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         };
@@ -232,15 +275,21 @@ public class VistaTecladoA extends JFrame {
         ActionListener lSeleccionarAlfabeto = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                chooser.setDialogTitle("Selecciona alfabeto");
-                chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
-                chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Alfabetos"));
-                int returnValue = chooser.showOpenDialog(null);
-                if (returnValue == JFileChooser.APPROVE_OPTION) {
-                    File archivo = chooser.getSelectedFile();
-                    areaContenidoAlfabetoTA.setText(archivo.getName().substring(0, archivo.getName().length() - 4));
-                } else if (returnValue == JFileChooser.CANCEL_OPTION) {
-                    CtrlPresentacion.vistaTecladoA();
+                String selectedName = (String) nombresAlfabetosTA.getSelectedItem();
+                if (selectedName != null && !selectedName.isEmpty()) {
+                    areaContenidoAlfabetoTA.setText(selectedName);
+
+                    ArrayList<PairInt> dimensiones = CtrlPresentacion.getPosiblesDimensiones(selectedName);
+                    posiblesDimensiones.removeAllItems();
+                    posiblesDimensiones.addItem("");
+                    for (PairInt dim : dimensiones) {
+                        posiblesDimensiones.addItem(dim.getPrimero() + "x" + dim.getSegundo());
+                    }
+
+                } else {
+                    areaContenidoAlfabetoTA.setText("");
+                    posiblesDimensiones.removeAllItems();
+                    posiblesDimensiones.addItem("");
                 }
             }
         };
@@ -248,15 +297,23 @@ public class VistaTecladoA extends JFrame {
         ActionListener lSeleccionarAsociacion = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                chooser.setDialogTitle("Selecciona asociación de textos");
-                chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
-                chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Asociaciones"));
-                int returnValue = chooser.showOpenDialog(null);
-                if (returnValue == JFileChooser.APPROVE_OPTION) {
-                    File archivo = chooser.getSelectedFile();
-                    areaContenidoAsociacionTA.setText(archivo.getName());
-                } else if (returnValue == JFileChooser.CANCEL_OPTION) {
-                    CtrlPresentacion.vistaTecladoA();
+                String selectedName = (String) nombresAsociacionesTA.getSelectedItem();
+                if (selectedName != null && !selectedName.isEmpty()) {
+                    areaContenidoAsociacionTA.setText(selectedName);
+                } else {
+                    areaContenidoAsociacionTA.setText("");
+                }
+            }
+        };
+
+        ActionListener lSeleccionarDimension = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedDimension = (String) posiblesDimensiones.getSelectedItem();
+                if (selectedDimension != null && !selectedDimension.isEmpty()) {
+                    String[] parts = selectedDimension.split("x");
+                    areaFilasTA.setText(parts[0]);
+                    areaColumnasTA.setText(parts[1]);
                 }
             }
         };
@@ -269,8 +326,9 @@ public class VistaTecladoA extends JFrame {
             }
         };
 
-        bSeleccionarAlfabeto.addActionListener(lSeleccionarAlfabeto);
-        bSeleccionaAsociacion.addActionListener(lSeleccionarAsociacion);
+        nombresAlfabetosTA.addActionListener(lSeleccionarAlfabeto);
+        nombresAsociacionesTA.addActionListener(lSeleccionarAsociacion);
+        posiblesDimensiones.addActionListener(lSeleccionarDimension);
         bAgregarTecladoBB.addActionListener(lAgregarBB);
         bAgregarTecladoSA.addActionListener(lAgregarSA);
         bsalir.addActionListener(lSalir);

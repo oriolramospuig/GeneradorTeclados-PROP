@@ -392,7 +392,7 @@ public class DriverPersistencia {
 
 
                             //boolean agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP, PairIntEnum.EMPTY_PAIR);
-                            int agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, dimensiones);
+                            int agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, dimensiones, false);
                             if (agregado == -1) System.out.println("Ya existe el teclado " + nombreT);
                             else if(agregado == -2) System.out.println("El alfabeto y la asociación de textos no son compatibles");
                             else {

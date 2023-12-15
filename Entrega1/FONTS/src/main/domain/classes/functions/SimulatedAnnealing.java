@@ -15,7 +15,10 @@ public class SimulatedAnnealing {
     private static int columnas;
     private static int puntuacionFinal;
 
+    private static int[][] tecFinal;
+
     public int getPuntuacionFinal() {return puntuacionFinal;}
+    public int[][] getTecFinal() {return tecFinal;}
 
     public SimulatedAnnealing(int filas, int columnas, int[][] mf, int[][] md) {
         SimulatedAnnealing.filas = filas;
@@ -202,7 +205,7 @@ public class SimulatedAnnealing {
         //System.out.println("Puntuación N aleatorios = " + punt);
         //System.out.println("Puntuación greedy = " + aux);
         //System.out.println("Empezando Simulated Annealing:");
-        int[][] tecFinal = simulatedAnnealing(tecIni);
+        tecFinal = simulatedAnnealing(tecIni);
         int[][] tecFinalAux = simulatedAnnealing(tecAux);
         /*System.out.println("Tec final: ");
         for (int i = 0; i < filas; ++i) {

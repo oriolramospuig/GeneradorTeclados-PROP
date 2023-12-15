@@ -85,17 +85,17 @@ public class VistaTecladoB extends JFrame{
         ActionListener lBorrar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nombreTexto = areanomTB.getText().trim();
+                String nombreTec = areanomTB.getText().trim();
                 // Verificar si el área de texto está vacía
-                if (nombreTexto.isEmpty()) {
-                    JOptionPane.showMessageDialog(frame, "Por favor, selecciona un texto para borrar.", "Error", JOptionPane.ERROR_MESSAGE);
+                if (nombreTec.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Por favor, selecciona un teclado para borrar.", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     // Llamar al controlador para eliminar el texto
-                    CtrlPresentacion.borrarTexto(nombreTexto);
+                    CtrlPresentacion.borrarTeclado(nombreTec);
                     // Actualizar el JComboBox eliminando el texto borrado
-                    nombresTB.removeItem(nombreTexto);
+                    nombresTB.removeItem(nombreTec);
                     nombresTB.setSelectedItem("");
-                    JOptionPane.showMessageDialog(frame, "Texto eliminado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, "Teclado eliminado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         };

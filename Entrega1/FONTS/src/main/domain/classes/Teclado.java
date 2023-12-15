@@ -33,13 +33,14 @@ public class Teclado implements Serializable
 
     // ---------- CONSTRUCTORAS ----------
     /** Constructora de la clase Teclado */
-    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dimensiones, char[][] contenido) {
+    public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dimensiones, char[][] contenido, int puntuacion) {
         this.nombre = nombre;
         // this.algoritmo = algoritmo;
         this.dimensiones = dimensiones;
         this.alfabetoVinculado = alfabeto.getNombre();
         this.asociacionTextosVinculado = asociacionTextos.getNombre();
         this.contenido = contenido;
+        this.puntuacion = puntuacion;
     }
 
 

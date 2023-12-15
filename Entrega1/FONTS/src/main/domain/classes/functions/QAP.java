@@ -83,6 +83,10 @@ public class QAP {
                 .toArray(int[][]::new);
     }
 
+    public int getGlBound() {
+        return glBound;
+    }
+
     /**
      * Constructor de la clase QAP (Quadratic Assignment Problem).
      *
@@ -111,7 +115,7 @@ public class QAP {
         imprimirTeclado();
         System.out.println("Puntuacion inicial = " + glBound);
 
-        calculo(alg);
+        calculo();
     }
 
     /**
@@ -204,26 +208,19 @@ public class QAP {
      * Imprime las matrices de frecuencias y distancias, y luego utiliza el algoritmo
      * para encontrar la mejor asignación de teclas en el teclado.
      */
-    private void calculo(int alg) {
-        if (alg == 0) {
-            GilmoreLawler gilmoreLawler = new GilmoreLawler(filas, columnas, glBound, matrizFrecuencias, matrizDistancias);
-            gilmoreLawler.gilmore_lawler();
-            sol = gilmoreLawler.getMejorSolucionParcial();
-            if (!sol.isEmpty()) {
-                // Recorrer la lista de soluciones parciales y asignar cada valor a su posición en el arreglo
-                for (int i = 0; i < sol.size(); i++) {
-                    int fila = i / columnas;
-                    int columna = i % columnas;
+    private void calculo() {
+        GilmoreLawler gilmoreLawler = new GilmoreLawler(filas, columnas, glBound, matrizFrecuencias, matrizDistancias);
+        gilmoreLawler.gilmore_lawler();
+        sol = gilmoreLawler.getMejorSolucionParcial();
+        glBound = gilmoreLawler.getGlBound();
+        if (!sol.isEmpty()) {
+            // Recorrer la lista de soluciones parciales y asignar cada valor a su posición en el arreglo
+            for (int i = 0; i < sol.size(); i++) {
+                int fila = i / columnas;
+                int columna = i % columnas;
 
-                    teclado[fila][columna] = sol.get(i);
-                }
+                teclado[fila][columna] = sol.get(i);
             }
         }
-        else {
-            // SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing(filas, columnas, glBound, matrizFrecuencias, matrizDistancias);
-            // ...
-        }
-
-
     }
 }
