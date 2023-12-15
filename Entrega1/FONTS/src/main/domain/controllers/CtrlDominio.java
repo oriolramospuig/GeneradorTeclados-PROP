@@ -204,8 +204,10 @@ public class CtrlDominio
     public boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar){
         //boolean agregada = ctrlAsociacionTexto.agregarAsociacion(nomAT);
         if(ctrlAsociacionTexto.agregarAsociacion(nomAT)){
-           //agregarTextoAsociacion(nomAT,textosagregar);
-            return true;
+           for (int i = 0; i < textosagregar.size(); ++i) {
+               agregarTextoAsociacion(nomAT,textosagregar.get(i));
+           }
+           return true;
         }
         else return false;
     }
