@@ -154,7 +154,7 @@ public class VistaAlfabetoM extends JFrame{
                 }
 
                 // Llamar a la función de control para modificar el alfabeto
-                //CtrlPresentacion.modificarAlfabeto(nombreAlfabeto, nuevoContenido);
+                CtrlPresentacion.modificarContenidoAlfabeto(nombreAlfabeto, nuevoContenido);
                 JOptionPane.showMessageDialog(VistaAlfabetoM.this, "Alfabeto modificado con éxito.",
                         "Éxito", JOptionPane.INFORMATION_MESSAGE);
             }
