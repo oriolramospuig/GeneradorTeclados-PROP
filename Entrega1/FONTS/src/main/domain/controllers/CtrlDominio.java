@@ -177,8 +177,8 @@ public class CtrlDominio
             for (int i = 0; i < AVinculadas.size(); ++i){
                 CtrlAsociacionTexto.borrarTextoAsociacion(AVinculadas.get(i),nomT);
             }
-            CtrlTexto.borrarTexto(nomT);
         }
+        CtrlTexto.borrarTexto(nomT);
     }
 
     // ---------- FUNCIONES ASOCIACION TEXTOS ----------
