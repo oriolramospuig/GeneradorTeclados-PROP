@@ -47,7 +47,9 @@ public class VistaAlfabetoA extends JFrame {
     private final JLabel txtPathAA = new JLabel("PATH:");
     /** Área de texto para introducir el path del alfabeto que se quiere crear */
     private final JTextArea areaPathAA = new JTextArea();
-
+    /** Texto explicando las instrucciones de como entrar el alfabeto correctamente */
+    private final JLabel txtInstruccionesA = new JLabel("(Hay que añadir el contenido con todos los carácteres juntos y sin repetir.");
+    private final JLabel txtInstruccionesA1 = new JLabel("Si desea el espacio como carácter, hay que añadirlo también en el contenido. Ej: Abdf i%67)");
 
     public VistaAlfabetoA(){
 
@@ -83,6 +85,12 @@ public class VistaAlfabetoA extends JFrame {
         // Área texto Path
         areaPathAA.setBounds(450,280, 200,20);
         add(areaPathAA);
+
+        // Texto Instrucciones
+        txtInstruccionesA.setBounds(30, 340, 600, 20);
+        add(txtInstruccionesA);
+        txtInstruccionesA1.setBounds(30, 360, 600, 20);
+        add(txtInstruccionesA1);
 
 
         //BOTONES
