@@ -15,7 +15,7 @@ public class Frecuencias extends Texto
     protected HashMap<String, Integer> frecuenciaPalabras;
 
 
-    // ---------- CONSTRUCTORES ----------
+    // ---------- CONSTRUCTORAS ----------
     /** Crea una instancia de la clase Frecuencias e inicializa los atributos de esta clase con los valores correspondientes
      * @param nombre nombre que adquiere el Texto de Tipo Frecuencia creada
      * @param frecuenciaPalabras HashMap que contiene las palabras con sus frecuencias
@@ -27,18 +27,6 @@ public class Frecuencias extends Texto
         this.frecuenciaLetras = frecuenciaLetras;
         asociacionesVinculadas = new ArrayList<>();
      }
-
-    /** No devuelve nada. Imprime los valores de los atributos frecuenciaPalabras y frecuenciaLetras */
-    public void imprimirFrecuencias(){
-        System.out.println("PALABRAS:");
-        for(Map.Entry<String,Integer> e : frecuenciaPalabras.entrySet()){
-            System.out.println(e.getKey() + " " + e.getValue());
-        }
-        System.out.println("LETRAS:");
-        for(Map.Entry<String,Integer> e : frecuenciaLetras.entrySet()){
-            System.out.println(e.getKey() + " " + e.getValue());
-        }
-    }
 
 
     // ---------- GETTERS ----------
@@ -73,17 +61,8 @@ public class Frecuencias extends Texto
      * @param frecuencia frecuencia del par de palabras parejaLetras
      *
      */
-    //PARA LA SEGUNDA ENTREGA
     public void anadirPalabra(String palabra, Integer frecuencia) {
         frecuenciaPalabras.put(palabra, frecuencia);
-    }
-
-    /**
-     * Elimina la palabra de frecuenciaPalabras
-     * @param palabra
-     */
-    public void eliminarPalabra(String palabra) {
-        frecuenciaPalabras.remove(palabra);
     }
 
     /**
@@ -94,5 +73,29 @@ public class Frecuencias extends Texto
     public void modificarFrecuencia(String palabra, Integer nuevaFrec) {
         frecuenciaPalabras.remove(palabra);
         frecuenciaPalabras.put(palabra, nuevaFrec);
+    }
+
+
+    // ---------- AUXILIARES ----------
+    /**
+     * No devuelve nada. Elimina la palabra de frecuenciaPalabras
+     * @param palabra
+     */
+    public void eliminarPalabra(String palabra) {
+        frecuenciaPalabras.remove(palabra);
+    }
+
+    /**
+     * No devuelve nada. Imprime los valores de los atributos frecuenciaPalabras y frecuenciaLetras
+     */
+    public void imprimirFrecuencias(){
+        System.out.println("PALABRAS:");
+        for(Map.Entry<String,Integer> e : frecuenciaPalabras.entrySet()){
+            System.out.println(e.getKey() + " " + e.getValue());
+        }
+        System.out.println("LETRAS:");
+        for(Map.Entry<String,Integer> e : frecuenciaLetras.entrySet()){
+            System.out.println(e.getKey() + " " + e.getValue());
+        }
     }
 }
