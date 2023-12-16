@@ -170,7 +170,6 @@ public class VistaTecladoA extends JFrame {
                 String nombreAsociacion = areaContenidoAsociacionTA.getText();
                 String filasStr = areaFilasTA.getText();
                 String columnasStr = areaColumnasTA.getText();
-                String path = System.getProperty("user.dir") + "/Entrega1/data/Teclados";
 
                 // Verificar que el nombre no esté vacío
                 if (nombreTeclado.isEmpty()) {
@@ -223,7 +222,6 @@ public class VistaTecladoA extends JFrame {
                 String nombreAsociacion = areaContenidoAsociacionTA.getText();
                 String filasStr = areaFilasTA.getText();
                 String columnasStr = areaColumnasTA.getText();
-                String path = System.getProperty("user.dir") + "/Entrega1/data/Teclados";
 
                 // Verificar que el nombre no esté vacío
                 if (nombreTeclado.isEmpty()) {

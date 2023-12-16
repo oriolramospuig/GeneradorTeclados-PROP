@@ -24,9 +24,9 @@ import static java.lang.Math.sqrt;
 public class CtrlTecladoQAP {
     public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dim, boolean alg) {
         ArrayList<Character> letras = alfabeto.getLetras();
-        for (int i = 0; i < letras.size(); ++i) {
+        /*for (int i = 0; i < letras.size(); ++i) {
             System.out.print(letras.get(i) + " ");
-        }
+        }*/
 
         int n = letras.size();
         int nf = dim.getPrimero();
@@ -49,12 +49,12 @@ public class CtrlTecladoQAP {
         }
 
         int[][] matrizFrecuencias = Matrices.generarMatrizDeFrecuencias(nf*nc, frecuencias, letras, letraAIndice);;
-        for (int i = 0; i < matrizFrecuencias.length; ++i) {
+        /*for (int i = 0; i < matrizFrecuencias.length; ++i) {
             for (int j = 0; j < matrizFrecuencias.length; ++j) {
                 System.out.print(matrizFrecuencias[i][j]);
             }
             System.out.println();
-        }
+        }*/
 
         int [][] matrizDistancias = Matrices.generarMatrizDistancias(nf,nc);
 
