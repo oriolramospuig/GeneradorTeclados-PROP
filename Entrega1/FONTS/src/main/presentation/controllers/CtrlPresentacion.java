@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * El CtrlPresentacion se encarga de hacer de comunicador entre las vistas de la capa de presentación.
@@ -164,42 +165,26 @@ public class CtrlPresentacion {
      * @param nomTxt es el nombre del texto a agregar
      * @param texto es la lista de caracteres que forman el contenido del texto
      */
-    public static boolean agregarTextoPalabras(String nomTxt, String texto, String path) {
+    public static boolean agregarTextoPalabras(String nomTxt, String texto) {
         //ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
-        boolean agregado = cd.agregarTextoPalabras(nomTxt, texto);
-        if (agregado) {
-            File archivo = new File(path, nomTxt + ".txt");
-            try (FileWriter writer = new FileWriter(archivo)) {
-                writer.write(texto);
-                return true; // El texto se agregó correctamente
-            } catch (IOException e) {
-                // Manejar errores, como problemas al escribir en el archivo
-                return false;
-            }
-        } else return false;
+        return cd.agregarTextoPalabras(nomTxt, texto);
+    }
+    /**
+     * Llama a la función agregarTextoPalabras de CtrlDominio
+     * @param nomTxt es el nombre del texto a agregar
+     * @param path es el path donde tenemos el texto del texto
+     */
+    public static boolean agregarTextoPalabrasPath(String nomTxt, String path) throws IOException {
+        String texto = InOut.leerPalabrasDeArchivo(path);
+        return cd.agregarTextoPalabras(nomTxt, texto);
     }
     /**
      * Llama a la función agregarTextoFrecuencias de CtrlDominio
      * @param nomTxt es el nombre del texto a agregar
      * @param frecuenciaPalabras es la map con las palabras y sus frecuencias que forman el contenido del texto
      */
-    public static boolean agregarTextoFrecuencias(String nomTxt, String frecuenciaPalabras, String path) {
-        //HashMap<String,Integer> entrada = InOut.leerCaracteresDeTerminal(frecuenciaPalabras);
-        //boolean agregado = cd.agregarTextoFrecuencias(nomTxt, frecuenciaPalabras);
-        /*if (agregado) {
-            File archivo = new File(path, nomTxt + ".txt");
-            try (FileWriter writer = new FileWriter(archivo)) {
-                String[] lineas = frecuenciaPalabras.split("\n");
-                for (String linea : lineas) {
-                    writer.write(linea + "\n");
-                }
-                return true; // El texto se agregó correctamente
-            } catch (IOException e) {
-                // Manejar errores, como problemas al escribir en el archivo
-                return false;
-            }
-        } else return false;*/
-        return false;
+    public static boolean agregarTextoFrecuencias(String nomTxt, HashMap<String, Integer> frecuenciaPalabras) {
+        return cd.agregarTextoFrecuencias(nomTxt, frecuenciaPalabras);
     }
     /** Llama a la función getNombresTextos de CtrlDominio */
     public static ArrayList<String> getNombresTextos() {
