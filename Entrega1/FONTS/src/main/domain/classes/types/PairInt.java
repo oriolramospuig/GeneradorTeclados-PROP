@@ -24,7 +24,7 @@ public class PairInt implements Serializable {
 
     /**
      * Devuelve el primer elemento del PairInt
-     * @return int de int1
+     * @return int: int1
      */
     public Integer getPrimero() {
         return int1;
@@ -32,7 +32,7 @@ public class PairInt implements Serializable {
 
     /**
      * Devuelve el segundo elemento del PairInt
-     * @return int de int2
+     * @return int: int2
      */
     public Integer getSegundo() {
         return int2;
@@ -56,7 +56,7 @@ public class PairInt implements Serializable {
 
     /**
      * Convierte el PairInt a un string
-     * @return string del PairInt convertido al formato: (int1,int2)
+     * @return String: PairInt convertido al formato: (int1,int2)
      */
     @Override
     public String toString() {
