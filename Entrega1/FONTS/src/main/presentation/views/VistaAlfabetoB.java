@@ -72,6 +72,7 @@ public class VistaAlfabetoB extends JFrame{
         areanomAB.setBounds(450,220, 200,20);
         add(areanomAB);
 
+        // Botón para borrar un alfabeto
         bBorrarAlfabeto.setBounds(700, 400, 200, 20);
         add(bBorrarAlfabeto);
 

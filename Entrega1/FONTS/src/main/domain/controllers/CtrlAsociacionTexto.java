@@ -67,13 +67,13 @@ public class CtrlAsociacionTexto
      * @param nomAT nombre de la nueva asociación de textos a agregar
      * @return true si la asociación se ha agregado correctamente y false en caso contrario
      */
-    public boolean agregarAsociacion(String nomAT){
+    public void agregarAsociacion(String nomAT, Texto texto){
         if(!AsociacionesTextos.existeAsociaciondeTextos(nomAT)){
             AsociacionTextos asociacionTextos = new AsociacionTextos(nomAT);
             AsociacionesTextos.agregarAsociacionTexto(nomAT, asociacionTextos);
-            return true;
+            agregarTextoAsociacion(nomAT, texto);
         }
-        return false;
+        else agregarTextoAsociacion(nomAT, texto);
     }
     /**
      * Devuelve la lista de nombres de asociaciones existentes

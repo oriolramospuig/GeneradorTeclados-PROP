@@ -183,12 +183,14 @@ public class CtrlDominio
 
     // ---------- FUNCIONES ASOCIACION TEXTOS ----------
 
-    public boolean agregarAsociacionNombre(String nomAT){
-        if(ctrlAsociacionTexto.agregarAsociacion(nomAT)){
-            // agregarTextoAsociacion(nomAT,textosagregar);
-            return true;
-        }
-        else return false;
+    public void agregarAsociacion1(String nomAT, String nomTxt){
+        Texto texto = ctrlTexto.getTexto(nomTxt);
+        ctrlAsociacionTexto.agregarAsociacion(nomAT, texto);
+    }
+    public boolean agregarAsociacion(String nomAT, ArrayList<String> textosgregar){
+        //Texto texto = ctrlTexto.getTexto(nomTxt);
+        //ctrlAsociacionTexto.agregarAsociacion(nomAT, texto);
+        return false;
     }
     /**
      * Retorna si se ha creado bien la asociacion con nombre nomAT
@@ -196,7 +198,7 @@ public class CtrlDominio
      * @param textosagregar la lista de nombres de los textos que forman la asociacion
      * @return Boolean: true si se ha creado bien la asociacion, false si no se ha creado bien
      */
-    public boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar){
+    /*public boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar){
         //boolean agregada = ctrlAsociacionTexto.agregarAsociacion(nomAT);
         if(ctrlAsociacionTexto.agregarAsociacion(nomAT)){
            for (int i = 0; i < textosagregar.size(); ++i) {
@@ -205,7 +207,7 @@ public class CtrlDominio
            return true;
         }
         else return false;
-    }
+    }*/
     /**
      * No retorna
      * @param nomAT nombre de la asociacion donde añadir el texto
@@ -404,7 +406,7 @@ public class CtrlDominio
     /**
      * Almacena el conjunto de alfabetos en una localización específica.
      */
-    public static void guardaCnjtAlfabetos() {
+    public void guardaCnjtAlfabetos() {
         String nomDoc = "conjuntoAlfabetos";
         //if(nomDoc.endsWith(".prop")) { nomDoc = nomDoc+".prop"; }
         String currentDirectory = System.getProperty("user.dir");

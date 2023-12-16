@@ -175,7 +175,7 @@ public class CtrlPresentacion {
     public static void borrarAlfabeto(String nomA) {
         cd.borrarAlfabeto(nomA);
     }
-
+    /** Llama a la función guardaCnjtAlfabetos de CtrlDominio */
     public static void guardaAlfabetos(){
         cd.guardaCnjtAlfabetos();
     }
@@ -297,8 +297,8 @@ public class CtrlPresentacion {
      * Llama a la función agregarAsociacion de CtrlDominio
      * @param nomAT es el nombre de la asociación a agregar
      */
-    public static boolean agregarAsociacionNombre(String nomAT) {
-        return cd.agregarAsociacionNombre(nomAT);
+    public static void agregarAsociacion(String nomAT, String nomTxt) {
+        cd.agregarAsociacion1(nomAT, nomTxt);
     }
     /**
      * Llama a la función agregarAsociacion de CtrlDominio
@@ -307,11 +307,9 @@ public class CtrlPresentacion {
      * @param nomTxt es el nombre del texto a agregar en la asociación
      * @return
      */
-    public static boolean agregarTextoAsociacion (String nomAT, String nomTxt) {
+    public static void agregarTextoAsociacion (String nomAT, String nomTxt) {
         cd.agregarTextoAsociacion(nomAT, nomTxt);
-        return false;
     }
-
     /**
      * Llama a la función getNombresAsociaciones de CtrlDominio
      *
