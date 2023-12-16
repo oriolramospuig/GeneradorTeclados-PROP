@@ -163,7 +163,6 @@ public class CtrlPresentacion {
     }
     /**
      * Llama a la función modificarContenidoAlfabeto de CtrlDominio
-     *
      * @param nomA es el nombre del alfabeto a modificar
      */
     public static void modificarContenidoAlfabeto(String nomA, ArrayList<Character> entrada) {
@@ -175,6 +174,10 @@ public class CtrlPresentacion {
      */
     public static void borrarAlfabeto(String nomA) {
         cd.borrarAlfabeto(nomA);
+    }
+
+    public static void guardaAlfabetos(){
+        cd.guardaCnjtAlfabetos();
     }
 
 
@@ -246,8 +249,8 @@ public class CtrlPresentacion {
      * Llama a la función modificarContenidoTexto de CtrlDominio
      * @param nomTxt es el nombre del alfabeto a modificar
      */
-    public static boolean modificarContenidoTexto(String nomTxt, String entrada) {
-        return cd.modificarContenidoTexto(nomTxt, entrada);
+    public static void modificarContenidoTexto(String nomTxt, String entrada) {
+        cd.modificarContenidoTexto(nomTxt, entrada);
     }
     /**
      * Llama a la función borrarTexto de CtrlDominio
@@ -255,10 +258,6 @@ public class CtrlPresentacion {
      */
     public static void borrarTexto(String nomTxt) {
         cd.borrarTexto(nomTxt);
-    }
-
-    public static void guardaAlfabetos(){
-        cd.guardaCnjtAlfabetos();
     }
 
 
