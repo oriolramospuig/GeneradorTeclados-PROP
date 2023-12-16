@@ -209,10 +209,6 @@ public class CtrlPresentacion {
         cd.borrarTexto(nomTxt);
     }
 
-    public static void guardaAlfabetos(){
-        cd.guardaCnjtAlfabetos();
-    }
-
     public static void guardaTextos(){
         cd.guardaCnjtTextos();
     }
