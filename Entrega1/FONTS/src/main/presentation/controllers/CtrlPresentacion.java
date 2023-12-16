@@ -1,5 +1,6 @@
 package main.presentation.controllers;
 
+import drivers.InOut;
 import main.domain.classes.Alfabeto;
 import main.domain.classes.AsociacionTextos;
 import main.domain.classes.types.PairInt;
@@ -107,38 +108,17 @@ public class CtrlPresentacion {
      * @param entrada la lista de caracteres que forman el contenido del alfabeto
      * @param path path donde se crea y guarda el alfabeto
      */
-    public static boolean agregarAlfabetoManual(String nomA, ArrayList<Character> entrada, String path) {
-        boolean agregado = cd.agregarAlfabeto(nomA, entrada);
-        if (agregado) {
-            try {
-                File archivo = new File(path, nomA + ".txt");
-                if (!archivo.exists()) {
-                    archivo.createNewFile(); // Crea el archivo si no existe
-                }
-                try (PrintWriter writer = new PrintWriter(archivo)) {
-                    for (Character c : entrada) {
-                        writer.print(c);
-                    }
-                }
-                return true; // El alfabeto se agregó correctamente y se guardó el archivo
-            } catch (IOException e) {
-                return false; // Retorna false si hubo un error al escribir el archivo
-            }
-        } else {
-            return false; // El alfabeto no se pudo agregar
-        }
+    public static boolean agregarAlfabetoManual(String nomA, ArrayList<Character> entrada) {
+        return cd.agregarAlfabeto(nomA, entrada);
     }
     /**
      * Llama a la función agregarAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a agregar
      * @param path es la lista de caracteres que forman el contenido del alfabeto
      */
-    public static boolean agregarAlfabetoPath(String nomA, String path) {
-        //ArrayList<Character> entrada = InOut.leerCaracteresDeArchivo(path);
-        //boolean agregado = cd.agregarAlfabeto(nomA, entradaCaracteres);
-        //faltara afegir algo semblant al agregarAlfabetoManual que he fet adalt amb 3 params perque es guardi sempre al mateix path
-        //return agregado;
-        return false;
+    public static boolean agregarAlfabetoPath(String nomA, String path) throws IOException {
+        ArrayList<Character> entrada = InOut.leerCaracteresDeArchivo(path);
+        return cd.agregarAlfabeto(nomA, entrada);
     }
     /** Llama a la función getNombresAlfabetos de CtrlDominio */
     public static ArrayList<String> getNombresAlfabetos() {

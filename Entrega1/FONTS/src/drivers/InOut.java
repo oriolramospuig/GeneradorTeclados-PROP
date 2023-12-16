@@ -76,7 +76,9 @@ public class InOut {
     public static ArrayList<Character> leerCaracteresDeArchivo(String nombreArchivo) throws IOException {
         String currentDirectory = System.getProperty("user.dir");
         // Ruta absoluta del archivo
-        String rutaArchivo = currentDirectory+"\\Entrega1\\data\\Alfabetos\\"+nombreArchivo;
+        // String rutaArchivo = currentDirectory+"\\Entrega1\\data\\Alfabetos\\"+nombreArchivo;
+        String rutaArchivo = nombreArchivo;
+        System.out.println(rutaArchivo);
         ArrayList<Character> caracteres = new ArrayList<>();
 
         BufferedReader br = new BufferedReader(new FileReader(rutaArchivo));
@@ -86,9 +88,7 @@ public class InOut {
                 throw new IllegalArgumentException("El contenido del archivo no es válido.");
             }
             for (char c : line.toCharArray()) {
-                //if (c != ' ') { // Asume que los caracteres están separados por espacios, ignora los espacios
                     caracteres.add(c);
-                //}
             }
         }
         return caracteres;
