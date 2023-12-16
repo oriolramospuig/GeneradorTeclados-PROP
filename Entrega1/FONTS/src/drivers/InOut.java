@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class InOut {
-    private Scanner scanner;
+    private static Scanner scanner;
 
     /**
      * Constructor de la clase InOut. Inicializa un objeto Scanner para la entrada estándar.
@@ -25,7 +25,7 @@ public class InOut {
      * Lee una línea de texto desde la entrada estándar.
      * @return La línea de texto leída o null si no hay más elementos para leer.
      */
-    public String leerString() {
+    public static String leerString() {
         String linea;
         try{
             linea = scanner.nextLine();
@@ -76,7 +76,9 @@ public class InOut {
     public static ArrayList<Character> leerCaracteresDeArchivo(String nombreArchivo) throws IOException {
         String currentDirectory = System.getProperty("user.dir");
         // Ruta absoluta del archivo
-        String rutaArchivo = currentDirectory+"\\Entrega1\\data\\Alfabetos\\"+nombreArchivo;
+        // String rutaArchivo = currentDirectory+"\\Entrega1\\data\\Alfabetos\\"+nombreArchivo;
+        String rutaArchivo = nombreArchivo;
+        // System.out.println(rutaArchivo);
         ArrayList<Character> caracteres = new ArrayList<>();
 
         BufferedReader br = new BufferedReader(new FileReader(rutaArchivo));
@@ -86,9 +88,7 @@ public class InOut {
                 throw new IllegalArgumentException("El contenido del archivo no es válido.");
             }
             for (char c : line.toCharArray()) {
-                //if (c != ' ') { // Asume que los caracteres están separados por espacios, ignora los espacios
                     caracteres.add(c);
-                //}
             }
         }
         return caracteres;
@@ -100,7 +100,7 @@ public class InOut {
      * @return Un HashMap que mapea palabras a sus frecuencias.
      * @throws NumberFormatException Si la frecuencia no es un número válido.
      */
-    public HashMap<String,Integer> leerTextoFrecuenciasPalabras(int n) {
+    public static HashMap<String,Integer> leerTextoFrecuenciasPalabras(int n) {
         HashMap<String, Integer> frecuenciaPalabras = new HashMap<>();
         String linea;
         for(int i = 0; i < n; i++){
@@ -126,11 +126,10 @@ public class InOut {
      * @return Un String que contiene todas las líneas del archivo concatenadas.
      * @throws IOException Si ocurre un error al leer el archivo.
      */
-    public String leerPalabrasDeArchivo(String nombreArchivo) throws IOException {
+    public static String leerPalabrasDeArchivo(String nombreArchivo) throws IOException {
         String currentDirectory = System.getProperty("user.dir");
         // Ruta absoluta del archivo
-        String rutaArchivo = currentDirectory+"\\Entrega1\\data\\Textos\\"+nombreArchivo;
-        ArrayList<Character> caracteres = new ArrayList<>();
+        String rutaArchivo = nombreArchivo;
 
         BufferedReader br = new BufferedReader(new FileReader(rutaArchivo));
         String line;

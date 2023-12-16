@@ -94,14 +94,13 @@ public class CtrlTeclado
         }
         if (esPrimo(n)) {
             int N = n+1;
-            Integer y = 1;
             for (int filas = 1; filas <= N; filas++) {
                 if (N % filas == 0) {
                     int columnas = N / filas;
                     // System.out.print(y + ": " + filas + "filas, " + columnas + "columnas");
                     dim.add(new PairInt(filas, columnas));
                     // System.out.println();
-                    y++;
+                    x++;
                 }
             }
         }

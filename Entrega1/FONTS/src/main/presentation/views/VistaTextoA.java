@@ -3,9 +3,14 @@ package main.presentation.views;
 import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.event.*;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class VistaTextoA extends JFrame {
 
@@ -20,6 +25,8 @@ public class VistaTextoA extends JFrame {
     private final JButton bAgregarTexto = new JButton("Agregar texto de palabras");
     /** Botón para agregar un texto */
     private final JButton bAgregarTextoFrec = new JButton("Agregar texto de frecuencias");
+    private final JButton bSeleccionarArchivoPalabras = new JButton("Seleccionar Archivo");
+    private final JButton bSeleccionarArchivoFrecuencias = new JButton("Seleccionar Archivo");
     /** Botó de tornar a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
 
@@ -111,11 +118,12 @@ public class VistaTextoA extends JFrame {
         add(txtPathTxtA);
 
         // Área texto Path
-        areaPathTxtA.setBounds(230,280, 200,20);
-        add(areaPathTxtA);
+        JScrollPane scrollPane = new JScrollPane(areaPathTxtA);
+        scrollPane.setBounds(230, 280, 200, 60);
+        add(scrollPane);
 
         // Texto Instrucciones
-        txtInstruccionesTxtA.setBounds(30, 340, 500, 20);
+        txtInstruccionesTxtA.setBounds(30, 360, 500, 20);
         add(txtInstruccionesTxtA);
 
 
@@ -144,16 +152,17 @@ public class VistaTextoA extends JFrame {
         txtPathTxtA1.setBounds(550, 280, 200, 20);
         add(txtPathTxtA1);
 
-        // Área texto Path
-        areaPathTxtA1.setBounds(750,280, 200,20);
-        add(areaPathTxtA1);
+
+        JScrollPane scrollPane2 = new JScrollPane(areaPathTxtA1);
+        scrollPane2.setBounds(750, 280, 200, 60);
+        add(scrollPane2);
 
         // Texto Instrucciones
-        txtInstruccionesTxtA1.setBounds(550, 340, 500, 20);
+        txtInstruccionesTxtA1.setBounds(550, 360, 500, 20);
         add(txtInstruccionesTxtA1);
 
         // Texto Instrucciones2
-        txtInstruccionesTxtA2.setBounds(550, 360, 500, 20);
+        txtInstruccionesTxtA2.setBounds(550, 380, 500, 20);
         add(txtInstruccionesTxtA2);
 
 
@@ -166,6 +175,13 @@ public class VistaTextoA extends JFrame {
         bAgregarTextoFrec.setBounds(750, 400, 200, 20);
         add(bAgregarTextoFrec);
 
+        bSeleccionarArchivoPalabras.setBounds(230, 340, 150, 20);
+        add(bSeleccionarArchivoPalabras);
+
+        // Configurar el botón Seleccionar Archivo Frecuencias
+        bSeleccionarArchivoFrecuencias.setBounds(750, 340, 150, 20);
+        add(bSeleccionarArchivoFrecuencias);
+
         // Botón salir para ir a la pantalla principal
         bsalir.setBounds(800, 500, 100, 20);
         add(bsalir);
@@ -175,13 +191,17 @@ public class VistaTextoA extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir") + "\\Entrega1\\data\\InputFiles\\Textos\\");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Archivo de Texto", "txt"));
+
         ActionListener lAgregar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nombreTexto = areanomTxtA.getText().trim();
                 String contenidoTexto = areaContenidoTxtA.getText();
                 String pathTexto = areaPathTxtA.getText();
-                String path = System.getProperty("user.dir") + "/Entrega1/data/Textos";
 
                 if (nombreTexto.isEmpty()) {
                     JOptionPane.showMessageDialog(VistaTextoA.this, "Error: No Nombre", "Error", JOptionPane.ERROR_MESSAGE);
@@ -195,9 +215,13 @@ public class VistaTextoA extends JFrame {
 
                 boolean agregado;
                 if (contenidoTexto.isEmpty()) {
-                    agregado = CtrlPresentacion.agregarTextoPalabras(nombreTexto, pathTexto, path);
+                    try {
+                        agregado = CtrlPresentacion.agregarTextoPalabrasPath(nombreTexto, pathTexto);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 } else {
-                    agregado = CtrlPresentacion.agregarTextoPalabras(nombreTexto, contenidoTexto, path);
+                    agregado = CtrlPresentacion.agregarTextoPalabras(nombreTexto, contenidoTexto);
                 }
 
                 if (agregado) {
@@ -218,7 +242,6 @@ public class VistaTextoA extends JFrame {
                 String nombreTexto = areanomTxtA1.getText().trim();
                 String contenidoTexto = areaContenidoTxtA1.getText();
                 String pathTexto = areaPathTxtA1.getText();
-                String path = System.getProperty("user.dir") + "/subgrup-prop14.3/Entrega1/data/Textos";
 
                 if (nombreTexto.isEmpty()) {
                     JOptionPane.showMessageDialog(VistaTextoA.this, "Error: No Nombre", "Error", JOptionPane.ERROR_MESSAGE);
@@ -230,21 +253,78 @@ public class VistaTextoA extends JFrame {
                     return;
                 }
 
-                boolean agregado;
-                if (contenidoTexto.isEmpty()) {
-                    agregado = CtrlPresentacion.agregarTextoFrecuencias(nombreTexto, pathTexto, path);
+                HashMap<String, Integer> frecuencias = new HashMap<>();
+                boolean formatoCorrecto = true;
+
+                if (!contenidoTexto.isEmpty()) {
+                    String[] lineas = contenidoTexto.split("\n");
+                    for (String linea : lineas) {
+                        if (!linea.matches("([a-zA-Z]+\\s+\\d+)")) {
+                            formatoCorrecto = false;
+                            break;
+                        }
+                        String[] partes = linea.split("\\s+");
+                        frecuencias.put(partes[0], Integer.parseInt(partes[1]));
+                    }
                 } else {
-                    agregado = CtrlPresentacion.agregarTextoFrecuencias(nombreTexto, contenidoTexto, path);
+                    try {
+                        File archivo = new File(pathTexto);
+                        Scanner scanner = new Scanner(archivo);
+                        while (scanner.hasNextLine()) {
+                            String linea = scanner.nextLine();
+                            if (!linea.matches("([a-zA-Z]+\\s+\\d+)")) {
+                                formatoCorrecto = false;
+                                break;
+                            }
+                            String[] partes = linea.split("\\s+");
+                            frecuencias.put(partes[0], Integer.parseInt(partes[1]));
+                        }
+                        scanner.close();
+                    } catch (FileNotFoundException ex) {
+                        formatoCorrecto = false;
+                    }
                 }
 
-                if (agregado) {
-                    JOptionPane.showMessageDialog(VistaTextoA.this, "Texto de frecuencias agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    areanomTxtA1.setText("");
-                    areaContenidoTxtA1.setText("");
-                    areaPathTxtA1.setText("");
-                    CtrlPresentacion.guardaTextos();
+                if (formatoCorrecto) {
+                    boolean agregado = CtrlPresentacion.agregarTextoFrecuencias(nombreTexto, frecuencias);
+                    if (agregado) {
+                        JOptionPane.showMessageDialog(VistaTextoA.this, "Texto de frecuencias agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        areanomTxtA1.setText("");
+                        areaContenidoTxtA1.setText("");
+                        areaPathTxtA1.setText("");
+                        CtrlPresentacion.guardaTextos();
+                    } else {
+                        JOptionPane.showMessageDialog(VistaTextoA.this, "Error: El texto no se pudo agregar o ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(VistaTextoA.this, "Error: El texto no se pudo agregar o ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(VistaTextoA.this, "Error: Formato de contenido incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        };
+
+
+        ActionListener lSeleccionarArchivoPalabras = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Mostrar el diálogo de selección de archivos
+                int seleccion = fileChooser.showOpenDialog(VistaTextoA.this);
+                // Manejar la selección de archivos
+                if (seleccion == JFileChooser.APPROVE_OPTION) {
+                    File archivoSeleccionado = fileChooser.getSelectedFile();
+                    areaPathTxtA.setText(archivoSeleccionado.getPath());
+                }
+            }
+        };
+
+        ActionListener lSeleccionarArchivoFrecuencias = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Mostrar el diálogo de selección de archivos
+                int seleccion = fileChooser.showOpenDialog(VistaTextoA.this);
+                // Manejar la selección de archivos
+                if (seleccion == JFileChooser.APPROVE_OPTION) {
+                    File archivoSeleccionado = fileChooser.getSelectedFile();
+                    areaPathTxtA1.setText(archivoSeleccionado.getPath());
                 }
             }
         };
@@ -259,6 +339,8 @@ public class VistaTextoA extends JFrame {
 
         bAgregarTexto.addActionListener(lAgregar);
         bAgregarTextoFrec.addActionListener(lAgregarFrec);
+        bSeleccionarArchivoFrecuencias.addActionListener(lSeleccionarArchivoFrecuencias);
+        bSeleccionarArchivoPalabras.addActionListener(lSeleccionarArchivoPalabras);
         bsalir.addActionListener(lSalir);
 
     }
