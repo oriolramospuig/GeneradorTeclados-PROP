@@ -146,14 +146,6 @@ public class CtrlPresentacion {
         return listaAlfabetosNombres;
     }
     /**
-     * Llama a la función existealfabeto de CtrlDominio
-     * @param nomA es el nombre del alfabeto a consultar si existe
-     */
-    /*public static boolean existeAlfabeto(String nomA) {
-        boolean existe = cd.existealfabeto(nomA);
-        return existe;
-    }*/
-    /**
      * Llama a la función consultarContenidoAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a consultar
      */
@@ -229,14 +221,6 @@ public class CtrlPresentacion {
         ArrayList<String> listaTextosNombres = cd.getNombresAsociaciones();
         return listaTextosNombres;
     }
-    /**
-     * Llama a la función existetexto de CtrlDominio
-     * @param nomTxt es el nombre del texto a consultar si existe
-     */
-    /*public static boolean existeTexto(String nomTxt) {
-        boolean existe = cd.existealfabeto(nomTxt);
-        return existe;
-    }*/
     /**
      * Llama a la función consultarContenidoTexto de CtrlDominio
      * @param nomTxt es el nombre del texto a consultar
@@ -318,14 +302,6 @@ public class CtrlPresentacion {
     public static ArrayList<String> getNombresAsociaciones() {
         ArrayList<String> listaAsociacionesNombres = cd.getNombresAsociaciones();
         return listaAsociacionesNombres;
-    }
-    /**
-     * Llama a la función existeasociacion de CtrlDominio
-     * @param nomAT es el nombre de la asociación a consultar si existe
-     */
-    public static boolean existeAsociacion(String nomAT) {
-        boolean existe = cd.existeasociacion(nomAT);
-        return existe;
     }
     /**
      * Llama a la función consultarContenidoAsociacion de CtrlDominio

@@ -191,7 +191,6 @@ public class VistaAsociacionTextosA extends JFrame {
             }
         };
 
-
         ActionListener lSeleccionarTexto = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
