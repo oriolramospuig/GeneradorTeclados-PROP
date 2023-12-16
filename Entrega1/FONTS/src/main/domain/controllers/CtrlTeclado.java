@@ -34,12 +34,20 @@ public class CtrlTeclado
         return teclados.getTeclado(nomT).getContenido();
     }
 
+    public int getPuntuacion(String nomT){
+        return teclados.getTeclado(nomT).getPuntuacion();
+    }
+
     public String getAlfabeto(String nomT){
         return teclados.getTeclado(nomT).getAlfabetoVinculado();
     }
 
     public String getAsociacion(String nomT){
         return teclados.getTeclado(nomT).getAsociacionTextosVinculado();
+    }
+
+    public PairInt getDimensiones(String nomT){
+        return teclados.getTeclado(nomT).getDimensiones();
     }
 
     /**
@@ -71,6 +79,42 @@ public class CtrlTeclado
         teclados.getTeclado(nomT).borrarAsociacionTextosVinculados(nomAT);
     }*/
 
+    public ArrayList<PairInt> getPosiblesDimensiones(int n) {
+        ArrayList<PairInt> dim = new ArrayList<>();
+        Integer x = 1;
+        for (int filas = 1; filas <= n; filas++) {
+            if (n % filas == 0) {
+                int columnas = n / filas;
+                //System.out.print(x + ": " + filas + "filas, " + columnas + "columnas");
+                dim.add(new PairInt(filas, columnas));
+                //if (n - filas * columnas == 1) System.out.println(" Falta una tecla");
+                //else System.out.println();
+                x++;
+            }
+        }
+        if (esPrimo(n)) {
+            int N = n+1;
+            for (int filas = 1; filas <= N; filas++) {
+                if (N % filas == 0) {
+                    int columnas = N / filas;
+                    // System.out.print(y + ": " + filas + "filas, " + columnas + "columnas");
+                    dim.add(new PairInt(filas, columnas));
+                    // System.out.println();
+                    x++;
+                }
+            }
+        }
+        return dim;
+    }
+
+    private boolean esPrimo(int num) {
+        if (num <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+
 
     // ---------- FUNCIONES CONJUNTOTECLADOS ----------
     /**
@@ -93,8 +137,8 @@ public class CtrlTeclado
      * No devuelve nada.
      * Crea el nuevo objecto Teclado y añade este objeto a ConjuntoTeclados
      */
-    public void CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto) {
-        Teclado teclado = ctrlAlgoritmo.crearTeclado(nomT, asociacionTextos, alfabeto);
+    public void CrearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dim, boolean alg) {
+        Teclado teclado = ctrlAlgoritmo.crearTeclado(nomT, asociacionTextos, alfabeto, dim, alg);
         teclados.agregarTeclado(nomT, teclado);
     }
 
@@ -109,11 +153,11 @@ public class CtrlTeclado
 
     /**
      * Obtiene el nombre de la asociación de textos vinculada a un teclado específico.
-     * @param nomA
+     * @param nomT
      * @return Nombre de la asociación de textos vinculada a un teclado específico
      */
-    public String TecladoTieneAsociacionVinculada(String nomA){
-        return teclados.getTeclado(nomA).getAsociacionTextosVinculado();
+    public String TecladoTieneAsociacionVinculada(String nomT){
+        return teclados.getTeclado(nomT).getAsociacionTextosVinculado();
     }
 
     /**

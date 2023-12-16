@@ -1,28 +1,38 @@
 package drivers;
 import main.domain.classes.functions.QAP;
 import main.domain.classes.functions.SimulatedAnnealing;
+import main.domain.classes.types.PairInt;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DriverInteractivoQAP {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Selecciona un test: \n1: sko100a \n2: sko64 \n3: chr12a \n4: chr12b \n5: chr12c \n6: tai10a \n7: tai10b \n8: tai25a");
-        int opcionTest = obtenerOpcionValida(scanner, 8); // Asegúrate de cambiar el segundo argumento al número total de opciones
+        while (true) {
+            System.out.println("Selecciona un test: \n1: sko100a \n2: sko64 \n3: chr12a \n4: chr12b \n5: chr12c \n6: tai10a \n7: tai10b \n8: tai25a \n9: Salir");
+            int opcionTest = obtenerOpcionValida(scanner, 9);
 
-        String nombreTest = obtenerNombreTest(opcionTest);
+            if (opcionTest == 9) {
+                System.out.println("Saliendo del driver interactivo...");
+                break;
+            }
 
-        System.out.println("Selecciona un método: \n1: QAP \n2: SA (Simulated Annealing) \n3: N SA (Múltiples SA)");
-        int opcionMetodo = obtenerOpcionValida(scanner, 3);
+            String nombreTest = obtenerNombreTest(opcionTest);
+            System.out.println("Selecciona un método: \n1: QAP \n2: SA (Simulated Annealing) \n3: N SA (Múltiples SA)");
+            int opcionMetodo = obtenerOpcionValida(scanner, 3);
 
-        String filePath = obtenerRutaArchivo(nombreTest);
-        if (filePath != null) {
-            ejecutarMetodoSeleccionado(filePath, opcionMetodo, scanner);
-        } else {
-            System.out.println("Archivo no encontrado.");
+            String filePath = obtenerRutaArchivo(nombreTest);
+            if (filePath != null) {
+                ejecutarMetodoSeleccionado(filePath, opcionMetodo, scanner);
+            } else {
+                System.out.println("Archivo no encontrado.");
+            }
+            System.out.println();
         }
+        scanner.close();
     }
 
     private static int obtenerOpcionValida(Scanner scanner, int maxOpcion) {
@@ -97,18 +107,8 @@ public class DriverInteractivoQAP {
             }
 
             fileScanner.close();
-            /*Integer x = 1;
-            for (int filas = 1; filas <= n; filas++) {
-                if (n%filas == 0) {
-                    int columnas = n/filas;
-                    if (n - filas*columnas <= 1) {
-                        System.out.print(x + ": " + filas + "filas, " + columnas + "columnas");
-                    }
-                    if (n - filas*columnas == 1) System.out.println(" Falta una tecla");
-                    else System.out.println();
-                    x++;
-                }
-            }*/
+            ArrayList<PairInt> posiblesDimensiones = new ArrayList<>();
+            posiblesDimensiones = generarDimensiones(n);
             int nfilas = 1, ncolumnas = n;
 
             switch (opcionMetodo) {
@@ -150,5 +150,42 @@ public class DriverInteractivoQAP {
         } catch (FileNotFoundException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
+    }
+
+    private static ArrayList<PairInt> generarDimensiones(int n) {
+        ArrayList<PairInt> dim = new ArrayList<>();
+        Integer x = 1;
+        for (int filas = 1; filas <= n; filas++) {
+            if (n % filas == 0) {
+                int columnas = n / filas;
+                System.out.print(x + ": " + filas + "filas, " + columnas + "columnas");
+                dim.add(new PairInt(filas, columnas));
+                if (n - filas * columnas == 1) System.out.println(" Falta una tecla");
+                else System.out.println();
+                x++;
+            }
+        }
+        if (esPrimo(n)) {
+            int N = n+1;
+            Integer y = 1;
+            for (int filas = 1; filas <= N; filas++) {
+                if (N % filas == 0) {
+                    int columnas = N / filas;
+                    System.out.print(y + ": " + filas + "filas, " + columnas + "columnas");
+                    dim.add(new PairInt(filas, columnas));
+                    System.out.println();
+                    y++;
+                }
+            }
+        }
+        return dim;
+    }
+
+    private static boolean esPrimo(int num) {
+        if (num <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
     }
 }

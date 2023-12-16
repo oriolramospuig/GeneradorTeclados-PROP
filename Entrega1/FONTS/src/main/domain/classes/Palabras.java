@@ -15,7 +15,7 @@ public class Palabras extends Texto
     private String texto;
 
 
-    // ---------- CONSTRUCTORES ----------
+    // ---------- CONSTRUCTORAS ----------
     /** Crea una instancia de la clase Palabras e inicializa los atributos de esta clase con los valores correspondientes
      * @param nombre nombre que adquiere el Texto de Tipo Palabras creada
      * @param texto String que contiene las palabras que forman el texto creado
@@ -31,13 +31,25 @@ public class Palabras extends Texto
 
     // ---------- GETTERS ----------
     /**
-     * Devuelve el contenido, es decir, texto, del Texto de Tipo Palabras
+     * Devuelve el contenido del Texto de Tipo Palabras
      * @return String: Contenido del texto compuesto por palabras
      */
     public String getTexto() {
         return texto;
     }
 
+
+    // ---------- SETTERS ----------
+    /**
+     * ??????
+     * @param entrada
+     */
+    public void modificarPalabras(String entrada){
+        //modfificar palabras
+    }
+
+
+    // ---------- AUXILIARES ----------
     /** No devuelve nada. Imprime los valores de frecuenciaLetras */
     public void imprimirFrecuencias(){
         for(Map.Entry<String,Integer> e : frecuenciaLetras.entrySet()){

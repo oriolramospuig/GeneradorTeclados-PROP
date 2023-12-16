@@ -39,6 +39,11 @@ public class VistaTecladoC extends JFrame {
     /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
     private final JTextArea areacontenidoTC = new JTextArea();
 
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
+    private final JLabel txtPuntuacionTC = new JLabel("PUNTUACIÓN:");
+    /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
+    private final JTextArea areaPuntuacionTC = new JTextArea();
+
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere consultar/modificar una asociacion sin nombre */
     private final JFrame Nomframe = new JFrame ("JFrame");
@@ -83,6 +88,14 @@ public class VistaTecladoC extends JFrame {
         scrollPane.setBounds(400, 220, 400, 150); // Ajusta las dimensiones según tus necesidades
         add(scrollPane);
 
+        txtPuntuacionTC.setBounds(200, 400, 200, 20);
+        add(txtPuntuacionTC);
+
+        // Área texto Nombre
+        areaPuntuacionTC.setEditable(false);
+        areaPuntuacionTC.setBounds(400,400, 200,20);
+        add(areaPuntuacionTC);
+
         // Botón salir para ir a la pantalla principal
         bsalir.setBounds(800, 500, 100, 20);
         add(bsalir);
@@ -96,18 +109,17 @@ public class VistaTecladoC extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedName = (String) nombresTC.getSelectedItem();
-                ArrayList<String> contenido = CtrlPresentacion.consultarCjtTextosAsociacion(selectedName);
                 if (selectedName != null && !selectedName.isEmpty()) {
+                    char[][] contenido = CtrlPresentacion.consultarContenidoTeclado(selectedName);
+                    int puntuacion = CtrlPresentacion.consultarPuntuacionTeclado(selectedName);
+
                     areanomTC.setText(selectedName);
-                    // Convertir ArrayList<Character> a String
-                    StringBuilder contenidoStr = new StringBuilder();
-                    for (String c : contenido) {
-                        contenidoStr.append(c).append("\n");
-                    }
-                    areacontenidoTC.setText(contenidoStr.toString());
+                    areacontenidoTC.setText(convertirContenidoAString(contenido));
+                    areaPuntuacionTC.setText(String.valueOf(puntuacion));
                 } else {
                     areanomTC.setText("");
                     areacontenidoTC.setText("");
+                    areaPuntuacionTC.setText("");
                 }
             }
         };
@@ -122,5 +134,16 @@ public class VistaTecladoC extends JFrame {
 
         nombresTC.addActionListener(lElementoSeleccionado);
         bsalir.addActionListener(lSalir);
+    }
+
+    private String convertirContenidoAString(char[][] contenido) {
+        StringBuilder contenidoEnTexto = new StringBuilder();
+        for (char[] fila : contenido) {
+            for (char c : fila) {
+                contenidoEnTexto.append(c).append(" ");
+            }
+            contenidoEnTexto.append("\n"); // Para una nueva línea después de cada fila
+        }
+        return contenidoEnTexto.toString();
     }
 }

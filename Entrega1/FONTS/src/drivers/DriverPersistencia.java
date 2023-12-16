@@ -38,7 +38,7 @@ public class DriverPersistencia {
     public void agregarAlfabetoPorTerminal() {
         System.out.println("Introduce el nombre del alfabeto:");
         String nombreA = inOut.leerString();
-        System.out.println("Introduce los caracteres del alfabeto separados por espacio (ejemplo: a b c ...):");
+        System.out.println("Introduce los caracteres del alfabeto todos juntos (ejemplo: abcde ...):");
         String entradaCaracteres = inOut.leerString();
         if (inOut.alfabetoValido(entradaCaracteres)) {
             ArrayList<Character> caracteres = inOut.leerCaracteresDeTerminal(entradaCaracteres);
@@ -310,6 +310,49 @@ public class DriverPersistencia {
 
 
     // ---------- FUNCIONES TECLADO ----------
+    private static ArrayList<PairInt> generarDimensiones(int n) {
+        ArrayList<PairInt> dim = new ArrayList<>();
+        Integer x = 1;
+        for (int filas = 1; filas <= n; filas++) {
+            if (n % filas == 0) {
+                int columnas = n / filas;
+                System.out.print(x + ": " + filas + "filas, " + columnas + "columnas");
+                dim.add(new PairInt(filas, columnas));
+                if (n - filas * columnas == 1) System.out.println(" Falta una tecla");
+                else System.out.println();
+                x++;
+            }
+        }
+        if (esPrimo(n)) {
+            int N = n+1;
+            Integer y = 1;
+            for (int filas = 1; filas <= N; filas++) {
+                if (N % filas == 0) {
+                    int columnas = N / filas;
+                    System.out.print(y + ": " + filas + "filas, " + columnas + "columnas");
+                    dim.add(new PairInt(filas, columnas));
+                    System.out.println();
+                    y++;
+                }
+            }
+        }
+        return dim;
+    }
+
+    private static boolean esPrimo(int num) {
+        if (num <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+
+    private PairInt escogerDimensiones(ArrayList<PairInt> combinacionesDimensiones, Integer numDim) {
+        Integer filas = combinacionesDimensiones.get(numDim-1).getPrimero();
+        Integer columans = combinacionesDimensiones.get(numDim-1).getSegundo();
+        return new PairInt(filas, columans);
+    }
+
     /**
      * No devuelve nada.
      * Muestra por pantalla mensajes para introducir información por terminal del teclado que se quiere crear.
@@ -338,24 +381,18 @@ public class DriverPersistencia {
                         String nombreAT = inOut.leerString();
                         if (ctrlDominio.existeasociacion(nombreAT)) {
                             //Siguiente entrega: funcion para mostrar algoritmos
-                            //System.out.println("Escoge el algoritmo:");
-                            //Integer numAlg = inOut.leerEntero();
-                            //Algoritmo algoritmo;
-                            //  if (numAlg==1) algoritmo = algoritmo.QAP;
-                            //  else algoritmo = algoritmo.Alg2;
-
-                            //Seleccionar dimensiones del teclado
-                            /*System.out.println("Posibles Dimensiones a escoger para el alfabeto " + nombreA + ":");
-                            HashMap<Integer, PairInt> combinacionesDimensiones = imprimirPosiblesDimensiones(nombreA);
+                            System.out.println("Posibles Dimensiones a escoger para el alfabeto " + nombreA + ":");
+                            int n = ctrlDominio.consultarContenidoAlfabeto(nombreA).size();
+                            ArrayList<PairInt> combinacionesDimensiones = generarDimensiones(n);
                             DriverFP driver = new DriverFP();
                             System.out.println("Selecciona las dimensiones del teclado:");
                             Integer numDim = driver.inOut.leerEntero();
                             PairInt dimensiones = escogerDimensiones(combinacionesDimensiones, numDim);
-                            System.out.println("El teclado tendrá " + dimensiones.getPrimero() + " filas y " + dimensiones.getSegundo() + " columnas.");*/
+                            System.out.println("El teclado tendrá " + dimensiones.getPrimero() + " filas y " + dimensiones.getSegundo() + " columnas.");
 
 
                             //boolean agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, Algoritmo.QAP, PairIntEnum.EMPTY_PAIR);
-                            int agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT);
+                            int agregado = ctrlDominio.agregarTeclado(nombreT, nombreA, nombreAT, dimensiones, false);
                             if (agregado == -1) System.out.println("Ya existe el teclado " + nombreT);
                             else if(agregado == -2) System.out.println("El alfabeto y la asociación de textos no son compatibles");
                             else {
