@@ -111,6 +111,7 @@ public class VistaAlfabetoB extends JFrame{
                     nombresAB.removeItem(nombreAlfabeto);
                     nombresAB.setSelectedItem("");
                     JOptionPane.showMessageDialog(frame, "Alfabeto eliminado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    CtrlPresentacion.guardaAlfabetos();
                 }
             }
         };

@@ -4,7 +4,10 @@ import main.domain.controllers.CtrlDominio;
 import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -31,6 +34,8 @@ public class VistaAlfabetoA extends JFrame {
     private final JLabel tituloVistaAA = new JLabel("Agregar alfabeto");
     /** Botón para agregar un alfabeto */
     private final JButton bAgregarAlfabeto = new JButton("Agregar Alfabeto");
+    /** Botón para agregar un archivo */
+    private final JButton bSeleccionarArchivo = new JButton("Seleccionar Archivo");
     /** Botón de volver a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
 
@@ -84,8 +89,9 @@ public class VistaAlfabetoA extends JFrame {
         add(txtPathAA);
 
         // Área texto Path
-        areaPathAA.setBounds(450,280, 200,20);
-        add(areaPathAA);
+        JScrollPane scrollPane = new JScrollPane(areaPathAA);
+        scrollPane.setBounds(450, 280, 200, 60);
+        add(scrollPane);
 
         // Texto Instrucciones
         txtInstruccionesA.setBounds(30, 340, 600, 20);
@@ -98,6 +104,9 @@ public class VistaAlfabetoA extends JFrame {
         // Botón agregar Alfabeto
         bAgregarAlfabeto.setBounds(700, 400, 200, 20);
         add(bAgregarAlfabeto);
+
+        bSeleccionarArchivo.setBounds(660, 280, 150, 20);
+        add(bSeleccionarArchivo);
 
         // Botón salir para ir a la pantalla principal
         bsalir.setBounds(800, 500, 100, 20);
@@ -114,7 +123,6 @@ public class VistaAlfabetoA extends JFrame {
                 String nombreAlfabeto = areanomAA.getText().trim();
                 String contenidoAlfabeto = areaContenidoAA.getText();
                 String pathArchivo = areaPathAA.getText();
-                String path = System.getProperty("user.dir") + "/Entrega1/data/Alfabetos";
 
                 // Verificar que el nombre no esté vacío
                 if (nombreAlfabeto.isEmpty()) {
@@ -128,12 +136,18 @@ public class VistaAlfabetoA extends JFrame {
                     return;
                 }
                 else if (contenidoAlfabeto.isEmpty()) {
-                    boolean agregado = CtrlPresentacion.agregarAlfabetoPath(nombreAlfabeto, path);
+                    boolean agregado = false;
+                    try {
+                        agregado = CtrlPresentacion.agregarAlfabetoPath(nombreAlfabeto, pathArchivo);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                     // Mensaje de éxito o error
                     if (agregado) {
                         JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                         areanomAA.setText("");
                         areaContenidoAA.setText("");
+                        CtrlPresentacion.guardaAlfabetos();
                     } else {
                         JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: El nombre " + nombreAlfabeto + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -142,7 +156,7 @@ public class VistaAlfabetoA extends JFrame {
                     // Convertimos la entrada de string en una lista de characters
                     ArrayList<Character> caracteres = new ArrayList<>();
                     for (char c : contenidoAlfabeto.toCharArray()) caracteres.add(c);
-                    boolean agregado = CtrlPresentacion.agregarAlfabetoManual(nombreAlfabeto, caracteres, path);
+                    boolean agregado = CtrlPresentacion.agregarAlfabetoManual(nombreAlfabeto, caracteres);
                     // Mensaje de éxito o error
                     if (agregado) {
                         JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -159,6 +173,28 @@ public class VistaAlfabetoA extends JFrame {
             }
         };
 
+        ActionListener lSeleccionarArchivo = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Crear un JFileChooser que se abre en la carpeta data/InputFiles/Alfabetos
+                JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir") + "\\Entrega1\\data\\InputFiles\\Alfabetos\\");
+                fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                fileChooser.setAcceptAllFileFilterUsed(false);
+                fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Archivo de Texto", "txt"));
+
+                // Mostrar el diálogo de selección de archivos
+                int seleccion = fileChooser.showOpenDialog(VistaAlfabetoA.this);
+
+                // Manejar la selección de archivos
+                if (seleccion == JFileChooser.APPROVE_OPTION) {
+                    File archivoSeleccionado = fileChooser.getSelectedFile();
+                    System.out.println(archivoSeleccionado.getPath());
+                    areaPathAA.setText(archivoSeleccionado.getPath());
+                }
+            }
+        };
+
         ActionListener lSalir = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -168,6 +204,7 @@ public class VistaAlfabetoA extends JFrame {
         };
 
         bAgregarAlfabeto.addActionListener(lAgregar);
+        bSeleccionarArchivo.addActionListener(lSeleccionarArchivo);
         bsalir.addActionListener(lSalir);
     }
 }

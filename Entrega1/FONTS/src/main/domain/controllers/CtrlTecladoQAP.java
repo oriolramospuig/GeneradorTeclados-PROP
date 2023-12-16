@@ -24,9 +24,9 @@ import static java.lang.Math.sqrt;
 public class CtrlTecladoQAP {
     public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dim, boolean alg) {
         ArrayList<Character> letras = alfabeto.getLetras();
-        for (int i = 0; i < letras.size(); ++i) {
+        /*for (int i = 0; i < letras.size(); ++i) {
             System.out.print(letras.get(i) + " ");
-        }
+        }*/
 
         int n = letras.size();
         int nf = dim.getPrimero();
@@ -49,12 +49,12 @@ public class CtrlTecladoQAP {
         }
 
         int[][] matrizFrecuencias = Matrices.generarMatrizDeFrecuencias(nf*nc, frecuencias, letras, letraAIndice);;
-        for (int i = 0; i < matrizFrecuencias.length; ++i) {
+        /*for (int i = 0; i < matrizFrecuencias.length; ++i) {
             for (int j = 0; j < matrizFrecuencias.length; ++j) {
                 System.out.print(matrizFrecuencias[i][j]);
             }
             System.out.println();
-        }
+        }*/
 
         int [][] matrizDistancias = Matrices.generarMatrizDistancias(nf,nc);
 
@@ -80,9 +80,22 @@ public class CtrlTecladoQAP {
             return teclado;
         }
         int [][] tecSA;
+        int p;
+
         SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing(nf, nc, matrizFrecuencias, matrizDistancias);
-        int p = simulatedAnnealing.getPuntuacionFinal();
+        p = simulatedAnnealing.getPuntuacionFinal();
         tecSA = simulatedAnnealing.getTecFinal();
+
+        int paux;
+        for (int i = 1; i < 10; ++i) {
+            SimulatedAnnealing simulatedAnnealing2 = new SimulatedAnnealing(nf, nc, matrizFrecuencias, matrizDistancias);
+            paux = simulatedAnnealing2.getPuntuacionFinal();
+            if (paux < p) {
+                p = paux;
+                tecSA = simulatedAnnealing2.getTecFinal();
+            }
+        }
+
         char[][] contenido = new char[tecSA.length][tecSA[0].length];
         for (int i = 0; i < tecSA.length; i++) {
             for (int j = 0; j < tecSA[i].length; j++) {
