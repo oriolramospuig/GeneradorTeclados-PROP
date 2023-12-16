@@ -120,6 +120,7 @@ public class VistaAsociacionTextosA extends JFrame {
                 } else{
                     boolean agregada = CtrlPresentacion.agregarAsociacionNombre(areanomATA.getText());
                     JOptionPane.showMessageDialog(VistaAsociacionTextosA.this, "Agregada con éxito! Ya puede añadir textos.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    CtrlPresentacion.guardaAsociaciones();
                 }
             }
         };
