@@ -183,13 +183,16 @@ public class CtrlDominio
 
     // ---------- FUNCIONES ASOCIACION TEXTOS ----------
 
-    public void agregarAsociacion1(String nomAT, String nomTxt){
-        Texto texto = ctrlTexto.getTexto(nomTxt);
-        ctrlAsociacionTexto.agregarAsociacion(nomAT, texto);
-    }
+
     public boolean agregarAsociacion(String nomAT, ArrayList<String> textosgregar){
-        //Texto texto = ctrlTexto.getTexto(nomTxt);
-        //ctrlAsociacionTexto.agregarAsociacion(nomAT, texto);
+        if(!existeasociacion(nomAT)){
+            for (String s : textosgregar) {
+                Texto texto = ctrlTexto.getTexto(s);
+                ctrlAsociacionTexto.agregarAsociacion(nomAT, texto);
+                ctrlTexto.getTexto(s).agregarAsociacionesVinculadas(nomAT);
+            }
+            return true;
+        }
         return false;
     }
     /**

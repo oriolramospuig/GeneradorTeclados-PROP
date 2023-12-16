@@ -297,8 +297,8 @@ public class CtrlPresentacion {
      * Llama a la función agregarAsociacion de CtrlDominio
      * @param nomAT es el nombre de la asociación a agregar
      */
-    public static void agregarAsociacion(String nomAT, String nomTxt) {
-        cd.agregarAsociacion1(nomAT, nomTxt);
+    public static boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar) {
+        return cd.agregarAsociacion(nomAT, textosagregar);
     }
     /**
      * Llama a la función agregarAsociacion de CtrlDominio
