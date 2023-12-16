@@ -205,6 +205,7 @@ public class VistaTecladoA extends JFrame {
                         areaContenidoAsociacionTA.setText("");
                         areaFilasTA.setText("");
                         areaColumnasTA.setText("");
+                        CtrlPresentacion.guardaTeclados();
                     } else {
                         JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El nombre " + nombreTeclado + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -257,6 +258,7 @@ public class VistaTecladoA extends JFrame {
                         areaContenidoAsociacionTA.setText("");
                         areaFilasTA.setText("");
                         areaColumnasTA.setText("");
+                        CtrlPresentacion.guardaTeclados();
                     } else {
                         JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El nombre " + nombreTeclado + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                     }

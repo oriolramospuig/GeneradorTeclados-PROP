@@ -134,6 +134,7 @@ public class VistaAlfabetoA extends JFrame {
                         JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                         areanomAA.setText("");
                         areaContenidoAA.setText("");
+                        CtrlPresentacion.guardaAlfabetos();
                     } else {
                         JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: El nombre " + nombreAlfabeto + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                     }

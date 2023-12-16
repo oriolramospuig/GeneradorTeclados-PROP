@@ -261,6 +261,18 @@ public class CtrlPresentacion {
         cd.guardaCnjtAlfabetos();
     }
 
+    public static void guardaTextos(){
+        cd.guardaCnjtTextos();
+    }
+
+    public static void guardaAsociaciones(){
+        cd.guardaCnjtAsociaciones();
+    }
+
+    public static void guardaTeclados(){
+        cd.guardaCnjtTeclados();
+    }
+
 
     //FUNCIONES DE CTRlDOMINIO DE ASOCIACION DE TEXTOS
     /**

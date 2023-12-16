@@ -158,6 +158,7 @@ public class VistaAsociacionTextosM extends JFrame{
                 //CtrlPresentacion.modificarAlfabeto(nombreAlfabeto, nuevoContenido);
                 JOptionPane.showMessageDialog(VistaAsociacionTextosM.this, "Asociación modificada con éxito.",
                         "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                CtrlPresentacion.guardaAsociaciones();
             }
         };
 

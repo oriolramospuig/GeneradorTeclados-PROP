@@ -404,7 +404,7 @@ public class CtrlDominio
     /**
      * Almacena el conjunto de alfabetos en una localización específica.
      */
-    public static void guardaCnjtAlfabetos() {
+    public void guardaCnjtAlfabetos() {
         String nomDoc = "conjuntoAlfabetos";
         //if(nomDoc.endsWith(".prop")) { nomDoc = nomDoc+".prop"; }
         String currentDirectory = System.getProperty("user.dir");

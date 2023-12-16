@@ -196,6 +196,7 @@ public class VistaTextoA extends JFrame {
                     areanomTxtA.setText("");
                     areaContenidoTxtA.setText("");
                     areaPathTxtA.setText("");
+                    CtrlPresentacion.guardaTextos();
                 } else {
                     JOptionPane.showMessageDialog(VistaTextoA.this, "Error: El texto no se pudo agregar o ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -232,6 +233,7 @@ public class VistaTextoA extends JFrame {
                     areanomTxtA1.setText("");
                     areaContenidoTxtA1.setText("");
                     areaPathTxtA1.setText("");
+                    CtrlPresentacion.guardaTextos();
                 } else {
                     JOptionPane.showMessageDialog(VistaTextoA.this, "Error: El texto no se pudo agregar o ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                 }
