@@ -127,14 +127,6 @@ public class CtrlPresentacion {
         return listaAlfabetosNombres;
     }
     /**
-     * Llama a la función existealfabeto de CtrlDominio
-     * @param nomA es el nombre del alfabeto a consultar si existe
-     */
-    /*public static boolean existeAlfabeto(String nomA) {
-        boolean existe = cd.existealfabeto(nomA);
-        return existe;
-    }*/
-    /**
      * Llama a la función consultarContenidoAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a consultar
      */
@@ -144,7 +136,6 @@ public class CtrlPresentacion {
     }
     /**
      * Llama a la función modificarContenidoAlfabeto de CtrlDominio
-     *
      * @param nomA es el nombre del alfabeto a modificar
      */
     public static void modificarContenidoAlfabeto(String nomA, ArrayList<Character> entrada) {
@@ -156,6 +147,10 @@ public class CtrlPresentacion {
      */
     public static void borrarAlfabeto(String nomA) {
         cd.borrarAlfabeto(nomA);
+    }
+    /** Llama a la función guardaCnjtAlfabetos de CtrlDominio */
+    public static void guardaAlfabetos(){
+        cd.guardaCnjtAlfabetos();
     }
 
 
@@ -192,14 +187,6 @@ public class CtrlPresentacion {
         return listaTextosNombres;
     }
     /**
-     * Llama a la función existetexto de CtrlDominio
-     * @param nomTxt es el nombre del texto a consultar si existe
-     */
-    /*public static boolean existeTexto(String nomTxt) {
-        boolean existe = cd.existealfabeto(nomTxt);
-        return existe;
-    }*/
-    /**
      * Llama a la función consultarContenidoTexto de CtrlDominio
      * @param nomTxt es el nombre del texto a consultar
      */
@@ -211,8 +198,8 @@ public class CtrlPresentacion {
      * Llama a la función modificarContenidoTexto de CtrlDominio
      * @param nomTxt es el nombre del alfabeto a modificar
      */
-    public static boolean modificarContenidoTexto(String nomTxt, String entrada) {
-        return cd.modificarContenidoTexto(nomTxt, entrada);
+    public static void modificarContenidoTexto(String nomTxt, String entrada) {
+        cd.modificarContenidoTexto(nomTxt, entrada);
     }
     /**
      * Llama a la función borrarTexto de CtrlDominio
@@ -275,8 +262,8 @@ public class CtrlPresentacion {
      * Llama a la función agregarAsociacion de CtrlDominio
      * @param nomAT es el nombre de la asociación a agregar
      */
-    public static boolean agregarAsociacionNombre(String nomAT) {
-        return cd.agregarAsociacionNombre(nomAT);
+    public static boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar) {
+        return cd.agregarAsociacion(nomAT, textosagregar);
     }
     /**
      * Llama a la función agregarAsociacion de CtrlDominio
@@ -285,11 +272,9 @@ public class CtrlPresentacion {
      * @param nomTxt es el nombre del texto a agregar en la asociación
      * @return
      */
-    public static boolean agregarTextoAsociacion (String nomAT, String nomTxt) {
+    public static void agregarTextoAsociacion (String nomAT, String nomTxt) {
         cd.agregarTextoAsociacion(nomAT, nomTxt);
-        return false;
     }
-
     /**
      * Llama a la función getNombresAsociaciones de CtrlDominio
      *
@@ -298,14 +283,6 @@ public class CtrlPresentacion {
     public static ArrayList<String> getNombresAsociaciones() {
         ArrayList<String> listaAsociacionesNombres = cd.getNombresAsociaciones();
         return listaAsociacionesNombres;
-    }
-    /**
-     * Llama a la función existeasociacion de CtrlDominio
-     * @param nomAT es el nombre de la asociación a consultar si existe
-     */
-    public static boolean existeAsociacion(String nomAT) {
-        boolean existe = cd.existeasociacion(nomAT);
-        return existe;
     }
     /**
      * Llama a la función consultarContenidoAsociacion de CtrlDominio
