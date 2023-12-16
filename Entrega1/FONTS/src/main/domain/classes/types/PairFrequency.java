@@ -22,7 +22,7 @@ public class PairFrequency {
 
     /**
      * Devuelve la pareja de letras
-     * @return string de la pareja de letras
+     * @return String: pareja de letras
      */
     public String getPair() {
         return pair;
@@ -30,7 +30,7 @@ public class PairFrequency {
 
     /**
      * Devuelve la frecuencia de las letras
-     * @return int de frequency
+     * @return int: frequencia
      */
     public int getFrequency() {
         return frequency;

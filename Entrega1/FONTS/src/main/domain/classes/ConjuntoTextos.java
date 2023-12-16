@@ -17,8 +17,8 @@ public class ConjuntoTextos implements Serializable
 
     // ---------- CONSTRUCTORAS ----------
     /**
-     * Constructora conjunto de textos.
-     * Inicialmente el conjunto de textos existentes está vacío.
+     * Constructora conjunto de textos
+     * Inicialmente el conjunto de textos existentes está vacío
      */
     public ConjuntoTextos() {
         textos = new HashMap<>();
@@ -48,6 +48,14 @@ public class ConjuntoTextos implements Serializable
         return listaNombres;
     }
 
+    /**
+     * Devuelve el conjunto de textos existentes
+     * @return HashMap<String, Texto>: Conjunto de textos
+     */
+    public HashMap<String, Texto> getTextos() {
+        return textos;
+    }
+
 
     // ---------- SETTERS ----------
     /**
@@ -70,7 +78,6 @@ public class ConjuntoTextos implements Serializable
         return textos.containsKey(nomT);
     }
 
-    //Segunda entrega
     /**
      * No devuelve nada. Borra el texto con nombre nomT del conjunto de textos.
      * @param nomT nombre del texto a borrar
@@ -78,13 +85,4 @@ public class ConjuntoTextos implements Serializable
     public void borrarTexto(String nomT) {
         textos.remove(nomT);
     }
-
-    /**
-     * Devuelve el conjunto de textos existentes
-     * @return HashMap<String, Texto>: Conjunto de textos
-     */
-    public HashMap<String, Texto> getTextos() {
-        return textos;
-    }
-
 }
