@@ -80,9 +80,22 @@ public class CtrlTecladoQAP {
             return teclado;
         }
         int [][] tecSA;
+        int p;
+
         SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing(nf, nc, matrizFrecuencias, matrizDistancias);
-        int p = simulatedAnnealing.getPuntuacionFinal();
+        p = simulatedAnnealing.getPuntuacionFinal();
         tecSA = simulatedAnnealing.getTecFinal();
+
+        int paux;
+        for (int i = 1; i < 10; ++i) {
+            SimulatedAnnealing simulatedAnnealing2 = new SimulatedAnnealing(nf, nc, matrizFrecuencias, matrizDistancias);
+            paux = simulatedAnnealing2.getPuntuacionFinal();
+            if (paux < p) {
+                p = paux;
+                tecSA = simulatedAnnealing2.getTecFinal();
+            }
+        }
+
         char[][] contenido = new char[tecSA.length][tecSA[0].length];
         for (int i = 0; i < tecSA.length; i++) {
             for (int j = 0; j < tecSA[i].length; j++) {
