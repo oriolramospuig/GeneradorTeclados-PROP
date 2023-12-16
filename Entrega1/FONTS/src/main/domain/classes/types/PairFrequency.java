@@ -21,14 +21,16 @@ public class PairFrequency {
     }
 
     /**
-     * @return devuelve la pareja de letras
+     * Devuelve la pareja de letras
+     * @return string de la pareja de letras
      */
     public String getPair() {
         return pair;
     }
 
     /**
-     * @return devuelve la frecuencia de las letras
+     * Devuelve la frecuencia de las letras
+     * @return int de frequency
      */
     public int getFrequency() {
         return frequency;
