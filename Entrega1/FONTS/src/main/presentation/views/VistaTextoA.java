@@ -102,6 +102,10 @@ public class VistaTextoA extends JFrame {
         areaContenidoTxtA.setBounds(230,180, 200,60);
         add(areaContenidoTxtA);
 
+        JScrollPane scrollPane = new JScrollPane(areaContenidoTxtA); // Para agregar scroll al área de texto
+        scrollPane.setBounds(400, 220, 400, 150); // Ajusta las dimensiones según tus necesidades
+        add(scrollPane);
+
         // Texto Path
         txtPathTxtA.setBounds(30, 280, 200, 20);
         add(txtPathTxtA);
@@ -132,6 +136,10 @@ public class VistaTextoA extends JFrame {
         areaContenidoTxtA1.setBounds(750,180, 200,60);
         add(areaContenidoTxtA1);
 
+        JScrollPane scrollPane1 = new JScrollPane(areaContenidoTxtA1); // Para agregar scroll al área de texto
+        scrollPane1.setBounds(400, 220, 400, 150); // Ajusta las dimensiones según tus necesidades
+        add(scrollPane1);
+
         // Texto Path
         txtPathTxtA1.setBounds(550, 280, 200, 20);
         add(txtPathTxtA1);
@@ -143,6 +151,7 @@ public class VistaTextoA extends JFrame {
         // Texto Instrucciones
         txtInstruccionesTxtA1.setBounds(550, 340, 500, 20);
         add(txtInstruccionesTxtA1);
+
         // Texto Instrucciones2
         txtInstruccionesTxtA2.setBounds(550, 360, 500, 20);
         add(txtInstruccionesTxtA2);
