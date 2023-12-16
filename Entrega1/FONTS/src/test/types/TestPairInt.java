@@ -38,6 +38,7 @@ public class TestPairInt {
         PairInt pair = new PairInt(1,2);
         pair.setPrimero(3);
         assertEquals(Integer.valueOf(3), pair.getPrimero());
+        assertEquals(Integer.valueOf(2), pair.getSegundo());
     }
 
     /**
@@ -52,6 +53,7 @@ public class TestPairInt {
 
         PairInt pair = new PairInt(1,2);
         pair.setSegundo(4);
+        assertEquals(Integer.valueOf(1), pair.getPrimero());
         assertEquals(Integer.valueOf(4), pair.getSegundo());
     }
 
