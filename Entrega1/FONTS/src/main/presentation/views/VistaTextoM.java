@@ -34,7 +34,6 @@ public class VistaTextoM extends JFrame{
 
 
     //TEXTOS Y AREAS DE TEXTO
-    //VENTANA SUPERIOR
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto a consultar*/
     private final JLabel txtNombreTxtM = new JLabel("NOMBRE:");
     /** Área de texto para introducir el nombre del texto que se quiere consultar */
@@ -137,7 +136,7 @@ public class VistaTextoM extends JFrame{
                     return;
                 }
                 // Llamar a la función de control para modificar el texto
-                //CtrlPresentacion.modificarTexto(nombreAlfabeto, nuevoContenido);
+                CtrlPresentacion.modificarContenidoTexto(nombreAlfabeto, areacontenidoTxtM.getText());
                 JOptionPane.showMessageDialog(VistaTextoM.this, "Alfabeto modificado con éxito.",
                         "Éxito", JOptionPane.INFORMATION_MESSAGE);
             }

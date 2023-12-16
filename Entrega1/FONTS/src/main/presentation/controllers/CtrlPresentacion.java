@@ -230,10 +230,10 @@ public class CtrlPresentacion {
      * Llama a la función existetexto de CtrlDominio
      * @param nomTxt es el nombre del texto a consultar si existe
      */
-    public static boolean existeTexto(String nomTxt) {
+    /*public static boolean existeTexto(String nomTxt) {
         boolean existe = cd.existealfabeto(nomTxt);
         return existe;
-    }
+    }*/
     /**
      * Llama a la función consultarContenidoTexto de CtrlDominio
      * @param nomTxt es el nombre del texto a consultar
@@ -255,6 +255,10 @@ public class CtrlPresentacion {
      */
     public static void borrarTexto(String nomTxt) {
         cd.borrarTexto(nomTxt);
+    }
+
+    public static void guardaAlfabetos(){
+        cd.guardaCnjtAlfabetos();
     }
 
 
