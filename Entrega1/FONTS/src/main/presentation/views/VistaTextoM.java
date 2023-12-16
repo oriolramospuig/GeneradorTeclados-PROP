@@ -136,8 +136,6 @@ public class VistaTextoM extends JFrame{
                     return;
                 }
                 // Llamar a la función de control para modificar el texto
-                CtrlPresentacion.modificarContenidoTexto(nombreAlfabeto, contenidoStr);
-                JOptionPane.showMessageDialog(VistaTextoM.this, "Alfabeto modificado con éxito.",
                 CtrlPresentacion.modificarContenidoTexto(nombreAlfabeto, areacontenidoTxtM.getText());
                 JOptionPane.showMessageDialog(VistaTextoM.this, "Texto modificado con éxito.",
                         "Éxito", JOptionPane.INFORMATION_MESSAGE);
