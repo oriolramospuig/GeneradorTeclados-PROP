@@ -14,8 +14,8 @@ public class TestPairFrequency {
     /**
      * Objeto de la prueba: Test de la constructora de la clase PairFrequency.
      * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
-     * Valores estudiados: Estrategia de caja gris. Se escribe un PairFrequency con la clave (string) y una frecuencia (int).
-     * Operativa: Se comprueba que los valores insertados al Pair se han añadido correctamente.
+     * Valores estudiados: Estrategia de caja gris. Se comprueba que los valores insertados al Pair se han añadido correctamente.
+     * Operativa: Se escribe un PairFrequency con la clave (string) y una frecuencia (int).
      */
     @Test
     public void TestConstructora() {

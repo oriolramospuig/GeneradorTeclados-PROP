@@ -13,10 +13,10 @@ import static org.junit.Assert.*;
  */
 public class TestPairInt {
     /**
-     * Objeto de la prueba: Test de la constructora de la clase PairInt
+     * Objeto de la prueba: Test de la constructora de la clase PairInt.
      * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
-     * Valores estudiados: Estrategia de caja gris. Se crea un pair, se comprueba que no es nulo y después que está creado correctamente
-     * Operativa: Se comprueba que los datos del pair creado son correctos.
+     * Valores estudiados: Estrategia de caja gris. Se comprueba que los datos del pair creado son correctos.
+     * Operativa: Se crea un pair, se comprueba que no es nulo y después que está creado correctamente.
      */
     @Test
     public void TestConstructora() {
@@ -29,10 +29,10 @@ public class TestPairInt {
     }
 
     /**
-     * Objeto de la prueba: Test del método SetPrimero() de la clase PairInt
+     * Objeto de la prueba: Test del método SetPrimero() de la clase PairInt.
      * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
-     * Valores estudiados: Estrategia de caja gris. Se crea un pair y se modifica el valor del primer elemento
-     * Operativa: Se comprueba que el primer elemento del pair creado es correcto
+     * Valores estudiados: Estrategia de caja gris. Se comprueba que el primer elemento del pair creado es correcto.
+     * Operativa: Se crea un pair y se modifica el valor del primer elemento.
      */
     @Test
     public void TestSetPrimero() {
@@ -45,10 +45,10 @@ public class TestPairInt {
     }
 
     /**
-     * Objeto de la prueba: Test del método SetSegundo() de la clase PairInt
+     * Objeto de la prueba: Test del método SetSegundo() de la clase PairInt.
      * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
-     * Valores estudiados: Estrategia de caja gris. Se crea un pair y se modifica el valor del segundo elemento
-     * Operativa: Se comprueba que el segundo elemento del pair creado es correcto
+     * Valores estudiados: Estrategia de caja gris. Se comprueba que el segundo elemento del pair creado es correcto.
+     * Operativa: Se crea un pair y se modifica el valor del segundo elemento.
      */
     @Test
     public void TestSetSegundo() {
@@ -63,8 +63,8 @@ public class TestPairInt {
     /**
      * Objeto de la prueba: Test del método ToString() de la clase PairInt
      * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
-     * Valores estudiados: Estrategia de caja gris. Se crea un pair, se convierte a string y se asegura de que se ha hecho correctamente
-     * Operativa: Se comprueba que el pair creado se ha pasado correctamente a String
+     * Valores estudiados: Estrategia de caja gris. Se comprueba que el pair creado se ha pasado correctamente a String.
+     * Operativa: Se crea un pair, se convierte a string y se asegura de que se ha hecho correctamente.
      */
     @Test
     public void TestToString() {
