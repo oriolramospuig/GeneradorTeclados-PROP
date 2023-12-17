@@ -21,14 +21,13 @@ public class VistaAsociacionTextosC extends JFrame {
     private final JLabel tituloVistaATC = new JLabel("Consultar asociacion");
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion */
     private final JLabel txtDesplegableATC = new JLabel("LISTA NOMBRES:");
-    /** Desplegable con los nombres de la asociacion*/
+    /** Desplegable con los nombres de las asociaciones*/
     private JComboBox<String> nombresATC = new JComboBox<>();
     /** Botó de tornar a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
 
 
     //TEXTOS Y AREAS DE TEXTO
-    //VENTANA SUPERIOR
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
     private final JLabel txtNombreATC = new JLabel("NOMBRE:");
     /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
@@ -56,7 +55,7 @@ public class VistaAsociacionTextosC extends JFrame {
         }
 
         // Título ventana superior
-        tituloVistaATC.setBounds(10, 5, 120, 30);
+        tituloVistaATC.setBounds(10, 5, 200, 30);
         add(tituloVistaATC);
 
         txtDesplegableATC.setBounds(200, 120, 200, 20);

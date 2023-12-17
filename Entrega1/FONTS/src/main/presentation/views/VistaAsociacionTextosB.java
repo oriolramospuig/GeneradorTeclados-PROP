@@ -85,17 +85,17 @@ public class VistaAsociacionTextosB extends JFrame{
         ActionListener lBorrar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nombreTexto = areanomATB.getText().trim();
+                String nombreAsociacion = areanomATB.getText().trim();
                 // Verificar si el área de texto está vacía
-                if (nombreTexto.isEmpty()) {
-                    JOptionPane.showMessageDialog(frame, "Por favor, selecciona un texto para borrar.", "Error", JOptionPane.ERROR_MESSAGE);
+                if (nombreAsociacion.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Por favor, selecciona una asociación para borrar.", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    // Llamar al controlador para eliminar el texto
-                    CtrlPresentacion.borrarTexto(nombreTexto);
-                    // Actualizar el JComboBox eliminando el texto borrado
-                    nombresATB.removeItem(nombreTexto);
+                    // Llamar al controlador para eliminar la asociación
+                    CtrlPresentacion.borrarAsociacionTextos(nombreAsociacion);
+                    // Actualizar el JComboBox eliminando la asociación borrada
+                    nombresATB.removeItem(nombreAsociacion);
                     nombresATB.setSelectedItem("");
-                    JOptionPane.showMessageDialog(frame, "Texto eliminado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, "Asociación eliminada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     CtrlPresentacion.guardaAsociaciones();
                 }
             }
@@ -112,6 +112,5 @@ public class VistaAsociacionTextosB extends JFrame{
         nombresATB.addActionListener(lElementoSeleccionado);
         bBorrarAsociacion.addActionListener(lBorrar);
         bsalir.addActionListener(lSalir);
-
     }
 }

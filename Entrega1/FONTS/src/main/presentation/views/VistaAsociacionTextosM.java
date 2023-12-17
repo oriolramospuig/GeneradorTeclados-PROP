@@ -28,22 +28,26 @@ public class VistaAsociacionTextosM extends JFrame{
     private final JLabel txtDesplegableATM = new JLabel("LISTA NOMBRES:");
     /** Desplegable con los nombres de las asociaciones*/
     private JComboBox<String> nombresATM = new JComboBox<>();
+    private final JLabel txtDesplegableAgregarATM = new JLabel("NOMBRES DE TEXTOS PARA AGREGAR A LA ASOCIACIÓN:");
+    private JComboBox<String> nombreAgregarATM = new JComboBox<>();
+    private final JLabel txtDesplegableBorrarATM = new JLabel("NOMBRES DE TEXTOS PARA BORRAR DE LA ASOCIACIÓN:");
+    private JComboBox<String> nombreBorrarATM = new JComboBox<>();
     private final JButton bModificarAsociacion = new JButton("Modificar asociación");
     /** Botó de tornar a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
 
 
     //TEXTOS Y AREAS DE TEXTO
-    //VENTANA SUPERIOR
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
     private final JLabel txtNombreATM = new JLabel("NOMBRE:");
     /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
     private final JTextArea areanomATM = new JTextArea();
-
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
     private final JLabel txtContenidoATM = new JLabel("CONTENIDO:");
     /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
     private final JTextArea areacontenidoATM = new JTextArea();
+    private final JTextArea areanomAgregarATM = new JTextArea();
+    private final JTextArea areanomBorrarATM = new JTextArea();
 
     //MENSAJES DE ERROR
     /** Pantalla de error que aparece cuando se quiere consultar/modificar una asociacion sin nombre */
@@ -61,32 +65,49 @@ public class VistaAsociacionTextosM extends JFrame{
             nombresATM.addItem(nombre);
         }
 
-        // Título ventana superior
+        // Título ventana
         tituloVistaATM.setBounds(10, 5, 120, 30);
         add(tituloVistaATM);
 
-        txtDesplegableATM.setBounds(200, 120, 200, 20);
+        txtDesplegableATM.setBounds(100, 80, 200, 20);
         add(txtDesplegableATM);
 
-        nombresATM.setBounds(400, 120, 200, 20);
+        nombresATM.setBounds(300, 80, 200, 20);
         add(nombresATM);
 
-        //VENTANA SUPERIOR
         // Texto Nombre
-        txtNombreATM.setBounds(200, 180, 200, 20);
+        txtNombreATM.setBounds(100, 140, 200, 20);
         add(txtNombreATM);
 
         // Área texto Nombre
         areanomATM.setEditable(false);
-        areanomATM.setBounds(400,180, 200,20);
+        areanomATM.setBounds(300,140, 200,20);
         add(areanomATM);
 
-        txtContenidoATM.setBounds(200, 220, 200, 20);
+        txtContenidoATM.setBounds(100, 200, 200, 20);
         add(txtContenidoATM);
 
         JScrollPane scrollPane = new JScrollPane(areacontenidoATM); // Para agregar scroll al área de texto
-        scrollPane.setBounds(400, 220, 400, 150); // Ajusta las dimensiones según tus necesidades
+        scrollPane.setBounds(300, 200, 200, 150); // Ajusta las dimensiones según tus necesidades
         add(scrollPane);
+
+        txtDesplegableAgregarATM.setBounds(600, 80, 400, 20);
+        add(txtDesplegableAgregarATM);
+
+        nombreAgregarATM.setBounds(600, 120, 200, 20);
+        add(nombreAgregarATM);
+
+        areanomAgregarATM.setBounds(600,180, 200,20);
+        add(areanomAgregarATM);
+
+        txtDesplegableBorrarATM.setBounds(600, 240, 400, 20);
+        add(txtDesplegableBorrarATM);
+
+        nombreBorrarATM.setBounds(600, 280, 200, 20);
+        add(nombreBorrarATM);
+
+        areanomBorrarATM.setBounds(600,320, 200,20);
+        add(areanomBorrarATM);
 
         // Botón modificar alfabetos
         bModificarAsociacion.setBounds(700, 420, 200, 20);
@@ -117,6 +138,37 @@ public class VistaAsociacionTextosM extends JFrame{
                     areanomATM.setText("");
                     areacontenidoATM.setText("");
                 }
+
+                nombreBorrarATM = new JComboBox<>();
+                nombreBorrarATM.addItem("");
+                for (String nombre : textos) {
+                    nombreBorrarATM.addItem(nombre);
+                }
+                
+                ArrayList<String> nombresTextosAgregar = CtrlPresentacion.getNombresTextos();
+                nombreAgregarATM = new JComboBox<>();
+                nombreAgregarATM.addItem("");
+                for (String nombre : nombresTextosAgregar) {
+                    if(!textos.contains(nombre)) nombreAgregarATM.addItem(nombre);
+                }
+            }
+        };
+        ActionListener lElementoSeleccionadoA = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedNameAgregar = (String) nombreAgregarATM.getSelectedItem();
+                if (selectedNameAgregar != null && !selectedNameAgregar.isEmpty()) {
+                    areanomAgregarATM.setText(selectedNameAgregar);
+                }
+            }
+        };
+        ActionListener lElementoSeleccionadoB = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedNameBorrar = (String) nombreBorrarATM.getSelectedItem();
+                if (selectedNameBorrar != null && !selectedNameBorrar.isEmpty()) {
+                    areanomAgregarATM.setText(selectedNameBorrar);
+                }
             }
         };
 
@@ -125,45 +177,38 @@ public class VistaAsociacionTextosM extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String nombreAsoc = areanomATM.getText().trim();
                 String contenidoStr = areacontenidoATM.getText();
+                String nombreTextoAgregar = areanomAgregarATM.getText().trim();
+                String nombreTextoBorrar = areanomBorrarATM.getText().trim();
 
                 // Comprobar si se ha seleccionado un alfabeto
                 if (nombreAsoc.isEmpty()) {
-                    JOptionPane.showMessageDialog(VistaAsociacionTextosM.this, "No hay ninguna asociación seleccionado.",
+                    JOptionPane.showMessageDialog(VistaAsociacionTextosM.this, "No hay ninguna asociación seleccionada.",
                             "Error", JOptionPane.ERROR_MESSAGE);
                     return;
-                }
 
-                // Comprobar si el contenido ha sido modificado
-                //s'ha de canviar
-                ArrayList<String> contenidoActual = CtrlPresentacion.consultarCjtTextosAsociacion(nombreAsoc);
-                StringBuilder contenidoActualStr = new StringBuilder();
-                for (String c : contenidoActual) {
-                    contenidoActualStr.append(c).append("\n");
-                }
-                if (contenidoActualStr.toString().equals(contenidoStr)) {
-                    JOptionPane.showMessageDialog(VistaAsociacionTextosM.this, "No se han realizado cambios en el contenido.",
-                            "Información", JOptionPane.INFORMATION_MESSAGE);
+                } else if(nombreTextoAgregar.isEmpty() && nombreTextoBorrar.isEmpty()){
+                    JOptionPane.showMessageDialog(VistaAsociacionTextosM.this, "No hay ningún texto a agregar o a borrar.",
+                            "Error", JOptionPane.ERROR_MESSAGE);
                     return;
+
+                } else {
+                    if (!nombreTextoAgregar.isEmpty()) { // se quiere agregar un texto
+                        CtrlPresentacion.agregarTextoAsociacion(nombreAsoc,nombreTextoAgregar);
+                    }
+                    if(!nombreTextoBorrar.isEmpty()){ // se quiere borrar un texto
+                        CtrlPresentacion.borrarTextoAsociacion(nombreAsoc,nombreTextoBorrar);
+                    }
+                    JOptionPane.showMessageDialog(VistaAsociacionTextosM.this, "Asociación modificada con éxito.",
+                            "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    CtrlPresentacion.guardaAsociaciones();
+                    areanomATM.setText("");
+                    areacontenidoATM.setText("");
+                    areanomAgregarATM.setText("");
+                    areanomBorrarATM.setText("");
                 }
 
-                // Convertir el contenido del área de texto a ArrayList<Character>
-                ArrayList<String> nuevoContenido = new ArrayList<>();
-                String[] lineas = contenidoStr.split("\n");  // Divide el texto en líneas usando "\n" como delimitador
-
-                for (String linea : lineas) {
-                    nuevoContenido.add(linea);  // Agrega cada línea al ArrayList
-                }
-
-                // Llamar a la función de control para modificar el alfabeto
-                //CtrlPresentacion.modificarAlfabeto(nombreAlfabeto, nuevoContenido);
-                JOptionPane.showMessageDialog(VistaAsociacionTextosM.this, "Asociación modificada con éxito.",
-                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                CtrlPresentacion.guardaAsociaciones();
             }
         };
-
-
-
 
         ActionListener lSalir = new ActionListener() {
             @Override
@@ -174,6 +219,8 @@ public class VistaAsociacionTextosM extends JFrame{
         };
 
         nombresATM.addActionListener(lElementoSeleccionado);
+        nombreAgregarATM.addActionListener(lElementoSeleccionadoA);
+        nombreBorrarATM.addActionListener(lElementoSeleccionadoB);
         bModificarAsociacion.addActionListener(lModificarA);
         bsalir.addActionListener(lSalir);
 

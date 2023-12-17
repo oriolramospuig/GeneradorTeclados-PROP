@@ -107,7 +107,6 @@ public class CtrlPresentacion {
      * Llama a la función agregarAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a agregar
      * @param entrada la lista de caracteres que forman el contenido del alfabeto
-     * @param path path donde se crea y guarda el alfabeto
      */
     public static boolean agregarAlfabetoManual(String nomA, ArrayList<Character> entrada) {
         return cd.agregarAlfabeto(nomA, entrada);
