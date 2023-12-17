@@ -209,9 +209,6 @@ public class VistaAsociacionTextosM extends JFrame{
             }
         };
 
-
-
-
         ActionListener lSalir = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

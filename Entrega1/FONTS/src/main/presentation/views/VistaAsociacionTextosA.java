@@ -115,17 +115,6 @@ public class VistaAsociacionTextosA extends JFrame {
                 }
             }
         };
-        ActionListener lElementoSeleccionadoListosAgregar = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                /*String selectedName = (String) nombresTxt.getSelectedItem();
-                if (selectedName != null && !selectedName.isEmpty()) {
-                    areaTextosAgregarATA.setText(selectedName);
-                } else {
-                    areaTextosAgregarATA.setText("");  // Limpiar el área de texto si se selecciona el elemento vacío
-                }*/
-            }
-        };
 
         ActionListener lAgregar = new ActionListener() {
             @Override
@@ -242,7 +231,6 @@ public class VistaAsociacionTextosA extends JFrame {
         };
 
         nombresTxt.addActionListener(lElementoSeleccionado);
-        nombresTxtagregados.addActionListener(lElementoSeleccionadoListosAgregar);
         bAgregarAsociacion.addActionListener(lAgregar);
 
         bsalir.addActionListener(lSalir);
