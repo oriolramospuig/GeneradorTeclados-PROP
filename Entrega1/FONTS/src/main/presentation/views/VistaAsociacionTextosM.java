@@ -144,7 +144,7 @@ public class VistaAsociacionTextosM extends JFrame{
                 for (String nombre : textos) {
                     nombreBorrarATM.addItem(nombre);
                 }
-                
+
                 ArrayList<String> nombresTextosAgregar = CtrlPresentacion.getNombresTextos();
                 nombreAgregarATM = new JComboBox<>();
                 nombreAgregarATM.addItem("");
