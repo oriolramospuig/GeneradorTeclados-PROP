@@ -105,12 +105,9 @@ public class VistaTextoA extends JFrame {
         txtContenidoTxtA.setBounds(30, 180, 200, 20);
         add(txtContenidoTxtA);
 
-        // Área texto Contenido
-        areaContenidoTxtA.setBounds(230,180, 200,60);
-        add(areaContenidoTxtA);
 
         JScrollPane scrollPane0 = new JScrollPane(areaContenidoTxtA); // Para agregar scroll al área de texto
-        scrollPane0.setBounds(400, 220, 400, 150); // Ajusta las dimensiones según tus necesidades
+        scrollPane0.setBounds(230, 180, 200, 90); // Ajusta las dimensiones según tus necesidades
         add(scrollPane0);
 
         // Texto Path
@@ -140,18 +137,13 @@ public class VistaTextoA extends JFrame {
         txtContenidoTxtA1.setBounds(550, 180, 200, 20);
         add(txtContenidoTxtA1);
 
-        // Área texto Contenido
-        areaContenidoTxtA1.setBounds(750,180, 200,60);
-        add(areaContenidoTxtA1);
-
         JScrollPane scrollPane1 = new JScrollPane(areaContenidoTxtA1); // Para agregar scroll al área de texto
-        scrollPane1.setBounds(400, 220, 400, 150); // Ajusta las dimensiones según tus necesidades
+        scrollPane1.setBounds(750, 180, 200, 90); // Ajusta las dimensiones según tus necesidades
         add(scrollPane1);
 
         // Texto Path
         txtPathTxtA1.setBounds(550, 280, 200, 20);
         add(txtPathTxtA1);
-
 
         JScrollPane scrollPane2 = new JScrollPane(areaPathTxtA1);
         scrollPane2.setBounds(750, 280, 200, 60);
@@ -259,7 +251,8 @@ public class VistaTextoA extends JFrame {
                 if (!contenidoTexto.isEmpty()) {
                     String[] lineas = contenidoTexto.split("\n");
                     for (String linea : lineas) {
-                        if (!linea.matches("([a-zA-Z]+\\s+\\d+)")) {
+                        linea = linea.trim();
+                        if (!linea.matches("\\S+\\s+\\d+")) {
                             formatoCorrecto = false;
                             break;
                         }
@@ -271,8 +264,8 @@ public class VistaTextoA extends JFrame {
                         File archivo = new File(pathTexto);
                         Scanner scanner = new Scanner(archivo);
                         while (scanner.hasNextLine()) {
-                            String linea = scanner.nextLine();
-                            if (!linea.matches("([a-zA-Z]+\\s+\\d+)")) {
+                            String linea = scanner.nextLine().trim();
+                            if (!linea.matches("\\S+\\s+\\d+")) {
                                 formatoCorrecto = false;
                                 break;
                             }
@@ -301,6 +294,7 @@ public class VistaTextoA extends JFrame {
                 }
             }
         };
+
 
 
         ActionListener lSeleccionarArchivoPalabras = new ActionListener() {
