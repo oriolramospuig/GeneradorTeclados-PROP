@@ -48,7 +48,7 @@ public class CtrlAsociacionTexto
     public void borrarTecladoVinculado(String atvinculada,String tvinculado){
         AsociacionesTextos.getAsociacionTextos(atvinculada).borrarTecladoVinculado(tvinculado);
     }
-    public static void borrarTextoAsociacion(String nomA, String nomT){
+    public void borrarTextoAsociacion(String nomA, String nomT){
         AsociacionesTextos.getAsociacionTextos(nomA).borrarTexto(nomT);
     }
 

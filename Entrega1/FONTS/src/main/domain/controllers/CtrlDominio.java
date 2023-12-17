@@ -175,7 +175,7 @@ public class CtrlDominio
         ArrayList<String> AVinculadas = CtrlTexto.getAsociacionesVinculadasTexto(nomT);
         if(!AVinculadas.isEmpty()) {
             for (int i = 0; i < AVinculadas.size(); ++i){
-                CtrlAsociacionTexto.borrarTextoAsociacion(AVinculadas.get(i),nomT);
+                ctrlAsociacionTexto.borrarTextoAsociacion(AVinculadas.get(i),nomT);
             }
         }
         CtrlTexto.borrarTexto(nomT);
@@ -252,7 +252,7 @@ public class CtrlDominio
 
     public void borrarTextoAsociacion (String nomAT, String nomTxt){
         ctrlTexto.borrarAsociacionVinculada(nomTxt,nomAT);
-        CtrlAsociacionTexto.borrarTextoAsociacion(nomAT, nomTxt);
+        ctrlAsociacionTexto.borrarTextoAsociacion(nomAT, nomTxt);
 
     }
 
