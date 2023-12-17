@@ -138,17 +138,18 @@ public class VistaAsociacionTextosM extends JFrame{
                     areanomATM.setText("");
                     areacontenidoATM.setText("");
                 }
-                ArrayList<String> nombresTextosBorrar = CtrlPresentacion.consultarCjtTextosAsociacion(selectedName);
+
                 nombreBorrarATM = new JComboBox<>();
                 nombreBorrarATM.addItem("");
-                for (String nombre : nombresTextosBorrar) {
+                for (String nombre : textos) {
                     nombreBorrarATM.addItem(nombre);
                 }
+                
                 ArrayList<String> nombresTextosAgregar = CtrlPresentacion.getNombresTextos();
                 nombreAgregarATM = new JComboBox<>();
                 nombreAgregarATM.addItem("");
                 for (String nombre : nombresTextosAgregar) {
-                    nombreAgregarATM.addItem(nombre);
+                    if(!textos.contains(nombre)) nombreAgregarATM.addItem(nombre);
                 }
             }
         };
