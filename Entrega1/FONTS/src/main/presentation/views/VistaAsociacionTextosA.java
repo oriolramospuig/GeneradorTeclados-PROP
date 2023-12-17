@@ -180,7 +180,7 @@ public class VistaAsociacionTextosA extends JFrame {
             }
         };
 
-        ActionListener lSeleccionarTexto = new ActionListener() {
+        /*ActionListener lSeleccionarTexto = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (areanomATA.getText().isEmpty()){
@@ -210,7 +210,7 @@ public class VistaAsociacionTextosA extends JFrame {
                     chooser.setDialogTitle("Selecciona fichero texto a agregar");
                     chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
                     /*Revisar el tema del path, depende de cómo se ejecute no hará falta subgrup-prop14.3*/
-                    chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/Entrega1/data/Textos"));
+                    /*chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/Entrega1/data/Textos"));
                     int returnValue = chooser.showOpenDialog(null);
                     if (returnValue == JFileChooser.APPROVE_OPTION) {
                         File archivo = chooser.getSelectedFile();
@@ -219,7 +219,7 @@ public class VistaAsociacionTextosA extends JFrame {
                     } //else if (returnValue == JFileChooser.CANCEL_OPTION)
                 }
             }
-        };
+        };*/
 
 
         ActionListener lSalir = new ActionListener() {

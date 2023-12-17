@@ -37,10 +37,11 @@ public class CtrlAsociacionTexto
     /**
      * No devuelve nada. Manda añadir un texto a la asociacion de textos pasada como parámetro
      * @param nomA nombre de la asociación de textos
-     * @param texto objeto Texto a agregar
+     * @param nomTxt nombre del texto a agregar
+     * @param freqTexto map de las frecuencias de palabras del texto a agregar
      */
-    public void agregarTextoAsociacion (String nomA, Texto texto){
-        AsociacionesTextos.getAsociacionTextos(nomA).agregarTexto(texto);
+    public void agregarTextoAsociacion (String nomA, String nomTxt, HashMap<String,Integer> freqTexto){
+        AsociacionesTextos.getAsociacionTextos(nomA).agregarTexto(nomTxt,freqTexto);
     }
     public ArrayList<String> getCjtTextos(String nomAT){
         return AsociacionesTextos.getAsociacionTextos(nomAT).getTextosAsociaciados();
@@ -67,10 +68,14 @@ public class CtrlAsociacionTexto
      * @param nomAT nombre de la nueva asociación de textos a agregar
      * @return true si la asociación se ha agregado correctamente y false en caso contrario
      */
-    public void agregarAsociacion(String nomAT, Texto texto){
+    /*public void agregarAsociacion1(String nomAT, Texto texto){
         AsociacionTextos asociacionTextos = new AsociacionTextos(nomAT);
         AsociacionesTextos.agregarAsociacionTexto(nomAT, asociacionTextos);
         agregarTextoAsociacion(nomAT, texto);
+    }*/
+    public void agregarAsociacion(String nomAT){
+        AsociacionTextos asociacionTextos = new AsociacionTextos(nomAT);
+        AsociacionesTextos.agregarAsociacionTexto(nomAT, asociacionTextos);
     }
     /**
      * Devuelve la lista de nombres de asociaciones existentes

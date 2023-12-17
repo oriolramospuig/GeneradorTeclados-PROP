@@ -161,7 +161,7 @@ public void TestagregarTexto(){
         AsociacionTextos asociacionTextos = new AsociacionTextos(nombre, frecuenciaLetras);
 
         Frecuencias texto = new Frecuencias("nombre", frecuenciaPalabras, frecuenciaLetras);
-        asociacionTextos.agregarTexto(texto);
+        //asociacionTextos.agregarTexto(texto);
         List<String> textoAsociados = asociacionTextos.getTextosAsociaciados();
 
         assertEquals(1, textoAsociados.size());

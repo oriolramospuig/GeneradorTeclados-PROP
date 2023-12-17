@@ -130,11 +130,11 @@ public class AsociacionTextos implements Serializable
 
     /**
      * No devuelve nada. Añade a la lista de nombres de los textos asociados el nombre del nuevo texto
-     * @param texto texto a agregar a la asociación
+     * @param nomTxt nombre texto a agregar a la asociación
+     * @param freqTexto map de frecuencias de las palabras del texto a agregar a la asociación
      */
-    public void agregarTexto (Texto texto) {
-        textosAsociaciados.add(texto.getNombre());
-        HashMap<String,Integer> freqTexto = texto.getFrecuenciaLetras();
+    public void agregarTexto (String nomTxt, HashMap<String,Integer> freqTexto) {
+        textosAsociaciados.add(nomTxt);
 
         for(Map.Entry<String,Integer> e : freqTexto.entrySet()){
             Integer frec = e.getValue();

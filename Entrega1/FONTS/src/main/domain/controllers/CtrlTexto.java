@@ -65,6 +65,10 @@ public class CtrlTexto
     public Texto getTexto(String nomT){
         return CjtTextos.getTexto(nomT);
     }
+    
+    /*public HashMap<String,Integer> getFrecTexto(String nomTxt){
+        return CjtTextos.getTexto(nomTxt).getFrecuenciaLetras();
+    }*/
 
     /**
      * Obtiene el conjunto de textos
