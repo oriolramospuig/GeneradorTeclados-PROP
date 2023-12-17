@@ -113,6 +113,14 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES TEXTO ----------
+    /**
+     * Retorna si se el texto es de palabras o frecuencias
+     * @param nomT nombre del texto a crear
+     * @return Boolean: true si es palabras, false si es frecuencias
+     */
+    public boolean esTextoPalabras(String nomT){
+        return ctrlTexto.esTextoPalabras(nomT);
+    }
 
     /**
      * Retorna si se ha creado bien el texto

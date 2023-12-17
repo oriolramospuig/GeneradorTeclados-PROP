@@ -118,30 +118,45 @@ public class VistaTextoM extends JFrame{
         ActionListener lModificarA = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nombreAlfabeto = areanomTxtM.getText().trim();
-                String contenidoStr = areacontenidoTxtM.getText();
+                String nombreTexto = areanomTxtM.getText().trim();
+                String contenidoModificado = areacontenidoTxtM.getText();
 
-                // Comprobar si se ha seleccionado un alfabeto
-                if (nombreAlfabeto.isEmpty()) {
-                    JOptionPane.showMessageDialog(VistaTextoM.this, "No hay ningún texto seleccionado.",
-                            "Error", JOptionPane.ERROR_MESSAGE);
+                // Comprobar si se ha seleccionado un texto
+                if (nombreTexto.isEmpty()) {
+                    JOptionPane.showMessageDialog(VistaTextoM.this, "No hay ningún texto seleccionado.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
-                // Comprobar si el contenido ha sido modificado
-                String contenidoActual = CtrlPresentacion.consultarContenidoTexto(nombreAlfabeto);
-                if (contenidoActual.equals(contenidoStr)) {
-                    JOptionPane.showMessageDialog(VistaTextoM.this, "No se han realizado cambios en el contenido.",
-                            "Información", JOptionPane.INFORMATION_MESSAGE);
+                // Comprobar el tipo de texto y validar el contenido
+                boolean esTextoPalabras = CtrlPresentacion.esTextoDePalabras(nombreTexto);
+                boolean formatoCorrecto = true;
+
+                if (esTextoPalabras) {
+                    // Validación para texto de palabras (podría ser simplemente aceptar cualquier texto)
+                    formatoCorrecto = contenidoModificado.matches("[\\s\\S]*"); // Acepta cualquier texto
+                } else {
+                    // Validación para texto de frecuencias
+                    String[] lineas = contenidoModificado.split("\n");
+                    for (String linea : lineas) {
+                        if (!linea.matches("\\S+\\s+\\d+")) {
+                            formatoCorrecto = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (!formatoCorrecto) {
+                    JOptionPane.showMessageDialog(VistaTextoM.this, "Formato de contenido incorrecto para el tipo de texto.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                // Llamar a la función de control para modificar el texto
-                CtrlPresentacion.modificarContenidoTexto(nombreAlfabeto, areacontenidoTxtM.getText());
-                JOptionPane.showMessageDialog(VistaTextoM.this, "Texto modificado con éxito.",
-                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+                // Modificar el contenido del texto
+                CtrlPresentacion.modificarContenidoTexto(nombreTexto, contenidoModificado);
+                JOptionPane.showMessageDialog(VistaTextoM.this, "Texto modificado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 CtrlPresentacion.guardaTextos();
             }
         };
+
 
 
 
