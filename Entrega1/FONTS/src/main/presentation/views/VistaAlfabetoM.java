@@ -134,30 +134,41 @@ public class VistaAlfabetoM extends JFrame{
                             "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                int opcion = JOptionPane.showConfirmDialog(null, "Si modifica este alfabeto, se modificarán todos los teclados creados a partir de este alfabeto.\n¿Está seguro de que desea continuar?", "Aviso", JOptionPane.YES_NO_OPTION);
 
-                // Comprobar si el contenido ha sido modificado
-                ArrayList<Character> contenidoActual = CtrlPresentacion.consultarContenidoAlfabeto(nombreAlfabeto);
-                StringBuilder contenidoActualStr = new StringBuilder();
-                for (Character c : contenidoActual) {
-                    contenidoActualStr.append(c);
-                }
-                if (contenidoActualStr.toString().equals(contenidoStr)) {
-                    JOptionPane.showMessageDialog(VistaAlfabetoM.this, "No se han realizado cambios en el contenido.",
-                            "Información", JOptionPane.INFORMATION_MESSAGE);
-                    return;
+                // Verificar la respuesta del usuario
+                if (opcion == JOptionPane.YES_OPTION) { // El usuario eligió continuar
+                    // Comprobar si el contenido ha sido modificado
+                    ArrayList<Character> contenidoActual = CtrlPresentacion.consultarContenidoAlfabeto(nombreAlfabeto);
+                    StringBuilder contenidoActualStr = new StringBuilder();
+                    for (Character c : contenidoActual) {
+                        contenidoActualStr.append(c);
+                    }
+                    if (contenidoActualStr.toString().equals(contenidoStr)) {
+                        JOptionPane.showMessageDialog(VistaAlfabetoM.this, "No se han realizado cambios en el contenido.",
+                                "Información", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                    }
+
+                    // Convertir el contenido del área de texto a ArrayList<Character>
+                    ArrayList<Character> nuevoContenido = new ArrayList<>();
+                    for (char c : contenidoStr.toCharArray()) {
+                        nuevoContenido.add(c);
+                    }
+
+                    // Llamar a la función de control para modificar el alfabeto
+                    CtrlPresentacion.modificarContenidoAlfabeto(nombreAlfabeto, nuevoContenido);
+                    JOptionPane.showMessageDialog(VistaAlfabetoM.this, "Alfabeto modificado con éxito.",
+                            "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    CtrlPresentacion.guardaAlfabetos();
+                } else {
+                    // El usuario eligió no continuar
+                    areanomAM.setText("");
+                    areacontenidoAM.setText("");
+
                 }
 
-                // Convertir el contenido del área de texto a ArrayList<Character>
-                ArrayList<Character> nuevoContenido = new ArrayList<>();
-                for (char c : contenidoStr.toCharArray()) {
-                    nuevoContenido.add(c);
-                }
 
-                // Llamar a la función de control para modificar el alfabeto
-                CtrlPresentacion.modificarContenidoAlfabeto(nombreAlfabeto, nuevoContenido);
-                JOptionPane.showMessageDialog(VistaAlfabetoM.this, "Alfabeto modificado con éxito.",
-                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                CtrlPresentacion.guardaAlfabetos();
             }
         };
 
