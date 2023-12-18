@@ -39,8 +39,26 @@ public class CtrlTexto
         return CjtTextos.getTexto(nomT).getTexto();
     }
 
-    public void modificarContenido(String nomT, String entradaCaracteres) {
-        CjtTextos.getTexto(nomT).modificarContenido(entradaCaracteres);
+    public boolean modificarContenido(String nomT, String entradaCaracteres) {
+        Texto t = CjtTextos.getTexto(nomT);
+        HashMap<String, Integer> frecLet = convertirTextoAFrecuencias(entradaCaracteres);
+        if (t instanceof Palabras) {
+            Palabras palabras = (Palabras) t;
+            palabras.modificarPalabras(entradaCaracteres, frecLet);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean modificarContenidoFrec(String nomT, HashMap<String, Integer> frec) {
+        Texto t = CjtTextos.getTexto(nomT);
+        HashMap<String, Integer> frecLet = convertirFrecuenciasPalabrasAFrecuenciasLetras(frec);
+        if (t instanceof Frecuencias) {
+            Frecuencias frecuencias = (Frecuencias) t;
+            frecuencias.modificarFrecuencias(frec, frecLet);
+            return true;
+        }
+        return false;
     }
 
     /**

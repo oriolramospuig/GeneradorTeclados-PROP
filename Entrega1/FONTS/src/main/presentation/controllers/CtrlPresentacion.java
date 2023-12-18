@@ -202,10 +202,17 @@ public class CtrlPresentacion {
     }
     /**
      * Llama a la función modificarContenidoTexto de CtrlDominio
-     * @param nomTxt es el nombre del alfabeto a modificar
+     * @param nomTxt es el nombre del texto a modificar
      */
     public static void modificarContenidoTexto(String nomTxt, String entrada) {
         cd.modificarContenidoTexto(nomTxt, entrada);
+    }
+    /**
+     * Llama a la función modificarContenidoTexto de CtrlDominio
+     * @param nomTxt es el nombre del texto a modificar
+     */
+    public static void modificarContenidoTextoFrecuencias(String nomTxt, HashMap<String, Integer> entrada) {
+        cd.modificarContenidoTextoFrec(nomTxt, entrada);
     }
     /**
      * Llama a la función borrarTexto de CtrlDominio

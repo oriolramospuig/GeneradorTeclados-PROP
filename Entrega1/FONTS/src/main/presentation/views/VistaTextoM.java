@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Aquesta vista s’encarrega de carregar un fitxer guardat a l’ordinador i obrir-lo. La vista obre l’explorador d’arxius
@@ -121,41 +122,43 @@ public class VistaTextoM extends JFrame{
                 String nombreTexto = areanomTxtM.getText().trim();
                 String contenidoModificado = areacontenidoTxtM.getText();
 
-                // Comprobar si se ha seleccionado un texto
                 if (nombreTexto.isEmpty()) {
                     JOptionPane.showMessageDialog(VistaTextoM.this, "No hay ningún texto seleccionado.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
-                // Comprobar el tipo de texto y validar el contenido
                 boolean esTextoPalabras = CtrlPresentacion.esTextoDePalabras(nombreTexto);
-                boolean formatoCorrecto = true;
-
                 if (esTextoPalabras) {
-                    // Validación para texto de palabras (podría ser simplemente aceptar cualquier texto)
-                    formatoCorrecto = contenidoModificado.matches("[\\s\\S]*"); // Acepta cualquier texto
+                    // Modificar texto de palabras
+                    CtrlPresentacion.modificarContenidoTexto(nombreTexto, contenidoModificado);
                 } else {
-                    // Validación para texto de frecuencias
+                    // Modificar texto de frecuencias
+                    HashMap<String, Integer> frecuencias = new HashMap<>();
+                    boolean formatoCorrecto = true;
+
                     String[] lineas = contenidoModificado.split("\n");
                     for (String linea : lineas) {
                         if (!linea.matches("\\S+\\s+\\d+")) {
                             formatoCorrecto = false;
                             break;
                         }
+                        String[] partes = linea.trim().split("\\s+");
+                        frecuencias.put(partes[0], Integer.parseInt(partes[1]));
+                    }
+
+                    if (formatoCorrecto) {
+                        CtrlPresentacion.modificarContenidoTextoFrecuencias(nombreTexto, frecuencias);
+                    } else {
+                        JOptionPane.showMessageDialog(VistaTextoM.this, "Formato de contenido incorrecto para el tipo de texto.", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
                     }
                 }
 
-                if (!formatoCorrecto) {
-                    JOptionPane.showMessageDialog(VistaTextoM.this, "Formato de contenido incorrecto para el tipo de texto.", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-
-                // Modificar el contenido del texto
-                CtrlPresentacion.modificarContenidoTexto(nombreTexto, contenidoModificado);
                 JOptionPane.showMessageDialog(VistaTextoM.this, "Texto modificado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 CtrlPresentacion.guardaTextos();
             }
         };
+
 
 
 

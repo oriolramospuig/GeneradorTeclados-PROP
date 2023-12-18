@@ -41,11 +41,12 @@ public class Palabras extends Texto
 
     // ---------- SETTERS ----------
     /**
-     * ??????
+     * modifica el texto en formato palabras
      * @param entrada
      */
-    public void modificarPalabras(String entrada){
-        //modfificar palabras
+    public void modificarPalabras(String entrada, HashMap<String, Integer> frecLet){
+        texto = entrada;
+        frecuenciaLetras = frecLet;
     }
 
 

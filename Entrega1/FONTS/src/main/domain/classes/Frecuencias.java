@@ -75,6 +75,15 @@ public class Frecuencias extends Texto
         frecuenciaPalabras.put(palabra, nuevaFrec);
     }
 
+    /**
+     * Actualiza el hashmap frecuencias letras al hashmap pasado por parámetro
+     * @param frec mapa de frecuencias
+     */
+    public void modificarFrecuencias(HashMap<String, Integer> frec, HashMap<String, Integer> frecLet) {
+        frecuenciaPalabras = frec;
+        frecuenciaLetras = frecLet;
+    }
+
 
     // ---------- AUXILIARES ----------
     /**

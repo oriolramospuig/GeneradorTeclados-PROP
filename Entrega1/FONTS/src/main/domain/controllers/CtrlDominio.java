@@ -160,7 +160,43 @@ public class CtrlDominio
 
     public boolean modificarContenidoTexto(String nomT, String entrada){
         if(existetexto(nomT)) {
-            ctrlTexto.modificarContenido(nomT, entrada);
+            String contenidoAntiguo = ctrlTexto.getContenido(nomT);
+            HashMap<String, Integer> frecAntiguas = ctrlTexto.getTexto(nomT).getFrecuenciaLetras();
+            if (ctrlTexto.modificarContenido(nomT, entrada)) {
+                ArrayList<String> asocV =  ctrlTexto.getTexto(nomT).getAsociacionesVinculadas();
+                HashMap<String, Integer> frecTxt = ctrlTexto.getTexto(nomT).getFrecuenciaLetras();
+                for (int i = 0; i < asocV.size(); ++i) {
+                    AsociacionTextos at = ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionTextos(asocV.get(i));
+                    at.borrarTexto(nomT, frecAntiguas);
+                    at.agregarTexto(nomT, frecTxt);
+                    ArrayList<String> tecV = at.getTecladosVinculados();
+                    for (int j = 0; j < tecV.size(); ++j) {
+                        Teclado t = ctrlTeclado.getCjtTeclados().getTeclado(tecV.get(i));
+                        ctrlTeclado.CrearTeclado(t.getNombre(), at, ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(t.getAlfabetoVinculado()), t.getDimensiones(), false);
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public boolean modificarContenidoTextoFrec(String nomT, HashMap<String, Integer> entrada){
+        if(existetexto(nomT)) {
+            HashMap<String, Integer> frecAntiguas = ctrlTexto.getTexto(nomT).getFrecuenciaLetras();
+            if (ctrlTexto.modificarContenidoFrec(nomT, entrada)) {
+                ArrayList<String> asocV =  ctrlTexto.getTexto(nomT).getAsociacionesVinculadas();
+                for (int i = 0; i < asocV.size(); ++i) {
+                    AsociacionTextos at = ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionTextos(asocV.get(i));
+                    at.borrarTexto(nomT, frecAntiguas);
+                    at.agregarTexto(nomT, entrada);
+                    ArrayList<String> tecV = at.getTecladosVinculados();
+                    for (int j = 0; j < tecV.size(); ++j) {
+                        Teclado t = ctrlTeclado.getCjtTeclados().getTeclado(tecV.get(i));
+                        ctrlTeclado.CrearTeclado(t.getNombre(), at, ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(t.getAlfabetoVinculado()), t.getDimensiones(), false);
+                    }
+                }
+            }
             return true;
         }
         return false;
@@ -306,7 +342,7 @@ public class CtrlDominio
         AsociacionTextos asociacionTextos = ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionTextos(nomAT);
         //if(compatibles(alfabeto,asociacionTextos)) {
             ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
-            ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
+            ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomT);
             ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, dimensiones, alg);
             ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
             ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
