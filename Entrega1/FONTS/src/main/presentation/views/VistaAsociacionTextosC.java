@@ -96,6 +96,10 @@ public class VistaAsociacionTextosC extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String selectedName = (String) nombresATC.getSelectedItem();
                 ArrayList<String> contenido = CtrlPresentacion.consultarCjtTextosAsociacion(selectedName);
+                for (int i = 0; i < contenido.size(); ++i) {
+                    System.out.println("textos asociados");
+                    System.out.println(contenido.get(i));
+                }
                 if (selectedName != null && !selectedName.isEmpty()) {
                     areanomATC.setText(selectedName);
                     // Convertir ArrayList<Character> a String

@@ -194,12 +194,9 @@ public class CtrlDominio
 
     public boolean agregarAsociacion(String nomAT, ArrayList<String> textosgregar){
         if(!existeasociacion(nomAT)){
+            ctrlAsociacionTexto.agregarAsociacion(nomAT);
             for (String s : textosgregar) {
-                ctrlAsociacionTexto.agregarAsociacion(nomAT);
                 agregarTextoAsociacion(nomAT,s);
-                //Texto texto = ctrlTexto.getTexto(s);
-                //ctrlAsociacionTexto.agregarAsociacion(nomAT, texto);
-                //ctrlTexto.getTexto(s).agregarAsociacionesVinculadas(nomAT);
             }
             return true;
         }
