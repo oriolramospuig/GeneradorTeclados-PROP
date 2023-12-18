@@ -113,6 +113,14 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES TEXTO ----------
+    /**
+     * Retorna si se el texto es de palabras o frecuencias
+     * @param nomT nombre del texto a crear
+     * @return Boolean: true si es palabras, false si es frecuencias
+     */
+    public boolean esTextoPalabras(String nomT){
+        return ctrlTexto.esTextoPalabras(nomT);
+    }
 
     /**
      * Retorna si se ha creado bien el texto
@@ -186,12 +194,9 @@ public class CtrlDominio
 
     public boolean agregarAsociacion(String nomAT, ArrayList<String> textosgregar){
         if(!existeasociacion(nomAT)){
+            ctrlAsociacionTexto.agregarAsociacion(nomAT);
             for (String s : textosgregar) {
-                ctrlAsociacionTexto.agregarAsociacion(nomAT);
                 agregarTextoAsociacion(nomAT,s);
-                //Texto texto = ctrlTexto.getTexto(s);
-                //ctrlAsociacionTexto.agregarAsociacion(nomAT, texto);
-                //ctrlTexto.getTexto(s).agregarAsociacionesVinculadas(nomAT);
             }
             return true;
         }
