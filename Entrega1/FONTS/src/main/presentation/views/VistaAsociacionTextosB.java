@@ -90,13 +90,22 @@ public class VistaAsociacionTextosB extends JFrame{
                 if (nombreAsociacion.isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Por favor, selecciona una asociación para borrar.", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    // Llamar al controlador para eliminar la asociación
-                    CtrlPresentacion.borrarAsociacionTextos(nombreAsociacion);
-                    // Actualizar el JComboBox eliminando la asociación borrada
-                    nombresATB.removeItem(nombreAsociacion);
-                    nombresATB.setSelectedItem("");
-                    JOptionPane.showMessageDialog(frame, "Asociación eliminada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    CtrlPresentacion.guardaAsociaciones();
+                    int opcion = JOptionPane.showConfirmDialog(null, "Si elimina esta asociación, se eliminarán todos los teclados creados a partir de esta asociación.\n¿Está seguro de que desea continuar?", "Aviso", JOptionPane.YES_NO_OPTION);
+
+                    // Verificar la respuesta del usuario
+                    if (opcion == JOptionPane.YES_OPTION) { // El usuario eligió continuar
+                        // Llamar al controlador para eliminar la asociación
+                        CtrlPresentacion.borrarAsociacionTextos(nombreAsociacion);
+                        // Actualizar el JComboBox eliminando la asociación borrada
+                        nombresATB.removeItem(nombreAsociacion);
+                        nombresATB.setSelectedItem("");
+                        JOptionPane.showMessageDialog(frame, "Asociación eliminada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        CtrlPresentacion.guardaAsociaciones();
+                    } else {
+                        // El usuario eligió no continuar
+                        areanomATB.setText("");
+                    }
+
                 }
             }
         };

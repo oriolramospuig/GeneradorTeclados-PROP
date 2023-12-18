@@ -90,13 +90,21 @@ public class VistaTextoB extends JFrame{
                 if (nombreTexto.isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Por favor, selecciona un texto para borrar.", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    // Llamar al controlador para eliminar el texto
-                    CtrlPresentacion.borrarTexto(nombreTexto);
-                    // Actualizar el JComboBox eliminando el texto borrado
-                    nombresTxtB.removeItem(nombreTexto);
-                    nombresTxtB.setSelectedItem("");
-                    JOptionPane.showMessageDialog(frame, "Texto eliminado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    CtrlPresentacion.guardaTextos();
+                    int opcion = JOptionPane.showConfirmDialog(null, "Si elimina este texto, se modificarán todos los teclados creados a partir de una asociación vinculada a este texto.\n¿Está seguro de que desea continuar?", "Aviso", JOptionPane.YES_NO_OPTION);
+
+                    // Verificar la respuesta del usuario
+                    if (opcion == JOptionPane.YES_OPTION) { // El usuario eligió continuar
+                        // Llamar al controlador para eliminar el texto
+                        CtrlPresentacion.borrarTexto(nombreTexto);
+                        // Actualizar el JComboBox eliminando el texto borrado
+                        nombresTxtB.removeItem(nombreTexto);
+                        nombresTxtB.setSelectedItem("");
+                        JOptionPane.showMessageDialog(frame, "Texto eliminado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        CtrlPresentacion.guardaTextos();
+                    } else {
+                        // El usuario eligió no continuar
+                        areanomTxtB.setText("");
+                    }
                 }
             }
         };

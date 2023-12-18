@@ -32,8 +32,11 @@ compile_driver:
 compile_tests:
 	javac -cp $(CLASS_OUTPUT):$(JUNIT_JARS) -d $(CLASS_OUTPUT) $(CLASS_INPUT_TESTS)
 
-MasterTestSuite:
+MasterTestSuite: all
 	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.MasterTestSuite
+
+TestSuiteFunctions: all
+	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.functions.TestSuiteFunctions
 
 TestTeclado: all
 	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestTeclado
@@ -65,8 +68,14 @@ TestAsociacionTextos: all
 TestAlfabeto: all
 	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestAlfabeto
 
-DriverFP: all
-	java -cp $(CLASS_OUTPUT) drivers.DriverFP
+DriverPersistencia: all
+	java -cp $(CLASS_OUTPUT) drivers.DriverPersistencia
+
+DriverPresentacion: all
+	java -cp $(CLASS_OUTPUT) drivers.DriverPresentacion
+
+DriverInteractivo: all
+	java -cp $(CLASS_OUTPUT) drivers.DriverInteractivoQAP
 
 # Regla para limpiar los archivos generados
 clean:
