@@ -65,6 +65,9 @@ public class VistaAsociacionTextosM extends JFrame{
             nombresATM.addItem(nombre);
         }
 
+        nombreAgregarATM = new JComboBox<>();
+        nombreBorrarATM = new JComboBox<>();
+
         // Título ventana
         tituloVistaATM.setBounds(10, 5, 120, 30);
         add(tituloVistaATM);
@@ -139,17 +142,17 @@ public class VistaAsociacionTextosM extends JFrame{
                     areacontenidoATM.setText("");
                 }
 
-                nombreBorrarATM = new JComboBox<>();
+                nombreBorrarATM.removeAllItems();
                 nombreBorrarATM.addItem("");
                 for (String nombre : textos) {
                     nombreBorrarATM.addItem(nombre);
                 }
 
                 ArrayList<String> nombresTextosAgregar = CtrlPresentacion.getNombresTextos();
-                nombreAgregarATM = new JComboBox<>();
+                nombreAgregarATM.removeAllItems();
                 nombreAgregarATM.addItem("");
                 for (String nombre : nombresTextosAgregar) {
-                    if(!textos.contains(nombre)) nombreAgregarATM.addItem(nombre);
+                    if (!textos.contains(nombre)) nombreAgregarATM.addItem(nombre);
                 }
             }
         };
@@ -167,7 +170,7 @@ public class VistaAsociacionTextosM extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String selectedNameBorrar = (String) nombreBorrarATM.getSelectedItem();
                 if (selectedNameBorrar != null && !selectedNameBorrar.isEmpty()) {
-                    areanomAgregarATM.setText(selectedNameBorrar);
+                    areanomBorrarATM.setText(selectedNameBorrar);
                 }
             }
         };
