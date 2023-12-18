@@ -113,6 +113,14 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES TEXTO ----------
+    /**
+     * Retorna si se el texto es de palabras o frecuencias
+     * @param nomT nombre del texto a crear
+     * @return Boolean: true si es palabras, false si es frecuencias
+     */
+    public boolean esTextoPalabras(String nomT){
+        return ctrlTexto.esTextoPalabras(nomT);
+    }
 
     /**
      * Retorna si se ha creado bien el texto
@@ -175,7 +183,7 @@ public class CtrlDominio
         ArrayList<String> AVinculadas = CtrlTexto.getAsociacionesVinculadasTexto(nomT);
         if(!AVinculadas.isEmpty()) {
             for (int i = 0; i < AVinculadas.size(); ++i){
-                CtrlAsociacionTexto.borrarTextoAsociacion(AVinculadas.get(i),nomT);
+                ctrlAsociacionTexto.borrarTextoAsociacion(AVinculadas.get(i),nomT);
             }
         }
         CtrlTexto.borrarTexto(nomT);
@@ -187,9 +195,11 @@ public class CtrlDominio
     public boolean agregarAsociacion(String nomAT, ArrayList<String> textosgregar){
         if(!existeasociacion(nomAT)){
             for (String s : textosgregar) {
-                Texto texto = ctrlTexto.getTexto(s);
-                ctrlAsociacionTexto.agregarAsociacion(nomAT, texto);
-                ctrlTexto.getTexto(s).agregarAsociacionesVinculadas(nomAT);
+                ctrlAsociacionTexto.agregarAsociacion(nomAT);
+                agregarTextoAsociacion(nomAT,s);
+                //Texto texto = ctrlTexto.getTexto(s);
+                //ctrlAsociacionTexto.agregarAsociacion(nomAT, texto);
+                //ctrlTexto.getTexto(s).agregarAsociacionesVinculadas(nomAT);
             }
             return true;
         }
@@ -217,10 +227,10 @@ public class CtrlDominio
      * @param nomTxt nombre del texto a añadir en la asociacion
      */
     public void agregarTextoAsociacion (String nomAT, String nomTxt){
-        ctrlTexto.agregarAsociacionVinculada(nomTxt,nomAT);
-        Texto texto = ctrlTexto.getTexto(nomTxt);
-        ctrlAsociacionTexto.agregarTextoAsociacion(nomAT, texto);
 
+        HashMap<String,Integer> freqTexto = ctrlTexto.getTexto(nomTxt).getFrecuenciaLetras();
+        ctrlAsociacionTexto.agregarTextoAsociacion(nomAT, nomTxt, freqTexto);
+        ctrlTexto.agregarAsociacionVinculada(nomTxt,nomAT);
     }
     /**
      * Retorna la lista de nombres de las asociaciones existentes
@@ -252,7 +262,7 @@ public class CtrlDominio
 
     public void borrarTextoAsociacion (String nomAT, String nomTxt){
         ctrlTexto.borrarAsociacionVinculada(nomTxt,nomAT);
-        CtrlAsociacionTexto.borrarTextoAsociacion(nomAT, nomTxt);
+        ctrlAsociacionTexto.borrarTextoAsociacion(nomAT, nomTxt);
 
     }
 

@@ -66,6 +66,10 @@ public class CtrlTexto
         return CjtTextos.getTexto(nomT);
     }
 
+    /*public HashMap<String,Integer> getFrecTexto(String nomTxt){
+        return CjtTextos.getTexto(nomTxt).getFrecuenciaLetras();
+    }*/
+
     /**
      * Obtiene el conjunto de textos
      * @return Conjunto de textos
@@ -91,6 +95,15 @@ public class CtrlTexto
             return true;
         }
         return false;
+    }
+
+    /** Convierte comprueba si el texto es de palabras o frecuencias
+     * @param nomT Nombre del texto a añadir
+     * @return True si el texto es de palabras y false en caso contrario
+     */
+    public boolean esTextoPalabras(String nomT) {
+        Texto texto = getTexto(nomT);
+        return texto instanceof Palabras;
     }
     //ESTO VA A INOUT
     /**
@@ -144,10 +157,10 @@ public class CtrlTexto
     public boolean agregarTextoFrecuencias(String nomT, HashMap<String,Integer> frecuenciaPalabras) {
         if(!CjtTextos.existeTexto(nomT)){
             HashMap<String,Integer> frecuenciasLetras = convertirFrecuenciasPalabrasAFrecuenciasLetras(frecuenciaPalabras);
-            for (HashMap.Entry<String, Integer> entry : frecuenciasLetras.entrySet()) {
+            /*for (HashMap.Entry<String, Integer> entry : frecuenciasLetras.entrySet()) {
                 System.out.print(entry.getKey());
                 System.out.println(entry.getValue());
-            }
+            }*/
             Frecuencias frecuencias = new Frecuencias(nomT, frecuenciaPalabras, frecuenciasLetras);
             CjtTextos.agregarTexto(nomT, frecuencias);
             return true;

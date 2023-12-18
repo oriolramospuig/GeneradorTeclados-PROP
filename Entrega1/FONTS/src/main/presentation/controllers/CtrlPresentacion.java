@@ -107,7 +107,6 @@ public class CtrlPresentacion {
      * Llama a la función agregarAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a agregar
      * @param entrada la lista de caracteres que forman el contenido del alfabeto
-     * @param path path donde se crea y guarda el alfabeto
      */
     public static boolean agregarAlfabetoManual(String nomA, ArrayList<Character> entrada) {
         return cd.agregarAlfabeto(nomA, entrada);
@@ -156,6 +155,13 @@ public class CtrlPresentacion {
 
     //FUNCIONES DE CTRlDOMINIO DE TEXTO
     /**
+     * Llama a la función esTextoPalabras de CtrlDominio
+     * @param nomTxt es el nombre del texto a agregar
+     */
+    public static boolean esTextoDePalabras(String nomTxt) {
+        return cd.esTextoPalabras(nomTxt);
+    }
+    /**
      * Llama a la función agregarTextoPalabras de CtrlDominio
      * @param nomTxt es el nombre del texto a agregar
      * @param texto es la lista de caracteres que forman el contenido del texto
@@ -183,7 +189,7 @@ public class CtrlPresentacion {
     }
     /** Llama a la función getNombresTextos de CtrlDominio */
     public static ArrayList<String> getNombresTextos() {
-        ArrayList<String> listaTextosNombres = cd.getNombresAsociaciones();
+        ArrayList<String> listaTextosNombres = cd.getNombresTextos();
         return listaTextosNombres;
     }
     /**
