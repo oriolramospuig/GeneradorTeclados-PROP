@@ -279,7 +279,7 @@ public class CtrlDominio
      * @param asociacionTextos objeto asociacion de textos para comparar
      * @return Boolean: true si el alfabeto y la asociación de textos son comptibles, false si no lo son
      */
-    public boolean compatibles(Alfabeto alfabeto,AsociacionTextos asociacionTextos){
+    /*public boolean compatibles(Alfabeto alfabeto,AsociacionTextos asociacionTextos){
         HashMap<String,Integer> f = asociacionTextos.getFrecuenciaLetras();
         ArrayList<Character> a = alfabeto.getLetras();
         for(HashMap.Entry<String,Integer> e : f.entrySet()){
@@ -288,7 +288,7 @@ public class CtrlDominio
             if(!a.contains(c1) || !a.contains(c2)) return false;
         }
         return true;
-    }
+    }*/
 
     /**
      * Retorna un valor para comprobar si el teclado ha sido agregado correctamente o ha habido algún fallo
@@ -304,15 +304,15 @@ public class CtrlDominio
         
         Alfabeto alfabeto = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA);
         AsociacionTextos asociacionTextos = ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionTextos(nomAT);
-        if(compatibles(alfabeto,asociacionTextos)) {
+        //if(compatibles(alfabeto,asociacionTextos)) {
             ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
             ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomA);
             ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, dimensiones, alg);
             ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
             ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
             return 0;
-        }
-        else return -2;
+        //}
+        //else return -2;
     }
     /**
      * Retorna el contenido del teclado nomT
