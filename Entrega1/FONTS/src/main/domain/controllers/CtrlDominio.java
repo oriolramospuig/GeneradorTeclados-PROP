@@ -183,7 +183,7 @@ public class CtrlDominio
         ArrayList<String> AVinculadas = CtrlTexto.getAsociacionesVinculadasTexto(nomT);
         if(!AVinculadas.isEmpty()) {
             for (int i = 0; i < AVinculadas.size(); ++i){
-                ctrlAsociacionTexto.borrarTextoAsociacion(AVinculadas.get(i),nomT);
+                borrarTextoAsociacion(AVinculadas.get(i),nomT);
             }
         }
         CtrlTexto.borrarTexto(nomT);
@@ -191,7 +191,12 @@ public class CtrlDominio
 
     // ---------- FUNCIONES ASOCIACION TEXTOS ----------
 
-
+    /**
+     * Retorna si se ha creado bien la asociacion con nombre nomAT
+     * @param nomAT el nombre de la asociacion a agregar
+     * @param textosgregar la lista de nombres de los textos que forman la asociacion
+     * @return Boolean: true si se ha creado bien la asociacion, false si no se ha creado bien
+     */
     public boolean agregarAsociacion(String nomAT, ArrayList<String> textosgregar){
         if(!existeasociacion(nomAT)){
             ctrlAsociacionTexto.agregarAsociacion(nomAT);
@@ -202,22 +207,6 @@ public class CtrlDominio
         }
         return false;
     }
-    /**
-     * Retorna si se ha creado bien la asociacion con nombre nomAT
-     * @param nomAT el nombre de la asociacion a agregar
-     * @param textosagregar la lista de nombres de los textos que forman la asociacion
-     * @return Boolean: true si se ha creado bien la asociacion, false si no se ha creado bien
-     */
-    /*public boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar){
-        //boolean agregada = ctrlAsociacionTexto.agregarAsociacion(nomAT);
-        if(ctrlAsociacionTexto.agregarAsociacion(nomAT)){
-           for (int i = 0; i < textosagregar.size(); ++i) {
-               agregarTextoAsociacion(nomAT,textosagregar.get(i));
-           }
-           return true;
-        }
-        else return false;
-    }*/
     /**
      * No retorna
      * @param nomAT nombre de la asociacion donde añadir el texto
@@ -258,9 +247,9 @@ public class CtrlDominio
     }
 
     public void borrarTextoAsociacion (String nomAT, String nomTxt){
+        HashMap<String, Integer> frecuenciaLetras = ctrlTexto.getTexto(nomTxt).getFrecuenciaLetras();
+        ctrlAsociacionTexto.borrarTextoAsociacion(nomAT,nomTxt,frecuenciaLetras);
         ctrlTexto.borrarAsociacionVinculada(nomTxt,nomAT);
-        ctrlAsociacionTexto.borrarTextoAsociacion(nomAT, nomTxt);
-
     }
 
     /**

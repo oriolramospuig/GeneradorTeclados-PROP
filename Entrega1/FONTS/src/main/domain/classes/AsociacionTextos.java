@@ -161,7 +161,26 @@ public class AsociacionTextos implements Serializable
      * No devuelve nada. Borra de la lista de nombres de los textos asociados el nombre del texto nomT
      * @param nomT nombre del texto a quitar de la asociación
      */
-    public void borrarTexto (String nomT) {
+    public void borrarTexto (String nomT, HashMap<String, Integer> frecLetras) {
+        // Obtener un iterador para los pares de letras del frecLetras
+        Iterator<Map.Entry<String, Integer>> iterator = frecLetras.entrySet().iterator();
+
+        // Iterar sobre el par de letras del frecLetras
+        while (iterator.hasNext()) {
+            Map.Entry<String, Integer> entry = iterator.next();
+            String clave = entry.getKey();
+
+            // Verificar si el par de letras existe en el frecuenciasLetras de la asociación
+            if (frecuenciaLetras.containsKey(clave)) {
+                // Eliminar la entrada del primer HashMap
+                Integer valor1 = frecuenciaLetras.get(clave);
+                Integer valor2 = frecLetras.get(clave);
+                if (valor1 != null && valor2 != null) {
+                    int resultado = Math.max(valor1 - valor2, 0);  // Garantizar que el resultado sea 0 o mayor
+                    frecuenciaLetras.put(clave, resultado);
+                }
+            }
+        }
         textosAsociaciados.remove(nomT);
     }
 }
