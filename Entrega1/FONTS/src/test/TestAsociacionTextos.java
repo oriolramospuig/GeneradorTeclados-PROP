@@ -224,7 +224,7 @@ public void TestagregarTexto(){
         AsociacionTextos asociacionTextos = new AsociacionTextos(nombre, frecuenciaLetras);
 
         Frecuencias texto = new Frecuencias("nombre", frecuenciaPalabras, frecuenciaLetras);
-        asociacionTextos.borrarTexto("nombre");
+        //asociacionTextos.borrarTexto("nombre");
         List<String> textoAsociados = asociacionTextos.getTextosAsociaciados();
         HashMap<String, Integer> frecuenciasLetras = asociacionTextos.getFrecuenciaLetras();
 
