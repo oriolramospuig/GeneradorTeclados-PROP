@@ -105,6 +105,19 @@ public class VistaAlfabetoB extends JFrame{
                 if (nombreAlfabeto.isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Por favor, selecciona un alfabeto para borrar.", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
+                    int opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea continuar?\nSe eliminará lo que está haciendo.", "Aviso", JOptionPane.YES_NO_OPTION);
+
+                    // Verificar la respuesta del usuario
+                    if (opcion == JOptionPane.YES_OPTION) {
+                        // El usuario eligió continuar
+                        //System.out.println("Continuando con la operación...");
+                        // Aquí puedes realizar las acciones correspondientes
+                    } else {
+                        // El usuario eligió no continuar
+                        //.out.println("Operación cancelada por el usuario.");
+                        // Aquí puedes manejar la cancelación de la operación
+                    }
+
                     // Llamar al controlador para eliminar el alfabeto
                     CtrlPresentacion.borrarAlfabeto(nombreAlfabeto);
                     // Actualizar el JComboBox eliminando el alfabeto borrado
