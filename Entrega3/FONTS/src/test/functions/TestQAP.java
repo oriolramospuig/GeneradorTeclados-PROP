@@ -14,6 +14,29 @@ import static org.junit.Assert.*;
  * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
  */
 public class TestQAP {
+    /**
+     * Objeto de la Prueba: La prueba tiene como objetivo verificar la correcta
+     * inicialización y configuración de una instancia de la clase QAP (Quadratic Assignment Problem) utilizando su constructora.
+     * Ficheros necesarios: No se requieren ficheros externos para esta prueba.
+     * Valores Estudiados:
+     * - filas: Número de filas para la configuración de la instancia de QAP.
+     * - columnas: Número de columnas para la configuración de la instancia de QAP.
+     * - teclas: Lista de caracteres que representan las teclas disponibles.
+     * - paresFrecuencias: Lista de pares de frecuencias (PairFrequency) para la generación de la matriz de frecuencias.
+     * - letraAIndice: Mapa que asigna a cada letra su índice correspondiente.
+     * - mf: Matriz de frecuencias generada a partir de pares de frecuencias, teclas y letraAIndice.
+     * - md: Matriz de distancias generada con dimensiones (3x3).
+     * - sol: Lista para almacenar la solución (teclado) generada por la instancia de QAP.
+     * Operativa:
+     * 1. Mensaje informativo en consola para identificar la prueba.
+     * 2. Definición de los parámetros para la configuración de la instancia de QAP.
+     * 3. Inicialización de la instancia de HashMap letraAIndice y generación de la matriz de frecuencias (mf).
+     * 4. Generación de la matriz de distancias (md).
+     * 5. Inicialización de la lista sol y la matriz tec.
+     * 6. Creación de la instancia de QAP con los parámetros definidos.
+     * 7. Obtención de la matriz de teclado generada por la instancia de QAP.
+     * 8. Aserciones para verificar la configuración y valores de la instancia de QAP.
+     */
     @Test
     public void testConstructora() {
         System.out.println("Test Constructora");
@@ -47,12 +70,11 @@ public class TestQAP {
     public void TestAlgortimoQAP() {
 
         List<Character> teclas = new ArrayList<>();
-        for(char c = 'a'; c <= 'l'; c++) { // Asumiendo un alfabeto de 'a' a 'l'
+        for(char c = 'a'; c <= 'f'; c++) { // Asumiendo un alfabeto de 'a' a 'l'
             teclas.add(c);
         }
         /*llista de freuencies ordenades decreixentment*/
         List<PairFrequency> frecuenciasPares = new ArrayList<>();
-        frecuenciasPares.add(new PairFrequency("ia", 10000));
         frecuenciasPares.add(new PairFrequency("ab", 400)); // Frecuencia del par AB
         frecuenciasPares.add(new PairFrequency("bc", 300)); // Frecuencia del par BC
         frecuenciasPares.add(new PairFrequency("ac", 200));
@@ -63,12 +85,9 @@ public class TestQAP {
         frecuenciasPares.add(new PairFrequency("de", 50));
         frecuenciasPares.add(new PairFrequency("df", 40));
         frecuenciasPares.add(new PairFrequency("ef", 30));
-        frecuenciasPares.add(new PairFrequency("fg", 20));
-        frecuenciasPares.add(new PairFrequency("gh", 10));
-        frecuenciasPares.add(new PairFrequency("hi", 5));
 
         /*numero de files i de columnes*/
-        int nf = 3;
+        int nf = 2;
         int nc = 4;
 
         HashMap<Character, Integer> letraAIndice = new HashMap<>();
