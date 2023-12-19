@@ -3,7 +3,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/Entrega1/FONTS/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Entrega3/FONTS/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -18,7 +18,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="hamcrest-core-1.3" level="project" />
-    <orderEntry type="library" name="hamcrest-core-1.31" level="project" />
-    <orderEntry type="library" name="junit-4.121" level="project" />
+    <orderEntry type="library" name="junit-4.12" level="project" />
   </component>
 </module>
