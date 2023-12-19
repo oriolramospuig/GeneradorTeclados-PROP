@@ -27,9 +27,9 @@ public class ConjuntoAlfabetos implements Serializable
 
     // ---------- GETTERS ----------
     /**
-     * Retorna el alfabeto con clave primaria introducida
-     * @param nomA clave primaria con la que buscar un alfabeto
-     * @return Alfabeto : Alfabeto con el nombre introducido
+     * Retorna el alfabeto con clave primaria introducida (identificador)
+     * @param nomA identificador con el que buscar un alfabeto
+     * @return Alfabeto : Objeto alfabeto con el nombre introducido
      */
     public Alfabeto getAlfabeto(String nomA) {
         if (alfabetos.containsKey(nomA)) return alfabetos.get(nomA);
@@ -52,7 +52,7 @@ public class ConjuntoAlfabetos implements Serializable
     // ---------- SETTERS ----------
     /**
      * No retorna nada.
-     * @param alfabeto alfabeto a agregar
+     * @param alfabeto objeto alfabeto a agregar al conjunto
      * @param nomA nombre del alfabeto a agregar
      * Añade un alfabeto al conjunto de alfabetos
      */
@@ -64,7 +64,7 @@ public class ConjuntoAlfabetos implements Serializable
     // ---------- AUXILIARES ----------
     /**
      * Retorna si existe el alfabeto con nombre dado
-     * @param nomA nombre del alfabeto a comprobar
+     * @param nomA nombre (identificador) del alfabeto a comprobar si existe
      * @return boolean : True si el alfabeto con nombre nomA existe, false si no existe
      */
     public boolean existeAlfabeto(String nomA){
@@ -73,7 +73,7 @@ public class ConjuntoAlfabetos implements Serializable
 
     /**
      * No retorna nada.
-     * @param nomA nombre del alfabeto a borrar
+     * @param nomA nombre (identificador) del alfabeto a borrar
      * Borra el alfabeto con nombre nomA del conjunto de alfabetos.
      */
     public void borrarAlfabeto(String nomA) {
