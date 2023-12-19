@@ -1,1 +1,0 @@
-En caso de tener excepciones nuestras, las pondremos en esta carpeta

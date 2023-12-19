@@ -1,0 +1,93 @@
+7
+
+8
+
+9
+
+10
+
+1
+alfabeto1
+a b   c
+
+1
+alfabeto1
+a b c d e f g h i j k l
+
+7
+
+11
+alfabeto1
+
+11
+alfabeto2
+
+1
+alfabeto1
+a b c 3 4 +
+
+1
+alfabeto1
+a  b 3 4 +
+
+2
+alfabeto2
+
+2
+alfabet2.txt
+alfabet2
+
+7
+
+11
+alfabet2
+
+3
+palabras1
+1
+aei befg il
+
+3
+palabras1
+1
+hello
+
+3
+frecuencias1
+3
+4
+hola 5
+que 3
+tal 8
+estas 2
+
+9
+
+12
+palabras1
+
+12
+palabras10
+
+5
+1
+asociacion1
+1
+
+5
+1
+as1
+palabras1
+
+5
+palabras1
+asociacion1
+
+6
+teclado1
+alfabeto1
+alfabeto1
+as1
+
+
+
