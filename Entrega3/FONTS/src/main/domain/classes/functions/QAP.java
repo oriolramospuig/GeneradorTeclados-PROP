@@ -13,7 +13,7 @@ import java.util.*;
  * utilizando el algoritmo de Gilmore-Lawler con una cota inicial.
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
-public class QAP implements Algoritmo {
+public class QAP implements IAlgoritmo {
     private int[][] teclado; // La matriz del teclado
     private int filas;
     private int columnas;
@@ -218,6 +218,15 @@ public class QAP implements Algoritmo {
         }
     }
 
+    /**
+     * Crea un objeto Teclado con asignación aleatoria y calcula su puntuación.
+     * @param nomT nombre del Teclado a crear.
+     * @param asociacionTextos bbjeto AsociacionTextos para vincular al Teclado.
+     * @param alfabeto objeto Alfabeto para vincular al Teclado.
+     * @param dim dimensiones (ancho y alto) del Teclado.
+     * @param letraAIndice HashMap que asigna cada letra a su índice correspondiente.
+     * @return objeto Teclado.
+     */
     @Override
     public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dim, HashMap<Character, Integer> letraAIndice) {
         List<Integer> ind = new ArrayList<>();

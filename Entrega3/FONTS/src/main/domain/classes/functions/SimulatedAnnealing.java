@@ -13,7 +13,7 @@ import java.util.*;
  * Este algoritmo utiliza una combinación de búsqueda aleatoria y una heurística de enfriamiento
  * para explorar el espacio de soluciones y encontrar una configuración óptima de teclas.
  */
-public class SimulatedAnnealing implements Algoritmo{
+public class SimulatedAnnealing implements IAlgoritmo {
     private static final double TEMPERATURA_INICIAL = 100000;
     private static final double FACTOR_ENFRIAMIENTO = 0.999;
     private static final int MAX_ITERACIONES = 100000;
@@ -270,6 +270,15 @@ public class SimulatedAnnealing implements Algoritmo{
         puntuacionFinal = puntFinal;
     }
 
+    /**
+     * Crea un objeto Teclado mediante Simulated Annealing y actualiza la puntuación final y contenido del Teclado.
+     * @param nomT nombre del Teclado a crear.
+     * @param asociacionTextos objeto AsociacionTextos para vincular al Teclado.
+     * @param alfabeto objeto Alfabeto para vincular al Teclado.
+     * @param dim dimensiones (ancho y alto) del Teclado.
+     * @param letraAIndice HashMap que asigna cada letra a su índice correspondiente.
+     * @return objeto Teclado.
+     */
     @Override
     public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dim, HashMap<Character, Integer> letraAIndice) {
         calculo();
