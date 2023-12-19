@@ -216,31 +216,43 @@ public class VistaTecladoM extends JFrame{
                     JOptionPane.showMessageDialog(VistaTecladoM.this, "Error: Debe seleccionar filas y columnas", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                int opcion = JOptionPane.showConfirmDialog(null, "Si modifica este teclado perderá el teclado anterior.\n¿Está seguro de que desea continuar?", "Aviso", JOptionPane.YES_NO_OPTION);
 
-                try {
-                    int filas = Integer.parseInt(filasStr);
-                    int columnas = Integer.parseInt(columnasStr);
+                // Verificar la respuesta del usuario
+                if (opcion == JOptionPane.YES_OPTION) { // El usuario eligió continuar
+                    try {
+                        int filas = Integer.parseInt(filasStr);
+                        int columnas = Integer.parseInt(columnasStr);
 
-                    // Llamar a CtrlPresentacion para agregar el teclado
-                    PairInt dimensiones = new PairInt(filas, columnas);
-                    CtrlPresentacion.borrarTeclado(nombreTeclado);
-                    int modificado = CtrlPresentacion.agregarTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, dimensiones, false);
+                        // Llamar a CtrlPresentacion para agregar el teclado
+                        PairInt dimensiones = new PairInt(filas, columnas);
+                        CtrlPresentacion.borrarTeclado(nombreTeclado);
+                        int modificado = CtrlPresentacion.agregarTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, dimensiones, false);
 
-                    // Mensaje de éxito o error
-                    if (modificado == 0) {
-                        JOptionPane.showMessageDialog(VistaTecladoM.this, "Modificado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                        areanomTM.setText("");
-                        areaContenidoAlfabetoTM.setText("");
-                        areaContenidoAsociacionTM.setText("");
-                        areaFilasTM.setText("");
-                        areaColumnasTM.setText("");
-                        areacontenidoTM.setText("");
-                        CtrlPresentacion.guardaTeclados();
-                    } else {
-                        JOptionPane.showMessageDialog(VistaTecladoM.this, "Error: No se ha podido modificar", "Error", JOptionPane.ERROR_MESSAGE);
+                        // Mensaje de éxito o error
+                        if (modificado == 0) {
+                            JOptionPane.showMessageDialog(VistaTecladoM.this, "Modificado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                            areanomTM.setText("");
+                            areaContenidoAlfabetoTM.setText("");
+                            areaContenidoAsociacionTM.setText("");
+                            areaFilasTM.setText("");
+                            areaColumnasTM.setText("");
+                            areacontenidoTM.setText("");
+                            CtrlPresentacion.guardaTeclados();
+                        } else {
+                            JOptionPane.showMessageDialog(VistaTecladoM.this, "Error: No se ha podido modificar", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(VistaTecladoM.this, "Error: Las filas y las columnas deben ser números enteros", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(VistaTecladoM.this, "Error: Las filas y las columnas deben ser números enteros", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    // El usuario eligió no continuar
+                    areanomTM.setText("");
+                    areaContenidoAlfabetoTM.setText("");
+                    areaContenidoAsociacionTM.setText("");
+                    areaFilasTM.setText("");
+                    areaColumnasTM.setText("");
+                    areacontenidoTM.setText("");
                 }
             }
         };

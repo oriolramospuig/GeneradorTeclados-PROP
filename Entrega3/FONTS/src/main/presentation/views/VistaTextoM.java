@@ -126,36 +126,44 @@ public class VistaTextoM extends JFrame{
                     JOptionPane.showMessageDialog(VistaTextoM.this, "No hay ningún texto seleccionado.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                int opcion = JOptionPane.showConfirmDialog(null, "Si modifica este texto, se modificarán todos los teclados creados a partir de una asociación vinculada a este texto.\n¿Está seguro de que desea continuar?", "Aviso", JOptionPane.YES_NO_OPTION);
 
-                boolean esTextoPalabras = CtrlPresentacion.esTextoDePalabras(nombreTexto);
-                if (esTextoPalabras) {
-                    // Modificar texto de palabras
-                    CtrlPresentacion.modificarContenidoTexto(nombreTexto, contenidoModificado);
-                } else {
-                    // Modificar texto de frecuencias
-                    HashMap<String, Integer> frecuencias = new HashMap<>();
-                    boolean formatoCorrecto = true;
-
-                    String[] lineas = contenidoModificado.split("\n");
-                    for (String linea : lineas) {
-                        if (!linea.matches("\\S+\\s+\\d+")) {
-                            formatoCorrecto = false;
-                            break;
-                        }
-                        String[] partes = linea.trim().split("\\s+");
-                        frecuencias.put(partes[0], Integer.parseInt(partes[1]));
-                    }
-
-                    if (formatoCorrecto) {
-                        CtrlPresentacion.modificarContenidoTextoFrecuencias(nombreTexto, frecuencias);
+                // Verificar la respuesta del usuario
+                if (opcion == JOptionPane.YES_OPTION) { // El usuario eligió continuar
+                    boolean esTextoPalabras = CtrlPresentacion.esTextoDePalabras(nombreTexto);
+                    if (esTextoPalabras) {
+                        // Modificar texto de palabras
+                        CtrlPresentacion.modificarContenidoTexto(nombreTexto, contenidoModificado);
                     } else {
-                        JOptionPane.showMessageDialog(VistaTextoM.this, "Formato de contenido incorrecto para el tipo de texto.", "Error", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-                }
+                        // Modificar texto de frecuencias
+                        HashMap<String, Integer> frecuencias = new HashMap<>();
+                        boolean formatoCorrecto = true;
 
-                JOptionPane.showMessageDialog(VistaTextoM.this, "Texto modificado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                CtrlPresentacion.guardaTextos();
+                        String[] lineas = contenidoModificado.split("\n");
+                        for (String linea : lineas) {
+                            if (!linea.matches("\\S+\\s+\\d+")) {
+                                formatoCorrecto = false;
+                                break;
+                            }
+                            String[] partes = linea.trim().split("\\s+");
+                            frecuencias.put(partes[0], Integer.parseInt(partes[1]));
+                        }
+
+                        if (formatoCorrecto) {
+                            CtrlPresentacion.modificarContenidoTextoFrecuencias(nombreTexto, frecuencias);
+                        } else {
+                            JOptionPane.showMessageDialog(VistaTextoM.this, "Formato de contenido incorrecto para el tipo de texto.", "Error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                    }
+
+                    JOptionPane.showMessageDialog(VistaTextoM.this, "Texto modificado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    CtrlPresentacion.guardaTextos();
+                } else {
+                    // El usuario eligió no continuar
+                    areanomTxtM.setText("");
+                    areacontenidoTxtM.setText("");
+                }
             }
         };
 

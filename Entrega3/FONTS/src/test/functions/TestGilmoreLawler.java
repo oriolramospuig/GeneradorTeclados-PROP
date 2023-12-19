@@ -13,6 +13,16 @@ import static org.junit.Assert.*;
  * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
  */
 public class TestGilmoreLawler {
+    /**
+     * Objeto de la Prueba: La prueba tiene como objetivo verificar la correcta inicialización
+     * y configuración de una instancia de la clase GilmoreLawler mediante su constructora vacía.
+     * Ficheros Necesarios: No se requieren ficheros externos para esta prueba.
+     * Valores Estudiados: gilmoreLawler: Instancia de la clase GilmoreLawler creada mediante la constructora vacía.
+     * Operativa:
+     * 1. Mensaje informativo en consola para identificar la prueba.
+     * 2. Creación de la instancia de la clase GilmoreLawler mediante la constructora vacía.
+     * 3. Aserciones para verificar la configuración y valores de la instancia de GilmoreLawler.
+     */
     @Test
     public void TestConstructoraVacia() {
         System.out.println("TestConstructoraVacia");
@@ -27,6 +37,24 @@ public class TestGilmoreLawler {
         assertEquals(new ArrayList<>(), gilmoreLawler.getMejorSolucionParcial());
     }
 
+    /**
+     * Objeto de la Prueba: La prueba tiene como objetivo verificar la correcta inicialización
+     * y configuración de una instancia de la clase GilmoreLawler mediante su constructora.
+     * Ficheros Necesarios: No se requieren ficheros externos para esta prueba.
+     * Valores Estudiados:
+     * - gilmoreLawler: Instancia de la clase GilmoreLawler creada mediante la constructora vacía.
+     * - nf : número de filas
+     * - nc : número de columnas
+     * - bound : cota inicial
+     * - mf : matriz de frecuencias
+     * - md : matriz de distancias
+     * - letraAIndice : Hashmap donde guardo todos los carácteres con sus respectivas frecuencias
+     * Operativa:
+     * 1. Mensaje informativo en consola para identificar la prueba.
+     * 2. Se inicializan los diferentes parámetros necesarios
+     * 3. Creación de la instancia de la clase GilmoreLawler mediante la constructora.
+     * 4. Aserciones para verificar la configuración y valores de la instancia de GilmoreLawler.
+     */
     @Test
     public void TestConstructora() {
         System.out.println("TestConstructora");
@@ -50,6 +78,23 @@ public class TestGilmoreLawler {
 
     }
 
+    /**
+     * Objeto de la Prueba: La prueba tiene como objetivo verificar el correcto funcionamiento
+     * del método 'gilmore_lawler' de la clase GilmoreLawler.
+     * Ficheros Necesarios: No se requieren ficheros externos para esta prueba.
+     * Valores Estudiados:
+     * - gilmoreLawler: Instancia de la clase GilmoreLawler creada mediante la constructora vacía.
+     * - indices: Lista de caracteres que representa los índices utilizados en el método 'gilmore_lawler'.
+     * - cotaInicial: Valor inicial utilizado en el método 'gilmore_lawler'.
+     * - result: Resultado obtenido al llamar al método 'gilmore_lawler'.
+     * Operativa:
+     * 1. Mensaje informativo en consola para identificar la prueba.
+     * 2. Creación de la instancia de la clase GilmoreLawler mediante la constructora vacía.
+     * 3. Definición de la lista de caracteres 'indices'.
+     * 4. Definición de la cota inicial.
+     * 5. Llamada al método 'gilmore_lawler'.
+     * 6. Aserción para verificar que el resultado obtenido coincide con el valor esperado.
+     */
     @Test
     public void testgilmore_lawler() {
         System.out.println("Test Gilmore_Lawler");
@@ -62,20 +107,21 @@ public class TestGilmoreLawler {
 
     }
 
-    /*@Test
-    public void testimprimirMejorSolucionParcial() {
-        System.out.println("Test Imprimir Mejor Solucion Parcial");
-        GilmoreLawler gilmoreLawler = new GilmoreLawler();
-        gilmoreLawler.setMejorSolucionParcial(Arrays.asList(1, 2, 3, 4));
-        ByteArrayOutputStream SalidaEstandar = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(SalidaEstandar));
-        gilmoreLawler.imprimirMejorSolucionParcial();
-        System.setOut(System.out);
-
-        assertEquals("La mejor solución parcial es: Posición 0: Tecla a | Posición 1: Tecla b | Posición 2: Tecla c | Posición 3: Tecla d", SalidaEstandar.toString());
-    }*/
-
-    @Test
+    /**
+     * Objeto de la Prueba: La prueba tiene como objetivo verificar el correcto
+     * funcionamiento del método 'minimos' de la clase GilmoreLawler.
+     * Ficheros Necesarios: No se requieren ficheros externos para esta prueba.
+     * Valores Estudiados:
+     * - gilmoreLawler: Instancia de la clase GilmoreLawler creada mediante la constructora vacía.
+     * - c1c2: Matriz de enteros utilizada como entrada para el método 'minimos'.
+     * - resultado: Resultado obtenido al llamar al método 'minimos'.
+     * Operativa:
+     * 1. Mensaje informativo en consola para identificar la prueba
+     * 2. Creación de la instancia de la clase GilmoreLawler mediante la constructora vacía.
+     * 3. Definición de la matriz de enteros c1c2.
+     * 4. Llamada al método 'minimos' con la matriz c1c2 como argumento.
+     * 5. Aserción para verificar que el resultado obtenido coincide con el valor esperado.
+     */    @Test
     public void testminimos(){
         System.out.println("Test Minimos");
         GilmoreLawler gilmoreLawler = new GilmoreLawler();
@@ -88,6 +134,7 @@ public class TestGilmoreLawler {
 
         assertEquals(12, resultado);
     }
+
 }
 
 

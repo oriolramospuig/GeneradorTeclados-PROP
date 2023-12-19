@@ -10,9 +10,17 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Clase que gestiona la carga y guardado de conjuntos de teclados en formato de bytes.
+ * @author
+ */
 public class GestorTeclado {
+    /**
+     * Guarda un conjunto de teclados representado como un arreglo de bytes en un archivo.
+     * @param bytes arreglo de bytes que representa el conjunto de teclados.
+     * @param path ruta del archivo donde se guardará el conjunto de teclados.
+     */
     public static void gestorTeclados(byte[] bytes, String path) {
-        Path p = Paths.get(path);
         try {
             FileOutputStream outFile = new FileOutputStream(path);
             outFile.write(bytes);
@@ -23,6 +31,11 @@ public class GestorTeclado {
         }
     }
 
+    /**
+     * Carga un conjunto de teclados desde un archivo y lo devuelve como un arreglo de bytes.
+     * @param path ruta del archivo desde donde se cargará el conjunto de teclados.
+     * @return arreglo de bytes que representa el conjunto de teclados cargado.
+     */
     public byte[] cargarTeclados(String path) {
         byte[] bytes = null;
         try {
@@ -32,6 +45,6 @@ public class GestorTeclado {
         } catch (IOException e) {
             System.err.println("[#CARGAR] Error al cargar el conjunto de teclados: " + e.getMessage() + "\n" + Arrays.toString(e.getStackTrace()));
         }
-        return  bytes;
+        return bytes;
     }
 }
