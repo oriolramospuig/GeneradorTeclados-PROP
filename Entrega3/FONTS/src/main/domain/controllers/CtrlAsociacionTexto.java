@@ -123,6 +123,7 @@ public class CtrlAsociacionTexto
         AsociacionesTextos.borrarAsociacionTextos(nomAT);
     }
 
+    
     /**
      * Convierte un conjunto de asociaciones de textos en ByteArray con el fin de almacenarlos.
      * Utiliza la serialización de objetos para convertir el conjunto en un formato que puede ser guardado.
