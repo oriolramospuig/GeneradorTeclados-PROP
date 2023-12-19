@@ -63,14 +63,6 @@ public abstract class Texto implements Serializable
         asociacionesVinculadas.add(nomAT);
     }
 
-    /**
-     * ???????
-     * @param entradaCaracteres
-     */
-    public void modificarContenido(String  entradaCaracteres){
-        //letras = entradaCaracteres;
-    }
-
 
     // ---------- AUXILIARES ----------
     /**

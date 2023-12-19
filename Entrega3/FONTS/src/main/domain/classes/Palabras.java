@@ -41,20 +41,11 @@ public class Palabras extends Texto
 
     // ---------- SETTERS ----------
     /**
-     * modifica el texto en formato palabras
+     * Modifica el contenido del texto en formato palabras
      * @param entrada
      */
     public void modificarPalabras(String entrada, HashMap<String, Integer> frecLet){
         texto = entrada;
         frecuenciaLetras = frecLet;
-    }
-
-
-    // ---------- AUXILIARES ----------
-    /** No devuelve nada. Imprime los valores de frecuenciaLetras */
-    public void imprimirFrecuencias(){
-        for(Map.Entry<String,Integer> e : frecuenciaLetras.entrySet()){
-            System.out.println(e.getKey() + " " + e.getValue());
-        }
     }
 }

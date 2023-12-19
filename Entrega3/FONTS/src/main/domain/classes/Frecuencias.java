@@ -45,14 +45,6 @@ public class Frecuencias extends Texto
         return texto.toString();
      }
 
-    /**
-     * Devuelve el map de pares de palabras con sus frecuencias
-     * @return HashMap<String,Integer>: Map de frecuenciaPalabras
-     */
-     public HashMap<String, Integer> getFrecuenciaPalabras() {
-        return frecuenciaPalabras;
-    }
-
 
     // ---------- SETTERS ----------
     /**
@@ -66,45 +58,11 @@ public class Frecuencias extends Texto
     }
 
     /**
-     * Cambia la frecuencia de la palabra por la nueva frecuencia nuevaFrec
-     * @param palabra
-     * @param nuevaFrec
-     */
-    public void modificarFrecuencia(String palabra, Integer nuevaFrec) {
-        frecuenciaPalabras.remove(palabra);
-        frecuenciaPalabras.put(palabra, nuevaFrec);
-    }
-
-    /**
-     * Actualiza el hashmap frecuencias letras al hashmap pasado por parámetro
+     * Actualiza el HashMap frecuencias letras al HashMap pasado por parámetro para modificar el contenido del texto de tipo Frecuencias
      * @param frec mapa de frecuencias
      */
     public void modificarFrecuencias(HashMap<String, Integer> frec, HashMap<String, Integer> frecLet) {
         frecuenciaPalabras = frec;
         frecuenciaLetras = frecLet;
-    }
-
-
-    // ---------- AUXILIARES ----------
-    /**
-     * No devuelve nada. Elimina la palabra de frecuenciaPalabras
-     * @param palabra
-     */
-    public void eliminarPalabra(String palabra) {
-        frecuenciaPalabras.remove(palabra);
-    }
-
-    /**
-     * No devuelve nada. Imprime los valores de los atributos frecuenciaPalabras y frecuenciaLetras
-     */
-    public void imprimirFrecuencias(){
-        System.out.println("PALABRAS:");
-        for(Map.Entry<String,Integer> e : frecuenciaPalabras.entrySet()){
-            System.out.println(e.getKey() + " " + e.getValue());
-        }
-        System.out.println("LETRAS:");
-        for(Map.Entry<String,Integer> e : frecuenciaLetras.entrySet()){
-            System.out.println(e.getKey() + " " + e.getValue());
-        }
     }
 }
