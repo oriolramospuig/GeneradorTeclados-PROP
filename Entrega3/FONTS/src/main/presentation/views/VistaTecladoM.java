@@ -216,7 +216,7 @@ public class VistaTecladoM extends JFrame{
                     JOptionPane.showMessageDialog(VistaTecladoM.this, "Error: Debe seleccionar filas y columnas", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                int opcion = JOptionPane.showConfirmDialog(null, "Está seguro de queSi modifica este teclado, se eliminarán todos los teclados creados a partir de este alfabeto.\n¿Está seguro de que desea continuar?", "Aviso", JOptionPane.YES_NO_OPTION);
+                int opcion = JOptionPane.showConfirmDialog(null, "Si modifica este teclado perderá el teclado anterior.\n¿Está seguro de que desea continuar?", "Aviso", JOptionPane.YES_NO_OPTION);
 
                 // Verificar la respuesta del usuario
                 if (opcion == JOptionPane.YES_OPTION) { // El usuario eligió continuar
