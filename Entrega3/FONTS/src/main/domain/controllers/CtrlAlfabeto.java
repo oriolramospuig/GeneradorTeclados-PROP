@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Este controlador se encarga de gestionar los métodos de añadir, modificar y borrar de conjunto alfabetos y alfabeto
+ * Este controlador se encarga de gestionar los métodos de añadir, consultar, modificar y borrar de conjunto alfabetos y alfabeto
  * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
 public class CtrlAlfabeto
@@ -30,29 +30,46 @@ public class CtrlAlfabeto
     /**
      * Devuelve el contenido del alfabeto con nombre nomA
      * @param nomA clave primaria con la que buscar un alfabeto
-     * @return ArrayList : Lista de caracteres del contenido del alfabeto nomA
+     * @return ArrayList : Lista de caracteres del contenido del alfabeto con nombre nomA
      */
     public ArrayList<Character> getContenido(String nomA){
         return CjtAlfabetos.getAlfabeto(nomA).getLetras();
     }
 
-
+    /**
+     * No devuelve nada.
+     * @param nomA clave primaria (identificador) del alfabeto
+     * @param entradaCaracteres lista de carácteres que forman el nuevo contenido del alfabeto
+     * Llama a la función de modificar alfabeto de Alfabeto, donde se actualiza el contenido de este con el nuevo contenido
+     */
     public void modificarContenido(String nomA, ArrayList<Character> entradaCaracteres) {
         CjtAlfabetos.getAlfabeto(nomA).modificarContenido(entradaCaracteres);
     }
+
     /**
      * No devuelve nada.
-     * @param nomT clave primaria del teclado
      * @param nomA clave primaria del alfabeto
+     * @param nomT clave primaria del teclado
      * Añade el nombre del teclado nomT a la lista de teclados vinculados del alfabeto nomA
      */
     public void agregarTecladoVinculado (String nomA,String nomT){
         CjtAlfabetos.getAlfabeto(nomA).agregarTecladoVinculado(nomT);
     }
+
+    /**
+     * Devuelve la lista de nombres de los teclados vinculados al alfabeto con nombre nomA
+     * @param nomA clave primaria del alfabeto
+     * @return ArrayList<String> : La lista de los nombres de teclados vinculados al alfabeto con nombre nomA
+     */
+    public ArrayList<String> getTecladosVinculadosAlfabeto(String nomA){
+        ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
+        return tVinculados;
+    }
+
     /**
      * No devuelve nada.
-     * @param nomT clave primaria del teclado
      * @param nomA clave primaria del alfabeto
+     * @param nomT clave primaria del teclado
      * Borra el nombre del teclado nomT de la lista de teclados vinculados del alfabeto nomA
      */
     public void borrarTecladoVinculado (String nomA, String nomT){
@@ -71,9 +88,9 @@ public class CtrlAlfabeto
 
     /**
      * Devuelve si se ha creado bien el alfabeto con el nombre nomA
-     * @param entradaCaracteres lista de caracteres del contenido del alfabeto nomA
      * @param nomA nombre (clave única) del alfabeto a agregar
-     * @return boolean : True si el alfabeto ha sido creado correctamente, false si no se ha creado bien
+     * @param entradaCaracteres lista de carácteres que forman el contenido del alfabeto con nombre nomA
+     * @return boolean : True si el alfabeto ha sido agregado correctamente al conjunto de alfabetos, false si no se ha creado bien
      */
     public boolean CrearAlfabeto(String nomA, ArrayList<Character> entradaCaracteres) {
         if (!CjtAlfabetos.existeAlfabeto(nomA)) {
@@ -93,18 +110,9 @@ public class CtrlAlfabeto
     }
 
     /**
-     * Devuelve la lista de nombres de teclados vinculados al alfabeto con nombre nomA
-     * @return ArrayList<String> : La lista de los nombres de teclados vinculados al alfabeto
-     */
-    public ArrayList<String> getTecladosVinculadosAlfabeto(String nomA){
-        ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
-        return tVinculados;
-    }
-
-    /**
-     * No retorna
+     * No devuelve nada
      * @param nomA el nombre del alfabeto a borrar
-     * Borra el alfabeto con nombre nomA
+     * Borra el alfabeto con nombre nomA del conjunto de alfabetos
      */
     public void borrarAlfabeto(String nomA){
         CjtAlfabetos.borrarAlfabeto(nomA);
@@ -112,7 +120,9 @@ public class CtrlAlfabeto
 
     /**
      * Convierte un conjunto de alfabeto en ByteArray con el fin de almacenarlos.
-     * @throws IOException
+     * Esta función utiliza serialización de objetos.
+     * @return ByteArray que representa el conjunto de alfabetos
+     * @throws IOException Si ocurre un error durante la serialización
      */
     public byte[] alfabetosToByteArray() throws IOException {
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
@@ -123,10 +133,10 @@ public class CtrlAlfabeto
     }
 
     /**
-     * Transforma un conjunto de alfabetos para almacenar en un array de bytes al formato original de Alfabeto.
-     * @param bytes
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * Transforma un array de bytes en un conjunto de alfabetos, restaurando su formato original.
+     * @param bytes El array de bytes que representa el conjunto de alfabetos
+     * @throws IOException Si ocurre un error durante la deserialización
+     * @throws ClassNotFoundException Si no se encuentra la clase al deserializar
      */
     public static void byteArrayToAlfabetos(byte[] bytes) throws IOException, ClassNotFoundException {
         ByteArrayInputStream bs = new ByteArrayInputStream(bytes);
