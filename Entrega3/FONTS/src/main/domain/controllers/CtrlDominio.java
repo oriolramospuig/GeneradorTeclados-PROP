@@ -82,7 +82,16 @@ public class CtrlDominio
         return null;
     }
     public void modificarContenidoAlfabeto(String nomA, ArrayList<Character> entrada){
-        ctrlAlfabeto.modificarContenido(nomA, entrada);
+        if (existealfabeto(nomA)) {
+            ctrlAlfabeto.modificarContenido(nomA, entrada);
+            ArrayList<String> tecV = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA).getTecladosVinculados();
+            for (int j = 0; j < tecV.size(); ++j) {
+                Teclado t = ctrlTeclado.getCjtTeclados().getTeclado(tecV.get(j));
+                AsociacionTextos at = ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionTextos(ctrlTeclado.getAsociacion(t.getNombre()));
+                Alfabeto a = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(t.getAlfabetoVinculado());
+                ctrlTeclado.CrearTeclado(t.getNombre(), at, a, t.getDimensiones(), false);
+            }
+        }
     }
     /**
      * Retorna el numero de caracteres que tiene el contenido del alfabeto
