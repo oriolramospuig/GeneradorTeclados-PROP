@@ -39,10 +39,13 @@ public class CtrlDominio
         ctrlPersistencia = new CtrlPersistencia();
         //cargar alfabetos, textos, asociaciones y teclados de capa de persistencia
         String currentDirectory = System.getProperty("user.dir");
-        cargaCnjtAlfabetos(currentDirectory+"\\Entrega3\\data\\Cache\\"+"conjuntoAlfabetos"+"\\");
-        cargaCnjtTextos(currentDirectory+"\\Entrega3\\data\\Cache\\"+"conjuntoTextos"+"\\");
-        cargaCnjtAsociaciones(currentDirectory+"\\Entrega3\\data\\Cache\\"+"conjuntoAsociaciones"+"\\");
-        cargaCnjtTeclados(currentDirectory+"\\Entrega3\\data\\Cache\\"+"conjuntoTeclados"+"\\");
+        File currentDir = new File(currentDirectory);
+        File rootDir = currentDir.getParentFile().getParentFile().getParentFile();
+        String rootPath = rootDir.getAbsolutePath(); // para makefile
+        cargaCnjtAlfabetos(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoAlfabetos"+"//");
+        cargaCnjtTextos(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoTextos"+"//");
+        cargaCnjtAsociaciones(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoAsociaciones"+"//");
+        cargaCnjtTeclados(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoTeclados"+"//");
     }
 
     // ---------- FUNCIONES ALFABETO ----------
