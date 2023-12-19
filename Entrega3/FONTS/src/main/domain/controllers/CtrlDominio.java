@@ -176,7 +176,7 @@ public class CtrlDominio
      * Retorna si el texto nomT ha sido modificado correctamente.
      * @param nomT clave única y nombre del texto a modificar.
      * @param entrada contenido nuevo del texto con nombre nomT.
-     * Modifica el texto con nombre nomT y lo actualiza con el contenido del párametro entrada.
+     * Modifica el texto con nombre nomT y lo actualiza con el contenido del párametro entrada (formato palabras).
      * También actualiza la lista de pares de letras de todas las asociaciones a las que está vinculado este texto.
      * De manera que se eliminan las frecuncias de pares de letras del contenido anterior y se añaden las del contenido nuevo.
      * Además hay que volver a generar los teclados que están vinculados a estas asociaciones que han sido modificadas.
@@ -208,7 +208,7 @@ public class CtrlDominio
      * Retorna si el texto nomT ha sido modificado correctamente.
      * @param nomT clave única y nombre del texto a modificar.
      * @param entrada contenido nuevo del texto con nombre nomT.
-     * Modifica el texto con nombre nomT y lo actualiza con el contenido del párametro entrada.
+     * Modifica el texto con nombre nomT y lo actualiza con el contenido del párametro entrada (formato frecuencias).
      * También actualiza la lista de pares de letras de todas las asociaciones a las que está vinculado este texto.
      * De manera que se eliminan las frecuncias de pares de letras del contenido anterior y se añaden las del contenido nuevo.
      * Además hay que volver a generar los teclados que están vinculados a estas asociaciones que han sido modificadas.
@@ -233,20 +233,21 @@ public class CtrlDominio
         }
         return false;
     }
-    
+
     /**
-     * Retorna si existe el texto con nombre nomT
-     * @param nomT elnombre del texto a buscar
-     * @return Boolean: true si existe el texto con nombre nomT, false si no existe
+     * Retorna si existe el texto con nombre nomT.
+     * @param nomT clave única y nombre del texto a buscar.
+     * @return Boolean: true si existe el texto con nombre nomT, false si no existe.
      */
     public boolean existetexto(String nomT){
         return ctrlTexto.getTextos().existeTexto(nomT);
     }
+
     /**
-     * Retorna si el texto nomT ha sido borrado correctamente
-     * @param nomT el nombre del texto a borrar
-     * Borra el texto con nombre nomT
-     * También se desvincula de las asociaciones en las que estaba
+     * No devuelve nada.
+     * @param nomT clave única y nombre del texto a borrar.
+     * Borra el texto con nombre nomT.
+     * También elimina ese texto de las asociaciones en las que estaba asociado.
      */
     public void borrarTexto(String nomT){
         ArrayList<String> AVinculadas = CtrlTexto.getAsociacionesVinculadasTexto(nomT);
