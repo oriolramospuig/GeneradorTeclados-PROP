@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -80,7 +81,6 @@ public class TestAsociacionTextos {
     }
 
     // ---------- GETTERS ----------
-
     // ---------- SETTERS ----------
     /**
      * - Objetivo de la Prueba:
