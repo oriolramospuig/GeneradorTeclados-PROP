@@ -61,7 +61,7 @@ public class CtrlTecladoQAP {
         if (alg) {
             // List<Integer> sol = new ArrayList<>();
             int [][] tec;
-            QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias, 0);
+            QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias);
             tec = qap.getTeclado();
             char[][] tecl = new char[tec.length][tec[0].length];
             int puntuacion = qap.getGlBound();

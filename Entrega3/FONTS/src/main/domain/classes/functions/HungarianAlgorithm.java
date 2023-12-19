@@ -2,6 +2,12 @@ package main.domain.classes.functions;
 
 import java.util.Arrays;
 
+/**
+ * Implementa el algoritmo húngaro para resolver problemas de asignación.
+ * El algoritmo encuentra la asignación óptima que minimiza el costo total,
+ * dada una matriz de costos de asignación entre teclas y posiciones.
+ * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
+ */
 public class HungarianAlgorithm {
 
     private static final double INF = 1e8; // Un valor muy grande para representar 'infinito'

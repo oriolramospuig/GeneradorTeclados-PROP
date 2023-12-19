@@ -1,12 +1,14 @@
 package main.domain.classes;
 
-import main.domain.classes.functions.QAP;
 import main.domain.classes.types.PairInt;
 
 import java.io.Serializable;
 
 /**
- * Classe que representa un teclado
+ * Representa un teclado en el contexto de un problema de asignación cuadrática (QAP).
+ * Almacena información sobre la configuración y propiedades del teclado, incluyendo su nombre,
+ * dimensiones, contenido, y puntuación asignada según un algoritmo específico.
+ * Esta clase es serializable para facilitar el almacenamiento y recuperación de los teclados.
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class Teclado implements Serializable
@@ -32,10 +34,19 @@ public class Teclado implements Serializable
 
 
     // ---------- CONSTRUCTORAS ----------
-    /** Constructora de la clase Teclado */
+    /**
+     * Constructor de la clase Teclado.
+     * Inicializa un nuevo teclado con las propiedades especificadas.
+     *
+     * @param nombre Nombre del teclado.
+     * @param asociacionTextos Asociación de textos que se relaciona con el teclado.
+     * @param alfabeto Alfabeto utilizado en el teclado.
+     * @param dimensiones Dimensiones del teclado (filas y columnas).
+     * @param contenido Contenido del teclado, representado como un arreglo bidimensional de caracteres.
+     * @param puntuacion Puntuación del teclado calculada por un algoritmo.
+     */
     public Teclado(String nombre, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dimensiones, char[][] contenido, int puntuacion) {
         this.nombre = nombre;
-        // this.algoritmo = algoritmo;
         this.dimensiones = dimensiones;
         this.alfabetoVinculado = alfabeto.getNombre();
         this.asociacionTextosVinculado = asociacionTextos.getNombre();
@@ -47,6 +58,7 @@ public class Teclado implements Serializable
     // ---------- GETTERS --------------
     /**
      * Devuelve el nombre introducido por el usuario
+     *
      * @return String: nombre introducido por el usuario
      */
     public String getNombre() {
@@ -55,6 +67,7 @@ public class Teclado implements Serializable
 
     /**
      * Devuelve la puntuación del teclado
+     *
      * @return int: Puntuación del teclado calculada debido al algoritmo
      */
     public int getPuntuacion() {
@@ -63,6 +76,7 @@ public class Teclado implements Serializable
 
     /**
      * Devuelve las dimensiones del teclado generado
+     *
      * @return PairInt : Dimensiones del teclado generado (filas, columnas)
      */
     public PairInt getDimensiones() {
@@ -74,6 +88,7 @@ public class Teclado implements Serializable
 
     /**
      * Devuelve el alfabeto usado para generar el teclado
+     *
      * @return String : Nombre del alfabeto vinculado al teclado
      */
     public String getAlfabetoVinculado() {
@@ -82,6 +97,7 @@ public class Teclado implements Serializable
 
     /**
      * Devuelve el la asociación de textos usada para generar el teclado
+     *
      * @return String : Nombre de la asociación de textos vinculado al teclado
      */
     public String getAsociacionTextosVinculado() {
@@ -90,6 +106,7 @@ public class Teclado implements Serializable
 
     /**
      * Devuelve el contenido del teclado, mediante la distribución de las letras
+     *
      * @return int[][] : Contenido del teclado
      */
     public char[][] getContenido() {return contenido; }
@@ -98,8 +115,9 @@ public class Teclado implements Serializable
     // ---------- SETTERS ----------
     /**
      * No devuelve nada.
-     * @param puntuacion nueva puntuación del teclado
      * Setea la puntuación con el valor pasado por parámetro puntuación
+     *
+     * @param puntuacion nueva puntuación del teclado
      */
     public void setPuntuacion(int puntuacion) {
         this.puntuacion = puntuacion;
@@ -107,8 +125,9 @@ public class Teclado implements Serializable
 
     /**
      * No devuelve nada.
-     * @param dimensiones dimensiones del teclado
      * Pone las dimensiones pasadas por parámetro dimensiones al teclado
+     *
+     * @param dimensiones dimensiones del teclado
      */
     public void setDimensiones(PairInt dimensiones) {
         this.dimensiones = dimensiones;
@@ -116,8 +135,9 @@ public class Teclado implements Serializable
 
     /**
      * No devuelve nada.
-     * @param nomA nombre del alfabeto a vincular
      * Setea el valor de alfabetoVinculado al nombre del alfabeto pasado por parámetro nomA
+     *
+     * @param nomA nombre del alfabeto a vincular
      */
     public void agregarAlfabetoVinculado(String nomA) {
         alfabetoVinculado = nomA;
@@ -125,9 +145,10 @@ public class Teclado implements Serializable
 
     /**
      * No devuelve nada.
-     * @param nomAT nombre de la asociación de textos a vincular
      * Setea el valor de asociacionTextosVinculado al nombre de la asociación de textos
      * pasada por parámetro nomAT
+     *
+     * @param nomAT nombre de la asociación de textos a vincular
      */
     public void agregarAsociacionTextosVinculado(String nomAT) {
         asociacionTextosVinculado = nomAT;
@@ -137,20 +158,20 @@ public class Teclado implements Serializable
     // ---------- AUXILIARES -----------
     /**
      * No devuelve nada.
-     * @param nomA nombre del alfabeto anterior
      * Desvincula el alfabetoVinculado dejandolo a null
+     *
+     * @param nomA nombre del alfabeto anterior
      */
-    //Segunda entrega
     public void borrarAlfabetoVinculado(String nomA) {
         alfabetoVinculado = null;
     }
 
     /**
      * No devuelve nada.
-     * @param nomAT nombre de la asociación de textos anterior
      * Desvincula la asociacionTextosVinculado dejandola a null
+     *
+     * @param nomAT nombre de la asociación de textos anterior
      */
-    //Segunda entrega
     public void borrarAsociacionTextosVinculados(String nomAT) {
         asociacionTextosVinculado = null;
     }

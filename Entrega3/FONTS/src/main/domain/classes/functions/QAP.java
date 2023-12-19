@@ -1,12 +1,11 @@
 package main.domain.classes.functions;
 
-import main.domain.classes.Alfabeto;
-
 import java.util.*;
 
 /**
- * Clase que a partir de las matrices de frecuencias y de distancias calcula una solución inicial y
- * llama al algoritmo de gilmore-lawler con una cota inicial
+ * Clase que resuelve el problema de asignación cuadrática (QAP) utilizando el algoritmo de Gilmore-Lawler.
+ * Calcula una solución inicial basada en asignaciones aleatorias y luego refina esta solución
+ * utilizando el algoritmo de Gilmore-Lawler con una cota inicial.
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class QAP {
@@ -83,19 +82,24 @@ public class QAP {
                 .toArray(int[][]::new);
     }
 
+    /**
+     * Obtiene el atributo glBound.
+     *
+     * @return glBound.
+     */
     public int getGlBound() {
         return glBound;
     }
 
     /**
-     * Constructor de la clase QAP (Quadratic Assignment Problem).
+     * Constructor que inicializa una instancia de QAP con las dimensiones y matrices especificadas.
      *
-     * @param nf                Número de filas.
-     * @param nc                Número de columnas.
-     * @param matrizFrecuencias Matriz de frecuencias.
-     * @param matrizDistancias  Matriz de distancias.
+     * @param nf Número de filas del teclado.
+     * @param nc Número de columnas del teclado.
+     * @param matrizFrecuencias Matriz de frecuencias de teclas.
+     * @param matrizDistancias Matriz de distancias de teclas.
      */
-    public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias, int alg) {
+    public QAP(int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias) {
         this.filas = nf;
         this.columnas = nc;
         this.n = nf*nc;
@@ -177,7 +181,6 @@ public class QAP {
                         int indice2 = teclado[k][l];
                         int i2 = k*columnas+l;
 
-                        //int distancia = Manhattan.calcularDistancia(i, j, k, l);
                         int distancia = matrizDistancias[i1][i2];
 
                         int frecuencia = matrizFrecuencias[indice1][indice2];

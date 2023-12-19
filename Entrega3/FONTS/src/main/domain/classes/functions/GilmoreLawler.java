@@ -6,9 +6,10 @@ import javax.sound.midi.SysexMessage;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/** Clase que implementa el algoritmo de gilmore-lawler. Recibe las matrices de frecuencias
- * y de distancias y calcula una asignación mediante la cota de gilmore lawler, llamando
- * al algortimo Húngaro
+/**
+ * Implementa el algoritmo de Gilmore-Lawler para resolver problemas de asignación cuadrática (QAP).
+ * Utiliza matrices de frecuencias y distancias para calcular una asignación óptima mediante el uso
+ * de la cota de Gilmore-Lawler y el algoritmo Húngaro.
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class GilmoreLawler
@@ -24,7 +25,9 @@ public class GilmoreLawler
 
     // ---------- CONSTRUCTORAS ----------
 
-    /** Crea una instancia de la clase GilmoreLawler e inicializa las variables como vacías */
+    /**
+     * Constructor por defecto que inicializa una instancia de GilmoreLawler con valores predeterminados.
+     */
     public GilmoreLawler() {
         this.filas = 0;
         this.columnas = 0;
@@ -35,12 +38,13 @@ public class GilmoreLawler
     }
 
     /**
-     * Crea una instancia de la clase GilmoreLawler e inicializa las variables con los parámetros de entrada
-     * @param nf Número de filas
-     * @param nc Número de columans
-     * @param bound Cota
-     * @param mf Matriz de frecuencias
-     * @param md Matriz de distancias
+     * Constructor de la clase que inicializa una instancia con los parámetros dados.
+     *
+     * @param nf Número de filas de las matrices.
+     * @param nc Número de columnas de las matrices.
+     * @param bound Cota inicial para el algoritmo.
+     * @param mf Matriz de frecuencias.
+     * @param md Matriz de distancias.
      */
     public GilmoreLawler (int nf, int nc, int bound, int [][] mf, int [][] md) {
         this.filas = nf;
@@ -56,6 +60,7 @@ public class GilmoreLawler
 
     /**
      * Devuelve el número de filas
+     *
      * @return Integer: número de filas
      */
     public int getFilas() {
@@ -64,6 +69,7 @@ public class GilmoreLawler
 
     /**
      * Devuelve el número de columas
+     *
      * @return Integer: número de columnas
      */
     public int getColumnas() {
@@ -72,6 +78,7 @@ public class GilmoreLawler
 
     /**
      * Devuelve la cota que usamos para hacer la poda del algoritmo en cada momento
+     *
      * @return Integer glBound
      */
     public int getGlBound() {
@@ -80,6 +87,7 @@ public class GilmoreLawler
 
     /**
      * Devuelva la matriz de frecuencias
+     *
      * @return int[][] matrizFrecuencias
      */
     public int[][] getMatrizFrecuencias() {
@@ -88,6 +96,7 @@ public class GilmoreLawler
 
     /**
      * Devuelve la matriz de distancias
+     *
      * @return int[][] matrizDistancias
      */
     public int[][] getMatrizDistancias() {
@@ -97,30 +106,21 @@ public class GilmoreLawler
 
     /**
      * Método para obtener la mejor solución parcial como lista de índices
+     *
      * @return List<Integer> de índices que corresponden a la mejor solución
      */
     public List<Integer> getMejorSolucionParcial() {
         return new ArrayList<>(mejorSolucionParcial); // Devuelve una copia defensiva
     }
 
-    /**
-     *
-     * @param mejorSolucionParcial
-     */
-    public void setMejorSolucionParcial(List<Integer> mejorSolucionParcial) {
-        this.mejorSolucionParcial = mejorSolucionParcial;
-    }
-
     // ---------- FUNCIONES PRINCIPALES ----------
 
     /**
-     * Resuelve utilizando Gilmore-Lawler mediante una búsqueda en profundidad (dfs)
-     * @return La cota inferior gracias al algoritmo
+     * Realiza el cálculo de la asignación óptima utilizando el algoritmo de Gilmore-Lawler.
+     *
+     * @return La cota inferior calculada por el algoritmo.
      */
     public int gilmore_lawler() {
-        System.out.print("Gilmore-Lawler ejecutándose");
-        System.out.println();
-
         List<Integer> ind = new ArrayList<>();
         for (int i = 0; i < matrizFrecuencias.length; ++i) {
             ind.add(i);
@@ -135,19 +135,18 @@ public class GilmoreLawler
         }
         dfs(0, solucionParcial, 0, posicionesNoUsadas, letrasNO); // Empezar DFS con profundidad 0 y cota 0
 
-        System.out.print("Gilmore-Lawler acabado; Cota final = " + glBound);
-        System.out.println();
-        imprimirMejorSolucionParcial();
+        //imprimirMejorSolucionParcial();
         return glBound;
     }
 
     /**
-     * Realiza una búsqueda en profundidad (DFS) para poder encontrar una solución parcial
-     * @param profundidad           Profundidad actual en la búsqueda
-     * @param solucionParcial       Lista que representa la solución parcial actual
-     * @param cotaActual            Cota actual en la búsqueda
-     * @param posNO                 Posiciones no usadas
-     * @param letNO                 Letras no usadas
+     * Realiza una búsqueda en profundidad (DFS) en el árbol de soluciones parciales.
+     *
+     * @param profundidad Profundidad actual en el árbol de búsqueda.
+     * @param solucionParcial Solución parcial actual.
+     * @param cotaActual Cota actual en la búsqueda.
+     * @param posNO Posiciones no utilizadas en la solución parcial.
+     * @param letNO Letras no utilizadas en la solución parcial.
      */
     private void dfs(int profundidad, List<Integer> solucionParcial, int cotaActual, List<Integer> posNO, List<Integer> letNO) {
         if (profundidad == filas * columnas) {
@@ -186,13 +185,10 @@ public class GilmoreLawler
         }
     }
 
-
-    // Método para calcular la cota de una permutación específica
-
     /**
      * Calcula la cota de una permutación utilizando la fórmula de evaluación de Gilmore-Lawler.
      * @param permutacion   La permutación para la cual se calculará la cota.
-     * @return              Cota de la permutación
+     * @return Cota de la permutación
      */
     private int calcularCotaPermutacion(List<Integer> permutacion) {
         int cota = 0;
@@ -215,7 +211,7 @@ public class GilmoreLawler
      * Calcula la cota de una permutación tratando solo los elementos marcados como "usados".
      *
      * @param permutacionActual Permutación para la cual se calculará la cota.
-     * @return                  La cota de la permutación tratando solo los elementos "usados".
+     * @return  La cota de la permutación tratando solo los elementos "usados".
      */
     private int calcularCotaPermutacionAct(List<Integer> permutacionActual) {
         int cota = 0;
@@ -237,6 +233,7 @@ public class GilmoreLawler
 
     /**
      * Calcula la contribución C1 de una solución parcial, considerando posiciones y letras no usadas.
+     *
      * @param solucionParcial   Solución Parcial actual
      * @param posNO             Posiciones no usadas
      * @param letNO             Letras no usadas
@@ -259,6 +256,7 @@ public class GilmoreLawler
 
     /**
      * Calcula la contribución C2 considerando posiciones y letras no usadas.
+     *
      * @param posNO             Posiciones no usadas
      * @param letNO             Letras no usadas
      * @return Matriz que representa la contribucion C2
@@ -315,7 +313,7 @@ public class GilmoreLawler
     }
 
     /**
-     * Imprime por terminal la Mejor Solucion Parcial
+     * Imprime la mejor solución parcial encontrada por el algoritmo.
      */
     public void imprimirMejorSolucionParcial() {
         System.out.print("La mejor solución es: ");

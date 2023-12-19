@@ -9,7 +9,13 @@ import java.util.List;
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class Matrices {
-    /**Genera la matriz de distancias de Manhattan*/
+    /**
+     * Genera una matriz de distancias Manhattan para un conjunto de posiciones.
+     *
+     * @param filas Número de filas de la cuadrícula.
+     * @param columnas Número de columnas de la cuadrícula.
+     * @return Matriz de distancias Manhattan para todas las combinaciones de posiciones en la matriz.
+     */
     public static int[][] generarMatrizDistancias(int filas, int columnas) {
         int[][] md = new int[filas*columnas][filas*columnas];
         for (int i = 0; i < filas; i++) {
@@ -27,8 +33,13 @@ public class Matrices {
     }
 
     /**
-     * Genera matriz de frecuencias, le pasamos la lista de pares de letras con las frecuencias ordenadas
-     * y la lista de teclas.
+     * Genera una matriz de frecuencias a partir de una lista de frecuencias de pares y un mapeo de teclas a índices.
+     *
+     * @param n Número de teclas.
+     * @param frecuenciasPares Lista de pares de letras con sus frecuencias.
+     * @param teclas Lista de teclas.
+     * @param letraAIndice Mapeo de cada letra a su índice correspondiente en la matriz.
+     * @return Matriz de frecuencias basada en las frecuencias de los pares de letras y la disposición de las teclas.
      */
     public static int[][] generarMatrizDeFrecuencias(int n, List<PairFrequency> frecuenciasPares, List<Character> teclas, HashMap<Character, Integer> letraAIndice) {
         // Primero, mapear cada letra a su índice en la matriz del teclado
@@ -63,7 +74,11 @@ public class Matrices {
     }
 
     /**
-     * Función que suma el contenido de dos matrices
+     * Suma dos matrices y devuelve el resultado.
+     *
+     * @param m1 La primera matriz a sumar.
+     * @param m2 La segunda matriz a sumar.
+     * @return Una nueva matriz que es la suma de m1 y m2.
      */
     public static int [][] sumaMatrices(int [][] m1, int [][] m2) {
         int [][] m3 = new int[m1.length][m1.length];
