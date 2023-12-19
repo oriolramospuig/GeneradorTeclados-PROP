@@ -8,11 +8,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Implementación de la clase gestionadora de datos para la clase "Alfabeto", carga/vuelca los alfabetos modificados en cada caso.
+ * Clase que gestiona la carga y guardado de Conjuntos de Alfabetos en formato de bytes.
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public class GestorAlfabeto {
+    /**
+     * Guarda un conjunto de alfabetos representado como un arreglo de bytes en un archivo.
+     * @param bytes arreglo de bytes que representa el conjunto de alfabetos.
+     * @param path ruta del archivo donde se guardará el conjunto de alfabetos.
+     */
     public static void gestorAlfabetos(byte[] bytes, String path) {
-        Path p = Paths.get(path);
         try {
             FileOutputStream outFile = new FileOutputStream(path);
             outFile.write(bytes);
@@ -23,6 +28,11 @@ public class GestorAlfabeto {
         }
     }
 
+    /**
+     * Carga un conjunto de alfabetos desde un archivo y lo devuelve como un arreglo de bytes.
+     * @param path ruta del archivo desde donde se cargará el conjunto de alfabetos.
+     * @return arreglo de bytes que representa el conjunto de alfabetos cargado.
+     */
     public byte[] cargarAlfabetos(String path) {
         byte[] bytes = null;
         try {
@@ -32,6 +42,6 @@ public class GestorAlfabeto {
         } catch (IOException e) {
             System.err.println("[#CARGAR] Error al cargar el conjunto de alfabetos: " + e.getMessage() + "\n" + Arrays.toString(e.getStackTrace()));
         }
-        return  bytes;
+        return bytes;
     }
 }
