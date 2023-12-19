@@ -195,19 +195,30 @@ public class VistaAsociacionTextosM extends JFrame{
                     return;
 
                 } else {
-                    if (!nombreTextoAgregar.isEmpty()) { // se quiere agregar un texto
-                        CtrlPresentacion.agregarTextoAsociacion(nombreAsoc,nombreTextoAgregar);
+                    int opcion = JOptionPane.showConfirmDialog(null, "Si modifica esta asociación, se modificarán todos los teclados creados a partir de esta asociación.\n¿Está seguro de que desea continuar?", "Aviso", JOptionPane.YES_NO_OPTION);
+
+                    // Verificar la respuesta del usuario
+                    if (opcion == JOptionPane.YES_OPTION) { // El usuario eligió continuar
+                        if (!nombreTextoAgregar.isEmpty()) { // se quiere agregar un texto
+                            CtrlPresentacion.agregarTextoAsociacion(nombreAsoc,nombreTextoAgregar);
+                        }
+                        if(!nombreTextoBorrar.isEmpty()){ // se quiere borrar un texto
+                            CtrlPresentacion.borrarTextoAsociacion(nombreAsoc,nombreTextoBorrar);
+                        }
+                        JOptionPane.showMessageDialog(VistaAsociacionTextosM.this, "Asociación modificada con éxito.",
+                                "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        CtrlPresentacion.guardaAsociaciones();
+                        areanomATM.setText("");
+                        areacontenidoATM.setText("");
+                        areanomAgregarATM.setText("");
+                        areanomBorrarATM.setText("");
+                    } else {
+                        // El usuario eligió no continuar
+                        areanomATM.setText("");
+                        areacontenidoATM.setText("");
+                        areanomAgregarATM.setText("");
+                        areanomBorrarATM.setText("");
                     }
-                    if(!nombreTextoBorrar.isEmpty()){ // se quiere borrar un texto
-                        CtrlPresentacion.borrarTextoAsociacion(nombreAsoc,nombreTextoBorrar);
-                    }
-                    JOptionPane.showMessageDialog(VistaAsociacionTextosM.this, "Asociación modificada con éxito.",
-                            "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    CtrlPresentacion.guardaAsociaciones();
-                    areanomATM.setText("");
-                    areacontenidoATM.setText("");
-                    areanomAgregarATM.setText("");
-                    areanomBorrarATM.setText("");
                 }
 
             }
