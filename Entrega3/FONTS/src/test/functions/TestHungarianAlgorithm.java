@@ -13,6 +13,16 @@ import static org.junit.Assert.*;
  * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
  */
 public class TestHungarianAlgorithm {
+    /**
+     * Objeto de la Prueba: Validar la implementación del algoritmo húngaro en la clase HungarianAlgorithm.
+     * Ficheros Necesarios: No se requieren ficheros externos. Los datos de entrada están definidos en la prueba.
+     * Valores Estudiados: Una matriz ejemplo de frecuencias
+     * Operativa:
+     * 1. Se instancia un objeto de la clase HungarianAlgorithm, que presumiblemente contiene la implementación del algoritmo húngaro.
+     * 2. Se llama al método hungarianLeastCost(c1c2) de la instancia creada, pasando la matriz de costos c1c2 como argumento.
+     * 3. El método hungarianLeastCost debería devolver el costo mínimo de asignación según el algoritmo húngaro.
+     * 4. Se utiliza la aserción assertEquals(128, leastCost) para verificar que el costo mínimo obtenido coincide con el valor esperado.
+     */
     @Test
     public void testHungarian() {
         //HungarianAlgorithm hungarianAlgorithm = new HungarianAlgorithm();
@@ -30,6 +40,16 @@ public class TestHungarianAlgorithm {
         assertEquals(128, leastCost);
     }
 
+    /**
+     * Objeto de la Prueba: Validar la implementación del algoritmo húngaro en la clase HungarianAlgorithm.
+     * Ficheros Necesarios: No se requieren ficheros externos. Los datos de entrada están definidos en la prueba.
+     * Valores Estudiados: Una matriz ejemplo de frecuenciasn (diferente al anterior)
+     * Operativa:
+     * 1. Se instancia un objeto de la clase HungarianAlgorithm, que presumiblemente contiene la implementación del algoritmo húngaro.
+     * 2. Se llama al método hungarianLeastCost(c1c2) de la instancia creada, pasando la matriz de costos c1c2 como argumento.
+     * 3. El método hungarianLeastCost debería devolver el costo mínimo de asignación según el algoritmo húngaro.
+     * 4. Se utiliza la aserción assertEquals(128, leastCost) para verificar que el costo mínimo obtenido coincide con el valor esperado.
+     */
     @Test
     public void testHungarian2() {
         //HungarianAlgorithm hungarianAlgorithm = new HungarianAlgorithm();
@@ -47,6 +67,16 @@ public class TestHungarianAlgorithm {
         assertEquals(74, leastCost);
     }
 
+    /**
+     * Objeto de la Prueba: Validar la implementación del algoritmo húngaro en la clase HungarianAlgorithm.
+     * Ficheros Necesarios: No se requieren ficheros externos. Los datos de entrada están definidos en la prueba.
+     * Valores Estudiados: Una matriz ejemplo de frecuencias (diferente a los anteriores)
+     * Operativa:
+     * 1. Se instancia un objeto de la clase HungarianAlgorithm, que presumiblemente contiene la implementación del algoritmo húngaro.
+     * 2. Se llama al método hungarianLeastCost(c1c2) de la instancia creada, pasando la matriz de costos c1c2 como argumento.
+     * 3. El método hungarianLeastCost debería devolver el costo mínimo de asignación según el algoritmo húngaro.
+     * 4. Se utiliza la aserción assertEquals(128, leastCost) para verificar que el costo mínimo obtenido coincide con el valor esperado.
+     */
     @Test
     public void testHungarian3() {
         //HungarianAlgorithm hungarianAlgorithm = new HungarianAlgorithm();
@@ -65,48 +95,4 @@ public class TestHungarianAlgorithm {
         int leastCost = hungarian.hungarianLeastCost(c1c2);
         assertEquals(105, leastCost);
     }
-
-/*
-    @Test
-    public void testNlineas() {
-        HungarianAlgorithm hungarianAlgorithm = new HungarianAlgorithm();
-        int[][] c1c2 = {
-                {0, 0, 0, 0},
-                {0, 2, 2, 2},
-                {0, 1, 3, 3},
-                {0, 0, 0, 0}
-        };
-        HashMap<Integer,Integer> maxsol = new HashMap<>();
-        maxsol.put(0,1);
-        maxsol.put(1,3);
-        maxsol.put(2,2);
-        boolean[] filasCubiertas = new boolean[c1c2.length];
-        boolean[] columnasCubiertas = new boolean[c1c2[0].length];
-        int result = HungarianAlgorithm.calcularlineas(c1c2,maxsol, filasCubiertas, columnasCubiertas);
-        assertEquals(3, result);
-    }
-
-    @Test
-    public void calcularCosto() {
-        HungarianAlgorithm hungarianAlgorithm = new HungarianAlgorithm();
-        int[][] c1c2 = {
-                {21, 34, 31, 43},
-                {20, 35, 32, 44},
-                {20, 34, 33, 45},
-                {21, 34, 31, 43}
-        };
-        int [][] m = {
-                {0, 0, 0, 0},
-                {0, 2, 2, 2},
-                {0, 1, 3, 3},
-                {0, 0, 0, 0}
-        };
-        HashMap<Integer, Integer> asignacio = new HashMap<Integer,Integer>();
-        asignacio.put(0,3);
-        asignacio.put(1,0);
-        asignacio.put(2,1);
-        asignacio.put(3,2);
-        int cost = HungarianAlgorithm.calcularCostoAsignacion(asignacio, c1c2);
-        assertEquals(128, cost);
-    }*/
 }
