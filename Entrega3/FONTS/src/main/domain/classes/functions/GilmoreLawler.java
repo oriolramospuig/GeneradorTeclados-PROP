@@ -315,7 +315,7 @@ public class GilmoreLawler
     /**
      * Imprime la mejor solución parcial encontrada por el algoritmo.
      */
-    public void imprimirMejorSolucionParcial() {
+    /*public void imprimirMejorSolucionParcial() {
         System.out.print("La mejor solución es: ");
         for (int i = 0; i < mejorSolucionParcial.size(); i++) {
             System.out.print(mejorSolucionParcial.get(i) + " ");
@@ -324,7 +324,7 @@ public class GilmoreLawler
                 System.out.println();
             }
         }
-    }
+    }*/
 
     /**
      * Calcula la suma de los valores mínimos en cada fila de una matriz bidimensional.
