@@ -1,5 +1,10 @@
 package main.domain.classes.functions;
 
+import main.domain.classes.Alfabeto;
+import main.domain.classes.AsociacionTextos;
+import main.domain.classes.Teclado;
+import main.domain.classes.types.PairInt;
+
 import java.util.*;
 
 /**
@@ -8,7 +13,7 @@ import java.util.*;
  * utilizando el algoritmo de Gilmore-Lawler con una cota inicial.
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
-public class QAP {
+public class QAP implements Algoritmo {
     private int[][] teclado; // La matriz del teclado
     private int filas;
     private int columnas;
@@ -106,20 +111,6 @@ public class QAP {
 
         this.matrizFrecuencias = matrizFrecuencias;
         this.matrizDistancias = matrizDistancias;
-
-        List<Integer> ind = new ArrayList<>();
-        for (int i = 0; i < nf*nc; ++i) {
-            ind.add(i);
-        }
-
-        int [][] indices = calcularMejorAsignacionAleatoria(ind, 100);
-        this.teclado = indices;
-        this.sol = new ArrayList<>();
-        this.glBound = calculoPuntuacion(indices);
-        imprimirTeclado();
-        System.out.println("Puntuacion inicial = " + glBound);
-
-        calculo();
     }
 
     /**
@@ -225,5 +216,36 @@ public class QAP {
                 teclado[fila][columna] = sol.get(i);
             }
         }
+    }
+
+    @Override
+    public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dim, HashMap<Character, Integer> letraAIndice) {
+        List<Integer> ind = new ArrayList<>();
+        for (int i = 0; i < filas*columnas; ++i) {
+            ind.add(i);
+        }
+
+        int [][] indices = calcularMejorAsignacionAleatoria(ind, 100);
+        this.teclado = indices;
+        this.sol = new ArrayList<>();
+        this.glBound = calculoPuntuacion(indices);
+
+        calculo();
+
+        char[][] tec = new char[teclado.length][teclado[0].length];
+        int puntuacion = getGlBound();
+        for (int i = 0; i < teclado.length; i++) {
+            for (int j = 0; j < teclado[i].length; j++) {
+                for (Map.Entry<Character, Integer> entry : letraAIndice.entrySet()) {
+                    if (entry.getValue().equals(teclado[i][j])) {
+                        tec[i][j] = entry.getKey();
+                        break;
+                    }
+                }
+            }
+        }
+        Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto, dim, tec, puntuacion);
+
+        return teclado;
     }
 }

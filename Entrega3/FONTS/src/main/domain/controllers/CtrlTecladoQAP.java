@@ -53,6 +53,17 @@ public class CtrlTecladoQAP {
         int [][] matrizDistancias = Matrices.generarMatrizDistancias(nf,nc);
 
         if (alg) {
+            QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias);
+            Teclado teclado = qap.crearTeclado(nomT, asociacionTextos, alfabeto, dim, letraAIndice);
+            return teclado;
+        }
+        else {
+            SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing(nf, nc, matrizFrecuencias, matrizDistancias);
+            Teclado teclado = simulatedAnnealing.crearTeclado(nomT, asociacionTextos, alfabeto, dim, letraAIndice);
+            return teclado;
+        }
+/*
+        if (alg) {
             int [][] tec;
             QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias);
             tec = qap.getTeclado();
@@ -102,5 +113,6 @@ public class CtrlTecladoQAP {
         }
         Teclado tecladoSA = new Teclado(nomT, asociacionTextos, alfabeto, dim, contenido, p);
         return tecladoSA;
+ */
     }
 }

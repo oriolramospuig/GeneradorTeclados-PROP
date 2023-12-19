@@ -1,9 +1,11 @@
 package main.domain.classes.functions;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import main.domain.classes.Alfabeto;
+import main.domain.classes.AsociacionTextos;
+import main.domain.classes.Teclado;
+import main.domain.classes.types.PairInt;
+
+import java.util.*;
 
 /**
  * Implementa el algoritmo de recocido simulado (Simulated Annealing) para encontrar una solución aproximada
@@ -11,7 +13,7 @@ import java.util.Random;
  * Este algoritmo utiliza una combinación de búsqueda aleatoria y una heurística de enfriamiento
  * para explorar el espacio de soluciones y encontrar una configuración óptima de teclas.
  */
-public class SimulatedAnnealing {
+public class SimulatedAnnealing implements Algoritmo{
     private static final double TEMPERATURA_INICIAL = 100000;
     private static final double FACTOR_ENFRIAMIENTO = 0.999;
     private static final int MAX_ITERACIONES = 100000;
@@ -49,7 +51,6 @@ public class SimulatedAnnealing {
         SimulatedAnnealing.columnas = columnas;
         SimulatedAnnealing.matrizFrecuencias = mf;
         SimulatedAnnealing.matrizDistancias = md;
-        calculo();
     }
 
     /**
@@ -224,7 +225,6 @@ public class SimulatedAnnealing {
      * @throws IllegalArgumentException Si el número de teclas no coincide con el número de posiciones en el teclado.
      */
     private static int[][] calcularMejorAsignacionAleatoria(List<Integer> teclas, int N) {
-        // System.out.println("La mejor de N asignaciones de las teclas aleatorias: ");
         if (teclas.size() != filas * columnas) {
             throw new IllegalArgumentException("El número de teclas debe coincidir con el número de posiciones en el teclado.");
         }
@@ -268,6 +268,35 @@ public class SimulatedAnnealing {
         int puntFinal = calculoPuntuacion(tecFinal);
         int puntAux = calculoPuntuacion(tecFinalAux); // greedy
         puntuacionFinal = puntFinal;
+    }
+
+    @Override
+    public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dim, HashMap<Character, Integer> letraAIndice) {
+        calculo();
+
+        int paux;
+        for (int i = 1; i < 10; ++i) {
+            SimulatedAnnealing simulatedAnnealing2 = new SimulatedAnnealing(filas, columnas, matrizFrecuencias, matrizDistancias);
+            paux = simulatedAnnealing2.getPuntuacionFinal();
+            if (paux < puntuacionFinal) {
+                puntuacionFinal = paux;
+                tecFinal = simulatedAnnealing2.getTecFinal();
+            }
+        }
+
+        char[][] contenido = new char[tecFinal.length][tecFinal[0].length];
+        for (int i = 0; i < tecFinal.length; i++) {
+            for (int j = 0; j < tecFinal[i].length; j++) {
+                for (Map.Entry<Character, Integer> entry : letraAIndice.entrySet()) {
+                    if (entry.getValue().equals(tecFinal[i][j])) {
+                        contenido[i][j] = entry.getKey();
+                        break;
+                    }
+                }
+            }
+        }
+        Teclado tecladoSA = new Teclado(nomT, asociacionTextos, alfabeto, dim, contenido, puntuacionFinal);
+        return tecladoSA;
     }
 }
 
