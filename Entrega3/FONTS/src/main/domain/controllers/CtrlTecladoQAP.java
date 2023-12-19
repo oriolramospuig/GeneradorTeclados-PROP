@@ -18,30 +18,30 @@ import java.util.Map;
 import static java.lang.Math.sqrt;
 
 /**
- * Este controlador se encarga de crear un teclado
+ * Controlador encargado de crear y configurar teclados utilizando algoritmos de optimización: QAP y Simulated Annealing.
+ * El controlador toma información sobre las letras, sus frecuencias y dimensiones del teclado para generar una configuración óptima.
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class CtrlTecladoQAP {
+    /**
+     * Crea un teclado optimizado basado en la asociación de textos y el alfabeto proporcionado.
+     * Utiliza algoritmos de optimización (QAP o Simulated Annealing) para determinar la disposición óptima de las teclas.
+     *
+     * @param nomT Nombre del teclado a crear.
+     * @param asociacionTextos Asociación de textos que proporciona las frecuencias de las letras.
+     * @param alfabeto Alfabeto que proporciona las letras a incluir en el teclado.
+     * @param dim Dimensiones del teclado.
+     * @param alg Flag booleano para elegir entre QAP (true) o Simulated Annealing (false).
+     * @return Un objeto Teclado configurado óptimamente según el algoritmo seleccionado.
+     */
     public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dim, boolean alg) {
         ArrayList<Character> letras = alfabeto.getLetras();
-        /*for (int i = 0; i < letras.size(); ++i) {
-            System.out.print(letras.get(i) + " ");
-        }*/
 
         int n = letras.size();
         int nf = dim.getPrimero();
         int nc = dim.getSegundo();
 
-        /*HashMap<String, Integer> frecuenciasLetras = asociacionTextos.getFrecuenciaLetras();
-        for (HashMap.Entry<String, Integer> entry : frecuenciasLetras.entrySet()) {
-            System.out.println("HOLA");
-            System.out.print(entry.getKey());
-            System.out.println(entry.getValue());
-        }*/
         ArrayList<PairFrequency> frecuencias = asociacionTextos.getFrecuenciaLetrasArray();
-        /*for (int i = 0; i < frecuencias.size(); ++i) {
-            System.out.print(frecuencias.get(i));
-        }*/
 
         HashMap<Character, Integer> letraAIndice = new HashMap<>();
         for (int i = 0; i < letras.size(); i++) {
@@ -49,17 +49,10 @@ public class CtrlTecladoQAP {
         }
 
         int[][] matrizFrecuencias = Matrices.generarMatrizDeFrecuencias(nf*nc, frecuencias, letras, letraAIndice);;
-        /*for (int i = 0; i < matrizFrecuencias.length; ++i) {
-            for (int j = 0; j < matrizFrecuencias.length; ++j) {
-                System.out.print(matrizFrecuencias[i][j]);
-            }
-            System.out.println();
-        }*/
 
         int [][] matrizDistancias = Matrices.generarMatrizDistancias(nf,nc);
 
         if (alg) {
-            // List<Integer> sol = new ArrayList<>();
             int [][] tec;
             QAP qap = new QAP(nf, nc, matrizFrecuencias, matrizDistancias);
             tec = qap.getTeclado();

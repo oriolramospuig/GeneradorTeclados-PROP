@@ -30,7 +30,7 @@ public class PairFrequency {
 
     /**
      * Devuelve la frecuencia de las letras
-     * @return int: frequencia
+     * @return int: frecuencia
      */
     public int getFrequency() {
         return frequency;
