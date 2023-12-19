@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -80,7 +81,6 @@ public class TestAsociacionTextos {
     }
 
     // ---------- GETTERS ----------
-
     // ---------- SETTERS ----------
     /**
      * - Objetivo de la Prueba:
@@ -159,16 +159,16 @@ public void TestagregarTexto(){
         frecuenciaLetras.put("ab", 2);
         frecuenciaLetras.put("bc", 2);
         AsociacionTextos asociacionTextos = new AsociacionTextos(nombre, frecuenciaLetras);
-
         Frecuencias texto = new Frecuencias("nombre", frecuenciaPalabras, frecuenciaLetras);
-        //asociacionTextos.agregarTexto(texto);
+        HashMap<String, Integer> frecs = asociacionTextos.getFrecuenciaLetras();
+        asociacionTextos.agregarTexto("nombre", frecs);
         List<String> textoAsociados = asociacionTextos.getTextosAsociaciados();
 
         assertEquals(1, textoAsociados.size());
         assertEquals("nombre", textoAsociados.get(0));
         assertEquals(2, frecuenciaLetras.size());
         assertEquals(4, frecuenciaLetras.get("ab").intValue());
-        assertEquals(8, frecuenciaLetras.get("bc").intValue());
+        assertEquals(4, frecuenciaLetras.get("bc").intValue());
     }
 
     // ---------- AUXILIARES ----------
