@@ -107,19 +107,6 @@ public class TestGilmoreLawler {
 
     }
 
-    /*@Test
-    public void testimprimirMejorSolucionParcial() {
-        System.out.println("Test Imprimir Mejor Solucion Parcial");
-        GilmoreLawler gilmoreLawler = new GilmoreLawler();
-        gilmoreLawler.setMejorSolucionParcial(Arrays.asList(1, 2, 3, 4));
-        ByteArrayOutputStream SalidaEstandar = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(SalidaEstandar));
-        gilmoreLawler.imprimirMejorSolucionParcial();
-        System.setOut(System.out);
-
-        assertEquals("La mejor solución parcial es: Posición 0: Tecla a | Posición 1: Tecla b | Posición 2: Tecla c | Posición 3: Tecla d", SalidaEstandar.toString());
-    }*/
-
     /**
      * Objeto de la Prueba: La prueba tiene como objetivo verificar el correcto
      * funcionamiento del método 'minimos' de la clase GilmoreLawler.
