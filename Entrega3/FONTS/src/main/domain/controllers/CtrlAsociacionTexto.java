@@ -8,18 +8,18 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 /**
- * Este controlador se encarga de gestionar los métodos de añadir, consultar modificar y borrar de asociaciones de textos
+ * Este controlador se encarga de gestionar los métodos de añadir, consultar modificar y borrar de asociaciones de textos.
  * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
 public class CtrlAsociacionTexto
 {
     // ---------- PARÁMETROS ----------
-    /** Crea una instancia de conjunto de asociaciones de textos */
+    /** Crea una instancia de conjunto de asociaciones de textos. */
     private static ConjuntoAsociaciones AsociacionesTextos;
 
 
     // ---------- CONSTRUCTORA ----------
-    /** IInicialización de la instancia conjunto de asociaciones de textos */
+    /** IInicialización de la instancia conjunto de asociaciones de textos. */
     public CtrlAsociacionTexto(){
         AsociacionesTextos = new ConjuntoAsociaciones();
     }
@@ -123,7 +123,7 @@ public class CtrlAsociacionTexto
         AsociacionesTextos.borrarAsociacionTextos(nomAT);
     }
 
-    
+
     /**
      * Convierte un conjunto de asociaciones de textos en ByteArray con el fin de almacenarlos.
      * Utiliza la serialización de objetos para convertir el conjunto en un formato que puede ser guardado.

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Este controlador se encarga de gestionar los métodos de añadir, consultar, modificar y borrar de conjunto alfabetos y alfabeto
+ * Este controlador se encarga de gestionar los métodos de añadir, consultar, modificar y borrar de conjunto alfabetos y alfabeto.
  * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
 public class CtrlAlfabeto
