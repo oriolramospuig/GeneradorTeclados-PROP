@@ -256,6 +256,8 @@ public class VistaTecladoA extends JFrame {
                         areaContenidoAsociacionTA.setText("");
                         areaFilasTA.setText("");
                         areaColumnasTA.setText("");
+                        nombresAlfabetosTA.setSelectedItem("");
+                        nombresAsociacionesTA.setSelectedItem("");
                         CtrlPresentacion.guardaTeclados();
                     } else {
                         JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El nombre " + nombreTeclado + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
@@ -284,6 +286,8 @@ public class VistaTecladoA extends JFrame {
                     areaContenidoAlfabetoTA.setText("");
                     posiblesDimensiones.removeAllItems();
                     posiblesDimensiones.addItem("");
+                    areaFilasTA.setText("");
+                    areaColumnasTA.setText("");
                 }
             }
         };
@@ -308,6 +312,9 @@ public class VistaTecladoA extends JFrame {
                     String[] parts = selectedDimension.split("x");
                     areaFilasTA.setText(parts[0]);
                     areaColumnasTA.setText(parts[1]);
+                } else {
+                    areaFilasTA.setText("");
+                    areaColumnasTA.setText("");
                 }
             }
         };

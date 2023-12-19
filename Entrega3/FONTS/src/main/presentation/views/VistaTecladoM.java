@@ -238,6 +238,9 @@ public class VistaTecladoM extends JFrame{
                             areaFilasTM.setText("");
                             areaColumnasTM.setText("");
                             areacontenidoTM.setText("");
+                            nombresAlfabetosTM.setSelectedItem("");
+                            nombresAsociacionesTM.setSelectedItem("");
+                            nombresTM.setSelectedItem("");
                             CtrlPresentacion.guardaTeclados();
                         } else {
                             JOptionPane.showMessageDialog(VistaTecladoM.this, "Error: No se ha podido modificar", "Error", JOptionPane.ERROR_MESSAGE);
@@ -253,6 +256,9 @@ public class VistaTecladoM extends JFrame{
                     areaFilasTM.setText("");
                     areaColumnasTM.setText("");
                     areacontenidoTM.setText("");
+                    nombresAlfabetosTM.setSelectedItem("");
+                    nombresAsociacionesTM.setSelectedItem("");
+                    nombresTM.setSelectedItem("");
                 }
             }
         };

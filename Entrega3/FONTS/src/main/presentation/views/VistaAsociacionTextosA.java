@@ -175,52 +175,13 @@ public class VistaAsociacionTextosA extends JFrame {
                     boolean agregada = CtrlPresentacion.agregarAsociacion(areanomATA.getText(),nombresTextosAgregar);
                     if(agregada) JOptionPane.showMessageDialog(VistaAsociacionTextosA.this, "Agregada con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     else JOptionPane.showMessageDialog(VistaAsociacionTextosA.this, "No Agregada, el nombre " + areanomATA.getText() + " ya existe.", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    areanomATA.setText("");
+                    nombresTxt.setSelectedItem("");
+                    nombresTxtagregados.removeAllItems();
 
                 }
             }
         };
-
-        /*ActionListener lSeleccionarTexto = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (areanomATA.getText().isEmpty()){
-                    JDialog sinNombre =  new JDialog(frame, "Error: No Nombre");
-                    sinNombre.setBounds(800, 300, 400, 200);
-                    sinNombre.setLayout(null);
-
-                    JLabel txtErrorNombre = new JLabel("No hay nombre de asociación donde añadir texto");
-                    txtErrorNombre.setBounds(40, 20, 400, 40);
-                    JButton bSalirErrorNombre = new JButton("Salir");
-                    bSalirErrorNombre.setVisible(true);
-                    bSalirErrorNombre.setBounds(150, 110, 100, 30);
-                    sinNombre.add(txtErrorNombre);
-                    sinNombre.add(bSalirErrorNombre);
-                    sinNombre.setVisible(true);
-
-                    ActionListener lSalirErrorNombre = new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            sinNombre.dispose();
-                            sinNombre.setVisible(false);
-                        }
-                    };
-                    bSalirErrorNombre.addActionListener(lSalirErrorNombre);
-
-                } else {
-                    chooser.setDialogTitle("Selecciona fichero texto a agregar");
-                    chooser.setFileFilter(new FileNameExtensionFilter("PROP", "csv", "prop", "txt"));
-                    /*Revisar el tema del path, depende de cómo se ejecute no hará falta subgrup-prop14.3*/
-                    /*chooser.setCurrentDirectory(new File(System.getProperty("user.dir") + "/Entrega3/data/Textos"));
-                    int returnValue = chooser.showOpenDialog(null);
-                    if (returnValue == JFileChooser.APPROVE_OPTION) {
-                        File archivo = chooser.getSelectedFile();
-                        CtrlPresentacion.agregarTextoAsociacion(areanomATA.getText(), chooser.getName(archivo));
-                        JOptionPane.showMessageDialog(VistaAsociacionTextosA.this, "Agregada con éxito! Ya puede añadir textos.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    } //else if (returnValue == JFileChooser.CANCEL_OPTION)
-                }
-            }
-        };*/
-
 
         ActionListener lSalir = new ActionListener() {
             @Override
