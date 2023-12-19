@@ -105,8 +105,8 @@ public class VistaTextoM extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedName = (String) nombresTxtM.getSelectedItem();
-                String contenido = CtrlPresentacion.consultarContenidoTexto(selectedName);
                 if (selectedName != null && !selectedName.isEmpty()) {
+                    String contenido = CtrlPresentacion.consultarContenidoTexto(selectedName);
                     areanomTxtM.setText(selectedName);
                     areacontenidoTxtM.setText(contenido);
                 } else {

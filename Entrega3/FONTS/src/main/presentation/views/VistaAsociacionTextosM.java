@@ -55,9 +55,7 @@ public class VistaAsociacionTextosM extends JFrame{
 
     public VistaAsociacionTextosM() {
         setBounds(250, 150, 1000, 600);
-        //setExtendedState(Frame.MAXIMIZED_BOTH);
-        //setResizable(true);
-        //setTitle("Funcionalidades alfabeto);
+
         ArrayList<String> nombres = CtrlPresentacion.getNombresAsociaciones();
         nombresATM = new JComboBox<>();
         nombresATM.addItem("");
@@ -129,48 +127,56 @@ public class VistaAsociacionTextosM extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedName = (String) nombresATM.getSelectedItem();
-                ArrayList<String> textos = CtrlPresentacion.consultarCjtTextosAsociacion(selectedName);
                 if (selectedName != null && !selectedName.isEmpty()) {
+                    ArrayList<String> textos = CtrlPresentacion.consultarCjtTextosAsociacion(selectedName);
                     areanomATM.setText(selectedName);
                     StringBuilder contenidoStr = new StringBuilder();
                     for (String texto : textos) {
                         contenidoStr.append(texto).append("\n");
                     }
                     areacontenidoATM.setText(contenidoStr.toString());
+
+                    nombreBorrarATM.removeAllItems();
+                    nombreBorrarATM.addItem("");
+                    for (String nombre : textos) {
+                        nombreBorrarATM.addItem(nombre);
+                    }
+
+                    ArrayList<String> nombresTextosAgregar = CtrlPresentacion.getNombresTextos();
+                    nombreAgregarATM.removeAllItems();
+                    nombreAgregarATM.addItem("");
+                    for (String nombre : nombresTextosAgregar) {
+                        if (!textos.contains(nombre)) nombreAgregarATM.addItem(nombre);
+                    }
                 } else {
                     areanomATM.setText("");
                     areacontenidoATM.setText("");
-                }
-
-                nombreBorrarATM.removeAllItems();
-                nombreBorrarATM.addItem("");
-                for (String nombre : textos) {
-                    nombreBorrarATM.addItem(nombre);
-                }
-
-                ArrayList<String> nombresTextosAgregar = CtrlPresentacion.getNombresTextos();
-                nombreAgregarATM.removeAllItems();
-                nombreAgregarATM.addItem("");
-                for (String nombre : nombresTextosAgregar) {
-                    if (!textos.contains(nombre)) nombreAgregarATM.addItem(nombre);
+                    nombreAgregarATM.removeAllItems();
+                    nombreBorrarATM.removeAllItems();
                 }
             }
         };
+
         ActionListener lElementoSeleccionadoA = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedNameAgregar = (String) nombreAgregarATM.getSelectedItem();
                 if (selectedNameAgregar != null && !selectedNameAgregar.isEmpty()) {
                     areanomAgregarATM.setText(selectedNameAgregar);
+                } else {
+                    areanomAgregarATM.setText("");
                 }
             }
         };
+
         ActionListener lElementoSeleccionadoB = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedNameBorrar = (String) nombreBorrarATM.getSelectedItem();
                 if (selectedNameBorrar != null && !selectedNameBorrar.isEmpty()) {
                     areanomBorrarATM.setText(selectedNameBorrar);
+                } else {
+                    areanomBorrarATM.setText("");
                 }
             }
         };

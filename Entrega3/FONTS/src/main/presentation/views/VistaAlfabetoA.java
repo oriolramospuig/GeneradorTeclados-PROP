@@ -60,9 +60,6 @@ public class VistaAlfabetoA extends JFrame {
     public VistaAlfabetoA(){
 
         setBounds(250, 150, 1000, 600);
-        //setExtendedState(Frame.MAXIMIZED_BOTH);
-        //setResizable(true);
-        //setTitle("Funcionalidades alfabeto);
 
         // Título ventana superior
         tituloVistaAA.setBounds(10, 5, 120, 30);
@@ -81,8 +78,9 @@ public class VistaAlfabetoA extends JFrame {
         add(txtContenidoAA);
 
         // Área texto Contenido
-        areaContenidoAA.setBounds(450,180, 200,60);
-        add(areaContenidoAA);
+        JScrollPane scrollPaneC = new JScrollPane(areaContenidoAA);
+        scrollPaneC.setBounds(450, 180, 200, 60);
+        add(scrollPaneC);
 
         // Texto Path
         txtPathAA.setBounds(250, 280, 200, 20);

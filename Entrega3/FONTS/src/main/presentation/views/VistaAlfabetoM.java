@@ -106,8 +106,8 @@ public class VistaAlfabetoM extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedName = (String) nombresAM.getSelectedItem();
-                ArrayList<Character> contenido = CtrlPresentacion.consultarContenidoAlfabeto(selectedName);
                 if (selectedName != null && !selectedName.isEmpty()) {
+                    ArrayList<Character> contenido = CtrlPresentacion.consultarContenidoAlfabeto(selectedName);
                     areanomAM.setText(selectedName);
                     // Convertir ArrayList<Character> a String
                     StringBuilder contenidoStr = new StringBuilder();

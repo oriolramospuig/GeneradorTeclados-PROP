@@ -92,7 +92,7 @@ public class VistaAlfabetoB extends JFrame{
                 if (selectedName != null && !selectedName.isEmpty()) {
                     areanomAB.setText(selectedName);
                 } else {
-                    areanomAB.setText("");  // Limpiar el área de texto si se selecciona el elemento vacío
+                    areanomAB.setText("");
                 }
             }
         };

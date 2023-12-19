@@ -170,7 +170,6 @@ public class VistaAsociacionTextosA extends JFrame {
                     ArrayList<String> nombresTextosAgregar = new ArrayList<>();
                     for(int i = 0; i < nombresTxtagregados.getItemCount(); ++i){
                         String elemento = (String) nombresTxtagregados.getItemAt(i);
-                        System.out.println(elemento);
                         nombresTextosAgregar.add(elemento);
                     }
                     boolean agregada = CtrlPresentacion.agregarAsociacion(areanomATA.getText(),nombresTextosAgregar);

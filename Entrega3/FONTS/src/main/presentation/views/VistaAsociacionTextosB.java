@@ -30,9 +30,7 @@ public class VistaAsociacionTextosB extends JFrame{
     /** Constructora de la ventana de eliminar asociación */
     public VistaAsociacionTextosB() {
         setBounds(250, 150, 1000, 600);
-        //setExtendedState(Frame.MAXIMIZED_BOTH);
-        //setResizable(true);
-        //setTitle("Funcionalidades texto);
+
         ArrayList<String> nombres = CtrlPresentacion.getNombresAsociaciones();
         nombresATB = new JComboBox<>();
         nombresATB.addItem("");

@@ -45,9 +45,7 @@ public class VistaTextoC extends JFrame {
 
     public VistaTextoC() {
         setBounds(250, 150, 1000, 600);
-        //setExtendedState(Frame.MAXIMIZED_BOTH);
-        //setResizable(true);
-        //setTitle("Funcionalidades alfabeto);
+
         ArrayList<String> nombres = CtrlPresentacion.getNombresTextos();
         nombresTxtC = new JComboBox<>();
         nombresTxtC.addItem("");
@@ -96,8 +94,8 @@ public class VistaTextoC extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedName = (String) nombresTxtC.getSelectedItem();
-                String contenido = CtrlPresentacion.consultarContenidoTexto(selectedName);
                 if (selectedName != null && !selectedName.isEmpty()) {
+                    String contenido = CtrlPresentacion.consultarContenidoTexto(selectedName);
                     areanomTxtC.setText(selectedName);
                     areacontenidoTxtC.setText(contenido);
                 } else {
