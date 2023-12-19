@@ -51,13 +51,6 @@ public class CtrlTeclado
     }
 
     /**
-     * No devuelve nada, manda a introducir las dimensiones escritas en un Teclado (también pedido)
-     */
-    public void setDimensiones(String nomT, PairInt dimensiones) {
-        teclados.getTeclado(nomT).setDimensiones(dimensiones);
-    }
-
-    /**
      * No devuelve nada, manda a vincular un Alfabeto a un Teclado
      */
     public void agregarAlfabetoVinculado(String nomT, String nomA) {
@@ -70,14 +63,6 @@ public class CtrlTeclado
     public void agregarAsociacionTextosVinculado(String nomT, String nomAT) {
         teclados.getTeclado(nomT).agregarAsociacionTextosVinculado(nomAT);
     }
-
-    //Para la segunda entrega
-    /*public void borrarAlfabetoVinculado(String nomT, String nomA) {
-        teclados.getTeclado(nomT).borrarAlfabetoVinculado(nomA);
-    }
-    public void borrarAsociacionTextosVinculados(String nomT, String nomAT) {
-        teclados.getTeclado(nomT).borrarAsociacionTextosVinculados(nomAT);
-    }*/
 
     public ArrayList<PairInt> getPosiblesDimensiones(int n) {
         ArrayList<PairInt> dim = new ArrayList<>();

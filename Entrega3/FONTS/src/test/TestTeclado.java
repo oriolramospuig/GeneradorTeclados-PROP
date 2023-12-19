@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 /**
- * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
+ * Clase de pruebas unitarias para Teclado. Evalúa el correcto funcionamiento de la creación y manipulación de objetos Teclado.
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class TestTeclado {
 
@@ -22,14 +23,12 @@ public class TestTeclado {
      **/
     @Test
     public void TestConstructora() {
-        System.out.println("Test Constructora");
-
-        String nombre = "nombre1";
-
-        AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos1");
+        //System.out.println("Test Constructora");
+        String nombre = "nombreTeclado";
+        AsociacionTextos asociacionTextos = new AsociacionTextos("nombreAsociaciondetextos");
 
         ArrayList<Character> l = new ArrayList<>();
-        Alfabeto alfabeto = new Alfabeto("Alfabeto1", l);
+        Alfabeto alfabeto = new Alfabeto("nombreAlfabeto", l);
 
         PairInt dimensiones = new PairInt(10,20);
         char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
@@ -42,9 +41,10 @@ public class TestTeclado {
         assertEquals(20, teclado.getDimensiones().getSegundo().intValue());
         assertEquals(alfabeto.getNombre(), teclado.getAlfabetoVinculado());
         assertEquals(asociacionTextos.getNombre(), teclado.getAsociacionTextosVinculado());
+        assertEquals(0, teclado.getPuntuacion());
     }
 
-    ///// GETTERS
+    // GETTERS
     /**
      * Objeto de la prueba: Test del método getDimensiones() de la clase Teclado
      * Ficheros de datos necesarios: Datos introducidos manualmente.
@@ -54,7 +54,7 @@ public class TestTeclado {
 
     @Test
     public void testgetDimensiones() {
-        System.out.println("Test get Dimensiones");
+        //System.out.println("Test get Dimensiones");
         String nombre = "nombreTec";
 
         AsociacionTextos asociacionTextos = new AsociacionTextos("AsociaciondetextosTec");
@@ -66,72 +66,11 @@ public class TestTeclado {
         char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
 
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
-        teclado.setDimensiones(dimensiones);
 
         PairInt resultado = teclado.getDimensiones();
 
         assertEquals(5, resultado.getPrimero().intValue());
         assertEquals(10, resultado.getSegundo().intValue());
-    }
-
-    /////SETTERS
-    /**
-     * Objeto de la prueba: Test del método setPuntuacion(float puntuacion) de la clase Teclado
-     * Ficheros de datos necesarios: Datos introducidos manualmente.
-     * Valores estudiados: Estrategia caja gris. Se crea un teclado y una puntuación y se comprueba que se puede añadir la segunda a la primera correctamente
-     * Operativa: Se comprueba que la puntuación insertada es equivalente a la del teclado tras haberle añadido la misma
-     **/
-    @Test
-    public void testSetPuntuacion() {
-        System.out.println("Test set Puntuacion");
-
-        String nombre = "nombre";
-
-        AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
-
-        ArrayList<Character> l = new ArrayList<>();
-        Alfabeto alfabeto = new Alfabeto("Alfabeto", l);
-
-        PairInt dimensiones = new PairInt(5, 10);
-
-        char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
-        int puntuacion = 100;
-
-        teclado.setPuntuacion(puntuacion);
-
-        int punt = teclado.getPuntuacion();
-        assertEquals(100, punt);
-    }
-
-    /**
-     * Objeto de la prueba: Test del método setDimensiones(PairInt Dimensiones) de la clase Teclado
-     * Ficheros de datos necesarios: Datos introducidos manualmente.
-     * Valores estudiados: Estrategia caja gris. Se crea un teclado y unas dimensiones y se comprueba que se puede añadir la segunda a la primera correctamente
-     * Operativa: Se comprueba que las dimensiones insertadas son equivalentes a las del teclado tras haberle añadido las mismas.
-     **/
-    @Test
-    public void testSetDimensiones() {
-        System.out.println("Test set Dimensiones");
-
-        String nombre = "nombre";
-
-        AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
-
-        ArrayList<Character> l = new ArrayList<>();
-        Alfabeto alfabeto = new Alfabeto("Alfabeto", l);
-
-        PairInt dimensiones = new PairInt(10, 20);
-
-        char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
-
-        PairInt dimensiones2 = new PairInt(5, 10);
-
-        teclado.setDimensiones(dimensiones2);
-
-        assertEquals(5, teclado.getDimensiones().getPrimero().intValue());
-        assertEquals(10, teclado.getDimensiones().getSegundo().intValue());
     }
 
     /**
@@ -142,14 +81,13 @@ public class TestTeclado {
      **/
     @Test
     public void testagregarAlfabetovinculado() {
-        System.out.println("Test agregar Alfabeto Vinculado");
+        //System.out.println("Test agregar Alfabeto Vinculado");
+        String nombre = "nombreTecladoTest";
 
-        String nombre = "nombre";
-
-        AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
+        AsociacionTextos asociacionTextos = new AsociacionTextos("nAsociaciondetextos");
 
         ArrayList<Character> l = new ArrayList<>();
-        Alfabeto alfabeto = new Alfabeto("Alfabeto", l);
+        Alfabeto alfabeto = new Alfabeto("nAlfabeto", l);
 
         PairInt dimensiones = new PairInt(5, 10);
 
@@ -160,8 +98,7 @@ public class TestTeclado {
         Alfabeto alfabeto2 = new Alfabeto("nombre2", letras);
 
         teclado.agregarAlfabetoVinculado("nombre2");
-
-        assertEquals("nombre2", teclado.getAlfabetoVinculado());
+        assertEquals(alfabeto2.getNombre(), teclado.getAlfabetoVinculado());
     }
 
     /**
@@ -172,79 +109,23 @@ public class TestTeclado {
      **/
     @Test
     public void testagregarAsociacionTextosVinculado() {
-        System.out.println("Test agregar Asociacion Textos Vinculado");
-
-        String nombre = "nombre";
-
-        AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
-
-        ArrayList<Character> l = new ArrayList<>();
-        Alfabeto alfabeto = new Alfabeto("Alfabeto", l);
-
-        PairInt dimensiones = new PairInt(5, 10);
-
-        char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
-
-        AsociacionTextos asociacionTextos2 = new AsociacionTextos("nombre2");
-
-        teclado.agregarAsociacionTextosVinculado("nombre2");
-
-        assertEquals("nombre2", teclado.getAsociacionTextosVinculado());
-    }
-
-    ///// AUXILIARES
-
-    /**
-     * Objeto de la prueba: Test del método borrarAlfabetoVinculado(String nomA) de la clase Teclado.
-     * Ficheros de datos necesarios: Datos introducidos manualmente.
-     * Valores estudiados: Estrategia de caja gris. Se crea un teclado con su alfabeto ya creado se comprueba que se puede borrar de la misma.
-     * Operativa: Se comprueba que el método borrarAlfabetoVinculado(String nomAT) borra correctamente un String, que corresponde al nombre del alfabeto.
-     */
-    @Test
-    public void testborrarAlfabetoVinculado() {
-        System.out.println("Test Borrar Alfabeto Vinculado");
-
-        String nombre = "nombre";
-
-        AsociacionTextos asociacionTextos = new AsociacionTextos("Asociaciondetextos");
-
-        ArrayList<Character> l = new ArrayList<>();
-        Alfabeto alfabeto = new Alfabeto("Alfabeto", l);
-
-        PairInt dimensiones = new PairInt(5, 10);
-
-        char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
-        Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
-
-        teclado.borrarAlfabetoVinculado("Alfabeto");
-
-        assertNull(teclado.getAlfabetoVinculado());
-    }
-    /**
-     * Objeto de la prueba: Test del método borrarAsociacionTextosVinculado(String nomAT) de la clase Teclado.
-     * Ficheros de datos necesarios: Datos introducidos manualmente.
-     * Valores estudiados: Estrategia de caja gris. Se crea un teclado con su asociaciondeTextos también creada y se comprueba que se puede borrar de la misma.
-     * Operativa: Se comprueba que el método borrarAsociacionTextosVinculado(String nomAT) borra correctamente un String, que corresponde al nombre de una asociación de textos.
-     */
-    @Test
-    public void testborrarAsociacionTextosVinculado() {
-        System.out.println("Test Borrar Asociacion Textos Vinculado");
-
+        //System.out.println("Test agregar Asociacion Textos Vinculado");
         String nombre = "nombreT";
 
-        AsociacionTextos asociacionTextos = new AsociacionTextos("AsociaciondetextosT");
+        AsociacionTextos asociacionTextos = new AsociacionTextos("nomAsociaciondetextos");
 
         ArrayList<Character> l = new ArrayList<>();
-        Alfabeto alfabeto = new Alfabeto("AlfabetoT", l);
+        Alfabeto alfabeto = new Alfabeto("nomAlfabeto", l);
 
-        PairInt dimensiones = new PairInt(10, 20);
+        PairInt dimensiones = new PairInt(5, 10);
+
         char[][] contenido = new char[dimensiones.getPrimero()][dimensiones.getSegundo()];
         Teclado teclado = new Teclado(nombre, asociacionTextos, alfabeto, dimensiones, contenido, 0);
 
-        teclado.borrarAsociacionTextosVinculados("AsociaciondeTextosT");
+        AsociacionTextos asociacionTextos2 = new AsociacionTextos("nombreAT2");
 
-        assertNull(teclado.getAsociacionTextosVinculado());
+        teclado.agregarAsociacionTextosVinculado("nombre2");
+        assertEquals(asociacionTextos2.getNombre(), teclado.getAsociacionTextosVinculado());
     }
 }
 

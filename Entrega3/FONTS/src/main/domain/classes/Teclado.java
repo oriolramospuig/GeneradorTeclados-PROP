@@ -115,26 +115,6 @@ public class Teclado implements Serializable
     // ---------- SETTERS ----------
     /**
      * No devuelve nada.
-     * Setea la puntuación con el valor pasado por parámetro puntuación
-     *
-     * @param puntuacion nueva puntuación del teclado
-     */
-    public void setPuntuacion(int puntuacion) {
-        this.puntuacion = puntuacion;
-    }
-
-    /**
-     * No devuelve nada.
-     * Pone las dimensiones pasadas por parámetro dimensiones al teclado
-     *
-     * @param dimensiones dimensiones del teclado
-     */
-    public void setDimensiones(PairInt dimensiones) {
-        this.dimensiones = dimensiones;
-    }
-
-    /**
-     * No devuelve nada.
      * Setea el valor de alfabetoVinculado al nombre del alfabeto pasado por parámetro nomA
      *
      * @param nomA nombre del alfabeto a vincular
@@ -152,27 +132,5 @@ public class Teclado implements Serializable
      */
     public void agregarAsociacionTextosVinculado(String nomAT) {
         asociacionTextosVinculado = nomAT;
-    }
-
-
-    // ---------- AUXILIARES -----------
-    /**
-     * No devuelve nada.
-     * Desvincula el alfabetoVinculado dejandolo a null
-     *
-     * @param nomA nombre del alfabeto anterior
-     */
-    public void borrarAlfabetoVinculado(String nomA) {
-        alfabetoVinculado = null;
-    }
-
-    /**
-     * No devuelve nada.
-     * Desvincula la asociacionTextosVinculado dejandola a null
-     *
-     * @param nomAT nombre de la asociación de textos anterior
-     */
-    public void borrarAsociacionTextosVinculados(String nomAT) {
-        asociacionTextosVinculado = null;
     }
 }
