@@ -118,7 +118,11 @@ public class CtrlPersistencia {
     }
 
 
-    public ArrayList<Character> leerAlfabetoPath(String nombreAlfabeto, String pathArchivo) throws IOException {
-        return gestorLectura.leerPath(nombreAlfabeto, pathArchivo);
+    public ArrayList<Character> leerArchivoPath(String pathArchivo) throws IOException {
+        return gestorLectura.leerPath(pathArchivo);
+    }
+
+    public String leerTextoPalabrasPath(String pathTexto) throws IOException {
+        return gestorLectura.leerTextoPalabrasPath(pathTexto);
     }
 }
