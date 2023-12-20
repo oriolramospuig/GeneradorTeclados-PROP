@@ -66,6 +66,9 @@ public class TestFrecuencias {
         assertEquals("textoFrecuencias", frecuencias.getNombre());
         assertEquals("hola 1\n", frecuencias.getTexto());
         assertEquals(3, frecuencias.getFrecuenciaLetras().size());
+        assertTrue(frecuencias.getFrecuenciaLetras().containsKey("ho"));
+        assertTrue(frecuencias.getFrecuenciaLetras().containsKey("ol"));
+        assertTrue(frecuencias.getFrecuenciaLetras().containsKey("la"));
         assertTrue(frecuencias.getAsociacionesVinculadas().isEmpty());
     }
 
@@ -87,7 +90,7 @@ public class TestFrecuencias {
     /**
      * Objeto de la prueba: Test del método modificarFrecuencias de la clase Frecuencias.
      * Ficheros de datos necesarios: No se requieren ficheros externos para esta prueba.
-     * Valores estudiados: Estrategia caja gris. Se evalúa que el método modificarFrecuencias, a partir de una instancia de frecuencias ya creada, cambia correctamente el contenido de frecuencias de letras y palabras de esta.
+     * Valores estudiados: Estrategia caja gris. Se evalúa que el método modificarFrecuencias. A partir de una instancia de frecuencias ya creada, se cambia correctamente el contenido de frecuencias de letras y palabras de esta.
      * Operativa: Se crea una instancia de Frecuencias con datos específicos (frecuenciaPalabras_hola y frecuenciaLetras_hola). A partir de esto se llama a la función modificarFrecuencias, pasando nuevos HashMaps (adios) y se comprueba que posteriormente el contenido ha cambiado.
      */
     @Test
