@@ -10,72 +10,78 @@ import java.awt.event.*;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * Constructor de la vista para agregar teclados.
+ * <p>
+ * Inicializa los componentes de la interfaz de usuario y configura el comportamiento de los eventos
+ * para la creación de nuevos teclados. Permite seleccionar entre diferentes alfabetos y asociaciones,
+ * establecer dimensiones personalizadas y elegir el método de generación del teclado (Branch & Bound o Simulated Annealing).
+ */
 public class VistaTecladoA extends JFrame {
-
-    /** Finestra de selecció de l'arxiu que es vol carregar al nostre full de càlcul */
-    JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-    //BOTONES
-    /** Panel donde se incluyen los elementos de la ventana */
+    /** Panel principal que contiene todos los componentes de la interfaz. */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana superior */
+
+    /** Título de la sección para agregar teclados. */
     private final JLabel tituloVistaTA = new JLabel("Agregar teclado");
-    /** Botón para agregar un teclado */
+
+    /** Botón para agregar un teclado mediante el algoritmo Branch & Bound. */
     private final JButton bAgregarTecladoBB = new JButton("Agregar teclado B&B");
-    /** Botón para agregar un teclado */
+
+    /** Botón para agregar un teclado mediante el algoritmo Simulated Annealing. */
     private final JButton bAgregarTecladoSA = new JButton("Agregar teclado SA");
-    /** Botón para agregar un teclado */
-    private final JButton bSeleccionarAlfabeto = new JButton("Selecciona alfabeto");
-    /** Botón para agregar un teclado */
-    private final JButton bSeleccionaAsociacion = new JButton("Selecciona asociación");
-    /** Desplegable con los nombres de los alfabetos*/
+
+    /** Desplegable con los nombres de los alfabetos disponibles. */
     private JComboBox<String> nombresAlfabetosTA = new JComboBox<>();
-    /** Desplegable con los nombres de las asociaciones*/
+
+    /** Desplegable con los nombres de las asociaciones de texto disponibles. */
     private JComboBox<String> nombresAsociacionesTA = new JComboBox<>();
-    /** Desplegable con las posibles dimensiones del teclado*/
+
+    /** Desplegable con las posibles dimensiones para los teclados. */
     private JComboBox<String> posiblesDimensiones = new JComboBox<>();
-    /** Botó de tornar a la pantalla del menú principal */
+
+    /** Botón para regresar a la pantalla del menú principal. */
     private final JButton bsalir = new JButton("Atrás");
 
-
-    //TEXTOS Y AREAS DE TEXTO
-    //VENTANA SUPERIOR
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del teclado */
+    /** Etiqueta para el campo de nombre del teclado. */
     private final JLabel txtNombreTA = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del teclado que se quiere crear */
+
+    /** Campo de texto para introducir el nombre del nuevo teclado. */
     private final JTextArea areanomTA = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el contenido del teclado */
+
+    /** Etiqueta para el campo del nombre del alfabeto. */
     private final JLabel txtNombreAlfabetoTA = new JLabel("ALFABETO:");
-    /** Área de texto para introducir el contenido del teclado que se quiere crear */
+
+    /** Campo de texto para mostrar el alfabeto seleccionado. */
     private final JTextArea areaContenidoAlfabetoTA = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el contenido del teclado */
+
+    /** Etiqueta para el campo del nombre de la asociación de texto. */
     private final JLabel txtNombreAsociacionTA = new JLabel("ASOCIACIÓN:");
-    /** Área de texto para introducir el contenido del teclado que se quiere crear */
+
+    /** Campo de texto para mostrar la asociación de texto seleccionada. */
     private final JTextArea areaContenidoAsociacionTA = new JTextArea();
-    private final JLabel txtDimensionesTA = new JLabel("DIMENSIONES:");
-    /** Área de texto para introducir el contenido del teclado que se quiere crear */
-    private final JTextArea areaDimensionesTA = new JTextArea();
+
+    /** Etiqueta para el campo de número de filas. */
     private final JLabel txtFilasTA = new JLabel("FILAS:");
+
+    /** Campo de texto para introducir el número de filas del teclado. */
     private final JTextField areaFilasTA = new JTextField();
+
+    /** Etiqueta para el campo de número de columnas. */
     private final JLabel txtColumnasTA = new JLabel("COLUMNAS:");
+
+    /** Campo de texto para introducir el número de columnas del teclado. */
     private final JTextField areaColumnasTA = new JTextField();
-    /** Texto explicando el botón de Branch and Bound*/
+
+    /** Etiqueta explicativa para el botón de Branch and Bound. */
     private final JLabel txtbotonBB = new JLabel("Para generar el teclado mediante Branch&Bound");
-    /** Texto explicando el botón de SA*/
+
+    /** Etiqueta explicativa para el botón de Simulated Annealing. */
     private final JLabel txtbotonSA = new JLabel("Para generar el teclado mediante Simulated Annealing");
-
-    //MENSAJES DE ERROR
-    /** Pantalla de error que aparece cuando se quiere crear un teclado sin nombre */
-    private final JFrame Nomframe = new JFrame ("JFrame");
-    /** Pantalla de error que aparece cuando se quiere crear un teclado sin contenido o sin path */
-    private final JFrame CPframe = new JFrame ("JFrame");
-
 
     public VistaTecladoA(){
 
         setBounds(250, 150, 1000, 600);
-        //setExtendedState(Frame.MAXIMIZED_BOTH);
-        //setResizable(true);
-        //setTitle("Funcionalidades teclado);
+
         ArrayList<String> nombres = CtrlPresentacion.getNombresAlfabetos();
         nombresAlfabetosTA = new JComboBox<>();
         nombresAlfabetosTA.addItem("");
@@ -88,28 +94,22 @@ public class VistaTecladoA extends JFrame {
         for (String nombre : nombresAT) {
             nombresAsociacionesTA.addItem(nombre);
         }
-        //ArrayList<PairInt> dim = CtrlPresentacion.getPosiblesDimensiones();
+
         posiblesDimensiones = new JComboBox<>();
         posiblesDimensiones.addItem("");
 
-        // Título ventana superior
         tituloVistaTA.setBounds(10, 5, 120, 30);
         add(tituloVistaTA);
 
-        //VENTANA SUPERIOR
-        // Texto Nombre
         txtNombreTA.setBounds(250, 100, 200, 20);
         add(txtNombreTA);
 
-        // Área texto Nombre
         areanomTA.setBounds(450,100, 200,20);
         add(areanomTA);
 
-        // Texto Contenido
         txtNombreAlfabetoTA.setBounds(250, 140, 200, 20);
         add(txtNombreAlfabetoTA);
 
-        // Área texto Contenido
         areaContenidoAlfabetoTA.setBounds(450,140, 200,20);
         add(areaContenidoAlfabetoTA);
 
@@ -146,14 +146,12 @@ public class VistaTecladoA extends JFrame {
         txtbotonSA.setBounds(650,420, 320, 20);
         add(txtbotonSA);
 
-        // Botón agregar teclado
         bAgregarTecladoBB.setBounds(250, 450, 200, 20);
         add(bAgregarTecladoBB);
 
         bAgregarTecladoSA.setBounds(700, 450, 200, 20);
         add(bAgregarTecladoSA);
 
-        // Botón salir para ir a la pantalla principal
         bsalir.setBounds(800, 500, 100, 20);
         add(bsalir);
 
@@ -196,7 +194,6 @@ public class VistaTecladoA extends JFrame {
                     PairInt dimensiones = new PairInt(filas, columnas);
                     int agregado = CtrlPresentacion.agregarTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, dimensiones, true);
 
-                    // Mensaje de éxito o error
                     if (agregado == 0) {
                         JOptionPane.showMessageDialog(VistaTecladoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                         areanomTA.setText("");
@@ -248,7 +245,6 @@ public class VistaTecladoA extends JFrame {
                     PairInt dimensiones = new PairInt(filas, columnas);
                     int agregado = CtrlPresentacion.agregarTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, dimensiones, false);
 
-                    // Mensaje de éxito o error
                     if (agregado == 0) {
                         JOptionPane.showMessageDialog(VistaTecladoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                         areanomTA.setText("");
@@ -333,7 +329,5 @@ public class VistaTecladoA extends JFrame {
         bAgregarTecladoBB.addActionListener(lAgregarBB);
         bAgregarTecladoSA.addActionListener(lAgregarSA);
         bsalir.addActionListener(lSalir);
-
     }
-
 }
