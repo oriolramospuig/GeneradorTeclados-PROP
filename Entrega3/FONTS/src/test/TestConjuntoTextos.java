@@ -109,6 +109,7 @@ public class TestConjuntoTextos {
      * Ficheros de datos necesarios: No se requieren ficheros externos para esta prueba.
      * Valores estudiados: Estrategia caja negra. Se añaden textos al conjunto y se verifica que se agregan correctamente.
      * Operativa: Se añaden instancias de Palabras y Frecuencias al conjunto. Se verifica que los nombres estén presentes y los textos sean iguales.
+     * También se comprueba que si se intenta añadir un texto que ya existe, no se añade otra vez en el conjunto.
      */
     @Test
     public void TestAgregarTexto(){
@@ -127,6 +128,10 @@ public class TestConjuntoTextos {
         assertEquals(textoFrecuencias, textos.getTexto(nombreFrecuencias));
 
         assertEquals(2, textos.getNombresTextos().size());
+
+        textos.agregarTexto(nombreFrecuencias, textoFrecuencias);
+        assertEquals(2, textos.getNombresTextos().size());
+
     }
 
     /**
@@ -135,6 +140,7 @@ public class TestConjuntoTextos {
      * Valores estudiados: Estrategia caja negra. Se añaden textos al conjunto, se borra un texto y se verifica que se haya eliminado correctamente.
      * Operativa: Se añaden instancias de Palabras y Frecuencias al conjunto. Se verifica que los nombres estén presentes y los textos sean iguales.
      * Luego, se borra un texto y se verifica que el texto se haya eliminado correctamente y los demás textos sigan presentes.
+     * También se comprueba que si se intenta borrar un texto que ya no existe el conjunto se queda igual.
      */
     @Test
     public void TestBorrarTexto() {
@@ -151,7 +157,13 @@ public class TestConjuntoTextos {
 
         assertFalse(textos.existeTexto(nombrePalabras));
         assertNull(textos.getTexto(nombrePalabras));
+        assertTrue(textos.existeTexto(nombreFrecuencias));
+        assertEquals(textoFrecuencias, textos.getTexto(nombreFrecuencias));
 
+        textos.borrarTexto(nombrePalabras);
+
+        assertFalse(textos.existeTexto(nombrePalabras));
+        assertNull(textos.getTexto(nombrePalabras));
         assertTrue(textos.existeTexto(nombreFrecuencias));
         assertEquals(textoFrecuencias, textos.getTexto(nombreFrecuencias));
     }
