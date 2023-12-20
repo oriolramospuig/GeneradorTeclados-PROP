@@ -36,11 +36,6 @@ jarInteractivo:
 	jar cmvf Entrega3/FONTS/src/drivers/Interactivo.mf $(JAR_OUTPUT)DriverInteractivoQAP.jar -C $(CLASS_OUTPUT) .
 	java -jar $(JAR_OUTPUT)DriverInteractivoQAP.jar
 
-jarPersistencia:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT_ALL) Entrega3/FONTS/src/drivers/DriverPersistencia.java
-	jar cmvf Entrega3/FONTS/src/drivers/Persistencia.mf $(JAR_OUTPUT)DriverPersistencia.jar -C $(CLASS_OUTPUT) .
-	java -jar $(JAR_OUTPUT)DriverPersistencia.jar
-
 jarPresentacion:
 	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT_ALL) Entrega3/FONTS/src/drivers/DriverPresentacion.java
 	jar cmvf Entrega3/FONTS/src/drivers/Presentacion.mf $(JAR_OUTPUT)DriverPresentacion.jar -C $(CLASS_OUTPUT) .
@@ -48,9 +43,6 @@ jarPresentacion:
 
 ejecutaDriverInteractivo:
 	java -jar $(JAR_OUTPUT)DriverInteractivoQAP.jar
-
-ejecutaDriverPersistencia:
-	java -jar $(JAR_OUTPUT)DriverPersistencia.jar
 
 ejecutaDriverPresentacion:
 	java -jar $(JAR_OUTPUT)DriverPresentacion.jar
