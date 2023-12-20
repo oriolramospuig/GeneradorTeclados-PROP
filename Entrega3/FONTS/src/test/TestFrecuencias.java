@@ -16,108 +16,91 @@ import java.lang.NegativeArraySizeException;
 import static org.junit.Assert.*;
 
 /**
- * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
+ * Clase de pruebas unitarias para Frecuencias. Evalúa el correcto funcionamiento de la creación y manipulación de objetos Texto de tipo Frecuencias.
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
-public class TestFrecuencias
-{
+public class TestFrecuencias {
+    /** Instancia de la clase Frecuencias utilizada en los casos de prueba. */
     private Frecuencias frecuencias;
 
+    /** Constantes para datos de prueba. */
+    private static final String nombreF = "textoFrecuencias";
+    private static final String texto_hola = "hola";
+    private static final String texto_adios = "adios";
+
+    /** HashMaps para frecuencias de palabras y frecuencias usadas en la prueba. */
+    private static final HashMap<String, Integer> frecuenciaPalabras_hola = new HashMap<>();
+    private static final HashMap<String, Integer> frecuenciaLetras_hola = new HashMap<>();
+    private static final HashMap<String, Integer> frecuenciaPalabras_adios = new HashMap<>();
+    private static final HashMap<String, Integer> frecuenciaLetras_adios = new HashMap<>();
+
+    /**
+     * Inicialización de HashMaps para datos de la prueba.
+     */
     @Before
     public void setUp() {
-        HashMap<String, Integer> frecuenciaPalabras = new HashMap<>();
-        HashMap<String, Integer> frecuenciaLetras = new HashMap<>();
-        frecuencias = new Frecuencias("nombreF", frecuenciaPalabras, frecuenciaLetras);
+        frecuenciaPalabras_hola.put(texto_hola, 1);
+        frecuenciaLetras_hola.put("ho", 1);
+        frecuenciaLetras_hola.put("ol", 1);
+        frecuenciaLetras_hola.put("la", 1);
+
+        frecuenciaPalabras_adios.put(texto_adios, 4);
+        frecuenciaLetras_adios.put("ad", 1);
+        frecuenciaLetras_adios.put("di", 1);
+        frecuenciaLetras_adios.put("io", 1);
+        frecuenciaLetras_adios.put("os", 1);
     }
 
-
-    // ---------- CONSTRUCTORAS ----------
     /**
-     * Objetivo de la Prueba:
-     * La función `TestConstructora` tiene como objetivo verificar el correcto funcionamiento
-     * de la constructora de la clase `Frecuencias`. Se evalúan dos casos:
-     * - Constructora sin parámetros, se espera que los atributos tengan valores predeterminados.
-     * - Constructora con un nombre específico, se espera que el nombre se establezca correctamente.
-     *
-     * Ficheros Necesarios:
-     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
-     * principalmente de la lógica interna de la constructora de la clase `Frecuencias`.
-     *
-     * Valores Estudiados:
-     * Se evalúan los siguientes aspectos:
-     * 1. Constructora sin parámetros: Se verifica que el nombre sea una cadena vacía y que las listas
-     *    de texto, frecuencia de letras y asociaciones vinculadas estén vacías.
-     * 2. Constructora con un nombre específico: Se verifica que el nombre sea el esperado y que las listas
-     *    de texto, frecuencia de letras y asociaciones vinculadas estén vacías.
-     *
-     * Operativa:
-     * Se ejecutan dos casos de prueba:
-     * 1. Constructora sin parámetros.
-     * 2. Constructora con un nombre específico.
+     * Objeto de la prueba: Test de la constructora de Frecuencias.
+     * Ficheros de datos necesarios: No se requieren ficheros externos para esta prueba.
+     * Valores estudiados: Estrategia caja gris. Se define un texto de tipo Frecuencias y se comprueba que se crea correctamente.
+     * Operativa: Creamos un nuevo Texto de tipo Frecuencias con los parámetros nombreF, frecuenciaPalabras_hola y frecuenciaLetras_hola que se han definido previamente. Se comprueba que los valores se introducen adecuadamente.
      */
     @Test
     public void TestConstructora() {
-        System.out.println("Test Constructora Default");
-        assertEquals("", frecuencias.getNombre());
-        assertTrue(frecuencias.getTexto().isEmpty());
-        assertTrue(frecuencias.getFrecuenciaLetras().isEmpty());
-        assertTrue(frecuencias.getAsociacionesVinculadas().isEmpty());
+        //System.out.println("Test Constructora");
 
+        frecuencias = new Frecuencias(nombreF, frecuenciaPalabras_hola, frecuenciaLetras_hola);
 
-        System.out.println("Test Constructora con Nombre");
-        assertEquals("nombreF", frecuencias.getNombre());
-        assertTrue(frecuencias.getTexto().isEmpty());
-        assertTrue(frecuencias.getFrecuenciaLetras().isEmpty());
+        assertEquals("textoFrecuencias", frecuencias.getNombre());
+        assertEquals("hola 1\n", frecuencias.getTexto());
+        assertEquals(3, frecuencias.getFrecuenciaLetras().size());
         assertTrue(frecuencias.getAsociacionesVinculadas().isEmpty());
     }
 
-
-    // ---------- GETTERS ----------
     /**
-     * Objetivo de la Prueba:
-     * La función `TestGetTexto` tiene como objetivo verificar el correcto funcionamiento
-     * del método `getTexto` de la clase `Frecuencias`. Este método debería devolver una
-     * representación de cadena del objeto, que contiene las frecuencias de letras.
-     *
-     * Ficheros Necesarios:
-     * No se mencionan ficheros específicos necesarios para esta prueba. Parece depender
-     * principalmente de la lógica interna del método `getTexto` de la clase `Frecuencias`.
-     *
-     * Valores Estudiados:
-     * Se evalúa el siguiente aspecto:
-     * 1. Se añaden dos frecuencias de letras a la instancia de `Frecuencias`.
-     * 2. Se verifica que la cadena devuelta por el método `getTexto` sea la esperada.
-     *
-     * Operativa:
-     * 1. Se crea una instancia de `Frecuencias`.
-     * 2. Se añaden dos frecuencias de letras mediante el método `anadirFrecuencia`.
-     * 3. Se verifica que la cadena devuelta por el método `getTexto` sea la esperada.
+     * Objeto de la prueba: Test del método getTexto de la clase Frecuencias.
+     * Ficheros de datos necesarios: No se requieren ficheros externos para esta prueba.
+     * Valores estudiados: Estrategia caja gris. Se evalúa que el método getTexto devuelva los textos esperados para instancias de Frecuencias.
+     * Operativa: Se crea una instancia de Frecuencias con datos específicos (frecuenciaPalabras_adios y frecuenciaLetras_adios). Se llama al método getTexto y se verifica que el resultado sea igual a "adios 4\n".
      */
     @Test
     public void TestGetTexto() {
-        System.out.println("Test GetTexto");
+        //System.out.println("Test GetTexto");
 
-        frecuencias.anadirPalabra("AB", 3);
-        frecuencias.anadirPalabra("CD", 7);
+        frecuencias = new Frecuencias(nombreF, frecuenciaPalabras_adios, frecuenciaLetras_adios);
 
-        String textoEjemplo = "AB 3\nCD 7\n";
-        assertEquals(textoEjemplo, frecuencias.getTexto());
-
+        assertEquals("adios 4\n", frecuencias.getTexto());
     }
 
-    // ---------- SETTERS -----------
-    /*@Test
-    public void TestAnadirFrecuencia() {
-        System.out.println("Test AñadirFrecuencia");
+    /**
+     * Objeto de la prueba: Test del método modificarFrecuencias de la clase Frecuencias.
+     * Ficheros de datos necesarios: No se requieren ficheros externos para esta prueba.
+     * Valores estudiados: Estrategia caja gris. Se evalúa que el método modificarFrecuencias, a partir de una instancia de frecuencias ya creada, cambia correctamente el contenido de frecuencias de letras y palabras de esta.
+     * Operativa: Se crea una instancia de Frecuencias con datos específicos (frecuenciaPalabras_hola y frecuenciaLetras_hola). A partir de esto se llama a la función modificarFrecuencias, pasando nuevos HashMaps (adios) y se comprueba que posteriormente el contenido ha cambiado.
+     */
+    @Test
+    public void TestModificarFrecuencias() {
+        //System.out.println("Test modificarFrecuencias");
 
-        frecuencias.anadirFrecuencia("AB", 3);
-        frecuencias.anadirFrecuencia("CD", 1);
+        frecuencias = new Frecuencias(nombreF, frecuenciaPalabras_hola, frecuenciaLetras_hola);
 
-        assertEquals(2, frecuencias.getFrecuenciaLetras().size());
-        assertTrue(frecuencias.getFrecuenciaLetras().containsKey("AB"));
-        assertEquals(3, (int) frecuencias.getFrecuenciaLetras().get("AB"));
-        assertNotEquals(2, (int) frecuencias.getFrecuenciaLetras().get("AB"));
-        assertTrue(frecuencias.getFrecuenciaLetras().containsKey("CD"));
-        assertEquals(1, (int) frecuencias.getFrecuenciaLetras().get("CD"));
-    }*/
+        frecuencias.modificarFrecuencias(frecuenciaPalabras_adios, frecuenciaLetras_adios);
+
+        assertNotEquals("hola 1\n", frecuencias.getTexto());
+        assertEquals("adios 4\n", frecuencias.getTexto());
+        assertNotEquals(3, frecuencias.getFrecuenciaLetras().size());
+        assertEquals(4, frecuencias.getFrecuenciaLetras().size());
+    }
 }

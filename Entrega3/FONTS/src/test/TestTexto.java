@@ -59,7 +59,7 @@ public class TestTexto {
     }
 
     /**
-     * Objeto de la prueba: Test del método getTexto de la clase Texto. Se trata de una función abstracta pero se quiere comprobar que tanto para Palabras como Frecuencias funciona adecuadamente.
+     * Objeto de la prueba: Test del método getTexto de la clase Texto. Se trata de una función abstracta, pero se quiere comprobar que tanto para Palabras como Frecuencias funciona adecuadamente.
      * Ficheros de datos necesarios: No se requieren ficheros externos para esta prueba. Se crean instancias de Palabras y Frecuencias en el método de configuración.
      * Valores estudiados: Estrategia caja gris. Se evalúa que el método getTexto devuelva los textos esperados para instancias de Palabras y Frecuencias.
      * Operativa: Se crea una instancia de Palabras y una de Frecuencias con datos específicos.
@@ -69,7 +69,6 @@ public class TestTexto {
     @Test
     public void TestGetTexto() {
         //System.out.println("Test Get Texto");
-
         //Palabras
         String getTextoPalabras = textoPalabras.getTexto();
         assertEquals(getTextoPalabras, "hola");
@@ -90,7 +89,6 @@ public class TestTexto {
     @Test
     public void TestAgregarAsociacionesVinculadas() {
         //System.out.println("Test Agregar Asociaciones Vinculadas");
-
         String nombreATvinculada1 = "nomAT1";
         String nombreATvinculada2 = "nomAT2";
 
@@ -122,7 +120,6 @@ public class TestTexto {
     @Test
     public void TestBorrarAsociacionesVinculadas() {
         //System.out.println("Test Borrar Asociaciones Vinculadas");
-
         String nombreATvinculada1 = "nomAT1";
         String nombreATvinculada2 = "nomAT2";
 

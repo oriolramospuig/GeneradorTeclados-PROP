@@ -48,16 +48,6 @@ public class Frecuencias extends Texto
 
     // ---------- SETTERS ----------
     /**
-     * No devuelve nada. Añade la palabra con su frecuencia a frecuenciaPalabras.
-     * @param palabra pareja de caracteres del texto.
-     * @param frecuencia frecuencia del par de palabras parejaLetras.
-     *
-     */
-    public void anadirPalabra(String palabra, Integer frecuencia) {
-        frecuenciaPalabras.put(palabra, frecuencia);
-    }
-
-    /**
      * Modifica el contenido del texto en formato frecuencias con unas nuevas frecuencias y letras asociadas al Texto.
      * @param frec nuevo HashMap que representa la frecuencia de palabras asociada al Texto.
      * @param frecLet nuevo HashMap que representa la frecuencia de letras asociada al contenido del Texto.
