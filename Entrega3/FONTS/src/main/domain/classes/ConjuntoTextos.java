@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Clase que representa el conjunto de textos
+ * Clase que representa el conjunto de textos.
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public class ConjuntoTextos implements Serializable
