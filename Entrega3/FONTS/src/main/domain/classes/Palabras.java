@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Clase que representa un Texto del tipo Palabras
+ * Clase que representa un Texto del tipo Palabras.
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public class Palabras extends Texto
