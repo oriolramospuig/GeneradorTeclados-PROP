@@ -136,7 +136,8 @@ public class VistaAlfabetoA extends JFrame {
                 else if (contenidoAlfabeto.isEmpty()) {
                     boolean agregado = false;
                     try {
-                        agregado = CtrlPresentacion.agregarAlfabetoPath(nombreAlfabeto, pathArchivo);
+                        //agregado = CtrlPresentacion.agregarAlfabetoPath(nombreAlfabeto, pathArchivo);
+                        agregado = CtrlDominio.agregarAlfabetoPath(nombreAlfabeto, pathArchivo);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }

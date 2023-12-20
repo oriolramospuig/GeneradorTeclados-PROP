@@ -1,5 +1,6 @@
 package main.domain.classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +9,7 @@ import java.util.Map;
  * Clase que representa un Texto del tipo Palabras.
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
-public class Palabras extends Texto
+public class Palabras extends Texto implements Serializable
 {
     // ---------- ATRIBUTOS ----------
     /** Guarda el conjunto de palabras que conforman el texto. */

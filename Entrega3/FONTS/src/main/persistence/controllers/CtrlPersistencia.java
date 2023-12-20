@@ -1,6 +1,11 @@
 package main.persistence.controllers;
 
+import drivers.InOut;
 import main.persistence.classes.*;
+
+import javax.print.DocFlavor;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Clase que controla la persistencia de conjuntos de alfabetos, textos, asociaciones de textos y teclados. Se encarga de gestionar el almacenamiento de datos.
@@ -19,6 +24,8 @@ public class CtrlPersistencia {
     /** Representa el gestor de persistencia de teclados. */
     private final GestorTeclado gestorTeclado;
 
+    private final GestorLectura gestorLectura;
+
     /**
      * Constructor de la clase CtrlPersistencia.
      * Inicializa los gestores de persistencia para alfabetos, textos, asociaciones de textos y teclados.
@@ -28,6 +35,7 @@ public class CtrlPersistencia {
         gestorTexto = new GestorTexto();
         gestorAsociaciones = new GestorAsociaciones();
         gestorTeclado = new GestorTeclado();
+        gestorLectura = new GestorLectura();
     }
 
     // ---------- FUNCIONES ALFABETOS ----------
@@ -107,5 +115,10 @@ public class CtrlPersistencia {
      */
     public byte[] cargaCnjtTeclados(String path) {
         return gestorTeclado.cargarTeclados(path);
+    }
+
+
+    public ArrayList<Character> leerAlfabetoPath(String nombreAlfabeto, String pathArchivo) throws IOException {
+        return gestorLectura.leerPath(nombreAlfabeto, pathArchivo);
     }
 }
