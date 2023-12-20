@@ -4,8 +4,12 @@ import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class VistaMenuPrincipal extends JFrame {
 
@@ -234,6 +238,12 @@ public class VistaMenuPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //anar al manual
+                try {
+                    Desktop.getDesktop().browse(new URI("https://docs.google.com/document/d/1GirMl8-dtRkkHLaKlB-l_sB1xBtG8kL0/edit?usp=sharing&ouid=101636098388491111189&rtpof=true&sd=true"));
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "No se pudo abrir el manual de usuario.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         };
 
@@ -250,6 +260,7 @@ public class VistaMenuPrincipal extends JFrame {
         bTeclado.addActionListener(e -> popupMenuT.show(bTeclado, 0, bTeclado.getHeight()));
 
         bsalir.addActionListener(salir);
+        manual.addActionListener(lManual);
 
         agregarA.addActionListener(lAgregarA);
         borrarA.addActionListener(lEliminarA);
