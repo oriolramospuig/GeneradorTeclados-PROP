@@ -12,7 +12,12 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
 
 /**
- * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
+ * Clase de pruebas unitarias para {@link ConjuntoTeclados}.
+ * Esta clase contiene varios métodos de prueba unitaria para probar la funcionalidad de la clase ConjuntoTeclados,
+ * incluyendo la adición, obtención, existencia y eliminación de teclados en el conjunto.
+ * Cada método de prueba se enfoca en un aspecto particular del comportamiento esperado de la clase ConjuntoTeclados,
+ * verificando tanto el manejo correcto de casos válidos como la gestión adecuada de casos excepcionales.
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class TestConjuntoTeclados {
     private ConjuntoTeclados teclados;
