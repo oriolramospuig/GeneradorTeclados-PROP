@@ -1,5 +1,6 @@
 package main.domain.classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +9,7 @@ import java.util.Map;
  * Clase que representa un Texto del tipo Frecuencias.
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
-public class Frecuencias extends Texto
+public class Frecuencias extends Texto implements Serializable
 {
     // ---------- ATRIBUTOS ----------
     /** Guarda la lista de palabras que contienen el texto y su frecuencia ("hola", 5). */
