@@ -1,63 +1,59 @@
 # Rutas de los archivos fuente y de salida
-CLASS_INPUT_MAIN = ./main/domain/classes/*.java \
-						./main/domain/classes/functions/*.java \
-						./main/domain/classes/types/*.java \
-						./main/domain/controllers/*.java \
-						./main/presentation/controllers/*.java \
-						./main/presentation/views/*.java \
-						./main/persistence/classes/*.java \
-						./main/persistence/controllers/*.java
-CLASS_INPUT_DRIVER = ./drivers/*.java
-CLASS_INPUT_TESTS = ./test/*.java \
-						./test/functions/*.java \
-						./test/types/*.java
+CLASS_INPUT_MAIN = Entrega3/FONTS/src/main/domain/classes/*.java \
+                   Entrega3/FONTS/src/main/domain/classes/functions/*.java \
+                   Entrega3/FONTS/src/main/domain/classes/types/*.java \
+                   Entrega3/FONTS/src/main/domain/controllers/*.java \
+                   Entrega3/FONTS/src/main/presentation/controllers/*.java \
+                   Entrega3/FONTS/src/main/presentation/views/*.java \
+                   Entrega3/FONTS/src/main/persistence/classes/*.java \
+                   Entrega3/FONTS/src/main/persistence/controllers/*.java
+CLASS_INPUT_DRIVER = Entrega3/FONTS/src/drivers/*.java
+
+CLASS_INPUT_TESTS = Entrega3/FONTS/src/test/*.java \
+                    Entrega3/FONTS/src/test/functions/*.java \
+                    Entrega3/FONTS/src/test/types/*.java
 
 CLASS_INPUT_ALL = $(CLASS_INPUT_MAIN) $(CLASS_INPUT_DRIVER) $(CLASS_INPUT_TESTS)
 
-CLASS_OUTPUT = ../../EXE/
-JAR_OUTPUT = ../../EXE/
+CLASS_OUTPUT = Entrega3/EXE/
+JAR_OUTPUT = Entrega3/EXE/
 
-# Rutas de las bibliotecas de JUnit
-JUNIT_JARS = ../../lib/junit-4.12.jar:../../lib/hamcrest-core-1.3.jar:../../lib/mockito-core-4.9.0.jar
+JUNIT_JARS = Entrega3/lib/junit-4.12.jar:Entrega3/lib/hamcrest-core-1.3.jar:Entrega3/lib/mockito-core-4.9.0.jar
 
 # Regla principal para compilar todo
-all: compile_main compile_driver compile_tests
+all: compile_InOut compile_main compile_driver compile_tests
 
 ejecutable:
 	javac -cp $(JUNIT_JARS) -d $(CLASS_OUTPUT) $(CLASS_INPUT_ALL)
-	jar cmvf ./drivers/Presentacion.mf $(JAR_OUTPUT)PROP14-3.jar -C $(CLASS_OUTPUT) .
+	jar cmvf Entrega3/FONTS/src/drivers/Presentacion.mf $(JAR_OUTPUT)PROP14-3.jar -C $(CLASS_OUTPUT) .
 	java -jar $(JAR_OUTPUT)PROP14-3.jar
 
 ejecuta:
 	java -jar $(JAR_OUTPUT)PROP14-3.jar
 
 jarInteractivo:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverInteractivoQAP.java
-	jar cmvf ./drivers/Interactivo.mf $(JAR_OUTPUT)DriverInteractivoQAP.jar -C $(CLASS_OUTPUT) .
+	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT_ALL) Entrega3/FONTS/src/drivers/DriverInteractivoQAP.java
+	jar cmvf Entrega3/FONTS/src/drivers/Interactivo.mf $(JAR_OUTPUT)DriverInteractivoQAP.jar -C $(CLASS_OUTPUT) .
 	java -jar $(JAR_OUTPUT)DriverInteractivoQAP.jar
 
-jarPersistencia:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverPersistencia.java
-	jar cmvf ./drivers/Persistencia.mf $(JAR_OUTPUT)DriverPersistencia.jar -C $(CLASS_OUTPUT) .
-	java -jar $(JAR_OUTPUT)DriverPersistencia.jar
-
 jarPresentacion:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT) ./drivers/DriverPresentacion.java
-	jar cmvf ./drivers/Presentacion.mf $(JAR_OUTPUT)DriverPresentacion.jar -C $(CLASS_OUTPUT) .
+	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT_ALL) Entrega3/FONTS/src/drivers/DriverPresentacion.java
+	jar cmvf Entrega3/FONTS/src/drivers/Presentacion.mf $(JAR_OUTPUT)DriverPresentacion.jar -C $(CLASS_OUTPUT) .
 	java -jar $(JAR_OUTPUT)DriverPresentacion.jar
 
 ejecutaDriverInteractivo:
 	java -jar $(JAR_OUTPUT)DriverInteractivoQAP.jar
 
-ejecutaDriverPersistencia:
-	java -jar $(JAR_OUTPUT)DriverPersistencia.jar
-
 ejecutaDriverPresentacion:
 	java -jar $(JAR_OUTPUT)DriverPresentacion.jar
 
+# Define la regla para compilar solo la clase InOut
+compile_InOut:
+	javac -cp ".;$(CLASS_OUTPUT);$(JUNIT_JARS)" -d $(CLASS_OUTPUT) Entrega3/FONTS/src/drivers/InOut.java
+
 # Regla para compilar las clases del modelo (Main)
 compile_main:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT_MAIN)
+	javac -cp "$(JUNIT_JARS):$(CLASS_OUTPUT)" -d $(CLASS_OUTPUT) $(CLASS_INPUT_MAIN)
 
 # Regla para compilar los drivers
 compile_driver:
@@ -106,10 +102,10 @@ TestAsociacionTextos: all
 TestAlfabeto: all
 	java -cp $(JUNIT_JARS):$(CLASS_OUTPUT) org.junit.runner.JUnitCore test.TestAlfabeto
 
-# Regla para limpiar los archivos generados
+# Reglas para limpiar los archivos generados
 clean:
 	rm -rf $(CLASS_OUTPUT)*
 
 # Regla para limpiar todo (también elimina EXE)
 distclean: clean
-	rm -rf ../EXE
+	rm -rf Entrega3/EXE
