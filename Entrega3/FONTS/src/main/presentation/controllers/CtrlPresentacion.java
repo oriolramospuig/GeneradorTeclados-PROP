@@ -315,16 +315,6 @@ public class CtrlPresentacion {
 
     //FUNCIONES DE CTRlDOMINIO DE TECLADO
     /**
-     * Retorna si el alfabeto y la asociacion de textos tiene caracteres parecidos y por lo tanto son compatibles
-     * @param alfabeto objeto alfabeto para comparar
-     * @param asociacionTextos objeto asociacion de textos para comparar
-     * @return Boolean: true si el alfabeto y la asociación de textos son comptibles, false si no lo son
-     */
-    public boolean compatibles(Alfabeto alfabeto, AsociacionTextos asociacionTextos){
-        boolean comp = cd.compatibles(alfabeto,asociacionTextos);
-        return comp;
-    }
-    /**
      * Llama a la función agregarTeclado de CtrlDominio
      * @param nomT nombre del teclado a agregar
      * @param nomA nombre del alfabeto a vincular con el teclado nomT

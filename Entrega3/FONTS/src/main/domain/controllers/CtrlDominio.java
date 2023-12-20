@@ -274,10 +274,10 @@ public class CtrlDominio
     // ---------- FUNCIONES ASOCIACION TEXTOS ----------
 
     /**
-     * Retorna si se ha creado bien la asociacion con nombre nomAT
-     * @param nomAT el nombre de la asociacion a agregar
-     * @param textosgregar la lista de nombres de los textos que forman la asociacion
-     * @return Boolean: true si se ha creado bien la asociacion, false si no se ha creado bien
+     * Retorna si se ha creado bien la asociacion con nombre nomAT.
+     * @param nomAT clave única y nombre de la asociacion a agregar.
+     * @param textosgregar la lista de nombres de los textos que hay que agregar a la asociación.
+     * @return Boolean: true si se ha creado bien la asociación, false si no se ha creado bien.
      */
     public boolean agregarAsociacion(String nomAT, ArrayList<String> textosgregar){
         if(!existeasociacion(nomAT)){
@@ -289,10 +289,12 @@ public class CtrlDominio
         }
         return false;
     }
+
     /**
-     * No retorna
-     * @param nomAT nombre de la asociacion donde añadir el texto
-     * @param nomTxt nombre del texto a añadir en la asociacion
+     * No devuelve nada.
+     * @param nomAT clave única y nombre de la asociación donde añadir el texto.
+     * @param nomTxt clave única u nombre del texto a añadir en la asociación.
+     * Agrega el texto con nombre nomTxt a la lista de textos de la asociación con nombre nomAT.
      */
     public void agregarTextoAsociacion (String nomAT, String nomTxt){
 
@@ -300,26 +302,28 @@ public class CtrlDominio
         ctrlAsociacionTexto.agregarTextoAsociacion(nomAT, nomTxt, freqTexto);
         ctrlTexto.agregarAsociacionVinculada(nomTxt,nomAT);
     }
+
     /**
-     * Retorna la lista de nombres de las asociaciones existentes
-     * @return ArrayList<String>: lista de asociaciones existentes ordenada por el nombre de la asociación que es la clave primaria
+     * Retorna la lista de nombres de las asociaciones del conjunto de asociaciones.
+     * @return ArrayList<String>: lista de asociaciones existentes ordenada por el nombre de la asociación que es la clave primaria.
      */
     public ArrayList<String> getNombresAsociaciones(){
         return ctrlAsociacionTexto.getNombresAsociaciones();
     }
 
     /**
-     * Retorna si existe la asociacion con nombre nomAT
-     * @param nomAT nombre de la asociacion a buscar
-     * @return Boolean: true si se ha encontrado la asociacion, false si no se ha encontrado
+     * Retorna si existe la asociacion con nombre nomAT.
+     * @param nomAT clave única y nombre de la asociacion a buscar.
+     * @return Boolean: true si se ha encontrado la asociacion, false si no se ha encontrado.
      */
     public boolean existeasociacion(String nomAT){
         return ctrlAsociacionTexto.getCjtAsociaciones().existeAsociaciondeTextos(nomAT);
     }
+
     /**
-     * Retorna el contenido de l asociación con nomAT
-     * @param nomAT el nombre de la asociación a buscar
-     * @return ArrayList<String>: una lista de los nombres de los textos que forman la asociación con nombre nomAT
+     * Retorna el contenido de la asociación con nomAT.
+     * @param nomAT clave única y nombre de la asociación a buscar.
+     * @return ArrayList<String>: una lista de los nombres de los textos que forman la asociación con nombre nomAT.
      */
     public ArrayList<String> consultarCjtTextosAsociacion(String nomAT){
         if(existeasociacion(nomAT)) {
@@ -328,6 +332,11 @@ public class CtrlDominio
         return null;
     }
 
+    /**
+     * No devuelve nada.
+     * @param nomAT clave única y nombre de la asociación a buscar.
+     * Manda borrar el texto con nombre nomTxt de la lista de textos asociados a la asociación con nombre nomAT.
+     */
     public void borrarTextoAsociacion (String nomAT, String nomTxt){
         HashMap<String, Integer> frecuenciaLetras = ctrlTexto.getTexto(nomTxt).getFrecuenciaLetras();
         ctrlAsociacionTexto.borrarTextoAsociacion(nomAT,nomTxt,frecuenciaLetras);
@@ -335,10 +344,10 @@ public class CtrlDominio
     }
 
     /**
-     * Retorna si la asociación con nombre nomAT ha sido borrada correctamente
-     * @param nomAT el nombre del texto a borrar
-     * Borra el texto con nombre nomT
-     * También se desvincula de las asociaciones en las que estaba
+     * No devuelve nada.
+     * @param nomAT clave única y nombre de la asociación de textos a borrar.
+     * Borra la asociación de textos con nombre nomAT.
+     * También desvincula la asociación borrada de todos los textos que estaban asociados a esta.
      */
     public void borrarAsociacionTextos(String nomAT){
         ArrayList<String> tVinculados = ctrlAsociacionTexto.getTecladosVinculadosAsociacion(nomAT);
@@ -354,47 +363,26 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES TECLADO ----------
-
-    /**
-     * Retorna si el alfabeto y la asociacion de textos tiene caracteres parecidos y por lo tanto son compatibles
-     * @param alfabeto objeto alfabeto para comparar
-     * @param asociacionTextos objeto asociacion de textos para comparar
-     * @return Boolean: true si el alfabeto y la asociación de textos son comptibles, false si no lo son
-     */
-    public boolean compatibles(Alfabeto alfabeto,AsociacionTextos asociacionTextos){
-        HashMap<String,Integer> f = asociacionTextos.getFrecuenciaLetras();
-        ArrayList<Character> a = alfabeto.getLetras();
-        for(HashMap.Entry<String,Integer> e : f.entrySet()){
-            Character c1 = e.getKey().charAt(0);
-            Character c2 = e.getKey().charAt(1);
-            if(!a.contains(c1) || !a.contains(c2)) return false;
-        }
-        return true;
-    }
-
     /**
      * Retorna un valor para comprobar si el teclado ha sido agregado correctamente o ha habido algún fallo
-     * @param nomT nombre del teclado a agregar
-     * @param nomA nombre del alfabeto a vincular con el teclado nomT
-     * @param nomAT nombre de la asociación de textos a vincular con el teclado nomT
+     * @param nomT clave única y nombre del teclado a agregar.
+     * @param nomA clave única y nombre del alfabeto a vincular con el teclado nomT.
+     * @param nomAT clave única y nombre de la asociación de textos a vincular con el teclado nomT.
      * @return Integer: 0 si se ha creado correctamente el teclado,
      * -1 si el nombre nomT ya existe en otro teclado
-     * -2 si el alfabeto y la asociación de textos elegidos no son compatibles
      */
     public int agregarTeclado(String nomT, String nomA, String nomAT, PairInt dimensiones, boolean alg){
         if(ctrlTeclado.existeTeclado(nomT)) return -1;
         
         Alfabeto alfabeto = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA);
         AsociacionTextos asociacionTextos = ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionTextos(nomAT);
-        //if(compatibles(alfabeto,asociacionTextos)) {
-            ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
-            ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomT);
-            ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, dimensiones, alg);
-            ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
-            ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
-            return 0;
-        //}
-        //else return -2;
+        ctrlAlfabeto.agregarTecladoVinculado(nomA, nomT);
+        ctrlAsociacionTexto.agregarTecladoVinculado(nomAT, nomT);
+        ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, dimensiones, alg);
+        ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
+        ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
+        return 0;
+
     }
     /**
      * Retorna el contenido del teclado nomT
