@@ -9,28 +9,29 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Este controlador se encarga de gestionar todos los métodos y distribuir las funciones a los respectivos controladores
+ * Este controlador se encarga de gestionar todos los métodos y distribuir las funciones a los respectivos controladores.
  * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
 public class CtrlDominio
 {
-    /** Crea una instancia del controlador alfabeto */
+    /** Crea una instancia del controlador alfabeto. */
     private CtrlAlfabeto ctrlAlfabeto;
 
-    /** Crea una instancia del controlador texto */
+    /** Crea una instancia del controlador texto. */
     private CtrlTexto ctrlTexto;
 
-    /** Crea una instancia del controlador asociación de texto */
+    /** Crea una instancia del controlador asociación de texto. */
     private CtrlAsociacionTexto ctrlAsociacionTexto;
 
-    /** Crea una instancia del controlador teclado */
+    /** Crea una instancia del controlador teclado. */
     private CtrlTeclado ctrlTeclado;
 
+    /** Crea una instancia del controlador de persistencia. */
     private final CtrlPersistencia ctrlPersistencia;
 
 
     // ---------- CONSTRUCTORAS ----------
-    /** Inicialización de la instancia controlador dominio */
+    /** Inicialización de la instancia controlador dominio. */
     public CtrlDominio() {
         ctrlAlfabeto = new CtrlAlfabeto();
         ctrlTexto = new CtrlTexto();
@@ -50,33 +51,36 @@ public class CtrlDominio
 
     // ---------- FUNCIONES ALFABETO ----------
     /**
-     * Retorna si se ha creado bien el alfabeto con el nombre y el contenido dados
-     * @param nomA nombre alfabeto a crear
-     * @param entradaCaracteres lista de caracteres del contenido del alfabeto
-     * @return Boolean: true si se ha creado bien el alfabeto, false si no se ha creado bien
+     * Retorna si se ha creado bien el alfabeto con el nombre y el contenido dados.
+     * @param nomA clave única y nombre del alfabeto a agregar.
+     * @param entradaCaracteres lista de carácteres que forman el contenido del alfabeto.
+     * @return Boolean: true si se ha agregado bien el alfabeto, false si no se ha agregado bien.
      */
     public boolean agregarAlfabeto(String nomA, ArrayList<Character> entradaCaracteres){
         return ctrlAlfabeto.CrearAlfabeto(nomA,entradaCaracteres);
     }
+
     /**
-     * Retorna la lista de nombres de los alfabetos existentes
-     * @return ArrayList<String>: lista de alfabetos existentes ordenada por el nombre de alfabeto que es la clave primaria
+     * Retorna la lista de nombres de los alfabetos existentes en el conjunto.
+     * @return ArrayList<String>: lista de nombres de los alfabetos existentes ordenada por el nombre de alfabeto que es la clave única.
      */
     public ArrayList<String> getNombresAlfabetos(){
         return ctrlAlfabeto.getNombresAlfabetos();
     }
+
     /**
-     * Retorna si existe el alfabeto con nomA
-     * @param nomA el nombre del alfabeto a buscar
-     * @return Boolean: true si existe el alfabeto con nomA, false si no existe
+     * Retorna si existe el alfabeto con nombre nomA.
+     * @param nomA clave única y nombre del alfabeto a buscar.
+     * @return Boolean: true si existe el alfabeto con nomA, false si no existe.
      */
     public boolean existealfabeto(String nomA){
         return ctrlAlfabeto.getCjtAlfabetos().existeAlfabeto(nomA);
     }
+
     /**
-     * Retorna el contenido del alfabeto con nomA
-     * @param nomA el nombre del alfabeto a buscar
-     * @return ArrayList<Character>: una lista de caracteres del contenido del alfabeto con nombre nomA
+     * Retorna el contenido del alfabeto con nomA.
+     * @param nomA clave única y nombre del alfabeto a buscar.
+     * @return ArrayList<Character>: una lista de carácteres que forma el contenido del alfabeto con nombre nomA.
      */
     public ArrayList<Character> consultarContenidoAlfabeto(String nomA){
         if(existealfabeto(nomA)) {
@@ -84,6 +88,13 @@ public class CtrlDominio
         }
         return null;
     }
+
+    /**
+     * No devuelve nada.
+     * @param nomA clave única y nombre del alfabeto a borrar.
+     * @param entrada lista de carácteres que forman el nuevo contenido del alfabeto con nomA.
+     * Modifica el contenido del alfabeto con nombre nomA actualizando la lista de carácteres con la nueva lista que ha entrado el usuario.
+     */
     public void modificarContenidoAlfabeto(String nomA, ArrayList<Character> entrada){
         if (existealfabeto(nomA)) {
             ctrlAlfabeto.modificarContenido(nomA, entrada);
@@ -96,20 +107,22 @@ public class CtrlDominio
             }
         }
     }
+
     /**
-     * Retorna el numero de caracteres que tiene el contenido del alfabeto
-     * @param nomA el nombre del alfabeto a buscar
-     * @return int: el numero de caracteres que tiene el contenido del alfabeto con nombre nomA
+     * Retorna el número de carácteres que tiene el contenido del alfabeto.
+     * @param nomA clave única y nombre del alfabeto a buscar.
+     * @return int: el número de carácteres que tiene el contenido del alfabeto con nombre nomA.
      */
     public int numeroCaracteres(String nomA) {
         return ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA).getLetras().size();
     }
+
     /**
-     * No retorna
-     * @param nomA el nombre del alfabeto a borrar
-     * Borra el alfabeto con nombre nomA
-     * También borra en cascada los teclados que tenia vinculados
-     * Y desvincula las asociaciones de textos vinculadas a estos teclados borrados
+     * No devuelve nada.
+     * @param nomA clave única y nombre del alfabeto a borrar.
+     * Borra el alfabeto con nombre nomA.
+     * También borra en cascada los teclados que tenia vinculados.
+     * Y desvincula las asociaciones de textos vinculadas a estos teclados borrados.
      */
     public void borrarAlfabeto(String nomA){
         ArrayList<String> tVinculados = ctrlAlfabeto.getTecladosVinculadosAlfabeto(nomA);
@@ -126,50 +139,60 @@ public class CtrlDominio
 
     // ---------- FUNCIONES TEXTO ----------
     /**
-     * Retorna si se el texto es de palabras o frecuencias
-     * @param nomT nombre del texto a crear
-     * @return Boolean: true si es palabras, false si es frecuencias
+     * Retorna si el texto es de palabras o frecuencias.
+     * @param nomT clave única y nombre del texto a crear.
+     * @return Boolean: true si es palabras, false si es frecuencias.
      */
     public boolean esTextoPalabras(String nomT){
         return ctrlTexto.esTextoPalabras(nomT);
     }
 
     /**
-     * Retorna si se ha creado bien el texto
-     * @param nomT nombre del texto a crear
-     * @param texto contenido del texto
-     * @return Boolean: true si se ha agregado bien el texto, false si no se ha creado bien
+     * Retorna si se ha agregado bien el texto(formato palabras).
+     * @param nomT clave única y nombre del texto a crear.
+     * @param texto contenido del texto (formato palabras).
+     * @return Boolean: true si se ha agregado bien el texto, false si no se ha creado bien.
      */
     public boolean agregarTextoPalabras(String nomT, String texto){
         return ctrlTexto.agregarTextoPalabras(nomT,texto);
     }
 
     /**
-     * Retorna si se ha creado bien el texto
-     * @param nomT nombre del texto a crear
-     * @param frecuenciaPalabras contenido del texto
-     * @return Boolean: true si se ha agregado bien el texto, false si no se ha creado bien
+     * Retorna si se ha creado bien el texto (formato frecuencias).
+     * @param nomT clave única y nombre del texto a crear.
+     * @param frecuenciaPalabras contenido del texto (formato frecuencias).
+     * @return Boolean: true si se ha agregado bien el texto, false si no se ha creado bien.
      */
     public boolean agregarTextoFrecuencias(String nomT, HashMap<String,Integer> frecuenciaPalabras){
         return ctrlTexto.agregarTextoFrecuencias(nomT,frecuenciaPalabras);
     }
+
     /**
-     * Retorna la lista de nombres de los textos existentes
-     * @return ArrayList<String>: lista de textos existentes ordenada por el nombre de texto que es la clave primaria
+     * Retorna la lista de nombres de los textos existentes en el conjunto de textos.
+     * @return ArrayList<String>: lista de textos existentes ordenada por el nombre de texto que es la clave primaria.
      */
     public ArrayList<String> getNombresTextos(){
         return ctrlTexto.getNombresTextos();
     }
 
     /**
-     * Retorna el contenido del texto con nombre nomT
-     * @param nomT el nombre del texto a buscar
-     * @return String: contenido del texto con nombre nomT
+     * Retorna el contenido del texto con nombre nomT.
+     * @param nomT clave única y nombre del texto a buscar.
+     * @return String: contenido del texto con nombre nomT.
      */
     public String consultarContenidoTexto(String nomT){
         return ctrlTexto.getContenido(nomT);
     }
 
+    /**
+     * Retorna si el texto nomT ha sido modificado correctamente.
+     * @param nomT clave única y nombre del texto a modificar.
+     * @param entrada contenido nuevo del texto con nombre nomT.
+     * Modifica el texto con nombre nomT y lo actualiza con el contenido del párametro entrada (formato palabras).
+     * También actualiza la lista de pares de letras de todas las asociaciones a las que está vinculado este texto.
+     * De manera que se eliminan las frecuncias de pares de letras del contenido anterior y se añaden las del contenido nuevo.
+     * Además hay que volver a generar los teclados que están vinculados a estas asociaciones que han sido modificadas.
+     */
     public boolean modificarContenidoTexto(String nomT, String entrada){
         if(existetexto(nomT)) {
             String contenidoAntiguo = ctrlTexto.getContenido(nomT);
@@ -193,6 +216,15 @@ public class CtrlDominio
         return false;
     }
 
+    /**
+     * Retorna si el texto nomT ha sido modificado correctamente.
+     * @param nomT clave única y nombre del texto a modificar.
+     * @param entrada contenido nuevo del texto con nombre nomT.
+     * Modifica el texto con nombre nomT y lo actualiza con el contenido del párametro entrada (formato frecuencias).
+     * También actualiza la lista de pares de letras de todas las asociaciones a las que está vinculado este texto.
+     * De manera que se eliminan las frecuncias de pares de letras del contenido anterior y se añaden las del contenido nuevo.
+     * Además hay que volver a generar los teclados que están vinculados a estas asociaciones que han sido modificadas.
+     */
     public boolean modificarContenidoTextoFrec(String nomT, HashMap<String, Integer> entrada){
         if(existetexto(nomT)) {
             HashMap<String, Integer> frecAntiguas = ctrlTexto.getTexto(nomT).getFrecuenciaLetras();
@@ -213,19 +245,21 @@ public class CtrlDominio
         }
         return false;
     }
+
     /**
-     * Retorna si existe el texto con nombre nomT
-     * @param nomT elnombre del texto a buscar
-     * @return Boolean: true si existe el texto con nombre nomT, false si no existe
+     * Retorna si existe el texto con nombre nomT.
+     * @param nomT clave única y nombre del texto a buscar.
+     * @return Boolean: true si existe el texto con nombre nomT, false si no existe.
      */
     public boolean existetexto(String nomT){
         return ctrlTexto.getTextos().existeTexto(nomT);
     }
+
     /**
-     * Retorna si el texto nomT ha sido borrado correctamente
-     * @param nomT el nombre del texto a borrar
-     * Borra el texto con nombre nomT
-     * También se desvincula de las asociaciones en las que estaba
+     * No devuelve nada.
+     * @param nomT clave única y nombre del texto a borrar.
+     * Borra el texto con nombre nomT.
+     * También elimina ese texto de las asociaciones en las que estaba asociado.
      */
     public void borrarTexto(String nomT){
         ArrayList<String> AVinculadas = CtrlTexto.getAsociacionesVinculadasTexto(nomT);

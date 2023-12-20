@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Alfabeto implements Serializable
 {
     // ---------- ATRIBUTOS ----------
-    /** Nombre del alfabeto (clave única) */
+    /** Nombre del alfabeto (clave única e identificador del objeto) */
     private String nombre;
 
     /** Contenido del afabeto */
@@ -24,9 +24,7 @@ public class Alfabeto implements Serializable
 
     // ---------- CONSTRUCTORES ----------
 
-    /**
-     * Constructora de alfabeto vacío
-     */
+    /** Constructora de alfabeto vacío */
     public Alfabeto() {
         this.nombre = new String();
         this.letras = new ArrayList<>();
@@ -46,7 +44,7 @@ public class Alfabeto implements Serializable
 
     // ---------- GETTERS ----------
     /**
-     * Devuelve el nombre del alfabeto
+     * Devuelve el nombre del alfabeto (es el identificador)
      * @return String : Nombre alfabeto
      */
     public String getNombre() {
@@ -55,7 +53,7 @@ public class Alfabeto implements Serializable
 
     /**
      * Devuelve el contenido del alfabeto
-     * @return ArrayList<Character> : Contenido del alfabeto usado por las funciones
+     * @return ArrayList<Character> : Lista de carácteres que forma el contenido del alfabeto
      */
     public ArrayList<Character> getLetras() {
         return letras;
@@ -80,6 +78,11 @@ public class Alfabeto implements Serializable
         tecladosVinculados.add(nomT);
     }
 
+    /**
+     * No devuelve nada.
+     * @param entradaCaracteres lista de los nuevos carácteres del alfabeto
+     * Modifica la lista de carácteres que forma el contenido del alfabeto, cambia la antigua lista por la nueva que ha modificado el usuario
+     */
     public void modificarContenido(ArrayList<Character> entradaCaracteres){
         letras = entradaCaracteres;
     }
