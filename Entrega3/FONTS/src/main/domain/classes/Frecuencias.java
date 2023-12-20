@@ -3,7 +3,6 @@ package main.domain.classes;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Clase que representa un Texto del tipo Frecuencias.
