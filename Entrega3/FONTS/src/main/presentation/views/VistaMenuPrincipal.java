@@ -48,6 +48,7 @@ public class VistaMenuPrincipal extends JFrame {
     private JButton bTexto = new JButton("Texto");
     private JButton bAsociacion = new JButton("Asociación de Textos");
     private JButton bTeclado = new JButton("Teclado");
+    private JButton manual = new JButton("Manual de usuario");
 
     public VistaMenuPrincipal() {
         setBounds(250, 150, 1000, 600);
@@ -75,16 +76,18 @@ public class VistaMenuPrincipal extends JFrame {
         popupMenuT.add(modificarT);
 
         // Configurar botones y sus posiciones
-        bAlfabeto.setBounds(400, 100, 200, 20);
-        bTexto.setBounds(400, 200, 200, 20);
-        bAsociacion.setBounds(400, 300, 200, 20);
-        bTeclado.setBounds(400, 400, 200, 20);
+        bAlfabeto.setBounds(400, 50, 200, 20);
+        bTexto.setBounds(400, 150, 200, 20);
+        bAsociacion.setBounds(400, 250, 200, 20);
+        bTeclado.setBounds(400, 350, 200, 20);
+        manual.setBounds(400, 450, 200, 20);
 
         // Añadir botones a la ventana
         add(bAlfabeto);
         add(bTexto);
         add(bAsociacion);
         add(bTeclado);
+        add(manual);
 
         // Título de la ventana
         tituloVista.setBounds(40, 20, 200, 30);
@@ -224,6 +227,13 @@ public class VistaMenuPrincipal extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 CtrlPresentacion.vistaTecladoM();
                 setVisible(false);
+            }
+        };
+
+        ActionListener lManual = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //anar al manual
             }
         };
 
