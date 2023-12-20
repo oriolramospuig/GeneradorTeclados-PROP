@@ -13,56 +13,66 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Aquesta vista s’encarrega de carregar un fitxer guardat a l’ordinador i obrir-lo. La vista obre l’explorador d’arxius
- * on es podran seleccionar únicament fitxers que el nostre sistema és capaç d’obrir. Es proporciona un botó de
- * cancel·lar que tornarà a la VistaMenuPrincipal i un botó d’obrir que farà que s’obri a la VistaSpreadsheet el fitxer
- * seleccionat.
- * @author Marc Clapés Marana (marc.clapes.marana@estudiantat.upc.edu)
+ * Vista de la interfaz de usuario para la modificación de teclados.
+ * Esta vista permite al usuario modificar teclados existentes en el sistema. Proporciona una interfaz gráfica
+ * para seleccionar un teclado existente, visualizar y editar sus detalles, como el nombre, el alfabeto asociado,
+ * la asociación de textos, y las dimensiones del teclado.
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
-public class VistaTecladoM extends JFrame{
+public class VistaTecladoM extends JFrame {
     //BOTONES
-    /** Panel donde se incluyen los elementos de la ventana */
+    /** Panel donde se incluyen los elementos de la ventana. */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana inferior */
+    /** Título de media ventana. */
     private final JLabel tituloVistaTM = new JLabel("Modificar teclado");
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociación */
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociación. */
     private final JLabel txtDesplegableTM = new JLabel("LISTA NOMBRES:");
-    /** Desplegable con los nombres de los teclados*/
+    /** Desplegable con los nombres de los teclados.*/
     private JComboBox<String> nombresTM = new JComboBox<>();
-    /** Desplegable con los nombres de los alfabetos*/
+    /** Desplegable con los nombres de los alfabetos.*/
     private JComboBox<String> nombresAlfabetosTM = new JComboBox<>();
-    /** Desplegable con los nombres de las asociaciones*/
+    /** Desplegable con los nombres de las asociaciones.*/
     private JComboBox<String> nombresAsociacionesTM = new JComboBox<>();
-    /** Desplegable con las posibles dimensiones del teclado*/
+    /** Desplegable con las posibles dimensiones del teclado.*/
     private JComboBox<String> posiblesDimensiones = new JComboBox<>();
+    /** Botón para iniciar el proceso de modificación del teclado seleccionado.*/
     private final JButton bModificarTeclado = new JButton("Modificar teclado");
-    /** Botó de tornar a la pantalla del menú principal */
+    /** Botó de tornar a la pantalla del menú principal. */
     private final JButton bsalir = new JButton("Atrás");
 
 
     //TEXTOS Y AREAS DE TEXTO
-    //VENTANA SUPERIOR
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
+    /** Etiqueta para indicar el campo donde se introduce el nombre del teclado a consultar o modificar.*/
     private final JLabel txtNombreTM = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
+    /** Área de texto para ingresar o mostrar el nombre del teclado que se está consultando o modificando. */
     private final JTextArea areanomTM = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el contenido del teclado */
+    /** Etiqueta para indicar el campo relacionado con la elección del alfabeto para el teclado. */
     private final JLabel txtNombreAlfabetoTM = new JLabel("ALFABETO:");
-    /** Área de texto para introducir el contenido del teclado que se quiere crear */
+    /** Área de texto para ingresar o mostrar el nombre del alfabeto asociado al teclado. */
     private final JTextArea areaContenidoAlfabetoTM = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el contenido del teclado */
+    /** Etiqueta para indicar el campo relacionado con la elección de la asociación de textos para el teclado. */
     private final JLabel txtNombreAsociacionTM = new JLabel("ASOCIACIÓN:");
-    /** Área de texto para introducir el contenido del teclado que se quiere crear */
+    /** Área de texto para ingresar o mostrar el nombre de la asociación de textos asociada al teclado. */
     private final JTextArea areaContenidoAsociacionTM = new JTextArea();
+    /** Etiqueta para indicar el campo donde se introduce el número de filas del teclado.*/
     private final JLabel txtFilasTM = new JLabel("FILAS:");
+    /** Campo de texto para ingresar o mostrar el número de filas del teclado.*/
     private final JTextField areaFilasTM = new JTextField();
+    /** Etiqueta para indicar el campo donde se introduce el número de columnas del teclado.*/
     private final JLabel txtColumnasTM = new JLabel("COLUMNAS:");
+    /** Campo de texto para ingresar o mostrar el número de columnas del teclado.*/
     private final JTextField areaColumnasTM = new JTextField();
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
+    /** Etiqueta para indicar el área donde se muestra el contenido actual del teclado.*/
     private final JLabel txtContenidoTM = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
+    /** Área de texto para mostrar el contenido actual del teclado. */
     private final JTextArea areacontenidoTM = new JTextArea();
 
+    /**
+     * Constructor de la vista para modificar teclados.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura el comportamiento de los eventos,
+     * como la selección de teclados, alfabetos, asociaciones y dimensiones.
+     */
     public VistaTecladoM() {
         setBounds(250, 150, 1000, 600);
 
@@ -309,9 +319,6 @@ public class VistaTecladoM extends JFrame{
             }
         };
 
-
-
-
         ActionListener lSalir = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -329,6 +336,14 @@ public class VistaTecladoM extends JFrame{
 
     }
 
+    /**
+     * Convierte el contenido de un teclado a una representación en String.
+     * <p>
+     * Este método se utiliza para mostrar el contenido del teclado en la interfaz gráfica.
+     *
+     * @param contenido Matriz de caracteres representando el contenido del teclado.
+     * @return String que representa el contenido del teclado.
+     */
     private String convertirContenidoAString(char[][] contenido) {
         StringBuilder contenidoEnTexto = new StringBuilder();
         for (char[] fila : contenido) {
@@ -340,6 +355,15 @@ public class VistaTecladoM extends JFrame{
         return contenidoEnTexto.toString();
     }
 
+    /**
+     * Selecciona un item específico en un JComboBox.
+     * <p>
+     * Este método se utiliza para seleccionar automáticamente un item en los JComboBox
+     * basado en un valor dado.
+     *
+     * @param comboBox JComboBox en el que se realizará la selección.
+     * @param item El item a seleccionar en el JComboBox.
+     */
     private void seleccionarItemEnComboBox(JComboBox<String> comboBox, String item) {
         for (int i = 0; i < comboBox.getItemCount(); i++) {
             if (comboBox.getItemAt(i).equals(item)) {
@@ -350,6 +374,14 @@ public class VistaTecladoM extends JFrame{
         comboBox.setSelectedIndex(0);
     }
 
+    /**
+     * Selecciona las dimensiones en el JComboBox correspondiente.
+     * <p>
+     * Este método se utiliza para seleccionar automáticamente las dimensiones de un teclado
+     * en el JComboBox de dimensiones.
+     *
+     * @param dimensiones Objeto PairInt representando las dimensiones del teclado.
+     */
     private void seleccionarDimensiones(PairInt dimensiones) {
         String dimensionStr = dimensiones.getPrimero() + "x" + dimensiones.getSegundo();
         seleccionarItemEnComboBox(posiblesDimensiones, dimensionStr);
