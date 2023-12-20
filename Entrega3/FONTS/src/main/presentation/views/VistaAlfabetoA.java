@@ -176,7 +176,7 @@ public class VistaAlfabetoA extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Crear un JFileChooser que se abre en la carpeta data/InputFiles/Alfabetos
-                JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir") + "\\Entrega3\\data\\InputFiles\\Alfabetos\\");
+                JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir") + "//Entrega3//data//InputFiles//Alfabetos//");
                 fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 fileChooser.setAcceptAllFileFilterUsed(false);
                 fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Archivo de Texto", "txt"));
