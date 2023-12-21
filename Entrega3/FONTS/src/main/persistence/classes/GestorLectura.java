@@ -8,16 +8,29 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * Clase que gestiona la carga y guardado de Conjuntos de Alfabetos en formato de bytes.
+ * Clase que proporciona métodos para leer y validar información desde archivos.
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public class GestorLectura {
+    /**
+     * Verifica si un alfabeto es válido.
+     * @param entrada cadena que representa el alfabeto.
+     * @return True si el alfabeto es válido, False de lo contrario.
+     */
     public static boolean alfabetoValido(String entrada) {
         if (entrada == null || entrada.isEmpty()) {
-            return false; // Entrada vacía no es válida.
+            return false;
         }
-        return true; // La entrada es válida si todos los segmentos contienen solo un carácter.
+        return true;
     }
+
+    /**
+     * Lee un archivo que contiene un alfabeto y devuelve una lista de caracteres.
+     * @param pathArchivo ruta del archivo que contiene el alfabeto.
+     * @return lista de caracteres que representan el alfabeto.
+     * @throws IOException en el caso de haber un error de entrada/salida al leer el archivo de texto.
+     * @throws IllegalArgumentException en el caso que el contenido del archivo no es válido.
+     */
     public ArrayList<Character> leerAlfabetosPath(String pathArchivo) throws IOException {
         ArrayList<Character> caracteres = new ArrayList<>();
 
@@ -34,6 +47,12 @@ public class GestorLectura {
         return caracteres;
     }
 
+    /**
+     * Lee un archivo de texto y devuelve su contenido como una cadena.
+     * @param pathArchivo ruta del archivo de texto.
+     * @return contenido del archivo de texto como una cadena.
+     * @throws IOException en el caso de haber un error de entrada/salida al leer el archivo de texto.
+     */
     public String leerTextoPalabrasPath(String pathArchivo) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(pathArchivo));
         String line;
@@ -44,6 +63,13 @@ public class GestorLectura {
         return texto;
     }
 
+    /**
+     * Verifica si el formato de las frecuencias es correcto para agregar a un contenido de texto.
+     * @param contenidoTexto contenido de texto al que se agregarán las frecuencias.
+     * @param pathTexto ruta del archivo de texto asociado al contenido.
+     * @param frecuencias mapa de frecuencias a agregar al contenido de texto.
+     * @return True si el formato de las frecuencias es correcto, False de lo contrario.
+     */
     public boolean formatoCorrectoAgregarFrecuencias(String contenidoTexto, String pathTexto, HashMap<String, Integer> frecuencias) {
         boolean formatoCorrecto = true;
         if (!contenidoTexto.isEmpty()) {
