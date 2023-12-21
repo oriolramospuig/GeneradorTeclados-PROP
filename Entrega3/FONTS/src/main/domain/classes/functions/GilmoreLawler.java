@@ -59,45 +59,45 @@ public class GilmoreLawler
     // ---------- GETTERS ----------
 
     /**
-     * Devuelve el número de filas
+     * Devuelve el número de filas.
      *
-     * @return Integer: número de filas
+     * @return Integer: número de filas.
      */
     public int getFilas() {
         return filas;
     }
 
     /**
-     * Devuelve el número de columas
+     * Devuelve el número de columas.
      *
-     * @return Integer: número de columnas
+     * @return Integer: número de columnas.
      */
     public int getColumnas() {
         return columnas;
     }
 
     /**
-     * Devuelve la cota que usamos para hacer la poda del algoritmo en cada momento
+     * Devuelve la cota que usamos para hacer la poda del algoritmo en cada momento.
      *
-     * @return Integer glBound
+     * @return Integer glBound.
      */
     public int getGlBound() {
         return glBound;
     }
 
     /**
-     * Devuelva la matriz de frecuencias
+     * Devuelva la matriz de frecuencias.
      *
-     * @return int[][] matrizFrecuencias
+     * @return int[][] matrizFrecuencias.
      */
     public int[][] getMatrizFrecuencias() {
         return matrizFrecuencias;
     }
 
     /**
-     * Devuelve la matriz de distancias
+     * Devuelve la matriz de distancias.
      *
-     * @return int[][] matrizDistancias
+     * @return int[][] matrizDistancias.
      */
     public int[][] getMatrizDistancias() {
         return matrizDistancias;
@@ -105,9 +105,9 @@ public class GilmoreLawler
 
 
     /**
-     * Método para obtener la mejor solución parcial como lista de índices
+     * Método para obtener la mejor solución parcial como lista de índices.
      *
-     * @return List<Integer> de índices que corresponden a la mejor solución
+     * @return List<Integer> de índices que corresponden a la mejor solución.
      */
     public List<Integer> getMejorSolucionParcial() {
         return new ArrayList<>(mejorSolucionParcial); // Devuelve una copia defensiva
@@ -188,7 +188,7 @@ public class GilmoreLawler
     /**
      * Calcula la cota de una permutación utilizando la fórmula de evaluación de Gilmore-Lawler.
      * @param permutacion   La permutación para la cual se calculará la cota.
-     * @return Cota de la permutación
+     * @return Cota de la permutación.
      */
     private int calcularCotaPermutacion(List<Integer> permutacion) {
         int cota = 0;
@@ -234,10 +234,10 @@ public class GilmoreLawler
     /**
      * Calcula la contribución C1 de una solución parcial, considerando posiciones y letras no usadas.
      *
-     * @param solucionParcial   Solución Parcial actual
-     * @param posNO             Posiciones no usadas
-     * @param letNO             Letras no usadas
-     * @return Matriz que representa la contribucion C1
+     * @param solucionParcial   Solución Parcial actual.
+     * @param posNO             Posiciones no usadas.
+     * @param letNO             Letras no usadas.
+     * @return Matriz que representa la contribución C1.
      */
     private int [][] calcularContribucionC1(List<Integer> solucionParcial, List<Integer> posNO, List<Integer> letNO) {
         int [][] c1 = new int[posNO.size()][posNO.size()];
@@ -257,9 +257,9 @@ public class GilmoreLawler
     /**
      * Calcula la contribución C2 considerando posiciones y letras no usadas.
      *
-     * @param posNO             Posiciones no usadas
-     * @param letNO             Letras no usadas
-     * @return Matriz que representa la contribucion C2
+     * @param posNO             Posiciones no usadas.
+     * @param letNO             Letras no usadas.
+     * @return Matriz que representa la contribución C2.
      */
     private int[][] calcularContribucionC2(List<Integer> posNO, List<Integer> letNO) {
 

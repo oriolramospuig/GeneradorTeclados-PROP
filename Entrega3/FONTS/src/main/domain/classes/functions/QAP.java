@@ -122,8 +122,6 @@ public class QAP implements IAlgoritmo {
      * @throws IllegalArgumentException Si el número de teclas no coincide con el tamaño del teclado.
      */
     private int[][] calcularMejorAsignacionAleatoria(List<Integer> teclas, int N) {
-        System.out.println("La mejor de N asignaciones de las teclas aleatorias: ");
-        System.out.println();
         if (teclas.size() != filas * columnas) {
             throw new IllegalArgumentException("El número de teclas debe coincidir con el número de posiciones en el teclado.");
         }
@@ -182,19 +180,6 @@ public class QAP implements IAlgoritmo {
             }
         }
         return puntuacion;
-    }
-
-    /**
-     * Imprime en la consola la disposición actual de las teclas en el teclado.
-     */
-    private void imprimirTeclado() {
-        for(int i = 0; i < filas; i++) {
-            for(int j = 0; j < columnas; j++) {
-                System.out.print(teclado[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
     }
 
     /**

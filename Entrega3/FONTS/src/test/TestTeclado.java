@@ -16,10 +16,10 @@ import static org.junit.Assert.*;
 public class TestTeclado {
 
     /**
-     * Objeto de la prueba: Test de la constructora de Teclado
-     * Ficheros de datos necesarios: Una asociación de textos, un alfabeto y un algoritmo creados anteriormente
+     * Objeto de la prueba: Test de la constructora de Teclado.
+     * Ficheros de datos necesarios: Una asociación de textos, un alfabeto y un algoritmo creados anteriormente.
      * Valores estudiados: Estrategia caja gris. Se define un teclado a partir de una asociación de texto y un alfabeto y se comprueba que los que guardo sean los mismos.
-     * Operativa: Creamos un nuevo Teclado con los parámetros mencionados y escogemos un algoritmo y unas dimensiones para la creación de este
+     * Operativa: Creamos un nuevo Teclado con los parámetros mencionados y escogemos un algoritmo y unas dimensiones para la creación de este.
      **/
     @Test
     public void TestConstructora() {
@@ -46,10 +46,10 @@ public class TestTeclado {
 
     // GETTERS
     /**
-     * Objeto de la prueba: Test del método getDimensiones() de la clase Teclado
+     * Objeto de la prueba: Test del método getDimensiones() de la clase Teclado.
      * Ficheros de datos necesarios: Datos introducidos manualmente.
-     * Valores estudiados: Estrategia caja gris. Se crea un teclado y un PairInt de dimensiones y se asegura que los datos se han introducido correctamente
-     * Operativa: Se comprueba que el método getDimensiones() proporciona los datos correctos sobre las dimensiones del teclado
+     * Valores estudiados: Estrategia caja gris. Se crea un teclado y un PairInt de dimensiones y se asegura que los datos se han introducido correctamente.
+     * Operativa: Se comprueba que el método getDimensiones() proporciona los datos correctos sobre las dimensiones del teclado.
      **/
 
     @Test
@@ -74,7 +74,7 @@ public class TestTeclado {
     }
 
     /**
-     * Objeto de la prueba: Test del método agregarAlfabetoVinculado(String nomA) de la clase Teclado
+     * Objeto de la prueba: Test del método agregarAlfabetoVinculado(String nomA) de la clase Teclado.
      * Ficheros de datos necesarios: Datos introducidos manualmente.
      * Valores estudiados: Estrategia caja gris. Se crea un teclado y un alfabeto, se añade el alfabeto como vinculado al teclado y se comprueba de que se ha agregado correctamente.
      * Operativa: Se comprueba que el mismo método añade el alfabeto al Teclado correctamente.
@@ -102,7 +102,7 @@ public class TestTeclado {
     }
 
     /**
-     * Objeto de la prueba: Test del método agregarAsociacionTextosVinculado(String nomAT) de la clase Teclado
+     * Objeto de la prueba: Test del método agregarAsociacionTextosVinculado(String nomAT) de la clase Teclado.
      * Ficheros de datos necesarios: Datos introducidos manualmente.
      * Valores estudiados: Estrategia caja gris. Se crea un teclado y una asociacion de textos, se añade la asociacion como vinculada al teclado y se comprueba de que se ha agregado correctamente.
      * Operativa: Se comprueba que el mismo método añade la Asociación de Textos al Teclado correctamente.
