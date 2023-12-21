@@ -14,7 +14,7 @@ Este directorio contiene distintos directorios que hacen referencia a distintos 
   Contiene los ficheros conjuntoAlfabetos, conjuntoTextos, conjuntosAsociaciones, conjuntosTeclados vacíos, es decir, se usan en el momento de iniciar el programa y querer empezarlo de cero.
 
 
-- **Directorio EstadoActualizadoAPartirDeVacío:**
+- **Directorio EstadoAPartirCache:**
   Contiene los ficheros conjuntoAlfabetos, conjuntoTextos, conjuntosAsociaciones, conjuntosTeclados que guardan el contenido de los elementos una vez se ha iniciado desde cero.
 
 
