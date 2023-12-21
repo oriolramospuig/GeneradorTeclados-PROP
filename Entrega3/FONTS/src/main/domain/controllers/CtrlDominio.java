@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 /**
  * Este controlador se encarga de gestionar todos los métodos y distribuir las funciones a los respectivos controladores.
- * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu)
+ * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu) y Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public class CtrlDominio
 {
@@ -366,15 +366,14 @@ public class CtrlDominio
 
     // ---------- FUNCIONES TECLADO ----------
     /**
-     * Retorna un valor para comprobar si el teclado ha sido agregado correctamente o ha habido algún fallo
+     * Retorna si el teclado ha sido agregado correctamente o no.
      * @param nomT clave única y nombre del teclado a agregar.
      * @param nomA clave única y nombre del alfabeto a vincular con el teclado nomT.
      * @param nomAT clave única y nombre de la asociación de textos a vincular con el teclado nomT.
-     * @return Integer: 0 si se ha creado correctamente el teclado,
-     * -1 si el nombre nomT ya existe en otro teclado
+     * @return Boolean: true si se ha creado correctamente el teclado, false si ya existe un teclado con ese nombre.
      */
-    public int agregarTeclado(String nomT, String nomA, String nomAT, PairInt dimensiones, boolean alg){
-        if(ctrlTeclado.existeTeclado(nomT)) return -1;
+    public boolean agregarTeclado(String nomT, String nomA, String nomAT, PairInt dimensiones, boolean alg){
+        if(ctrlTeclado.existeTeclado(nomT)) return false;
         
         Alfabeto alfabeto = ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA);
         AsociacionTextos asociacionTextos = ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionTextos(nomAT);
@@ -383,13 +382,14 @@ public class CtrlDominio
         ctrlTeclado.CrearTeclado(nomT, asociacionTextos, alfabeto, dimensiones, alg);
         ctrlTeclado.agregarAlfabetoVinculado(nomT,nomA);
         ctrlTeclado.agregarAsociacionTextosVinculado(nomT,nomAT);
-        return 0;
+        return true;
 
     }
+
     /**
-     * Retorna el contenido del teclado nomT
-     * @param nomT nombre del teclado a consultar
-     * @return char[][]: la matriz que representa el contenido del teclado nomT
+     * Retorna el contenido del teclado con nombre nomT.
+     * @param nomT clave única y nombre del teclado a consultar.
+     * @return char[][]: la matriz que representa el contenido del teclado nomT.
      */
     public char[][] consultarContenidoTeclado(String nomT){
         if(ctrlTeclado.existeTeclado(nomT)) {
@@ -397,10 +397,11 @@ public class CtrlDominio
         }
         return null;
     }
+
     /**
-     * Retorna el contenido del teclado nomT
-     * @param nomT nombre del teclado a consultar
-     * @return char[][]: la matriz que representa el contenido del teclado nomT
+     * Retorna la puntuación del teclado con nombre nomT.
+     * @param nomT clave única y nombre del teclado a consultar.
+     * @return Integer: el valor de la puntuación del teclado nomT.
      */
     public int consultarPuntuacionTeclado(String nomT){
         if(ctrlTeclado.existeTeclado(nomT)) {
@@ -410,9 +411,9 @@ public class CtrlDominio
     }
 
     /**
-     * Retorna el nombre del alfabeto asociado al teclado con nombre nomT
-     * @param nomT nombre del teclado a buscar
-     * @return String: nombre del alfabeto vinculado al teclado nomT
+     * Retorna el nombre del alfabeto asociado al teclado con nombre nomT.
+     * @param nomT clave única y nombre del teclado a buscar.
+     * @return String: nombre del alfabeto vinculado al teclado nomT.
      */
     public String consultarAlfabetoAsociadoTeclado(String nomT) {
         if(ctrlTeclado.existeTeclado(nomT)) {
@@ -420,10 +421,11 @@ public class CtrlDominio
         }
         return null;
     }
+
     /**
-     * Retorna el nombre de la asociación de textos asociada al teclado nomT
-     * @param nomT nombre del teclado a buscar
-     * @return String: nombre de la asociación vinculada al teclado nomT
+     * Retorna el nombre de la asociación de textos asociada al teclado nomT.
+     * @param nomT clave única y nombre del teclado a buscar.
+     * @return String: nombre de la asociación vinculada al teclado nomT.
      */
     public String consultarAsociacionAsociadoTeclado(String nomT) {
         if(ctrlTeclado.existeTeclado(nomT)) {
@@ -431,11 +433,11 @@ public class CtrlDominio
         }
         return null;
     }
-    //public boolean modificarContenidoTeclado(String nomT, PairInt dimensiones)
+
     /**
-     * Retorna el nombre de la asociación de textos asociada al teclado nomT
-     * @param nomT nombre del teclado a buscar
-     * @return String: nombre de la asociación vinculada al teclado nomT
+     * Retorna el valor de las dimensiones del teclado nomT.
+     * @param nomT clave única y nombre del teclado a buscar.
+     * @return PairInt: valores de las dimensiones del teclado nomT.
      */
     public PairInt consultarDimensionesTeclado(String nomT) {
         if(ctrlTeclado.existeTeclado(nomT)) {
@@ -443,18 +445,20 @@ public class CtrlDominio
         }
         return null;
     }
+
     /**
-     * Retorna la lista de teclados existentes
-     * @return ArrayList<String>: lista de nombres de los teclados existentes
+     * Retorna la lista de nombres de los teclados del conjunto de teclados.
+     * @return ArrayList<String>: lista de nombres de los teclados existentes.
      */
     public ArrayList<String> getListaTeclados(){
         return ctrlTeclado.getCjtTeclados().getNombresTeclados();
     }
+
     /**
-     * No retorna
-     * @param nomT el nombre del teclado a borrar
-     * Borra el teclado con nombre nomT
-     * También desvincula el alfabeto y la asociación de textos que tenía vinculados
+     * No devuelve nada.
+     * @param nomT clave única y nombre del teclado a borrar.
+     * Borra el teclado con nombre nomT.
+     * También desvincula el alfabeto y la asociación de textos que tenía vinculados.
      */
     public void borrarTeclado(String nomT) {
         String atvinculada = ctrlTeclado.TecladoTieneAsociacionVinculada(nomT);
@@ -465,6 +469,11 @@ public class CtrlDominio
         ctrlTeclado.borrarTeclado(nomT);
     }
 
+    /**
+     * Retorna la lista de posibles dimensiones que puede tener el teclado.
+     * @param nomA clave única y nombre del alfabeto a buscar.
+     * @return ArrayList<PairInt>: lista de valores de las posibles dimensiones del teclado nomT.
+     */
     public ArrayList<PairInt> getPosiblesDimensiones(String nomA) {
         int n = ctrlAlfabeto.getContenido(nomA).size();
         return ctrlTeclado.getPosiblesDimensiones(n);
@@ -474,7 +483,12 @@ public class CtrlDominio
     // ---------- FUNCIONES PERSISTENCIA ALFABETOS ----------
 
     /**
-     * Almacena el conjunto de alfabetos en una localización específica.
+     * Guarda el conjunto de alfabetos en una ubicación específica.
+     * La ubicación por defecto es la carpeta 'Entrega3/data/Cache' del directorio de trabajo actual.
+     * Se utiliza la persistencia para guardar los datos, convirtiendo el conjunto de alfabetos
+     * en un array de bytes y llamando a un método en el controlador de persistencia.
+     * Si se produce un error durante el proceso de guardado, se muestra un mensaje de error en la consola
+     * y se finaliza la aplicación con un código de error.
      */
     public void guardaCnjtAlfabetos() {
         String nomDoc = "conjuntoAlfabetos";
@@ -492,8 +506,8 @@ public class CtrlDominio
     }
 
     /**
-     * Retorna el conjunto de alfabetos que se encuentra en path.
-     * @param path
+     * Carga el conjunto de alfabetos desde el archivo especificado en la ruta proporcionada.
+     * @param path La ruta del archivo desde el cual cargar el conjunto de alfabetos.
      */
     public void cargaCnjtAlfabetos(String path) {
         try {
@@ -511,8 +525,14 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA TEXTOS ----------
+
     /**
-     * Guarda el conjunto de textos en una ubicación particular.
+     * Guarda el conjunto de textos en una ubicación específica.
+     * La ubicación por defecto es la carpeta 'Entrega3/data/Cache' del directorio de trabajo actual.
+     * Se utiliza la persistencia para guardar los datos, convirtiendo el conjunto de textos
+     * en un array de bytes y llamando a un método en el controlador de persistencia.
+     * Si se produce un error durante el proceso de guardado, se muestra un mensaje de error en la consola
+     * y se finaliza la aplicación con un código de error.
      */
     public void guardaCnjtTextos() {
         String nomDoc = "conjuntoTextos";
@@ -529,8 +549,8 @@ public class CtrlDominio
     }
 
     /**
-     * Devuelve el conjunto de textos que se halla en la ruta especificada.
-     * @param path
+     * Carga el conjunto de textos desde el archivo especificado en la ruta proporcionada.
+     * @param path La ruta del archivo desde el cual cargar el conjunto de textos.
      */
     public void cargaCnjtTextos(String path) {
         try {
@@ -548,8 +568,14 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA ASOCIACIONES TEXTOS ----------
+
     /**
-     * Guarda en un lugar determinado el conjunto de Asociaciones de Textos.
+     * Guarda el conjunto de asociaciones de textos en una ubicación específica.
+     * La ubicación por defecto es la carpeta 'Entrega3/data/Cache' del directorio de trabajo actual.
+     * Se utiliza la persistencia para guardar los datos, convirtiendo el conjunto de asociaciones de textos
+     * en un array de bytes y llamando a un método en el controlador de persistencia.
+     * Si se produce un error durante el proceso de guardado, se muestra un mensaje de error en la consola
+     * y se finaliza la aplicación con un código de error.
      */
     public void guardaCnjtAsociaciones() {
         String nomDoc = "conjuntoAsociaciones";
@@ -566,8 +592,8 @@ public class CtrlDominio
     }
 
     /**
-     * Entrega el conjunto de asociaciones de textos ubicado en la ruta indicada.
-     * @param path
+     * Carga el conjunto de asociaciones de textos desde el archivo especificado en la ruta proporcionada.
+     * @param path La ruta del archivo desde el cual cargar el conjunto de asociaciones de textos.
      */
     public void cargaCnjtAsociaciones(String path) {
         try {
@@ -585,8 +611,14 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA TECLADOS ----------
+
     /**
-     * Deposita el conjunto de Teclados en una ubicación designada.
+     * Guarda el conjunto de teclados en una ubicación específica.
+     * La ubicación por defecto es la carpeta 'Entrega3/data/Cache' del directorio de trabajo actual.
+     * Se utiliza la persistencia para guardar los datos, convirtiendo el conjunto de teclados
+     * en un array de bytes y llamando a un método en el controlador de persistencia.
+     * Si se produce un error durante el proceso de guardado, se muestra un mensaje de error en la consola
+     * y se finaliza la aplicación con un código de error.
      */
     public void guardaCnjtTeclados() {
         String nomDoc = "conjuntoTeclados";
@@ -603,8 +635,8 @@ public class CtrlDominio
     }
 
     /**
-     * Recupera el conjunto de teclados presente en la ruta especificada.
-     * @param path
+     * Carga el conjunto de teclados desde el archivo especificado en la ruta proporcionada.
+     * @param path La ruta del archivo desde el cual cargar el conjunto de teclados.
      */
     public void cargaCnjtTeclados(String path) {
         try {
@@ -619,8 +651,7 @@ public class CtrlDominio
             System.err.println("[#CARGA] Error al cargar el conjunto de teclados " + e.getMessage());
         }
     }
-
-
+    
     /**
      * Agrega un alfabeto utilizando un archivo especificado por la ruta.
      * @param nombreAlfabeto nombre del alfabeto a agregar.

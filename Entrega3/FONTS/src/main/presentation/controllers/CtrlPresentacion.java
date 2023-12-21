@@ -337,8 +337,8 @@ public class CtrlPresentacion {
      * @param nomA nombre del alfabeto a vincular con el teclado nomT
      * @param nomAT nombre de la asociación de textos a vincular con el teclado nomT
      */
-    public static int agregarTeclado(String nomT, String nomA, String nomAT, PairInt dim, boolean alg){
-        int acabado = cd.agregarTeclado(nomT,nomA,nomAT, dim, alg);
+    public static boolean agregarTeclado(String nomT, String nomA, String nomAT, PairInt dim, boolean alg){
+        boolean acabado = cd.agregarTeclado(nomT,nomA,nomAT, dim, alg);
         return acabado;
     }
 
