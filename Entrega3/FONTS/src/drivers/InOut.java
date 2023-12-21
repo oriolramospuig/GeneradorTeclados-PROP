@@ -84,9 +84,9 @@ public class InOut {
         BufferedReader br = new BufferedReader(new FileReader(rutaArchivo));
         String line = br.readLine();
         if(line != null){
-            if (!alfabetoValido(line)) {
-                throw new IllegalArgumentException("El contenido del archivo no es válido.");
-            }
+           // if (!alfabetoValido(line)) {
+             //   throw new IllegalArgumentException("El contenido del archivo no es válido.");
+          //  }
             for (char c : line.toCharArray()) {
                     caracteres.add(c);
             }
@@ -147,7 +147,7 @@ public class InOut {
      * @param entrada La cadena de entrada a validar.
      * @return true si la entrada es válida, false de lo contrario.
      */
-    public static boolean alfabetoValido(String entrada) {
+    /*public static boolean alfabetoValido(String entrada) {
         if (entrada == null || entrada.isEmpty()) {
             return false; // Entrada vacía no es válida.
         }
@@ -158,8 +158,9 @@ public class InOut {
                 return false;
             }
         }*/
-        return true; // La entrada es válida si todos los segmentos contienen solo un carácter.
+       /* return true; // La entrada es válida si todos los segmentos contienen solo un carácter.
     }
+    */
 
     /**
      * Cierra el objeto Scanner utilizado para la entrada estándar si aún no ha sido cerrado.

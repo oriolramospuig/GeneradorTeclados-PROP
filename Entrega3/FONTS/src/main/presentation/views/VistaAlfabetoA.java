@@ -1,6 +1,5 @@
 package main.presentation.views;
 
-import main.domain.controllers.CtrlDominio;
 import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
@@ -138,8 +137,7 @@ public class VistaAlfabetoA extends JFrame {
                 else if (contenidoAlfabeto.isEmpty()) {
                     boolean agregado = false;
                     try {
-                        //agregado = CtrlPresentacion.agregarAlfabetoPath(nombreAlfabeto, pathArchivo);
-                        agregado = CtrlDominio.agregarAlfabetoPath(nombreAlfabeto, pathArchivo);
+                        agregado = CtrlPresentacion.agregarAlfabetoPath(nombreAlfabeto, pathArchivo);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
