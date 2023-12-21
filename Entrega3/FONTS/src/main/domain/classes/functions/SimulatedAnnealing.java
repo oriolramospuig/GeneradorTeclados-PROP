@@ -54,6 +54,24 @@ public class SimulatedAnnealing implements IAlgoritmo {
     }
 
     /**
+     * Constructor de la clase SimulatedAnnealing(para el driver interactivo).
+     *
+     * @param n filas*columnas.
+     * @param filas Número de filas del teclado.
+     * @param columnas Número de columnas del teclado.
+     * @param mf Matriz de frecuencias.
+     * @param md Matriz de distancias.
+     */
+    public SimulatedAnnealing(int n, int filas, int columnas, int[][] mf, int[][] md) {
+        SimulatedAnnealing.filas = filas;
+        SimulatedAnnealing.columnas = columnas;
+        SimulatedAnnealing.matrizFrecuencias = mf;
+        SimulatedAnnealing.matrizDistancias = md;
+
+        calculo();
+    }
+
+    /**
      * Ejecuta el algoritmo de recocido simulado para encontrar una configuración de teclado.
      *
      * @param tecladoInicial Configuración inicial del teclado.

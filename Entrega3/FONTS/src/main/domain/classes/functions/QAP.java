@@ -114,6 +114,26 @@ public class QAP implements IAlgoritmo {
     }
 
     /**
+     * Constructor que inicializa una instancia de QAP con las dimensiones y matrices especificadas.
+     *
+     * @param n Filas*columnas del teclado.
+     * @param nf Número de filas del teclado.
+     * @param nc Número de columnas del teclado.
+     * @param matrizFrecuencias Matriz de frecuencias de teclas.
+     * @param matrizDistancias Matriz de distancias de teclas.
+     */
+    public QAP(int n, int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias) {
+        this.filas = nf;
+        this.columnas = nc;
+        this.n = nf*nc;
+
+        this.matrizFrecuencias = matrizFrecuencias;
+        this.matrizDistancias = matrizDistancias;
+
+        calculo();
+    }
+
+    /**
      * Calcula la mejor asignación aleatoria de teclas entre las N generadas.
      *
      * @param teclas Lista de teclas a asignar aleatoriamente.

@@ -7,8 +7,6 @@ En este directorio se encuentran todas las clases de nuestro programa.
 
 ## Elementos del directorio
 
-- **Directorio exceptions:**
-  Contiene las clases que son excepciones.
 - **Directorio functions**
   Contiene las clases que realizan funcionalidades de los casos de uso.
 - **Directorio types:**

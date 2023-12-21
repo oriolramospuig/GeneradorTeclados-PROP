@@ -194,6 +194,12 @@ public class VistaTecladoA extends JFrame {
                     return;
                 }
 
+                ArrayList<Character> contenidoAlfabeto = CtrlPresentacion.consultarContenidoAlfabeto(nombreAlfabeto);
+                if (contenidoAlfabeto.size() > 10) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El contenido del alfabeto no puede tener más de 10 caracteres para usar Branch & Bound, tardaría demasiado", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
                 try {
                     int filas = Integer.parseInt(filasStr);
                     int columnas = Integer.parseInt(columnasStr);

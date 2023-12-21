@@ -8,6 +8,6 @@ Este directorio contiene todos los códigos de la capa de dominio classificados 
 ## Elementos del directorio
 
 - **Directorio classes:**
-  Contiene les clases de la capa de dominio.
+  Contiene las clases de la capa de dominio.
 - **Directorio controllers:**
   Contiene los controladores de la capa de dominio.
