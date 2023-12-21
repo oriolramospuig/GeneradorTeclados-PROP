@@ -5,6 +5,7 @@ import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
@@ -59,6 +60,7 @@ public class VistaAlfabetoA extends JFrame {
 
     public VistaAlfabetoA(){
 
+        System.out.println(Toolkit.getDefaultToolkit().getScreenSize());
         setBounds(250, 150, 1000, 600);
 
         // Título ventana superior
