@@ -6,4 +6,7 @@
 Este directorio contiene los códigos de la capa de persistencia
 
 ## Elementos del directorio
-Este directorio está vacío para la primera entrega
+- **Directorio controllers:**
+  Contiene el controlador de la capa de persistencia.
+- **Directorio classes:**
+  Contiene las clases de la capa de persistencia.
