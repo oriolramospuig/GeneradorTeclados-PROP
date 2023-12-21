@@ -6,9 +6,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 /** Este controlador se encarga de gestionar los métodos de añadir, modificar y borrar de textos
  * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
@@ -139,7 +136,7 @@ public class CtrlTexto
      * @return HashMap de frecuencia de letras.
      */
     public HashMap<String,Integer> convertirTextoAFrecuencias(String texto) {
-        HashMap<String,Integer> frecuenciaLetras = new HashMap<String,Integer>();
+        HashMap<String,Integer> frecuenciaLetras = new HashMap<>();
         char[] textoChars = texto.toCharArray();
         for(int i = 1; i < textoChars.length; ++i){
             String pairLetras = "" + textoChars[i-1] + textoChars[i];

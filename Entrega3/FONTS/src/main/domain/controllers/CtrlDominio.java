@@ -511,7 +511,6 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA TEXTOS ----------
-
     /**
      * Guarda el conjunto de textos en una ubicación particular.
      */
@@ -549,7 +548,6 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA ASOCIACIONES TEXTOS ----------
-
     /**
      * Guarda en un lugar determinado el conjunto de Asociaciones de Textos.
      */
@@ -587,7 +585,6 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA TECLADOS ----------
-
     /**
      * Deposita el conjunto de Teclados en una ubicación designada.
      */
@@ -621,30 +618,6 @@ public class CtrlDominio
         } catch (Exception e) {
             System.err.println("[#CARGA] Error al cargar el conjunto de teclados " + e.getMessage());
         }
-    }
-
-    /**
-     * Retorna la lista de alfabetos existentes
-     * @return HashMap<String, Alfabeto>: lista de alfabetos existentes ordenada por el nombre de alfabeto que es la clave primaria
-     */
-    public HashMap<String, Alfabeto> getListaAlfabetos(){
-        return ctrlAlfabeto.getCjtAlfabetos().getAlfabetos();
-    }
-
-    /**
-     * Retorna la lista de textos existentes
-     * @return HashMap<String, Texto>: lista de textos existentes ordenados por el nombre que es su clave primaria
-     */
-    public HashMap<String, Texto> getListaTextos(){
-        return ctrlTexto.getTextos().getTextos();
-    }
-
-    /**
-     * Retorna la lista de asociaciones existentes
-     * @return HashMap<String, AsociacionTextos>: lista de asociaciones ordenada por nombres que son las claves primarias de las asociaciones
-     */
-    public HashMap<String, AsociacionTextos> getListaAsociaciones(){
-        return ctrlAsociacionTexto.getCjtAsociaciones().getAsociacionesTextos();
     }
 
 
