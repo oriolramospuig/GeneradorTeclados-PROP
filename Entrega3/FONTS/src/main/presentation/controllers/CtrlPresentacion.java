@@ -117,9 +117,9 @@ public class CtrlPresentacion {
      * @param path es la lista de caracteres que forman el contenido del alfabeto
      */
     public static boolean agregarAlfabetoPath(String nomA, String path) throws IOException {
-        ArrayList<Character> entrada = InOut.leerCaracteresDeArchivo(path);
-        return cd.agregarAlfabeto(nomA, entrada);
+        return CtrlDominio.agregarAlfabetoPath(nomA, path);
     }
+
     /** Llama a la función getNombresAlfabetos de CtrlDominio */
     public static ArrayList<String> getNombresAlfabetos() {
         ArrayList<String> listaAlfabetosNombres = cd.getNombresAlfabetos();
@@ -176,8 +176,7 @@ public class CtrlPresentacion {
      * @param path es el path donde tenemos el texto del texto
      */
     public static boolean agregarTextoPalabrasPath(String nomTxt, String path) throws IOException {
-        String texto = InOut.leerPalabrasDeArchivo(path);
-        return cd.agregarTextoPalabras(nomTxt, texto);
+        return cd.agregarTextoPalabrasPath(nomTxt, path);
     }
     /**
      * Llama a la función agregarTextoFrecuencias de CtrlDominio
@@ -384,4 +383,7 @@ public class CtrlPresentacion {
         return cd.getPosiblesDimensiones(nomA);
     }
 
+    public static boolean formatoCorrectoAgregarFrecuencias(String contenidoTexto, String pathTexto, HashMap<String, Integer> frecuencias) {
+        return cd.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
+    }
 }

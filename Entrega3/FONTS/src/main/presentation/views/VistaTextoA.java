@@ -1,6 +1,5 @@
 package main.presentation.views;
 
-import main.domain.controllers.CtrlDominio;
 import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
@@ -209,8 +208,7 @@ public class VistaTextoA extends JFrame {
                 boolean agregado;
                 if (contenidoTexto.isEmpty()) {
                     try {
-                        //agregado = CtrlPresentacion.agregarTextoPalabrasPath(nombreTexto, pathTexto);
-                        agregado = CtrlDominio.agregarTextoPalabrasPath(nombreTexto, pathTexto);
+                        agregado = CtrlPresentacion.agregarTextoPalabrasPath(nombreTexto, pathTexto);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -250,11 +248,11 @@ public class VistaTextoA extends JFrame {
                 HashMap<String, Integer> frecuencias = new HashMap<>();
                 boolean formatoCorrecto;
 
-                formatoCorrecto = CtrlDominio.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
+                formatoCorrecto = CtrlPresentacion.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
 
                 if (formatoCorrecto) {
-                    //boolean agregado = CtrlPresentacion.agregarTextoFrecuencias(nombreTexto, frecuencias);
-                    boolean agregado = CtrlDominio.agregarTextoFrecuencias(nombreTexto, frecuencias);                    if (agregado) {
+                    boolean agregado = CtrlPresentacion.agregarTextoFrecuencias(nombreTexto, frecuencias);
+                    if (agregado) {
                         JOptionPane.showMessageDialog(VistaTextoA.this, "Texto de frecuencias agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                         areanomTxtA1.setText("");
                         areaContenidoTxtA1.setText("");
