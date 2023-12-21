@@ -111,6 +111,7 @@ public class CtrlPresentacion {
     public static boolean agregarAlfabetoManual(String nomA, ArrayList<Character> entrada) {
         return cd.agregarAlfabeto(nomA, entrada);
     }
+
     /**
      * Llama a la función agregarAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a agregar
@@ -125,6 +126,7 @@ public class CtrlPresentacion {
         ArrayList<String> listaAlfabetosNombres = cd.getNombresAlfabetos();
         return listaAlfabetosNombres;
     }
+
     /**
      * Llama a la función consultarContenidoAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a consultar
@@ -133,6 +135,7 @@ public class CtrlPresentacion {
         ArrayList<Character> contenidoA = cd.consultarContenidoAlfabeto(nomA);
         return contenidoA;
     }
+
     /**
      * Llama a la función modificarContenidoAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a modificar
@@ -140,6 +143,7 @@ public class CtrlPresentacion {
     public static void modificarContenidoAlfabeto(String nomA, ArrayList<Character> entrada) {
         cd.modificarContenidoAlfabeto(nomA, entrada);
     }
+
     /**
      * Llama a la función borrarAlfabeto de CtrlDominio
      * @param nomA es el nombre del alfabeto a borrar
@@ -147,7 +151,8 @@ public class CtrlPresentacion {
     public static void borrarAlfabeto(String nomA) {
         cd.borrarAlfabeto(nomA);
     }
-    /** Llama a la función guardaCnjtAlfabetos de CtrlDominio */
+
+    /** Llama a la función guardaCnjtAlfabetos de CtrlDominio para almacenar el conjunto de alfabetos. */
     public static void guardaAlfabetos(){
         cd.guardaCnjtAlfabetos();
     }
@@ -161,6 +166,7 @@ public class CtrlPresentacion {
     public static boolean esTextoDePalabras(String nomTxt) {
         return cd.esTextoPalabras(nomTxt);
     }
+
     /**
      * Llama a la función agregarTextoPalabras de CtrlDominio
      * @param nomTxt es el nombre del texto a agregar
@@ -170,6 +176,7 @@ public class CtrlPresentacion {
         //ArrayList<Character> entrada = InOut.leerCaracteresDeTerminal(entradaCaracteres);
         return cd.agregarTextoPalabras(nomTxt, texto);
     }
+
     /**
      * Llama a la función agregarTextoPalabras de CtrlDominio
      * @param nomTxt es el nombre del texto a agregar
@@ -178,6 +185,7 @@ public class CtrlPresentacion {
     public static boolean agregarTextoPalabrasPath(String nomTxt, String path) throws IOException {
         return cd.agregarTextoPalabrasPath(nomTxt, path);
     }
+
     /**
      * Llama a la función agregarTextoFrecuencias de CtrlDominio
      * @param nomTxt es el nombre del texto a agregar
@@ -186,11 +194,13 @@ public class CtrlPresentacion {
     public static boolean agregarTextoFrecuencias(String nomTxt, HashMap<String, Integer> frecuenciaPalabras) {
         return cd.agregarTextoFrecuencias(nomTxt, frecuenciaPalabras);
     }
+
     /** Llama a la función getNombresTextos de CtrlDominio */
     public static ArrayList<String> getNombresTextos() {
         ArrayList<String> listaTextosNombres = cd.getNombresTextos();
         return listaTextosNombres;
     }
+
     /**
      * Llama a la función consultarContenidoTexto de CtrlDominio
      * @param nomTxt es el nombre del texto a consultar
@@ -199,6 +209,7 @@ public class CtrlPresentacion {
         String contenidoTxt = cd.consultarContenidoTexto(nomTxt);
         return contenidoTxt;
     }
+
     /**
      * Llama a la función modificarContenidoTexto de CtrlDominio
      * @param nomTxt es el nombre del texto a modificar
@@ -206,6 +217,7 @@ public class CtrlPresentacion {
     public static void modificarContenidoTexto(String nomTxt, String entrada) {
         cd.modificarContenidoTexto(nomTxt, entrada);
     }
+
     /**
      * Llama a la función modificarContenidoTexto de CtrlDominio
      * @param nomTxt es el nombre del texto a modificar
@@ -213,6 +225,7 @@ public class CtrlPresentacion {
     public static void modificarContenidoTextoFrecuencias(String nomTxt, HashMap<String, Integer> entrada) {
         cd.modificarContenidoTextoFrec(nomTxt, entrada);
     }
+
     /**
      * Llama a la función borrarTexto de CtrlDominio
      * @param nomTxt es el nombre del alfabeto a borrar
@@ -221,16 +234,10 @@ public class CtrlPresentacion {
         cd.borrarTexto(nomTxt);
     }
 
+
+    /** Llama a la función guardaCnjtTextos de CtrlDominio para almacenar el conjunto de textos. */
     public static void guardaTextos(){
         cd.guardaCnjtTextos();
-    }
-
-    public static void guardaAsociaciones(){
-        cd.guardaCnjtAsociaciones();
-    }
-
-    public static void guardaTeclados(){
-        cd.guardaCnjtTeclados();
     }
 
 
@@ -273,6 +280,7 @@ public class CtrlPresentacion {
     public static boolean agregarAsociacion(String nomAT, ArrayList<String> textosagregar) {
         return cd.agregarAsociacion(nomAT, textosagregar);
     }
+
     /**
      * Llama a la función agregarAsociacion de CtrlDominio
      *
@@ -283,6 +291,7 @@ public class CtrlPresentacion {
     public static void agregarTextoAsociacion (String nomAT, String nomTxt) {
         cd.agregarTextoAsociacion(nomAT, nomTxt);
     }
+
     /**
      * Llama a la función getNombresAsociaciones de CtrlDominio
      *
@@ -292,6 +301,7 @@ public class CtrlPresentacion {
         ArrayList<String> listaAsociacionesNombres = cd.getNombresAsociaciones();
         return listaAsociacionesNombres;
     }
+
     /**
      * Llama a la función consultarContenidoAsociacion de CtrlDominio
      * @param nomAT es el nombre de la asociación a consultar
@@ -300,15 +310,23 @@ public class CtrlPresentacion {
             ArrayList<String > cjtTextosAsociacion = cd.consultarCjtTextosAsociacion(nomAT);
             return cjtTextosAsociacion;
     }
+
+
     public static void borrarTextoAsociacion (String nomAT, String nomTxt) {
         cd.borrarTextoAsociacion(nomAT, nomTxt);
     }
+
     /**
      * Llama a la función borrarAsociacionTextos de CtrlDominio
      * @param nomAT es el nombre de la asociación a borrar
      */
     public static void borrarAsociacionTextos(String nomAT) {
         cd.borrarAsociacionTextos(nomAT);
+    }
+
+    /** Llama a la función guardaCnjtAsociaciones de CtrlDominio para almacenar el conjunto de asociaciones de textos. */
+    public static void guardaAsociaciones(){
+        cd.guardaCnjtAsociaciones();
     }
 
 
@@ -323,6 +341,7 @@ public class CtrlPresentacion {
         int acabado = cd.agregarTeclado(nomT,nomA,nomAT, dim, alg);
         return acabado;
     }
+
     /**
      * Llama a la función consultarContenidoTeclado de CtrlDominio
      * @param nomT nombre del teclado a consultar
@@ -331,6 +350,7 @@ public class CtrlPresentacion {
     public static char[][] consultarContenidoTeclado(String nomT){
         return cd.consultarContenidoTeclado(nomT);
     }
+
     /**
      * Llama a la función consultarContenidoTeclado de CtrlDominio
      * @param nomT nombre del teclado a consultar
@@ -339,6 +359,7 @@ public class CtrlPresentacion {
     public static int consultarPuntuacionTeclado(String nomT){
         return cd.consultarPuntuacionTeclado(nomT);
     }
+
     /**
      * Llama a la función consultarAlfabetoAsociadoTeclado de CtrlDominio
      * @param nomT nombre del teclado a consultar
@@ -347,6 +368,7 @@ public class CtrlPresentacion {
     public static String consultarAlfabetoAsociadoTeclado(String nomT) {
         return cd.consultarAlfabetoAsociadoTeclado(nomT);
     }
+
     /**
      * Llama a la función consultarAsociacionAsociadoTeclado de CtrlDominio
      * @param nomT nombre del teclado a consultar
@@ -355,6 +377,7 @@ public class CtrlPresentacion {
     public static String consultarAsociacionAsociadoTeclado(String nomT) {
         return cd.consultarAsociacionAsociadoTeclado(nomT);
     }
+
     /**
      * Llama a la función consultarAsociacionAsociadoTeclado de CtrlDominio
      * @param nomT nombre del teclado a consultar
@@ -363,6 +386,7 @@ public class CtrlPresentacion {
     public static PairInt consultarDimensionesTeclado(String nomT) {
         return cd.consultarDimensionesTeclado(nomT);
     }
+
     /**
      * Llama a la función getListaTeclados de CtrlDominio
      * @return ArrayList<String>: lista de nombres de los teclados existentes
@@ -371,6 +395,7 @@ public class CtrlPresentacion {
         ArrayList<String> listaTeclados = cd.getListaTeclados();
         return listaTeclados;
     }
+
     /**
      * Llama a la función borrarTeclado de CtrlDominio
      * @param nomT nombre del teclado a borrar
@@ -383,7 +408,19 @@ public class CtrlPresentacion {
         return cd.getPosiblesDimensiones(nomA);
     }
 
+    /**
+     * Verifica si el formato de las frecuencias es correcto para agregar a un contenido de texto.
+     * @param contenidoTexto contenido de texto al que se agregarán las frecuencias.
+     * @param pathTexto ruta del archivo de texto asociado al contenido.
+     * @param frecuencias mapa de frecuencias a agregar al contenido de texto.
+     * @return True si el formato de las frecuencias es correcto, False de lo contrario.
+     */
     public static boolean formatoCorrectoAgregarFrecuencias(String contenidoTexto, String pathTexto, HashMap<String, Integer> frecuencias) {
         return cd.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
+    }
+
+    /** Llama a la función guardaCnjtTeclados de CtrlDominio para almacenar el conjunto de teclados. */
+    public static void guardaTeclados(){
+        cd.guardaCnjtTeclados();
     }
 }
