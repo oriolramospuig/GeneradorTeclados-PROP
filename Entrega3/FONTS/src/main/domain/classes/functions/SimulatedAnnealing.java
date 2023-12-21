@@ -281,6 +281,7 @@ public class SimulatedAnnealing implements IAlgoritmo {
      */
     @Override
     public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dim, HashMap<Character, Integer> letraAIndice) {
+        long tiempoInicio = System.currentTimeMillis();
         calculo();
 
         int paux;
@@ -305,6 +306,12 @@ public class SimulatedAnnealing implements IAlgoritmo {
             }
         }
         Teclado tecladoSA = new Teclado(nomT, asociacionTextos, alfabeto, dim, contenido, puntuacionFinal);
+
+        long tiempoFin = System.currentTimeMillis(); // O System.nanoTime() para mayor precisión
+        long tiempoTotal = tiempoFin - tiempoInicio;
+
+        System.out.println("Tiempo total de ejecución: " + tiempoTotal + " milisegundos");
+
         return tecladoSA;
     }
 }

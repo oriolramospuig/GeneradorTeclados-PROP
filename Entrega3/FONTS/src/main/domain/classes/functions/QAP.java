@@ -214,6 +214,8 @@ public class QAP implements IAlgoritmo {
      */
     @Override
     public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dim, HashMap<Character, Integer> letraAIndice) {
+        long tiempoInicio = System.currentTimeMillis();
+
         List<Integer> ind = new ArrayList<>();
         for (int i = 0; i < filas*columnas; ++i) {
             ind.add(i);
@@ -239,6 +241,11 @@ public class QAP implements IAlgoritmo {
             }
         }
         Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto, dim, tec, puntuacion);
+
+        long tiempoFin = System.currentTimeMillis(); // O System.nanoTime() para mayor precisión
+        long tiempoTotal = tiempoFin - tiempoInicio;
+
+        System.out.println("Tiempo total de ejecución: " + tiempoTotal + " milisegundos");
 
         return teclado;
     }
