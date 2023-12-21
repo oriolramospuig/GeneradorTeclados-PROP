@@ -211,6 +211,28 @@ public void TestagregarTexto(){
         assertTrue(asociacionTextos.getTecladosVinculados().contains(nombreT2));
     }
 
+    /**
+     * Objeto de la prueba: Verificar que la función borrarTexto elimina correctamente un texto asociado,
+     * actualiza la lista de textos asociados y la frecuencia de letras en consecuencia.
+     *
+     * Ficheros necesarios:</b> Ninguno.
+     *
+     * Valores necesarios:
+     * - Nombre de la asociación: "Asociacion"
+     * - Frecuencia de palabras iniciales
+     * - Frecuencia de letras iniciales
+     * - Texto asociado: Frecuencias
+     *
+     *  Operativa:
+     *  1. Se crea un objeto AsociacionTextos con el nombre y la frecuencia de letras iniciales.
+     *  2. Se crea un objeto Frecuencias para simular un texto asociado.
+     *  3. Se llama a la función borrarTexto con el nombre del texto asociado (actualmente comentado).
+     *  4. Se obtienen las listas y mapas actualizados después de la supuesta eliminación del texto.
+     *  5. Se realizan las aserciones para verificar el comportamiento esperado.
+     *
+     *
+     */
+
     @Test
     public void TestborrarTexto() {
         System.out.println("Test borrar Texto");

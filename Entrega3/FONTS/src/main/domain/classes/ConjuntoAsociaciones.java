@@ -46,8 +46,8 @@ public class ConjuntoAsociaciones implements Serializable
     }
 
     /**
-     * Devuelve el conjunto de asociaciones de textos existentes
-     * @return HashMap<String, AsociacionTextos>: Conjunto de asociaciones de textos
+     * Devuelve el conjunto de asociaciones de textos existentes.
+     * @return HashMap<String, AsociacionTextos>: Conjunto de asociaciones de textos.
      */
     public HashMap<String, AsociacionTextos> getAsociacionesTextos() {
         return asociaciones;
@@ -55,9 +55,9 @@ public class ConjuntoAsociaciones implements Serializable
 
     // ---------- SETTERS ----------
     /**
-     * No devuelve nada. Añade una asociación de textos al conjunto de asociaciones de textos
-     * @param asociacionTextos asociación a agregar al conjunto de asociaciones
-     * @param nomAT nombre de la asociacion a agregaral conjunto
+     * No devuelve nada. Añade una asociación de textos al conjunto de asociaciones de textos.
+     * @param asociacionTextos asociación a agregar al conjunto de asociaciones.
+     * @param nomAT nombre de la asociacion a agregaral conjunto.
      */
     public void agregarAsociacionTexto(String nomAT, AsociacionTextos asociacionTextos) {
         asociaciones.put(nomAT, asociacionTextos);
@@ -66,9 +66,9 @@ public class ConjuntoAsociaciones implements Serializable
 
     // ---------- AUXILIARES -----------
     /**
-     * Devuelve si existe la asociación de textos con el nombre dado
-     * @param nomAT nombre de la asociación de textos a comprobar
-     * @return boolean: True si el la asociación de textos con nombre nomAT existe en el conjunto, false si no existe
+     * Devuelve si existe la asociación de textos con el nombre dado.
+     * @param nomAT nombre de la asociación de textos a comprobar.
+     * @return boolean: True si el la asociación de textos con nombre nomAT existe en el conjunto, false si no existe.
      */
     public boolean existeAsociaciondeTextos(String nomAT) {
         return asociaciones.containsKey(nomAT);
@@ -76,8 +76,8 @@ public class ConjuntoAsociaciones implements Serializable
 
     //Segunda entrega
     /**
-     * No devuelve nada. Borra la asociación de textos con nombre nomAT del conjunto de asociaciones
-     * @param nomAT nombre de la asociación de textos a borrar
+     * No devuelve nada. Borra la asociación de textos con nombre nomAT del conjunto de asociaciones.
+     * @param nomAT nombre de la asociación de textos a borrar.
      */
     public void borrarAsociacionTextos(String nomAT) {
         asociaciones.remove(nomAT);

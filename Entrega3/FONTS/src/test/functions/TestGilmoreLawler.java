@@ -43,12 +43,12 @@ public class TestGilmoreLawler {
      * Ficheros Necesarios: No se requieren ficheros externos para esta prueba.
      * Valores Estudiados:
      * - gilmoreLawler: Instancia de la clase GilmoreLawler creada mediante la constructora vacía.
-     * - nf : número de filas
-     * - nc : número de columnas
-     * - bound : cota inicial
-     * - mf : matriz de frecuencias
-     * - md : matriz de distancias
-     * - letraAIndice : Hashmap donde guardo todos los carácteres con sus respectivas frecuencias
+     * - nf : número de filas.
+     * - nc : número de columnas.
+     * - bound : cota inicial.
+     * - mf : matriz de frecuencias.
+     * - md : matriz de distancias.
+     * - letraAIndice : Hashmap donde guardo todos los carácteres con sus respectivas frecuencias.
      * Operativa:
      * 1. Mensaje informativo en consola para identificar la prueba.
      * 2. Se inicializan los diferentes parámetros necesarios
