@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Clase que gestiona la carga y guardado de Conjuntos de Alfabetos en formato de bytes.
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
+ */
 public class GestorLectura {
     public static boolean alfabetoValido(String entrada) {
         if (entrada == null || entrada.isEmpty()) {

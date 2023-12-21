@@ -25,6 +25,7 @@ public class CtrlPersistencia {
     /** Representa el gestor de persistencia de teclados. */
     private final GestorTeclado gestorTeclado;
 
+    /** Representa el gestor de lectura de alfabetos y textos por archivo. */
     private final GestorLectura gestorLectura;
 
     /**
@@ -119,14 +120,33 @@ public class CtrlPersistencia {
     }
 
 
+    /**
+     * Lee un archivo de la ruta especificada y devuelve los caracteres leídos como una lista.
+     * @param pathArchivo ruta del archivo a leer.
+     * @return lista de caracteres leídos desde el archivo.
+     * @throws IOException en el caso de haber un error de entrada/salida al leer el archivo.
+     */
     public ArrayList<Character> leerArchivoPath(String pathArchivo) throws IOException {
         return gestorLectura.leerAlfabetosPath(pathArchivo);
     }
 
+    /**
+     * Lee un archivo de texto de la ruta especificada y devuelve el contenido como una cadena de texto.
+     * @param pathTexto ruta del archivo de texto a leer.
+     * @return contenido del archivo de texto como una cadena de texto.
+     * @throws IOException en el caso de haber un error de entrada/salida al leer el archivo de texto.
+     */
     public String leerTextoPalabrasPath(String pathTexto) throws IOException {
         return gestorLectura.leerTextoPalabrasPath(pathTexto);
     }
 
+    /**
+     * Verifica si el formato de las frecuencias es correcto para agregar a un contenido de texto.
+     * @param contenidoTexto contenido de texto al que se agregarán las frecuencias.
+     * @param pathTexto ruta del archivo de texto asociado al contenido.
+     * @param frecuencias mapa de frecuencias a agregar al contenido de texto.
+     * @return True si el formato de las frecuencias es correcto, False de lo contrario.
+     */
     public boolean formatoCorrectoAgregarFrecuencias(String contenidoTexto, String pathTexto, HashMap<String, Integer> frecuencias) {
         return gestorLectura.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
     }

@@ -648,16 +648,37 @@ public class CtrlDominio
     }
 
 
+    /**
+     * Agrega un alfabeto utilizando un archivo especificado por la ruta.
+     * @param nombreAlfabeto nombre del alfabeto a agregar.
+     * @param pathArchivo ruta del archivo que contiene la definición del alfabeto.
+     * @return True si el alfabeto se agrega con éxito, False de lo contrario.
+     * @throws IOException en el caso de haber un error de entrada/salida al leer el archivo.
+     */
     public static boolean agregarAlfabetoPath(String nombreAlfabeto, String pathArchivo) throws IOException {
         ArrayList<Character> entrada = ctrlPersistencia.leerArchivoPath(pathArchivo);
         return agregarAlfabeto(nombreAlfabeto, entrada);
     }
 
+    /**
+     * Agrega un texto de palabras utilizando un archivo de texto especificado por la ruta.
+     * @param nombreTexto nombre del texto de palabras a agregar.
+     * @param pathTexto ruta del archivo de texto que contiene las palabras.
+     * @return True si el texto de palabras se agrega con éxito, False de lo contrario.
+     * @throws IOException en el caso de haber un error de entrada/salida al leer el archivo de texto.
+     */
     public boolean agregarTextoPalabrasPath(String nombreTexto, String pathTexto) throws IOException {
         String texto = ctrlPersistencia.leerTextoPalabrasPath(pathTexto);
         return agregarTextoPalabras(nombreTexto, texto);
     }
 
+    /**
+     * Verifica si el formato de las frecuencias es correcto para agregar a un contenido de texto.
+     * @param contenidoTexto contenido de texto al que se agregarán las frecuencias.
+     * @param pathTexto ruta del archivo de texto asociado al contenido.
+     * @param frecuencias mapa de frecuencias a agregar al contenido de texto.
+     * @return True si el formato de las frecuencias es correcto, False de lo contrario.
+     */
     public boolean formatoCorrectoAgregarFrecuencias(String contenidoTexto, String pathTexto, HashMap<String, Integer> frecuencias) {
         return ctrlPersistencia.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
     }
