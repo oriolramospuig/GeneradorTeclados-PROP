@@ -115,6 +115,7 @@ public class QAP implements IAlgoritmo {
 
     /**
      * Constructor que inicializa una instancia de QAP con las dimensiones y matrices especificadas.
+     * (Creadora para driver interactivo).
      *
      * @param n Filas*columnas del teclado.
      * @param nf Número de filas del teclado.
@@ -130,7 +131,18 @@ public class QAP implements IAlgoritmo {
         this.matrizFrecuencias = matrizFrecuencias;
         this.matrizDistancias = matrizDistancias;
 
+        List<Integer> ind = new ArrayList<>();
+        for (int i = 0; i < nf*nc; ++i) {
+            ind.add(i);
+        }
+
+        int [][] indices = calcularMejorAsignacionAleatoria(ind, 100);
+        this.teclado = indices;
+        this.sol = new ArrayList<>();
+        this.glBound = calculoPuntuacion(indices);
+
         calculo();
+
     }
 
     /**
