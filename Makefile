@@ -32,7 +32,7 @@ ejecuta:
 	java -jar $(JAR_OUTPUT)PROP14-3.jar
 
 jarInteractivo:
-	javac -d $(CLASS_OUTPUT) $(CLASS_INPUT_ALL) Entrega3/FONTS/src/drivers/DriverInteractivoQAP.java
+	javac -cp "$(CLASS_OUTPUT):$(JUNIT_JARS)" -d $(CLASS_OUTPUT) Entrega3/FONTS/src/drivers/DriverInteractivoQAP.java
 	jar cmvf Entrega3/FONTS/src/drivers/Interactivo.mf $(JAR_OUTPUT)DriverInteractivoQAP.jar -C $(CLASS_OUTPUT) .
 	java -jar $(JAR_OUTPUT)DriverInteractivoQAP.jar
 

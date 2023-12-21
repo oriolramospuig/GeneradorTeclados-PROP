@@ -184,7 +184,7 @@ public class VistaTextoA extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir") + "\\Entrega3\\data\\InputFiles\\Textos\\");
+        JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir") + "//Entrega3//data//InputFiles//Textos//");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setAcceptAllFileFilterUsed(false);
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Archivo de Texto", "txt"));

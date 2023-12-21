@@ -101,7 +101,7 @@ public class DriverInteractivoQAP {
      */
     private static String obtenerRutaArchivo(String nombreTest) {
         String currentDirectory = System.getProperty("user.dir");
-        return currentDirectory + "\\Entrega3\\FONTS\\src\\test\\QAP_tests\\" + nombreTest + ".dat";
+        return currentDirectory + "//Entrega3//FONTS//src//test//QAP_tests//" + nombreTest + ".dat";
     }
 
     /**

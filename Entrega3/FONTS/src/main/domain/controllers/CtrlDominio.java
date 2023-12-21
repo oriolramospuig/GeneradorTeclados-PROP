@@ -480,7 +480,7 @@ public class CtrlDominio
         String nomDoc = "conjuntoAlfabetos";
         //if(nomDoc.endsWith(".prop")) { nomDoc = nomDoc+".prop"; }
         String currentDirectory = System.getProperty("user.dir");
-        String path = currentDirectory+"\\Entrega3\\data\\Cache\\"+nomDoc+"\\";
+        String path = currentDirectory+"//Entrega3//data//Cache//"+nomDoc+"//";
         try {
             byte[] bytes = ctrlAlfabeto.alfabetosToByteArray();
             ctrlPersistencia.guardaCnjtAlfabetos(bytes,path);
@@ -518,7 +518,7 @@ public class CtrlDominio
     public void guardaCnjtTextos() {
         String nomDoc = "conjuntoTextos";
         String currentDirectory = System.getProperty("user.dir");
-        String path = currentDirectory+"\\Entrega3\\data\\Cache\\"+nomDoc+"\\";
+        String path = currentDirectory+"//Entrega3//data//Cache//"+nomDoc+"//";
         try {
             byte[] bytes = ctrlTexto.textosToByteArray();
             ctrlPersistencia.guardaCnjtTextos(bytes,path);
@@ -556,7 +556,7 @@ public class CtrlDominio
     public void guardaCnjtAsociaciones() {
         String nomDoc = "conjuntoAsociaciones";
         String currentDirectory = System.getProperty("user.dir");
-        String path = currentDirectory+"\\Entrega3\\data\\Cache\\"+nomDoc+"\\";
+        String path = currentDirectory+"//Entrega3//data//Cache//"+nomDoc+"//";
         try {
             byte[] bytes = ctrlAsociacionTexto.asociacionesToByteArray();
             ctrlPersistencia.guardaCnjtAsociaciones(bytes,path);
@@ -594,7 +594,7 @@ public class CtrlDominio
     public void guardaCnjtTeclados() {
         String nomDoc = "conjuntoTeclados";
         String currentDirectory = System.getProperty("user.dir");
-        String path = currentDirectory+"\\Entrega3\\data\\Cache\\"+nomDoc+"\\";
+        String path = currentDirectory+"//Entrega3//data//Cache//"+nomDoc+"//";
         try {
             byte[] bytes = ctrlTeclado.tecladosToByteArray();
             ctrlPersistencia.guardaCnjtTeclados(bytes,path);
