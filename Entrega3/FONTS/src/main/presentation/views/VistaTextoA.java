@@ -248,41 +248,13 @@ public class VistaTextoA extends JFrame {
                 }
 
                 HashMap<String, Integer> frecuencias = new HashMap<>();
-                boolean formatoCorrecto = true;
+                boolean formatoCorrecto;
 
-                if (!contenidoTexto.isEmpty()) {
-                    String[] lineas = contenidoTexto.split("\n");
-                    for (String linea : lineas) {
-                        linea = linea.trim();
-                        if (!linea.matches("\\S+\\s+\\d+")) {
-                            formatoCorrecto = false;
-                            break;
-                        }
-                        String[] partes = linea.split("\\s+");
-                        frecuencias.put(partes[0], Integer.parseInt(partes[1]));
-                    }
-                } else {
-                    try {
-                        File archivo = new File(pathTexto);
-                        Scanner scanner = new Scanner(archivo);
-                        while (scanner.hasNextLine()) {
-                            String linea = scanner.nextLine().trim();
-                            if (!linea.matches("\\S+\\s+\\d+")) {
-                                formatoCorrecto = false;
-                                break;
-                            }
-                            String[] partes = linea.split("\\s+");
-                            frecuencias.put(partes[0], Integer.parseInt(partes[1]));
-                        }
-                        scanner.close();
-                    } catch (FileNotFoundException ex) {
-                        formatoCorrecto = false;
-                    }
-                }
+                formatoCorrecto = CtrlDominio.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
 
                 if (formatoCorrecto) {
-                    boolean agregado = CtrlPresentacion.agregarTextoFrecuencias(nombreTexto, frecuencias);
-                    if (agregado) {
+                    //boolean agregado = CtrlPresentacion.agregarTextoFrecuencias(nombreTexto, frecuencias);
+                    boolean agregado = CtrlDominio.agregarTextoFrecuencias(nombreTexto, frecuencias);                    if (agregado) {
                         JOptionPane.showMessageDialog(VistaTextoA.this, "Texto de frecuencias agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                         areanomTxtA1.setText("");
                         areaContenidoTxtA1.setText("");

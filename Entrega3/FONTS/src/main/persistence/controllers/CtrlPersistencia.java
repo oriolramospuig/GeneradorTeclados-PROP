@@ -6,6 +6,7 @@ import main.persistence.classes.*;
 import javax.print.DocFlavor;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Clase que controla la persistencia de conjuntos de alfabetos, textos, asociaciones de textos y teclados. Se encarga de gestionar el almacenamiento de datos.
@@ -119,10 +120,14 @@ public class CtrlPersistencia {
 
 
     public ArrayList<Character> leerArchivoPath(String pathArchivo) throws IOException {
-        return gestorLectura.leerPath(pathArchivo);
+        return gestorLectura.leerAlfabetosPath(pathArchivo);
     }
 
     public String leerTextoPalabrasPath(String pathTexto) throws IOException {
         return gestorLectura.leerTextoPalabrasPath(pathTexto);
+    }
+
+    public boolean formatoCorrectoAgregarFrecuencias(String contenidoTexto, String pathTexto, HashMap<String, Integer> frecuencias) {
+        return gestorLectura.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
     }
 }

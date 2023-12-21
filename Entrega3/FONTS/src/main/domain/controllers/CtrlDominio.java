@@ -165,7 +165,7 @@ public class CtrlDominio
      * @param frecuenciaPalabras contenido del texto (formato frecuencias).
      * @return Boolean: true si se ha agregado bien el texto, false si no se ha creado bien.
      */
-    public boolean agregarTextoFrecuencias(String nomT, HashMap<String,Integer> frecuenciaPalabras){
+    public static boolean agregarTextoFrecuencias(String nomT, HashMap<String, Integer> frecuenciaPalabras){
         return ctrlTexto.agregarTextoFrecuencias(nomT,frecuenciaPalabras);
     }
 
@@ -656,5 +656,9 @@ public class CtrlDominio
     public static boolean agregarTextoPalabrasPath(String nombreTexto, String pathTexto) throws IOException {
         String texto = ctrlPersistencia.leerTextoPalabrasPath(pathTexto);
         return agregarTextoPalabras(nombreTexto, texto);
+    }
+
+    public static boolean formatoCorrectoAgregarFrecuencias(String contenidoTexto, String pathTexto, HashMap<String, Integer> frecuencias) {
+        return ctrlPersistencia.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
     }
 }
