@@ -12,11 +12,22 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Aquesta vista s’encarrega de carregar un fitxer guardat a l’ordinador i obrir-lo. La vista obre l’explorador d’arxius
- * on es podran seleccionar únicament fitxers que el nostre sistema és capaç d’obrir. Es proporciona un botó de
- * cancel·lar que tornarà a la VistaMenuPrincipal i un botó d’obrir que farà que s’obri a la VistaSpreadsheet el fitxer
- * seleccionat.
- * @author Marc Clapés Marana (marc.clapes.marana@estudiantat.upc.edu)
+ * Vista para modificar los textos vinculados a una asociación existente.
+ * <p>
+ * Esta vista ofrece al usuario una lista desplegable para seleccionar una asociación existente y modificar su contenido.
+ * Al seleccionar una asociación de la lista, se muestra su nombre y su contenido en campos de texto.
+ * También se proporcionan dos deplegables, uno para agregar nuevos textos a la asociación y otro para borrar textos vinculados a ella.
+ * El primer desplegable contiene los textos posibles a vincular a la asociación y otro los textos vinculados
+ *
+ *
+ *
+ *
+ *
+ * a la apermitiendo la modificación del contenido.
+ * El nombre del alfabeto, siendo el identificador, no es modificable.
+ * La interfaz proporciona una manera sencilla y directa para que los usuarios puedan actualizar los caracteres que componen un alfabeto específico.
+ * Incluye un botón para confirmar las modificaciones y otro para regresar al menú principal.
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class VistaAsociacionTextosM extends JFrame{
     //BOTONES

@@ -651,7 +651,7 @@ public class CtrlDominio
             System.err.println("[#CARGA] Error al cargar el conjunto de teclados " + e.getMessage());
         }
     }
-    
+
     /**
      * Agrega un alfabeto utilizando un archivo especificado por la ruta.
      * @param nombreAlfabeto nombre del alfabeto a agregar.
