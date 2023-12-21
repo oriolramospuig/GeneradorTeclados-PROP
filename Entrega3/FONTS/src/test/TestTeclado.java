@@ -124,7 +124,7 @@ public class TestTeclado {
 
         AsociacionTextos asociacionTextos2 = new AsociacionTextos("nombreAT2");
 
-        teclado.agregarAsociacionTextosVinculado("nombre2");
+        teclado.agregarAsociacionTextosVinculado("nombreAT2");
         assertEquals(asociacionTextos2.getNombre(), teclado.getAsociacionTextosVinculado());
     }
 }

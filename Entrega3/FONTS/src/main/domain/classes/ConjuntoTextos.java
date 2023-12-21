@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Clase que representa el conjunto de textos
+ * Clase que representa el conjunto de textos.
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
-public class ConjuntoTextos implements Serializable
-{
+public class ConjuntoTextos implements Serializable {
     // ---------- ATRIBUTOS ----------
     /** Guarda el conjunto de textos introducidos por el usuario. */
     private HashMap<String, Texto> textos;
@@ -53,7 +52,7 @@ public class ConjuntoTextos implements Serializable
      * @return HashMap<String, Texto>: Conjunto de textos.
      */
     public HashMap<String, Texto> getTextos() {
-        return textos;
+         return textos;
     }
 
 

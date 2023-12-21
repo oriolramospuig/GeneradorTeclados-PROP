@@ -1,9 +1,11 @@
 package main.domain.classes.types;
 
+import java.io.Serializable;
+
 /** Clase que implementa un pair de String, Int
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
-public class PairFrequency {
+public class PairFrequency implements Serializable {
     /** Guarda el conjunto de letras que conforman el pairFrequency */
     String pair;
 

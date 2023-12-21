@@ -1,14 +1,14 @@
 package main.domain.classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
- * Clase que representa un Texto del tipo Frecuencias
+ * Clase que representa un Texto del tipo Frecuencias.
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
-public class Frecuencias extends Texto
+public class Frecuencias extends Texto implements Serializable
 {
     // ---------- ATRIBUTOS ----------
     /** Guarda la lista de palabras que contienen el texto y su frecuencia ("hola", 5). */
@@ -47,16 +47,6 @@ public class Frecuencias extends Texto
 
 
     // ---------- SETTERS ----------
-    /**
-     * No devuelve nada. Añade la palabra con su frecuencia a frecuenciaPalabras.
-     * @param palabra pareja de caracteres del texto.
-     * @param frecuencia frecuencia del par de palabras parejaLetras.
-     *
-     */
-    public void anadirPalabra(String palabra, Integer frecuencia) {
-        frecuenciaPalabras.put(palabra, frecuencia);
-    }
-
     /**
      * Modifica el contenido del texto en formato frecuencias con unas nuevas frecuencias y letras asociadas al Texto.
      * @param frec nuevo HashMap que representa la frecuencia de palabras asociada al Texto.

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 /**
- * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
+ * @author
  */
 public class TestConjuntoAsociaciones
 {

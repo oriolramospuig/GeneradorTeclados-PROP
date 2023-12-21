@@ -1,5 +1,6 @@
 package main.domain.controllers;
 
+import drivers.InOut;
 import main.domain.classes.*;
 import main.domain.classes.types.PairInt;
 import main.persistence.controllers.CtrlPersistencia;
@@ -15,10 +16,10 @@ import java.util.HashMap;
 public class CtrlDominio
 {
     /** Crea una instancia del controlador alfabeto. */
-    private CtrlAlfabeto ctrlAlfabeto;
+    private static CtrlAlfabeto ctrlAlfabeto;
 
     /** Crea una instancia del controlador texto. */
-    private CtrlTexto ctrlTexto;
+    private static CtrlTexto ctrlTexto;
 
     /** Crea una instancia del controlador asociación de texto. */
     private CtrlAsociacionTexto ctrlAsociacionTexto;
@@ -27,7 +28,7 @@ public class CtrlDominio
     private CtrlTeclado ctrlTeclado;
 
     /** Crea una instancia del controlador de persistencia. */
-    private final CtrlPersistencia ctrlPersistencia;
+    private static CtrlPersistencia ctrlPersistencia;
 
 
     // ---------- CONSTRUCTORAS ----------
@@ -49,6 +50,7 @@ public class CtrlDominio
         cargaCnjtTeclados(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoTeclados"+"//");
     }
 
+
     // ---------- FUNCIONES ALFABETO ----------
     /**
      * Retorna si se ha creado bien el alfabeto con el nombre y el contenido dados.
@@ -56,7 +58,7 @@ public class CtrlDominio
      * @param entradaCaracteres lista de carácteres que forman el contenido del alfabeto.
      * @return Boolean: true si se ha agregado bien el alfabeto, false si no se ha agregado bien.
      */
-    public boolean agregarAlfabeto(String nomA, ArrayList<Character> entradaCaracteres){
+    public static boolean agregarAlfabeto(String nomA, ArrayList<Character> entradaCaracteres){
         return ctrlAlfabeto.CrearAlfabeto(nomA,entradaCaracteres);
     }
 
@@ -153,7 +155,7 @@ public class CtrlDominio
      * @param texto contenido del texto (formato palabras).
      * @return Boolean: true si se ha agregado bien el texto, false si no se ha creado bien.
      */
-    public boolean agregarTextoPalabras(String nomT, String texto){
+    public static boolean agregarTextoPalabras(String nomT, String texto){
         return ctrlTexto.agregarTextoPalabras(nomT,texto);
     }
 
@@ -646,4 +648,13 @@ public class CtrlDominio
     }
 
 
+    public static boolean agregarAlfabetoPath(String nombreAlfabeto, String pathArchivo) throws IOException {
+        ArrayList<Character> entrada = ctrlPersistencia.leerArchivoPath(pathArchivo);
+        return agregarAlfabeto(nombreAlfabeto, entrada);
+    }
+
+    public static boolean agregarTextoPalabrasPath(String nombreTexto, String pathTexto) throws IOException {
+        String texto = ctrlPersistencia.leerTextoPalabrasPath(pathTexto);
+        return agregarTextoPalabras(nombreTexto, texto);
+    }
 }

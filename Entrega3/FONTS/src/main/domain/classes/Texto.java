@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Clase que representa un texto
+ * Clase que representa un texto.
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public abstract class Texto implements Serializable

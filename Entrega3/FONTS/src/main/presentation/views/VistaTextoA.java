@@ -1,5 +1,6 @@
 package main.presentation.views;
 
+import main.domain.controllers.CtrlDominio;
 import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
@@ -208,7 +209,8 @@ public class VistaTextoA extends JFrame {
                 boolean agregado;
                 if (contenidoTexto.isEmpty()) {
                     try {
-                        agregado = CtrlPresentacion.agregarTextoPalabrasPath(nombreTexto, pathTexto);
+                        //agregado = CtrlPresentacion.agregarTextoPalabrasPath(nombreTexto, pathTexto);
+                        agregado = CtrlDominio.agregarTextoPalabrasPath(nombreTexto, pathTexto);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
