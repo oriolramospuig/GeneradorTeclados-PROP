@@ -10,43 +10,53 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * Esta vista es la encargada de eliminar un alfabeto. Se indican claramente 2 campos de texto, pero solo hay que rellenar 1 de estos 2.
- * El primer campo es una lista de desplegable de los nombres de los alfabetos existentes en el sistema.
- * De manera que el usuario debe seleccionar uno de estos para eliminar.
- * El segundo campo se llenará automáticamente con el nombre que el usuario haya seleccionado de la lista del campo anterior.
- * Solo se puede eliminar un alfabeto si se selecciona algún nombre de la lista.
- * De no ser así, se muestra un mensaje de error avisando al usuario qué le falta para poder borrar de forma correcta el alfabeto deseado.
- * Debajo de las áreas de texto se proporciona un botón para borrar el alfabeto con la información introducida.
- * Más también hay un botón con la opción de volver al menú principal.
- * @author
+ * Vista para eliminar alfabetos existentes.
+ * <p>
+ * Esta vista permite al usuario seleccionar y eliminar un alfabeto existente en el sistema.
+ * Proporciona una lista desplegable con los nombres de todos los alfabetos disponibles y muestra el nombre seleccionado en un campo de texto.
+ * Incluye validaciones para asegurar que se haya seleccionado un alfabeto antes de intentar eliminarlo.
+ * La vista también alerta al usuario sobre las consecuencias de eliminar un alfabeto, como la eliminación de teclados asociados.
+ * Incluye botones para realizar la eliminación y para regresar al menú principal.
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
-
-public class VistaAlfabetoB extends JFrame{
-    /** Pantalla de error que aparece cuando falta información por introducir */
+public class VistaAlfabetoB extends JFrame {
+    /** Pantalla de error para mostrar mensajes cuando falta información. */
     private JFrame frame = new JFrame();
-    /** Panel donde se incluyen los elementos de la ventana */
+
+    /** Panel principal que contiene todos los componentes de la interfaz. */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana */
+
+    /** Título de la ventana. */
     private final JLabel tituloVistaAB = new JLabel("Borrar alfabeto");
-    /** Botón para agregar un alfabeto */
+
+    /** Botón para eliminar el alfabeto seleccionado. */
     private final JButton bBorrarAlfabeto = new JButton("Borrar Alfabeto");
-    /** Botón para volver a la pantalla del menú principal */
+
+    /** Botón para regresar al menú principal. */
     private final JButton bsalir = new JButton("Atrás");
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
+
+    /** Etiqueta para la lista desplegable de nombres de alfabetos. */
     private final JLabel txtDesplegableAB = new JLabel("LISTA NOMBRES:");
-    /** Desplegable con los nombres de los alfabetos*/
+
+    /** Lista desplegable con los nombres de los alfabetos existentes. */
     private JComboBox<String> nombresAB = new JComboBox<>();
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
+
+    /** Etiqueta para el campo de nombre del alfabeto. */
     private final JLabel txtNombreAB = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del alfabeto que se quiere crear */
+
+    /** Campo de texto que muestra el nombre del alfabeto seleccionado. */
     private final JTextArea areanomAB = new JTextArea();
 
-    /** Constructora de la ventana de eliminar alfabeto */
+    /**
+     * Constructor de la clase VistaAlfabetoB.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura los oyentes de eventos
+     * para la eliminación de alfabetos. Proporciona funcionalidad para seleccionar un alfabeto de la lista
+     * y eliminarlo tras confirmar la acción.
+    */
     public VistaAlfabetoB() {
         setBounds(250, 150, 1000, 600);
-        //setExtendedState(Frame.MAXIMIZED_BOTH);
-        //setResizable(true);
-        //setTitle("Funcionalidades alfabeto);
+
         ArrayList<String> nombres = CtrlPresentacion.getNombresAlfabetos();
         nombresAB = new JComboBox<>();
         nombresAB.addItem("");

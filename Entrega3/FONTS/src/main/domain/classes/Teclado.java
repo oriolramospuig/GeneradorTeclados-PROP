@@ -14,22 +14,22 @@ import java.io.Serializable;
 public class Teclado implements Serializable
 {
     // ---------- ATRIBUTOS ----------
-    /** Guarda el nombre introducido por el usuario*/
+    /** Guarda el nombre introducido por el usuario. */
     private String nombre;
 
-    /** Puntuación del teclado */
+    /** Puntuación del teclado. */
     private int puntuacion;
 
-    /** Dimensiones del teclado */
+    /** Dimensiones del teclado. */
     private PairInt dimensiones;
 
-    /** Alfabeto vinculado al teclado */
+    /** Alfabeto vinculado al teclado. */
     private String alfabetoVinculado;
 
-    /** Asociación de textos vinculada al teclado */
+    /** Asociación de textos vinculada al teclado. */
     private String asociacionTextosVinculado;
 
-    /** Contenido del teclado, generado por el algoritmo */
+    /** Contenido del teclado, generado por el algoritmo. */
     private char[][] contenido;
 
 
@@ -57,27 +57,27 @@ public class Teclado implements Serializable
 
     // ---------- GETTERS --------------
     /**
-     * Devuelve el nombre introducido por el usuario
+     * Devuelve el nombre introducido por el usuario.
      *
-     * @return String: nombre introducido por el usuario
+     * @return String: nombre introducido por el usuario.
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * Devuelve la puntuación del teclado
+     * Devuelve la puntuación del teclado.
      *
-     * @return int: Puntuación del teclado calculada debido al algoritmo
+     * @return int: Puntuación del teclado calculada debido al algoritmo.
      */
     public int getPuntuacion() {
         return puntuacion;
     }
 
     /**
-     * Devuelve las dimensiones del teclado generado
+     * Devuelve las dimensiones del teclado generado.
      *
-     * @return PairInt : Dimensiones del teclado generado (filas, columnas)
+     * @return PairInt : Dimensiones del teclado generado (filas, columnas).
      */
     public PairInt getDimensiones() {
         PairInt dim = new PairInt(0,0);
@@ -87,27 +87,27 @@ public class Teclado implements Serializable
     }
 
     /**
-     * Devuelve el alfabeto usado para generar el teclado
+     * Devuelve el alfabeto usado para generar el teclado.
      *
-     * @return String : Nombre del alfabeto vinculado al teclado
+     * @return String : Nombre del alfabeto vinculado al teclado.
      */
     public String getAlfabetoVinculado() {
         return alfabetoVinculado;
     }
 
     /**
-     * Devuelve el la asociación de textos usada para generar el teclado
+     * Devuelve el la asociación de textos usada para generar el teclado.
      *
-     * @return String : Nombre de la asociación de textos vinculado al teclado
+     * @return String : Nombre de la asociación de textos vinculado al teclado.
      */
     public String getAsociacionTextosVinculado() {
         return asociacionTextosVinculado;
     }
 
     /**
-     * Devuelve el contenido del teclado, mediante la distribución de las letras
+     * Devuelve el contenido del teclado, mediante la distribución de las letras.
      *
-     * @return int[][] : Contenido del teclado
+     * @return int[][] : Contenido del teclado.
      */
     public char[][] getContenido() {return contenido; }
 
@@ -115,9 +115,9 @@ public class Teclado implements Serializable
     // ---------- SETTERS ----------
     /**
      * No devuelve nada.
-     * Setea el valor de alfabetoVinculado al nombre del alfabeto pasado por parámetro nomA
+     * Setea el valor de alfabetoVinculado al nombre del alfabeto pasado por parámetro nomA.
      *
-     * @param nomA nombre del alfabeto a vincular
+     * @param nomA nombre del alfabeto a vincular.
      */
     public void agregarAlfabetoVinculado(String nomA) {
         alfabetoVinculado = nomA;
@@ -126,9 +126,9 @@ public class Teclado implements Serializable
     /**
      * No devuelve nada.
      * Setea el valor de asociacionTextosVinculado al nombre de la asociación de textos
-     * pasada por parámetro nomAT
+     * pasada por parámetro nomAT.
      *
-     * @param nomAT nombre de la asociación de textos a vincular
+     * @param nomAT nombre de la asociación de textos a vincular.
      */
     public void agregarAsociacionTextosVinculado(String nomAT) {
         asociacionTextosVinculado = nomAT;

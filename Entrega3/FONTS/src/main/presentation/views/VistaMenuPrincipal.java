@@ -11,49 +11,73 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * Vista principal del generador de teclados PROP.
+ * <p>
+ * Esta vista sirve como menú principal de la aplicación y ofrece opciones para gestionar alfabetos, textos,
+ * asociaciones de textos y teclados. Proporciona accesos directos a las funcionalidades de agregar, eliminar,
+ * consultar y modificar cada uno de estos elementos.
+ * Además, incluye un botón para acceder al manual de usuario y otro para salir de la aplicación.
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
+ * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu)
+ */
 public class VistaMenuPrincipal extends JFrame {
 
+    /** Panel principal que contiene todos los componentes de la interfaz. */
     private final JPanel lamina = new JPanel();
+
+    /** Título de la ventana. */
     private final JLabel tituloVista = new JLabel("Generador de teclados PROP");
 
+    // Menús emergentes para las opciones de cada categoría
     private JPopupMenu popupMenuA = new JPopupMenu();
     private JPopupMenu popupMenuTxt = new JPopupMenu();
     private JPopupMenu popupMenuAT = new JPopupMenu();
     private JPopupMenu popupMenuT = new JPopupMenu();
 
-    //ALFABETO
+    // Opciones para el menú de Alfabeto
     private JMenuItem agregarA = new JMenuItem("Agrega");
     private JMenuItem borrarA = new JMenuItem("Elimina");
     private JMenuItem consultarA = new JMenuItem("Consulta");
     private JMenuItem modificarA = new JMenuItem("Modifica");
 
-    //TEXTO
+    // Opciones para el menú de Texto
     private JMenuItem agregarTxt = new JMenuItem("Agrega");
     private JMenuItem borrarTxt = new JMenuItem("Elimina");
     private JMenuItem consultarTxt = new JMenuItem("Consulta");
     private JMenuItem modificarTxt = new JMenuItem("Modifica");
 
-    //ASOCIACIÓN
+    // Opciones para el menú de Asociación
     private JMenuItem agregarAT = new JMenuItem("Agrega");
     private JMenuItem borrarAT = new JMenuItem("Elimina");
     private JMenuItem consultarAT = new JMenuItem("Consulta");
     private JMenuItem modificarAT = new JMenuItem("Modifica");
 
-    //TECLADO
+    // Opciones para el menú de Teclado
     private JMenuItem agregarT = new JMenuItem("Agrega");
     private JMenuItem borrarT = new JMenuItem("Elimina");
     private JMenuItem consultarT = new JMenuItem("Consulta");
     private JMenuItem modificarT = new JMenuItem("Modifica");
 
+    /** Botón para salir de la aplicación. */
     private JButton bsalir = new JButton("Salir");
 
-    // Botones para mostrar los menús
+    // Botones para mostrar los menús de cada categoría
     private JButton bAlfabeto = new JButton("Alfabeto");
     private JButton bTexto = new JButton("Texto");
     private JButton bAsociacion = new JButton("Asociación de Textos");
     private JButton bTeclado = new JButton("Teclado");
+
+    /** Botón para acceder al manual de usuario. */
     private JButton manual = new JButton("Manual de usuario");
 
+    /**
+     * Constructor de la clase VistaMenuPrincipal.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura los oyentes de eventos
+     * para la navegación entre las diferentes vistas de la aplicación.
+     * Ofrece una interfaz clara y fácil de usar para acceder a las principales funcionalidades del generador de teclados.
+     */
     public VistaMenuPrincipal() {
         setBounds(250, 150, 1000, 600);
         setResizable(true);

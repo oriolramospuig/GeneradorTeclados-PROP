@@ -96,7 +96,7 @@ public class TestConjuntoTeclados {
      * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
      * Valores estudiados: Se consulta la lista de nombres de los teclados existentes en el sistema.
      * Primero se añaden dos teclados para poder consultar la lista.
-     * Seguidamente se llama a la función getNombresTeclados que retorna la lista de los nombres de los teclados existentes
+     * Seguidamente se llama a la función getNombresTeclados que retorna la lista de los nombres de los teclados existentes.
      * Operativa: AssertEquals() comprueba que la medida de la lista de teclados sea 2.
      * Los siguientes dos AssertTrue() comprueban que existan en la lista todos los nombres agregados anteriormente.
      */
@@ -155,7 +155,7 @@ public class TestConjuntoTeclados {
     }
 
     /**
-     * Objeto de la prueba: Test del método BorrarTeclado(String nomT) de la clase conjuntoTeclados
+     * Objeto de la prueba: Test del método BorrarTeclado(String nomT) de la clase conjuntoTeclados.
      * Ficheros de datos necesarios: Datos introducidos manualmente. No hace falta ficheros adicionales.
      * Valores estudiados: Estrategia de caja gris. Se crean unos Teclados, se agregan al conjunto, se borran y se comprueba que se ha borrado correctamente.
      * Operativa: Se comprueba que el teclado borrado no existe en el conjunto.
