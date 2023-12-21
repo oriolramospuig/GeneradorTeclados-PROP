@@ -173,7 +173,10 @@ public class VistaAsociacionTextosA extends JFrame {
                         nombresTextosAgregar.add(elemento);
                     }
                     boolean agregada = CtrlPresentacion.agregarAsociacion(areanomATA.getText(),nombresTextosAgregar);
-                    if(agregada) JOptionPane.showMessageDialog(VistaAsociacionTextosA.this, "Agregada con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    if(agregada) {
+                        JOptionPane.showMessageDialog(VistaAsociacionTextosA.this, "Agregada con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        CtrlPresentacion.guardaAsociaciones();
+                    }
                     else JOptionPane.showMessageDialog(VistaAsociacionTextosA.this, "No Agregada, el nombre " + areanomATA.getText() + " ya existe.", "Error", JOptionPane.INFORMATION_MESSAGE);
                     areanomATA.setText("");
                     nombresTxt.setSelectedItem("");

@@ -13,46 +13,57 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Vista para consultar teclados existentes.
+ * <p>
+ * Esta vista permite al usuario seleccionar un teclado de una lista desplegable y visualizar su contenido y puntuación.
+ * Proporciona una interfaz para la consulta de teclados, mostrando detalles relevantes como su composición y eficiencia.
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
+ */
 public class VistaTecladoC extends JFrame {
-    //BOTONES
-    /** Panel donde se incluyen los elementos de la ventana */
+
+    /** Panel principal que contiene todos los componentes de la interfaz. */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana superior */
+
+    /** Título de la ventana. */
     private final JLabel tituloVistaTC = new JLabel("Consultar teclados");
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion */
+
+    /** Etiqueta para el desplegable de nombres de teclados. */
     private final JLabel txtDesplegableTC = new JLabel("LISTA NOMBRES:");
-    /** Desplegable con los nombres de la asociacion*/
+
+    /** Desplegable que contiene los nombres de los teclados disponibles para consulta. */
     private JComboBox<String> nombresTC = new JComboBox<>();
-    /** Botó de tornar a la pantalla del menú principal */
+
+    /** Botón para regresar al menú principal. */
     private final JButton bsalir = new JButton("Atrás");
 
-
-    //TEXTOS Y AREAS DE TEXTO
-    //VENTANA SUPERIOR
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
+    /** Etiqueta para el campo de nombre del teclado. */
     private final JLabel txtNombreTC = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
+
+    /** Área de texto que muestra el nombre del teclado seleccionado. */
     private final JTextArea areanomTC = new JTextArea();
 
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
+    /** Etiqueta para el área de contenido del teclado. */
     private final JLabel txtContenidoTC = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
+
+    /** Área de texto que muestra el contenido del teclado seleccionado. */
     private final JTextArea areacontenidoTC = new JTextArea();
 
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
+    /** Etiqueta para mostrar la puntuación del teclado. */
     private final JLabel txtPuntuacionTC = new JLabel("PUNTUACIÓN:");
-    /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
+
+    /** Área de texto que muestra la puntuación del teclado seleccionado. */
     private final JTextArea areaPuntuacionTC = new JTextArea();
 
-    //MENSAJES DE ERROR
-    /** Pantalla de error que aparece cuando se quiere consultar/modificar una asociacion sin nombre */
-    private final JFrame Nomframe = new JFrame ("JFrame");
-
+    /**
+     * Constructor de la clase VistaTecladoC.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura los oyentes de eventos
+     * para seleccionar un teclado y visualizar sus detalles.
+     */
     public VistaTecladoC() {
         setBounds(250, 150, 1000, 600);
-        //setExtendedState(Frame.MAXIMIZED_BOTH);
-        //setResizable(true);
-        //setTitle("Funcionalidades alfabeto);
+
         ArrayList<String> nombres = CtrlPresentacion.getListaTeclados();
         nombresTC = new JComboBox<>();
         nombresTC.addItem("");
@@ -136,6 +147,14 @@ public class VistaTecladoC extends JFrame {
         bsalir.addActionListener(lSalir);
     }
 
+    /**
+     * Convierte el contenido de un teclado (matriz de caracteres) en un string.
+     * <p>
+     * Utiliza un formato legible, colocando cada fila en una línea nueva.
+     *
+     * @param contenido Matriz de caracteres representando el contenido del teclado.
+     * @return String representando el contenido del teclado.
+     */
     private String convertirContenidoAString(char[][] contenido) {
         StringBuilder contenidoEnTexto = new StringBuilder();
         for (char[] fila : contenido) {

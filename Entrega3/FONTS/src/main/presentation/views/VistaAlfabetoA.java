@@ -4,59 +4,65 @@ import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Esta vista es la encargada de agregar un alfabeto. Se indican claramente 3 campos de texto, pero solo hay que rellenar 2 de estos 3
- * El primer campo es el del nombre del alfabeto a crear. Este es necesario ya que sin el nombre no se puede crear.
- * (el nombre será el identificador del alfabeto). De los otros dos campos hay qe escoger 1.
- * La primera opción es entrar el contenido del alfabeto manualmente, en el cuadro de texto que se proporciona.
- * La segunda opción es adjuntar el path del archivo que se quiere añadir como alfabeto.
- * Solo se puede agregar el alfabeto si: se ha añadido un nombre y si se han rellenado uno de los dos campos (contenido o path).
- * De no ser así, se muestra un mensaje de error avisando al usuario qué le falta para poder agregar de forma correcta el alfabeto deseado..
- * Hay que tener en cuenta que se comprobará que el nombre no exista en otro alfabeto ya creado,
- * por lo que el nombre que se escriba debe ser nuevo, no debe coincidir con un alfabeto ya existente.
- * Debajo de las áreas de texto se proporciona un botón para agregar el alfabeto con la información introducida.
- * Más también hay un botón con la opción de volver al menú principal.
- * @author
+ * Vista para agregar un nuevo alfabeto.
+ * <p>
+ * Esta vista permite al usuario agregar un nuevo alfabeto al sistema, especificando su nombre y su contenido.
+ * El usuario puede introducir el contenido del alfabeto manualmente o cargarlo desde un archivo.
+ * La vista incluye validaciones para asegurar que el nombre del alfabeto sea único y que se haya proporcionado el contenido adecuadamente.
+ * Incluye botones para agregar el alfabeto, seleccionar un archivo y volver al menú principal.
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
-
 public class VistaAlfabetoA extends JFrame {
 
-    //BOTONES
-    /** Panel donde se incluyen los elementos de la ventana */
+    /** Panel principal que contiene todos los componentes de la interfaz. */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana */
+
+    /** Título de la ventana. */
     private final JLabel tituloVistaAA = new JLabel("Agregar alfabeto");
-    /** Botón para agregar un alfabeto */
+
+    /** Botón para agregar un nuevo alfabeto. */
     private final JButton bAgregarAlfabeto = new JButton("Agregar Alfabeto");
-    /** Botón para agregar un archivo */
+
+    /** Botón para seleccionar un archivo que contiene el contenido del alfabeto. */
     private final JButton bSeleccionarArchivo = new JButton("Seleccionar Archivo");
-    /** Botón de volver a la pantalla del menú principal */
+
+    /** Botón para regresar al menú principal. */
     private final JButton bsalir = new JButton("Atrás");
 
-
-    //TEXTOS Y AREAS DE TEXTO
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
+    /** Etiqueta para el campo de nombre del alfabeto. */
     private final JLabel txtNombreAA = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del alfabeto que se quiere crear */
+
+    /** Campo de texto para introducir el nombre del nuevo alfabeto. */
     private final JTextArea areanomAA = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el contenido del alfabeto */
+
+    /** Etiqueta para el campo del contenido del alfabeto. */
     private final JLabel txtContenidoAA = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el contenido del alfabeto que se quiere crear */
+
+    /** Campo de texto para introducir el contenido del alfabeto. */
     private final JTextArea areaContenidoAA = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el path del alfabeto, para saber donde esta guardado */
+
+    /** Etiqueta para el campo del path del archivo del alfabeto. */
     private final JLabel txtPathAA = new JLabel("PATH:");
-    /** Área de texto para introducir el path del alfabeto que se quiere crear */
+
+    /** Campo de texto para mostrar el path del archivo seleccionado. */
     private final JTextArea areaPathAA = new JTextArea();
-    /** Texto explicando las instrucciones de como entrar el alfabeto correctamente */
-    private final JLabel txtInstruccionesA = new JLabel("(Hay que añadir el contenido con todos los carácteres juntos y sin repetir.");
+
+    /** Etiqueta con instrucciones para introducir el contenido del alfabeto. */
+    private final JLabel txtInstruccionesA = new JLabel("(Hay que añadir el contenido con todos los caracteres juntos y sin repetir...");
     private final JLabel txtInstruccionesA1 = new JLabel("Si desea el espacio como carácter, hay que añadirlo también en el contenido. Ej: Abdf i%67)");
 
+    /**
+     * Constructor de la clase VistaAlfabetoA.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura los oyentes de eventos
+     * para la adición de un nuevo alfabeto, ya sea manualmente o mediante un archivo.
+     */
     public VistaAlfabetoA(){
 
         // System.out.println(Toolkit.getDefaultToolkit().getScreenSize());

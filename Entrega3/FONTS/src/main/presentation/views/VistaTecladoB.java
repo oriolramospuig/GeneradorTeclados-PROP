@@ -3,36 +3,56 @@ package main.presentation.views;
 import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.filechooser.FileSystemView;
 import java.awt.event.*;
-import java.io.File;
 import java.util.ArrayList;
 
-public class VistaTecladoB extends JFrame{
+/**
+ * Constructor de la vista para borrar teclados.
+ * <p>
+ * Esta vista permite al usuario seleccionar y eliminar un teclado existente del sistema.
+ * Incluye un JComboBox para seleccionar el teclado a eliminar y un botón para confirmar la eliminación.
+ * También proporciona la opción de regresar al menú principal.
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
+ */
+public class VistaTecladoB extends JFrame {
+    /** Pantalla de error que aparece cuando falta información por introducir. */
     private JFrame frame = new JFrame();
-    /** Panel donde se incluyen los elementos de la ventana */
+
+    /** Panel principal que contiene todos los componentes de la interfaz. */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana */
+
+    /** Título de la ventana de eliminación de teclados. */
     private final JLabel tituloVistaTB = new JLabel("Borrar teclado");
-    /** Botón para agregar un teclado */
+
+    /** Botón para confirmar la eliminación del teclado seleccionado. */
     private final JButton bBorrarTeclado = new JButton("Borrar teclado");
-    /** Botó de tornar a la pantalla del menú principal */
+
+    /** Botón para regresar a la pantalla del menú principal. */
     private final JButton bsalir = new JButton("Atrás");
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del teclado */
+
+    /** Etiqueta para el campo de selección de teclados. */
     private final JLabel txtDesplegableTB = new JLabel("LISTA NOMBRES:");
+
+    /** Desplegable con los nombres de los teclados existentes. */
     private JComboBox<String> nombresTB = new JComboBox<>();
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del teclado */
+
+    /** Etiqueta para el campo de nombre del teclado. */
     private final JLabel txtNombreTB = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del teclado que se quiere crear */
+
+    /** Campo de texto para mostrar el nombre del teclado seleccionado para eliminar. */
     private final JTextArea areanomTB = new JTextArea();
 
-    /** Constructora de la ventana de eliminar teclado */
+    /**
+     * Constructor de la vista para borrar teclados.
+     * <p>
+     * Esta vista se encarga de proporcionar una interfaz para la eliminación de teclados existentes en el sistema.
+     * Incluye un JComboBox para listar y seleccionar un teclado y un botón para confirmar su eliminación.
+     * La vista también ofrece un botón para regresar al menú principal. La eliminación de un teclado
+     * se realiza tras la confirmación del usuario, garantizando así una interacción segura y controlada.
+     */
     public VistaTecladoB() {
         setBounds(250, 150, 1000, 600);
-        //setExtendedState(Frame.MAXIMIZED_BOTH);
-        //setResizable(true);
-        //setTitle("Funcionalidades texto);
+
         ArrayList<String> nombres = CtrlPresentacion.getListaTeclados();
         nombresTB = new JComboBox<>();
         nombresTB.addItem("");
