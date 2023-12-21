@@ -124,24 +124,28 @@ public class VistaTecladoM extends JFrame {
         txtNombreAlfabetoTM.setBounds(200, 320, 200, 20);
         add(txtNombreAlfabetoTM);
 
+        areaContenidoAlfabetoTM.setEditable(false);
         areaContenidoAlfabetoTM.setBounds(400,320, 200,20);
         add(areaContenidoAlfabetoTM);
 
         txtNombreAsociacionTM.setBounds(200, 350, 200, 20);
         add(txtNombreAsociacionTM);
 
+        areaContenidoAsociacionTM.setEditable(false);
         areaContenidoAsociacionTM.setBounds(400,350, 200,20);
         add(areaContenidoAsociacionTM);
 
         txtFilasTM.setBounds(200, 380, 200, 20);
         add(txtFilasTM);
 
+        areaFilasTM.setEditable(false);
         areaFilasTM.setBounds(400, 380, 200, 20);
         add(areaFilasTM);
 
         txtColumnasTM.setBounds(200, 410, 200, 20);
         add(txtColumnasTM);
 
+        areaColumnasTM.setEditable(false);
         areaColumnasTM.setBounds(400, 410, 200, 20);
         add(areaColumnasTM);
 

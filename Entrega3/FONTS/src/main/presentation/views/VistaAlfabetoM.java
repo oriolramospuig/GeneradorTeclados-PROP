@@ -52,9 +52,7 @@ public class VistaAlfabetoM extends JFrame{
 
     public VistaAlfabetoM() {
         setBounds(250, 150, 1000, 600);
-        //setExtendedState(Frame.MAXIMIZED_BOTH);
-        //setResizable(true);
-        //setTitle("Funcionalidades alfabeto);
+
         ArrayList<String> nombres = CtrlPresentacion.getNombresAlfabetos();
         nombresAM = new JComboBox<>();
         nombresAM.addItem("");
@@ -161,13 +159,11 @@ public class VistaAlfabetoM extends JFrame{
                     JOptionPane.showMessageDialog(VistaAlfabetoM.this, "Alfabeto modificado con éxito.",
                             "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     CtrlPresentacion.guardaAlfabetos();
-                } else {
-                    // El usuario eligió no continuar
-                    areanomAM.setText("");
-                    areacontenidoAM.setText("");
-
                 }
-
+                // El usuario eligió no continuar
+                areanomAM.setText("");
+                areacontenidoAM.setText("");
+                nombresAM.setSelectedItem("");
 
             }
         };

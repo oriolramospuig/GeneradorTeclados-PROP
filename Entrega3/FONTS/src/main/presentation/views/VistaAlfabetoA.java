@@ -59,7 +59,7 @@ public class VistaAlfabetoA extends JFrame {
 
     public VistaAlfabetoA(){
 
-        System.out.println(Toolkit.getDefaultToolkit().getScreenSize());
+        // System.out.println(Toolkit.getDefaultToolkit().getScreenSize());
         setBounds(250, 150, 1000, 600);
 
         // Título ventana superior
@@ -88,6 +88,7 @@ public class VistaAlfabetoA extends JFrame {
         add(txtPathAA);
 
         // Área texto Path
+        areaPathAA.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(areaPathAA);
         scrollPane.setBounds(450, 280, 200, 60);
         add(scrollPane);
@@ -115,7 +116,7 @@ public class VistaAlfabetoA extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        /**  */
+
         ActionListener lAgregar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -146,6 +147,7 @@ public class VistaAlfabetoA extends JFrame {
                         JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                         areanomAA.setText("");
                         areaContenidoAA.setText("");
+                        areaPathAA.setText("");
                         CtrlPresentacion.guardaAlfabetos();
                     } else {
                         JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: El nombre " + nombreAlfabeto + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
@@ -161,6 +163,7 @@ public class VistaAlfabetoA extends JFrame {
                         JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                         areanomAA.setText("");
                         areaContenidoAA.setText("");
+                        areaPathAA.setText("");
                         CtrlPresentacion.guardaAlfabetos();
                     } else {
                         JOptionPane.showMessageDialog(VistaAlfabetoA.this, "Error: El nombre " + nombreAlfabeto + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
@@ -188,7 +191,6 @@ public class VistaAlfabetoA extends JFrame {
                 // Manejar la selección de archivos
                 if (seleccion == JFileChooser.APPROVE_OPTION) {
                     File archivoSeleccionado = fileChooser.getSelectedFile();
-                    System.out.println(archivoSeleccionado.getPath());
                     areaPathAA.setText(archivoSeleccionado.getPath());
                 }
             }
