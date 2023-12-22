@@ -86,6 +86,11 @@ public class CtrlAlfabeto
         return CjtAlfabetos;
     }
 
+    public HashMap<String,Alfabeto> getAlfabetos() {
+        HashMap<String,Alfabeto> alfabetos = CjtAlfabetos.getAlfabetos();
+        return alfabetos;
+    }
+
     /**
      * Devuelve si se ha creado bien el alfabeto con el nombre nomA.
      * @param nomA nombre (clave única) del alfabeto a agregar.
@@ -143,5 +148,13 @@ public class CtrlAlfabeto
         ObjectInputStream is = new ObjectInputStream(bs);
         CjtAlfabetos = (ConjuntoAlfabetos) is.readObject();
         is.close();
+    }
+
+    /**
+     * Establece el conjunto de alfabetos en la clase CjtAlfabetos, utilizando el conjunto proporcionado.
+     * @param cnjtAlfabetos HashMap que contiene el conjunto de alfabetos a ser definido.
+     */
+    public void setCnjtAlfabetos(HashMap<String, Alfabeto> cnjtAlfabetos) {
+        CjtAlfabetos.setCnjtAlfabetos(cnjtAlfabetos);
     }
 }

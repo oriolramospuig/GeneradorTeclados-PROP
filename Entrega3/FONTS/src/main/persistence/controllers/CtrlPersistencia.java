@@ -1,6 +1,6 @@
 package main.persistence.controllers;
 
-import drivers.InOut;
+import main.domain.classes.Alfabeto;
 import main.persistence.classes.*;
 
 import java.io.IOException;
@@ -39,86 +39,7 @@ public class CtrlPersistencia {
         gestorLectura = new GestorLectura();
     }
 
-    // ---------- FUNCIONES ALFABETOS ----------
-    /**
-     * Guarda un conjunto de alfabetos en un archivo.
-     * @param bytes arreglo de bytes que representa el conjunto de alfabetos.
-     * @param path ruta del archivo donde se guardará el conjunto de alfabetos.
-     */
-    public void guardaCnjtAlfabetos(byte[] bytes, String path) {
-        GestorAlfabeto.gestorAlfabetos(bytes, path);
-    }
-
-    /**
-     * Carga un conjunto de alfabetos desde un archivo.
-     * @param path ruta del archivo desde donde se cargará el conjunto de alfabetos.
-     * @return arreglo de bytes que representa el conjunto de alfabetos cargado.
-     */
-    public byte[] cargaCnjtAlfabetos(String path) {
-        return gestorAlfabeto.cargarAlfabetos(path);
-    }
-
-
-    // ---------- FUNCIONES TEXTOS ----------
-    /**
-     * Guarda un conjunto de textos en un archivo.
-     * @param bytes arreglo de bytes que representa el conjunto de textos.
-     * @param path ruta del archivo donde se guardará el conjunto de textos.
-     */
-    public void guardaCnjtTextos(byte[] bytes, String path) {
-        GestorTexto.gestorTextos(bytes, path);
-    }
-
-    /**
-     * Carga un conjunto de textos desde un archivo.
-     * @param path ruta del archivo desde donde se cargará el conjunto de textos.
-     * @return arreglo de bytes que representa el conjunto de textos cargado.
-     */
-    public byte[] cargaCnjtTextos(String path) {
-        return gestorTexto.cargarTextos(path);
-    }
-
-
-    // ---------- FUNCIONES ASOCIACIONES TEXTOS ----------
-    /**
-     * Guarda un conjunto de asociaciones de textos en un archivo.
-     * @param bytes arreglo de bytes que representa el conjunto de asociaciones de textos.
-     * @param path ruta del archivo donde se guardará el conjunto de asociaciones de textos.
-     */
-    public void guardaCnjtAsociaciones(byte[] bytes, String path) {
-        GestorAsociaciones.gestorAsociaciones(bytes, path);
-    }
-
-    /**
-     * Carga un conjunto de asociaciones de textos desde un archivo.
-     * @param path ruta del archivo desde donde se cargará el conjunto de asociaciones de textos.
-     * @return arreglo de bytes que representa el conjunto de asociaciones de textos cargado.
-     */
-    public byte[] cargaCnjtAsociaciones(String path) {
-        return gestorAsociaciones.cargarAsociaciones(path);
-    }
-
-
-    // ---------- FUNCIONES TECLADOS ----------
-    /**
-     * Guarda un conjunto de teclados en un archivo.
-     * @param bytes arreglo de bytes que representa el conjunto de teclados.
-     * @param path ruta del archivo donde se guardará el conjunto de teclados.
-     */
-    public void guardaCnjtTeclados(byte[] bytes, String path) {
-        GestorTeclado.gestorTeclados(bytes, path);
-    }
-
-    /**
-     * Carga un conjunto de teclados desde un archivo.
-     * @param path ruta del archivo desde donde se cargará el conjunto de teclados.
-     * @return arreglo de bytes que representa el conjunto de teclados cargado.
-     */
-    public byte[] cargaCnjtTeclados(String path) {
-        return gestorTeclado.cargarTeclados(path);
-    }
-
-
+    // ---------- FUNCIONES LECTURA ----------.
     /**
      * Lee un archivo de la ruta especificada y devuelve los caracteres leídos como una lista.
      * @param pathArchivo ruta del archivo a leer.
@@ -148,5 +69,86 @@ public class CtrlPersistencia {
      */
     public boolean formatoCorrectoAgregarFrecuencias(String contenidoTexto, String pathTexto, HashMap<String, Integer> frecuencias) {
         return gestorLectura.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
+    }
+
+
+    // ---------- FUNCIONES ALFABETOS ----------
+    /**
+     * Carga el conjunto de alfabetos desde el gestor de alfabetos, utilizando el formato CSV.
+     * Lanza una excepción IOException si hay un problema durante la lectura del archivo.
+     * @return HashMap que contiene el conjunto de alfabetos cargado.
+     * @throws IOException si ocurre un error durante la lectura del archivo.
+     */
+    public HashMap<String, Alfabeto> cargaCnjtAlfabetos() throws IOException {
+        return gestorAlfabeto.leerDeCSV();
+    }
+
+    /**
+     * Guarda el conjunto de alfabetos en el gestor de alfabetos, utilizando el formato CSV.
+     * Lanza una excepción IOException si hay un problema durante la escritura en el archivo.
+     * @param alfabetos HashMap que contiene el conjunto de alfabetos a ser guardado.
+     * @throws IOException si ocurre un error durante la escritura en el archivo.
+     */
+    public void guardaCnjtAlfabetos(HashMap<String, Alfabeto> alfabetos) throws IOException {
+        gestorAlfabeto.escribirEnCSV(alfabetos);
+    }
+
+    // ---------- FUNCIONES TEXTOS ----------
+    /**
+     * Guarda un conjunto de textos en un archivo.
+     * @param bytes arreglo de bytes que representa el conjunto de textos.
+     * @param path ruta del archivo donde se guardará el conjunto de textos.
+     */
+    public void guardaCnjtTextos(byte[] bytes, String path) {
+    GestorTexto.gestorTextos(bytes, path);
+    }
+
+    /**
+     * Carga un conjunto de textos desde un archivo.
+     * @param path ruta del archivo desde donde se cargará el conjunto de textos.
+     * @return arreglo de bytes que representa el conjunto de textos cargado.
+     */
+    public byte[] cargaCnjtTextos(String path) {
+    return gestorTexto.cargarTextos(path);
+    }
+
+
+    // ---------- FUNCIONES ASOCIACIONES TEXTOS ----------
+    /**
+     * Guarda un conjunto de asociaciones de textos en un archivo.
+     * @param bytes arreglo de bytes que representa el conjunto de asociaciones de textos.
+     * @param path ruta del archivo donde se guardará el conjunto de asociaciones de textos.
+     */
+    public void guardaCnjtAsociaciones(byte[] bytes, String path) {
+    GestorAsociaciones.gestorAsociaciones(bytes, path);
+    }
+
+    /**
+     * Carga un conjunto de asociaciones de textos desde un archivo.
+     * @param path ruta del archivo desde donde se cargará el conjunto de asociaciones de textos.
+     * @return arreglo de bytes que representa el conjunto de asociaciones de textos cargado.
+     */
+    public byte[] cargaCnjtAsociaciones(String path) {
+    return gestorAsociaciones.cargarAsociaciones(path);
+    }
+
+
+    // ---------- FUNCIONES TECLADOS ----------
+    /**
+     * Guarda un conjunto de teclados en un archivo.
+     * @param bytes arreglo de bytes que representa el conjunto de teclados.
+     * @param path ruta del archivo donde se guardará el conjunto de teclados.
+     */
+    public void guardaCnjtTeclados(byte[] bytes, String path) {
+    GestorTeclado.gestorTeclados(bytes, path);
+    }
+
+    /**
+     * Carga un conjunto de teclados desde un archivo.
+     * @param path ruta del archivo desde donde se cargará el conjunto de teclados.
+     * @return arreglo de bytes que representa el conjunto de teclados cargado.
+     */
+    public byte[] cargaCnjtTeclados(String path) {
+    return gestorTeclado.cargarTeclados(path);
     }
 }

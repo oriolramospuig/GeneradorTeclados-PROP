@@ -158,7 +158,7 @@ public class VistaTextoM extends JFrame{
                     }
 
                     JOptionPane.showMessageDialog(VistaTextoM.this, "Texto modificado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    CtrlPresentacion.guardaTextos();
+                    CtrlPresentacion.guardarConjuntos();
                 } else {
                     // El usuario eligió no continuar
                     areanomTxtM.setText("");
