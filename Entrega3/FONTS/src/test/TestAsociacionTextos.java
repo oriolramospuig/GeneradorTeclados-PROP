@@ -23,29 +23,25 @@ public class TestAsociacionTextos {
     // ---------- CONSTRUCTORAS ----------
 
     /**
-     * - Objetivo de la Prueba:
-     *   Verificar que la función borrarAlfabeto de la clase elimina correctamente un alfabeto por nombre.
+     * Objeto de la prueba: Verificar que la construcción de objetos AsociacionTextos funciona correctamente
+     * tanto para el constructor vacío como para los constructores con nombre y frecuencias de letras.
      *
-     * - Ficheros Necesarios:
-     *   No hay referencia a ficheros en esta función de prueba.
+     * Ficheros necesarios: Ninguno.
      *
-     * - Valores Estudiados:
-     *   - Se imprime un mensaje indicando que se está probando la función borrarAlfabeto.
-     *   - Se agregan dos alfabetos con nombres "nombreA1" y "nombreA2" a la instancia de la clase (alfabetos).
-     *   - Se utiliza la función borrarAlfabeto para eliminar el alfabeto con nombre "nombreA1".
-     *   - Utiliza la aserción assertEquals para verificar que la cantidad de alfabetos es 1 después de la eliminación.
-     *   - Utiliza la aserción assertFalse para verificar que el alfabeto con nombre "nombreA1" no existe después de la eliminación.
-     *   - Utiliza la aserción assertTrue para verificar que el alfabeto con nombre "nombreA2" sigue existiendo después de la eliminación.
+     * Valores necesarios:
+     *  Nombre de asociación: "Asociacion"
+     *  Frecuencias de letras: {"a": 2, "b": 1, "c": 2}
      *
-     * - Operativa:
-     *   1. Imprime un mensaje informativo en la consola indicando que se está probando la función borrarAlfabeto.
-     *   2. Agrega dos alfabetos con nombres "nombreA1" y "nombreA2" a la instancia de la clase (alfabetos).
-     *   3. Utiliza la función borrarAlfabeto para eliminar el alfabeto con nombre "nombreA1".
-     *   4. Utiliza la aserción assertEquals para verificar que la cantidad de alfabetos es 1 después de la eliminación.
-     *   5. Utiliza la aserción assertFalse para verificar que el alfabeto con nombre "nombreA1" no existe después de la eliminación.
-     *   6. Utiliza la aserción assertTrue para verificar que el alfabeto con nombre "nombreA2" sigue existiendo después de la eliminación.
-     *   7. Si alguna de las aserciones falla, se considera que la prueba no ha pasado con éxito.
-     *   8. Este método es parte de un conjunto más amplio de pruebas unitarias.
+     * Operativa:
+     *  1. Se realiza la prueba con el constructor vacío:
+     *      Se crea una instancia de AsociacionTextos sin argumentos.
+     *      Se verifica que los atributos de la instancia estén en su estado esperado.
+     *  2. Se realiza la prueba con el constructor que recibe nombre y frecuencias de letras:
+     *      Se crea una instancia de AsociacionTextos con un nombre y frecuencias de letras dados.
+     *      Se verifica que los atributos de la instancia estén en su estado esperado.
+     *  3. Se realiza la prueba con el constructor que recibe solo el nombre:
+     *      Se crea una instancia de AsociacionTextos con un nombre dado.
+     *      Se verifica que los atributos de la instancia estén en su estado esperado.
      */
     @Test
     public void TestConstructora() {
@@ -218,10 +214,10 @@ public void TestagregarTexto(){
      * Ficheros necesarios:</b> Ninguno.
      *
      * Valores necesarios:
-     * - Nombre de la asociación: "Asociacion"
-     * - Frecuencia de palabras iniciales
-     * - Frecuencia de letras iniciales
-     * - Texto asociado: Frecuencias
+     * - Nombre de la asociación: "Asociacion".
+     * - Frecuencia de palabras iniciales.
+     * - Frecuencia de letras iniciales.
+     * - Texto asociado: Frecuencias.
      *
      *  Operativa:
      *  1. Se crea un objeto AsociacionTextos con el nombre y la frecuencia de letras iniciales.
