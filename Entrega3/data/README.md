@@ -21,7 +21,7 @@ Este directorio contiene distintos directorios que hacen referencia a distintos 
 - **Directorio EstadoAlgunosCasos:**
   Contiene los ficheros conjuntoAlfabetos, conjuntoTextos, conjuntosAsociaciones, conjuntosTeclados que tienen el contenido de algunas estructuras.
   - Alfabetos creados: Easy, Catalan, Numeros
-  - Textos creados: EasyFrecuencias, Catalan1, Catalan2, CatalanFrecuencias NumerosPalabaras
+  - Textos creados: EasyFrecuencias, Catalan1, Catalan2, CatalanFrecuencias, NumerosPalabaras
   - Asociaciones creadas: Easy, Catalan, Numeros
   - Teclados creados: Easy, Catalan, Numeros
 
@@ -30,7 +30,7 @@ Este directorio contiene distintos directorios que hacen referencia a distintos 
   Contiene los ficheros conjuntoAlfabetos, conjuntoTextos, conjuntosAsociaciones, conjuntosTeclados que tienen el contenido de muchas estructuras.
   - Alfabetos creados: Easy, Random, TildesMath, Catalan, Numeros, Sencillo
   - Textos creados: EasyPalabras, EasyFrecuencias, Random1, Random2, Tildes+Math1, Tildes+Math2, Catalan1, Catalan2, Catalan3, Catalan4, CatalanFrecuencias, NumerosPalabaras, NumerosFrecuencias, SencilloPalabras, SencilloFrecuencias  
-  - Asociaciones creadas: Easy, Random, Tildes+Math, Catalan, Numeros, Sencillo
+  - Asociaciones creadas: Easy, Random, TildesMath, Catalan, Numeros, Sencillo
   - Teclados creados: Easy, Random, Tildes+Math, Catalan, Numeros, Sencillo
 
 

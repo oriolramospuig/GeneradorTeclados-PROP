@@ -22,7 +22,7 @@ El botón del manual de usuario solo funciona desde el IDE, haciendo make no fun
 Alguna vez nos ha pasado, cómo hablamos en clase, que el seriazilableID provoca que no cargue alguno de los conjuntos. 
 Para que vuelva a cargar, basta con agregar una unidad de dónde este el problema, es decir, si no cargan las asociaciones
 agregamos una asociación, salimos de la interfaz y la volvemos a ejecutar. Eso actualizará el serializableID y ya funcionará,
-pero deberemos ir con cuidado ya que se cargará con la asociación creada, entonces habrá que cargar todo un estado entero,
+pero deberemos ir con cuidado ya qué se cargará con la asociación creada, entonces habrá que cargar todo un estado entero,
 para que no queden teclados creados con asociaciones inexistentes (por ejemplo habrá que cargar todo el EstadoAlgunosEstados).
 
 ### Makefile

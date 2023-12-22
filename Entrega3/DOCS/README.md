@@ -13,3 +13,12 @@ Contiene la explicación de cómo usar el sistema y realizar todas las funcional
 
 - **Directorio Javadoc**
 Contiene la documentación Javadoc de todo el código del programa.
+
+- **Diagrama de dominio**
+Hemos incorporado el diagrama debido a distintos cambios implementados respecto a la Entrega 2.
+
+- **Diagrama de persistencia**
+Hemos incorporado el diagrama debido a distintos cambios implementados respecto a la Entrega 2.
+
+- **Diagrama de presentación**
+  Hemos incorporado el diagrama debido a distintos cambios implementados respecto a la Entrega 2.

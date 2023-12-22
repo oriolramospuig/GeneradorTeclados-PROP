@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  * Clase que gestiona la carga y guardado de Conjuntos de Asociaciones de textos en formato de bytes.
- * @author Júlia Tena
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public class GestorAsociaciones {
     /**
