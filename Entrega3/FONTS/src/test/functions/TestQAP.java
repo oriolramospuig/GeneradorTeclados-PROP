@@ -39,7 +39,7 @@ public class TestQAP {
      */
     @Test
     public void testConstructora() {
-        System.out.println("Test Constructora");
+        //System.out.println("Test Constructora");
         int filas = 3;
         int columnas = 3;
         List<Character> teclas = Arrays.asList('a', 'b', 'c');

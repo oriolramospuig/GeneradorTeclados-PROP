@@ -87,8 +87,4 @@ public class ConjuntoAlfabetos implements Serializable
     public HashMap<String, Alfabeto> getAlfabetos () {
         return alfabetos;
     }
-
-    public void setCnjtAlfabetos(HashMap<String, Alfabeto> cnjtAlfabetos) {
-        this.alfabetos = cnjtAlfabetos;
-    }
 }

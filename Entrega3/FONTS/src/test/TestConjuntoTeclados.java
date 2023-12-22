@@ -66,7 +66,7 @@ public class TestConjuntoTeclados {
      */
     @Test
     public void TestConstructora() {
-        System.out.println("Test Constructora");
+        //System.out.println("Test Constructora");
         assertTrue(teclados.getNombresTeclados().isEmpty());
     }
 
@@ -83,7 +83,7 @@ public class TestConjuntoTeclados {
      */
     @Test
     public void TestGetTeclado() {
-        System.out.println("Test getTeclado");
+        //System.out.println("Test getTeclado");
 
         teclados.agregarTeclado(teclado1.getNombre(), teclado1);
         Teclado resultado = teclados.getTeclado(teclado1.getNombre());
@@ -102,7 +102,7 @@ public class TestConjuntoTeclados {
      */
     @Test
     public void TestGetNombresTeclados() {
-        System.out.println("Test getNombresTeclados");
+        //System.out.println("Test getNombresTeclados");
 
         teclados.agregarTeclado("nombreT1", teclado1);
         teclados.agregarTeclado("nombreT2", teclado2);
@@ -125,7 +125,7 @@ public class TestConjuntoTeclados {
      */
     @Test
     public void TestAgregarTeclado(){
-        System.out.println("Test agregarTeclado");
+        //System.out.println("Test agregarTeclado");
 
         teclados.agregarTeclado("nombreT1", teclado1);
         teclados.agregarTeclado("nombreT2", teclado2);
@@ -146,7 +146,7 @@ public class TestConjuntoTeclados {
      */
     @Test
     public void TestExisteTeclado() {
-        System.out.println("Test existeTeclado");
+        //System.out.println("Test existeTeclado");
 
         teclados.agregarTeclado("nombreT1", teclado1);
 
@@ -162,7 +162,7 @@ public class TestConjuntoTeclados {
      */
     @Test
     public void TestBorrarTeclado() {
-        System.out.println("Test borrarTeclado");
+        //System.out.println("Test borrarTeclado");
 
         teclados.agregarTeclado("nombreT1", teclado1);
         teclados.agregarTeclado("nombreT2", teclado2);

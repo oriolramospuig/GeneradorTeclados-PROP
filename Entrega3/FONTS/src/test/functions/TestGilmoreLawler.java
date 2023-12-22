@@ -25,7 +25,7 @@ public class TestGilmoreLawler {
      */
     @Test
     public void TestConstructoraVacia() {
-        System.out.println("TestConstructoraVacia");
+        //System.out.println("TestConstructoraVacia");
 
         GilmoreLawler gilmoreLawler = new GilmoreLawler();
         
@@ -57,7 +57,7 @@ public class TestGilmoreLawler {
      */
     @Test
     public void TestConstructora() {
-        System.out.println("TestConstructora");
+        //System.out.println("TestConstructora");
         int nf = 3;
         int nc = 3;
         int bound = 10;
@@ -97,7 +97,7 @@ public class TestGilmoreLawler {
      */
     @Test
     public void testgilmore_lawler() {
-        System.out.println("Test Gilmore_Lawler");
+        //System.out.println("Test Gilmore_Lawler");
         GilmoreLawler gilmoreLawler = new GilmoreLawler();
         List<Character> indices = Arrays.asList('a','b','c');
         int cotaInicial = 0;
@@ -123,7 +123,7 @@ public class TestGilmoreLawler {
      * 5. Aserción para verificar que el resultado obtenido coincide con el valor esperado.
      */    @Test
     public void testminimos(){
-        System.out.println("Test Minimos");
+        //System.out.println("Test Minimos");
         GilmoreLawler gilmoreLawler = new GilmoreLawler();
         int[][] c1c2 = {
                 {1, 2, 3},

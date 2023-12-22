@@ -1,7 +1,5 @@
 package main.persistence.classes;
 
-import main.domain.classes.Alfabeto;
-
 import java.io.*;
 import java.util.*;
 

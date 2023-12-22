@@ -123,6 +123,8 @@ public class CtrlAlfabeto
         CjtAlfabetos.borrarAlfabeto(nomA);
     }
 
+
+    // ---------- FUNCIONES PERSISTENCIA ----------
     /**
      * Convierte un conjunto de alfabeto en ByteArray con el fin de almacenarlos.
      * Esta función utiliza serialización de objetos.
@@ -149,5 +151,4 @@ public class CtrlAlfabeto
         CjtAlfabetos = (ConjuntoAlfabetos) is.readObject();
         is.close();
     }
-
 }

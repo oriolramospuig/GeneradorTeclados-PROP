@@ -12,6 +12,7 @@ import java.util.*;
  * al problema de asignación de teclas en un teclado.
  * Este algoritmo utiliza una combinación de búsqueda aleatoria y una heurística de enfriamiento
  * para explorar el espacio de soluciones y encontrar una configuración óptima de teclas.
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class SimulatedAnnealing implements IAlgoritmo {
     private static final double TEMPERATURA_INICIAL = 100000;

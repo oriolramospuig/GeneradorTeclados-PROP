@@ -44,7 +44,8 @@ public class TestTeclado {
         assertEquals(0, teclado.getPuntuacion());
     }
 
-    // GETTERS
+
+    // ---------- GETTERS ----------
     /**
      * Objeto de la prueba: Test del método getDimensiones() de la clase Teclado.
      * Ficheros de datos necesarios: Datos introducidos manualmente.

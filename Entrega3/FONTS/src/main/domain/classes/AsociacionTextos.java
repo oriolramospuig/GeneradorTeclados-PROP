@@ -173,17 +173,13 @@ public class AsociacionTextos implements Serializable
      * @param frecLetras HashMap de unas letras y sus frecuencias.
      */
     public void borrarTexto (String nomT, HashMap<String, Integer> frecLetras) {
-        // Obtener un iterador para los pares de letras del frecLetras
         Iterator<Map.Entry<String, Integer>> iterator = frecLetras.entrySet().iterator();
 
-        // Iterar sobre el par de letras del frecLetras
         while (iterator.hasNext()) {
             Map.Entry<String, Integer> entry = iterator.next();
             String clave = entry.getKey();
 
-            // Verificar si el par de letras existe en el frecuenciasLetras de la asociación
             if (frecuenciaLetras.containsKey(clave)) {
-                // Eliminar la entrada del primer HashMap
                 Integer valor1 = frecuenciaLetras.get(clave);
                 Integer valor2 = frecLetras.get(clave);
                 if (valor1 != null && valor2 != null) {

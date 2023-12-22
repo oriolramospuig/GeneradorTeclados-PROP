@@ -74,7 +74,6 @@ public class ConjuntoAsociaciones implements Serializable
         return asociaciones.containsKey(nomAT);
     }
 
-    //Segunda entrega
     /**
      * No devuelve nada. Borra la asociación de textos con nombre nomAT del conjunto de asociaciones.
      * @param nomAT nombre de la asociación de textos a borrar.
@@ -82,7 +81,4 @@ public class ConjuntoAsociaciones implements Serializable
     public void borrarAsociacionTextos(String nomAT) {
         asociaciones.remove(nomAT);
     }
-
-
-
 }

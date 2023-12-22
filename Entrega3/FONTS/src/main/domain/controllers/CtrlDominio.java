@@ -11,7 +11,8 @@ import java.util.HashMap;
 
 /**
  * Este controlador se encarga de gestionar todos los métodos y distribuir las funciones a los respectivos controladores.
- * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu) y Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
+ * @author Alexia Mayor (alexia.mayor@estudiantat.upc.edu)
+ * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public class CtrlDominio
 {
@@ -273,8 +274,8 @@ public class CtrlDominio
         CtrlTexto.borrarTexto(nomT);
     }
 
-    // ---------- FUNCIONES ASOCIACION TEXTOS ----------
 
+    // ---------- FUNCIONES ASOCIACION TEXTOS ----------
     /**
      * Retorna si se ha creado bien la asociacion con nombre nomAT.
      * @param nomAT clave única y nombre de la asociacion a agregar.
@@ -480,10 +481,14 @@ public class CtrlDominio
     }
 
 
-    // ---------- FUNCIONES PERSISTENCIA ALFABETOS ----------
-
+    // ---------- FUNCIONES PERSISTENCIA ----------
     /**
-     * Almacena el conjunto de alfabetos en una localización específica.
+     * Guarda el conjunto de alfabetos en una ubicación específica.
+     * La ubicación por defecto es la carpeta 'Entrega3/data/Cache' del directorio de trabajo actual.
+     * Utiliza el controlador de alfabetos para convertir el conjunto de alfabetos en un array de bytes
+     * y llama al método correspondiente en el controlador de persistencia para almacenar los datos.
+     * En caso de error durante el proceso de guardado, se muestra un mensaje de error en la consola
+     * y se finaliza la aplicación con un código de error.
      */
     public void guardaCnjtAlfabetos() {
         String nomDoc = "conjuntoAlfabetos";
@@ -500,8 +505,8 @@ public class CtrlDominio
     }
 
     /**
-     * Retorna el conjunto de alfabetos que se encuentra en path.
-     * @param path
+     * Retorna el conjunto de alfabetos que se encuentra en la ruta especificada.
+     * @param path La ruta donde se encuentra el conjunto de alfabetos a cargar.
      */
     public void cargaCnjtAlfabetos(String path) {
         try {
@@ -516,10 +521,6 @@ public class CtrlDominio
             System.err.println("[#CARGA] Error al cargar el conjunto de alfabetos " + e.getMessage());
         }
     }
-
-
-
-    // ---------- FUNCIONES PERSISTENCIA TEXTOS ----------
 
     /**
      * Guarda el conjunto de textos en una ubicación específica.
@@ -561,8 +562,6 @@ public class CtrlDominio
         }
     }
 
-
-    // ---------- FUNCIONES PERSISTENCIA ASOCIACIONES TEXTOS ----------
     /**
      * Guarda el conjunto de asociaciones de textos en una ubicación específica.
      * La ubicación por defecto es la carpeta 'Entrega3/data/Cache' del directorio de trabajo actual.
@@ -603,8 +602,6 @@ public class CtrlDominio
         }
     }
 
-
-    // ---------- FUNCIONES PERSISTENCIA TECLADOS ----------
     /**
      * Guarda el conjunto de teclados en una ubicación específica.
      * La ubicación por defecto es la carpeta 'Entrega3/data/Cache' del directorio de trabajo actual.
@@ -644,7 +641,6 @@ public class CtrlDominio
             System.err.println("[#CARGA] Error al cargar el conjunto de teclados " + e.getMessage());
         }
     }
-
 
     /**
      * Agrega un alfabeto utilizando un archivo especificado por la ruta.

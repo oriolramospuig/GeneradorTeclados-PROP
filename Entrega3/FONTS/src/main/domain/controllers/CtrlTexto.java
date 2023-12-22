@@ -211,6 +211,8 @@ public class CtrlTexto
         CjtTextos.borrarTexto(nomT);
     }
 
+
+    // ---------- FUNCIONES PERSISTENCIA ----------
     /**
      * Convierte el conjunto de textos en ByteArray con el fin de almacenarlos.
      * @return Arreglo de bytes que representa el conjunto de textos.
