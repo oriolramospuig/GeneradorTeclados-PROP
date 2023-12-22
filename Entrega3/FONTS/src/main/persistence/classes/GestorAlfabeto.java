@@ -40,14 +40,13 @@ public class GestorAlfabeto {
 
     public String pasarAlfabetoString(Alfabeto alfabeto) {
         StringBuilder stringBuilder = new StringBuilder();
+
         String nombre = alfabeto.getNombre();
-        System.out.println(nombre);
         ArrayList<Character> letras = alfabeto.getLetras();
-        System.out.println(letras);
         ArrayList<String> tecladosvinculados = alfabeto.getTecladosVinculados();
-        System.out.println(tecladosvinculados);
-        stringBuilder.append(nombre).append(",");
-        stringBuilder.append(letras.toString()).append(",");
+
+        stringBuilder.append(nombre).append(";");
+        stringBuilder.append(letras.toString()).append(";");
         stringBuilder.append(tecladosvinculados.toString());
         return stringBuilder.toString();
     }
@@ -61,19 +60,24 @@ public class GestorAlfabeto {
             String line;
 
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                String nombreA = parts[0];
+                String[] partes = line.split(",");
+                String nombreA = partes[0];
+
+                String[] partes2 = partes[1].split(";");
+
                 ArrayList<Character> letrasArray = new ArrayList<>();
-                for (char c : parts[2].toCharArray()) {
+                for (char c : partes2[1].toCharArray()) {
                     letrasArray.add(c);
                 }
                 Alfabeto alfabeto = new Alfabeto(nombreA, letrasArray);
-                String[] partes = parts[3].split(",");
-                ArrayList<String> listaTecladosVinculados = new ArrayList<>(Arrays.asList(partes));
+
+                String[] partes3 = partes2[2].split(",");
+                ArrayList<String> listaTecladosVinculados = new ArrayList<>(Arrays.asList(partes3));
                 for (int i = 0; i < listaTecladosVinculados.size(); i++) {
                     listaTecladosVinculados.set(i, listaTecladosVinculados.get(i).trim());
                     alfabeto.agregarTecladoVinculado(listaTecladosVinculados.get(i));
                 }
+
                 newCnjtAlfabetos.put(nombreA, alfabeto);
             }
             reader.close();
