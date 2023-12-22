@@ -4,6 +4,8 @@ import main.domain.classes.Alfabeto;
 
 import java.util.ArrayList;
 
+import main.domain.classes.Frecuencias;
+import main.domain.classes.Palabras;
 import main.domain.classes.Teclado;
 import org.junit.*;
 
@@ -21,11 +23,17 @@ import java.lang.IndexOutOfBoundsException;
 import java.lang.NegativeArraySizeException;
 
 /**
- * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
+ * Clase de pruebas unitarias para Alfabeto. Evalúa el correcto funcionamiento de la creación y manipulación de objetos Alfabeto.
+ * @author Alèxia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
 public class TestAlfabeto {
+
+    /** Instancia de la clase Alfabeto utilizada en los casos de prueba. Se inicializa y utiliza en el método de configuración (setUp) para disponer de un objeto de prueba en los distintos casos de prueba de la clase TestAlfabeto. */
     private Alfabeto alfabeto;
 
+    /**
+     * Inicialización de un alfabeto.
+     */
     @Before
     public void setUp() {
         alfabeto = new Alfabeto();
@@ -70,17 +78,31 @@ public class TestAlfabeto {
 
     // ---------- GETTERS ----------
 
-    // ---------- SETTERS ----------
     /**
-     * Objeto de la prueba: Test del método agregarTecladoVinculado de alfabeto.
-     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
-     * Valores estudiados: Se añaden dos teclados a la lista de teclados vinculados de ese alfabeto.
-     * Primero se guarda el nombre de los dos teclados en variables para poder llamar a dicha función y agragarlos.
-     * Se llama a la función y ahora hay que comprobar que se han añadido correctamente.
-     * Operativa: El primer assertEquals() comprueba que la medida de la lista de teclados vinculados sea 2.
+     * Objeto de la prueba: Test del método getAlfabeto de la clase Alfabeto.
+     * Ficheros de datos necesarios: No se requieren ficheros externos para esta prueba. Se crean instancias de Alfabeto en el método de configuración.
+     * Valores estudiados: Estrategia caja gris. Se evalúa que el método getAlfabeto devuelva los alfabetos esperados.
+     * Operativa: Se crea una instancia de Alfabeto con datos específicos.
+     */
+    @Test
+    public void TestGetAlfabeto() {
+        //System.out.println("Test Get Texto");
+
+        //String getAlfabeto = alfabeto;
+        //assertEquals(getTextoPalabras, "hola");
+    }
+
+    // ---------- SETTERS ----------
+
+    /**
+     * Objeto de la prueba: Test del método agregarTecladoVinculado(String nomT) de alfabeto. Este método debe agregar a un teclado a la lista de un alfabeto.
+     * Ficheros de datos necesarios: Datos introducidos manualmente.
+     * Valores estudiados: Estrategia caja gris. A partir del Alfabeto, se añade un teclado vinculado al alfabeto. Se comprueba que se ha agregado correctamente.
+     * Operativa: Se define el nombre de dos teclados.
      * El segundo assertTrue() compruba que el teclado1 está en la lista.
      * El tercer assertTrue() comprueba que el teclado2 está en la lista.
      */
+
     @Test
     public void TestAgregarTecladoVinculado() {
         System.out.println("Test agregarTecladoVinculado");
@@ -98,14 +120,11 @@ public class TestAlfabeto {
 
     // ---------- AUXILIARES ----------
     /**
-     * Objeto de la prueba: Test del método borrarTecladoVinculado de alfabeto.
-     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
-     * Valores estudiados: Se borra un teclado de la lista de teclados vinculados de ese alfabeto.
-     * Primero hay que añadir dos teclados de igual manera que hemos hecho en la función agregarTecladoVinculado.
-     * Seguidamente se llama a la función borrarTecladoVinculado con uno de los nombres de los teclados agregados anteriormente.
-     * Operativa: El primer assertEquals() comprueba que la medida de la lista de teclados vinculados sea 1.(2 inicialmente menos el que hemos borrado).
-     * El segundo assertFalse() compruba que el teclado1 no está en la lista.
-     * El tercer assertTrue() comprueba que el teclado2 está en la lista.
+     * Objeto de la prueba: Test del método borrarTecladoVinculado(String nomT) de alfabeto. Este método debe borrar de un teclado de la lista del alfabeto.
+     * Ficheros de datos necesarios: Datos introducidos manualmente.
+     * Valores estudiados: Estrategia caja gris. A partir del Alfabeto que contiene algun teclado, se borra uno de ellos. Se comprueba que se ha borrado correctamente.
+     * Operativa: Se define el nombre de dos teclados.
+     * Primero, se añaden los dos teclados a alfabeto y se borra uno de ellos. Se comprueba que se ha borrado correctamente, asegurando que el número de elementos que tiene el ArrayList de tecladosVinculados es 1 y que este solo contiene el que no se ha borrado.
      */
     @Test
     public void TestBorrarTecladoVinculado() {
