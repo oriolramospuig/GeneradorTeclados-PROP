@@ -9,25 +9,52 @@ import java.awt.event.*;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * Vista para eliminar asociaciones existentes.
+ * <p>
+ * Esta vista permite al usuario seleccionar y eliminar una asociación existente en el sistema.
+ * Proporciona una lista desplegable con los nombres de todas las asociaciones disponibles y muestra el nombre seleccionado en un campo de texto.
+ * Incluye validaciones para asegurar que se haya seleccionado una asociación antes de intentar eliminarla.
+ * La vista también alerta al usuario sobre las consecuencias de eliminar una asociación, como la eliminación de teclados asociados.
+ * Incluye botones para realizar la eliminación y para regresar al menú principal.
+ * @author Alèxia Mayor (alexia.mayor@estudiantat.upc.edu)
+ */
+
 public class VistaAsociacionTextosB extends JFrame{
+    /** Pantalla de error para mostrar mensajes cuando falta información. */
     private JFrame frame = new JFrame();
-    /** Panel donde se incluyen los elementos de la ventana */
+
+    /** Panel donde se incluyen los elementos de la ventana. */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana */
+
+    /** Título de la ventana. */
     private final JLabel tituloVistaATB = new JLabel("Borrar asociacion");
-    /** Botón para agregar una asociación */
+
+    /** Botón para borrar una asociación. */
     private final JButton bBorrarAsociacion = new JButton("Borrar Asociacion");
-    /** Botó de tornar a la pantalla del menú principal */
+
+    /** Botón para volver a la pantalla del menú principal. */
     private final JButton bsalir = new JButton("Atrás");
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociación */
+
+    /** Texto indicando que el desplegable de al lado es para seleccionar el nombre de una asociación existente que se quiera borrar. */
     private final JLabel txtDesplegableATB = new JLabel("LISTA NOMBRES:");
+
+    /** Desplegable con los nombres de las asociaciones existentes. */
     private JComboBox<String> nombresATB = new JComboBox<>();
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociación */
+
+    /** Texto indicando que la barra de texto de al lado es donde se introducirá automáticamente el nombre de la asociación seleccionada en el desplegable. */
     private final JLabel txtNombreATB = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre de la asociación que se quiere crear */
+
+    /** Área de texto donde aparecerá el nombre de la asociación seleccionda en el desplegable. */
     private final JTextArea areanomATB = new JTextArea();
 
-    /** Constructora de la ventana de eliminar asociación */
+    /**
+     * Constructor de la clase VistaAsociacionB.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura los oyentes de eventos
+     * para la eliminación de una asociación. Proporciona funcionalidad para seleccionar una asociación de la lista
+     * y eliminarla tras confirmar la acción.
+     */
     public VistaAsociacionTextosB() {
         setBounds(250, 150, 1000, 600);
 
