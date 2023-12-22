@@ -10,6 +10,16 @@ import java.util.*;
  */
 class FrequencyComparator implements Comparator<PairFrequency> {
     // override the compare() method
+
+    /**
+     * Compara dos objetos PairFrequency según sus frecuencias y, en caso de empate,
+     * según el orden natural de los pares.
+     * @param pf1 El primer objeto PairFrequency a comparar.
+     * @param pf2 El segundo objeto PairFrequency a comparar.
+     * @return Un entero negativo si la frecuencia de pf1 es mayor que la de pf2,
+     *         un entero positivo si la frecuencia de pf1 es menor que la de pf2,
+     *         o la comparación natural de los pares si las frecuencias son iguales.
+     */
     public int compare(PairFrequency pf1, PairFrequency pf2)
     {
         if (pf1.getFrequency() > pf2.getFrequency())
@@ -160,6 +170,7 @@ public class AsociacionTextos implements Serializable
     /**
      * No devuelve nada. Borra de la lista de nombres de los textos asociados el nombre del texto nomT.
      * @param nomT nombre del texto a quitar de la asociación.
+     * @param frecLetras HashMap de unas letras y sus frecuencias.
      */
     public void borrarTexto (String nomT, HashMap<String, Integer> frecLetras) {
         // Obtener un iterador para los pares de letras del frecLetras
