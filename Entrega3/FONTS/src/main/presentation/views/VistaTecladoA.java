@@ -201,9 +201,7 @@ public class VistaTecladoA extends JFrame {
                         areaContenidoAsociacionTA.setText("");
                         areaFilasTA.setText("");
                         areaColumnasTA.setText("");
-                        CtrlPresentacion.guardaTeclados();
-                        CtrlPresentacion.guardaAlfabetos();
-                        CtrlPresentacion.guardaAsociaciones();
+                        CtrlPresentacion.guardarConjuntos();
                     } else {
                         JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El nombre " + nombreTeclado + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -256,9 +254,7 @@ public class VistaTecladoA extends JFrame {
                         areaColumnasTA.setText("");
                         nombresAlfabetosTA.setSelectedItem("");
                         nombresAsociacionesTA.setSelectedItem("");
-                        CtrlPresentacion.guardaTeclados();
-                        CtrlPresentacion.guardaAlfabetos();
-                        CtrlPresentacion.guardaAsociaciones();
+                        CtrlPresentacion.guardarConjuntos();
                     } else {
                         JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El nombre " + nombreTeclado + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                     }

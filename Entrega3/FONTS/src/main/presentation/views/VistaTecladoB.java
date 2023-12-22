@@ -96,7 +96,7 @@ public class VistaTecladoB extends JFrame{
                     nombresTB.removeItem(nombreTec);
                     nombresTB.setSelectedItem("");
                     JOptionPane.showMessageDialog(frame, "Teclado eliminado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    CtrlPresentacion.guardaTeclados();
+                    CtrlPresentacion.guardarConjuntos();
                 }
             }
         };

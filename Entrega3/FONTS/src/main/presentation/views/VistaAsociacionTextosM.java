@@ -213,7 +213,7 @@ public class VistaAsociacionTextosM extends JFrame{
                         }
                         JOptionPane.showMessageDialog(VistaAsociacionTextosM.this, "Asociación modificada con éxito.",
                                 "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                        CtrlPresentacion.guardaAsociaciones();
+                        CtrlPresentacion.guardarConjuntos();
                         areanomATM.setText("");
                         areacontenidoATM.setText("");
                         areanomAgregarATM.setText("");

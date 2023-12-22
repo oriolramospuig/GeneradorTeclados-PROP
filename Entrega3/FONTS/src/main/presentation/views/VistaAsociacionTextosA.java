@@ -175,7 +175,7 @@ public class VistaAsociacionTextosA extends JFrame {
                     boolean agregada = CtrlPresentacion.agregarAsociacion(areanomATA.getText(),nombresTextosAgregar);
                     if(agregada) {
                         JOptionPane.showMessageDialog(VistaAsociacionTextosA.this, "Agregada con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                        CtrlPresentacion.guardaAsociaciones();
+                        CtrlPresentacion.guardarConjuntos();
                     }
                     else JOptionPane.showMessageDialog(VistaAsociacionTextosA.this, "No Agregada, el nombre " + areanomATA.getText() + " ya existe.", "Error", JOptionPane.INFORMATION_MESSAGE);
                     areanomATA.setText("");

@@ -423,4 +423,12 @@ public class CtrlPresentacion {
     public static void guardaTeclados(){
         cd.guardaCnjtTeclados();
     }
+
+
+    public static void guardarConjuntos() {
+        guardaAlfabetos();
+        guardaTextos();
+        guardaAsociaciones();
+        guardaTeclados();
+    }
 }

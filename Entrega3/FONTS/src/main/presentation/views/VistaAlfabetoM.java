@@ -160,7 +160,7 @@ public class VistaAlfabetoM extends JFrame{
                     CtrlPresentacion.modificarContenidoAlfabeto(nombreAlfabeto, nuevoContenido);
                     JOptionPane.showMessageDialog(VistaAlfabetoM.this, "Alfabeto modificado con éxito.",
                             "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    CtrlPresentacion.guardaAlfabetos();
+                    CtrlPresentacion.guardarConjuntos();
                 } else {
                     // El usuario eligió no continuar
                     areanomAM.setText("");

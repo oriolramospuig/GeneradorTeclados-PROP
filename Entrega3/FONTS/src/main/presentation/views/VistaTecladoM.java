@@ -251,7 +251,7 @@ public class VistaTecladoM extends JFrame {
                             nombresAlfabetosTM.setSelectedItem("");
                             nombresAsociacionesTM.setSelectedItem("");
                             nombresTM.setSelectedItem("");
-                            CtrlPresentacion.guardaTeclados();
+                            CtrlPresentacion.guardarConjuntos();
                         } else {
                             JOptionPane.showMessageDialog(VistaTecladoM.this, "Error: No se ha podido modificar", "Error", JOptionPane.ERROR_MESSAGE);
                         }
