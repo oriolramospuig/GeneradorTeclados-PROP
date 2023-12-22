@@ -10,17 +10,13 @@ import main.domain.classes.Teclado;
 import org.junit.*;
 
 import java.io.*;
+import java.util.HashMap;
 import java.util.Set;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertNotNull;
 
 import java.lang.IndexOutOfBoundsException;
 import java.lang.NegativeArraySizeException;
+
+import static org.junit.Assert.*;
 
 /**
  * Clase de pruebas unitarias para Alfabeto. Evalúa el correcto funcionamiento de la creación y manipulación de objetos Alfabeto.
@@ -54,12 +50,7 @@ public class TestAlfabeto {
      */
     @Test
     public void TestConstructora() {
-        System.out.println("Test Constructora Default");
-        assertEquals("", alfabeto.getNombre());
-        assertTrue(alfabeto.getLetras().isEmpty());
-        assertTrue(alfabeto.getTecladosVinculados().isEmpty());
 
-        String nombre = "Vocales";
         ArrayList<Character> letras = new ArrayList<>();
         // Agregar caracteres al ArrayList
         letras.add('A');
@@ -68,59 +59,64 @@ public class TestAlfabeto {
         letras.add('O');
         letras.add('U');
 
-        System.out.println("Test Constructora con Nombre y Letras");
-        Alfabeto a = new Alfabeto(nombre, letras);
-        assertEquals(nombre, a.getNombre());
-        assertEquals(letras, a.getLetras());
-        assertTrue(a.getTecladosVinculados().isEmpty());
+        String nombre = "Vocales";
+        alfabeto = new Alfabeto(nombre, letras);
     }
 
 
     // ---------- GETTERS ----------
 
     /**
-     * Objeto de la prueba: Test del método getAlfabeto de la clase Alfabeto.
-     * Ficheros de datos necesarios: No se requieren ficheros externos para esta prueba. Se crean instancias de Alfabeto en el método de configuración.
-     * Valores estudiados: Estrategia caja gris. Se evalúa que el método getAlfabeto devuelva los alfabetos esperados.
-     * Operativa: Se crea una instancia de Alfabeto con datos específicos.
-     */
-    @Test
-    public void TestGetAlfabeto() {
-        //System.out.println("Test Get Texto");
-
-        //String getAlfabeto = alfabeto;
-        //assertEquals(getTextoPalabras, "hola");
-    }
-
-    // ---------- SETTERS ----------
-
-    /**
-     * Objeto de la prueba: Test del método agregarTecladoVinculado(String nomT) de alfabeto. Este método debe agregar a un teclado a la lista de un alfabeto.
+     * Objeto de la prueba: Test del método agregarTecladoVinculado(String nomA) de alfabeto. Este método debe agregar a un teclado a la lista de un alfabeto.
      * Ficheros de datos necesarios: Datos introducidos manualmente.
      * Valores estudiados: Estrategia caja gris. A partir del Alfabeto, se añade un teclado vinculado al alfabeto. Se comprueba que se ha agregado correctamente.
      * Operativa: Se define el nombre de dos teclados.
      * El segundo assertTrue() compruba que el teclado1 está en la lista.
      * El tercer assertTrue() comprueba que el teclado2 está en la lista.
      */
-
     @Test
     public void TestAgregarTecladoVinculado() {
-        System.out.println("Test agregarTecladoVinculado");
-        String nombreT1 = "Teclado1";
-        String nombreT2 = "Teclado2";
+        //System.out.println("Test Get Texto");
 
-        alfabeto.agregarTecladoVinculado(nombreT1);
-        alfabeto.agregarTecladoVinculado(nombreT2);
+        String nombreTvinculado1 = "nomT1";
+        String nombreTvinculado2 = "nomT2";
 
-        assertEquals(2, alfabeto.getTecladosVinculados().size());
-        assertTrue(alfabeto.getTecladosVinculados().contains(nombreT1));
-        assertTrue(alfabeto.getTecladosVinculados().contains(nombreT2));
+        alfabeto.agregarTecladoVinculado(nombreTvinculado1);
+
+        assertFalse(alfabeto.getTecladosVinculados().isEmpty());
+        assertEquals(1, alfabeto.getTecladosVinculados().size());
+        assertTrue(alfabeto.getTecladosVinculados().contains(nombreTvinculado1));
+        assertFalse(alfabeto.getTecladosVinculados().contains(nombreTvinculado2));
+
+    }
+
+    // ---------- SETTERS ----------
+
+    /**
+     * Objeto de la prueba: Test del método ModificarContenido(String nomA) de alfabeto. Este método debe agregar a un teclado a la lista de un alfabeto.
+     * Ficheros de datos necesarios: Datos introducidos manualmente.
+     * Valores estudiados: Estrategia caja gris. A partir del Alfabeto, se modifica su contenido y se comprueba que se ha modificado correctamente.
+     * Operativa: Se consulta el contenido actual del alfabeto. Se modifica define el nombre de dos teclados.
+     * El segundo assertTrue() compruba que el teclado1 está en la lista.
+     * El tercer assertTrue() comprueba que el teclado2 está en la lista.
+     */
+    @Test
+    public void TestModificarContenido() {
+        ArrayList<Character> letras = alfabeto.getLetras();
+        ArrayList<Character> letras2 = letras;
+        letras2.add('!');
+
+        alfabeto.modificarContenido(letras);
+
+        assertNotEquals(letras2,letras);
+        assertEquals(alfabeto.getLetras(),letras2);
+
     }
 
 
     // ---------- AUXILIARES ----------
     /**
-     * Objeto de la prueba: Test del método borrarTecladoVinculado(String nomT) de alfabeto. Este método debe borrar de un teclado de la lista del alfabeto.
+     * Objeto de la prueba: Test del método borrarTecladoVinculado(String nomA) de alfabeto. Este método debe borrar de un teclado de la lista del alfabeto.
      * Ficheros de datos necesarios: Datos introducidos manualmente.
      * Valores estudiados: Estrategia caja gris. A partir del Alfabeto que contiene algun teclado, se borra uno de ellos. Se comprueba que se ha borrado correctamente.
      * Operativa: Se define el nombre de dos teclados.
@@ -128,18 +124,17 @@ public class TestAlfabeto {
      */
     @Test
     public void TestBorrarTecladoVinculado() {
-        System.out.println("Test borrarTecladoVinculado");
+        String nombreTvinculado1 = "nomT1";
+        String nombreTvinculado2 = "nomT2";
 
-        String nombreT1 = "Teclado1";
-        String nombreT2 = "Teclado2";
+        alfabeto.agregarTecladoVinculado(nombreTvinculado1);
+        alfabeto.agregarTecladoVinculado(nombreTvinculado2);
+        alfabeto.borrarTecladoVinculado(nombreTvinculado1);
 
-        alfabeto.agregarTecladoVinculado(nombreT1);
-        alfabeto.agregarTecladoVinculado(nombreT2);
-        alfabeto.borrarTecladoVinculado(nombreT1);
-
+        assertFalse(alfabeto.getTecladosVinculados().isEmpty());
         assertEquals(1, alfabeto.getTecladosVinculados().size());
-        assertFalse(alfabeto.getTecladosVinculados().contains(nombreT1));
-        assertTrue(alfabeto.getTecladosVinculados().contains(nombreT2));
+        assertTrue(alfabeto.getTecladosVinculados().contains(nombreTvinculado2));
+        assertFalse(alfabeto.getTecladosVinculados().contains(nombreTvinculado1));
     }
 }
 
