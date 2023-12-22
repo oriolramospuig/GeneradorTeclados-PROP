@@ -468,4 +468,16 @@ public class CtrlPresentacion {
     public static void guardaTeclados(){
         cd.guardaCnjtTeclados();
     }
+
+
+    /**
+     * Este método coordina y realiza el proceso de guardar conjuntos de datos.
+     * Llama a funciones específicas para guardar cada tipo de conjunto, como alfabetos, textos, asociaciones y teclados. La ejecución de estas funciones resultará en la persistencia de los datos en sus respectivos archivos de almacenamiento, como archivos CSV.
+     */
+    public static void guardarConjuntos() {
+        guardaAlfabetos();
+        guardaTextos();
+        guardaAsociaciones();
+        guardaTeclados();
+    }
 }

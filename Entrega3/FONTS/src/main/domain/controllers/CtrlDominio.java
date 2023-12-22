@@ -44,7 +44,8 @@ public class CtrlDominio
         File currentDir = new File(currentDirectory);
         File rootDir = currentDir.getParentFile().getParentFile().getParentFile();
         String rootPath = rootDir.getAbsolutePath(); // para makefile
-        cargaCnjtAlfabetos(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoAlfabetos"+"//");
+        cargaCnjtAlfabetos();
+        //cargaCnjtAlfabetos(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoAlfabetos"+"//");
         cargaCnjtTextos(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoTextos"+"//");
         cargaCnjtAsociaciones(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoAsociaciones"+"//");
         cargaCnjtTeclados(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoTeclados"+"//");
@@ -489,37 +490,27 @@ public class CtrlDominio
      * en un array de bytes y llamando a un método en el controlador de persistencia.
      * Si se produce un error durante el proceso de guardado, se muestra un mensaje de error en la consola
      * y se finaliza la aplicación con un código de error.
+     * Guarda el conjunto de alfabetos utilizando el controlador de persistencia.
+     * Captura posibles excepciones IOException sin proporcionar un tratamiento específico.
      */
     public void guardaCnjtAlfabetos() {
-        String nomDoc = "conjuntoAlfabetos";
-        //if(nomDoc.endsWith(".prop")) { nomDoc = nomDoc+".prop"; }
-        String currentDirectory = System.getProperty("user.dir");
-        String path = currentDirectory+"//Entrega3//data//Cache//"+nomDoc+"//";
         try {
-            byte[] bytes = ctrlAlfabeto.alfabetosToByteArray();
-            ctrlPersistencia.guardaCnjtAlfabetos(bytes,path);
+            ctrlPersistencia.guardaCnjtAlfabetos(ctrlAlfabeto.getAlfabetos());
         } catch (IOException e) {
-            System.err.println("[#GUARDAR] Error al guardar el conjunto de alfabetos" + e.getMessage());
-            Thread.currentThread().getStackTrace();
-            System.exit(-102);
         }
     }
 
     /**
      * Carga el conjunto de alfabetos desde el archivo especificado en la ruta proporcionada.
-     * @param path La ruta del archivo desde el cual cargar el conjunto de alfabetos.
+     * Carga el conjunto de alfabetos utilizando el controlador de persistencia.
+     * Captura posibles excepciones IOException y actualiza el conjunto de alfabetos en el controlador de alfabeto.
      */
-    public void cargaCnjtAlfabetos(String path) {
+    public void cargaCnjtAlfabetos() {
         try {
-            byte[] bytes = ctrlPersistencia.cargaCnjtAlfabetos(path);
-            if (bytes != null || bytes.length != 0) {
-                CtrlAlfabeto.byteArrayToAlfabetos(bytes);
-            }
-            else {
-                System.out.println("El archivo está vacío. No se carga ningun alfabeto.");
-            }
-        } catch (Exception e) {
-            System.err.println("[#CARGA] Error al cargar el conjunto de alfabetos " + e.getMessage());
+            HashMap<String,Alfabeto> cnjtAlfabetos = ctrlPersistencia.cargaCnjtAlfabetos();
+            ctrlAlfabeto.setCnjtAlfabetos(cnjtAlfabetos);
+        } catch (IOException e){
+            //CtrlPresentacion.showError(e.getMessage());
         }
     }
 
@@ -568,7 +559,6 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA ASOCIACIONES TEXTOS ----------
-
     /**
      * Guarda el conjunto de asociaciones de textos en una ubicación específica.
      * La ubicación por defecto es la carpeta 'Entrega3/data/Cache' del directorio de trabajo actual.
@@ -611,7 +601,6 @@ public class CtrlDominio
 
 
     // ---------- FUNCIONES PERSISTENCIA TECLADOS ----------
-
     /**
      * Guarda el conjunto de teclados en una ubicación específica.
      * La ubicación por defecto es la carpeta 'Entrega3/data/Cache' del directorio de trabajo actual.
@@ -651,6 +640,7 @@ public class CtrlDominio
             System.err.println("[#CARGA] Error al cargar el conjunto de teclados " + e.getMessage());
         }
     }
+
 
     /**
      * Agrega un alfabeto utilizando un archivo especificado por la ruta.

@@ -194,6 +194,12 @@ public class VistaTecladoA extends JFrame {
                     return;
                 }
 
+                ArrayList<Character> contenidoAlfabeto = CtrlPresentacion.consultarContenidoAlfabeto(nombreAlfabeto);
+                if (contenidoAlfabeto.size() > 10) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El contenido del alfabeto no puede tener más de 10 caracteres para usar Branch & Bound, tardaría demasiado", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
                 try {
                     int filas = Integer.parseInt(filasStr);
                     int columnas = Integer.parseInt(columnasStr);
@@ -209,7 +215,7 @@ public class VistaTecladoA extends JFrame {
                         areaContenidoAsociacionTA.setText("");
                         areaFilasTA.setText("");
                         areaColumnasTA.setText("");
-                        CtrlPresentacion.guardaTeclados();
+                        CtrlPresentacion.guardarConjuntos();
                     } else {
                         JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El nombre " + nombreTeclado + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -262,7 +268,7 @@ public class VistaTecladoA extends JFrame {
                         areaColumnasTA.setText("");
                         nombresAlfabetosTA.setSelectedItem("");
                         nombresAsociacionesTA.setSelectedItem("");
-                        CtrlPresentacion.guardaTeclados();
+                        CtrlPresentacion.guardarConjuntos();
                     } else {
                         JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El nombre " + nombreTeclado + " ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                     }

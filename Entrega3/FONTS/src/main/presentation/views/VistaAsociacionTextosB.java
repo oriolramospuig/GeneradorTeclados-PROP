@@ -125,7 +125,7 @@ public class VistaAsociacionTextosB extends JFrame{
                         nombresATB.removeItem(nombreAsociacion);
                         nombresATB.setSelectedItem("");
                         JOptionPane.showMessageDialog(frame, "Asociación eliminada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                        CtrlPresentacion.guardaAsociaciones();
+                        CtrlPresentacion.guardarConjuntos();
                     } else {
                         // El usuario eligió no continuar
                         areanomATB.setText("");

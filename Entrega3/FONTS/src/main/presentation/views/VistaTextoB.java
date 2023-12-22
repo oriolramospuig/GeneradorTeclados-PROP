@@ -126,7 +126,7 @@ public class VistaTextoB extends JFrame{
                         nombresTxtB.removeItem(nombreTexto);
                         nombresTxtB.setSelectedItem("");
                         JOptionPane.showMessageDialog(frame, "Texto eliminado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                        CtrlPresentacion.guardaTextos();
+                        CtrlPresentacion.guardarConjuntos();
                     } else {
                         // El usuario eligió no continuar
                         areanomTxtB.setText("");
