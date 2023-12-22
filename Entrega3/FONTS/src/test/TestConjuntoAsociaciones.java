@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 /**
- * @author
+ * Clase de pruebas unitarias para conjunto de asociaciones de textos.
+ * @author Victor Moreno
  */
 public class TestConjuntoAsociaciones
 {

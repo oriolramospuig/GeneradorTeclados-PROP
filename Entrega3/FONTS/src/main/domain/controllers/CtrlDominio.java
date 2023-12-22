@@ -112,15 +112,6 @@ public class CtrlDominio
     }
 
     /**
-     * Retorna el número de carácteres que tiene el contenido del alfabeto.
-     * @param nomA clave única y nombre del alfabeto a buscar.
-     * @return int: el número de carácteres que tiene el contenido del alfabeto con nombre nomA.
-     */
-    public int numeroCaracteres(String nomA) {
-        return ctrlAlfabeto.getCjtAlfabetos().getAlfabeto(nomA).getLetras().size();
-    }
-
-    /**
      * No devuelve nada.
      * @param nomA clave única y nombre del alfabeto a borrar.
      * Borra el alfabeto con nombre nomA.
@@ -299,7 +290,7 @@ public class CtrlDominio
      * @param nomTxt clave única u nombre del texto a añadir en la asociación.
      * Agrega el texto con nombre nomTxt a la lista de textos de la asociación con nombre nomAT.
      */
-    public void agregarTextoAsociacion (String nomAT, String nomTxt){
+    public void agregarTextoAsociacion(String nomAT, String nomTxt){
 
         HashMap<String,Integer> freqTexto = ctrlTexto.getTexto(nomTxt).getFrecuenciaLetras();
         ctrlAsociacionTexto.agregarTextoAsociacion(nomAT, nomTxt, freqTexto);
@@ -329,10 +320,10 @@ public class CtrlDominio
      * @return ArrayList<String>: una lista de los nombres de los textos que forman la asociación con nombre nomAT.
      */
     public ArrayList<String> consultarCjtTextosAsociacion(String nomAT){
-        if(existeasociacion(nomAT)) {
+        if (existeasociacion(nomAT)) {
             return ctrlAsociacionTexto.getCjtTextos(nomAT);
         }
-        return null;
+        return new ArrayList<>();
     }
 
     /**
@@ -340,11 +331,12 @@ public class CtrlDominio
      * @param nomAT clave única y nombre de la asociación a buscar.
      * Manda borrar el texto con nombre nomTxt de la lista de textos asociados a la asociación con nombre nomAT.
      */
-    public void borrarTextoAsociacion (String nomAT, String nomTxt){
+    public boolean borrarTextoAsociacion(String nomAT, String nomTxt){
         HashMap<String, Integer> frecuenciaLetras = ctrlTexto.getTexto(nomTxt).getFrecuenciaLetras();
         boolean ultima = ctrlAsociacionTexto.borrarTextoAsociacion(nomAT,nomTxt,frecuenciaLetras);
         ctrlTexto.borrarAsociacionVinculada(nomTxt,nomAT);
         if(ultima) borrarAsociacionTextos(nomAT);
+        return ultima;
     }
 
     /**

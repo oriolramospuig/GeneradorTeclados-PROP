@@ -11,7 +11,7 @@ import main.domain.classes.Texto;
 
 /**
  * Clase que gestiona la carga y guardado de conjuntos de textos en formato de bytes.
- * @author
+ * @author Víctor Moreno
  */
 public class GestorTexto {
     /**

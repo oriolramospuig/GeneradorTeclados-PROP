@@ -334,8 +334,8 @@ public class CtrlPresentacion {
      * @param nomAT El nombre de la asociación.
      * @param nomTxt El nombre del texto a borrar de la asociación.
      */
-    public static void borrarTextoAsociacion (String nomAT, String nomTxt) {
-        cd.borrarTextoAsociacion(nomAT, nomTxt);
+    public static boolean borrarTextoAsociacion (String nomAT, String nomTxt) {
+        return cd.borrarTextoAsociacion(nomAT, nomTxt);
     }
 
     /**
