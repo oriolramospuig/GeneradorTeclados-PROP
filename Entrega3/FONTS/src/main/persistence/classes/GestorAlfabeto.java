@@ -30,7 +30,7 @@ public class GestorAlfabeto {
                 String nombreA = entry.getKey();
                 Alfabeto alfabeto = entry.getValue();
                 String alfabetoString = pasarAlfabetoString(alfabeto);
-                writer.write(nombreA + "," + alfabetoString);
+                writer.write(alfabetoString);
                 writer.newLine();
             }
         } catch (IOException exception) {
@@ -38,16 +38,39 @@ public class GestorAlfabeto {
         }
     }
 
+    public String lToString(ArrayList<Character> letras) {
+        StringBuilder stringBuilder = new StringBuilder(letras.size());
+        for (Character character : letras) {
+            stringBuilder.append(character);
+        }
+        return stringBuilder.toString();
+    }
+
+    private String tvToString(ArrayList<String> tecladosVinculados) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String element : tecladosVinculados) {
+            stringBuilder.append(element).append(";");
+        }
+        if (stringBuilder.length() > 0) {
+            String separador = ";";
+            stringBuilder.setLength(stringBuilder.length() - separador.length());
+        }
+        return stringBuilder.toString();
+    }
+
+
     public String pasarAlfabetoString(Alfabeto alfabeto) {
         StringBuilder stringBuilder = new StringBuilder();
 
         String nombre = alfabeto.getNombre();
         ArrayList<Character> letras = alfabeto.getLetras();
-        ArrayList<String> tecladosvinculados = alfabeto.getTecladosVinculados();
+        String letrasString = lToString(letras);
+        ArrayList<String> tecladosVinculados = alfabeto.getTecladosVinculados();
+        String tecladosVinculadosString = tvToString(tecladosVinculados);
 
-        stringBuilder.append(nombre).append(";");
-        stringBuilder.append(letras.toString()).append(";");
-        stringBuilder.append(tecladosvinculados.toString());
+        stringBuilder.append(nombre).append(",");
+        stringBuilder.append(letrasString).append(",");
+        stringBuilder.append(tecladosVinculadosString);
         return stringBuilder.toString();
     }
 
@@ -62,22 +85,23 @@ public class GestorAlfabeto {
             while ((line = reader.readLine()) != null) {
                 String[] partes = line.split(",");
                 String nombreA = partes[0];
-
-                String[] partes2 = partes[1].split(";");
+                String letrasA = partes[1];
 
                 ArrayList<Character> letrasArray = new ArrayList<>();
-                for (char c : partes2[1].toCharArray()) {
+                for (char c : letrasA.toCharArray()) {
                     letrasArray.add(c);
                 }
                 Alfabeto alfabeto = new Alfabeto(nombreA, letrasArray);
 
-                String[] partes3 = partes2[2].split(",");
-                ArrayList<String> listaTecladosVinculados = new ArrayList<>(Arrays.asList(partes3));
-                for (int i = 0; i < listaTecladosVinculados.size(); i++) {
-                    listaTecladosVinculados.set(i, listaTecladosVinculados.get(i).trim());
-                    alfabeto.agregarTecladoVinculado(listaTecladosVinculados.get(i));
+                if (partes.length >= 3) {
+                    String tvS = partes[2];
+                    String[] tv = tvS.split(";");
+                    ArrayList<String> listaTecladosVinculados = new ArrayList<>(Arrays.asList(tv));
+                    for (int i = 0; i < listaTecladosVinculados.size(); i++) {
+                        listaTecladosVinculados.set(i, listaTecladosVinculados.get(i).trim());
+                        alfabeto.agregarTecladoVinculado(listaTecladosVinculados.get(i));
+                    }
                 }
-
                 newCnjtAlfabetos.put(nombreA, alfabeto);
             }
             reader.close();
