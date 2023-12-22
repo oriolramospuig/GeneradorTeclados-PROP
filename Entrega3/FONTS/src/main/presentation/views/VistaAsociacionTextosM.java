@@ -237,7 +237,15 @@ public class VistaAsociacionTextosM extends JFrame{
                             CtrlPresentacion.agregarTextoAsociacion(nombreAsoc,nombreTextoAgregar);
                         }
                         if(!nombreTextoBorrar.isEmpty()){ // se quiere borrar un texto
-                            CtrlPresentacion.borrarTextoAsociacion(nombreAsoc,nombreTextoBorrar);
+                            boolean eliminada = CtrlPresentacion.borrarTextoAsociacion(nombreAsoc,nombreTextoBorrar);
+                            if (eliminada) {
+                                JOptionPane.showMessageDialog(VistaAsociacionTextosM.this,
+                                        "El último texto de la asociación ha sido eliminado y la asociación ha sido eliminada.",
+                                        "Asociación Eliminada", JOptionPane.INFORMATION_MESSAGE);
+
+                                // Actualizar JComboBox con nombres de asociaciones
+                                actualizarListaAsociaciones();
+                            }
                         }
                         JOptionPane.showMessageDialog(VistaAsociacionTextosM.this, "Asociación modificada con éxito.",
                                 "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -278,5 +286,18 @@ public class VistaAsociacionTextosM extends JFrame{
         bModificarAsociacion.addActionListener(lModificarA);
         bsalir.addActionListener(lSalir);
 
+    }
+
+    /**
+     * Actualiza la lista de asociaciones en el JComboBox tras modificar una asociación.
+     * Se invoca después de eliminar un texto de una asociación para reflejar los cambios en la interfaz.
+     */
+    private void actualizarListaAsociaciones() {
+        nombresATM.removeAllItems();
+        nombresATM.addItem("");
+        ArrayList<String> nombres = CtrlPresentacion.getNombresAsociaciones();
+        for (String nombre : nombres) {
+            nombresATM.addItem(nombre);
+        }
     }
 }

@@ -36,6 +36,7 @@ class FrequencyComparator implements Comparator<PairFrequency> {
  */
 public class AsociacionTextos implements Serializable
 {
+    private static final long serialVersionUID = 2062931267658986574L;
     // ---------- ATRIBUTOS ----------
     /** Guarda el nombre introducido por el usuario. */
     private String nombre;
@@ -173,10 +174,8 @@ public class AsociacionTextos implements Serializable
      * @param frecLetras HashMap de unas letras y sus frecuencias.
      */
     public boolean borrarTexto (String nomT, HashMap<String, Integer> frecLetras) {
-        Iterator<Map.Entry<String, Integer>> iterator = frecLetras.entrySet().iterator();
 
-        while (iterator.hasNext()) {
-            Map.Entry<String, Integer> entry = iterator.next();
+        for (Map.Entry<String, Integer> entry : frecLetras.entrySet()) {
             String clave = entry.getKey();
 
             if (frecuenciaLetras.containsKey(clave)) {

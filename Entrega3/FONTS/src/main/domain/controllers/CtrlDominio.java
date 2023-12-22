@@ -320,10 +320,10 @@ public class CtrlDominio
      * @return ArrayList<String>: una lista de los nombres de los textos que forman la asociación con nombre nomAT.
      */
     public ArrayList<String> consultarCjtTextosAsociacion(String nomAT){
-        if(existeasociacion(nomAT)) {
+        if (existeasociacion(nomAT)) {
             return ctrlAsociacionTexto.getCjtTextos(nomAT);
         }
-        return null;
+        return new ArrayList<>();
     }
 
     /**
@@ -331,11 +331,12 @@ public class CtrlDominio
      * @param nomAT clave única y nombre de la asociación a buscar.
      * Manda borrar el texto con nombre nomTxt de la lista de textos asociados a la asociación con nombre nomAT.
      */
-    public void borrarTextoAsociacion(String nomAT, String nomTxt){
+    public boolean borrarTextoAsociacion(String nomAT, String nomTxt){
         HashMap<String, Integer> frecuenciaLetras = ctrlTexto.getTexto(nomTxt).getFrecuenciaLetras();
         boolean ultima = ctrlAsociacionTexto.borrarTextoAsociacion(nomAT,nomTxt,frecuenciaLetras);
         ctrlTexto.borrarAsociacionVinculada(nomTxt,nomAT);
         if(ultima) borrarAsociacionTextos(nomAT);
+        return ultima;
     }
 
     /**

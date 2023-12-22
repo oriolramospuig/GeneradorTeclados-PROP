@@ -3,6 +3,7 @@ package main.domain.classes;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 
 /**
  * Clase que representa el conjunto de asociaciones
@@ -30,7 +31,7 @@ public class ConjuntoAsociaciones implements Serializable
      */
     public AsociacionTextos getAsociacionTextos(String nomAT) {
         if (asociaciones.containsKey(nomAT)) return asociaciones.get(nomAT);
-        return null;
+        throw new NoSuchElementException("No existe la asociación con el nombre: " + nomAT);
     }
 
     /**
