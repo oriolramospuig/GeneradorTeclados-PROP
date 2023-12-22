@@ -16,6 +16,7 @@ import java.util.ArrayList;
  * Inicializa los componentes de la interfaz de usuario y configura el comportamiento de los eventos
  * para la creación de nuevos teclados. Permite seleccionar entre diferentes alfabetos y asociaciones,
  * establecer dimensiones personalizadas y elegir el método de generación del teclado (Branch & Bound o Simulated Annealing).
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class VistaTecladoA extends JFrame {
     /** Panel principal que contiene todos los componentes de la interfaz. */
@@ -78,6 +79,13 @@ public class VistaTecladoA extends JFrame {
     /** Etiqueta explicativa para el botón de Simulated Annealing. */
     private final JLabel txtbotonSA = new JLabel("Para generar el teclado mediante Simulated Annealing");
 
+    /**
+     * Constructor de la vista para agregar teclados.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura el comportamiento de los eventos
+     * para la creación de nuevos teclados. Permite seleccionar entre diferentes alfabetos y asociaciones,
+     * establecer dimensiones personalizadas y elegir el método de generación del teclado (Branch & Bound o Simulated Annealing).
+     */
     public VistaTecladoA(){
 
         setBounds(250, 150, 1000, 600);
@@ -183,6 +191,12 @@ public class VistaTecladoA extends JFrame {
 
                 if (filasStr.isEmpty() || columnasStr.isEmpty()) {
                     JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: Debe seleccionar filas y columnas", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                ArrayList<Character> contenidoAlfabeto = CtrlPresentacion.consultarContenidoAlfabeto(nombreAlfabeto);
+                if (contenidoAlfabeto.size() > 10) {
+                    JOptionPane.showMessageDialog(VistaTecladoA.this, "Error: El contenido del alfabeto no puede tener más de 10 caracteres para usar Branch & Bound, tardaría demasiado", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 

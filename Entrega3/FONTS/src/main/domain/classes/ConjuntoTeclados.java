@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class ConjuntoTeclados implements Serializable
 {
     // ---------- ATRIBUTOS ----------
-    /** Guarda el conjunto de teclados generados por el usuario */
+    /** Guarda el conjunto de teclados generados por el usuario. */
     private HashMap<String, Teclado> teclados;
 
 

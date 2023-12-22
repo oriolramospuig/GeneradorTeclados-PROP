@@ -114,6 +114,38 @@ public class QAP implements IAlgoritmo {
     }
 
     /**
+     * Constructor que inicializa una instancia de QAP con las dimensiones y matrices especificadas.
+     * (Creadora para driver interactivo).
+     *
+     * @param n Filas*columnas del teclado.
+     * @param nf Número de filas del teclado.
+     * @param nc Número de columnas del teclado.
+     * @param matrizFrecuencias Matriz de frecuencias de teclas.
+     * @param matrizDistancias Matriz de distancias de teclas.
+     */
+    public QAP(int n, int nf, int nc, int[][] matrizFrecuencias, int [][] matrizDistancias) {
+        this.filas = nf;
+        this.columnas = nc;
+        this.n = nf*nc;
+
+        this.matrizFrecuencias = matrizFrecuencias;
+        this.matrizDistancias = matrizDistancias;
+
+        List<Integer> ind = new ArrayList<>();
+        for (int i = 0; i < nf*nc; ++i) {
+            ind.add(i);
+        }
+
+        int [][] indices = calcularMejorAsignacionAleatoria(ind, 100);
+        this.teclado = indices;
+        this.sol = new ArrayList<>();
+        this.glBound = calculoPuntuacion(indices);
+
+        calculo();
+
+    }
+
+    /**
      * Calcula la mejor asignación aleatoria de teclas entre las N generadas.
      *
      * @param teclas Lista de teclas a asignar aleatoriamente.
@@ -122,8 +154,6 @@ public class QAP implements IAlgoritmo {
      * @throws IllegalArgumentException Si el número de teclas no coincide con el tamaño del teclado.
      */
     private int[][] calcularMejorAsignacionAleatoria(List<Integer> teclas, int N) {
-        System.out.println("La mejor de N asignaciones de las teclas aleatorias: ");
-        System.out.println();
         if (teclas.size() != filas * columnas) {
             throw new IllegalArgumentException("El número de teclas debe coincidir con el número de posiciones en el teclado.");
         }
@@ -185,19 +215,6 @@ public class QAP implements IAlgoritmo {
     }
 
     /**
-     * Imprime en la consola la disposición actual de las teclas en el teclado.
-     */
-    private void imprimirTeclado() {
-        for(int i = 0; i < filas; i++) {
-            for(int j = 0; j < columnas; j++) {
-                System.out.print(teclado[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
-
-    /**
      * Realiza el cálculo utilizando el algoritmo de Gilmore-Lawler.
      * Imprime las matrices de frecuencias y distancias, y luego utiliza el algoritmo
      * para encontrar la mejor asignación de teclas en el teclado.
@@ -229,6 +246,8 @@ public class QAP implements IAlgoritmo {
      */
     @Override
     public Teclado crearTeclado(String nomT, AsociacionTextos asociacionTextos, Alfabeto alfabeto, PairInt dim, HashMap<Character, Integer> letraAIndice) {
+        long tiempoInicio = System.currentTimeMillis();
+
         List<Integer> ind = new ArrayList<>();
         for (int i = 0; i < filas*columnas; ++i) {
             ind.add(i);
@@ -254,6 +273,11 @@ public class QAP implements IAlgoritmo {
             }
         }
         Teclado teclado = new Teclado(nomT, asociacionTextos, alfabeto, dim, tec, puntuacion);
+
+        long tiempoFin = System.currentTimeMillis(); // O System.nanoTime() para mayor precisión
+        long tiempoTotal = tiempoFin - tiempoInicio;
+
+        System.out.println("Tiempo total de ejecución: " + tiempoTotal + " milisegundos");
 
         return teclado;
     }

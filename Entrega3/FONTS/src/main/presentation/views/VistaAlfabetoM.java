@@ -12,49 +12,56 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Esta vista es la encargada de modificar un alfabeto. Se indican claramente 3 campos de texto, pero solo hay que rellenar 1 de estos 3.
- * El primer campo es una lista de desplegable de los nombres de los alfabetos existentes en el sistema.
- * De manera que el usuario debe seleccionar uno de estos para modificar.
- * El segundo campo se llenará automáticamente con el nombre que el usuario haya seleccionado de la lista del campo anterior.
- * El tercer campo se llenará automáticamente con el contenido del alfabeto que el usuario haya seleccionado en el primer campo.
- * El usuario tendrá acceso a modificar el contenido del alfabeto pero no el nombre, ya que este último es el identificador.
- * Solo se puede modificar un alfabeto si se selecciona algún nombre de la lista.
- * De no ser así, se muestra un mensaje de error avisando al usuario qué le falta para poder modificar de forma correcta el alfabeto deseado.
- * Debajo de las áreas de texto se proporciona un botón para modificar el alfabeto con la información introducida.
- * Más también hay un botón con la opción de volver al menú principal.
- * @author
+ * Vista para modificar los detalles de un alfabeto existente.
+ * <p>
+ * Esta vista ofrece al usuario una lista desplegable para seleccionar un alfabeto existente y modificar su contenido.
+ * Al seleccionar un alfabeto de la lista, se muestra su nombre y su contenido en campos de texto, permitiendo la modificación del contenido.
+ * El nombre del alfabeto, siendo el identificador, no es modificable.
+ * La interfaz proporciona una manera sencilla y directa para que los usuarios puedan actualizar los caracteres que componen un alfabeto específico.
+ * Incluye un botón para confirmar las modificaciones y otro para regresar al menú principal.
+ * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
-public class VistaAlfabetoM extends JFrame{
-    /** Panel donde se incluyen los elementos de la ventana */
+public class VistaAlfabetoM extends JFrame {
+    /** Panel principal que contiene todos los componentes de la interfaz. */
     private final JPanel lamina = new JPanel();
-    /** Título ventana */
+
+    /** Título de la ventana. */
     private final JLabel tituloVistaAM = new JLabel("Modificar alfabeto");
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto */
+
+    /** Etiqueta para la lista desplegable de nombres de alfabetos. */
     private final JLabel txtDesplegableAM = new JLabel("LISTA NOMBRES:");
-    /** Desplegable con los nombres de los alfabetos*/
+
+    /** Lista desplegable con los nombres de los alfabetos existentes. */
     private JComboBox<String> nombresAM = new JComboBox<>();
-    /** Botón para modificar el alfabeto del nombre seleccionado */
+
+    /** Botón para realizar las modificaciones en el alfabeto seleccionado. */
     private final JButton bModificarAlfabeto = new JButton("Modificar alfabeto");
-    /** Botón para volver a la pantalla del menú principal */
+
+    /** Botón para regresar al menú principal. */
     private final JButton bsalir = new JButton("Atrás");
 
-
-    //TEXTOS Y AREAS DE TEXTO
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto a modificar*/
+    /** Etiqueta para el campo de nombre del alfabeto. */
     private final JLabel txtNombreAM = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del alfabeto que se quiere modificar */
+
+    /** Campo de texto que muestra el nombre del alfabeto seleccionado. */
     private final JTextArea areanomAM = new JTextArea();
 
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del alfabeto a modificar*/
+    /** Etiqueta para el campo de contenido del alfabeto. */
     private final JLabel txtContenidoAM = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el nombre del alfabeto que se quiere modificar */
+
+    /** Campo de texto que permite modificar el contenido del alfabeto seleccionado. */
     private final JTextArea areacontenidoAM = new JTextArea();
 
+    /**
+     * Constructor de la clase VistaAlfabetoM.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura los oyentes de eventos
+     * para la modificación de alfabetos. Permite actualizar el contenido de un alfabeto seleccionado
+     * desde una lista desplegable, manteniendo el mismo nombre identificador.
+     */
     public VistaAlfabetoM() {
         setBounds(250, 150, 1000, 600);
-        //setExtendedState(Frame.MAXIMIZED_BOTH);
-        //setResizable(true);
-        //setTitle("Funcionalidades alfabeto);
+
         ArrayList<String> nombres = CtrlPresentacion.getNombresAlfabetos();
         nombresAM = new JComboBox<>();
         nombresAM.addItem("");
@@ -161,19 +168,14 @@ public class VistaAlfabetoM extends JFrame{
                     JOptionPane.showMessageDialog(VistaAlfabetoM.this, "Alfabeto modificado con éxito.",
                             "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     CtrlPresentacion.guardarConjuntos();
-                } else {
-                    // El usuario eligió no continuar
-                    areanomAM.setText("");
-                    areacontenidoAM.setText("");
-
                 }
-
+                // El usuario eligió no continuar
+                areanomAM.setText("");
+                areacontenidoAM.setText("");
+                nombresAM.setSelectedItem("");
 
             }
         };
-
-
-
 
         ActionListener lSalir = new ActionListener() {
             @Override

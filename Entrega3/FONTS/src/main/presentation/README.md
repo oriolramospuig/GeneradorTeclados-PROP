@@ -6,4 +6,8 @@
 Este directorio contiene los códigos de la capa de presentación
 
 ## Elementos del directorio
-Este directorio está vacío para la primera entrega
+
+- **Directorio controllers:**
+  Contiene el controlador de la capa de presentación.
+- **Directorio views:**
+  Contiene las vistas de la capa de presentación.

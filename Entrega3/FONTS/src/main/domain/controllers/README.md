@@ -17,6 +17,6 @@ Este directorio contiene el código de los controladores.
   ESte controlador trata el teclado y los conjuntos de teclado.
 - **CtrlTecladoQAP:**
   Este controlador trata la generación del teclado mediante el algoritmo.
-- **CtrlDomini:**
+- **CtrlDominio:**
   Este controlador contiene las instancias y métodos de todos los controladores del sistema. A partir de su driver se
   puede testear el sistema entero.

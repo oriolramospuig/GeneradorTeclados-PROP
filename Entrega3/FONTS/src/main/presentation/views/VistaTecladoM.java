@@ -4,12 +4,8 @@ import main.domain.classes.types.PairInt;
 import main.presentation.controllers.CtrlPresentacion;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -20,50 +16,67 @@ import java.util.ArrayList;
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class VistaTecladoM extends JFrame {
-    //BOTONES
+
     /** Panel donde se incluyen los elementos de la ventana. */
     private final JPanel lamina = new JPanel();
+
     /** Título de media ventana. */
     private final JLabel tituloVistaTM = new JLabel("Modificar teclado");
+
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociación. */
     private final JLabel txtDesplegableTM = new JLabel("LISTA NOMBRES:");
+
     /** Desplegable con los nombres de los teclados.*/
     private JComboBox<String> nombresTM = new JComboBox<>();
+
     /** Desplegable con los nombres de los alfabetos.*/
     private JComboBox<String> nombresAlfabetosTM = new JComboBox<>();
+
     /** Desplegable con los nombres de las asociaciones.*/
     private JComboBox<String> nombresAsociacionesTM = new JComboBox<>();
+
     /** Desplegable con las posibles dimensiones del teclado.*/
     private JComboBox<String> posiblesDimensiones = new JComboBox<>();
+
     /** Botón para iniciar el proceso de modificación del teclado seleccionado.*/
     private final JButton bModificarTeclado = new JButton("Modificar teclado");
+
     /** Botó de tornar a la pantalla del menú principal. */
     private final JButton bsalir = new JButton("Atrás");
 
-
-    //TEXTOS Y AREAS DE TEXTO
     /** Etiqueta para indicar el campo donde se introduce el nombre del teclado a consultar o modificar.*/
     private final JLabel txtNombreTM = new JLabel("NOMBRE:");
+
     /** Área de texto para ingresar o mostrar el nombre del teclado que se está consultando o modificando. */
     private final JTextArea areanomTM = new JTextArea();
+
     /** Etiqueta para indicar el campo relacionado con la elección del alfabeto para el teclado. */
     private final JLabel txtNombreAlfabetoTM = new JLabel("ALFABETO:");
+
     /** Área de texto para ingresar o mostrar el nombre del alfabeto asociado al teclado. */
     private final JTextArea areaContenidoAlfabetoTM = new JTextArea();
+
     /** Etiqueta para indicar el campo relacionado con la elección de la asociación de textos para el teclado. */
     private final JLabel txtNombreAsociacionTM = new JLabel("ASOCIACIÓN:");
+
     /** Área de texto para ingresar o mostrar el nombre de la asociación de textos asociada al teclado. */
     private final JTextArea areaContenidoAsociacionTM = new JTextArea();
+
     /** Etiqueta para indicar el campo donde se introduce el número de filas del teclado.*/
     private final JLabel txtFilasTM = new JLabel("FILAS:");
+
     /** Campo de texto para ingresar o mostrar el número de filas del teclado.*/
     private final JTextField areaFilasTM = new JTextField();
+
     /** Etiqueta para indicar el campo donde se introduce el número de columnas del teclado.*/
     private final JLabel txtColumnasTM = new JLabel("COLUMNAS:");
+
     /** Campo de texto para ingresar o mostrar el número de columnas del teclado.*/
     private final JTextField areaColumnasTM = new JTextField();
+
     /** Etiqueta para indicar el área donde se muestra el contenido actual del teclado.*/
     private final JLabel txtContenidoTM = new JLabel("CONTENIDO:");
+
     /** Área de texto para mostrar el contenido actual del teclado. */
     private final JTextArea areacontenidoTM = new JTextArea();
 
@@ -124,24 +137,28 @@ public class VistaTecladoM extends JFrame {
         txtNombreAlfabetoTM.setBounds(200, 320, 200, 20);
         add(txtNombreAlfabetoTM);
 
+        areaContenidoAlfabetoTM.setEditable(false);
         areaContenidoAlfabetoTM.setBounds(400,320, 200,20);
         add(areaContenidoAlfabetoTM);
 
         txtNombreAsociacionTM.setBounds(200, 350, 200, 20);
         add(txtNombreAsociacionTM);
 
+        areaContenidoAsociacionTM.setEditable(false);
         areaContenidoAsociacionTM.setBounds(400,350, 200,20);
         add(areaContenidoAsociacionTM);
 
         txtFilasTM.setBounds(200, 380, 200, 20);
         add(txtFilasTM);
 
+        areaFilasTM.setEditable(false);
         areaFilasTM.setBounds(400, 380, 200, 20);
         add(areaFilasTM);
 
         txtColumnasTM.setBounds(200, 410, 200, 20);
         add(txtColumnasTM);
 
+        areaColumnasTM.setEditable(false);
         areaColumnasTM.setBounds(400, 410, 200, 20);
         add(areaColumnasTM);
 

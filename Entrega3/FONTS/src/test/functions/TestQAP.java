@@ -66,6 +66,26 @@ public class TestQAP {
         assertNotNull(qap.getMatrizFrecuencias());
     }
 
+    /**
+     * Objetivo de la prueba: Verificar que el algoritmo QAP genera un diseño de teclado
+     * que minimiza la función objetivo, considerando las frecuencias de pares de letras y las distancias entre teclas.
+     * Ficheros necesarios: Ninguno.
+     * Valores necesarios:
+     *   - Teclas disponibles: {'a', 'b', 'c', 'd', 'e', 'f'}.
+     *   - Frecuencias de pares de letras ordenadas decrecientemente:
+     *        - {"ab": 400, "bc": 300, "ac": 200, "ad": 150, "bd": 100, "be": 75, "cd": 60, "de": 50, "df": 40, "ef": 30}.
+     *   - Número de filas y columnas en el teclado: nf = 2, nc = 4.
+     * Operativa:
+     *   1. Se crea una lista de teclas disponibles ('a' a 'f' asumiendo un alfabeto de 'a' a 'l').
+     *   2. Se crea una lista de frecuencias de pares de letras ordenadas decrecientemente.
+     *   3. Se establece el número de filas (nf) y columnas (nc) del teclado.
+     *   4. Se crea un mapa que asigna cada letra a su índice correspondiente.
+     *   5. Se generan dos matrices necesarias para el algoritmo QAP:
+     *        - Matriz de frecuencias a partir de las frecuencias de pares de letras.
+     *        - Matriz de distancias a partir del número de filas y columnas en el teclado.
+     *   6. Se crea una instancia de la clase QAP con las matrices generadas.
+     *   7. Se obtiene el diseño de teclado generado por el algoritmo QAP.
+     */
     @Test
     public void TestAlgortimoQAP() {
 

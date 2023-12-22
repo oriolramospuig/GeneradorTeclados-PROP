@@ -21,27 +21,27 @@ class FrequencyComparator implements Comparator<PairFrequency> {
     }
 }
 
-/** Clase que implementa una asociación de textos
+/** Clase que implementa una asociación de textos.
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public class AsociacionTextos implements Serializable
 {
     // ---------- ATRIBUTOS ----------
-    /** Guarda el nombre introducido por el usuario */
+    /** Guarda el nombre introducido por el usuario. */
     private String nombre;
 
-    /** Guarda la lista de textos de los que está compuesta la asociación */
+    /** Guarda la lista de textos de los que está compuesta la asociación. */
     private ArrayList<String> textosAsociaciados;
 
-    /** Guarda la lista de teclados que se han creado a partir de la asociacion */
+    /** Guarda la lista de teclados que se han creado a partir de la asociacion. */
     private ArrayList<String> tecladosVinculados;
 
-    /** Guarda el map que asocia pares de letras ("ab") con sus frecuencias ("20") */
+    /** Guarda el map que asocia pares de letras ("ab") con sus frecuencias ("20"). */
     private HashMap<String, Integer> frecuenciaLetras;
 
 
     // ---------- CONSTRUCTORES ----------
-    /** Crea una instancia de la clase AsociacionTextos e inicializa las variables como vacías */
+    /** Crea una instancia de la clase AsociacionTextos e inicializa las variables como vacías. */
     public AsociacionTextos() {
         nombre = new String();
         textosAsociaciados = new ArrayList<>();
@@ -49,9 +49,9 @@ public class AsociacionTextos implements Serializable
         frecuenciaLetras = new HashMap<>();
     }
 
-    /** Crea una instancia de la clase AsociacionTextos e inicializa las variables como vacías, excepto nombre y frecuenciaLetras que se les asignan valores
-     * @param nombre nombre que adquiere la AsociacionTextos creada
-     * @param frecuenciaLetras HashMap que contiene los pares de letras y sus respectivas frecuencias de la AsociacionTextos creada
+    /** Crea una instancia de la clase AsociacionTextos e inicializa las variables como vacías, excepto nombre y frecuenciaLetras que se les asignan valores.
+     * @param nombre nombre que adquiere la AsociacionTextos creada.
+     * @param frecuenciaLetras HashMap que contiene los pares de letras y sus respectivas frecuencias de la AsociacionTextos creada.
      */
     public AsociacionTextos(String nombre, HashMap<String, Integer> frecuenciaLetras) {
         this.nombre = nombre;
@@ -60,8 +60,8 @@ public class AsociacionTextos implements Serializable
         tecladosVinculados = new ArrayList<>();
     }
 
-    /** Crea una instancia de la clase AsociacionTextos e inicializa las variables como vacías, excepto nombre que se le asigna un valor específico
-     * @param nombre nombre que adquiere la AsociacionTextos creada
+    /** Crea una instancia de la clase AsociacionTextos e inicializa las variables como vacías, excepto nombre que se le asigna un valor específico.
+     * @param nombre nombre que adquiere la AsociacionTextos creada.
      */
     public AsociacionTextos(String nombre) {
         this.nombre = nombre;
@@ -73,40 +73,40 @@ public class AsociacionTextos implements Serializable
 
     // ---------- GETTERS ----------
     /**
-     * Devuelve el nombre introducido por el usuario
-     * @return String: Nombre introducido por el usuario
+     * Devuelve el nombre introducido por el usuario.
+     * @return String: Nombre introducido por el usuario.
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * Devuelve el nombre de los textos asociados
-     * @return ArrayList<String>: Lista de nombres de los textos asociados
+     * Devuelve el nombre de los textos asociados.
+     * @return ArrayList<String>: Lista de nombres de los textos asociados.
      */
     public ArrayList<String> getTextosAsociaciados() {
         return textosAsociaciados;
     }
 
     /**
-     * Devuelve el nombre de los teclados vinculados a la asocciación de textos
-     * @return ArrayList<String>: Lista de nombres de los teclados vinculados
+     * Devuelve el nombre de los teclados vinculados a la asocciación de textos.
+     * @return ArrayList<String>: Lista de nombres de los teclados vinculados.
      */
     public ArrayList<String> getTecladosVinculados() {
         return tecladosVinculados;
     }
 
     /**
-     * Devuelve el map de pares de letras con sus frecuencias
-     * @return HashMap<String,Integer>: Map de frecuenciaLetras
+     * Devuelve el map de pares de letras con sus frecuencias.
+     * @return HashMap<String,Integer>: Map de frecuenciaLetras.
      */
     public HashMap<String,Integer> getFrecuenciaLetras() {
         return frecuenciaLetras;
     }
 
     /**
-     * Devuelve los pares String, Integer de los pares de letras con sus frecuencias ordenados
-     * @return ArrayList<PairFrequency>: Lista de pares de letras y frecuencias ordenados
+     * Devuelve los pares String, Integer de los pares de letras con sus frecuencias ordenados.
+     * @return ArrayList<PairFrequency>: Lista de pares de letras y frecuencias ordenados.
      */
     public ArrayList<PairFrequency> getFrecuenciaLetrasArray() {
         ArrayList<PairFrequency> freq = new ArrayList<>();
@@ -121,17 +121,17 @@ public class AsociacionTextos implements Serializable
 
     // ---------- SETTERS ----------
     /**
-     * No devuelve nada. Añade a la lista de nombres de los teclados vinculados el nombre del nuevo teclado nomT
-     * @param nomT nombre del teclado a vincular
+     * No devuelve nada. Añade a la lista de nombres de los teclados vinculados el nombre del nuevo teclado nomT.
+     * @param nomT nombre del teclado a vincular.
      */
     public void agregarTecladoVinculado (String nomT) {
         tecladosVinculados.add(nomT);
     }
 
     /**
-     * No devuelve nada. Añade a la lista de nombres de los textos asociados el nombre del nuevo texto
-     * @param nomTxt nombre texto a agregar a la asociación
-     * @param freqTexto map de frecuencias de las palabras del texto a agregar a la asociación
+     * No devuelve nada. Añade a la lista de nombres de los textos asociados el nombre del nuevo texto.
+     * @param nomTxt nombre texto a agregar a la asociación.
+     * @param freqTexto map de frecuencias de las palabras del texto a agregar a la asociación.
      */
     public void agregarTexto (String nomTxt, HashMap<String,Integer> freqTexto) {
         textosAsociaciados.add(nomTxt);
@@ -149,8 +149,8 @@ public class AsociacionTextos implements Serializable
     // ---------- AUXILIARES -----------
     // Segunda entrega
     /**
-     * No devuelve nada. Borra de la lista de nombres de los teclados vinculados el nombre del teclado nomT
-     * @param nomT nombre del teclado a desvincular
+     * No devuelve nada. Borra de la lista de nombres de los teclados vinculados el nombre del teclado nomT.
+     * @param nomT nombre del teclado a desvincular.
      */
     public void borrarTecladoVinculado (String nomT) {
         tecladosVinculados.remove(nomT);
@@ -158,8 +158,8 @@ public class AsociacionTextos implements Serializable
 
     //Segunda entrega
     /**
-     * No devuelve nada. Borra de la lista de nombres de los textos asociados el nombre del texto nomT
-     * @param nomT nombre del texto a quitar de la asociación
+     * No devuelve nada. Borra de la lista de nombres de los textos asociados el nombre del texto nomT.
+     * @param nomT nombre del texto a quitar de la asociación.
      */
     public void borrarTexto (String nomT, HashMap<String, Integer> frecLetras) {
         // Obtener un iterador para los pares de letras del frecLetras

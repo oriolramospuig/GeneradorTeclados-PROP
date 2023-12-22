@@ -138,35 +138,48 @@ public class DriverInteractivoQAP {
             }
 
             fileScanner.close();
-            ArrayList<PairInt> posiblesDimensiones = new ArrayList<>();
-            posiblesDimensiones = generarDimensiones(n);
+            //ArrayList<PairInt> posiblesDimensiones = new ArrayList<>();
+            //posiblesDimensiones = generarDimensiones(n);
             int nfilas = 1, ncolumnas = n;
 
             switch (opcionMetodo) {
                 case 1: // QAP
+                    long tiempoInicio = System.currentTimeMillis();
                     int [][] tec;
-                    QAP qap = new QAP(nfilas,ncolumnas,matrizFrecuencias,matrizDistancias);
-                    tec = qap.getTeclado();
-                    for (int i = 0; i < nfilas; ++i) {
-                        for (int j = 0; j < ncolumnas; ++j) {
-                            System.out.print(tec[i][j] + " ");
-                        }
-                        System.out.println();
-                    }
+                    QAP qap = new QAP(n, nfilas,ncolumnas,matrizFrecuencias,matrizDistancias);
+                    int glbound = qap.getGlBound();
+                    System.out.println(glbound);
+                    //tec = qap.getTeclado();
+                    //for (int i = 0; i < nfilas; ++i) {
+                        //for (int j = 0; j < ncolumnas; ++j) {
+                        //    System.out.print(tec[i][j] + " ");
+                        //}
+                        //System.out.println();
+                    //}
+                    long tiempoFin = System.currentTimeMillis(); // O System.nanoTime() para mayor precisión
+                    long tiempoTotal = tiempoFin - tiempoInicio;
+
+                    System.out.println("Tiempo total de ejecución: " + tiempoTotal + " milisegundos");
                     break;
                 case 2: // SA
-                    SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing(nfilas, ncolumnas, matrizFrecuencias, matrizDistancias);
+                    long tiempoInicio2 = System.currentTimeMillis();
+                    SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing(n, nfilas, ncolumnas, matrizFrecuencias, matrizDistancias);
                     int p = simulatedAnnealing.getPuntuacionFinal();
                     System.out.println("Puntuacion = " + p);
+                    long tiempoFin2 = System.currentTimeMillis(); // O System.nanoTime() para mayor precisión
+                    long tiempoTotal2 = tiempoFin2 - tiempoInicio2;
+
+                    System.out.println("Tiempo total de ejecución: " + tiempoTotal2 + " milisegundos");
                     break;
                 case 3: // N SA
                     System.out.println("Introduce el número de ejecuciones para SA:");
                     int nEjecuciones = scanner.nextInt();
+                    long tiempoInicio3 = System.currentTimeMillis();
                     int peor = 0;
                     int mejor = 999999999;
                     for (int i = 0; i < nEjecuciones; ++i) {
                         //System.out.println("Iteracion " + i + " simulated Annealing");
-                        SimulatedAnnealing NsimulatedAnnealing = new SimulatedAnnealing(nfilas, ncolumnas, matrizFrecuencias, matrizDistancias);
+                        SimulatedAnnealing NsimulatedAnnealing = new SimulatedAnnealing(n, nfilas, ncolumnas, matrizFrecuencias, matrizDistancias);
                         int pt = NsimulatedAnnealing.getPuntuacionFinal();
                         //System.out.println("Puntuacion = " + pt);
                         if (pt < mejor) mejor = pt;
@@ -174,6 +187,10 @@ public class DriverInteractivoQAP {
                     }
                     System.out.println("Mejor de las N iteraciones = " + mejor);
                     System.out.println("Peor de las N ejecuciones = " + peor);
+                    long tiempoFin3 = System.currentTimeMillis(); // O System.nanoTime() para mayor precisión
+                    long tiempoTotal3 = tiempoFin3 - tiempoInicio3;
+
+                    System.out.println("Tiempo total de ejecución: " + tiempoTotal3 + " milisegundos");
                     break;
                 default:
                     System.out.println("Método no reconocido.");
