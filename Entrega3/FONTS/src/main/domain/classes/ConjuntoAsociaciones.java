@@ -11,12 +11,12 @@ import java.util.HashMap;
 public class ConjuntoAsociaciones implements Serializable
 {
     // ---------- ATRIBUTOS ----------
-    /** Guarda el conjunto de asociaciones de textos introducidas por el usuario */
+    /** Guarda el conjunto de asociaciones de textos introducidas por el usuario. */
     private HashMap<String, AsociacionTextos> asociaciones;
 
 
     // ---------- CONSTRUCTORES ----------
-    /** Crea una instancia de la clase ConjuntoAsociaciones e inicializa la variable asociaciones como un nuevo HashMap */
+    /** Crea una instancia de la clase ConjuntoAsociaciones e inicializa la variable asociaciones como un nuevo HashMap. */
     public ConjuntoAsociaciones() {
         asociaciones = new HashMap<>();
     }
@@ -24,9 +24,9 @@ public class ConjuntoAsociaciones implements Serializable
 
     // ---------- GETTERS ----------
     /**
-     * Devuelve la asociacion de textos nomAT introducida si existe
-     * @param nomAT clave primaria con la que buscar una asociacion de textos
-     * @return AsociacionTextos: Asociación de textos con el nombre introducido
+     * Devuelve la asociacion de textos nomAT introducida si existe.
+     * @param nomAT clave primaria con la que buscar una asociacion de textos.
+     * @return AsociacionTextos: Asociación de textos con el nombre introducido.
      */
     public AsociacionTextos getAsociacionTextos(String nomAT) {
         if (asociaciones.containsKey(nomAT)) return asociaciones.get(nomAT);
@@ -34,8 +34,8 @@ public class ConjuntoAsociaciones implements Serializable
     }
 
     /**
-     * Devuelve el nombre de las asociaciones del conjunto
-     * @return ArrayList<String>: Lista de nombres de las asociaciones de textos del conjunto
+     * Devuelve el nombre de las asociaciones del conjunto.
+     * @return ArrayList<String>: Lista de nombres de las asociaciones de textos del conjunto.
      */
     public ArrayList<String> getNombresAsociacionesTextos() {
         ArrayList<String> listaNombres = new ArrayList<>();
