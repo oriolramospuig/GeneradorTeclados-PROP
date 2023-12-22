@@ -28,7 +28,7 @@ public class TestManhattan {
      */
     @Test
     public void testcalcularDistancia() {
-        System.out.println("Test Calcular Distancia");
+        //System.out.println("Test Calcular Distancia");
         int distancia = Manhattan.calcularDistancia(1, 2, 4, 6);
 
         assertEquals(7, distancia);

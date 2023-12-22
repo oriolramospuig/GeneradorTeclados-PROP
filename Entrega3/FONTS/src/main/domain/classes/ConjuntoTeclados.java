@@ -52,6 +52,15 @@ public class ConjuntoTeclados implements Serializable
         return listaNombres;
     }
 
+    /**
+     * Obtiene el conjunto completo de teclados.
+     *
+     * @return El HashMap que contiene todos los teclados, indexados por su nombre.
+     */
+    public HashMap<String, Teclado> getTeclados() {
+        return teclados;
+    }
+
 
     // ---------- SETTERS ----------
     /**
@@ -84,14 +93,4 @@ public class ConjuntoTeclados implements Serializable
     public void borrarTeclado(String nomT) {
         teclados.remove(nomT);
     }
-
-    /**
-     * Obtiene el conjunto completo de teclados.
-     *
-     * @return El HashMap que contiene todos los teclados, indexados por su nombre.
-     */
-    public HashMap<String, Teclado> getTeclados() {
-        return teclados;
-    }
-
 }

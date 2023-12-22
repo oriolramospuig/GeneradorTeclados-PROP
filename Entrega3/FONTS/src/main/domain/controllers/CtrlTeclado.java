@@ -189,6 +189,8 @@ public class CtrlTeclado
         teclados.borrarTeclado(nomT);
     }
 
+
+    // ---------- FUNCIONES PERSISTENCIA ----------
     /**
      * Convierte el conjunto de teclados en ByteArray con el fin de almacenarlos.
      * @return Arreglo de bytes que representa el conjunto de teclados.

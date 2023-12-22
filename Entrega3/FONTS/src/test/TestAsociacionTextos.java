@@ -45,7 +45,7 @@ public class TestAsociacionTextos {
      */
     @Test
     public void TestConstructora() {
-        System.out.println("Test Constructora Vacia");
+        //System.out.println("Test Constructora Vacia");
         AsociacionTextos asociacionTextos = new AsociacionTextos();
 
         assertEquals("", asociacionTextos.getNombre());
@@ -101,7 +101,7 @@ public class TestAsociacionTextos {
      */
     @Test
     public void TestagregarTecladoVinculado() {
-        System.out.println("Test agregarTecladoVinculado");
+        //System.out.println("Test agregarTecladoVinculado");
         String nombreT1 = "Teclado1";
         String nombreT2 = "Teclado2";
         AsociacionTextos asociacionTextos = new AsociacionTextos();
@@ -146,7 +146,7 @@ public class TestAsociacionTextos {
  */
 @Test
 public void TestagregarTexto(){
-        System.out.println("Test agregarTexto");
+    //System.out.println("Test agregarTexto");
         String nombre = "Asociacion";
         HashMap<String, Integer> frecuenciaPalabras = new HashMap<>();
         frecuenciaPalabras.put("aba", 2);
@@ -193,7 +193,7 @@ public void TestagregarTexto(){
      */
     @Test
     public void TestBorrarTecladoVinculado() {
-        System.out.println("Test borrarTecladoVinculado");
+        //System.out.println("Test borrarTecladoVinculado");
         AsociacionTextos asociacionTextos = new AsociacionTextos();
         String nombreT1 = "Teclado1";
         String nombreT2 = "Teclado2";
@@ -231,7 +231,7 @@ public void TestagregarTexto(){
 
     @Test
     public void TestborrarTexto() {
-        System.out.println("Test borrar Texto");
+        //System.out.println("Test borrar Texto");
         String nombre = "Asociacion";
         HashMap<String, Integer> frecuenciaPalabras = new HashMap<>();
         frecuenciaPalabras.put("aba", 4);

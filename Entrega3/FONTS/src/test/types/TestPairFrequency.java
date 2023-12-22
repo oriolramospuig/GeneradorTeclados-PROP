@@ -19,7 +19,7 @@ public class TestPairFrequency {
      */
     @Test
     public void TestConstructora() {
-        System.out.println("Test Constructora");
+        //System.out.println("Test Constructora");
 
         PairFrequency pairFrequency = new PairFrequency("ae", 4);
 

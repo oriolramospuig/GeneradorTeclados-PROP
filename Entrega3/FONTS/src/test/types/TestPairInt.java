@@ -20,7 +20,7 @@ public class TestPairInt {
      */
     @Test
     public void TestConstructora() {
-        System.out.println("Test Constructora");
+        //System.out.println("Test Constructora");
 
         PairInt pair = new PairInt(1,2);
         assertNotNull(pair);
@@ -36,7 +36,7 @@ public class TestPairInt {
      */
     @Test
     public void TestSetPrimero() {
-        System.out.println("Test setPrimero");
+        //System.out.println("Test setPrimero");
 
         PairInt pair = new PairInt(1,2);
         pair.setPrimero(3);
@@ -52,7 +52,7 @@ public class TestPairInt {
      */
     @Test
     public void TestSetSegundo() {
-        System.out.println("Test setSegundo");
+        //System.out.println("Test setSegundo");
 
         PairInt pair = new PairInt(1,2);
         pair.setSegundo(4);
@@ -68,7 +68,7 @@ public class TestPairInt {
      */
     @Test
     public void TestToString() {
-        System.out.println("Test toString");
+        //System.out.println("Test toString");
 
         PairInt pair = new PairInt(1,2);
         assertEquals("(1,2)", pair.toString());

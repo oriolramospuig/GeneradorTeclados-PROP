@@ -36,7 +36,7 @@ public class TestConjuntoAsociaciones
     // ---------- CONSTRUCTORAS ----------
     @Test
     public void TestConstructora() {
-        System.out.println("Test Constructora");
+        //System.out.println("Test Constructora");
 
         assertTrue(asociaciones.getNombresAsociacionesTextos().isEmpty());
     }
@@ -54,7 +54,7 @@ public class TestConjuntoAsociaciones
      */
     @Test
     public void TestGetAsociacionTextos() {
-        System.out.println("Test getAsociacionTextos");
+        //System.out.println("Test getAsociacionTextos");
 
         asociaciones.agregarAsociacionTexto("nombreAT1", asociacionTextos1);
         AsociacionTextos resultado = asociaciones.getAsociacionTextos("nombreAT1");
@@ -73,7 +73,7 @@ public class TestConjuntoAsociaciones
      */
     @Test
     public void TestGetNombresAsociacionesTextos() {
-        System.out.println("Test getNombresAsociacionesTextos");
+        //System.out.println("Test getNombresAsociacionesTextos");
 
         asociaciones.agregarAsociacionTexto("nombreAT1", asociacionTextos1);
         asociaciones.agregarAsociacionTexto("nombreAT2", asociacionTextos2);
@@ -96,7 +96,7 @@ public class TestConjuntoAsociaciones
      */
     @Test
     public void TestAgregarAsociacionTexto(){
-        System.out.println("Test agregarAsociacionTexto");
+        //System.out.println("Test agregarAsociacionTexto");
 
         asociaciones.agregarAsociacionTexto("nombreAT1", asociacionTextos1);
         asociaciones.agregarAsociacionTexto("nombreAT2", asociacionTextos2);
@@ -117,7 +117,7 @@ public class TestConjuntoAsociaciones
      */
     @Test
     public void TestExisteAsociaciondeTextos() {
-        System.out.println("Test existeAsociaciondeTextos");
+        //System.out.println("Test existeAsociaciondeTextos");
 
         asociaciones.agregarAsociacionTexto("nombreAT1", asociacionTextos1);
 
@@ -150,7 +150,7 @@ public class TestConjuntoAsociaciones
      */
     @Test
     public void TestBorrarAsociacionTextos() {
-        System.out.println("Test borrarAsociacionTextos");
+        //System.out.println("Test borrarAsociacionTextos");
 
         asociaciones.agregarAsociacionTexto("nombreAT1", asociacionTextos1);
         asociaciones.agregarAsociacionTexto("nombreAT2", asociacionTextos2);
