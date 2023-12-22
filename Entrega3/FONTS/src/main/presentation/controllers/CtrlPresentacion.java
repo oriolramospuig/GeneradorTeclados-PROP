@@ -218,6 +218,8 @@ public class CtrlPresentacion {
         return cd.agregarTextoFrecuencias(nomTxt, frecuenciaPalabras);
     }
 
+
+
     /** Llama a la función getNombresTextos de CtrlDominio.
      * Obtiene la lista de nombres de todos los textos almacenados en el sistema.
      * @return ArrayList<String>: Una lista de cadenas que representa los nombres de los textos.
@@ -455,13 +457,12 @@ public class CtrlPresentacion {
 
     /**
      * VVerifica si el formato de las frecuencias es correcto para agregar a un contenido de texto.
-     * @param contenidoTexto El contenido de texto al que se agregarán las frecuencias.
      * @param pathTexto La ruta del archivo de texto asociado al contenido.
      * @param frecuencias El mapa de frecuencias a agregar al contenido de texto.
      * @return True si el formato de las frecuencias es correcto, False de lo contrario.
      */
-    public static boolean formatoCorrectoAgregarFrecuencias(String contenidoTexto, String pathTexto, HashMap<String, Integer> frecuencias) {
-        return cd.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
+    public static boolean formatoCorrectoAgregarFrecuenciasPath(String pathTexto, HashMap<String, Integer> frecuencias) {
+        return cd.formatoCorrectoAgregarFrecuenciasPath(pathTexto, frecuencias);
     }
 
     /** Llama a la función guardaCnjtTeclados de CtrlDominio para almacenar el conjunto de teclados. */

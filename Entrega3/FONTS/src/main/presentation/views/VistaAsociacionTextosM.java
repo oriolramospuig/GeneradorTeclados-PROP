@@ -115,6 +115,7 @@ public class VistaAsociacionTextosM extends JFrame{
         txtContenidoATM.setBounds(100, 200, 200, 20);
         add(txtContenidoATM);
 
+        areacontenidoATM.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(areacontenidoATM); // Para agregar scroll al área de texto
         scrollPane.setBounds(300, 200, 200, 150); // Ajusta las dimensiones según tus necesidades
         add(scrollPane);
@@ -245,12 +246,18 @@ public class VistaAsociacionTextosM extends JFrame{
                         areacontenidoATM.setText("");
                         areanomAgregarATM.setText("");
                         areanomBorrarATM.setText("");
+                        nombresATM.setSelectedItem(null);
+                        nombreAgregarATM.setSelectedItem(null);
+                        nombreBorrarATM.setSelectedItem(null);
                     } else {
                         // El usuario eligió no continuar
                         areanomATM.setText("");
                         areacontenidoATM.setText("");
                         areanomAgregarATM.setText("");
                         areanomBorrarATM.setText("");
+                        nombresATM.setSelectedItem(null);
+                        nombreAgregarATM.setSelectedItem(null);
+                        nombreBorrarATM.setSelectedItem(null);
                     }
                 }
 
