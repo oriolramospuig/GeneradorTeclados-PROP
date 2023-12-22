@@ -172,7 +172,7 @@ public class AsociacionTextos implements Serializable
      * @param nomT nombre del texto a quitar de la asociación.
      * @param frecLetras HashMap de unas letras y sus frecuencias.
      */
-    public void borrarTexto (String nomT, HashMap<String, Integer> frecLetras) {
+    public boolean borrarTexto (String nomT, HashMap<String, Integer> frecLetras) {
         Iterator<Map.Entry<String, Integer>> iterator = frecLetras.entrySet().iterator();
 
         while (iterator.hasNext()) {
@@ -188,6 +188,12 @@ public class AsociacionTextos implements Serializable
                 }
             }
         }
+        /*if (textosAsociaciados.size() == 1){
+            //textosAsociaciados.remove(nomT);
+            return true;
+        }
+        else return false;*/
         textosAsociaciados.remove(nomT);
+        return textosAsociaciados.isEmpty();
     }
 }

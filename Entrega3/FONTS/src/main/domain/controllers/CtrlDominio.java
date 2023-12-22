@@ -342,8 +342,9 @@ public class CtrlDominio
      */
     public void borrarTextoAsociacion (String nomAT, String nomTxt){
         HashMap<String, Integer> frecuenciaLetras = ctrlTexto.getTexto(nomTxt).getFrecuenciaLetras();
-        ctrlAsociacionTexto.borrarTextoAsociacion(nomAT,nomTxt,frecuenciaLetras);
+        boolean ultima = ctrlAsociacionTexto.borrarTextoAsociacion(nomAT,nomTxt,frecuenciaLetras);
         ctrlTexto.borrarAsociacionVinculada(nomTxt,nomAT);
+        if(ultima) borrarAsociacionTextos(nomAT);
     }
 
     /**
