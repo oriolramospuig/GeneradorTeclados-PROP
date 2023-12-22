@@ -33,7 +33,7 @@ public abstract class Texto implements Serializable
 
     /**
      * Devuelve el map de pares de letras con sus frecuencias.
-     * @return HashMap<String,Integer>: Map de frecuenciaLetras.
+     * @return HashMap String,Integer: Map de frecuenciaLetras.
      */
     public HashMap<String, Integer> getFrecuenciaLetras() {
         return frecuenciaLetras;
@@ -41,7 +41,7 @@ public abstract class Texto implements Serializable
 
     /**
      * Devuelve una lista de nombres de las asociaciones de textos que contienen el texto.
-     * @return ArrayList<String>: Lista de los nombres de las asociaciones vinculadas al texto.
+     * @return ArrayList String: Lista de los nombres de las asociaciones vinculadas al texto.
      */
     public ArrayList<String> getAsociacionesVinculadas() {
         return asociacionesVinculadas;

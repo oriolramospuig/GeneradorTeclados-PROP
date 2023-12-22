@@ -13,7 +13,7 @@ import java.util.HashMap;
  */
 public class CtrlAsociacionTexto
 {
-    // ---------- PARÁMETROS ----------
+    // ---------- PARAMETROS ----------
     /** Crea una instancia de conjunto de asociaciones de textos. */
     private static ConjuntoAsociaciones AsociacionesTextos;
 
@@ -49,7 +49,7 @@ public class CtrlAsociacionTexto
     /**
      * Devuelve la lista de nombres de los textos que están asociados a la asociación con nombre nomAT.
      * @param nomAT clave única y nombre de la asociación de textos.
-     * @return ArrayList<String>: lista de los nombres de los textos de la asociación
+     * @return ArrayList String: lista de los nombres de los textos de la asociación
      */
     public ArrayList<String> getCjtTextos(String nomAT){
         return AsociacionesTextos.getAsociacionTextos(nomAT).getTextosAsociaciados();
@@ -98,7 +98,7 @@ public class CtrlAsociacionTexto
 
     /**
      * Devuelve la lista de nombres de las asociaciones del conjunto de asociaciones.
-     * @return ArrayList<String> : La lista de los nombres de las asociaciones existentes.
+     * @return ArrayList String: La lista de los nombres de las asociaciones existentes.
      */
     public ArrayList<String> getNombresAsociaciones(){
         return AsociacionesTextos.getNombresAsociacionesTextos();
@@ -107,7 +107,7 @@ public class CtrlAsociacionTexto
     /**
      * Devuelve la lista de nombres de teclados vinculados a la asociación con nombre nomA.
      * @param nomAT clave única y nombre de la asociación.
-     * @return ArrayList<String>: lista de los nombres de los teclados vinculados a la asociación con nombre nomA.
+     * @return ArrayList String: lista de los nombres de los teclados vinculados a la asociación con nombre nomA.
      */
     public ArrayList<String> getTecladosVinculadosAsociacion(String nomAT){
         ArrayList<String> tVinculados = AsociacionesTextos.getAsociacionTextos(nomAT).getTecladosVinculados();

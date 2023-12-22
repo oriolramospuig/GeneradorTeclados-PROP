@@ -38,7 +38,7 @@ public class ConjuntoAlfabetos implements Serializable
 
     /**
      * Retorna el nombre de los alfabetos del conjunto
-     * @return ArrayList<String>: Lista de nombres de los alfabetos del conjunto
+     * @return ArrayList String: Lista de nombres de los alfabetos del conjunto
      */
     public ArrayList<String> getNombresAlfabetos() {
         ArrayList<String> listaNombresA = new ArrayList<>();
@@ -82,7 +82,7 @@ public class ConjuntoAlfabetos implements Serializable
 
     /**
      * Retorna el conjunto de alfabetos existentes
-     * @return HashMap<String, Alfabeto>: Conjunto de alfabetos
+     * @return HashMap String, Alfabeto: Conjunto de alfabetos
      */
     public HashMap<String, Alfabeto> getAlfabetos () {
         return alfabetos;

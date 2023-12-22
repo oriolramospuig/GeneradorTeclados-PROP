@@ -36,7 +36,7 @@ public class ConjuntoAsociaciones implements Serializable
 
     /**
      * Devuelve el nombre de las asociaciones del conjunto.
-     * @return ArrayList<String>: Lista de nombres de las asociaciones de textos del conjunto.
+     * @return ArrayList String: Lista de nombres de las asociaciones de textos del conjunto.
      */
     public ArrayList<String> getNombresAsociacionesTextos() {
         ArrayList<String> listaNombres = new ArrayList<>();
@@ -48,7 +48,7 @@ public class ConjuntoAsociaciones implements Serializable
 
     /**
      * Devuelve el conjunto de asociaciones de textos existentes.
-     * @return HashMap<String, AsociacionTextos>: Conjunto de asociaciones de textos.
+     * @return HashMap String, AsociacionTextos: Conjunto de asociaciones de textos.
      */
     public HashMap<String, AsociacionTextos> getAsociacionesTextos() {
         return asociaciones;

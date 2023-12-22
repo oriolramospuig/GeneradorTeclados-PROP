@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * <p>
  * Inicializa los componentes de la interfaz de usuario y configura el comportamiento de los eventos
  * para la creación de nuevos teclados. Permite seleccionar entre diferentes alfabetos y asociaciones,
- * establecer dimensiones personalizadas y elegir el método de generación del teclado (Branch & Bound o Simulated Annealing).
+ * establecer dimensiones personalizadas y elegir el método de generación del teclado (Branch and Bound o Simulated Annealing).
  * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
  */
 public class VistaTecladoA extends JFrame {
@@ -25,7 +25,7 @@ public class VistaTecladoA extends JFrame {
     /** Título de la sección para agregar teclados. */
     private final JLabel tituloVistaTA = new JLabel("Agregar teclado");
 
-    /** Botón para agregar un teclado mediante el algoritmo Branch & Bound. */
+    /** Botón para agregar un teclado mediante el algoritmo Branch and Bound. */
     private final JButton bAgregarTecladoBB = new JButton("Agregar teclado B&B");
 
     /** Botón para agregar un teclado mediante el algoritmo Simulated Annealing. */
@@ -84,7 +84,7 @@ public class VistaTecladoA extends JFrame {
      * <p>
      * Inicializa los componentes de la interfaz de usuario y configura el comportamiento de los eventos
      * para la creación de nuevos teclados. Permite seleccionar entre diferentes alfabetos y asociaciones,
-     * establecer dimensiones personalizadas y elegir el método de generación del teclado (Branch & Bound o Simulated Annealing).
+     * establecer dimensiones personalizadas y elegir el método de generación del teclado (Branch and Bound o Simulated Annealing).
      */
     public VistaTecladoA(){
 

@@ -45,12 +45,12 @@ public class VistaTextoM extends JFrame{
     /** Texto indicando que la barra de texto de al lado es donde aparecerá el nombre del texto a modificar. */
     private final JLabel txtNombreTxtM = new JLabel("NOMBRE:");
 
-    /** Área de texto donde aparecerá el nombre del texto que se quiere modificar. */
+    /** Area de texto donde aparecerá el nombre del texto que se quiere modificar. */
     private final JTextArea areanomTxtM = new JTextArea();
 
     /** Texto indicando que la barra de texto de al lado es donde aparecerá el contenido del texto a modificar.*/
     private final JLabel txtContenidoTxtM = new JLabel("CONTENIDO:");
-    /** Área de texto donde aparecerá el contenido del texto a modificar. */
+    /** Area de texto donde aparecerá el contenido del texto a modificar. */
     private final JTextArea areacontenidoTxtM = new JTextArea();
 
     /**
@@ -87,7 +87,7 @@ public class VistaTextoM extends JFrame{
         txtNombreTxtM.setBounds(200, 180, 200, 20);
         add(txtNombreTxtM);
 
-        // Área texto Nombre
+        // Area texto Nombre
         areanomTxtM.setEditable(false);
         areanomTxtM.setBounds(400,180, 200,20);
         add(areanomTxtM);

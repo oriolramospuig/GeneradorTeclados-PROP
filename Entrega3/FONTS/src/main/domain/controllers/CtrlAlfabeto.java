@@ -14,7 +14,7 @@ import java.util.HashMap;
  */
 public class CtrlAlfabeto
 {
-    // ---------- PARÁMETROS ----------
+    // ---------- PARAMETROS ----------
     /** Crea una instancia del conjunto de alfabetos. */
     private static ConjuntoAlfabetos CjtAlfabetos;
 
@@ -59,7 +59,7 @@ public class CtrlAlfabeto
     /**
      * Devuelve la lista de nombres de los teclados vinculados al alfabeto con nombre nomA.
      * @param nomA clave primaria del alfabeto.
-     * @return ArrayList<String> : La lista de los nombres de teclados vinculados al alfabeto con nombre nomA.
+     * @return ArrayList String: La lista de los nombres de teclados vinculados al alfabeto con nombre nomA.
      */
     public ArrayList<String> getTecladosVinculadosAlfabeto(String nomA){
         ArrayList<String> tVinculados = CjtAlfabetos.getAlfabeto(nomA).getTecladosVinculados();
@@ -108,7 +108,7 @@ public class CtrlAlfabeto
 
     /**
      * Devuelve la lista de nombres de alfabetos existentes.
-     * @return ArrayList<String> : La lista de los nombres de los alfabetos existentes.
+     * @return ArrayList String: La lista de los nombres de los alfabetos existentes.
      */
     public ArrayList<String> getNombresAlfabetos(){
         return CjtAlfabetos.getNombresAlfabetos();

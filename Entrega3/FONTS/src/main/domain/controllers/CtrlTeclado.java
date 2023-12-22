@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CtrlTeclado
 {
-    // ---------- PARÁMETROS ----------
+    // ---------- PARAMETROS ----------
     /** Crea una instancia del conjunto de teclados. */
     private static ConjuntoTeclados teclados;
 

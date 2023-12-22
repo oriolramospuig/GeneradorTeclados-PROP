@@ -74,7 +74,7 @@ public class VistaTecladoB extends JFrame {
         txtNombreTB.setBounds(250, 220 , 200, 20);
         add(txtNombreTB);
 
-        // Área texto Nombre
+        // Area texto Nombre
         areanomTB.setBounds(450,220, 200,20);
         add(areanomTB);
 

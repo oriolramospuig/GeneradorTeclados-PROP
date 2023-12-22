@@ -45,7 +45,7 @@ public class VistaAsociacionTextosB extends JFrame{
     /** Texto indicando que la barra de texto de al lado es donde se introducirá automáticamente el nombre de la asociación seleccionada en el desplegable. */
     private final JLabel txtNombreATB = new JLabel("NOMBRE:");
 
-    /** Área de texto donde aparecerá el nombre de la asociación seleccionda en el desplegable. */
+    /** Area de texto donde aparecerá el nombre de la asociación seleccionda en el desplegable. */
     private final JTextArea areanomATB = new JTextArea();
 
     /**
@@ -79,7 +79,6 @@ public class VistaAsociacionTextosB extends JFrame{
         txtNombreATB.setBounds(250, 220 , 200, 20);
         add(txtNombreATB);
 
-        // Área texto Nombre
         areanomATB.setBounds(450,220, 200,20);
         add(areanomATB);
 

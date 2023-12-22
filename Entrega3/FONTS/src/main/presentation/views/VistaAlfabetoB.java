@@ -78,7 +78,6 @@ public class VistaAlfabetoB extends JFrame {
         txtNombreAB.setBounds(250, 220 , 200, 20);
         add(txtNombreAB);
 
-        // Área texto Nombre
         areanomAB.setBounds(450,220, 200,20);
         add(areanomAB);
 

@@ -65,7 +65,7 @@ public class CtrlDominio
 
     /**
      * Retorna la lista de nombres de los alfabetos existentes en el conjunto.
-     * @return ArrayList<String>: lista de nombres de los alfabetos existentes ordenada por el nombre de alfabeto que es la clave única.
+     * @return ArrayList String: lista de nombres de los alfabetos existentes ordenada por el nombre de alfabeto que es la clave única.
      */
     public ArrayList<String> getNombresAlfabetos(){
         return ctrlAlfabeto.getNombresAlfabetos();
@@ -83,7 +83,7 @@ public class CtrlDominio
     /**
      * Retorna el contenido del alfabeto con nomA.
      * @param nomA clave única y nombre del alfabeto a buscar.
-     * @return ArrayList<Character>: una lista de carácteres que forma el contenido del alfabeto con nombre nomA.
+     * @return ArrayList Character: una lista de carácteres que forma el contenido del alfabeto con nombre nomA.
      */
     public ArrayList<Character> consultarContenidoAlfabeto(String nomA){
         if(existealfabeto(nomA)) {
@@ -163,7 +163,7 @@ public class CtrlDominio
 
     /**
      * Retorna la lista de nombres de los textos existentes en el conjunto de textos.
-     * @return ArrayList<String>: lista de textos existentes ordenada por el nombre de texto que es la clave primaria.
+     * @return ArrayList String: lista de textos existentes ordenada por el nombre de texto que es la clave primaria.
      */
     public ArrayList<String> getNombresTextos(){
         return ctrlTexto.getNombresTextos();
@@ -299,7 +299,7 @@ public class CtrlDominio
 
     /**
      * Retorna la lista de nombres de las asociaciones del conjunto de asociaciones.
-     * @return ArrayList<String>: lista de asociaciones existentes ordenada por el nombre de la asociación que es la clave primaria.
+     * @return ArrayList String: lista de asociaciones existentes ordenada por el nombre de la asociación que es la clave primaria.
      */
     public ArrayList<String> getNombresAsociaciones(){
         return ctrlAsociacionTexto.getNombresAsociaciones();
@@ -317,7 +317,7 @@ public class CtrlDominio
     /**
      * Retorna el contenido de la asociación con nomAT.
      * @param nomAT clave única y nombre de la asociación a buscar.
-     * @return ArrayList<String>: una lista de los nombres de los textos que forman la asociación con nombre nomAT.
+     * @return ArrayList String: una lista de los nombres de los textos que forman la asociación con nombre nomAT.
      */
     public ArrayList<String> consultarCjtTextosAsociacion(String nomAT){
         if (existeasociacion(nomAT)) {
@@ -442,7 +442,7 @@ public class CtrlDominio
 
     /**
      * Retorna la lista de nombres de los teclados del conjunto de teclados.
-     * @return ArrayList<String>: lista de nombres de los teclados existentes.
+     * @return ArrayList String: lista de nombres de los teclados existentes.
      */
     public ArrayList<String> getListaTeclados(){
         return ctrlTeclado.getCjtTeclados().getNombresTeclados();
@@ -466,7 +466,7 @@ public class CtrlDominio
     /**
      * Retorna la lista de posibles dimensiones que puede tener el teclado.
      * @param nomA clave única y nombre del alfabeto a buscar.
-     * @return ArrayList<PairInt>: lista de valores de las posibles dimensiones del teclado nomT.
+     * @return ArrayList PairInt: lista de valores de las posibles dimensiones del teclado nomT.
      */
     public ArrayList<PairInt> getPosiblesDimensiones(String nomA) {
         int n = ctrlAlfabeto.getContenido(nomA).size();

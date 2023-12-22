@@ -40,19 +40,19 @@ public class VistaTecladoC extends JFrame {
     /** Etiqueta para el campo de nombre del teclado. */
     private final JLabel txtNombreTC = new JLabel("NOMBRE:");
 
-    /** Área de texto que muestra el nombre del teclado seleccionado. */
+    /** Area de texto que muestra el nombre del teclado seleccionado. */
     private final JTextArea areanomTC = new JTextArea();
 
     /** Etiqueta para el área de contenido del teclado. */
     private final JLabel txtContenidoTC = new JLabel("CONTENIDO:");
 
-    /** Área de texto que muestra el contenido del teclado seleccionado. */
+    /** Area de texto que muestra el contenido del teclado seleccionado. */
     private final JTextArea areacontenidoTC = new JTextArea();
 
     /** Etiqueta para mostrar la puntuación del teclado. */
     private final JLabel txtPuntuacionTC = new JLabel("PUNTUACIÓN:");
 
-    /** Área de texto que muestra la puntuación del teclado seleccionado. */
+    /** Area de texto que muestra la puntuación del teclado seleccionado. */
     private final JTextArea areaPuntuacionTC = new JTextArea();
 
     /**
@@ -86,7 +86,7 @@ public class VistaTecladoC extends JFrame {
         txtNombreTC.setBounds(200, 180, 200, 20);
         add(txtNombreTC);
 
-        // Área texto Nombre
+        // Area texto Nombre
         areanomTC.setEditable(false);
         areanomTC.setBounds(400,180, 200,20);
         add(areanomTC);
@@ -102,7 +102,6 @@ public class VistaTecladoC extends JFrame {
         txtPuntuacionTC.setBounds(200, 400, 200, 20);
         add(txtPuntuacionTC);
 
-        // Área texto Nombre
         areaPuntuacionTC.setEditable(false);
         areaPuntuacionTC.setBounds(400,400, 200,20);
         add(areaPuntuacionTC);

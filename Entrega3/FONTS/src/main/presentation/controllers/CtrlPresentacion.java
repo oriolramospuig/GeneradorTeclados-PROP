@@ -125,7 +125,7 @@ public class CtrlPresentacion {
     }
 
     /** Llama a la función getNombresAlfabetos de CtrlDominio.
-     * @return ArrayList<String>: Lista de nombres de los alfabetos del conjunto de alfabetos existente.
+     * @return ArrayList String: Lista de nombres de los alfabetos del conjunto de alfabetos existente.
      */
     public static ArrayList<String> getNombresAlfabetos() {
         ArrayList<String> listaAlfabetosNombres = cd.getNombresAlfabetos();
@@ -136,7 +136,7 @@ public class CtrlPresentacion {
      * Consulta y devuelve el contenido de un alfabeto dado su nombre.
      * Llama a la función consultarContenidoAlfabeto de CtrlDominio.
      * @param nomA El nombre del alfabeto a consultar.
-     * @return ArrayList<Character>: Una lista de caracteres que representa el contenido del alfabeto.
+     * @return ArrayList Character: Una lista de caracteres que representa el contenido del alfabeto.
      * Retorna una lista vacía si el alfabeto no existe o está vacío.
      */
     public static ArrayList<Character> consultarContenidoAlfabeto(String nomA) {
@@ -164,7 +164,7 @@ public class CtrlPresentacion {
     }
 
     /** Llama a la función guardaCnjtAlfabetos de CtrlDominio para almacenar el conjunto de alfabetos.
-     * @implSpec Si se produce un error durante el proceso de guardado:
+     *  Si se produce un error durante el proceso de guardado:
      *  - Se muestra un mensaje de error en la consola.
      *  - Se imprime la traza de la pila en la consola.
      *  - Se finaliza la aplicación.
@@ -222,7 +222,7 @@ public class CtrlPresentacion {
 
     /** Llama a la función getNombresTextos de CtrlDominio.
      * Obtiene la lista de nombres de todos los textos almacenados en el sistema.
-     * @return ArrayList<String>: Una lista de cadenas que representa los nombres de los textos.
+     * @return ArrayList String: Una lista de cadenas que representa los nombres de los textos.
      * Retorna una lista vacía si no hay textos almacenados.
      */
     public static ArrayList<String> getNombresTextos() {
@@ -273,7 +273,7 @@ public class CtrlPresentacion {
 
 
     /** Llama a la función guardaCnjtTextos de CtrlDominio para almacenar el conjunto de textos.
-     * @implSpec Si se produce un error durante el proceso de guardado:
+     * Si se produce un error durante el proceso de guardado:
      *  - Se muestra un mensaje de error en la consola.
      *  - Se imprime la traza de la pila en la consola.
      *  - Se finaliza la aplicación.
@@ -308,7 +308,7 @@ public class CtrlPresentacion {
     /**
      * Llama a la función getNombresAsociaciones de CtrlDominio
      * Obtiene la lista de nombres de todas las asociaciones almacenadas en el sistema.
-     * @return ArrayList<String>: Una lista de cadenas que representa los nombres de las asociaciones.
+     * @return ArrayList String: Una lista de cadenas que representa los nombres de las asociaciones.
      * Retorna una lista vacía si no hay asociaciones almacenadas.
      */
     public static ArrayList<String> getNombresAsociaciones() {
@@ -320,7 +320,7 @@ public class CtrlPresentacion {
      * Llama a la función consultarContenidoAsociacion de CtrlDominio.
      * Consulta y devuelve la lista de nombres de textos asociados a una asociación dada su nombre.
      * @param nomAT El nombre de la asociación a consultar.
-     * @return ArrayList<String>:Una lista de cadenas que representa los nombres de los textos asociados a la asociación.
+     * @return ArrayList String:Una lista de cadenas que representa los nombres de los textos asociados a la asociación.
      * Retorna una lista vacía si la asociación no existe o no tiene textos asociados.
      */
     public static ArrayList<String> consultarCjtTextosAsociacion(String nomAT) {
@@ -348,7 +348,7 @@ public class CtrlPresentacion {
     }
 
     /** Llama a la función guardaCnjtAsociaciones de CtrlDominio para almacenar el conjunto de asociaciones de textos.
-     * @implSpec Si se produce un error durante el proceso de guardado:
+     * Si se produce un error durante el proceso de guardado:
      * - Se muestra un mensaje de error en la consola.
      * - Se imprime la traza de la pila en la consola.
      * - Se finaliza la aplicación.
@@ -428,7 +428,7 @@ public class CtrlPresentacion {
     /**
      * Llama a la función getListaTeclados de CtrlDominio
      * Obtiene y devuelve una lista de nombres de teclados existentes.
-     * @return ArrayList<String>: Una lista de cadenas que representa los nombres de los teclados existentes.
+     * @return ArrayList String: Una lista de cadenas que representa los nombres de los teclados existentes.
      * Retorna una lista vacía si no hay teclados registrados.
      */
     public static ArrayList<String> getListaTeclados(){
@@ -448,7 +448,7 @@ public class CtrlPresentacion {
      * Llama a la función getPosiblesDimensiones de CtrlDominio.
      * Obtiene y devuelve una lista de posibles dimensiones (filas x columnas) para un teclado dado su alfabeto con nombre nomA.
      * @param nomA El nombre del alfabeto para el cual se desean obtener las dimensiones.
-     * @return ArrayList<PairInt>: Una lista de objetos `PairInt` que representan las posibles dimensiones (filas x columnas) para el teclado que tiene el alfabeto nomA.
+     * @return ArrayList PairInt: Una lista de objetos `PairInt` que representan las posibles dimensiones (filas x columnas) para el teclado que tiene el alfabeto nomA.
      * Retorna una lista vacía si no hay posibles dimensiones disponibles.
      */
     public static ArrayList<PairInt> getPosiblesDimensiones(String nomA) {

@@ -107,7 +107,7 @@ public class GilmoreLawler
     /**
      * Método para obtener la mejor solución parcial como lista de índices.
      *
-     * @return List<Integer> de índices que corresponden a la mejor solución.
+     * @return List Integer de índices que corresponden a la mejor solución.
      */
     public List<Integer> getMejorSolucionParcial() {
         return new ArrayList<>(mejorSolucionParcial); // Devuelve una copia defensiva

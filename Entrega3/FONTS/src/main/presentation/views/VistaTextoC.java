@@ -41,13 +41,13 @@ public class VistaTextoC extends JFrame {
     /** Texto indicando que la barra de texto de al lado es donde aparecerá el nombre del texto a consultar. */
     private final JLabel txtNombreATxtC = new JLabel("NOMBRE:");
 
-    /** Área de texto donde aparecerá el nombre del texto que se quiere consultar. */
+    /** Area de texto donde aparecerá el nombre del texto que se quiere consultar. */
     private final JTextArea areanomTxtC = new JTextArea();
 
     /** Texto indicando que la barra de texto de al lado es donde aparecerá el contenido del texto a consultar. */
     private final JLabel txtContenidoTxtC = new JLabel("CONTENIDO:");
 
-    /** Área de texto donde aparecerá el contenido del texto que se quiere consultar. */
+    /** Area de texto donde aparecerá el contenido del texto que se quiere consultar. */
     private final JTextArea areacontenidoTxtC = new JTextArea();
 
     /**
@@ -82,7 +82,6 @@ public class VistaTextoC extends JFrame {
         txtNombreATxtC.setBounds(200, 180, 200, 20);
         add(txtNombreATxtC);
 
-        // Área texto Nombre
         areanomTxtC.setEditable(false);
         areanomTxtC.setBounds(400,180, 200,20);
         add(areanomTxtC);

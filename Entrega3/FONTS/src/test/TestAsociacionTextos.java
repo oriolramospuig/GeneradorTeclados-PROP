@@ -212,7 +212,7 @@ public void TestagregarTexto(){
      * Objeto de la prueba: Verificar que la función borrarTexto elimina correctamente un texto asociado,
      * actualiza la lista de textos asociados y la frecuencia de letras en consecuencia.
      *
-     * Ficheros necesarios:</b> Ninguno.
+     * Ficheros necesarios: Ninguno.
      *
      * Valores necesarios:
      * - Nombre de la asociación: "Asociacion".

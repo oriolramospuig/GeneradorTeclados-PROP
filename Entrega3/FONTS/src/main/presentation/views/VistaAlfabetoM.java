@@ -84,7 +84,6 @@ public class VistaAlfabetoM extends JFrame {
         txtNombreAM.setBounds(200, 180, 200, 20);
         add(txtNombreAM);
 
-        // Área texto Nombre
         areanomAM.setEditable(false);
         areanomAM.setBounds(400,180, 200,20);
         add(areanomAM);

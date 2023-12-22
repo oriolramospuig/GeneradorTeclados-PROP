@@ -44,7 +44,7 @@ public class VistaTextoB extends JFrame{
     /** Texto indicando que la barra de texto de al lado es donde aparecerá el nombre del texto seleccionado. */
     private final JLabel txtNombreTxtB = new JLabel("NOMBRE:");
 
-    /** Área de texto donde aparecerá el nombre del texto que se quiere borrar */
+    /** Area de texto donde aparecerá el nombre del texto que se quiere borrar */
     private final JTextArea areanomTxtB = new JTextArea();
 
     /**
@@ -80,7 +80,6 @@ public class VistaTextoB extends JFrame{
         txtNombreTxtB.setBounds(250, 220 , 200, 20);
         add(txtNombreTxtB);
 
-        // Área texto Nombre
         areanomTxtB.setBounds(450,220, 200,20);
         add(areanomTxtB);
 

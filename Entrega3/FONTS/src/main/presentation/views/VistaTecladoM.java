@@ -47,19 +47,19 @@ public class VistaTecladoM extends JFrame {
     /** Etiqueta para indicar el campo donde se introduce el nombre del teclado a consultar o modificar.*/
     private final JLabel txtNombreTM = new JLabel("NOMBRE:");
 
-    /** Área de texto para ingresar o mostrar el nombre del teclado que se está consultando o modificando. */
+    /** Area de texto para ingresar o mostrar el nombre del teclado que se está consultando o modificando. */
     private final JTextArea areanomTM = new JTextArea();
 
     /** Etiqueta para indicar el campo relacionado con la elección del alfabeto para el teclado. */
     private final JLabel txtNombreAlfabetoTM = new JLabel("ALFABETO:");
 
-    /** Área de texto para ingresar o mostrar el nombre del alfabeto asociado al teclado. */
+    /** Area de texto para ingresar o mostrar el nombre del alfabeto asociado al teclado. */
     private final JTextArea areaContenidoAlfabetoTM = new JTextArea();
 
     /** Etiqueta para indicar el campo relacionado con la elección de la asociación de textos para el teclado. */
     private final JLabel txtNombreAsociacionTM = new JLabel("ASOCIACIÓN:");
 
-    /** Área de texto para ingresar o mostrar el nombre de la asociación de textos asociada al teclado. */
+    /** Area de texto para ingresar o mostrar el nombre de la asociación de textos asociada al teclado. */
     private final JTextArea areaContenidoAsociacionTM = new JTextArea();
 
     /** Etiqueta para indicar el campo donde se introduce el número de filas del teclado.*/
@@ -77,7 +77,7 @@ public class VistaTecladoM extends JFrame {
     /** Etiqueta para indicar el área donde se muestra el contenido actual del teclado.*/
     private final JLabel txtContenidoTM = new JLabel("CONTENIDO:");
 
-    /** Área de texto para mostrar el contenido actual del teclado. */
+    /** Area de texto para mostrar el contenido actual del teclado. */
     private final JTextArea areacontenidoTM = new JTextArea();
 
     /**

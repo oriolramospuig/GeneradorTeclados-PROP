@@ -80,7 +80,7 @@ public class VistaAlfabetoC extends JFrame {
         txtNombreAC.setBounds(200, 180, 200, 20);
         add(txtNombreAC);
 
-        // Área texto Nombre
+        // Area texto Nombre
         areanomAC.setEditable(false);
         areanomAC.setBounds(400,180, 200,20);
         add(areanomAC);

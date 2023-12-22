@@ -50,20 +50,20 @@ public class VistaTextoA extends JFrame {
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto (en formato palabras). */
     private final JLabel txtNombreTxtA = new JLabel("NOMBRE:");
 
-    /** Área de texto para introducir el nombre del texto que se quiere crear (en formato palabras). */
+    /** Area de texto para introducir el nombre del texto que se quiere crear (en formato palabras). */
     private final JTextArea areanomTxtA = new JTextArea();
 
     /** Texto indicando que la barra de texto de al lado es para introducir el contenido del texto (en formato palabras). */
     private final JLabel txtContenidoTxtA = new JLabel("CONTENIDO:");
 
 
-    /** Área de texto para introducir el contenido del texto que se quiere crear (en formato palabras). */
+    /** Area de texto para introducir el contenido del texto que se quiere crear (en formato palabras). */
     private final JTextArea areaContenidoTxtA = new JTextArea();
 
     /** Texto indicando que la barra de texto de al lado es para introducir el path del texto, para saber donde esta guardado (en formato palabras). */
     private final JLabel txtPathTxtA = new JLabel("PATH:");
 
-    /** Área de texto para introducir el path del texto que se quiere crear (en formato palabras).*/
+    /** Area de texto para introducir el path del texto que se quiere crear (en formato palabras).*/
     private final JTextArea areaPathTxtA = new JTextArea();
 
     /** Texto explicando las instrucciones de como entrar el texto en caso de palabras */
@@ -72,19 +72,19 @@ public class VistaTextoA extends JFrame {
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto (en formato frecuencias).*/
     private final JLabel txtNombreTxtA1 = new JLabel("NOMBRE:");
 
-    /** Área de texto para introducir el nombre del texto que se quiere crear (en formato frecuencias).*/
+    /** Area de texto para introducir el nombre del texto que se quiere crear (en formato frecuencias).*/
     private final JTextArea areanomTxtA1 = new JTextArea();
 
     /** Texto indicando que la barra de texto de al lado es para introducir el contenido del texto (en formato frecuencias).*/
     private final JLabel txtContenidoTxtA1 = new JLabel("CONTENIDO:");
 
-    /** Área de texto para introducir el contenido del texto que se quiere crear (en formato frecuencias).*/
+    /** Area de texto para introducir el contenido del texto que se quiere crear (en formato frecuencias).*/
     private final JTextArea areaContenidoTxtA1 = new JTextArea();
 
     /** Texto indicando que la barra de texto de al lado es para introducir el path del texto, para saber donde esta guardado (en formato frecuencias).*/
     private final JLabel txtPathTxtA1 = new JLabel("PATH:");
 
-    /** Área de texto para introducir el path del texto que se quiere crear (en formato frecuencias). */
+    /** Area de texto para introducir el path del texto que se quiere crear (en formato frecuencias). */
     private final JTextArea areaPathTxtA1 = new JTextArea();
 
     /** Texto explicando las instrucciones de como entrar el texto en caso de palabras */
@@ -118,7 +118,6 @@ public class VistaTextoA extends JFrame {
         txtNombreTxtA.setBounds(30, 140, 200, 20);
         add(txtNombreTxtA);
 
-        // Área texto Nombre
         areanomTxtA.setBounds(230,140, 200,20);
         add(areanomTxtA);
 
@@ -135,7 +134,6 @@ public class VistaTextoA extends JFrame {
         txtPathTxtA.setBounds(30, 280, 200, 20);
         add(txtPathTxtA);
 
-        // Área texto Path
         JScrollPane scrollPane = new JScrollPane(areaPathTxtA);
         scrollPane.setBounds(230, 280, 200, 60);
         add(scrollPane);
@@ -150,7 +148,6 @@ public class VistaTextoA extends JFrame {
         txtNombreTxtA1.setBounds(550, 140, 200, 20);
         add(txtNombreTxtA1);
 
-        // Área texto Nombre
         areanomTxtA1.setBounds(750,140, 200,20);
         add(areanomTxtA1);
 

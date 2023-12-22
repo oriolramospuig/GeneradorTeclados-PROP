@@ -58,19 +58,19 @@ public class VistaAsociacionTextosM extends JFrame{
     /** Texto indicando que la barra de texto de al lado es donde aparecerá el nombre de la asociacion seleccionada para modificar. */
     private final JLabel txtNombreATM = new JLabel("NOMBRE:");
 
-    /** Área de texto donde aparecerá el nombre de la asociacion seleccionada para modificar. */
+    /** Area de texto donde aparecerá el nombre de la asociacion seleccionada para modificar. */
     private final JTextArea areanomATM = new JTextArea();
 
     /** Texto indicando que la barra de texto de al lado es donde aparecerá la lista de textos vinculados a la asociacion a modificar. */
     private final JLabel txtContenidoATM = new JLabel("CONTENIDO:");
 
-    /** Área de texto donde aparecerá la lista de textos vinculados a la asociación que se quiere modificar. */
+    /** Area de texto donde aparecerá la lista de textos vinculados a la asociación que se quiere modificar. */
     private final JTextArea areacontenidoATM = new JTextArea();
 
-    /** Área de texto donde aparecerá el nombre del texto seleccionado en el desplegable que corresponde. Es un texto no vinculado, que se quiere vincular a esa asociación. */
+    /** Area de texto donde aparecerá el nombre del texto seleccionado en el desplegable que corresponde. Es un texto no vinculado, que se quiere vincular a esa asociación. */
     private final JTextArea areanomAgregarATM = new JTextArea();
 
-    /** Área de texto donde aparecerá el nombre del texto vinculado que se quiere desvincular de la asociación. */
+    /** Area de texto donde aparecerá el nombre del texto vinculado que se quiere desvincular de la asociación. */
     private final JTextArea areanomBorrarATM = new JTextArea();
 
     /**
@@ -107,7 +107,6 @@ public class VistaAsociacionTextosM extends JFrame{
         txtNombreATM.setBounds(100, 140, 200, 20);
         add(txtNombreATM);
 
-        // Área texto Nombre
         areanomATM.setEditable(false);
         areanomATM.setBounds(300,140, 200,20);
         add(areanomATM);

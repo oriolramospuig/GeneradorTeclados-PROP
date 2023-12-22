@@ -39,13 +39,13 @@ public class VistaAsociacionTextosA extends JFrame {
     /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociación. */
     private final JLabel txtNombreATA = new JLabel("NOMBRE:");
 
-    /** Área de texto para introducir el nombre de la asociación que se quiere crear. */
+    /** Area de texto para introducir el nombre de la asociación que se quiere crear. */
     private final JTextArea areanomATA = new JTextArea();
 
     /** Texto indicando que el desplegable de al lado es donde se muestran los posibles textos a vincular a esa asociación. */
     private final JLabel txtTextosAgregarATA = new JLabel("POSIBLES TEXTOS A AGREGAR:");
 
-    /** Área de texto donde se introducirá automáticamente el nombre del texto que se haya seleccionado de la lista de textos. */
+    /** Area de texto donde se introducirá automáticamente el nombre del texto que se haya seleccionado de la lista de textos. */
     private final JTextArea areaTextosAgregarATA = new JTextArea();
 
     /** Desplegable con los nombres de los posibles textos a agregar a esa asociación. */
@@ -86,7 +86,6 @@ public class VistaAsociacionTextosA extends JFrame {
         txtNombreATA.setBounds(150, 140, 200, 20);
         add(txtNombreATA);
 
-        // Área texto Nombre
         areanomATA.setBounds(400, 140, 200, 20);
         add(areanomATA);
 
@@ -94,11 +93,11 @@ public class VistaAsociacionTextosA extends JFrame {
         txtTextosAgregarATA.setBounds(150, 220, 200, 20);
         add(txtTextosAgregarATA);
 
-        // Área de desplegable de textos a agregar
+        // Area de desplegable de textos a agregar
         nombresTxt.setBounds(400, 220, 200, 20);
         add(nombresTxt);
 
-        // Área de desplegable de textos a agregar
+        // Area de desplegable de textos a agregar
         areaTextosAgregarATA.setBounds(700, 220, 200, 20);
         add(areaTextosAgregarATA);
 
@@ -106,7 +105,7 @@ public class VistaAsociacionTextosA extends JFrame {
         txtTextosAgregadosATA.setBounds(150, 300, 200, 20);
         add(txtTextosAgregadosATA);
 
-        // Área de desplegable de textos a agregar
+        // Area de desplegable de textos a agregar
         nombresTxtagregados.setBounds(400, 300, 200, 20);
         add(nombresTxtagregados);
 

@@ -54,7 +54,7 @@ public class Alfabeto implements Serializable
 
     /**
      * Devuelve el contenido del alfabeto
-     * @return ArrayList<Character> : Lista de carácteres que forma el contenido del alfabeto
+     * @return ArrayList: Lista de carácteres que forma el contenido del alfabeto
      */
     public ArrayList<Character> getLetras() {
         return letras;
@@ -62,7 +62,7 @@ public class Alfabeto implements Serializable
 
     /**
      * Devuelve la lista de nombres de los teclados vinculados al alfabeto
-     * @return ArrayList<String> : Lista de nombres de los teclados vinculados
+     * @return ArrayList: Lista de nombres de los teclados vinculados
      */
     public ArrayList<String> getTecladosVinculados() {
         return tecladosVinculados;

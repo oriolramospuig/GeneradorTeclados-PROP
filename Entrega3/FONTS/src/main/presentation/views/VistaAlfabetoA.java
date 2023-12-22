@@ -77,7 +77,6 @@ public class VistaAlfabetoA extends JFrame {
         txtNombreAA.setBounds(250, 140 , 200, 20);
         add(txtNombreAA);
 
-        // Área texto Nombre
         areanomAA.setBounds(450,140, 200,20);
         add(areanomAA);
 
@@ -85,7 +84,7 @@ public class VistaAlfabetoA extends JFrame {
         txtContenidoAA.setBounds(250, 180, 200, 20);
         add(txtContenidoAA);
 
-        // Área texto Contenido
+        // Area texto Contenido
         JScrollPane scrollPaneC = new JScrollPane(areaContenidoAA);
         scrollPaneC.setBounds(450, 180, 200, 60);
         add(scrollPaneC);
@@ -94,7 +93,7 @@ public class VistaAlfabetoA extends JFrame {
         txtPathAA.setBounds(250, 280, 200, 20);
         add(txtPathAA);
 
-        // Área texto Path
+        // Area texto Path
         areaPathAA.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(areaPathAA);
         scrollPane.setBounds(450, 280, 200, 60);

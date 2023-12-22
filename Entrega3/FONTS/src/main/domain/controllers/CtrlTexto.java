@@ -11,7 +11,7 @@ import java.util.HashMap;
  */
 public class CtrlTexto
 {
-    // ---------- PARÁMETROS ----------
+    // ---------- PARAMETROS ----------
     /** Representa conjunto de textos dentro del controlador para gestionar y manipular los textos. */
     private static ConjuntoTextos CjtTextos;
 
@@ -189,7 +189,7 @@ public class CtrlTexto
 
     /**
      * Devuelve la lista de nombres de textos existentes.
-     * @return ArrayList<String>: lista de los nombres de los textos existentes.
+     * @return ArrayList String: lista de los nombres de los textos existentes.
      */
     public ArrayList<String> getNombresTextos(){
         return CjtTextos.getNombresTextos();
@@ -197,7 +197,7 @@ public class CtrlTexto
 
     /**
      * Devuelve la lista de nombres de teclados vinculados al alfabeto con nombre nomA.
-     * @return ArrayList<String>: lista de los nombres de teclados vinculados al alfabeto.
+     * @return ArrayList String: lista de los nombres de teclados vinculados al alfabeto.
      */
     public static ArrayList<String> getAsociacionesVinculadasTexto(String nomT){
         return CjtTextos.getTexto(nomT).getAsociacionesVinculadas();

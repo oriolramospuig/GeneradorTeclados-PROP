@@ -37,7 +37,7 @@ public class ConjuntoTextos implements Serializable {
 
     /**
      * Devuelve el nombre de los textos del conjunto textos.
-     * @return ArrayList<String>: Lista de nombres de los textos del conjunto.
+     * @return ArrayList String: Lista de nombres de los textos del conjunto.
      */
     public ArrayList<String> getNombresTextos() {
         ArrayList<String> listaNombres = new ArrayList<>();
@@ -49,7 +49,7 @@ public class ConjuntoTextos implements Serializable {
 
     /**
      * Devuelve el conjunto de textos existentes.
-     * @return HashMap<String, Texto>: Conjunto de textos.
+     * @return HashMap String, Texto: Conjunto de textos.
      */
     public HashMap<String, Texto> getTextos() {
          return textos;

@@ -36,7 +36,7 @@ class FrequencyComparator implements Comparator<PairFrequency> {
  */
 public class AsociacionTextos implements Serializable
 {
-    private static final long serialVersionUID = 2062931267658986574L;
+    //private static final long serialVersionUID = 2062931267658986574L;
     // ---------- ATRIBUTOS ----------
     /** Guarda el nombre introducido por el usuario. */
     private String nombre;
@@ -93,7 +93,7 @@ public class AsociacionTextos implements Serializable
 
     /**
      * Devuelve el nombre de los textos asociados.
-     * @return ArrayList<String>: Lista de nombres de los textos asociados.
+     * @return ArrayList: Lista de nombres de los textos asociados.
      */
     public ArrayList<String> getTextosAsociaciados() {
         return textosAsociaciados;
@@ -101,7 +101,7 @@ public class AsociacionTextos implements Serializable
 
     /**
      * Devuelve el nombre de los teclados vinculados a la asocciación de textos.
-     * @return ArrayList<String>: Lista de nombres de los teclados vinculados.
+     * @return ArrayList: Lista de nombres de los teclados vinculados.
      */
     public ArrayList<String> getTecladosVinculados() {
         return tecladosVinculados;
@@ -109,7 +109,7 @@ public class AsociacionTextos implements Serializable
 
     /**
      * Devuelve el map de pares de letras con sus frecuencias.
-     * @return HashMap<String,Integer>: Map de frecuenciaLetras.
+     * @return HashMap de String,Integer: Map de frecuenciaLetras.
      */
     public HashMap<String,Integer> getFrecuenciaLetras() {
         return frecuenciaLetras;
@@ -117,7 +117,7 @@ public class AsociacionTextos implements Serializable
 
     /**
      * Devuelve los pares String, Integer de los pares de letras con sus frecuencias ordenados.
-     * @return ArrayList<PairFrequency>: Lista de pares de letras y frecuencias ordenados.
+     * @return ArrayList PairFrequency: Lista de pares de letras y frecuencias ordenados.
      */
     public ArrayList<PairFrequency> getFrecuenciaLetrasArray() {
         ArrayList<PairFrequency> freq = new ArrayList<>();
@@ -158,7 +158,6 @@ public class AsociacionTextos implements Serializable
 
 
     // ---------- AUXILIARES -----------
-    // Segunda entrega
     /**
      * No devuelve nada. Borra de la lista de nombres de los teclados vinculados el nombre del teclado nomT.
      * @param nomT nombre del teclado a desvincular.
@@ -167,7 +166,6 @@ public class AsociacionTextos implements Serializable
         tecladosVinculados.remove(nomT);
     }
 
-    //Segunda entrega
     /**
      * No devuelve nada. Borra de la lista de nombres de los textos asociados el nombre del texto nomT.
      * @param nomT nombre del texto a quitar de la asociación.

@@ -41,13 +41,13 @@ public class VistaAsociacionTextosC extends JFrame {
     /** Texto indicando que la barra de texto de al lado es donde aparecerá automáticamente el nombre de la asociacion seleccionada. */
     private final JLabel txtNombreATC = new JLabel("NOMBRE:");
 
-    /** Área de texto donde aparecerá el nombre de la asociacion que se quiere consultar */
+    /** Area de texto donde aparecerá el nombre de la asociacion que se quiere consultar */
     private final JTextArea areanomATC = new JTextArea();
 
     /** Texto indicando que la barra de texto de al lado es donde aparecerá la lista de nombres de los textos vinculados a esa asociacion. */
     private final JLabel txtContenidoATC = new JLabel("CONTENIDO:");
 
-    /** Área de texto donde aparecerá la lista de textos vinculados a esa asociacion. */
+    /** Area de texto donde aparecerá la lista de textos vinculados a esa asociacion. */
     private final JTextArea areacontenidoATC = new JTextArea();
 
     /**
@@ -84,7 +84,6 @@ public class VistaAsociacionTextosC extends JFrame {
         txtNombreATC.setBounds(200, 180, 200, 20);
         add(txtNombreATC);
 
-        // Área texto Nombre
         areanomATC.setEditable(false);
         areanomATC.setBounds(400,180, 200,20);
         add(areanomATC);
