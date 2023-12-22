@@ -206,9 +206,9 @@ public class VistaTecladoA extends JFrame {
 
                     // Llamar a CtrlPresentacion para agregar el teclado
                     PairInt dimensiones = new PairInt(filas, columnas);
-                    int agregado = CtrlPresentacion.agregarTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, dimensiones, true);
+                    boolean agregado = CtrlPresentacion.agregarTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, dimensiones, true);
 
-                    if (agregado == 0) {
+                    if (agregado) {
                         JOptionPane.showMessageDialog(VistaTecladoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                         areanomTA.setText("");
                         areaContenidoAlfabetoTA.setText("");
@@ -257,9 +257,9 @@ public class VistaTecladoA extends JFrame {
 
                     // Llamar a CtrlPresentacion para agregar el teclado
                     PairInt dimensiones = new PairInt(filas, columnas);
-                    int agregado = CtrlPresentacion.agregarTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, dimensiones, false);
+                    boolean agregado = CtrlPresentacion.agregarTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, dimensiones, false);
 
-                    if (agregado == 0) {
+                    if (agregado) {
                         JOptionPane.showMessageDialog(VistaTecladoA.this, "Agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                         areanomTA.setText("");
                         areaContenidoAlfabetoTA.setText("");

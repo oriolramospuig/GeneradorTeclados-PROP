@@ -10,40 +10,60 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * Vista para agregar una nueva asociación.
+ * <p>
+ * Esta vista permite al usuario agregar una nueva asociación al sistema, especificando su nombre y la lista de textos a vincular.
+ * El usuario puede seleccionar de la lista de textos existentes, aquellos que quiera añadir a la asociación que está creando.
+ * La vista incluye validaciones para asegurar que el nombre de la asociación sea única y que se haya proporcionado algún texto a añadir.
+ * Incluye botones para agregar la asociación y volver al menú principal.
+ * @author Alèxia Mayor (alexia.mayor@estudiantat.upc.edu)
+ */
 
 public class VistaAsociacionTextosA extends JFrame {
-    /** Finestra de selecció de l'arxiu que es vol carregar al nostre full de càlcul */
-    JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-    /** Panel donde se incluyen los elementos de la ventana */
-    private final JPanel lamina = new JPanel();
-    /** Título de media ventana superior */
-    private final JLabel tituloVistaATA = new JLabel("Agregar asociación de textos");
-    /** Botón para agregar una asociación */
-    private final JButton bAgregarAsociacion = new JButton("Agregar asociación");
-    /** Botó de tornar a la pantalla del menú principal */
-    private final JButton bsalir = new JButton("Atrás");
-
-    //VENTANA SUPERIOR
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociación */
-    private final JLabel txtNombreATA = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre de la asociación que se quiere crear */
-    private final JTextArea areanomATA = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el contenido de la asociación */
-    private final JLabel txtTextosAgregarATA = new JLabel("POSIBLES TEXTOS A AGREGAR:");
-    /** Área de texto donde se introducirá el nombre del texto que se haya seleccionado de la lista de textos */
-    private final JTextArea areaTextosAgregarATA = new JTextArea();
-    /** Desplegable con los nombres de los textos creados en el sistema */
-    private JComboBox<String> nombresTxt = new JComboBox<>();
-    /** Texto indicando que la barra de texto de al lado es para mostrar la lista de textos que contiene esa asociación */
-    private final JLabel txtTextosAgregadosATA = new JLabel("LISTA TEXTOS SELECCIONADOS:");
-    /** Desplegable con los nombres de los textos agregados a esa asociación*/
-    private JComboBox<String> nombresTxtagregados = new JComboBox<>();
-
-    //MENSAJES DE ERROR
-    /** Pantalla de error */
+    /** Pantalla de error para mostrar mensajes cuando falta información. */
     private final JFrame frame = new JFrame ("JFrame");
 
+    /** Panel donde se incluyen los elementos de la ventana. */
+    private final JPanel lamina = new JPanel();
 
+    /** Título de la ventana. */
+    private final JLabel tituloVistaATA = new JLabel("Agregar asociación de textos");
+
+    /** Botón para agregar una asociación. */
+    private final JButton bAgregarAsociacion = new JButton("Agregar asociación");
+
+    /** Botón para volver a la pantalla del menú principal. */
+    private final JButton bsalir = new JButton("Atrás");
+
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociación. */
+    private final JLabel txtNombreATA = new JLabel("NOMBRE:");
+
+    /** Área de texto para introducir el nombre de la asociación que se quiere crear. */
+    private final JTextArea areanomATA = new JTextArea();
+
+    /** Texto indicando que el desplegable de al lado es donde se muestran los posibles textos a vincular a esa asociación. */
+    private final JLabel txtTextosAgregarATA = new JLabel("POSIBLES TEXTOS A AGREGAR:");
+
+    /** Área de texto donde se introducirá automáticamente el nombre del texto que se haya seleccionado de la lista de textos. */
+    private final JTextArea areaTextosAgregarATA = new JTextArea();
+
+    /** Desplegable con los nombres de los posibles textos a agregar a esa asociación. */
+    private JComboBox<String> nombresTxt = new JComboBox<>();
+
+    /** Texto indicando que el desplegable de al lado es para mostrar la lista de textos seleccionados para agregar a esa asociación. */
+    private final JLabel txtTextosAgregadosATA = new JLabel("LISTA TEXTOS SELECCIONADOS:");
+
+    /** Desplegable con los nombres de los textos seleccionados para agregar a esa asociación. */
+    private JComboBox<String> nombresTxtagregados = new JComboBox<>();
+
+
+    /**
+     * Constructor de la clase VistaAsociacionA.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura los oyentes de eventos
+     * para la adición de una nueva asociación y la selección de los textos vinculados a ella.
+     */
     public VistaAsociacionTextosA() {
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);

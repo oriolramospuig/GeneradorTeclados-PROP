@@ -135,7 +135,7 @@ public class GestorAlfabeto {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                throw new IOException("Error de la creación del fichero CSV del ranking");
+                throw new IOException("Error de la creación del fichero CSV del conjunto de alfabetos");
             }
         }
     }
