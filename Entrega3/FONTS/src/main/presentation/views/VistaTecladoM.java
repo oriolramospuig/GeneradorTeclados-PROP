@@ -254,10 +254,10 @@ public class VistaTecladoM extends JFrame {
                         // Llamar a CtrlPresentacion para agregar el teclado
                         PairInt dimensiones = new PairInt(filas, columnas);
                         CtrlPresentacion.borrarTeclado(nombreTeclado);
-                        int modificado = CtrlPresentacion.agregarTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, dimensiones, false);
+                        boolean modificado = CtrlPresentacion.agregarTeclado(nombreTeclado, nombreAlfabeto, nombreAsociacion, dimensiones, false);
 
                         // Mensaje de éxito o error
-                        if (modificado == 0) {
+                        if (modificado) {
                             JOptionPane.showMessageDialog(VistaTecladoM.this, "Modificado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                             areanomTM.setText("");
                             areaContenidoAlfabetoTM.setText("");

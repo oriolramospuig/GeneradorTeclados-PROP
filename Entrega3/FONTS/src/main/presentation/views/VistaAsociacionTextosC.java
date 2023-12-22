@@ -13,35 +13,50 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Vista para consultar los detalles de una asociación existente.
+ * <p>
+ * Esta vista ofrece al usuario una lista desplegable para seleccionar una asociación existente y consultar su contenido.
+ * Al seleccionar una asociación de la lista, se muestra su nombre y la lista de textos vinulados a ella.
+ * La interfaz proporciona una manera sencilla y directa para que los usuarios puedan ver los nombres de los textos que componen esa asociación.
+ * Incluye un botón para regresar al menú principal.
+ * @author Alèxia Mayor (alexia.mayor@estudiantat.upc.edu)
+ */
 public class VistaAsociacionTextosC extends JFrame {
-    //BOTONES
-    /** Panel donde se incluyen los elementos de la ventana */
+    /** Panel donde se incluyen los elementos de la ventana. */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana superior */
+
+    /** Título de la ventana. */
     private final JLabel tituloVistaATC = new JLabel("Consultar asociacion");
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion */
+
+    /** Texto indicando que el desplegable de al lado es para seleccionar el nombre de la asociacion. */
     private final JLabel txtDesplegableATC = new JLabel("LISTA NOMBRES:");
-    /** Desplegable con los nombres de las asociaciones*/
+
+    /** Desplegable con los nombres de las asociaciones existentes.*/
     private JComboBox<String> nombresATC = new JComboBox<>();
-    /** Botó de tornar a la pantalla del menú principal */
+
+    /** Botón para volver a la pantalla del menú principal. */
     private final JButton bsalir = new JButton("Atrás");
 
-
-    //TEXTOS Y AREAS DE TEXTO
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
+    /** Texto indicando que la barra de texto de al lado es donde aparecerá automáticamente el nombre de la asociacion seleccionada. */
     private final JLabel txtNombreATC = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
+
+    /** Área de texto donde aparecerá el nombre de la asociacion que se quiere consultar */
     private final JTextArea areanomATC = new JTextArea();
 
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
+    /** Texto indicando que la barra de texto de al lado es donde aparecerá la lista de nombres de los textos vinculados a esa asociacion. */
     private final JLabel txtContenidoATC = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
+
+    /** Área de texto donde aparecerá la lista de textos vinculados a esa asociacion. */
     private final JTextArea areacontenidoATC = new JTextArea();
 
-    //MENSAJES DE ERROR
-    /** Pantalla de error que aparece cuando se quiere consultar/modificar una asociacion sin nombre */
-    private final JFrame Nomframe = new JFrame ("JFrame");
-
+    /**
+     * Constructor de la clase VistaAsociacioC.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura los oyentes de eventos
+     * para la consulta de la asociación. Facilita la visualización de la lista de textos vinculados
+     * a la asociación seleccionada desde una lista desplegable.
+     */
     public VistaAsociacionTextosC() {
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);

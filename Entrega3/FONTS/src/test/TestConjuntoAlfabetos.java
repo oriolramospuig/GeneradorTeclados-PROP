@@ -1,7 +1,7 @@
 package test;
 
-import main.domain.classes.Alfabeto;
-import main.domain.classes.ConjuntoAlfabetos;
+import main.domain.classes.*;
+import main.domain.classes.types.PairInt;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,42 +12,57 @@ import java.util.HashMap;
 import static org.junit.Assert.*;
 
 /**
- * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
+ * Clase de pruebas unitarias para ConjuntoAlfabetos. Evalúa el correcto funcionamiento de la creación y manipulación de objetos ConjuntoAlfabetos.
+ * @author Alèxia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
 public class TestConjuntoAlfabetos {
+    /** Instancia de la clase ConjuntoAlfabetos utilizada en los casos de prueba. */
     private ConjuntoAlfabetos alfabetos;
 
+    /** Instancias de la clase Alfabeto para datos de prueba. */
     private Alfabeto alfabeto1;
-
     private Alfabeto alfabeto2;
 
-    @Before
-    public void setUp() {
-        alfabetos = new ConjuntoAlfabetos();
-        ArrayList<Character> letras = new ArrayList<>();
-        alfabeto1 = new Alfabeto("nombreA1", letras);
-        alfabeto2 = new Alfabeto("nombreA2", letras);
-    }
+    /**
+     * Inicialización de las instancias Palabras y Frecuencias para realizar los juegos de prueba.
+     */
+   @Before
+   public void setUp(){
+       String nombre = "alfabeto1";
 
+       ArrayList<Character> letras = new ArrayList<>();
+       letras.add('a');
+       letras.add('b');
+       letras.add('c');
+
+       String nombre2 = "alfabeto2";
+
+       ArrayList<Character> letras2 = new ArrayList<>();
+       letras.add('d');
+       letras.add('e');
+       letras.add('f');
+
+   }
 
     // ---------- CONSTRUCTORAS ----------
     /**
-     * Objeto de la prueba: Test de la constructora de ConjuntoAlfabeto (Constructora Default).
+     * Objeto de la prueba: Test de la constructora de ConjuntoAlfabeto.
      * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
-     * Valores estudiados: Se inicializa el atributo de conjuntoalfabeto vacío.
-     * Operativa: AssertTrue() comprueba que la lista de alfabetos está vacía.
+     * Valores estudiados: Estrategia caja gris. Se define un conjunto de alfabetos y se comprueba que se crea correctamente.
+     * Operativa: Creamos un nuevo ConjuntoAlfabetos. Se comprueba que se ha creado vacío.
      */
     @Test
     public void TestConstructora() {
-        System.out.println("Test Constructora");
+        //System.out.println("Test Constructora");
+        alfabetos = new ConjuntoAlfabetos();
         assertTrue(alfabetos.getNombresAlfabetos().isEmpty());
     }
 
     // ---------- GETTERS ----------
     /**
      * Objeto de la prueba: Test del método GetAlfabeto de ConjuntoAlfabeto.
-     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
-     * Valores estudiados: Se consulta un objecto alfabeto con el atributo que lo identifica.
+     * Ficheros de datos necesarios: No se requieren ficheros externos para esta prueba.
+     * Valores estudiados: Estrategia caja negra. Se añaden textos al conjunto y se verifica que el método getTexto devuelve los textos correctos.
      * Primero se añade un alfabeto para poder consultarlo.
      * Seguidamente se llama a la función getAlfabeto que retorna el objeto alfabeto con el nombre nombreA1 que es el que pasamos como parámetro.
      * Operativa: AssertNotNull() compruba que la variable donde se ha guardado el objeto alfabeto consultado no es null.
@@ -55,26 +70,24 @@ public class TestConjuntoAlfabetos {
      */
     @Test
     public void TestGetAlfabeto() {
-        System.out.println("Test getAlfabeto");
+        //System.out.println("Test getAlfabeto");
+        alfabetos = new ConjuntoAlfabetos();
+        alfabetos.agregarAlfabeto(alfabeto1.getNombre(), alfabeto1);
 
-        alfabetos.agregarAlfabeto("nombreA1", alfabeto1);
-        Alfabeto resultado = alfabetos.getAlfabeto("nombreA1");
+        Alfabeto resultado = alfabetos.getAlfabeto(alfabeto1.getNombre());
         assertNotNull(resultado);
-        assertEquals("nombreA1", resultado.getNombre());
+        assertEquals("alfabeto1", resultado.getNombre());
     }
 
     /**
      * Objeto de la prueba: Test del método GetNombresAlfabetosde ConjuntoAlfabeto.
-     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
-     * Valores estudiados: Se consulta la lista de nombres de los alfabetos existentes en el sistema.
-     * Primero se añaden dos alfabeto para poder consultar la lista.
-     * Seguidamente se llama a la función getNombresAlfabetos que retorna la lista de los nombres de los alfabetos existentes
-     * Operativa: AssertEquals() comprueba que la medida de la lista de alfabetos sea 2.
-     * Los siguientes dos AssertTrue comprueban que existan en la lista todos los nombre agregados anteriormente.
+     * Ficheros de datos necesarios: No se requieren ficheros externos para esta prueba.
+     * Valores estudiados: Estrategia caja negra. Se añaden alfabetos al conjunto y se verifica que el método getNombresAlfabetos devuelve los nombres correctos.
+     * Operativa: Se agregan instancias de alfabetos al conjunto. Se llama a getNombresAlfabetos y se verifica la igualdad.
      */
     @Test
     public void TestGetNombresAlfabetos() {
-        System.out.println("Test getNombreAlfabetos");
+        //System.out.println("Test getNombreAlfabetos");
 
         alfabetos.agregarAlfabeto("nombreA1", alfabeto1);
         alfabetos.agregarAlfabeto("nombreA2", alfabeto2);
@@ -92,10 +105,10 @@ public class TestConjuntoAlfabetos {
     // ---------- SETTERS ----------
     /**
      * Objeto de la prueba: Test del método AgregarAlfabeto de ConjuntoAlfabeto.
-     * Ficheros de datos necesarios: Datos introducidos manualmente. No hacen falta ficheros adicionales.
-     * Valores estudiados: Se añaden dos alfabetos con la función agregaralfabeto y con los nombres asignados que es el atributo que los identifica.
-     * Operativa: AssertEquals() comprueba que la medida de la lista de alfabetos sea 2.
-     * Los siguientes AssertTrue() comprueban que los nombres de los alfabetos guardados existen en la lista.
+     * Ficheros de datos necesarios: No se requieren ficheros externos para esta prueba.
+     * Valores estudiados: Estrategia caja negra. Se añaden alfabetos al conjunto y se verifica que se agregan correctamente.
+     * Operativa: Se añaden instancias de alfabetos al conjunto. Se verifica que los nombres estén presentes y los alfabetos sean iguales.
+     * También se comprueba que si se intenta añadir un alfabeto que ya existe, no se añade otra vez en el conjunto.
      */
     @Test
     public void TestAgregarAlfabeto(){
@@ -129,29 +142,12 @@ public class TestConjuntoAlfabetos {
     }
 
     /**
-     * - Objetivo de la Prueba:
-     *   Verificar que la función borrarAlfabeto de la clase elimina correctamente un alfabeto por nombre.
-     *
-     * - Ficheros Necesarios:
-     *   No hay referencia a ficheros en esta función de prueba.
-     *
-     * - Valores Estudiados:
-     *   - Se imprime un mensaje indicando que se está probando la función borrarAlfabeto.
-     *   - Se agregan dos alfabetos con nombres "nombreA1" y "nombreA2" a la instancia de la clase (alfabetos).
-     *   - Se utiliza la función borrarAlfabeto para eliminar el alfabeto con nombre "nombreA1".
-     *   - Utiliza la aserción assertEquals para verificar que la cantidad de alfabetos es 1 después de la eliminación.
-     *   - Utiliza la aserción assertFalse para verificar que el alfabeto con nombre "nombreA1" no existe después de la eliminación.
-     *   - Utiliza la aserción assertTrue para verificar que el alfabeto con nombre "nombreA2" sigue existiendo después de la eliminación.
-     *
-     * - Operativa:
-     *   1. Imprime un mensaje informativo en la consola indicando que se está probando la función borrarAlfabeto.
-     *   2. Agrega dos alfabetos con nombres "nombreA1" y "nombreA2" a la instancia de la clase (alfabetos).
-     *   3. Utiliza la función borrarAlfabeto para eliminar el alfabeto con nombre "nombreA1".
-     *   4. Utiliza la aserción assertEquals para verificar que la cantidad de alfabetos es 1 después de la eliminación.
-     *   5. Utiliza la aserción assertFalse para verificar que el alfabeto con nombre "nombreA1" no existe después de la eliminación.
-     *   6. Utiliza la aserción assertTrue para verificar que el alfabeto con nombre "nombreA2" sigue existiendo después de la eliminación.
-     *   7. Si alguna de las aserciones falla, se considera que la prueba no ha pasado con éxito.
-     *   8. Este método es parte de un conjunto más amplio de pruebas unitarias.
+     * Objeto de la prueba: Test del método borrarAlfabeto de la clase ConjuntoAlfabetos.
+     * Ficheros de datos necesarios: No se requieren ficheros externos para esta prueba.
+     * Valores estudiados: Estrategia caja negra. Se añaden alfabetos al conjunto, se borra un alfabeto y se verifica que se haya eliminado correctamente.
+     * Operativa: Se añaden instancias de alfabetos al conjunto. Se verifica que los nombres estén presentes y los alfabetos sean iguales.
+     * Luego, se borra un alfabeto y se verifica que el alfabeto se haya eliminado correctamente y los demás alfabetos sigan presentes.
+     * También se comprueba que si se intenta borrar un alfabeto que ya no existe el conjunto se queda igual.
      */
     @Test
     public void TestBorrarAlfabeto() {
