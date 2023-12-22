@@ -39,6 +39,7 @@ public class CtrlPersistencia {
         gestorLectura = new GestorLectura();
     }
 
+    // ---------- FUNCIONES LECTURA ----------.
     /**
      * Lee un archivo de la ruta especificada y devuelve los caracteres leídos como una lista.
      * @param pathArchivo ruta del archivo a leer.
@@ -70,6 +71,8 @@ public class CtrlPersistencia {
         return gestorLectura.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
     }
 
+
+    // ---------- FUNCIONES ALFABETOS ----------
     /**
      * Carga el conjunto de alfabetos desde el gestor de alfabetos, utilizando el formato CSV.
      * Lanza una excepción IOException si hay un problema durante la lectura del archivo.
@@ -149,25 +152,3 @@ public class CtrlPersistencia {
     return gestorTeclado.cargarTeclados(path);
     }
 }
-
-/*
-    // ---------- FUNCIONES ALFABETOS ----------
-
-/**
-     * Guarda un conjunto de alfabetos en un archivo.
-     * @param bytes arreglo de bytes que representa el conjunto de alfabetos.
-     * @param path ruta del archivo donde se guardará el conjunto de alfabetos.
-     *
-public void guardaCnjtAlfabetos(byte[] bytes, String path) {
-    GestorAlfabeto.gestorAlfabetos(bytes, path);
-}
-
-    /**
-     * Carga un conjunto de alfabetos desde un archivo.
-     * @param path ruta del archivo desde donde se cargará el conjunto de alfabetos.
-     * @return arreglo de bytes que representa el conjunto de alfabetos cargado.
-     *
-    public byte[] cargaCnjtAlfabetos(String path) {
-        return gestorAlfabeto.cargarAlfabetos(path);
-    }
-    */
