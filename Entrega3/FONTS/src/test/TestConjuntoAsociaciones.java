@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 /**
- * @author
+ * @author Victor Moreno
  */
 public class TestConjuntoAsociaciones
 {

@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  * Clase que gestiona la carga y guardado de conjuntos de teclados en formato de bytes.
- * @author
+ * @author Víctor Moreno
  */
 public class GestorTeclado {
     /**
