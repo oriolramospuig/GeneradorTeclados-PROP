@@ -17,6 +17,8 @@ proyecto sea esta carpeta.
 Las vistas han estado creadas para una resolución de 1536x864. En caso de tener una resolución distinta
 puede haber pequeñas variaciones.
 
+El botón del manual de usuario solo funciona desde el IDE, haciendo make no funciona.
+
 ### Makefile
 El makefile está en la carpeta raíz, subgrup-prop14.3, por lo que para hacer make debemos colocarnos en esta carpeta.
 Comandamientos a seguir: 
