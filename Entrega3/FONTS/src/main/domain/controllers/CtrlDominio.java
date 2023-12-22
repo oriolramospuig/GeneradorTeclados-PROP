@@ -333,8 +333,9 @@ public class CtrlDominio
      */
     public void borrarTextoAsociacion(String nomAT, String nomTxt){
         HashMap<String, Integer> frecuenciaLetras = ctrlTexto.getTexto(nomTxt).getFrecuenciaLetras();
-        ctrlAsociacionTexto.borrarTextoAsociacion(nomAT,nomTxt,frecuenciaLetras);
+        boolean ultima = ctrlAsociacionTexto.borrarTextoAsociacion(nomAT,nomTxt,frecuenciaLetras);
         ctrlTexto.borrarAsociacionVinculada(nomTxt,nomAT);
+        if(ultima) borrarAsociacionTextos(nomAT);
     }
 
     /**
@@ -659,12 +660,11 @@ public class CtrlDominio
 
     /**
      * Verifica si el formato de las frecuencias es correcto para agregar a un contenido de texto.
-     * @param contenidoTexto contenido de texto al que se agregarán las frecuencias.
      * @param pathTexto ruta del archivo de texto asociado al contenido.
      * @param frecuencias mapa de frecuencias a agregar al contenido de texto.
      * @return True si el formato de las frecuencias es correcto, False de lo contrario.
      */
-    public boolean formatoCorrectoAgregarFrecuencias(String contenidoTexto, String pathTexto, HashMap<String, Integer> frecuencias) {
-        return ctrlPersistencia.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
+    public boolean formatoCorrectoAgregarFrecuenciasPath(String pathTexto, HashMap<String, Integer> frecuencias) {
+        return ctrlPersistencia.formatoCorrectoAgregarFrecuenciasPath(pathTexto, frecuencias);
     }
 }

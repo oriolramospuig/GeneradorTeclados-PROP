@@ -116,7 +116,7 @@ public class VistaTextoB extends JFrame{
                 if (nombreTexto.isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Por favor, selecciona un texto para borrar.", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    int opcion = JOptionPane.showConfirmDialog(null, "Si elimina este texto, se modificarán todos los teclados creados a partir de una asociación vinculada a este texto.\n¿Está seguro de que desea continuar?", "Aviso", JOptionPane.YES_NO_OPTION);
+                    int opcion = JOptionPane.showConfirmDialog(null, "Si elimina este texto, se modificarán todos los teclados creados a partir de una asociación vinculada a este texto.\n Si es el último texto vinculado a una asociación, se borrará la asociación ya que se quedará sin textos.\n¿Está seguro de que desea continuar?", "Aviso", JOptionPane.YES_NO_OPTION);
 
                     // Verificar la respuesta del usuario
                     if (opcion == JOptionPane.YES_OPTION) { // El usuario eligió continuar

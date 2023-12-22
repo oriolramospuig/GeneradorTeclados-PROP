@@ -72,8 +72,8 @@ public class CtrlAsociacionTexto
      * @param frecuenciaLetras Map de los pares de letras y sus frecuencias.
      * Manda borrar el texto con nombre nomT de la lista de textos asociados a la asociación con nombre nomA.
      */
-    public void borrarTextoAsociacion(String nomA, String nomT, HashMap<String, Integer> frecuenciaLetras){
-        AsociacionesTextos.getAsociacionTextos(nomA).borrarTexto(nomT, frecuenciaLetras);
+    public boolean borrarTextoAsociacion(String nomA, String nomT, HashMap<String, Integer> frecuenciaLetras){
+        return AsociacionesTextos.getAsociacionTextos(nomA).borrarTexto(nomT, frecuenciaLetras);
     }
 
 

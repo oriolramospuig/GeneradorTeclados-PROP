@@ -215,6 +215,7 @@ public class VistaTextoA extends JFrame {
                 String nombreTexto = areanomTxtA.getText().trim();
                 String contenidoTexto = areaContenidoTxtA.getText();
                 String pathTexto = areaPathTxtA.getText();
+                boolean agregado = false;
 
                 if (nombreTexto.isEmpty()) {
                     JOptionPane.showMessageDialog(VistaTextoA.this, "Error: No Nombre", "Error", JOptionPane.ERROR_MESSAGE);
@@ -224,17 +225,18 @@ public class VistaTextoA extends JFrame {
                 if (contenidoTexto.isEmpty() && pathTexto.isEmpty()) {
                     JOptionPane.showMessageDialog(VistaTextoA.this, "Error: Añade contenido o selecciona un archivo", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
-                }
 
-                boolean agregado;
-                if (contenidoTexto.isEmpty()) {
+                } else if (contenidoTexto.isEmpty()) {
                     try {
                         agregado = CtrlPresentacion.agregarTextoPalabrasPath(nombreTexto, pathTexto);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
-                } else {
+                } else if (pathTexto.isEmpty()){
                     agregado = CtrlPresentacion.agregarTextoPalabras(nombreTexto, contenidoTexto);
+                } else {
+                    JOptionPane.showMessageDialog(VistaTextoA.this, "Error: No puede haber contenido y path a la vez, solo uno de los dos", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
 
                 if (agregado) {
@@ -255,6 +257,8 @@ public class VistaTextoA extends JFrame {
                 String nombreTexto = areanomTxtA1.getText().trim();
                 String contenidoTexto = areaContenidoTxtA1.getText();
                 String pathTexto = areaPathTxtA1.getText();
+                boolean agregado1 = false;
+                HashMap<String, Integer> frecuencias = new HashMap<>();
 
                 if (nombreTexto.isEmpty()) {
                     JOptionPane.showMessageDialog(VistaTextoA.this, "Error: No Nombre", "Error", JOptionPane.ERROR_MESSAGE);
@@ -264,27 +268,58 @@ public class VistaTextoA extends JFrame {
                 if (contenidoTexto.isEmpty() && pathTexto.isEmpty()) {
                     JOptionPane.showMessageDialog(VistaTextoA.this, "Error: Añade contenido o selecciona un archivo", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
-                }
+                }else if (contenidoTexto.isEmpty()){
+                    //HashMap<String, Integer> frecuencias = new HashMap<>();
+                    boolean formatoCorrecto;
 
-                HashMap<String, Integer> frecuencias = new HashMap<>();
-                boolean formatoCorrecto;
+                    formatoCorrecto = CtrlPresentacion.formatoCorrectoAgregarFrecuenciasPath(pathTexto, frecuencias);
 
-                formatoCorrecto = CtrlPresentacion.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
-
-                if (formatoCorrecto) {
-                    boolean agregado = CtrlPresentacion.agregarTextoFrecuencias(nombreTexto, frecuencias);
-                    if (agregado) {
-                        JOptionPane.showMessageDialog(VistaTextoA.this, "Texto de frecuencias agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                        areanomTxtA1.setText("");
-                        areaContenidoTxtA1.setText("");
-                        areaPathTxtA1.setText("");
-                        CtrlPresentacion.guardarConjuntos();
+                    if (formatoCorrecto) {
+                        boolean agregado = CtrlPresentacion.agregarTextoFrecuencias(nombreTexto, frecuencias);
+                        if (agregado) {
+                            JOptionPane.showMessageDialog(VistaTextoA.this, "Texto de frecuencias agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                            areanomTxtA1.setText("");
+                            areaContenidoTxtA1.setText("");
+                            areaPathTxtA1.setText("");
+                            CtrlPresentacion.guardarConjuntos();
+                        } else {
+                            JOptionPane.showMessageDialog(VistaTextoA.this, "Error: El texto no se pudo agregar o ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
                     } else {
-                        JOptionPane.showMessageDialog(VistaTextoA.this, "Error: El texto no se pudo agregar o ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(VistaTextoA.this, "Error: Formato de contenido incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(VistaTextoA.this, "Error: Formato de contenido incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+                }else if (pathTexto.isEmpty()) {
+                    boolean formatoCorrecto = true;
+                    String[] lineas = contenidoTexto.split("\n");
+                    for (String linea : lineas) {
+                        linea = linea.trim();
+                        if (!linea.matches("\\S+\\s+\\d+")) {
+                            formatoCorrecto = false;
+                            break;
+                        }
+                        String[] partes = linea.split("\\s+");
+                        frecuencias.put(partes[0], Integer.parseInt(partes[1]));
+                    }
+                    if (formatoCorrecto) {
+                        boolean agregado = CtrlPresentacion.agregarTextoFrecuencias(nombreTexto, frecuencias);
+                        if (agregado) {
+                            JOptionPane.showMessageDialog(VistaTextoA.this, "Texto de frecuencias agregado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                            areanomTxtA1.setText("");
+                            areaContenidoTxtA1.setText("");
+                            areaPathTxtA1.setText("");
+                            CtrlPresentacion.guardarConjuntos();
+                        } else {
+                            JOptionPane.showMessageDialog(VistaTextoA.this, "Error: El texto no se pudo agregar o ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(VistaTextoA.this, "Error: Formato de contenido incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }else {
+                    JOptionPane.showMessageDialog(VistaTextoA.this, "Error: No puede haber contenido y path a la vez, solo uno de los dos", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
+
+
             }
         };
 

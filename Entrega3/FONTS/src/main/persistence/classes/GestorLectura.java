@@ -65,17 +65,17 @@ public class GestorLectura {
 
     /**
      * Verifica si el formato de las frecuencias es correcto para agregar a un contenido de texto.
-     * @param contenidoTexto contenido de texto al que se agregarán las frecuencias.
      * @param pathTexto ruta del archivo de texto asociado al contenido.
      * @param frecuencias mapa de frecuencias a agregar al contenido de texto.
      * @return True si el formato de las frecuencias es correcto, False de lo contrario.
      */
-    public boolean formatoCorrectoAgregarFrecuencias(String contenidoTexto, String pathTexto, HashMap<String, Integer> frecuencias) {
+    public boolean formatoCorrectoAgregarFrecuenciasPath(String pathTexto, HashMap<String, Integer> frecuencias) {
         boolean formatoCorrecto = true;
-        if (!contenidoTexto.isEmpty()) {
-            String[] lineas = contenidoTexto.split("\n");
-            for (String linea : lineas) {
-                linea = linea.trim();
+        try {
+            File archivo = new File(pathTexto);
+            Scanner scanner = new Scanner(archivo);
+            while (scanner.hasNextLine()) {
+                String linea = scanner.nextLine().trim();
                 if (!linea.matches("\\S+\\s+\\d+")) {
                     formatoCorrecto = false;
                     break;
@@ -83,23 +83,9 @@ public class GestorLectura {
                 String[] partes = linea.split("\\s+");
                 frecuencias.put(partes[0], Integer.parseInt(partes[1]));
             }
-        } else {
-            try {
-                File archivo = new File(pathTexto);
-                Scanner scanner = new Scanner(archivo);
-                while (scanner.hasNextLine()) {
-                    String linea = scanner.nextLine().trim();
-                    if (!linea.matches("\\S+\\s+\\d+")) {
-                        formatoCorrecto = false;
-                        break;
-                    }
-                    String[] partes = linea.split("\\s+");
-                    frecuencias.put(partes[0], Integer.parseInt(partes[1]));
-                }
-                scanner.close();
-            } catch (FileNotFoundException ex) {
-                formatoCorrecto = false;
-            }
+            scanner.close();
+        } catch (FileNotFoundException ex) {
+            formatoCorrecto = false;
         }
         return formatoCorrecto;
     }
