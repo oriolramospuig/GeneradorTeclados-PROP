@@ -74,24 +74,23 @@ public class CtrlPersistencia {
 
     // ---------- FUNCIONES ALFABETOS ----------
     /**
-     * Carga el conjunto de alfabetos desde el gestor de alfabetos, utilizando el formato CSV.
-     * Lanza una excepción IOException si hay un problema durante la lectura del archivo.
-     * @return HashMap que contiene el conjunto de alfabetos cargado.
-     * @throws IOException si ocurre un error durante la lectura del archivo.
+     * Guarda un conjunto de alfabetos en un archivo.
+     * @param bytes arreglo de bytes que representa el conjunto de alfabetos.
+     * @param path ruta del archivo donde se guardará el conjunto de alfabetos.
      */
-    public HashMap<String, Alfabeto> cargaCnjtAlfabetos() throws IOException {
-        return gestorAlfabeto.leerDeCSV();
+    public void guardaCnjtAlfabetos(byte[] bytes, String path) {
+        GestorAlfabeto.gestorAlfabetos(bytes, path);
     }
 
     /**
-     * Guarda el conjunto de alfabetos en el gestor de alfabetos, utilizando el formato CSV.
-     * Lanza una excepción IOException si hay un problema durante la escritura en el archivo.
-     * @param alfabetos HashMap que contiene el conjunto de alfabetos a ser guardado.
-     * @throws IOException si ocurre un error durante la escritura en el archivo.
+     * Carga un conjunto de alfabetos desde un archivo.
+     * @param path ruta del archivo desde donde se cargará el conjunto de alfabetos.
+     * @return arreglo de bytes que representa el conjunto de alfabetos cargado.
      */
-    public void guardaCnjtAlfabetos(HashMap<String, Alfabeto> alfabetos) throws IOException {
-        gestorAlfabeto.escribirEnCSV(alfabetos);
+    public byte[] cargaCnjtAlfabetos(String path) {
+        return gestorAlfabeto.cargarAlfabetos(path);
     }
+
 
     // ---------- FUNCIONES TEXTOS ----------
     /**
