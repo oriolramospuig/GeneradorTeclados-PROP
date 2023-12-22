@@ -12,71 +12,92 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class VistaTextoA extends JFrame {
+/**
+ * Vista para agregar un nuevo texto.
+ * <p>
+ * Esta vista permite al usuario agregar un nuevo texto al sistema, especificando su nombre y su contenido.
+ * El usuario puede introducir el contenido del texto manualmente o cargarlo desde un archivo.
+ * La vista incluye validaciones para asegurar que el nombre del texto sea único y que se haya proporcionado el contenido adecuadamente.
+ * Incluye botones para agregar el texto, seleccionar un archivo y volver al menú principal.
+ * @author Alèxia Mayor (alexia.mayor@estudiantat.upc.edu)
+ */
 
-    //BOTONES
-    /** Panel donde se incluyen los elementos de la ventana */
+public class VistaTextoA extends JFrame {
+    /** Panel donde se incluyen los elementos de la ventana.*/
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana superior */
+    /** Título1 de la ventana. */
     private final JLabel tituloVistaTxtA = new JLabel("Agregar texto de palabras");
-    /** Título de media ventana superior */
+
+    /** Título2 de la ventana. */
     private final JLabel tituloVistaTxtA1 = new JLabel("Agregar texto de frecuencias");
-    /** Botón para agregar un texto */
+
+    /** Botón para agregar un texto en formato palabras. */
     private final JButton bAgregarTexto = new JButton("Agregar texto de palabras");
-    /** Botón para agregar un texto */
+
+    /** Botón para agregar un texto en formato frecuencias.*/
     private final JButton bAgregarTextoFrec = new JButton("Agregar texto de frecuencias");
+
+    /** Botón para seleccionar un texto de archivo en formato palabras.*/
     private final JButton bSeleccionarArchivoPalabras = new JButton("Seleccionar Archivo");
+
+    /** Botón para agregar un texto de archivo en formato frecuencias.*/
     private final JButton bSeleccionarArchivoFrecuencias = new JButton("Seleccionar Archivo");
-    /** Botó de tornar a la pantalla del menú principal */
+
+    /** Botón de volver a la pantalla del menú principal. */
     private final JButton bsalir = new JButton("Atrás");
 
-
     //TEXTOS Y AREAS DE TEXTO
-    //VENTANA SUPERIOR
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto */
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto (en formato palabras). */
     private final JLabel txtNombreTxtA = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del texto que se quiere crear */
+
+    /** Área de texto para introducir el nombre del texto que se quiere crear (en formato palabras). */
     private final JTextArea areanomTxtA = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el contenido del texto */
+
+    /** Texto indicando que la barra de texto de al lado es para introducir el contenido del texto (en formato palabras). */
     private final JLabel txtContenidoTxtA = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el contenido del texto que se quiere crear */
+
+
+    /** Área de texto para introducir el contenido del texto que se quiere crear (en formato palabras). */
     private final JTextArea areaContenidoTxtA = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el path del texto, para saber donde esta guardado */
+
+    /** Texto indicando que la barra de texto de al lado es para introducir el path del texto, para saber donde esta guardado (en formato palabras). */
     private final JLabel txtPathTxtA = new JLabel("PATH:");
-    /** Área de texto para introducir el path del texto que se quiere crear */
+
+    /** Área de texto para introducir el path del texto que se quiere crear (en formato palabras).*/
     private final JTextArea areaPathTxtA = new JTextArea();
+
     /** Texto explicando las instrucciones de como entrar el texto en caso de palabras */
     private final JLabel txtInstruccionesTxtA = new JLabel("(Hay que añadir un texto del formato palabras en frases. Ej: Hola que tal)");
 
-
-    //VENTANA SUPERIOR2
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto */
+    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto (en formato frecuencias).*/
     private final JLabel txtNombreTxtA1 = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del texto que se quiere crear */
+
+    /** Área de texto para introducir el nombre del texto que se quiere crear (en formato frecuencias).*/
     private final JTextArea areanomTxtA1 = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el contenido del texto */
+
+    /** Texto indicando que la barra de texto de al lado es para introducir el contenido del texto (en formato frecuencias).*/
     private final JLabel txtContenidoTxtA1 = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el contenido del texto que se quiere crear */
+
+    /** Área de texto para introducir el contenido del texto que se quiere crear (en formato frecuencias).*/
     private final JTextArea areaContenidoTxtA1 = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el path del texto, para saber donde esta guardado */
+
+    /** Texto indicando que la barra de texto de al lado es para introducir el path del texto, para saber donde esta guardado (en formato frecuencias).*/
     private final JLabel txtPathTxtA1 = new JLabel("PATH:");
-    /** Área de texto para introducir el path del texto que se quiere crear */
+
+    /** Área de texto para introducir el path del texto que se quiere crear (en formato frecuencias). */
     private final JTextArea areaPathTxtA1 = new JTextArea();
+
     /** Texto explicando las instrucciones de como entrar el texto en caso de palabras */
     private final JLabel txtInstruccionesTxtA1 = new JLabel("(Hay que añadir un texto del formato palabras con sus rescpectivas");
     /** Texto explicando las instrucciones de como entrar el texto en caso de palabras */
     private final JLabel txtInstruccionesTxtA2 = new JLabel("frecuencias separadas por un espacio. Ej: hola 5)");
 
-    //MENSAJES DE ERROR
-    /** Pantalla de error que aparece cuando se quiere crear un texto sin nombre */
-    private final JFrame Nomframe = new JFrame ("JFrame");
-    /** Pantalla de error que aparece cuando se quiere crear un texto sin contenido o sin path */
-    private final JFrame CPframe = new JFrame ("JFrame");
-
-    /** Pantalla de error texto no agregado */
-    private JFrame frame = new JFrame();
-
-
+    /**
+     * Constructor de la clase VistaTextoA.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura los oyentes de eventos
+     * para la adición de un nuevo texto, ya sea manualmente o mediante un archivo.
+     */
     public VistaTextoA(){
 
         setBounds(250, 150, 1000, 600);

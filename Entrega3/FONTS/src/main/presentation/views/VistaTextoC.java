@@ -13,36 +13,50 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Vista para consultar los detalles de un texto existente.
+ * <p>
+ * Esta vista ofrece al usuario una lista desplegable para seleccionar un texto existente y consultar su contenido.
+ * Al seleccionar un texto de la lista, se muestra su nombre y su contenido en campos de texto.
+ * La interfaz proporciona una manera sencilla y directa para que los usuarios puedan ver el contenido que compone un texto específico.
+ * Incluye un botón para regresar al menú principal.
+ * @author Alèxia Mayor (alexia.mayor@estudiantat.upc.edu)
+ */
 public class VistaTextoC extends JFrame {
-    //BOTONES
-    /** Panel donde se incluyen los elementos de la ventana */
+    /** Panel donde se incluyen los elementos de la ventana. */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana superior */
+
+    /** Título de la ventana. */
     private final JLabel tituloVistaTxtC = new JLabel("Consultar texto");
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto */
+
+    /** Texto indicando que el desplegable de al lado es para seeccionar el nombre del texto. */
     private final JLabel txtDesplegableTxtC = new JLabel("LISTA NOMBRES:");
-    /** Desplegable con los nombres de los textos*/
+
+    /** Desplegable con los nombres de los textos. */
     private JComboBox<String> nombresTxtC = new JComboBox<>();
-    /** Botó de tornar a la pantalla del menú principal */
+
+    /** Botón para volver a la pantalla del menú principal. */
     private final JButton bsalir = new JButton("Atrás");
 
-
-    //TEXTOS Y AREAS DE TEXTO
-    //VENTANA SUPERIOR
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto a consultar*/
+    /** Texto indicando que la barra de texto de al lado es donde aparecerá el nombre del texto a consultar. */
     private final JLabel txtNombreATxtC = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del texto que se quiere consultar */
+
+    /** Área de texto donde aparecerá el nombre del texto que se quiere consultar. */
     private final JTextArea areanomTxtC = new JTextArea();
 
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto a consultar*/
+    /** Texto indicando que la barra de texto de al lado es donde aparecerá el contenido del texto a consultar. */
     private final JLabel txtContenidoTxtC = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el nombre del texto que se quiere consultar */
+
+    /** Área de texto donde aparecerá el contenido del texto que se quiere consultar. */
     private final JTextArea areacontenidoTxtC = new JTextArea();
 
-    //MENSAJES DE ERROR
-    /** Pantalla de error que aparece cuando se quiere consultar/modificar un texto sin nombre */
-    private final JFrame Nomframe = new JFrame ("JFrame");
-
+    /**
+     * Constructor de la clase VistaTextoC.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura los oyentes de eventos
+     * para la consulta de textos. Facilita la visualización del contenido de un texto seleccionado
+     * desde una lista desplegable.
+     */
     public VistaTextoC() {
         setBounds(250, 150, 1000, 600);
 

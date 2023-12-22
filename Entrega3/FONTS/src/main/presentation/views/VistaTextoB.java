@@ -9,25 +9,51 @@ import java.awt.event.*;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * Vista para eliminar textos existentes.
+ * <p>
+ * Esta vista permite al usuario seleccionar y texto un alfabeto existente en el sistema.
+ * Proporciona una lista desplegable con los nombres de todos los textos disponibles y muestra el nombre seleccionado en un campo de texto.
+ * Incluye validaciones para asegurar que se haya seleccionado un texto antes de intentar eliminarlo.
+ * La vista también alerta al usuario sobre las consecuencias de eliminar un texto, como la devinculación de asociaciones y modificaciones de teclados asociados a estas últimas.
+ * Incluye botones para realizar la eliminación y para regresar al menú principal.
+ * @author Alèxia Mayor (alexia.mayor@estudiantat.upc.edu)
+ */
 public class VistaTextoB extends JFrame{
+    /** Pantalla de error para mostrar mensajes cuando falta información. */
     private JFrame frame = new JFrame();
-    /** Panel donde se incluyen los elementos de la ventana */
+
+    /** Panel donde se incluyen los elementos de la ventana. */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana */
+
+    /** Título de la ventana. */
     private final JLabel tituloVistaTxtB = new JLabel("Borrar texto");
-    /** Botón para agregar un texto */
+
+    /** Botón para borrar un texto. */
     private final JButton bBorrarTexto = new JButton("Borrar Texto");
-    /** Botó de tornar a la pantalla del menú principal */
+
+    /** Botón para volver a la pantalla del menú principal. */
     private final JButton bsalir = new JButton("Atrás");
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto */
+
+    /** Texto indicando que el desplegable de al lado es para seleccionar el nombre del texto. */
     private final JLabel txtDesplegableTxtB = new JLabel("LISTA NOMBRES:");
+
+    /** Lista desplegable con los nombres de los textos existentes. */
     private JComboBox<String> nombresTxtB = new JComboBox<>();
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto */
+
+    /** Texto indicando que la barra de texto de al lado es donde aparecerá el nombre del texto seleccionado. */
     private final JLabel txtNombreTxtB = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del texto que se quiere crear */
+
+    /** Área de texto donde aparecerá el nombre del texto que se quiere borrar */
     private final JTextArea areanomTxtB = new JTextArea();
 
-    /** Constructora de la ventana de eliminar texto */
+    /**
+     * Constructor de la clase VistaTextoB.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura los oyentes de eventos
+     * para la eliminación de textos. Proporciona funcionalidad para seleccionar un texto de la lista
+     * y eliminarlo tras confirmar la acción.
+     */
     public VistaTextoB() {
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);

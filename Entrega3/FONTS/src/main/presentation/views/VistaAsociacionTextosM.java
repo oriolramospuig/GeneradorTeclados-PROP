@@ -17,53 +17,69 @@ import java.util.ArrayList;
  * Esta vista ofrece al usuario una lista desplegable para seleccionar una asociación existente y modificar su contenido.
  * Al seleccionar una asociación de la lista, se muestra su nombre y su contenido en campos de texto.
  * También se proporcionan dos deplegables, uno para agregar nuevos textos a la asociación y otro para borrar textos vinculados a ella.
- * El primer desplegable contiene los textos posibles a vincular a la asociación y otro los textos vinculados
- *
- *
- *
- *
- *
- * a la apermitiendo la modificación del contenido.
- * El nombre del alfabeto, siendo el identificador, no es modificable.
- * La interfaz proporciona una manera sencilla y directa para que los usuarios puedan actualizar los caracteres que componen un alfabeto específico.
+ * El primer desplegable contiene los textos posibles a vincular a la asociación y otro los textos vinculados.
+ * El nombre de la asociación, siendo el identificador, no es modificable.
+ * La interfaz proporciona una manera sencilla y directa para que los usuarios puedan actualizar la lista de textos que componen una asociación específica.
  * Incluye un botón para confirmar las modificaciones y otro para regresar al menú principal.
- * @author Oriol Ramos Puig (oriol.ramos.puig@estudiantat.upc.edu)
+ * @author Alèxia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
 public class VistaAsociacionTextosM extends JFrame{
-    //BOTONES
-    /** Panel donde se incluyen los elementos de la ventana */
+    /** Panel donde se incluyen los elementos de la ventana. */
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana inferior */
+
+    /** Título de la ventana. */
     private final JLabel tituloVistaATM = new JLabel("Modificar asociación");
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociación */
+
+    /** Texto indicando que la barra de texto de al lado es para seleccionar el nombre de la asociación. */
     private final JLabel txtDesplegableATM = new JLabel("LISTA NOMBRES:");
-    /** Desplegable con los nombres de las asociaciones*/
+
+    /** Desplegable con los nombres de las asociaciones existentes. */
     private JComboBox<String> nombresATM = new JComboBox<>();
+
+    /** Texto indicando que la barra de texto de al lado es para seleccionar el nombre del texto a agregar a la asociación. */
     private final JLabel txtDesplegableAgregarATM = new JLabel("NOMBRES DE TEXTOS PARA AGREGAR A LA ASOCIACIÓN:");
+
+    /** Desplegable con los nombres de los textos que no pertenecen a esa asociación, pero que pueden ser agregados a ella. */
     private JComboBox<String> nombreAgregarATM = new JComboBox<>();
+
+    /** Texto indicando que la barra de texto de al lado es para seleccionar el nombre del texto a borrar de la asociación. */
     private final JLabel txtDesplegableBorrarATM = new JLabel("NOMBRES DE TEXTOS PARA BORRAR DE LA ASOCIACIÓN:");
+
+    /** Desplegable con los nombres de los textos que pertenecen a esa asociación y por lo tanto, pueden ser borrados de esta. */
     private JComboBox<String> nombreBorrarATM = new JComboBox<>();
+
+    /** Botón para realizar las modificaciones en la asociación seleccionada. */
     private final JButton bModificarAsociacion = new JButton("Modificar asociación");
-    /** Botó de tornar a la pantalla del menú principal */
+
+    /** Botón para volver a la pantalla del menú principal */
     private final JButton bsalir = new JButton("Atrás");
 
 
-    //TEXTOS Y AREAS DE TEXTO
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
+    /** Texto indicando que la barra de texto de al lado es donde aparecerá el nombre de la asociacion seleccionada para modificar. */
     private final JLabel txtNombreATM = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
+
+    /** Área de texto donde aparecerá el nombre de la asociacion seleccionada para modificar. */
     private final JTextArea areanomATM = new JTextArea();
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre de la asociacion a consultar*/
+
+    /** Texto indicando que la barra de texto de al lado es donde aparecerá la lista de textos vinculados a la asociacion a modificar. */
     private final JLabel txtContenidoATM = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el nombre de la asociacion que se quiere consultar */
+
+    /** Área de texto donde aparecerá la lista de textos vinculados a la asociación que se quiere modificar. */
     private final JTextArea areacontenidoATM = new JTextArea();
+
+    /** Área de texto donde aparecerá el nombre del texto seleccionado en el desplegable que corresponde. Es un texto no vinculado, que se quiere vincular a esa asociación. */
     private final JTextArea areanomAgregarATM = new JTextArea();
+
+    /** Área de texto donde aparecerá el nombre del texto vinculado que se quiere desvincular de la asociación. */
     private final JTextArea areanomBorrarATM = new JTextArea();
 
-    //MENSAJES DE ERROR
-    /** Pantalla de error que aparece cuando se quiere consultar/modificar una asociacion sin nombre */
-    private final JFrame Nomframe = new JFrame ("JFrame");
-
+    /**
+     * Constructor de la clase VistaAsociaciónM.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura los oyentes de eventos
+     * para la modificación de asociaciones de texto. Permite actualizar el contenido de una asociación seleccionada
+     * desde una lista desplegable, manteniendo el mismo nombre identificador.
+     */
     public VistaAsociacionTextosM() {
         setBounds(250, 150, 1000, 600);
 

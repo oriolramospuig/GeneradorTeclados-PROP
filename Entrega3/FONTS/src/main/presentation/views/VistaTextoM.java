@@ -13,42 +13,53 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Aquesta vista s’encarrega de carregar un fitxer guardat a l’ordinador i obrir-lo. La vista obre l’explorador d’arxius
- * on es podran seleccionar únicament fitxers que el nostre sistema és capaç d’obrir. Es proporciona un botó de
- * cancel·lar que tornarà a la VistaMenuPrincipal i un botó d’obrir que farà que s’obri a la VistaSpreadsheet el fitxer
- * seleccionat.
- * @author Marc Clapés Marana (marc.clapes.marana@estudiantat.upc.edu)
+ * Vista para modificar los detalles de un texto existente.
+ * <p>
+ * Esta vista ofrece al usuario una lista desplegable para seleccionar un texto existente y modificar su contenido.
+ * Al seleccionar un texto de la lista, se muestra su nombre y su contenido en campos de texto, permitiendo la modificación del contenido.
+ * El nombre del texto, siendo el identificador, no es modificable.
+ * La interfaz proporciona una manera sencilla y directa para que los usuarios puedan actualizar el contenido que compone un texto específico.
+ * Incluye un botón para confirmar las modificaciones y otro para regresar al menú principal.
+ * @author Alèxia Mayor (alexia.mayor@estudiantat.upc.edu)
  */
 public class VistaTextoM extends JFrame{
-    //BOTONES
-    /** Panel donde se incluyen los elementos de la ventana */
+    /** Panel donde se incluyen los elementos de la ventana.*/
     private final JPanel lamina = new JPanel();
-    /** Título de media ventana inferior */
+
+    /** Título de la ventana. */
     private final JLabel tituloVistaTxtM = new JLabel("Modificar texto");
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto */
+
+    /** Texto indicando que el desplegable de al lado es para seleccionar el nombre del texto. */
     private final JLabel txtDesplegableTxtM = new JLabel("LISTA NOMBRES:");
-    /** Desplegable con los nombres de los textos*/
+
+    /** Desplegable con los nombres de los textos.*/
     private JComboBox<String> nombresTxtM = new JComboBox<>();
+
+    /** Botón para modificar un texto. */
     private final JButton bModificarTexto = new JButton("Modificar texto");
-    /** Botó de tornar a la pantalla del menú principal */
+
+    /** Botón para volver a la pantalla del menú principal. */
     private final JButton bsalir = new JButton("Atrás");
 
-
     //TEXTOS Y AREAS DE TEXTO
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto a consultar*/
+    /** Texto indicando que la barra de texto de al lado es donde aparecerá el nombre del texto a modificar. */
     private final JLabel txtNombreTxtM = new JLabel("NOMBRE:");
-    /** Área de texto para introducir el nombre del texto que se quiere consultar */
+
+    /** Área de texto donde aparecerá el nombre del texto que se quiere modificar. */
     private final JTextArea areanomTxtM = new JTextArea();
 
-    /** Texto indicando que la barra de texto de al lado es para introducir el nombre del texto a consultar*/
+    /** Texto indicando que la barra de texto de al lado es donde aparecerá el contenido del texto a modificar.*/
     private final JLabel txtContenidoTxtM = new JLabel("CONTENIDO:");
-    /** Área de texto para introducir el nombre del texto que se quiere consultar */
+    /** Área de texto donde aparecerá el contenido del texto a modificar. */
     private final JTextArea areacontenidoTxtM = new JTextArea();
 
-    //MENSAJES DE ERROR
-    /** Pantalla de error que aparece cuando se quiere consultar/modificar un texto sin nombre */
-    private final JFrame Nomframe = new JFrame ("JFrame");
-
+    /**
+     * Constructor de la clase VistaTextoM.
+     * <p>
+     * Inicializa los componentes de la interfaz de usuario y configura los oyentes de eventos
+     * para la modificación de textos. Permite actualizar el contenido de un texto seleccionado
+     * desde una lista desplegable, manteniendo el mismo nombre identificador.
+     */
     public VistaTextoM() {
         setBounds(250, 150, 1000, 600);
         //setExtendedState(Frame.MAXIMIZED_BOTH);
