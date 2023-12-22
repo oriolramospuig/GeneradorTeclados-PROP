@@ -44,8 +44,7 @@ public class CtrlDominio
         File currentDir = new File(currentDirectory);
         File rootDir = currentDir.getParentFile().getParentFile().getParentFile();
         String rootPath = rootDir.getAbsolutePath(); // para makefile
-        cargaCnjtAlfabetos();
-        //cargaCnjtAlfabetos(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoAlfabetos"+"//");
+        cargaCnjtAlfabetos(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoAlfabetos"+"//");
         cargaCnjtTextos(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoTextos"+"//");
         cargaCnjtAsociaciones(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoAsociaciones"+"//");
         cargaCnjtTeclados(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoTeclados"+"//");
@@ -484,35 +483,40 @@ public class CtrlDominio
     // ---------- FUNCIONES PERSISTENCIA ALFABETOS ----------
 
     /**
-     * Guarda el conjunto de alfabetos en una ubicación específica.
-     * La ubicación por defecto es la carpeta 'Entrega3/data/Cache' del directorio de trabajo actual.
-     * Se utiliza la persistencia para guardar los datos, convirtiendo el conjunto de alfabetos
-     * en un array de bytes y llamando a un método en el controlador de persistencia.
-     * Si se produce un error durante el proceso de guardado, se muestra un mensaje de error en la consola
-     * y se finaliza la aplicación con un código de error.
-     * Guarda el conjunto de alfabetos utilizando el controlador de persistencia.
-     * Captura posibles excepciones IOException sin proporcionar un tratamiento específico.
+     * Almacena el conjunto de alfabetos en una localización específica.
      */
     public void guardaCnjtAlfabetos() {
+        String nomDoc = "conjuntoAlfabetos";
+        String currentDirectory = System.getProperty("user.dir");
+        String path = currentDirectory+"//Entrega3//data//Cache//"+nomDoc+"//";
         try {
-            ctrlPersistencia.guardaCnjtAlfabetos(ctrlAlfabeto.getAlfabetos());
+            byte[] bytes = ctrlAlfabeto.alfabetosToByteArray();
+            ctrlPersistencia.guardaCnjtAlfabetos(bytes,path);
         } catch (IOException e) {
+            System.err.println("[#GUARDAR] Error al guardar el conjunto de alfabetos" + e.getMessage());
+            Thread.currentThread().getStackTrace();
+            System.exit(-102);
         }
     }
 
     /**
-     * Carga el conjunto de alfabetos desde el archivo especificado en la ruta proporcionada.
-     * Carga el conjunto de alfabetos utilizando el controlador de persistencia.
-     * Captura posibles excepciones IOException y actualiza el conjunto de alfabetos en el controlador de alfabeto.
+     * Retorna el conjunto de alfabetos que se encuentra en path.
+     * @param path
      */
-    public void cargaCnjtAlfabetos() {
+    public void cargaCnjtAlfabetos(String path) {
         try {
-            HashMap<String,Alfabeto> cnjtAlfabetos = ctrlPersistencia.cargaCnjtAlfabetos();
-            ctrlAlfabeto.setCnjtAlfabetos(cnjtAlfabetos);
-        } catch (IOException e){
-            //CtrlPresentacion.showError(e.getMessage());
+            byte[] bytes = ctrlPersistencia.cargaCnjtAlfabetos(path);
+            if (bytes != null || bytes.length != 0) {
+                CtrlAlfabeto.byteArrayToAlfabetos(bytes);
+            }
+            else {
+                System.out.println("El archivo está vacío. No se carga ningun alfabeto.");
+            }
+        } catch (Exception e) {
+            System.err.println("[#CARGA] Error al cargar el conjunto de alfabetos " + e.getMessage());
         }
     }
+
 
 
     // ---------- FUNCIONES PERSISTENCIA TEXTOS ----------
