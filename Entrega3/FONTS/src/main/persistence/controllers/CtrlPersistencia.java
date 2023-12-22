@@ -70,10 +70,22 @@ public class CtrlPersistencia {
         return gestorLectura.formatoCorrectoAgregarFrecuencias(contenidoTexto, pathTexto, frecuencias);
     }
 
+    /**
+     * Carga el conjunto de alfabetos desde el gestor de alfabetos, utilizando el formato CSV.
+     * Lanza una excepción IOException si hay un problema durante la lectura del archivo.
+     * @return HashMap que contiene el conjunto de alfabetos cargado.
+     * @throws IOException si ocurre un error durante la lectura del archivo.
+     */
     public HashMap<String, Alfabeto> cargaCnjtAlfabetos() throws IOException {
         return gestorAlfabeto.leerDeCSV();
     }
 
+    /**
+     * Guarda el conjunto de alfabetos en el gestor de alfabetos, utilizando el formato CSV.
+     * Lanza una excepción IOException si hay un problema durante la escritura en el archivo.
+     * @param alfabetos HashMap que contiene el conjunto de alfabetos a ser guardado.
+     * @throws IOException si ocurre un error durante la escritura en el archivo.
+     */
     public void guardaCnjtAlfabetos(HashMap<String, Alfabeto> alfabetos) throws IOException {
         gestorAlfabeto.escribirEnCSV(alfabetos);
     }

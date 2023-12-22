@@ -476,19 +476,19 @@ public class CtrlDominio
     // ---------- FUNCIONES PERSISTENCIA ALFABETOS ----------
 
     /**
-     * Almacena el conjunto de alfabetos en una localización específica.
+     * Guarda el conjunto de alfabetos utilizando el controlador de persistencia.
+     * Captura posibles excepciones IOException sin proporcionar un tratamiento específico.
      */
     public void guardaCnjtAlfabetos() {
         try {
             ctrlPersistencia.guardaCnjtAlfabetos(ctrlAlfabeto.getAlfabetos());
         } catch (IOException e) {
-
         }
     }
 
     /**
-     * Retorna el conjunto de alfabetos que se encuentra en path.
-     * @param
+     * Carga el conjunto de alfabetos utilizando el controlador de persistencia.
+     * Captura posibles excepciones IOException y actualiza el conjunto de alfabetos en el controlador de alfabeto.
      */
     public void cargaCnjtAlfabetos() {
         try {

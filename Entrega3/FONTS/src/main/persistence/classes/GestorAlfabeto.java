@@ -7,27 +7,21 @@ import java.util.*;
 
 
 /**
- * Clase que gestiona la carga y guardado de Conjuntos de Alfabetos en formato de bytes.
+ * Clase que gestiona la carga y guardado de Conjuntos de Alfabetos en formato de csv.
  * @author Júlia Tena (julia.tena.domingo@estudiantat.upc.edu)
  */
 public class GestorAlfabeto {
-    static String currentDirectory = System.getProperty("user.dir");
-    //private static final String alfabetos_path = currentDirectory+"Entrega3//data//Cache"+"./conjuntoAlfabetos.csv";
+    /** Ruta del archivo CSV para almacenar el conjunto de alfabetos. */
     private static final String alfabetos_path = "./conjuntoAlfabetos.csv";
-    private HashMap<String, Alfabeto> alfabetos = new HashMap<>();
 
-    public HashMap<String, Alfabeto> getAlfabetos() {
-        return this.alfabetos;
-    }
-
-    public void setCnjtAlfabetos(HashMap<String, Alfabeto> alfabetos) {
-        this.alfabetos = alfabetos;
-    }
-
+    /**
+     * Escribe el conjunto de alfabetos en un archivo CSV.
+     * @param alfabetosNuevos HashMap que contiene el conjunto de alfabetos a ser escrito en el archivo CSV.
+     * @throws IOException si hay un error de escritura durante la operación.
+     */
     public void escribirEnCSV(HashMap<String, Alfabeto> alfabetosNuevos) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(alfabetos_path))) {
             for (HashMap.Entry<String, Alfabeto> entry : alfabetosNuevos.entrySet()) {
-                String nombreA = entry.getKey();
                 Alfabeto alfabeto = entry.getValue();
                 String alfabetoString = pasarAlfabetoString(alfabeto);
                 writer.write(alfabetoString);
@@ -38,6 +32,11 @@ public class GestorAlfabeto {
         }
     }
 
+    /**
+     * Convierte una lista de caracteres en un String.
+     * @param letras lista de caracteres a ser convertida.
+     * @return String que representa la lista de caracteres.
+     */
     public String lToString(ArrayList<Character> letras) {
         StringBuilder stringBuilder = new StringBuilder(letras.size());
         for (Character character : letras) {
@@ -46,6 +45,11 @@ public class GestorAlfabeto {
         return stringBuilder.toString();
     }
 
+    /**
+     * Convierte una lista de strings en un solo string con separador ";".
+     * @param tecladosVinculados lista de strings a ser convertida.
+     * @return String que representa la lista de strings con separador ";".
+     */
     private String tvToString(ArrayList<String> tecladosVinculados) {
         StringBuilder stringBuilder = new StringBuilder();
         for (String element : tecladosVinculados) {
@@ -58,7 +62,11 @@ public class GestorAlfabeto {
         return stringBuilder.toString();
     }
 
-
+    /**
+     * Convierte un objeto Alfabeto a un String para ser almacenado en el archivo CSV.
+     * @param alfabeto objeto Alfabeto a ser convertido.
+     * @return String que representa el Alfabeto en formato CSV.
+     */
     public String pasarAlfabetoString(Alfabeto alfabeto) {
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -74,6 +82,11 @@ public class GestorAlfabeto {
         return stringBuilder.toString();
     }
 
+    /**
+     * Lee el conjunto de alfabetos desde el archivo CSV y lo carga en memoria.
+     * @return HashMap que contiene el conjunto de alfabetos cargado desde el archivo CSV.
+     * @throws IOException si hay un error de lectura durante la operación.
+     */
     public HashMap<String, Alfabeto> leerDeCSV() throws IOException {
         existeFichero();
         try {
@@ -111,6 +124,11 @@ public class GestorAlfabeto {
         }
     }
 
+    /**
+     * Verifica la existencia del archivo especificado por la ruta 'alfabetos_path'.
+     * Si el archivo no existe, intenta crearlo.
+     * @throws IOException si hay un error durante la verificación o creación del archivo.
+     */
     private void existeFichero() throws IOException {
         File file = new File(alfabetos_path);
         if (!file.exists()) {

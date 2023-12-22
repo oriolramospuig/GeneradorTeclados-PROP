@@ -150,6 +150,10 @@ public class CtrlAlfabeto
         is.close();
     }
 
+    /**
+     * Establece el conjunto de alfabetos en la clase CjtAlfabetos, utilizando el conjunto proporcionado.
+     * @param cnjtAlfabetos HashMap que contiene el conjunto de alfabetos a ser definido.
+     */
     public void setCnjtAlfabetos(HashMap<String, Alfabeto> cnjtAlfabetos) {
         CjtAlfabetos.setCnjtAlfabetos(cnjtAlfabetos);
     }
