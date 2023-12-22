@@ -4,6 +4,7 @@ import drivers.InOut;
 import main.domain.classes.*;
 import main.domain.classes.types.PairInt;
 import main.persistence.controllers.CtrlPersistencia;
+import main.presentation.controllers.CtrlPresentacion;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -44,7 +45,8 @@ public class CtrlDominio
         File currentDir = new File(currentDirectory);
         File rootDir = currentDir.getParentFile().getParentFile().getParentFile();
         String rootPath = rootDir.getAbsolutePath(); // para makefile
-        cargaCnjtAlfabetos(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoAlfabetos"+"//");
+        cargaCnjtAlfabetos();
+        //cargaCnjtAlfabetos(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoAlfabetos"+"//");
         cargaCnjtTextos(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoTextos"+"//");
         cargaCnjtAsociaciones(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoAsociaciones"+"//");
         cargaCnjtTeclados(currentDirectory+"//Entrega3//data//Cache//"+"conjuntoTeclados"+"//");
@@ -477,35 +479,23 @@ public class CtrlDominio
      * Almacena el conjunto de alfabetos en una localización específica.
      */
     public void guardaCnjtAlfabetos() {
-        String nomDoc = "conjuntoAlfabetos";
-        //if(nomDoc.endsWith(".prop")) { nomDoc = nomDoc+".prop"; }
-        String currentDirectory = System.getProperty("user.dir");
-        String path = currentDirectory+"//Entrega3//data//Cache//"+nomDoc+"//";
         try {
-            byte[] bytes = ctrlAlfabeto.alfabetosToByteArray();
-            ctrlPersistencia.guardaCnjtAlfabetos(bytes,path);
+            ctrlPersistencia.guardaCnjtAlfabetos(ctrlAlfabeto.getAlfabetos());
         } catch (IOException e) {
-            System.err.println("[#GUARDAR] Error al guardar el conjunto de alfabetos" + e.getMessage());
-            Thread.currentThread().getStackTrace();
-            System.exit(-102);
+
         }
     }
 
     /**
      * Retorna el conjunto de alfabetos que se encuentra en path.
-     * @param path
+     * @param
      */
-    public void cargaCnjtAlfabetos(String path) {
+    public void cargaCnjtAlfabetos() {
         try {
-            byte[] bytes = ctrlPersistencia.cargaCnjtAlfabetos(path);
-            if (bytes != null || bytes.length != 0) {
-                CtrlAlfabeto.byteArrayToAlfabetos(bytes);
-            }
-            else {
-                System.out.println("El archivo está vacío. No se carga ningun alfabeto.");
-            }
-        } catch (Exception e) {
-            System.err.println("[#CARGA] Error al cargar el conjunto de alfabetos " + e.getMessage());
+            HashMap<String,Alfabeto> cnjtAlfabetos = ctrlPersistencia.cargaCnjtAlfabetos();
+            ctrlAlfabeto.setCnjtAlfabetos(cnjtAlfabetos);
+        } catch (IOException e){
+            //CtrlPresentacion.showError(e.getMessage());
         }
     }
 
