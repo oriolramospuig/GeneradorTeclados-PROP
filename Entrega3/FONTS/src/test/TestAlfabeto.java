@@ -27,6 +27,9 @@ public class TestAlfabeto {
     /** Instancia de la clase Alfabeto utilizada en los casos de prueba. Se inicializa y utiliza en el método de configuración (setUp) para disponer de un objeto de prueba en los distintos casos de prueba de la clase TestAlfabeto. */
     private Alfabeto alfabeto;
 
+    private static ArrayList<Character> letras1 = null;
+    private static ArrayList<Character> letras2 = null;
+
     /**
      * Inicialización de un alfabeto.
      */
@@ -96,21 +99,18 @@ public class TestAlfabeto {
      * Objeto de la prueba: Test del método ModificarContenido(String nomA) de alfabeto. Este método debe agregar a un teclado a la lista de un alfabeto.
      * Ficheros de datos necesarios: Datos introducidos manualmente.
      * Valores estudiados: Estrategia caja gris. A partir del Alfabeto, se modifica su contenido y se comprueba que se ha modificado correctamente.
-     * Operativa: Se consulta el contenido actual del alfabeto. Se modifica define el nombre de dos teclados.
-     * El segundo assertTrue() compruba que el teclado1 está en la lista.
-     * El tercer assertTrue() comprueba que el teclado2 está en la lista.
+     * Operativa: Se consulta el contenido actual del alfabeto. Se modifica y se actualiza.
      */
     @Test
     public void TestModificarContenido() {
-        ArrayList<Character> letras = alfabeto.getLetras();
-        ArrayList<Character> letras2 = letras;
+        letras1 = alfabeto.getLetras();
+        letras2 = letras1;
         letras2.add('!');
 
-        alfabeto.modificarContenido(letras);
+        alfabeto.modificarContenido(letras2);
 
-        assertNotEquals(letras2,letras);
+        assertArrayEquals(new ArrayList[]{letras1}, new ArrayList[]{letras2});
         assertEquals(alfabeto.getLetras(),letras2);
-
     }
 
 
