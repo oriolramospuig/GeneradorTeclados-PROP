@@ -16,6 +16,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
+ * Clase de pruebas unitarias para asociación de textos.
  * @author Victor Moreno (victor.moreno@estudiantat.upc.edu)
  */
 public class TestAsociacionTextos {

@@ -261,15 +261,24 @@ public class VistaMenuPrincipal extends JFrame {
         ActionListener lManual = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //anar al manual
-                try {
-                    Desktop.getDesktop().browse(new URI("https://drive.google.com/file/d/1PRl1br-yj1iCE6h0-hjQ_RdVbkDyFDH-/view?usp=sharing"));
-                } catch (IOException | URISyntaxException ex) {
-                    ex.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "No se pudo abrir el manual de usuario.", "Error", JOptionPane.ERROR_MESSAGE);
+                if (Desktop.isDesktopSupported()) {
+                    Desktop desktop = Desktop.getDesktop();
+                    if (desktop.isSupported(Desktop.Action.BROWSE)) {
+                        try {
+                            desktop.browse(new URI("https://drive.google.com/file/d/1PRl1br-yj1iCE6h0-hjQ_RdVbkDyFDH-/view?usp=sharing"));
+                        } catch (IOException | URISyntaxException ex) {
+                            ex.printStackTrace();
+                            JOptionPane.showMessageDialog(null, "No se pudo abrir el manual de usuario.", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "La función de navegación no es compatible con esta plataforma.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "El soporte de escritorio no está disponible en esta plataforma.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         };
+
 
         ActionListener salir = new ActionListener() {
             @Override
